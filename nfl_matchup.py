@@ -1106,8 +1106,7 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 <a href="parlays/" style="font-weight:700">Share the parlays →</a> · Rebuilt every refresh from A/B-rated, trap-free props. Each rung adds the next-best leg.
 Payouts assume -110 per leg; hit chance discounts the model's confidence by about half, because models run hot.</div>
 <div class="bar"><label style="font-weight:700;color:var(--ink)">Bet amount
-  <select id="plstake"><option>5</option><option selected>10</option><option>20</option><option>25</option><option>50</option>
-  <option>100</option><option>250</option><option>500</option></select></label>
+  <select id="plstake"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option selected>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>20</option><option>25</option><option>30</option><option>40</option><option>50</option><option>75</option><option>100</option><option>150</option><option>200</option><option>250</option><option>500</option><option>1000</option></select></label>
   <label><input type="checkbox" id="onepergame"> One leg per game</label></div>
 <h3 id="uphead" style="font:700 18px/1.2 'Barlow Condensed',sans-serif;letter-spacing:.03em;text-transform:uppercase;margin:6px 0 8px">
   Upcoming games — tap + to add legs</h3>
