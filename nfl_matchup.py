@@ -1499,12 +1499,19 @@ function renderTop5() {
 }
 function renderParlays() {
   const one = document.getElementById("onepergame").checked;
-  const per = {}, legs = [];
-  for (const r of bestLegs()) {
-    if ((per[r.game] || 0) >= (one ? 1 : 2)) continue;
-    per[r.game] = (per[r.game] || 0) + 1; legs.push(r);
-    if (legs.length === 7) break;
-  }
+  // fill to 7 legs: A/B first (max 2 per game, or 1 with the box ticked); when games run short, allow more
+  // per game, then add strongly-leaning C picks. Filled-in legs are tagged so it's clear why they're there.
+  const cPicks = ROWS.filter(r => r.grade === "C" && !(r.traps && r.traps.length) && r.p_over != null
+      && Math.max(r.p_over, 1 - r.p_over) >= 0.55).sort((a, b) => b.score - a.score);
+  const per = {}, legs = [], used = new Set();
+  const add = (r, cap, tag) => {
+    if (used.has(r.player) || (per[r.game] || 0) >= cap || legs.length >= 7) return;
+    per[r.game] = (per[r.game] || 0) + 1; used.add(r.player); legs.push(Object.assign({}, r, {fill: tag}));
+  };
+  const base = one ? 1 : 2;
+  bestLegs().forEach(r => add(r, base, ""));
+  if (legs.length < 7 && !one) bestLegs().forEach(r => add(r, 4, "SAME GAME"));
+  if (legs.length < 7) cPicks.forEach(r => add(r, one ? 1 : 4, "C"));
   const leg = r => { const c = Math.max(r.p_over, 1 - r.p_over); return 0.5 + (c - 0.5) * 0.45; };
   const amer = d => d >= 2 ? "+" + Math.round((d - 1) * 100) : String(Math.round(-100 / (d - 1)));
   let out = "";
@@ -1512,7 +1519,7 @@ function renderParlays() {
     const L = legs.slice(0, n), dec = Math.pow(1 + 100 / 110, n), p = L.reduce((a, r) => a * leg(r), 1);
     out += `<div class="pl-row"><div class="pl-n">${n}-LEG<small>parlay</small></div>
       <div class="pl-legs">${L.map((r, i) => `<div class="${i === n - 1 ? "new" : ""}"><span class="pick ${r.pick.split(" ")[0]}">${r.pick}</span>
-        ${esc(r.player)} <span class="pmeta">${STAT[r.stat]} · ${r.team} vs ${r.opp} · ${r.grade}</span></div>`).join("")}</div>
+        ${esc(r.player)} <span class="pmeta">${STAT[r.stat]} · ${r.team} vs ${r.opp} · ${r.grade}</span>${r.fill ? `<span class="tag tag-trap">${r.fill}</span>` : ""}</div>`).join("")}</div>
       <div class="pl-pay"><div class="odds">${amer(dec)}</div><div class="pmeta">$10 pays $${(10 * dec).toFixed(2)}</div>
         <div class="pmeta">~${Math.round(p * 100)}% est. hit</div></div></div>`;
   }
@@ -3392,16 +3399,26 @@ def write_top5(week, games, rows, path: Path):
 
 
 def parlay_ladder(rows: list, max_legs: int = 7, per_game: int = 2) -> list:
-    """Same ladder as the dashboard: best A/B trap-free legs, one per player, max `per_game` per game."""
-    legs, count = [], {}
-    for r in sorted((r for r in rows if r.get("grade") in ("A", "B") and not r.get("traps")),
-                    key=lambda r: r["score"], reverse=True):
-        if r["player_id"] in {l["player_id"] for l in legs} or count.get(r["game"], 0) >= per_game:
-            continue
+    """Same ladder as the dashboard: best A/B trap-free legs, one per player, max `per_game` per game.
+    When games run short, allow up to 4 per game, then strongly-leaning C picks (legs tagged 'fill')."""
+    legs, count, used = [], {}, set()
+
+    def add(r, cap, tag):
+        if r["player_id"] in used or count.get(r["game"], 0) >= cap or len(legs) >= max_legs:
+            return
+        used.add(r["player_id"])
         count[r["game"]] = count.get(r["game"], 0) + 1
-        legs.append(r)
-        if len(legs) == max_legs:
-            break
+        legs.append(dict(r, fill=tag))
+    ab = sorted((r for r in rows if r.get("grade") in ("A", "B") and not r.get("traps")),
+                key=lambda r: r["score"], reverse=True)
+    cs = sorted((r for r in rows if r.get("grade") == "C" and not r.get("traps") and r.get("p_over") is not None
+                 and _conf(r) >= 0.55), key=lambda r: r["score"], reverse=True)
+    for r in ab:
+        add(r, per_game, "")
+    for r in ab:
+        add(r, 4, "SAME GAME")
+    for r in cs:
+        add(r, 4, "C")
     return legs
 
 
@@ -3418,7 +3435,7 @@ def write_parlays(week, games, rows, path: Path):
         items = "".join(
             f"<div class='leg{' new' if i == n - 1 else ''}'><span class='{r['pick'].split()[0]}'><b>{r['pick']}</b></span> "
             f"{H.escape(r['player'])} <span class='meta'>{stat_name[r['stat']]} · {r['team']} vs {r['opp']} · "
-            f"{r['grade']}</span></div>" for i, r in enumerate(legs[:n]))
+            f"{r['grade']}{(' · ' + r['fill']) if r.get('fill') else ''}</span></div>" for i, r in enumerate(legs[:n]))
         cards += (f"<article class='pick rung' style='animation-delay:{n * 80}ms'><div class='rank'>{n}<small>legs</small></div>"
                   f"<div><div class='odds'>{decimal_to_american(dec):+d}</div>{items}"
                   f"<div class='meta pay'>$10 pays ${10 * dec:.2f} · ~{p:.0%} est. hit chance</div></div></article>")
