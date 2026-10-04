@@ -2048,22 +2048,36 @@ def update_snapshot(snap_dir: str, season: int, week: int, rows: list) -> Path:
     return path
 
 
-def grade_snapshot(snap: dict, stats: pd.DataFrame, sched: pd.DataFrame) -> list:
+def grade_snapshot(snap: dict, stats: pd.DataFrame, sched: pd.DataFrame, live=None) -> list:
+    """Grade a week's rated props. nflverse box scores when published; until then (they lag ~a day)
+    ESPN's final box scores via `live` = (games, box) from fetch_live_box."""
     season, week = snap["season"], snap["week"]
+    lg, box = live or ({}, {})
     wk = sched[(sched["season"] == season) & (sched["week"] == week)]
     final_teams = set(wk[wk["result"].notna()]["home_team"]) | set(wk[wk["result"].notna()]["away_team"])
+    espn_final = {g["away"]: k for k, g in lg.items() if g["state"] == "post"} |                  {g["home"]: k for k, g in lg.items() if g["state"] == "post"}
     st = stats[(stats["season"] == season) & (stats["week"] == week)].set_index("player_id")
+    nflverse_has_week = {t for t in st["team"].unique()} if len(st) else set()
     out = []
     for p in snap["props"].values():
         p = dict(p)
         side, line = p["pick"].split()
         line = float(line)
-        if p["team"] not in final_teams:
-            p["result"], p["actual"] = "pending", None
-        elif p["player_id"] not in st.index:
-            p["result"], p["actual"] = "void", None
-        else:
+        actual = None
+        if p["player_id"] in st.index:
             actual = float(st.loc[p["player_id"]][p["stat"]])
+        elif p["team"] in espn_final:
+            rec = box.get(p["player_id"])
+            if rec is not None and rec.get("_game") == espn_final[p["team"]]:
+                actual = float(rec.get(p["stat"], 0.0))
+        is_final = p["team"] in final_teams or p["team"] in espn_final
+        if not is_final:
+            p["result"], p["actual"] = "pending", None
+        elif actual is None:
+            # final but no stat line: a real DNP only once a box score for that team exists
+            has_box = p["team"] in nflverse_has_week or p["team"] in espn_final
+            p["result"], p["actual"] = ("void" if has_box else "pending"), None
+        else:
             p["actual"] = actual
             if actual == line:
                 p["result"] = "push"
@@ -2243,7 +2257,13 @@ def cmd_report(args, stats, sched, season):
         snap = json.loads(path.read_text(encoding="utf-8"))
         if not snap["props"]:
             continue
-        summary = summarize_week(grade_snapshot(snap, stats, sched))
+        graded = grade_snapshot(snap, stats, sched)
+        if any(p["result"] == "pending" for p in graded):  # finished games not in nflverse yet: use ESPN finals
+            try:
+                graded = grade_snapshot(snap, stats, sched, fetch_live_box(snap["season"], snap["week"], False))
+            except Exception as exc:
+                print(f"[warn] ESPN box scores unavailable for week {snap['week']}: {exc}", file=sys.stderr)
+        summary = summarize_week(graded)
         summary["label"] = " (backtest)" if snap.get("backtest") else ""
         weeks.append((snap["season"], snap["week"], summary))
     if args.out:
