@@ -2038,9 +2038,14 @@ def choose_bets(rows: list, budget: float, max_players: int = 5, max_share: floa
     return out
 
 
-def _qualifies(r: dict) -> bool:
+GRADE_WEIGHT = {"A": 1.5, "B": 1.0, "C": 0.5}  # stake weight on top of the rating score
+MIN_PLAYS = 10  # C picks only fill in when a week has fewer A/B plays than this
+
+
+def _qualifies(r: dict, allow_c: bool = False) -> bool:
+    """A/B-rated, trap-free props with a line. C props (model still >=55% one way) only when allow_c."""
     return bool(r.get("pick")) and not r.get("traps") and (
-        r.get("grade") in ("A", "B") or (r.get("grade") == "C" and _conf(r) >= 0.55))
+        r.get("grade") in ("A", "B") or (allow_c and r.get("grade") == "C" and _conf(r) >= 0.55))
 
 
 def _stake_prop(r: dict, amt: float) -> list:
@@ -2067,12 +2072,16 @@ WEEKLY_BUDGET = 1000
 PARLAY_SHARE = 0.50  # of the weekly budget: even split, parlays as rotating cross-game combos
 
 
-def plan_week(pool: list, remaining: float, top_n: int = 25, player_cap: float = 80) -> tuple:
+def plan_week(pool: list, remaining: float, top_n: int = 25, player_cap: float | None = None) -> tuple:
     """Spread `remaining` straight-bet money over the best plays among the week's games that haven't
-    been bet yet: top `top_n` qualifying props (A/B ahead of C, one per player), weighted by rating,
-    no player above `player_cap`. Returns (picks, alloc)."""
-    ranked = sorted((r for r in pool if _qualifies(r)),
-                    key=lambda r: (r["grade"] in ("A", "B"), r["score"]), reverse=True)
+    been bet yet. A/B props only (one per player, up to `top_n`); C props fill in only if there are
+    fewer than MIN_PLAYS A/B plays. Weighted by rating x grade (A 1.5, B 1, C 0.5); no player above
+    `player_cap` (default 10% of the money, at least $80). Returns (picks, alloc)."""
+    player_cap = player_cap or max(80.0, remaining * 0.10)
+    ab = [r for r in pool if _qualifies(r)]
+    if len({r["player_id"] for r in ab}) < MIN_PLAYS:
+        ab += [r for r in pool if _qualifies(r, allow_c=True) and r.get("grade") == "C"]
+    ranked = sorted(ab, key=lambda r: (r["grade"] in ("A", "B"), r["score"]), reverse=True)
     picks, seen = [], set()
     for r in ranked:
         if r["player_id"] not in seen:
@@ -2082,12 +2091,13 @@ def plan_week(pool: list, remaining: float, top_n: int = 25, player_cap: float =
             break
     alloc = {r["player_id"]: 0.0 for r in picks}
     open_ids, left = set(alloc), remaining
-    while left > 1 and open_ids:  # water-fill by score with a per-player cap
-        tot = sum(r["score"] for r in picks if r["player_id"] in open_ids)
+    wt = lambda r: r["score"] * GRADE_WEIGHT.get(r["grade"], 0.5)
+    while left > 1 and open_ids:  # water-fill by weighted score with a per-player cap
+        tot = sum(wt(r) for r in picks if r["player_id"] in open_ids)
         spill = 0.0
         for r in picks:
             if r["player_id"] in open_ids:
-                want = alloc[r["player_id"]] + left * r["score"] / tot
+                want = alloc[r["player_id"]] + left * wt(r) / tot
                 alloc[r["player_id"]] = min(want, player_cap)
                 spill += want - alloc[r["player_id"]]
                 if alloc[r["player_id"]] >= player_cap:
@@ -2107,7 +2117,7 @@ def _trim(bets: list, cap: float) -> list:
 
 def weekly_parlays(pool: list, budget: float) -> list:
     """Cross-game parlays with ROTATING legs, so one missed pick can't sink all the parlay money.
-    Legs: the week's best props, one per game (A/B first, strong C only to fill out 8).
+    Legs: the week's best A/B props, one per game (up to 8).
     40% of `budget` -> four 2-leg parlays on disjoint pairs (1-2, 3-4, 5-6, 7-8)
     35%           -> three 3-leg parlays (1-4-7, 2-5-8, 3-6-1)
     25%           -> two 4-leg parlays (1-3-5-7, 2-4-6-8)
@@ -2259,6 +2269,8 @@ def _why_drop(leg: dict, r, near_kick: bool = True) -> str:
     if r["pick"].split()[0].lower() != leg["side"]:
         return f"rating flipped to {r['pick']}"
     if not _qualifies(r):
+        if r.get("grade") == "C" and _qualifies(r, allow_c=True):
+            return "plan now focuses on A/B picks (this one is a C)"
         return f"rating dropped to {r['grade']} ({r['score']})"
     return ""
 
