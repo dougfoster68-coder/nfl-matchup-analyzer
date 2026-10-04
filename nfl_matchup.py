@@ -401,6 +401,14 @@ def _get_json(url: str):
         return json.loads(r.read().decode())
 
 
+def espn_week_query(week: int) -> str:
+    """nflverse numbers playoff weeks 19-22 (Wild Card, Divisional, Conference, Super Bowl); ESPN uses
+    seasontype=3 with weeks 1, 2, 3 and 5 (week 4 is the Pro Bowl)."""
+    if week <= 18:
+        return f"seasontype=2&week={week}"
+    return f"seasontype=3&week={ {19: 1, 20: 2, 21: 3, 22: 5}.get(week, week - 18) }"
+
+
 def espn_to_gsis(refresh: bool) -> dict:
     p = _cached_csv(PLAYERS_URL, "players.csv", refresh)
     if p is None:
@@ -417,7 +425,7 @@ def fetch_espn_props(season: int, week: int, refresh: bool, finished: bool = Fal
     import re
     from concurrent.futures import ThreadPoolExecutor
 
-    board = _get_json(f"{ESPN_SCOREBOARD}?seasontype=2&week={week}&dates={season}")
+    board = _get_json(f"{ESPN_SCOREBOARD}?{espn_week_query(week)}&dates={season}")
     event_ids = [e["id"] for e in board.get("events", [])
                  if finished or e.get("status", {}).get("type", {}).get("state") == "pre"]
     id_map = espn_to_gsis(refresh)
@@ -1519,7 +1527,7 @@ def fetch_live_box(season: int, week: int, refresh: bool):
     Returns (games, box): games[key] = {state, detail, away/home score}; box[gsis_id] = {stat: yards}
     plus box[gsis_id]['_game'] so a player listed in any stat group counts as having played."""
     from concurrent.futures import ThreadPoolExecutor
-    board = _get_json(f"{ESPN_SCOREBOARD}?seasontype=2&week={week}&dates={season}")
+    board = _get_json(f"{ESPN_SCOREBOARD}?{espn_week_query(week)}&dates={season}")
     started = []
     games = {}
     for e in board.get("events", []):
