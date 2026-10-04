@@ -1086,9 +1086,10 @@ Payouts assume -110 per leg; hit chance discounts the model's confidence by abou
   <div id="sharp"></div></section>
 
 <h2 id="bank">Paper bankroll — Claude's picks</h2>
-<div class="sub" style="margin-bottom:10px">Fake money, real tracking. Started with $1,000. Claude bets $1,000 per NFL week (Thursday–Monday) on the week's best plays:
-the top ~25 props across all games, weighted by rating, with no player above $80. The strongest overs are split between the posted
-line, a safer alt line and a plus-money alt line, and $100 goes to a 2/3/4-leg parlay ladder across different games.
+<div class="sub" style="margin-bottom:10px">Fake money, real tracking. Started with $1,000. Claude bets $1,000 per NFL week (Thursday–Monday), split evenly:
+<b>$500 in straight bets</b> on the top ~25 props across all games (weighted by rating, no player above $80; the strongest overs
+are split between the posted line, a safer alt line and a plus-money alt line) and <b>$500 in parlays</b> across different games,
+with rotating legs (four 2-leg, three 3-leg and two 4-leg combos) so one missed pick can't sink them all.
 Each game is bet in the 3 hours before kickoff, and finished games settle right away from ESPN box scores. Bets are graded against final box scores;
 a player who doesn't play voids the leg. Main lines assume -110. Alt-line odds are estimates, marked "est".</div>
 <div class="panel" id="bankpanel"></div>
@@ -1935,7 +1936,7 @@ def _stake_prop(r: dict, amt: float) -> list:
 
 
 WEEKLY_BUDGET = 1000
-PARLAY_SHARE = 0.10  # of the weekly budget, as a 2/3/4-leg ladder across different games
+PARLAY_SHARE = 0.50  # of the weekly budget: even split, parlays as rotating cross-game combos
 
 
 def plan_week(pool: list, remaining: float, top_n: int = 25, player_cap: float = 80) -> tuple:
@@ -1967,8 +1968,47 @@ def plan_week(pool: list, remaining: float, top_n: int = 25, player_cap: float =
     return picks, alloc
 
 
+def _trim(bets: list, cap: float) -> list:
+    """Rounding to $5 can overshoot a budget; take $5 at a time off the biggest bets until it fits."""
+    while bets and sum(b["stake"] for b in bets) > cap:
+        big = max(bets, key=lambda b: b["stake"])
+        big["stake"] -= 5
+        bets = [b for b in bets if b["stake"] >= 5]
+    return bets
+
+
 def weekly_parlays(pool: list, budget: float) -> list:
-    """2-, 3- and 4-leg parlays (50/30/20 of `budget`) from the week's best A/B props, one leg per game."""
+    """Cross-game parlays with ROTATING legs, so one missed pick can't sink all the parlay money.
+    Legs: the week's best props, one per game (A/B first, strong C only to fill out 8).
+    40% of `budget` -> four 2-leg parlays on disjoint pairs (1-2, 3-4, 5-6, 7-8)
+    35%           -> three 3-leg parlays (1-4-7, 2-5-8, 3-6-1)
+    25%           -> two 4-leg parlays (1-3-5-7, 2-4-6-8)
+    A tier with too few legs is skipped and its money left unspent."""
+    ranked = sorted((r for r in pool if _qualifies(r)),
+                    key=lambda r: (r["grade"] in ("A", "B"), r["score"]), reverse=True)
+    legs, games = [], set()
+    for r in ranked:
+        if r["game"] not in games:
+            games.add(r["game"])
+            legs.append(r)
+        if len(legs) == 8:
+            break
+    L = lambda idx: [legs[i] for i in idx if i < len(legs)]
+    tiers = [(0.40, 2, [L((0, 1)), L((2, 3)), L((4, 5)), L((6, 7))]),
+             (0.35, 3, [L((0, 3, 6)), L((1, 4, 7)), L((2, 5, 0))]),
+             (0.25, 4, [L((0, 2, 4, 6)), L((1, 3, 5, 7))])]
+    out = []
+    for share, n, groups in tiers:
+        groups = [g for g in groups if len(g) == n]
+        if not groups:
+            continue
+        stake = int(round(budget * share / len(groups) / 5) * 5)
+        out += [{"kind": "parlay", "stake": stake, "legs": [_leg_from_row(r) for r in g]} for g in groups if stake >= 5]
+    return out
+
+
+def weekly_parlays_ladder(pool: list, budget: float) -> list:
+    """The original ladder (2/3/4 legs sharing the same top picks) — kept only for comparison."""
     legs, games = [], set()
     for r in sorted((r for r in pool if _qualifies(r) and r["grade"] in ("A", "B")),
                     key=lambda r: r["score"], reverse=True):
@@ -2049,9 +2089,10 @@ def cmd_autobet(args, stats, sched, season):
     summary = bankroll_summary(ledger, grade_ledger(ledger, stats, sched))
     remaining = min(remaining, max(summary["available"], 0))
     picks, alloc = plan_week(pool, remaining)
-    new = [dict(b, game=r["game"]) for r in picks if r["game"] in window for b in _stake_prop(r, alloc[r["player_id"]])]
+    new = _trim([dict(b, game=r["game"]) for r in picks if r["game"] in window
+                 for b in _stake_prop(r, alloc[r["player_id"]])], remaining)
     if not any(b["kind"] == "parlay" for b in week_bets):
-        new += [dict(p, game="multi") for p in weekly_parlays(pool, weekly * PARLAY_SHARE)]
+        new += _trim([dict(p, game="multi") for p in weekly_parlays(pool, weekly * PARLAY_SHARE)], weekly * PARLAY_SHARE)
     _record(ledger, new, season, week, now, "Claude weekly pick")
     for key in window - {b["game"] for b in new}:
         ledger["bets"].append({"id": f"{season}-w{week}-{key}-nobet", "placed_at": now.isoformat(),
@@ -2078,8 +2119,13 @@ def _autobet_retro(args, stats, sched, season, ledger, now, weekly):
     weekly plan is applied to the whole week at once. Bets on started games are labeled 'retro'."""
     import json
     week = args.retro_week
-    if any(b["season"] == season and b["week"] == week for b in ledger["bets"]):
-        sys.exit(f"Week {week} already has bets in the ledger; retro is one-time only.")
+    existing = [b for b in ledger["bets"] if b["season"] == season and b["week"] == week]
+    if existing and not args.replace:
+        sys.exit(f"Week {week} already has bets in the ledger; use --replace to supersede them.")
+    if existing:  # keep them on record (not deleted) so the change of plan stays transparent
+        ledger.setdefault("superseded", []).extend(
+            dict(b, superseded_at=now.isoformat(), superseded_reason=args.replace) for b in existing)
+        ledger["bets"] = [b for b in ledger["bets"] if not (b["season"] == season and b["week"] == week)]
     snap_path = Path(args.snapshot_dir) / f"{season}-w{week:02d}.json"
     snap = json.loads(snap_path.read_text(encoding="utf-8")) if snap_path.exists() else {"props": {}}
     s = sched[(sched["season"] == season) & (sched["week"] == week)]
@@ -2112,8 +2158,9 @@ def _autobet_retro(args, stats, sched, season, ledger, now, weekly):
         pool = [p for p in pool if p["game"] not in upcoming] + [r for r in rows if r["game"] in upcoming]
 
     picks, alloc = plan_week(pool, weekly * (1 - PARLAY_SHARE))
-    bets = [dict(b, game=r["game"]) for r in picks for b in _stake_prop(r, alloc[r["player_id"]])]
-    bets += [dict(p, game="multi") for p in weekly_parlays(pool, weekly * PARLAY_SHARE)]
+    bets = _trim([dict(b, game=r["game"]) for r in picks for b in _stake_prop(r, alloc[r["player_id"]])],
+                 weekly * (1 - PARLAY_SHARE))
+    bets += _trim([dict(p, game="multi") for p in weekly_parlays(pool, weekly * PARLAY_SHARE)], weekly * PARLAY_SHARE)
     for b in bets:
         legs_games = {next((r["game"] for r in pool if r["player_id"] == l["player_id"]), "") for l in b["legs"]}
         b["note"] = ("RETRO: placed after kickoff from ratings saved before kickoff (no results used)"
@@ -3010,6 +3057,7 @@ def main():
     ab = sub.add_parser("autobet", help="place Claude's weekly paper bets (each game in its pre-kickoff window)")
     ab.add_argument("--weekly-budget", type=float, default=WEEKLY_BUDGET, help="paper money to bet per NFL week")
     ab.add_argument("--retro-week", type=int, help="one-time catch-up for a week already under way (pre-kickoff data only)")
+    ab.add_argument("--replace", metavar="REASON", help="with --retro-week: supersede that week's existing bets (kept on record)")
     ab.add_argument("--snapshot-dir", default="data/snapshots", help="pre-kickoff rating snapshots (for --retro-week)")
     ab.add_argument("--window", type=float, default=3.0, help="hours before kickoff to start betting")
     ab.add_argument("--force", action="store_true", help="ignore day/time window (testing)")
