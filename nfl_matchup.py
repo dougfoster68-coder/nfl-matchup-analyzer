@@ -969,7 +969,8 @@ function spark(r) {
 
 function renderGames() {
   document.getElementById("games").innerHTML = GAMES.list.map(g => {
-    const rs = ROWS.filter(r => r.game === g.key && r.score != null).sort((a, b) => b.score - a.score);
+    const rs = ROWS.filter(r => r.game === g.key && r.score != null && !(r.traps && r.traps.length))
+      .sort((a, b) => b.score - a.score);
     const top = rs.slice(0, 4);
     const plays = top.length ? top.map(r => `<div class="play">${grade(r)}<div class="pl">
         <div><span class="pname">${esc(r.player)}</span>${tags(r)} <span class="pmeta">${r.pos} · ${r.team}</span></div>
