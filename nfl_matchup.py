@@ -856,7 +856,11 @@ body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 Inter,sy
   animation:pulse 1.6s infinite }
 @keyframes pulse { 70% { box-shadow:0 0 0 9px rgba(93,255,157,0) } 100% { box-shadow:0 0 0 0 rgba(93,255,157,0) } }
 .ticker { background:#04121d; color:#e8f3fb; border-bottom:2px solid var(--silver); overflow:hidden; white-space:nowrap;
-  font:600 13px/34px Inter,sans-serif }
+  font:600 13px/34px Inter,sans-serif; display:flex }
+.ticker .tlabel { flex:none; position:relative; z-index:1; padding:0 18px 0 14px; background:var(--blue); color:#fff;
+  font:800 16px/34px "Barlow Condensed",sans-serif; letter-spacing:.08em; text-transform:uppercase;
+  clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%); box-shadow:6px 0 14px rgba(0,0,0,.45) }
+.ticker .tscroll { flex:1; overflow:hidden; min-width:0 }
 .ticker .tk { display:inline-block; padding-left:100%; animation:tick 70s linear infinite }
 .ticker:hover .tk { animation-play-state:paused }
 @keyframes tick { to { transform:translateX(-100%) } }
@@ -1002,7 +1006,7 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
   <div class="strip" id="bankstrip"></div>
   <div class="sub"><span class="live">LIVE</span> · Updated __UPDATED__ · Lines: __SOURCE__ · Each player's last __N__ games vs. the opponent defense's last __N__</div>
 </div></header>
-<div class="ticker" aria-label="Top rated plays"><div class="tk" id="ticker"></div></div>
+<div class="ticker" aria-label="Tids Ticker: top rated plays"><span class="tlabel">Tids Ticker</span><div class="tscroll"><div class="tk" id="ticker"></div></div></div>
 <div class="wrap">
   <div class="legend"><span><span class="g gA">A</span> strong</span><span><span class="g gB">B</span> good</span>
   <span><span class="g gC">C</span> lean</span><span><span class="g gD">D</span> pass</span>
