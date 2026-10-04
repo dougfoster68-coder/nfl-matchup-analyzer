@@ -520,7 +520,12 @@ def build_week(args, stats, sched, season):
     allowed = defense_allowed(stats, args.games)
     ordered = stats.sort_values("game_order")
     last_row = ordered.drop_duplicates("player_id", keep="last")
-    last_row = last_row[(last_row["season"] == season) & last_row["team"].isin(teams)]
+    team_override = getattr(args, "team_override", None)
+    if team_override:  # backtests: rosters as of that week (known before kickoff)
+        last_row = last_row.assign(team=last_row["player_id"].map(team_override).fillna(last_row["team"]))
+    # live: only players active this season; week-1 backtests fall back to last season
+    this_season = (last_row["season"] == season) | bool(getattr(args, "backtest", False))
+    last_row = last_row[this_season & last_row["team"].isin(teams)]
     team_last_game = (ordered[ordered["season"] == season]
                       .drop_duplicates("team", keep="last").set_index("team")["game_id"])
 
@@ -554,7 +559,8 @@ def build_week(args, stats, sched, season):
                                "stat": stat, "n": len(vals), "L10_avg": round(avg, 1),
                                "L10_med": round(vals.median(), 1), "def_rank": rank,
                                "matchup_pct": int(round((factor - 1) * 100)), "proj": round(proj, 1),
-                               "missed_last_game": pr.game_id != team_last_game.get(team),
+                               # only meaningful in-season (a week-1 player's last game was last year)
+                               "missed_last_game": pr.season == season and pr.game_id != team_last_game.get(team),
                                "last10": " ".join(f"{v:g}" for v in vals)}
                         if main is not None:
                             line = main["line"]
@@ -1737,8 +1743,12 @@ def cmd_backtest(args, stats, sched, season):
     later = (sched_asof["season"] == season) & (sched_asof["week"] >= week)
     sched_asof.loc[later, "result"] = float("nan")
 
+    # Roster as of that week (who was on which team is known before kickoff; performance isn't used)
+    wk_rows = stats[(stats["season"] == season) & (stats["week"] == week)]
+    rosters = dict(zip(wk_rows["player_id"], wk_rows["team"]))
     wargs = argparse.Namespace(week=week, include_played=True, lines=None, refresh=args.refresh,
-                               games=args.games, min_games=4, hit_rate=0.70, backtest=True)
+                               games=args.games, min_games=4, hit_rate=0.70, backtest=True,
+                               team_override=rosters)
     _, games, rows, source = build_week(wargs, stats_asof, sched_asof, season)
     rated = [r for r in rows if r.get("pick")]
     print(f"Week {week} backtest: {len(rated)} rated props across {len(games)} games ({source})")
@@ -1772,8 +1782,8 @@ def cmd_backtest(args, stats, sched, season):
             else:
                 pl = 0.0
             total += pl
-            desc = " + ".join(f"{p['player']} {p['pick']} ({p['actual']:g if p['actual'] is not None else 'DNP'})"
-                              for p in res)
+            desc = " + ".join(f"{p['player']} {p['pick']} "
+                              f"({'DNP' if p['actual'] is None else format(p['actual'], 'g')})" for p in res)
             lines.append(f"- ${b['stake']} {b['kind']}: {desc} → **{'+' if pl >= 0 else '-'}${abs(pl):.2f}**")
         if not picks:
             lines.append("- No A/B-rated, trap-free props — would have passed.")
