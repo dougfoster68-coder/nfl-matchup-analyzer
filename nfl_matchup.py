@@ -605,9 +605,9 @@ def analyze_row(row: dict, vals: list, lines_expected: bool):
     vs = POS_GROUP[row["stat"]] or (f"{row['pos']}s")
 
     if row["missed_last_game"]:
-        notes.append({"t": "Missed team's last game â€” check injury status", "k": "warn"})
+        notes.append({"t": "Missed team's last game — check injury status", "k": "warn"})
     if line is None and lines_expected:
-        notes.append({"t": "No line posted for a regular contributor â€” possible injury or role change",
+        notes.append({"t": "No line posted for a regular contributor — possible injury or role change",
                       "k": "warn"})
 
     # Streaks against the posted line (most recent games last)
@@ -652,7 +652,7 @@ def analyze_row(row: dict, vals: list, lines_expected: bool):
     if line is not None:
         big = sum(v >= 1.5 * line for v in vals)
         if big >= 3:
-            notes.append({"t": f"Ceiling: {big} games of {1.5 * line:.0f}+ (1.5Ã— the line)", "k": "info"})
+            notes.append({"t": f"Ceiling: {big} games of {1.5 * line:.0f}+ (1.5× the line)", "k": "info"})
     if avg >= 15 and n >= 6:
         mean = sum(vals) / n
         sd = (sum((v - mean) ** 2 for v in vals) / n) ** 0.5
@@ -672,11 +672,11 @@ def analyze_row(row: dict, vals: list, lines_expected: bool):
     if line is not None:
         if row.get("open") is not None and not pd.isna(row["open"]) and abs(line - row["open"]) >= 4:
             direction = "up" if line > row["open"] else "down"
-            notes.append({"t": f"Line moved {direction} {row['open']:g} â†’ {line:g} since open",
+            notes.append({"t": f"Line moved {direction} {row['open']:g} → {line:g} since open",
                           "k": "info"})
         if abs(line - avg) / max(avg, 10) > 0.45:
             trap = True
-            notes.append({"t": f"Line ({line:g}) is far from the {avg:.0f} L10 avg â€” book likely "
+            notes.append({"t": f"Line ({line:g}) is far from the {avg:.0f} L10 avg — book likely "
                                "knows about a role/injury change", "k": "warn"})
 
     # Rating (only for posted lines)
@@ -832,7 +832,7 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 <div class="wrap">
 <header>
   <h1>NFL Week __WEEK__ Matchups &amp; Player Ratings</h1>
-  <div class="sub">Updated __UPDATED__ Â· Lines: __SOURCE__ Â· Each player's last __N__ games vs. the opponent defense's last __N__</div>
+  <div class="sub">Updated __UPDATED__ · Lines: __SOURCE__ · Each player's last __N__ games vs. the opponent defense's last __N__</div>
   <div class="legend"><span><span class="g gA">A</span> strong</span><span><span class="g gB">B</span> good</span>
   <span><span class="g gC">C</span> lean</span><span><span class="g gD">D</span> pass</span>
   <span>Rating = model projection vs line + hit rate + last 3 games, penalized for injury/role red flags.</span></div>
@@ -856,10 +856,10 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
   <th data-s="def_rank">Opp rank</th><th>Last __N__ (bar = line)</th><th data-s="alt">Alt __HITPCT__+</th>
 </tr></thead><tbody id="rows"></tbody></table></div>
 
-<footer>Opp rank: 1 = stingiest vs that position, 32 = most generous. Proj = player's L__N__ average Ã— how much this defense
+<footer>Opp rank: 1 = stingiest vs that position, 32 = most generous. Proj = player's L__N__ average × how much this defense
 allows vs league average (regressed toward average). P(over) is a model estimate, not a guarantee. Chip colors are relative to the pick
-(green helps it, red hurts it, amber = red flag). Lines move â€” confirm at your sportsbook. Built from free nflverse stats and
-DraftKings lines via ESPN.<br><br>For entertainment and research only â€” not betting advice. 21+. Gambling problem? Call 1-800-GAMBLER.</footer>
+(green helps it, red hurts it, amber = red flag). Lines move — confirm at your sportsbook. Built from free nflverse stats and
+DraftKings lines via ESPN.<br><br>For entertainment and research only — not betting advice. 21+. Gambling problem? Call 1-800-GAMBLER.</footer>
 </div>
 <script>
 const ROWS = __ROWS__;
@@ -881,7 +881,7 @@ function chips(r, max) {
   const ns = (r.notes || []).map(n => ({t:n.t, k:kind(n, r.pick)})).sort((a, b) => order[a.k] - order[b.k]);
   return `<div class="chips">${ns.slice(0, max ?? 99).map(n => `<span class="chip k-${n.k}">${esc(n.t)}</span>`).join("")}</div>`;
 }
-function grade(r) { return r.grade ? `<span class="g g${r.grade}" title="score ${r.score}/10">${r.grade}</span>` : `<span class="g gD" style="opacity:.35">â€“</span>`; }
+function grade(r) { return r.grade ? `<span class="g g${r.grade}" title="score ${r.score}/10">${r.grade}</span>` : `<span class="g gD" style="opacity:.35">–</span>`; }
 function logo(t) { return `<img src="https://a.espncdn.com/i/teamlogos/nfl/500/${(GAMES.logo[t] || t).toLowerCase()}.png" alt="" onerror="this.style.display='none'">`; }
 function kick(g) {
   const d = new Date(g.gameday + "T12:00:00");
@@ -907,14 +907,14 @@ function renderGames() {
     const rs = ROWS.filter(r => r.game === g.key && r.score != null).sort((a, b) => b.score - a.score);
     const top = rs.slice(0, 4);
     const plays = top.length ? top.map(r => `<div class="play">${grade(r)}<div class="pl">
-        <div><span class="pname">${esc(r.player)}</span> <span class="pmeta">${r.pos} Â· ${r.team}</span></div>
-        <div><span class="pick ${r.pick.split(" ")[0]}">${r.pick}</span> <span class="pmeta">${STAT[r.stat]} Â· proj ${r.proj} Â· hit ${r.line_hits}</span></div>
+        <div><span class="pname">${esc(r.player)}</span> <span class="pmeta">${r.pos} · ${r.team}</span></div>
+        <div><span class="pick ${r.pick.split(" ")[0]}">${r.pick}</span> <span class="pmeta">${STAT[r.stat]} · proj ${r.proj} · hit ${r.line_hits}</span></div>
         ${chips(r, 2)}</div></div>`).join("") : `<div class="empty">No player lines posted yet.</div>`;
     return `<article class="card"><div class="ch">
         <div class="teams">${logo(g.away)}${g.away} <span class="at">@</span> ${logo(g.home)}${g.home}<span class="kick">${kick(g)}</span></div>
         <div class="vegas">${esc(g.vegas)}</div></div>
       <div class="plays">${plays}</div>
-      <div class="cf"><button data-game="${g.key}">All ${ROWS.filter(r => r.game === g.key).length} props in this game â†’</button></div></article>`;
+      <div class="cf"><button data-game="${g.key}">All ${ROWS.filter(r => r.game === g.key).length} props in this game →</button></div></article>`;
   }).join("");
   document.querySelectorAll(".cf button").forEach(b => b.onclick = () => {
     document.getElementById("game").value = b.dataset.game; renderRows();
@@ -938,11 +938,11 @@ function renderRows() {
   document.getElementById("rows").innerHTML = rs.map(r => {
     const move = r.open != null && r.line != null && r.open !== r.line ? `<div class="pmeta">open ${r.open}</div>` : "";
     return `<tr><td>${grade(r)}</td>
-      <td><span class="pname">${esc(r.player)}</span> <span class="pmeta">${r.pos} Â· ${r.team} vs ${r.opp} Â· ${STAT[r.stat]} Â· L${r.n} avg ${r.L10_avg}</span>${chips(r)}</td>
+      <td><span class="pname">${esc(r.player)}</span> <span class="pmeta">${r.pos} · ${r.team} vs ${r.opp} · ${STAT[r.stat]} · L${r.n} avg ${r.L10_avg}</span>${chips(r)}</td>
       <td class="n">${r.pick ? `<span class="pick ${r.pick.split(" ")[0]}">${r.pick}</span>${move}` : `<span class="pmeta">no line</span>`}</td>
       <td class="n"><b>${r.proj}</b></td><td class="n">${r.line_hits || ""}</td><td class="n">${pct(r.p_over)}</td>
       <td class="n">${r.def_rank}/32</td><td>${spark(r)}</td>
-      <td class="n">${r.alt ? `${r.alt}<div class="pmeta">${r.alt_hits} Â· ${pct(r.alt_p)}</div>` : ""}</td></tr>`;
+      <td class="n">${r.alt ? `${r.alt}<div class="pmeta">${r.alt_hits} · ${pct(r.alt_p)}</div>` : ""}</td></tr>`;
   }).join("") || `<tr><td colspan="9" class="empty">No matches.</td></tr>`;
 }
 
@@ -975,7 +975,7 @@ def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | 
             home_tt = (g.total_line + g.spread_line) / 2
             fav, pts = (g.home_team, g.spread_line) if g.spread_line > 0 else (g.away_team, -g.spread_line)
             spread = f"{fav} -{pts:g}" if pts else "Pick'em"
-            vegas = (f"{spread} Â· O/U {g.total_line:g} Â· Implied: {g.away_team} "
+            vegas = (f"{spread} · O/U {g.total_line:g} · Implied: {g.away_team} "
                      f"{g.total_line - home_tt:.1f}, {g.home_team} {home_tt:.1f}")
         game_list.append({"key": f"{g.away_team}@{g.home_team}", "away": g.away_team, "home": g.home_team,
                           "gameday": str(g.gameday), "gametime": str(g.gametime), "vegas": vegas})
