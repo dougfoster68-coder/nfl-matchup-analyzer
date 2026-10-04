@@ -1051,6 +1051,7 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 <div class="ticker" aria-label="Tids Ticker: top rated plays"><span class="tlabel">Tids Ticker</span><div class="tscroll"><div class="tk" id="ticker"></div></div></div>
 <div class="wrap">
   <section id="livebets" hidden><h2>Paper bets — live</h2><div class="lead" id="livebetsum"></div>
+    <div id="latechanges"></div>
     <div class="lres" id="livebetlist"></div></section>
   <div class="legend"><span><span class="g gA">A</span> strong</span><span><span class="g gB">B</span> good</span>
   <span><span class="g gC">C</span> lean</span><span><span class="g gD">D</span> pass</span>
@@ -1343,6 +1344,13 @@ function liveTile() {
 function renderLiveBets() {
   const lb = BANK.live || []; if (!lb.length) return;
   document.getElementById("livebets").hidden = false;
+  const ch = BANK.changes || [];
+  document.getElementById("latechanges").innerHTML = ch.length ? `<div class="panel" style="margin-bottom:12px">
+    <h3>⚡ Pre-kickoff changes</h3><div class="why">Picks that stopped qualifying before kickoff were swapped for the next-best
+    prop in the same game. Originals are kept on record.</div>${ch.map(c => `<div class="item">
+      <span class="pmeta">${new Date(c.at).toLocaleString("en-US", {weekday: "short", hour: "numeric", minute: "2-digit"})} · ${esc(c.game)} · $${c.stake}</span>
+      <div class="reason"><s>${esc(c.from)}</s> → <b>${esc(c.to)}</b></div>
+      <div class="reason" style="color:var(--warn)">${esc(c.reason)}</div></div>`).join("")}</div>` : "";
   const done = lb.filter(b => b.profit != null), pl = done.reduce((a, b) => a + b.profit, 0);
   const W = lb.filter(b => b.status === "win").length, L = lb.filter(b => b.status === "loss").length;
   document.getElementById("livebetsum").innerHTML = `${lb.length} open paper bets · <b>${W} won, ${L} lost</b> so far ·
@@ -1362,7 +1370,8 @@ function renderLiveBets() {
     }).join("");
     const res = b.profit != null ? `<b class="${b.profit > 0 ? "pos" : b.profit < 0 ? "neg" : ""}">${(b.profit >= 0 ? "+" : "") + money(b.profit)}</b>`
       : `to win ${money(toWin)}`;
-    return `<article class="card"><div class="ch"><div class="teams" style="font-size:15px">${money(b.stake)} ${b.kind}
+    const late = (b.note || "").startsWith("LATE CHANGE") ? '<span class="tag tag-trap" title="' + esc(b.note) + '">LATE CHANGE</span>' : "";
+    return `<article class="card"><div class="ch"><div class="teams" style="font-size:15px">${money(b.stake)} ${b.kind}${late}
         <span class="pmeta" style="margin-left:6px">${b.odds > 0 ? "+" : ""}${b.odds} · ${esc(b.game.replace("@", " @ "))}</span>
         <span class="kick"><span class="st st-${b.status === "pre" ? "void" : b.status}">${label[b.status]}</span><br>${res}</span></div></div>
       <div class="plays">${legs}</div></article>`;
@@ -2081,16 +2090,25 @@ def cmd_autobet(args, stats, sched, season):
     wk_games = s[s["week"] == week]
     week_bets = [b for b in ledger["bets"] if b["season"] == season and b["week"] == week]
     bet_games = {b["game"] for b in week_bets}
+    kick_by_game = {f"{g.away_team}@{g.home_team}": kick(g) for g in wk_games.itertuples()}
     upcoming = [g for g in wk_games.itertuples() if kick(g) > now and f"{g.away_team}@{g.home_team}" not in bet_games]
     window = {f"{g.away_team}@{g.home_team}" for g in upcoming
               if args.force or 15 <= (kick(g) - now).total_seconds() / 60 <= args.window * 60}
-    if not window:
-        print(f"autobet: week {week} — no unbet game within {args.window:g}h of kickoff")
+    open_before_kick = [b for b in week_bets if b["kind"] in ("straight", "parlay") and any(
+        kick_by_game.get(_leg_game(l, kick_by_game), now) > now for l in b["legs"])]
+    if not window and not open_before_kick:
+        print(f"autobet: week {week} — no unbet game within {args.window:g}h of kickoff, nothing to re-check")
         return
 
     wargs = argparse.Namespace(week=week, include_played=False, lines=None, refresh=True,
                                games=args.games, min_games=4, hit_rate=0.70)
     _, _, rows, _ = build_week(wargs, stats, sched, season)
+    if open_before_kick:
+        review_open_bets(ledger, rows, kick_by_game, now, season, week)
+        week_bets = [b for b in ledger["bets"] if b["season"] == season and b["week"] == week]
+    if not window:
+        save_ledger(ledger)
+        return
     pool = [r for r in rows if r["game"] in {f"{g.away_team}@{g.home_team}" for g in upcoming}]
     straight_spent = sum(b["stake"] for b in week_bets if b["kind"] == "straight")
     remaining = max(weekly * (1 - PARLAY_SHARE) - straight_spent, 0)
@@ -2109,10 +2127,122 @@ def cmd_autobet(args, stats, sched, season):
     save_ledger(ledger)
 
 
+def _leg_game(leg: dict, kick_by_game: dict) -> str:
+    return next((k for k in kick_by_game if leg["team"] in k.split("@")), "")
+
+
+def _why_drop(leg: dict, r, near_kick: bool = True) -> str:
+    """Reason a placed pick no longer qualifies, or '' if it's still good. A line that merely moved
+    against us isn't a reason: the original (better) number stays, like a real ticket. A missing line
+    only counts within 3h of kickoff (books pull lines briefly days out for no real reason)."""
+    if r is None or not r.get("pick"):
+        return "line pulled (often an injury or inactive)" if near_kick else ""
+    if r.get("traps"):
+        return "now trap-flagged: " + r["traps"][0]
+    if r["pick"].split()[0].lower() != leg["side"]:
+        return f"rating flipped to {r['pick']}"
+    if not _qualifies(r):
+        return f"rating dropped to {r['grade']} ({r['score']})"
+    return ""
+
+
+def review_open_bets(ledger: dict, rows: list, kick_by_game: dict, now, season: int, week: int,
+                     lock_minutes: float = 5) -> list:
+    """Re-check open bets on games that haven't kicked off. A pick that no longer qualifies is swapped
+    for the best qualifying prop in the same game at the same stake (straights), or as a replacement
+    leg (parlays, only while none of the parlay's games have started). Old bets go to 'superseded';
+    new ones are flagged LATE CHANGE and logged in ledger['changes']."""
+    from datetime import timedelta
+    cur = {(r["player_id"], r["stat"]): r for r in rows}
+    by_game: dict = {}
+    for r in rows:
+        by_game.setdefault(r["game"], []).append(r)
+    week_bets = [b for b in ledger["bets"] if b["season"] == season and b["week"] == week]
+    held = {l["player_id"] for b in week_bets for l in b["legs"]}
+    lock = now + timedelta(minutes=lock_minutes)
+    stamp = now.strftime("%a %I:%M %p ET")
+    changes, retired, fresh = [], [], []
+
+    def best_in(game: str, exclude: set):
+        c = sorted((r for r in by_game.get(game, []) if _qualifies(r) and r["player_id"] not in exclude),
+                   key=lambda r: (r["grade"] in ("A", "B"), r["score"]), reverse=True)
+        return c[0] if c else None
+
+    groups: dict = {}  # a prop and its alt-line bets move together
+    for b in week_bets:
+        if b["kind"] == "straight":
+            l = b["legs"][0]
+            groups.setdefault((l["player_id"], l["stat"]), []).append(b)
+    for (pid, stat), bs in groups.items():
+        game = bs[0]["game"]
+        if kick_by_game.get(game, now) <= lock:
+            continue
+        leg = bs[0]["legs"][0]
+        reason = _why_drop(leg, cur.get((pid, stat)), kick_by_game[game] - now <= timedelta(hours=3))
+        if not reason:
+            continue
+        stake = sum(b["stake"] for b in bs)
+        rep_row = best_in(game, held)
+        new = [dict(b, game=game) for b in _stake_prop(rep_row, stake)] if rep_row else []
+        old_txt = f"{leg['player']} {leg['side'].upper()} {leg['line']:g} {stat.replace('_', ' ')}"
+        new_txt = (f"{rep_row['player']} {rep_row['pick']} {rep_row['stat'].replace('_', ' ')}" if rep_row
+                   else "nothing (money back to bankroll)")
+        for b in new:
+            b["note"] = f"LATE CHANGE {stamp}: replaces {old_txt} — {reason}"
+        retired += bs
+        fresh += new
+        if rep_row:
+            held.add(rep_row["player_id"])
+        changes.append({"at": now.isoformat(timespec="minutes"), "week": week, "game": game, "kind": "straight",
+                        "stake": stake, "from": old_txt, "to": new_txt, "reason": reason})
+
+    for b in week_bets:  # parlays: swap a bad leg only while every leg's game is still to come
+        if b["kind"] != "parlay" or any(kick_by_game.get(_leg_game(l, kick_by_game), now) <= lock for l in b["legs"]):
+            continue
+        legs, swaps = [], []
+        used = {l["player_id"] for l in b["legs"]}
+        for l in b["legs"]:
+            g_ = _leg_game(l, kick_by_game)
+            reason = _why_drop(l, cur.get((l["player_id"], l["stat"])), kick_by_game.get(g_, now) - now <= timedelta(hours=3))
+            if not reason:
+                legs.append(l)
+                continue
+            rep_row = best_in(_leg_game(l, kick_by_game), used)
+            if rep_row is None:
+                legs = None
+                swaps.append((f"{l['player']} {l['side'].upper()} {l['line']:g}", "parlay cancelled", reason))
+                break
+            used.add(rep_row["player_id"])
+            legs.append(_leg_from_row(rep_row))
+            swaps.append((f"{l['player']} {l['side'].upper()} {l['line']:g}", f"{rep_row['player']} {rep_row['pick']}", reason))
+        if not swaps:
+            continue
+        retired.append(b)
+        if legs:
+            fresh.append({"kind": "parlay", "stake": b["stake"], "legs": legs, "game": "multi",
+                          "note": f"LATE CHANGE {stamp}: " + "; ".join(f"{o} → {n} ({r})" for o, n, r in swaps)})
+        for o, n, r in swaps:
+            changes.append({"at": now.isoformat(timespec="minutes"), "week": week, "game": "parlay leg",
+                            "kind": "parlay", "stake": b["stake"], "from": o, "to": n, "reason": r})
+
+    if not changes:
+        print("autobet: re-checked open bets — no changes")
+        return []
+    ids = {id(b) for b in retired}
+    ledger.setdefault("superseded", []).extend(
+        dict(b, superseded_at=now.isoformat(), superseded_reason="late change before kickoff") for b in retired)
+    ledger["bets"] = [b for b in ledger["bets"] if id(b) not in ids]
+    _record(ledger, fresh, season, week, now, "LATE CHANGE")
+    ledger.setdefault("changes", []).extend(changes)
+    for c in changes:
+        print(f"autobet: LATE CHANGE {c['game']}: {c['from']} -> {c['to']} ({c['reason']})")
+    return changes
+
+
 def _record(ledger: dict, bets: list, season: int, week: int, now, note: str):
-    n = len(ledger["bets"])
+    stamp = int(now.timestamp())
     for i, b in enumerate(bets, 1):
-        b.update({"id": f"{season}-w{week}-{n + i}", "placed_at": now.isoformat(), "season": season,
+        b.update({"id": f"{season}-w{week}-{stamp}-{i}", "placed_at": now.isoformat(), "season": season,
                   "week": week, "odds": _bet_odds(b["legs"]), "note": b.get("note", note)})
         ledger["bets"].append(b)
         desc = " + ".join(f"{l['player']} {l['side'].upper()} {l.get('alt') or format(l['line'], 'g')} {l['stat']}"
@@ -3001,7 +3131,8 @@ def cmd_week(args, stats, sched, season):
         # finished games settle right away from ESPN finals; nflverse confirms the next day
         graded = grade_ledger(ledger, stats, sched, live=(week, lg, box))
         bank = {"summary": bankroll_summary(ledger, graded),
-                "bets": [b for b in graded if b["kind"] != "none"][::-1]}
+                "bets": [b for b in graded if b["kind"] != "none"][::-1],
+                "changes": [c for c in ledger.get("changes", []) if c.get("week") == week][::-1]}
         splits_dir = (Path(args.snapshot_dir).parent if args.snapshot_dir else Path("data")) / "splits"
         splits = load_week_splits(splits_dir, season, week)
         snap_path = Path(args.snapshot_dir or "data/snapshots") / f"{season}-w{week:02d}.json"

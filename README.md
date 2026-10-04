@@ -52,6 +52,13 @@ A $1,000 fake-money account tracked in `bets.json` and shown on the dashboard.
   - **$100 goes to a 2-, 3- and 4-leg parlay ladder across different games**, placed with the week's first bets.
   - `autobet --retro-week N` is a one-time catch-up for a week already under way. It uses only data saved before
     each kickoff, never results, and labels bets on started games **RETRO**. Week 4 of 2026 was placed this way.
+- **Late changes up to kickoff**: every refresh re-checks open bets on games that haven't kicked off.
+  A pick that stops qualifying gets swapped for the best qualifying prop in the same game, at the same stake.
+  That happens when its line is pulled within 3 hours of kickoff (often an injury), it becomes trap-flagged,
+  or its rating drops or flips. Parlay legs are swapped only while none of that parlay's games have started.
+  A line moving against a pick that still qualifies doesn't trigger a change, so the original number stays,
+  like a real ticket. Replacements are marked **LATE CHANGE** on the site, the originals stay in the ledger's
+  `superseded` list, and every swap is logged in `changes`.
 - **Grading**: finished games settle right away from ESPN's final box scores, and nflverse confirms them the next day.
   A player who doesn't play voids the leg.
 - **Manual bets**:
