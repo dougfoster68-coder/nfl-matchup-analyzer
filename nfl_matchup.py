@@ -1423,14 +1423,40 @@ function renderBank() {
   }
   const bets = BANK.bets || [];
   const toWin = b => b.stake * (b.odds > 0 ? b.odds / 100 : 100 / -b.odds);
-  const rows = bets.map(b => `<tr><td>W${b.week}${b.backtest ? "*" : ""}<div class="pmeta">${b.game}</div></td>
-      <td>${b.legs.map(l => `<div><b>${esc(l.player)}</b> ${l.side.toUpperCase()} ${l.line} <span class="pmeta">${STAT[l.stat]}${l.actual != null ? " · actual " + l.actual : ""}</span>
+  const betRow = b => `<tr><td><div class="pmeta">${b.game}</div></td>
+      <td>${b.legs.map(l => `<div><b>${esc(l.player)}</b> ${l.side.toUpperCase()} ${l.alt || l.line} <span class="pmeta">${STAT[l.stat]}${l.actual != null ? " · actual " + l.actual : ""}</span>
         <span class="res res-${l.result}">${l.result}</span></div>`).join("")}<div class="pmeta">${esc(b.note || "")}</div></td>
-      <td>${b.kind}</td><td class="n">${money(b.stake)}</td><td class="n">${b.odds > 0 ? "+" : ""}${b.odds}</td>
+      <td>${b.special ? b.special.replace("-longshot", " alt line") : b.kind}</td><td class="n">${money(b.stake)}</td><td class="n">${b.odds > 0 ? "+" : ""}${b.odds}</td>
       <td><span class="res res-${b.result}">${b.result}</span></td>
-      <td class="n ${b.profit > 0 ? "pos" : b.profit < 0 ? "neg" : ""}">${b.result === "pending" ? "to win " + money(toWin(b)) : (b.profit >= 0 ? "+" : "") + money(b.profit)}</td></tr>`).join("");
+      <td class="n ${b.profit > 0 ? "pos" : b.profit < 0 ? "neg" : ""}">${b.result === "pending" ? "to win " + money(toWin(b)) : (b.profit >= 0 ? "+" : "") + money(b.profit)}</td></tr>`;
+  const weeks = [...new Set(bets.map(b => b.week))].sort((a, b) => a - b);
+  const plc = v => `<b class="${v > 0 ? "pos" : v < 0 ? "neg" : ""}">${v >= 0 ? "+" : ""}${money(v)}</b>`;
+  const grp = (bs) => {
+    const won = bs.filter(b => b.result === "win").length, lost = bs.filter(b => b.result === "loss").length;
+    const pl = bs.filter(b => b.result !== "pending").reduce((a, b) => a + b.profit, 0);
+    return bs.length ? `${won}-${lost} ${plc(pl)}` : "—";
+  };
+  let bal = (BANK.summary || {}).start || 1000;
+  const summary = weeks.map(w => {
+    const wb = bets.filter(b => b.week === w), bt = wb.some(b => b.backtest);
+    const settled = wb.filter(b => b.result !== "pending").reduce((a, b) => a + b.profit, 0);
+    const pending = wb.filter(b => b.result === "pending").reduce((a, b) => a + b.stake, 0);
+    const start = bal; bal += settled;
+    return `<tr><td><b>Week ${w}${bt ? "*" : ""}</b>${pending ? ' <span class="st st-live">live</span>' : ""}</td><td class="n">${money(start)}</td>
+      <td class="n">${money(wb.reduce((a, b) => a + b.stake, 0))}</td>
+      <td>${grp(wb.filter(b => b.kind === "straight"))}</td><td>${grp(wb.filter(b => b.kind === "parlay" && !b.special))}</td>
+      <td>${grp(wb.filter(b => b.special))}</td>
+      <td class="n">${plc(settled)}${pending ? `<div class="pmeta">${money(pending)} riding</div>` : ""}</td><td class="n"><b>${money(bal)}</b></td></tr>`;
+  }).join("");
+  const detail = weeks.slice().reverse().map(w => {
+    const wb = bets.filter(b => b.week === w);
+    return `<details style="margin-top:6px"><summary style="cursor:pointer;font-weight:600">Week ${w}${wb.some(b => b.backtest) ? "*" : ""} · all ${wb.length} bets</summary>
+      <div style="overflow-x:auto"><table style="min-width:760px"><thead><tr><th>Game</th><th>Bet</th><th>Type</th><th>Stake</th><th>Odds</th><th>Result</th><th>P/L</th></tr></thead>
+      <tbody>${wb.map(betRow).join("")}</tbody></table></div></details>`;
+  }).join("");
   document.getElementById("bankpanel").innerHTML = chart + (bets.length
-    ? `<div style="overflow-x:auto"><table style="min-width:760px"><thead><tr><th>Week</th><th>Bet</th><th>Type</th><th>Stake</th><th>Odds</th><th>Result</th><th>P/L</th></tr></thead><tbody>${rows}</tbody></table></div>`
+    ? `<div style="overflow-x:auto"><table style="min-width:720px"><thead><tr><th>Week</th><th>Start</th><th>Bet</th><th>Straights</th>
+        <th>Parlays</th><th>Specials</th><th>Week P/L</th><th>End</th></tr></thead><tbody>${summary}</tbody></table></div>${detail}`
     : `<div class="empty">No bets yet.</div>`) + (bets.some(b => b.backtest)
     ? `<div class="pmeta" style="font-size:11px;margin-top:6px">*Weeks ${[...new Set(bets.filter(b => b.backtest).map(b => b.week))].sort((a, b) => a - b).join(", ")} are simulated backtests.</div>` : "");
 }
