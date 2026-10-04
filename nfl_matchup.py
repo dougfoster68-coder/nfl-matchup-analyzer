@@ -963,6 +963,21 @@ h2::before { content:""; width:6px; height:22px; background:var(--blue); border-
 .k-good { background:var(--good-bg); color:var(--good) } .k-bad { background:var(--bad-bg); color:var(--bad) }
 .k-warn { background:var(--warn-bg); color:var(--warn) } .k-info { background:var(--info-bg); color:var(--info) }
 .cf { padding:8px 14px 12px }
+#allprops { margin:28px 0 10px }
+#allprops > summary.opener { list-style:none; cursor:pointer; display:flex; align-items:center; flex-wrap:wrap; gap:6px 14px;
+  background:linear-gradient(135deg,var(--blue),var(--blue-dk)); color:#fff; border-radius:14px; padding:16px 18px;
+  border:2px solid var(--silver); box-shadow:0 8px 22px -14px rgba(0,118,182,.9); transition:transform .15s ease }
+#allprops > summary.opener::-webkit-details-marker { display:none }
+#allprops > summary.opener:hover { transform:translateY(-2px) }
+#allprops .op-title { font:800 24px/1 "Barlow Condensed",sans-serif; letter-spacing:.04em; text-transform:uppercase }
+#allprops .op-sub { opacity:.85; font-size:13px }
+#allprops .op-btn { margin-left:auto; background:#fff; color:var(--blue); font:800 14px/1 Inter,sans-serif; letter-spacing:.03em;
+  padding:10px 16px; border-radius:99px; white-space:nowrap; animation:nudge 2.4s ease-in-out infinite }
+@keyframes nudge { 0%,100% { transform:translateY(0) } 50% { transform:translateY(3px) } }
+#allprops .chev { display:inline-block; transition:transform .2s ease }
+#allprops[open] .chev { transform:rotate(180deg) } #allprops[open] .op-btn { animation:none }
+#allprops .op-hide { display:none } #allprops[open] .op-hide { display:inline } #allprops[open] .op-show { display:none }
+#allprops[open] > summary.opener { margin-bottom:12px }
 .splits { margin-top:8px; display:grid; gap:5px }
 .sp { display:grid; grid-template-columns:62px 1fr auto; gap:8px; align-items:center; font-size:12px }
 .sp .mk { color:var(--mute); font-weight:600; text-transform:uppercase; letter-spacing:.04em; font-size:10.5px }
@@ -1119,7 +1134,7 @@ Each game is bet in the 3 hours before kickoff, and finished games settle right 
 a player who doesn't play voids the leg. Main lines assume -110. Alt-line odds are estimates, marked "est".</div>
 <div class="panel" id="bankpanel"></div>
 
-<details id="allprops"><summary style="cursor:pointer;list-style:none"><h2 id="all" style="display:inline-flex">All player props <span class="pmeta" style="font:500 13px Inter,sans-serif;text-transform:none;letter-spacing:0;margin-left:8px">(<span id="propcount"></span> props · tap to open)</span></h2></summary>
+<details id="allprops"><summary class="opener"><span id="all" class="op-title">All player props</span><span class="op-sub"><span id="propcount"></span> props · search, filter &amp; sort</span><span class="op-btn"><span class="op-show">Tap to open</span><span class="op-hide">Close</span> <span class="chev">▾</span></span></summary>
 <div class="bar">
   <input type="search" id="q" placeholder="Search player or team">
   <select id="game"><option value="">All games</option></select>
