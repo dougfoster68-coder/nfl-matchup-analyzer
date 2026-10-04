@@ -862,7 +862,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 Inter,sy
   clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%); box-shadow:6px 0 14px rgba(0,0,0,.45) }
 .ticker .tscroll { flex:1; overflow:hidden; min-width:0 }
 .ticker .tk { display:inline-block; padding-left:100%; animation:tick 70s linear infinite }
-.ticker:hover .tk { animation-play-state:paused }
+@media (hover: hover) and (pointer: fine) { .ticker:hover .tk { animation-play-state:paused } }
 @keyframes tick { to { transform:translateX(-100%) } }
 .ticker .it { margin-right:34px } .ticker .gr { display:inline-block; min-width:18px; text-align:center; border-radius:4px;
   background:var(--blue); color:#fff; font-weight:800; margin-right:6px; padding:0 4px }
@@ -905,7 +905,8 @@ body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 Inter,sy
 .glog .bar.rec { background:linear-gradient(180deg,#e6ecef,#8f989f) }
 @keyframes grow { from { transform:scaleY(0) } }
 .glog .td { color:#ffd166; font-weight:800 }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation:none !important; transition:none !important } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation:none !important; transition:none !important }
+  .ticker .tscroll { overflow-x:auto; -webkit-overflow-scrolling:touch } .ticker .tk { padding-left:12px } }
 .brand { display:flex; align-items:center; gap:14px }
 .mark { width:52px; height:52px; border-radius:50%; border:3px solid var(--silver); display:grid; place-items:center;
   font:800 22px/1 "Barlow Condensed",sans-serif; letter-spacing:.02em; background:rgba(255,255,255,.08); flex:none }
