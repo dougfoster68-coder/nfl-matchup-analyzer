@@ -583,6 +583,9 @@ def build_week(args, stats, sched, season):
                                         "alt_book": (pr.player_id, stat) in miles_by_id,
                                         "alt_hits": f"{int((vals >= best).sum())}/{len(vals)}",
                                         "alt_p": round(prob_over(proj, std, best - 0.5), 2)})
+                        # for the staking plan: game-to-game spread and the book's alt-line ladder
+                        row.update({"sd": round(float(std), 1),
+                                    "ladder": list(miles_by_id.get((pr.player_id, stat), []))})
                         usage_col = USAGE_STAT[stat]
                         usage = hist[usage_col]
                         row.update({"usage_name": usage_col,
@@ -967,8 +970,10 @@ Payouts assume -110 per leg; hit chance discounts the model's confidence by abou
 </div>
 
 <h2 id="bank">Paper bankroll — Claude's picks</h2>
-<div class="sub" style="margin-bottom:10px">Fake money, real tracking. Started with $1,000. Bets are placed automatically from A/B-rated,
-trap-free props and graded against final box scores (a player who doesn't play voids the leg). Odds assumed -110 per leg.</div>
+<div class="sub" style="margin-bottom:10px">Fake money, real tracking. Started with $1,000. Each Thursday and Monday night game gets $200 spread
+across up to 5 different players. No player gets more than 30% of it. The strongest overs are split between the posted line,
+a safer alt line and a plus-money alt line, and a small parlay rides on the top picks. Bets are graded against final box scores;
+a player who doesn't play voids the leg. Main lines assume -110. Alt-line odds are estimates, marked "est".</div>
 <div class="panel" id="bankpanel"></div>
 
 <h2 id="all">All player props</h2>
@@ -1147,7 +1152,7 @@ function renderBank() {
       <td class="n ${b.profit > 0 ? "pos" : b.profit < 0 ? "neg" : ""}">${b.result === "pending" ? "to win " + money(toWin(b)) : (b.profit >= 0 ? "+" : "") + money(b.profit)}</td></tr>`).join("");
   document.getElementById("bankpanel").innerHTML = chart + (bets.length
     ? `<div style="overflow-x:auto"><table style="min-width:760px"><thead><tr><th>Week</th><th>Bet</th><th>Type</th><th>Stake</th><th>Odds</th><th>Result</th><th>P/L</th></tr></thead><tbody>${rows}</tbody></table></div>`
-    : `<div class="empty">No bets yet. First picks go in before Thursday Night Football.</div>`);
+    : `<div class="empty">No bets yet. First picks go in before Thursday Night Football; Monday nights too.</div>`);
 }
 function bestLegs() {
   const seen = new Set();
@@ -1236,7 +1241,7 @@ def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | 
 
 
 # ----------------------------------------------------------------------------
-# Paper bankroll: ledger, auto-grading, and Claude's automatic Thursday bets
+# Paper bankroll: ledger, auto-grading, and Claude's automatic Thursday & Monday night bets
 # ----------------------------------------------------------------------------
 
 LEDGER = Path(__file__).parent / "bets.json"
@@ -1339,17 +1344,105 @@ def _bet_odds(legs) -> int:
     return decimal_to_american(dec)
 
 
-def _leg_from_row(r: dict) -> dict:
-    side, line = r["pick"].split()
-    return {"player": r["player"], "player_id": r["player_id"], "team": r["team"], "opp": r["opp"],
-            "stat": r["stat"], "side": side.lower(), "line": float(line), "odds": DEFAULT_ODDS,
-            "grade": r["grade"], "score": r["score"]}
+def _leg_from_row(r: dict, line: float | None = None, odds: int = DEFAULT_ODDS, alt: str = "") -> dict:
+    side, main = r["pick"].split()
+    leg = {"player": r["player"], "player_id": r["player_id"], "team": r["team"], "opp": r["opp"],
+           "stat": r["stat"], "side": side.lower(), "line": float(main) if line is None else line,
+           "odds": odds, "grade": r["grade"], "score": r["score"]}
+    if alt:
+        leg["alt"] = alt  # e.g. "40+" — odds are an estimate (the free feed has no alt prices)
+    return leg
 
 
-def choose_bets(rows: list, budget: float) -> list:
-    """Claude's staking plan. Only A/B-rated props with no trap flags qualify; best 4 at most.
-    ~80% of the budget goes to straight bets weighted by rating score (rounded to $5),
-    ~20% to a 2-leg parlay of the top two. No qualifiers -> no bet."""
+def _norm_cdf(z: float) -> float:
+    return 0.5 * (1 + math.erf(z / math.sqrt(2)))
+
+
+def estimate_alt_odds(main_line: float, alt_threshold: float, sd: float) -> int:
+    """Estimate a sportsbook's price for 'alt_threshold+' from its main line.
+    Treat the main line as the market's median outcome, spread by the player's game-to-game
+    standard deviation, then add a normal book margin (-110 on a 50/50)."""
+    sd = max(sd, 0.35 * max(main_line, 1.0), 2.0)
+    p_market = 1 - _norm_cdf((alt_threshold - 0.5 - main_line) / sd)
+    p_book = min(max(p_market * 1.048, 0.03), 0.95)
+    american = decimal_to_american(1 / p_book)
+    return int(round(american / 5) * 5)
+
+
+def _conf(r: dict) -> float:
+    return max(r["p_over"], 1 - r["p_over"])
+
+
+def choose_bets(rows: list, budget: float, max_players: int = 5, max_share: float = 0.30,
+                parlay_share: float = 0.15) -> list:
+    """Claude's staking plan v2 — spread the money so no single pick controls the game:
+    - Up to `max_players` DIFFERENT players, one prop each: A/B first, then C-rated props the model
+      still leans >=55% on. Trap-flagged props never qualify.
+    - Straight-bet money is weighted by rating score; no player gets more than `max_share` of the
+      budget (leftover stays in the bankroll rather than piling onto one pick).
+    - A/B overs are split across the main line (50%), a safer lower alt line (30%) and a
+      plus-money higher alt line (20%) from DraftKings' milestone ladder. Unders stay on the line.
+    - `parlay_share` of the budget goes to a parlay of the top 2-3 players."""
+    pool = sorted((r for r in rows if r.get("pick") and not r.get("traps")
+                   and (r["grade"] in ("A", "B") or (r["grade"] == "C" and _conf(r) >= 0.55))),
+                  key=lambda r: r["score"], reverse=True)
+    picks, seen = [], set()
+    for r in pool:
+        if r["player_id"] not in seen:
+            seen.add(r["player_id"])
+            picks.append(r)
+        if len(picks) == max_players:
+            break
+    if not picks:
+        return []
+
+    parlay_stake = round(budget * parlay_share / 5) * 5 if len(picks) >= 2 else 0
+    straight = budget - parlay_stake
+    cap = budget * max_share
+    alloc = {r["player_id"]: 0.0 for r in picks}
+    # water-fill: weight by score, cap each player, hand the excess to the uncapped ones
+    open_ids = set(alloc)
+    remaining = straight
+    while remaining > 1 and open_ids:
+        tot = sum(r["score"] for r in picks if r["player_id"] in open_ids)
+        spill = 0.0
+        for r in picks:
+            if r["player_id"] in open_ids:
+                want = alloc[r["player_id"]] + remaining * r["score"] / tot
+                alloc[r["player_id"]] = min(want, cap)
+                spill += want - alloc[r["player_id"]]
+                if alloc[r["player_id"]] >= cap:
+                    open_ids.discard(r["player_id"])
+        remaining = spill
+
+    rnd = lambda x: int(round(x / 5) * 5)
+    out = []
+    for r in picks:
+        amt = alloc[r["player_id"]]
+        side, line = r["pick"].split()
+        line = float(line)
+        ladder = sorted(set(r.get("ladder") or []) | set(FALLBACK_MILESTONES[r["stat"]]))
+        lower = [m for m in ladder if m - 0.5 <= line * 0.9 and m >= 1]
+        upper = [m for m in ladder if m - 0.5 >= line * 1.15]
+        if side == "OVER" and r["grade"] in ("A", "B") and lower and upper and rnd(amt * 0.2) >= 5:
+            safe, boom = max(lower), min(upper)
+            parts = [(rnd(amt * 0.5), None, DEFAULT_ODDS, ""),
+                     (rnd(amt * 0.3), safe - 0.5, estimate_alt_odds(line, safe, r.get("sd", 0)), f"{safe:g}+"),
+                     (rnd(amt * 0.2), boom - 0.5, estimate_alt_odds(line, boom, r.get("sd", 0)), f"{boom:g}+")]
+        else:
+            parts = [(rnd(amt), None, DEFAULT_ODDS, "")]
+        for stake, ln, odds, alt in parts:
+            if stake >= 5:
+                out.append({"kind": "straight", "stake": stake, "legs": [_leg_from_row(r, ln, odds, alt)]})
+    if parlay_stake:
+        out.append({"kind": "parlay", "stake": parlay_stake,
+                    "legs": [_leg_from_row(r) for r in picks[:3 if len(picks) >= 4 else 2]]})
+    return out
+
+
+def choose_bets_v1(rows: list, budget: float) -> list:
+    """Original plan (kept for backtest comparison). Only A/B-rated props with no trap flags qualify;
+    best 4 at most. ~80% of the budget to straights weighted by rating, ~20% to a 2-leg parlay."""
     picks = [r for r in rows if r.get("grade") in ("A", "B") and not r.get("traps")]
     picks = sorted(picks, key=lambda r: r["score"], reverse=True)[:4]
     if not picks:
@@ -1374,8 +1467,9 @@ def cmd_autobet(args, stats, sched, season):
     from datetime import datetime
     from zoneinfo import ZoneInfo
     now = datetime.now(ZoneInfo("America/New_York"))
-    if args.day and now.strftime("%A").lower() != args.day.lower() and not args.force:
-        print(f"autobet: today is {now:%A}, only betting on {args.day}s")
+    days = [d.strip().lower() for d in (args.day or "").split(",") if d.strip()]
+    if days and now.strftime("%A").lower() not in days and not args.force:
+        print(f"autobet: today is {now:%A}, only betting on {args.day}")
         return
     s = sched[(sched["season"] == season) & sched["result"].isna()]
     today = s[s["gameday"] == now.strftime("%Y-%m-%d")]
@@ -1404,7 +1498,7 @@ def cmd_autobet(args, stats, sched, season):
         if not picks:
             ledger["bets"].append({"id": f"{season}-w{g.week}-{key}-nobet", "placed_at": now.isoformat(),
                                    "season": season, "week": int(g.week), "game": key, "kind": "none",
-                                   "stake": 0, "legs": [], "note": "No A/B-rated, trap-free props — passed."})
+                                   "stake": 0, "legs": [], "note": "No qualifying trap-free props — passed."})
             print(f"autobet: {key} — nothing met the bar, passing")
         for i, p in enumerate(picks, 1):
             p.update({"id": f"{season}-w{g.week}-{key}-{i}", "placed_at": now.isoformat(), "season": season,
@@ -1759,35 +1853,32 @@ def cmd_backtest(args, stats, sched, season):
     summary = summarize_week(graded)
     md = report_markdown(season, week, summary, label=" (backtest)")
 
-    # What Claude's $200 Thursday plan would have done on that week's Thursday game
-    thu = games[pd.to_datetime(games["gameday"]).dt.day_name() == "Thursday"]
+    # What the $200 primetime plans would have done on that week's Thursday and Monday night games
+    prime = games[pd.to_datetime(games["gameday"]).dt.day_name().isin(["Thursday", "Monday"])]
     lines = [""]
-    by_key = {f"{p['player_id']}|{p['stat']}": p for p in graded}
-    for g in thu.itertuples():
+    for g in prime.itertuples():
         key = f"{g.away_team}@{g.home_team}"
-        picks = choose_bets([r for r in rated if r["game"] == key], 200)
-        lines += [f"## Thursday paper bets — {g.away_team} @ {g.home_team} ($200 plan)", ""]
-        total = 0.0
-        for b in picks:
-            res = [by_key[f"{l['player_id']}|{l['stat']}"] for l in b["legs"]]
-            states = [p["result"] for p in res]
-            dec = 1.0
-            for s_ in states:
-                if s_ == "win":
-                    dec *= american_to_decimal(DEFAULT_ODDS)
-            if "loss" in states:
-                pl = -b["stake"]
-            elif "win" in states:
-                pl = round(b["stake"] * (dec - 1), 2)
-            else:
-                pl = 0.0
-            total += pl
-            desc = " + ".join(f"{p['player']} {p['pick']} "
-                              f"({'DNP' if p['actual'] is None else format(p['actual'], 'g')})" for p in res)
-            lines.append(f"- ${b['stake']} {b['kind']}: {desc} → **{'+' if pl >= 0 else '-'}${abs(pl):.2f}**")
-        if not picks:
-            lines.append("- No A/B-rated, trap-free props — would have passed.")
-        lines += ["", f"**Thursday result: {'+' if total >= 0 else '-'}${abs(total):.2f}**", ""]
+        day = pd.to_datetime(g.gameday).day_name()
+        game_rows = [r for r in rated if r["game"] == key]
+        for label, plan in (("old plan", choose_bets_v1), ("new plan", choose_bets)):
+            bets = plan(game_rows, 200)
+            for b in bets:
+                b.update({"season": season, "week": week, "game": key, "placed_at": "", "id": ""})
+            settled = grade_ledger({"bets": bets}, stats, sched)
+            staked = sum(b["stake"] for b in settled)
+            total = sum(b["profit"] for b in settled)
+            lines += [f"## {day} night — {g.away_team} @ {g.home_team} · {label}: "
+                      f"{'+' if total >= 0 else '-'}${abs(total):.2f} on ${staked:g} staked", ""]
+            for b in settled:
+                desc = " + ".join(
+                    f"{l['player']} {l['side'].upper()} {l['alt'] or format(l['line'], 'g') if l.get('alt') else format(l['line'], 'g')}"
+                    f" {'(est ' + format(l['odds'], '+d') + ')' if l.get('alt') else ''}"
+                    f"→{'DNP' if l['actual'] is None else format(l['actual'], 'g')}" for l in b["legs"])
+                lines.append(f"- ${b['stake']:g} {b['kind']}: {desc} — **{b['result']} "
+                             f"{'+' if b['profit'] >= 0 else '-'}${abs(b['profit']):.2f}**")
+            if not bets:
+                lines.append("- No qualifying props — would have passed.")
+            lines.append("")
     md += "\n" + "\n".join(lines)
 
     if args.snapshot_dir:
@@ -1872,7 +1963,8 @@ def main():
 
     ab = sub.add_parser("autobet", help="place Claude's paper bets on today's games (pre-kickoff window)")
     ab.add_argument("--budget", type=float, default=200)
-    ab.add_argument("--day", default="Thursday", help="only bet on this weekday ('' = any day)")
+    ab.add_argument("--day", default="Thursday,Monday",
+                    help="comma-separated weekdays to bet on ('' = any day)")
     ab.add_argument("--window", type=float, default=3.0, help="hours before kickoff to start betting")
     ab.add_argument("--force", action="store_true", help="ignore day/time window (testing)")
 

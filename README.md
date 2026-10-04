@@ -42,11 +42,19 @@ Other line sources: `--lines lines_template.csv` uses your own lines, and settin
 
 A $1,000 fake-money account tracked in `bets.json` and shown on the dashboard.
 
-- **Automatic picks** (`autobet`): on Thursdays, in the 3 hours before kickoff, the GitHub Action
-  places $200 of paper bets on that night's game. It's run once per game.
-  - Only A/B-rated props with no trap flags qualify, at most 4 picks.
-  - About 80% of the $200 goes to straight bets weighted by rating, and 20% to a 2-leg parlay of the top two.
-  - If nothing qualifies, it passes and bets nothing.
+- **Automatic picks** (`autobet`): on Thursday and Monday nights, in the 3 hours before kickoff,
+  the GitHub Action places $200 of paper bets on each primetime game. It's run once per game.
+  The plan spreads the money so no single pick controls it:
+  - **Up to 5 different players**, one prop each. A/B-rated props come first, then C-rated props
+    the model still leans at least 55% on. Trap-flagged props never qualify. Small lines (0.5, 4.5 …) are allowed.
+  - **Weighted by rating**, with no player getting more than 30% of the $200. Anything over the cap stays in the bankroll.
+  - **Alt-line split** on A/B overs: 50% on the posted line, 30% on a safer lower alt line,
+    and 20% on a plus-money higher alt line, using DraftKings' milestone ladder. Unders stay on the main line.
+  - **15% on a parlay** of the top 2–3 players.
+  - The free feed has no alt-line prices, so alt odds are estimated. The estimate treats the posted line as the market's
+    middle outcome, uses the player's game-to-game spread, and adds a normal sportsbook margin.
+  - `python nfl_matchup.py backtest --week N` compares this plan with the original one on that week's
+    Thursday and Monday night games.
 - **Grading**: every refresh grades bets against final box scores. A player who doesn't play voids the leg.
 - **Manual bets**:
   ```
