@@ -1163,7 +1163,7 @@ function renderParlays() {
     per[r.game] = (per[r.game] || 0) + 1; legs.push(r);
     if (legs.length === 7) break;
   }
-  const leg = r => { const c = Math.max(r.p_over, 1 - r.p_over); return 0.5 + (c - 0.5) * 0.55; };
+  const leg = r => { const c = Math.max(r.p_over, 1 - r.p_over); return 0.5 + (c - 0.5) * 0.45; };
   const amer = d => d >= 2 ? "+" + Math.round((d - 1) * 100) : String(Math.round(-100 / (d - 1)));
   let out = "";
   for (let n = 2; n <= legs.length; n++) {
