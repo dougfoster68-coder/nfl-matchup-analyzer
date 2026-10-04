@@ -1108,9 +1108,14 @@ const money = v => (v < 0 ? "-$" : "$") + Math.abs(v).toLocaleString("en-US", {m
 function renderBank() {
   const s = BANK.summary; if (!s) return;
   const pl = s.profit, roi = s.roi == null ? "—" : (s.roi * 100).toFixed(1) + "%";
+  // win % of settled bets (voids excluded); green once it beats the -110 break-even of 52.4%
+  const winPct = s.wins + s.losses ? s.wins / (s.wins + s.losses) : null;
+  const legPct = s.legs_won + s.legs_lost ? s.legs_won / (s.legs_won + s.legs_lost) : null;
   document.getElementById("bankstrip").innerHTML = `
     <a class="stat" href="#bank" style="text-decoration:none;color:inherit"><div class="v">${money(s.balance)}</div><div class="l">Paper bankroll</div></a>
     <div class="stat"><div class="v ${pl > 0 ? "pos" : pl < 0 ? "neg" : ""}">${pl >= 0 ? "+" : ""}${money(pl)}</div><div class="l">Profit / loss</div></div>
+    <div class="stat"><div class="v ${winPct == null ? "" : winPct >= 0.524 ? "pos" : "neg"}">${winPct == null ? "—" : (winPct * 100).toFixed(1) + "%"}</div>
+      <div class="l">Win % · legs ${s.legs_won}-${s.legs_lost}${legPct == null ? "" : " (" + Math.round(legPct * 100) + "%)"}</div></div>
     <div class="stat"><div class="v">${s.wins}-${s.losses}${s.voids ? "-" + s.voids : ""}</div><div class="l">Record · ROI ${roi}</div></div>
     <div class="stat"><div class="v">${money(s.at_risk)}</div><div class="l">Open bets</div></div>`;
   let chart = "";
@@ -1312,6 +1317,8 @@ def bankroll_summary(ledger: dict, graded: list) -> dict:
         "voids": sum(b["result"] == "void" for b in settled),
         "profit": round(profit, 2),
         "roi": round(profit / risked, 4) if risked else None,
+        "legs_won": sum(l["result"] == "win" for b in graded for l in b["legs"]),
+        "legs_lost": sum(l["result"] == "loss" for b in graded for l in b["legs"]),
         "history": history,
     }
 
