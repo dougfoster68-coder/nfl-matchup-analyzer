@@ -362,6 +362,9 @@ ESPN_PROPS = ("https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/e
 
 # ESPN prop type ids (provider 100 = DraftKings)
 ESPN_MAIN = {"8": "passing_yards", "12": "rushing_yards", "13": "receiving_yards"}
+ESPN_SUMMARY = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event={eid}"
+ESPN_TEAM_FIX = {"WSH": "WAS", "LAR": "LA"}  # ESPN abbreviation -> nflverse
+BOX_GROUPS = {"passing": "passing_yards", "rushing": "rushing_yards", "receiving": "receiving_yards"}
 ESPN_MILESTONE = {"194": "passing_yards", "196": "rushing_yards", "195": "receiving_yards"}
 
 ODDS_MARKETS = {"player_pass_yds": "passing_yards",
@@ -946,6 +949,23 @@ h2::before { content:""; width:6px; height:22px; background:var(--blue); border-
 .k-good { background:var(--good-bg); color:var(--good) } .k-bad { background:var(--bad-bg); color:var(--bad) }
 .k-warn { background:var(--warn-bg); color:var(--warn) } .k-info { background:var(--info-bg); color:var(--info) }
 .cf { padding:8px 14px 12px }
+.st { font:800 11px/1 Inter,sans-serif; letter-spacing:.06em; padding:4px 7px; border-radius:5px; text-transform:uppercase; white-space:nowrap }
+.st-win { background:var(--good-bg); color:var(--good) } .st-loss { background:var(--bad-bg); color:var(--bad) }
+.st-live { background:var(--info-bg); color:var(--info) } .st-void, .st-push { background:var(--soft); color:var(--mute) }
+.st-live::before { content:""; display:inline-block; width:6px; height:6px; border-radius:50%; background:currentColor;
+  margin-right:5px; vertical-align:1px; animation:blink 1.2s infinite }
+@keyframes blink { 50% { opacity:.25 } }
+.prog { height:6px; background:var(--soft); border-radius:3px; margin-top:4px; overflow:hidden; position:relative }
+.prog > i { position:absolute; inset:0 auto 0 0; background:var(--blue); border-radius:3px }
+.prog.win > i { background:var(--good) } .prog.loss > i { background:var(--bad) }
+.score { font:800 20px/1 "Barlow Condensed",sans-serif; letter-spacing:.02em; margin-top:6px }
+.score .clock { font:600 12px Inter,sans-serif; color:var(--mute); margin-left:6px }
+.score .clock.live { color:var(--bad) }
+.lres { display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:14px }
+@media (max-width:420px) { .lres { grid-template-columns:1fr } }
+.lrow { display:grid; grid-template-columns:1fr auto; gap:8px; padding:8px 0; border-bottom:1px solid var(--soft); align-items:center }
+.lrow:last-child { border-bottom:0 }
+.tiers { display:flex; flex-wrap:wrap; gap:6px; margin:4px 0 8px } .tier { background:var(--soft); border-radius:8px; padding:3px 8px; font-size:12px }
 .strip { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px }
 .stat { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:10px 14px; min-width:120px }
 .stat .v { font-size:20px; font-weight:700; font-variant-numeric:tabular-nums }
@@ -1017,6 +1037,12 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 <div class="lead">The highest-rated plays on the board right now — no traps, one prop per player.
   <a href="top5/" style="font-weight:700">Share the Top 5 →</a></div>
 <section class="top5" id="top5"></section>
+
+<div id="liveblock" hidden>
+<h2>Results as games finish</h2>
+<div class="lead" id="livesum"></div>
+<section class="lres" id="lres"></section>
+</div>
 
 <h2>This week's games</h2>
 <section class="games" id="games"></section>
@@ -1115,8 +1141,57 @@ function spark(r) {
   return `<svg class="spark" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${bars}${ly}</svg>`;
 }
 
+const LIVE = __LIVE__;
+const LG = LIVE.games || {}, LP = LIVE.props || [];
+function liveTop(key, n) {
+  return LP.filter(p => p.game === key && !(p.traps && p.traps.length)).sort((a, b) => b.score - a.score).slice(0, n);
+}
+function scoreLine(s) {
+  return `<div class="score">${s.away} ${s.away_score ?? ""} – ${s.home} ${s.home_score ?? ""}
+    <span class="clock ${s.state === "in" ? "live" : ""}">${esc(s.detail)}</span></div>`;
+}
+function liveRow(p) {
+  const pct = p.line > 0 ? Math.min(100, ((p.actual || 0) / p.line) * 100) : (p.actual > 0 ? 100 : 0);
+  const act = p.actual == null ? "DNP" : p.actual;
+  return `<div class="lrow"><div>${grade(p)} <span class="pname">${esc(p.player)}</span>
+      <span class="pmeta">${p.team} · ${STAT[p.stat]}</span>
+      <div><span class="pick ${p.side}">${p.pick}</span> <span class="pmeta">· actual <b>${act}</b> · proj ${p.proj}</span></div>
+      <div class="prog ${p.status}"><i style="width:${pct}%"></i></div></div>
+    <span class="st st-${p.status}">${p.status === "win" ? "Hit ✓" : p.status === "loss" ? "Miss ✗" : p.status}</span></div>`;
+}
+function renderLive() {
+  const keys = Object.keys(LG);
+  if (!keys.length) return;
+  document.getElementById("liveblock").hidden = false;
+  const clean = LP.filter(p => !(p.traps && p.traps.length));
+  const W = clean.filter(p => p.status === "win").length, L = clean.filter(p => p.status === "loss").length;
+  const ab = clean.filter(p => p.grade === "A" || p.grade === "B");
+  const abW = ab.filter(p => p.status === "win").length, abL = ab.filter(p => p.status === "loss").length;
+  const live = clean.filter(p => p.status === "live").length;
+  const pct = (w, l) => w + l ? Math.round(100 * w / (w + l)) + "%" : "—";
+  document.getElementById("livesum").innerHTML = `Graded against live box scores, using each prop's rating at kickoff.
+    <b>${W} of ${W + L} decided picks hit (${pct(W, L)})</b> · A/B picks: ${abW} of ${abW + abL} (${pct(abW, abL)})
+    · ${live} still live · ${keys.filter(k => LG[k].state === "post").length} of ${keys.length} started games final`;
+  const order = keys.sort((a, b) => (LG[a].state === "in" ? 0 : 1) - (LG[b].state === "in" ? 0 : 1));
+  document.getElementById("lres").innerHTML = order.map(k => {
+    const s = LG[k], top = liveTop(k, 10);
+    const tiers = s.state === "post" ? [2, 3, 5, 10].filter(n => top.length >= n).map(n => {
+      const t = top.slice(0, n), w = t.filter(p => p.status === "win").length, l = t.filter(p => p.status === "loss").length;
+      return `<span class="tier">Top ${n}: <b>${w}/${w + l}</b></span>`; }).join("") : "";
+    return `<article class="card"><div class="ch"><div class="teams">${logo(s.away)}${s.away} <span class="at">@</span> ${logo(s.home)}${s.home}</div>
+      ${scoreLine(s)}${tiers ? `<div class="tiers">${tiers}</div>` : ""}</div>
+      <div class="plays">${top.length ? top.map(liveRow).join("") : `<div class="empty">No rated props for this game.</div>`}</div></article>`;
+  }).join("");
+}
 function renderGames() {
   document.getElementById("games").innerHTML = GAMES.list.map(g => {
+    if (LG[g.key]) {  // kicked off: show the score and how our top picks are doing
+      const s = LG[g.key], top = liveTop(g.key, 4);
+      return `<article class="card"><div class="ch">
+          <div class="teams">${logo(g.away)}${g.away} <span class="at">@</span> ${logo(g.home)}${g.home}</div>${scoreLine(s)}</div>
+        <div class="plays">${top.length ? top.map(liveRow).join("") : `<div class="empty">No rated props for this game.</div>`}</div>
+        <div class="cf"><button onclick="document.getElementById('liveblock').scrollIntoView({behavior:'smooth'})">All results →</button></div></article>`;
+    }
     const rs = ROWS.filter(r => r.game === g.key && r.score != null && !(r.traps && r.traps.length))
       .sort((a, b) => b.score - a.score);
     const top = rs.slice(0, 4);
@@ -1310,7 +1385,7 @@ function countUp() {
     requestAnimationFrame(step);
   });
 }
-renderBank(); renderTicker(); renderTop5(); renderGames(); renderParlays(); renderPanels(); renderRows(); countUp();
+renderBank(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderParlays(); renderPanels(); renderRows(); countUp();
 </script></body></html>"""
 
 
@@ -1342,7 +1417,88 @@ def feature_player(stats: pd.DataFrame, rows: list, season: int, name: str = FEA
             "log": log, "props": props}
 
 
-def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | None, bank=None, feature=None):
+def fetch_live_box(season: int, week: int, refresh: bool):
+    """Live/final box scores from ESPN for every game that has kicked off.
+    Returns (games, box): games[key] = {state, detail, away/home score}; box[gsis_id] = {stat: yards}
+    plus box[gsis_id]['_game'] so a player listed in any stat group counts as having played."""
+    from concurrent.futures import ThreadPoolExecutor
+    board = _get_json(f"{ESPN_SCOREBOARD}?seasontype=2&week={week}&dates={season}")
+    started = []
+    games = {}
+    for e in board.get("events", []):
+        st = e.get("status", {}).get("type", {})
+        if st.get("state") == "pre":
+            continue
+        comp = e["competitions"][0]
+        side = {c["homeAway"]: c for c in comp["competitors"]}
+        ab = lambda c: ESPN_TEAM_FIX.get(c["team"]["abbreviation"], c["team"]["abbreviation"])
+        key = f"{ab(side['away'])}@{ab(side['home'])}"
+        games[key] = {"state": st.get("state"), "detail": st.get("shortDetail", ""),
+                      "away": ab(side["away"]), "home": ab(side["home"]),
+                      "away_score": side["away"].get("score"), "home_score": side["home"].get("score")}
+        started.append((key, e["id"]))
+    id_map = espn_to_gsis(refresh)
+
+    def pull(item):
+        key, eid = item
+        try:
+            return key, _get_json(ESPN_SUMMARY.format(eid=eid))
+        except Exception as exc:
+            print(f"[warn] box score failed for {key}: {exc}", file=sys.stderr)
+            return key, {}
+
+    box = {}
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        for key, summ in pool.map(pull, started):
+            for team in summ.get("boxscore", {}).get("players", []):
+                for grp in team.get("statistics", []):
+                    stat = BOX_GROUPS.get(grp.get("name"))
+                    labels = grp.get("labels", [])
+                    for a in grp.get("athletes", []):
+                        gid = id_map.get(str(a.get("athlete", {}).get("id")))
+                        if not gid:
+                            continue
+                        rec = box.setdefault(gid, {"_game": key})
+                        if stat and "YDS" in labels:
+                            try:
+                                rec[stat] = float(a["stats"][labels.index("YDS")])
+                            except (ValueError, IndexError):
+                                pass
+    return games, box
+
+
+def live_results(snap: dict, games: dict, box: dict) -> list:
+    """Grade each pre-kickoff rated prop against the live box score.
+    win/loss as soon as it's decided (over clears the line; under gets passed), else 'live';
+    at the final whistle a player missing from the box score is void."""
+    out = []
+    for p in snap.get("props", {}).values():
+        g = games.get(p["game"])
+        if not g or not p.get("pick"):
+            continue
+        side, line = p["pick"].split()
+        line = float(line)
+        rec = box.get(p["player_id"])
+        played = rec is not None and rec.get("_game") == p["game"]
+        actual = rec.get(p["stat"], 0.0) if played else 0.0
+        final = g["state"] == "post"
+        if final and not played:
+            status = "void"
+        elif actual == line and final:
+            status = "push"
+        elif side == "OVER":
+            status = "win" if actual > line else ("loss" if final else "live")
+        else:
+            status = "loss" if actual > line else ("win" if final else "live")
+        out.append({k: p.get(k) for k in ("game", "player", "player_id", "team", "opp", "pos", "stat",
+                                          "pick", "grade", "score", "proj", "traps")}
+                   | {"line": line, "side": side, "actual": actual if played or not final else None,
+                      "status": status, "final": final})
+    return out
+
+
+def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | None, bank=None, feature=None,
+               live=None):
     import html
     import json
 
@@ -1386,6 +1542,7 @@ def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | 
             .replace("__GAMES__", json.dumps(games_json))
             .replace("__BANK__", json.dumps(bank or {}, default=str).replace("</", "<\\/"))
             .replace("__JERSEY__", html.escape(str((feature or {}).get("jersey", ""))))
+            .replace("__LIVE__", json.dumps(clean_tree(live or {}), default=str).replace("</", "<\\/"))
             .replace("__FEATURE__", json.dumps(clean_tree(feature or {}), default=str).replace("</", "<\\/"))
             .replace("__ROWS__", json.dumps(data, default=str).replace("</", "<\\/")))
     path.write_text(page, encoding="utf-8")
@@ -2218,6 +2375,7 @@ def write_parlays(week, games, rows, path: Path):
 
 
 def cmd_week(args, stats, sched, season):
+    import json
     out_dir = Path(__file__).parent
     while True:
         week, games, rows, source = build_week(args, stats, sched, season)
@@ -2237,7 +2395,16 @@ def cmd_week(args, stats, sched, season):
         graded = grade_ledger(ledger, stats, sched)
         bank = {"summary": bankroll_summary(ledger, graded),
                 "bets": [b for b in graded if b["kind"] != "none"][::-1]}
-        write_html(week, games, rows, source, args, html_path, refresh_secs=refresh, bank=bank,
+        live = {}
+        snap_path = Path(args.snapshot_dir or "data/snapshots") / f"{season}-w{week:02d}.json"
+        if snap_path.exists():
+            try:
+                lg, box = fetch_live_box(season, week, args.refresh)
+                snap = json.loads(snap_path.read_text(encoding="utf-8"))
+                live = {"games": lg, "props": live_results(snap, lg, box)}
+            except Exception as exc:  # live scores are a bonus; never block the dashboard
+                print(f"[warn] live results unavailable: {exc}", file=sys.stderr)
+        write_html(week, games, rows, source, args, html_path, refresh_secs=refresh, bank=bank, live=live,
                    feature=feature_player(stats, rows, season))
         if args.html:  # shareable Top 5 page next to the dashboard
             write_top5(week, games, rows, html_path.parent / "top5" / "index.html")
