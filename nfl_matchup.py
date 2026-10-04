@@ -1067,6 +1067,11 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 <div class="ticker" aria-label="Tids Ticker: top rated plays"><span class="tlabel">Tids Ticker</span><div class="tscroll"><div class="tk" id="ticker"></div></div></div>
 <div id="specials"></div>
 <div class="wrap">
+<h2>Tids' Top 5</h2>
+<div class="lead">The highest-rated plays on the board right now — no traps, one prop per player.
+  <a href="top5/" style="font-weight:700">Share the Top 5 →</a></div>
+<section class="top5" id="top5"></section>
+
   <section id="gradetrack" hidden><h2>Grade tracker</h2><div class="lead" id="gtlead"></div>
     <div class="gtrack" id="gtrack"></div></section>
   <section id="livebets" hidden><h2>Paper bets — live</h2><div class="lead" id="livebetsum"></div>
@@ -1076,10 +1081,7 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
   <span><span class="g gC">C</span> lean</span><span><span class="g gD">D</span> pass</span>
   <span>Rating = model projection vs line + hit rate + last 3 games, penalized for injury/role red flags.</span></div>
 
-<h2>Tids' Top 5</h2>
-<div class="lead">The highest-rated plays on the board right now — no traps, one prop per player.
-  <a href="top5/" style="font-weight:700">Share the Top 5 →</a></div>
-<section class="top5" id="top5"></section>
+
 
 <div id="liveblock" hidden>
 <h2>Results as games finish</h2>
