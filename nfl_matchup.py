@@ -963,21 +963,33 @@ h2::before { content:""; width:6px; height:22px; background:var(--blue); border-
 .k-good { background:var(--good-bg); color:var(--good) } .k-bad { background:var(--bad-bg); color:var(--bad) }
 .k-warn { background:var(--warn-bg); color:var(--warn) } .k-info { background:var(--info-bg); color:var(--info) }
 .cf { padding:8px 14px 12px }
-#allprops { margin:28px 0 10px }
-#allprops > summary.opener { list-style:none; cursor:pointer; display:flex; align-items:center; flex-wrap:wrap; gap:6px 14px;
+.addleg { border:1px solid var(--blue); color:var(--blue); background:var(--card); border-radius:7px; font:800 13px/1 Inter,sans-serif;
+  width:26px; height:26px; cursor:pointer; flex:none } .addleg.on { background:var(--blue); color:#fff }
+#slipbtn { position:fixed; right:16px; bottom:16px; z-index:50; border:0; border-radius:99px; padding:11px 16px; cursor:pointer; text-decoration:none;
+  background:linear-gradient(135deg,var(--blue),var(--blue-dk)); color:#fff; font:800 15px/1 Inter,sans-serif;
+  box-shadow:0 10px 26px -10px rgba(0,0,0,.55); border:2px solid var(--silver) }
+#slip { background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; max-width:760px }
+#slip .sh { background:var(--card); padding:12px 14px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:8px }
+#slip .sh b { font:800 20px/1 "Barlow Condensed",sans-serif; letter-spacing:.04em; text-transform:uppercase }
+#slip .leg { padding:10px 14px; border-bottom:1px solid var(--soft) }
+#slip select, #slip input { padding:5px 7px; border:1px solid var(--line); border-radius:7px; background:var(--card); color:var(--ink); font:inherit }
+#slip .tot { padding:12px 14px; background:var(--soft) } #slip .big { font:800 30px/1 "Barlow Condensed",sans-serif }
+#slip .x { margin-left:auto; border:0; background:none; color:var(--mute); font-size:18px; cursor:pointer }
+.opener-wrap { margin:28px 0 10px }
+.opener-wrap > summary.opener { list-style:none; cursor:pointer; display:flex; align-items:center; flex-wrap:wrap; gap:6px 14px;
   background:linear-gradient(135deg,var(--blue),var(--blue-dk)); color:#fff; border-radius:14px; padding:16px 18px;
   border:2px solid var(--silver); box-shadow:0 8px 22px -14px rgba(0,118,182,.9); transition:transform .15s ease }
-#allprops > summary.opener::-webkit-details-marker { display:none }
-#allprops > summary.opener:hover { transform:translateY(-2px) }
-#allprops .op-title { font:800 24px/1 "Barlow Condensed",sans-serif; letter-spacing:.04em; text-transform:uppercase }
-#allprops .op-sub { opacity:.85; font-size:13px }
-#allprops .op-btn { margin-left:auto; background:#fff; color:var(--blue); font:800 14px/1 Inter,sans-serif; letter-spacing:.03em;
+.opener-wrap > summary.opener::-webkit-details-marker { display:none }
+.opener-wrap > summary.opener:hover { transform:translateY(-2px) }
+.opener-wrap .op-title { font:800 24px/1 "Barlow Condensed",sans-serif; letter-spacing:.04em; text-transform:uppercase }
+.opener-wrap .op-sub { opacity:.85; font-size:13px }
+.opener-wrap .op-btn { margin-left:auto; background:#fff; color:var(--blue); font:800 14px/1 Inter,sans-serif; letter-spacing:.03em;
   padding:10px 16px; border-radius:99px; white-space:nowrap; animation:nudge 2.4s ease-in-out infinite }
 @keyframes nudge { 0%,100% { transform:translateY(0) } 50% { transform:translateY(3px) } }
-#allprops .chev { display:inline-block; transition:transform .2s ease }
-#allprops[open] .chev { transform:rotate(180deg) } #allprops[open] .op-btn { animation:none }
-#allprops .op-hide { display:none } #allprops[open] .op-hide { display:inline } #allprops[open] .op-show { display:none }
-#allprops[open] > summary.opener { margin-bottom:12px }
+.opener-wrap .chev { display:inline-block; transition:transform .2s ease }
+.opener-wrap[open] .chev { transform:rotate(180deg) } .opener-wrap[open] .op-btn { animation:none }
+.opener-wrap .op-hide { display:none } .opener-wrap[open] .op-hide { display:inline } .opener-wrap[open] .op-show { display:none }
+.opener-wrap[open] > summary.opener { margin-bottom:12px }
 .splits { margin-top:8px; display:grid; gap:5px }
 .sp { display:grid; grid-template-columns:62px 1fr auto; gap:8px; align-items:center; font-size:12px }
 .sp .mk { color:var(--mute); font-weight:600; text-transform:uppercase; letter-spacing:.04em; font-size:10.5px }
@@ -1109,6 +1121,11 @@ Payouts assume -110 per leg; hit chance discounts the model's confidence by abou
 <div class="bar"><label><input type="checkbox" id="onepergame"> One leg per game</label></div>
 <section class="ladder" id="ladder"></section>
 
+<details id="slipwrap" class="opener-wrap"><summary class="opener"><span class="op-title">Build your own parlay</span>
+  <span class="op-sub"><span id="slipcount">0 legs</span> · tap <b>+</b> on any prop · hypothetical, live lines</span>
+  <span class="op-btn"><span class="op-show">Tap to open</span><span class="op-hide">Close</span> <span class="chev">▾</span></span></summary>
+  <section id="slip" aria-label="Hypothetical parlay slip"></section></details>
+
 <h2>Trap alerts &amp; contrarian plays</h2>
 <div class="duo">
   <section class="panel"><h3>⚠ Trap alerts</h3>
@@ -1135,7 +1152,7 @@ Each game is bet in the 3 hours before kickoff, and finished games settle right 
 a player who doesn't play voids the leg. Main lines assume -110. Alt-line odds are estimates, marked "est".</div>
 <div class="panel" id="bankpanel"></div>
 
-<details id="allprops"><summary class="opener"><span id="all" class="op-title">All player props</span><span class="op-sub"><span id="propcount"></span> props · search, filter &amp; sort</span><span class="op-btn"><span class="op-show">Tap to open</span><span class="op-hide">Close</span> <span class="chev">▾</span></span></summary>
+<details id="allprops" class="opener-wrap"><summary class="opener"><span id="all" class="op-title">All player props</span><span class="op-sub"><span id="propcount"></span> props · search, filter &amp; sort</span><span class="op-btn"><span class="op-show">Tap to open</span><span class="op-hide">Close</span> <span class="chev">▾</span></span></summary>
 <div class="bar">
   <input type="search" id="q" placeholder="Search player or team">
   <select id="game"><option value="">All games</option></select>
@@ -1153,6 +1170,7 @@ a player who doesn't play voids the leg. Main lines assume -110. Alt-line odds a
 </tr></thead><tbody id="rows"></tbody></table></div>
 </details>
 
+<a id="slipbtn" href="#slipwrap">Slip (0)</a>
 <footer>Opp rank: 1 = stingiest vs that position, 32 = most generous. Proj = player's L__N__ average × how much this defense
 allows vs league average (regressed toward average). P(over) is a model estimate, not a guarantee. Chip colors are relative to the pick
 (green helps it, red hurts it, amber = red flag). Lines move — confirm at your sportsbook. Built from free nflverse stats and
@@ -1301,7 +1319,7 @@ function renderGames() {
     const rs = ROWS.filter(r => r.game === g.key && r.score != null && !(r.traps && r.traps.length))
       .sort((a, b) => b.score - a.score);
     const top = rs.slice(0, 4);
-    const plays = top.length ? top.map(r => `<div class="play">${grade(r)}<div class="pl">
+    const plays = top.length ? top.map(r => `<div class="play">${grade(r)}${addBtn(r)}<div class="pl">
         <div><span class="pname">${esc(r.player)}</span>${tags(r)} <span class="pmeta">${r.pos} · ${r.team}</span></div>
         <div><span class="pick ${r.pick.split(" ")[0]}">${r.pick}</span> <span class="pmeta">${STAT[r.stat]} · proj ${r.proj} · hit ${r.line_hits}</span></div>
         ${chips(r, 2)}</div></div>`).join("") : `<div class="empty">No player lines posted yet.</div>`;
@@ -1336,13 +1354,14 @@ function renderRows() {
   });
   document.getElementById("rows").innerHTML = rs.map(r => {
     const move = r.open != null && r.line != null && r.open !== r.line ? `<div class="pmeta">open ${r.open}</div>` : "";
-    return `<tr><td>${grade(r)}</td>
+    return `<tr><td>${grade(r)}<div style="margin-top:4px">${addBtn(r)}</div></td>
       <td><span class="pname">${esc(r.player)}</span>${tags(r)} <span class="pmeta">${r.pos} · ${r.team} vs ${r.opp} · ${STAT[r.stat]} · L${r.n} avg ${r.L10_avg}</span>${chips(r)}</td>
       <td class="n">${r.pick ? `<span class="pick ${r.pick.split(" ")[0]}">${r.pick}</span>${move}` : `<span class="pmeta">no line</span>`}</td>
       <td class="n"><b>${r.proj}</b></td><td class="n">${r.line_hits || ""}</td><td class="n">${pct(r.p_over)}</td>
       <td class="n">${r.def_rank}/32</td><td>${spark(r)}</td>
       <td class="n">${r.alt ? `${r.alt}<div class="pmeta">${r.alt_hits} · ${pct(r.alt_p)}</div>` : ""}</td></tr>`;
   }).join("") || `<tr><td colspan="9" class="empty">No matches.</td></tr>`;
+  if (typeof syncAddButtons === "function") syncAddButtons();
 }
 
 const sel = document.getElementById("game");
@@ -1492,10 +1511,10 @@ function renderTop5() {
   const top = bestLegs().slice(0, 5);
   const gm = Object.fromEntries(GAMES.list.map(g => [g.key, g]));
   document.getElementById("top5").innerHTML = top.map((r, i) => `<div class="tp"><div class="rank">${i + 1}</div>
-      <div class="who">${grade(r)}<div><div class="pname">${esc(r.player)}</div>
+      <div class="who">${grade(r)}<div style="flex:1"><div class="pname">${esc(r.player)}</div>
       <div class="pmeta">${r.pos} · ${r.team} vs ${r.opp}${gm[r.game] ? " · " + kick(gm[r.game]).replace("<br>", " ") : ""}</div></div></div>
       <div class="pick ${r.pick.split(" ")[0]}">${r.pick} <span class="pmeta" style="font:500 13px Inter,sans-serif">${STAT[r.stat]}</span></div>
-      <div class="pmeta">proj ${r.proj} · hit ${r.line_hits} · score ${r.score}/10</div>${goodNote(r)}</div>`).join("")
+      <div class="pmeta">proj ${r.proj} · hit ${r.line_hits} · score ${r.score}/10 ${addBtn(r)}</div>${goodNote(r)}</div>`).join("")
     || `<div class="empty">No A/B-rated plays posted yet — check back when lines open.</div>`;
 }
 function renderParlays() {
@@ -1620,7 +1639,114 @@ function paceTickers(pxPerSec) {  // same reading speed on every bar, however lo
     if (w) el.style.animationDuration = Math.max(30, w / pxPerSec) + "s";
   });
 }
-renderBank(); renderSpecialTicker(); renderGradeTracker(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp(); paceTickers(45); document.getElementById("propcount").textContent = ROWS.length;
+// ---------- hypothetical parlay slip (never placed; saved in this browser only)
+const SLIP_KEY = "tt-slip-v1";
+let SLIP = [];
+try { SLIP = JSON.parse(localStorage.getItem(SLIP_KEY) || "[]"); } catch (e) { SLIP = []; }
+const saveSlip = () => { try { localStorage.setItem(SLIP_KEY, JSON.stringify(SLIP)); } catch (e) {} };
+const rowById = {}; ROWS.forEach(r => { rowById[r.player_id + "|" + r.stat] = r; });
+const liveById = {}; (typeof LP !== "undefined" ? LP : []).forEach(p => { liveById[p.player_id + "|" + p.stat] = p; });
+const ncdf = z => 0.5 * (1 + erf(z / Math.SQRT2));
+function erf(x) { const t = 1 / (1 + 0.3275911 * Math.abs(x)), y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x); return x >= 0 ? y : -y; }
+function estAlt(main, thr, sd) {  // same estimate as the server: market median at the main line, + book margin
+  sd = Math.max(sd || 0, 0.35 * Math.max(main, 1), 2);
+  const p = Math.min(Math.max((1 - ncdf((thr - 0.5 - main) / sd)) * 1.048, 0.03), 0.95), dec = 1 / p;
+  const am = dec >= 2 ? (dec - 1) * 100 : -100 / (dec - 1); return Math.round(am / 5) * 5;
+}
+const decOf = am => am > 0 ? 1 + am / 100 : 1 + 100 / -am;
+const amOf = d => d >= 2 ? "+" + Math.round((d - 1) * 100) : String(Math.round(-100 / (d - 1)));
+function legChoices(r) {  // posted line both ways, plus alt "N+" lines on the over (estimated prices)
+  const line = r.line, opts = [{side: "OVER", line, odds: -110, alt: ""}, {side: "UNDER", line, odds: -110, alt: ""}];
+  const FB = {passing_yards: [150,175,200,225,250,275,300,325], rushing_yards: [10,15,20,25,30,40,50,60,70,80,90,100,125],
+              receiving_yards: [10,15,20,25,30,40,50,60,70,80,90,100,125]}[r.stat] || [];
+  [...new Set([...(r.ladder || []), ...FB])].sort((a, b) => a - b)
+    .forEach(m => {  // sensible alt range only: estimates far out on the ladder aren't meaningful
+      if (m < 1 || Math.abs(m - 0.5 - line) <= 0.01) return;
+      const o = estAlt(line, m, r.sd); if (o >= -500 && o <= 500) opts.push({side: "OVER", line: m - 0.5, odds: o, alt: m + "+"});
+    });
+  return opts;
+}
+function legProb(r, side, ln) {  // model chance, discounted halfway toward a coin flip like the rest of the site
+  const sd = Math.max(r.sd || 0, 0.35 * Math.max(r.proj, 1), 0.5), pOver = 1 - ncdf((ln - r.proj) / sd);
+  const p = side === "OVER" ? pOver : 1 - pOver; return 0.5 + (p - 0.5) * 0.45;
+}
+function toggleLeg(r) {
+  const k = r.player_id + "|" + r.stat, i = SLIP.findIndex(x => x.k === k);
+  if (i >= 0) SLIP.splice(i, 1);
+  else SLIP.push({k, side: r.pick ? r.pick.split(" ")[0] : "OVER", line: r.line, alt: "", odds: -110, added: r.line});
+  saveSlip(); renderSlip(); syncAddButtons();
+}
+function addBtn(r) {
+  if (r.line == null || !r.player_id) return "";
+  const on = SLIP.some(x => x.k === r.player_id + "|" + r.stat);
+  return `<button class="addleg${on ? " on" : ""}" data-k="${r.player_id}|${r.stat}" title="Add to hypothetical slip">${on ? "✓" : "+"}</button>`;
+}
+function syncAddButtons() {
+  document.querySelectorAll(".addleg").forEach(b => {
+    const on = SLIP.some(x => x.k === b.dataset.k); b.classList.toggle("on", on); b.textContent = on ? "✓" : "+";
+  });
+  document.getElementById("slipbtn").textContent = `Slip (${SLIP.length})`;
+  document.getElementById("slipcount").textContent = `${SLIP.length} leg${SLIP.length === 1 ? "" : "s"}`;
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest && e.target.closest(".addleg"); if (!b) return;
+  const r = rowById[b.dataset.k]; if (r) toggleLeg(r);
+});
+function renderSlip() {
+  const el = document.getElementById("slip");
+  document.getElementById("slipbtn").textContent = `Slip (${SLIP.length})`;
+  document.getElementById("slipcount").textContent = `${SLIP.length} leg${SLIP.length === 1 ? "" : "s"}`;
+  if (!SLIP.length) { el.innerHTML = `<div class="sh"><b>Hypothetical slip</b></div>
+    <div class="leg pmeta">Tap <b>+</b> next to any prop to add it. Nothing here is a real or paper bet.</div>`; return; }
+  let dec = 1, p = 1;
+  const legs = SLIP.map((x, i) => {
+    const r = rowById[x.k], lv = liveById[x.k];
+    if (!r) return `<div class="leg"><span class="pmeta">This prop is no longer on the board.</span> <button class="x" data-rm="${i}">×</button></div>`;
+    const choices = legChoices(r);
+    const cur = choices.findIndex(c => c.side === x.side && Math.abs(c.line - x.line) < 0.01 && c.alt === x.alt);
+    const c = choices[cur >= 0 ? cur : 0];
+    dec *= decOf(c.odds); p *= legProb(r, c.side, c.line);
+    let status = "";
+    if (lv) {
+      const a = lv.actual ?? 0, fin = lv.final;
+      const st = c.side === "OVER" ? (a > c.line ? "win" : fin ? "loss" : "live") : (a > c.line ? "loss" : fin ? "win" : "live");
+      status = `<span class="st st-${st}">${st === "win" ? "Hit ✓" : st === "loss" ? "Miss ✗" : "Live"}</span> <span class="pmeta">actual ${lv.actual ?? "—"}</span>`;
+    }
+    const moved = r.line !== x.added ? `<div class="pmeta" style="color:var(--warn)">Line moved ${x.added} → ${r.line} since you added it</div>` : "";
+    return `<div class="leg"><div style="display:flex;align-items:center;gap:6px"><span class="pname">${esc(r.player)}</span>
+        <span class="pmeta">${r.team} vs ${r.opp} · ${STAT[r.stat]} · ${r.grade || "–"}</span><button class="x" data-rm="${i}" title="Remove">×</button></div>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:5px;flex-wrap:wrap">
+        <select data-pick="${i}">${choices.map((o, j) => `<option value="${j}"${j === (cur >= 0 ? cur : 0) ? " selected" : ""}>${o.side} ${o.alt || o.line}
+          (${o.odds > 0 ? "+" : ""}${o.odds}${o.alt ? " est" : ""})</option>`).join("")}</select>
+        <span class="pmeta">proj ${r.proj} · ~${Math.round(100 * legProb(r, c.side, c.line))}%</span> ${status}</div>${moved}</div>`;
+  }).join("");
+  const stake = Number(localStorage.getItem("tt-slip-stake") || 10) || 10;
+  el.innerHTML = `<div class="sh"><b>Hypothetical slip</b><span class="pmeta">${SLIP.length} leg${SLIP.length > 1 ? "s" : ""}</span>
+      <button class="x" data-clear title="Clear all" style="font-size:12px">Clear all</button></div>
+    ${legs}
+    <div class="tot"><div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+      <span class="big">${SLIP.length > 1 ? amOf(dec) : (SLIP.length ? amOf(dec) : "")}</span>
+      <span>Stake $<input id="slipstake" type="number" min="1" step="1" value="${stake}" style="width:80px"></span>
+      <span>pays <b>${money(stake * dec)}</b></span></div>
+      <div class="pmeta" style="margin-top:6px">~${(100 * p).toFixed(p < 0.1 ? 1 : 0)}% est. hit chance (model, discounted). Posted lines priced at -110 —
+      the free DraftKings feed has live lines but not prices; alt prices are estimates. Lines refresh every ~15 min. Not a bet: nothing here
+      goes in the paper bankroll.</div></div>`;
+}
+document.getElementById("slipbtn").addEventListener("click", e => {
+  e.preventDefault(); const w = document.getElementById("slipwrap"); w.open = true; renderSlip();
+  w.scrollIntoView({behavior: "smooth", block: "start"});
+});
+document.getElementById("slip").addEventListener("click", e => {
+  if (e.target.dataset.clear !== undefined) { SLIP = []; saveSlip(); renderSlip(); syncAddButtons(); return; }
+  if (e.target.dataset.rm !== undefined) { SLIP.splice(Number(e.target.dataset.rm), 1); saveSlip(); renderSlip(); syncAddButtons(); }
+});
+document.getElementById("slip").addEventListener("change", e => {
+  if (e.target.dataset.pick !== undefined) {
+    const i = Number(e.target.dataset.pick), r = rowById[SLIP[i].k], o = legChoices(r)[Number(e.target.value)];
+    Object.assign(SLIP[i], {side: o.side, line: o.line, alt: o.alt, odds: o.odds}); saveSlip(); renderSlip();
+  } else if (e.target.id === "slipstake") { try { localStorage.setItem("tt-slip-stake", e.target.value); } catch (x) {} renderSlip(); }
+});
+renderBank(); renderSpecialTicker(); renderGradeTracker(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp(); paceTickers(45); syncAddButtons(); renderSlip(); document.getElementById("propcount").textContent = ROWS.length;
 </script></body></html>"""
 
 
