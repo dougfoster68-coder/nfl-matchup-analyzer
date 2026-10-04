@@ -1479,8 +1479,8 @@ document.getElementById("onepergame").addEventListener("input", renderParlays);
 const FEATURE = __FEATURE__;
 function renderSpecialTicker() {
   const wk = Math.max(0, ...(BANK.bets || []).map(b => b.week));
-  const names = {contrarian: "Contrarian Special", "contrarian-longshot": "Contrarian Alt Line Special",
-                 primetime: "Primetime Special", "primetime-longshot": "Primetime Alt Line Special"};
+  const names = {contrarian: "Contrarian", "contrarian-longshot": "Contrarian Alt Line",
+                 primetime: "Primetime", "primetime-longshot": "Primetime Alt Line"};
   const bars = (BANK.bets || []).filter(b => b.special && b.week === wk).map(sp => {
     const live = (BANK.live || []).find(b => b.id === sp.id);
     const legs = live ? live.legs : sp.legs, st = live ? live.status : sp.result;
@@ -1492,7 +1492,7 @@ function renderSpecialTicker() {
       return `<span class="it ${cls}"><span class="${l.side.toUpperCase()}">${l.side.toUpperCase()} ${l.line}</span>
         ${esc(l.player)} ${STAT[l.stat]}${l.actual != null ? ` (${l.actual})` : ""}${l.why ? ` · <span style="opacity:.8">${esc(l.why)}</span>` : ""}</span>`;
     }).join("");
-    return `<div class="ticker special ${sp.special}" aria-label="${names[sp.special] || "Special"}"><span class="tlabel">${names[sp.special] || "Special"}</span>
+    return `<div class="ticker special ${sp.special}" aria-label="${names[sp.special] || "Pick"}"><span class="tlabel">${names[sp.special] || "Pick"}</span>
       <div class="tscroll"><div class="tk">${(head + items).repeat(2)}</div></div></div>`;
   });
   document.getElementById("specials").innerHTML = bars.join("");
