@@ -406,16 +406,17 @@ def espn_to_gsis(refresh: bool) -> dict:
     return {str(int(e)): g for e, g in zip(p["espn_id"], p["gsis_id"])}
 
 
-def fetch_espn_props(season: int, week: int, refresh: bool):
+def fetch_espn_props(season: int, week: int, refresh: bool, finished: bool = False):
     """Live DraftKings player props via ESPN's public odds feed.
     Returns (main_lines, milestones), keyed by (gsis player_id, stat).
-    main_lines value: {"line", "open", "updated"}; milestones value: sorted list of N (meaning N+)."""
+    main_lines value: {"line", "open", "updated"}; milestones value: sorted list of N (meaning N+).
+    finished=True also reads completed games (their final pre-game lines) for backtests."""
     import re
     from concurrent.futures import ThreadPoolExecutor
 
     board = _get_json(f"{ESPN_SCOREBOARD}?seasontype=2&week={week}&dates={season}")
     event_ids = [e["id"] for e in board.get("events", [])
-                 if e.get("status", {}).get("type", {}).get("state") == "pre"]
+                 if finished or e.get("status", {}).get("type", {}).get("state") == "pre"]
     id_map = espn_to_gsis(refresh)
 
     def pull(eid):
@@ -512,7 +513,8 @@ def build_week(args, stats, sched, season):
         name_lines = fetch_odds_api_lines(os.environ["ODDS_API_KEY"])
         source = f"The Odds API ({len(name_lines)} lines)"
     else:
-        main_by_id, miles_by_id = fetch_espn_props(season, week, args.refresh)
+        main_by_id, miles_by_id = fetch_espn_props(season, week, args.refresh,
+                                                   finished=getattr(args, "backtest", False))
         source = f"DraftKings via ESPN ({len(main_by_id)} yardage lines)"
 
     allowed = defense_allowed(stats, args.games)
@@ -1561,8 +1563,8 @@ def _tier_text(t) -> str:
     return f"{hit} of {hit + missed} hit ({_pct(*t)}){extra}"
 
 
-def report_markdown(season, week, summary, bank_line=None) -> str:
-    L = [f"# Tids Takedowns — Week {week} Report Card ({season})", ""]
+def report_markdown(season, week, summary, bank_line=None, label="") -> str:
+    L = [f"# Tids Takedowns — Week {week} Report Card{label} ({season})", ""]
     if summary["pending"]:
         L += [f"> {summary['pending']} props still pending (game or stats not final yet).", ""]
     if bank_line:
@@ -1624,7 +1626,7 @@ th { color:var(--mute); font-size:12px } tr:last-child td { border-bottom:0 }
 didn't play) don't count. For entertainment only — not betting advice. 21+. 1-800-GAMBLER.</p></div></body></html>"""
 
 
-def report_html(season, week, summary, bank_line=None) -> str:
+def report_html(season, week, summary, bank_line=None, label="") -> str:
     import html as H
     rows = ""
     for n in TOP_NS:
@@ -1657,7 +1659,7 @@ def report_html(season, week, summary, bank_line=None) -> str:
         body += (f"<div class='card'><b class='big'>{g.replace('@', ' @ ')}</b><div class='tiers'>{tiers}</div>"
                  f"<table><tr><th>#</th><th>Player</th><th>Pick</th><th>Gr</th><th>Actual</th><th></th></tr>{trs}</table></div>")
     body += "</div>"
-    title = f"Week {week} Report Card"
+    title = f"Week {week} Report Card{label}"
     return (REPORT_TEMPLATE.replace("__TITLE__", f"Tids Takedowns · {title}")
             .replace("__H1__", f"Tids Takedowns — {title}")
             .replace("__SUB__", f"{season} season · <a href='../index.html'>← back to this week's picks</a> · "
@@ -1688,6 +1690,7 @@ def cmd_report(args, stats, sched, season):
         if not snap["props"]:
             continue
         summary = summarize_week(grade_snapshot(snap, stats, sched))
+        summary["label"] = " (backtest)" if snap.get("backtest") else ""
         weeks.append((snap["season"], snap["week"], summary))
     if args.out:
         out = Path(args.out)
@@ -1695,9 +1698,10 @@ def cmd_report(args, stats, sched, season):
         links = ""
         for s_, w_, summ in sorted(weeks, reverse=True):
             (out / f"{s_}-w{w_:02d}.html").write_text(
-                report_html(s_, w_, summ, _bank_line(stats, sched, s_, w_)), encoding="utf-8")
+                report_html(s_, w_, summ, None if summ["label"] else _bank_line(stats, sched, s_, w_),
+                            label=summ["label"]), encoding="utf-8")
             t3 = summ["overall"][3]
-            links += (f"<div class='card'><a class='big' href='{s_}-w{w_:02d}.html'>Week {w_} · {s_}</a>"
+            links += (f"<div class='card'><a class='big' href='{s_}-w{w_:02d}.html'>Week {w_}{summ['label']} · {s_}</a>"
                       f"<div class='mute'>Top 10 per game: {_tier_text(summ['overall'][10])} · "
                       f"Top 5: {_pct(*summ['overall'][5])} · Top 3: {_pct(*t3)} · Top 2: {_pct(*summ['overall'][2])}"
                       f"{' · in progress' if summ['pending'] else ''}</div></div>")
@@ -1715,10 +1719,75 @@ def cmd_report(args, stats, sched, season):
             print("No completed week to report.")
             return
         s_, w_, summ = max(done)
-        Path(args.markdown).write_text(report_markdown(s_, w_, summ, _bank_line(stats, sched, s_, w_)),
+        Path(args.markdown).write_text(report_markdown(s_, w_, summ, _bank_line(stats, sched, s_, w_),
+                                                       label=summ["label"]),
                                        encoding="utf-8")
         print(f"Week {w_} report written to {args.markdown}")
         print(f"TITLE=Week {w_} Report Card ({s_})")
+
+
+def cmd_backtest(args, stats, sched, season):
+    """Re-run a finished week as if it hadn't happened: stats frozen before that week, DraftKings'
+    final pre-game lines, then grade every rating against what actually happened."""
+    import json
+    week = args.week
+    cutoff = season * 100 + week
+    stats_asof = stats[stats["game_order"] < cutoff]
+    sched_asof = sched.copy()
+    later = (sched_asof["season"] == season) & (sched_asof["week"] >= week)
+    sched_asof.loc[later, "result"] = float("nan")
+
+    wargs = argparse.Namespace(week=week, include_played=True, lines=None, refresh=args.refresh,
+                               games=args.games, min_games=4, hit_rate=0.70, backtest=True)
+    _, games, rows, source = build_week(wargs, stats_asof, sched_asof, season)
+    rated = [r for r in rows if r.get("pick")]
+    print(f"Week {week} backtest: {len(rated)} rated props across {len(games)} games ({source})")
+
+    snap = {"season": season, "week": week, "backtest": True,
+            "props": {f"{r['player_id']}|{r['stat']}": {k: r.get(k) for k in SNAPSHOT_FIELDS} for r in rated}}
+    graded = grade_snapshot(snap, stats, sched)
+    summary = summarize_week(graded)
+    md = report_markdown(season, week, summary, label=" (backtest)")
+
+    # What Claude's $200 Thursday plan would have done on that week's Thursday game
+    thu = games[pd.to_datetime(games["gameday"]).dt.day_name() == "Thursday"]
+    lines = [""]
+    by_key = {f"{p['player_id']}|{p['stat']}": p for p in graded}
+    for g in thu.itertuples():
+        key = f"{g.away_team}@{g.home_team}"
+        picks = choose_bets([r for r in rated if r["game"] == key], 200)
+        lines += [f"## Thursday paper bets — {g.away_team} @ {g.home_team} ($200 plan)", ""]
+        total = 0.0
+        for b in picks:
+            res = [by_key[f"{l['player_id']}|{l['stat']}"] for l in b["legs"]]
+            states = [p["result"] for p in res]
+            dec = 1.0
+            for s_ in states:
+                if s_ == "win":
+                    dec *= american_to_decimal(DEFAULT_ODDS)
+            if "loss" in states:
+                pl = -b["stake"]
+            elif "win" in states:
+                pl = round(b["stake"] * (dec - 1), 2)
+            else:
+                pl = 0.0
+            total += pl
+            desc = " + ".join(f"{p['player']} {p['pick']} ({p['actual']:g if p['actual'] is not None else 'DNP'})"
+                              for p in res)
+            lines.append(f"- ${b['stake']} {b['kind']}: {desc} → **{'+' if pl >= 0 else '-'}${abs(pl):.2f}**")
+        if not picks:
+            lines.append("- No A/B-rated, trap-free props — would have passed.")
+        lines += ["", f"**Thursday result: {'+' if total >= 0 else '-'}${abs(total):.2f}**", ""]
+    md += "\n" + "\n".join(lines)
+
+    if args.snapshot_dir:
+        path = Path(args.snapshot_dir) / f"{season}-w{week:02d}.json"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(snap, indent=1, default=str) + "\n", encoding="utf-8")
+        print(f"Saved backtest snapshot to {path}")
+    if args.markdown:
+        Path(args.markdown).write_text(md, encoding="utf-8")
+        print(f"Report written to {args.markdown}")
 
 
 def cmd_week(args, stats, sched, season):
@@ -1812,11 +1881,17 @@ def main():
     rp.add_argument("--markdown", help="write the latest completed week (or --week) as markdown")
     rp.add_argument("--week", type=int)
 
+    bk = sub.add_parser("backtest", help="replay a finished week with stats frozen before it, then grade")
+    bk.add_argument("--week", type=int, required=True)
+    bk.add_argument("--snapshot-dir", help="save the backtest ratings here so report cards include it")
+    bk.add_argument("--markdown", help="write the backtest report as markdown")
+
     args = ap.parse_args()
     stats, sched, season = load_data(args.refresh)
     {"player": cmd_player, "slate": cmd_slate, "defense": cmd_defense,
      "week": cmd_week, "autobet": cmd_autobet, "bet": cmd_bet,
-     "bankroll": cmd_bankroll, "report": cmd_report}[args.cmd](args, stats, sched, season)
+     "bankroll": cmd_bankroll, "report": cmd_report,
+     "backtest": cmd_backtest}[args.cmd](args, stats, sched, season)
 
 
 if __name__ == "__main__":
