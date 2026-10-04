@@ -1103,7 +1103,8 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 <section class="games" id="games"></section>
 
 <h2>Parlay builder</h2>
-<div class="lead"><a href="parlays/" style="font-weight:700">Share the parlays →</a> · Rebuilt every refresh from A/B-rated, trap-free props. Each rung adds the next-best leg.
+<div class="lead"><span class="tag tag-con" style="margin-left:0">SUGGESTIONS ONLY · not in the paper bankroll</span>
+<a href="parlays/" style="font-weight:700">Share the parlays →</a> · Rebuilt every refresh from A/B-rated, trap-free props. Each rung adds the next-best leg.
 Payouts assume -110 per leg; hit chance discounts the model's confidence by about half, because models run hot.</div>
 <div class="bar"><label><input type="checkbox" id="onepergame"> One leg per game</label></div>
 <section class="ladder" id="ladder"></section>
@@ -3448,7 +3449,7 @@ def write_parlays(week, games, rows, path: Path):
             .replace("Tids' Top 5 · NFL Week __WEEK__ player props", "Tids' Parlay Ladder · NFL Week __WEEK__")
             .replace('content="Tids\' Top 5 · NFL Week __WEEK__"', 'content="Tids\' Parlay Ladder · NFL Week __WEEK__"')
             .replace("<h1>Tids' Top 5</h1>", "<h1>Tids' Parlay Ladder</h1>")
-            .replace("The highest-rated player props on the board", "2- to 7-leg parlays built from the best A/B-rated, trap-free props")
+            .replace("The highest-rated player props on the board", "Suggested 2- to 7-leg parlays (not bets we've placed) built from the best A/B-rated, trap-free props")
             .replace("Share these picks", "Share these parlays")
             .replace("</style>", """.rung { align-items:start } .rank small { display:block; font:700 11px Inter,sans-serif; letter-spacing:.1em;
   text-transform:uppercase; color:var(--mute); -webkit-text-fill-color:var(--mute) }
