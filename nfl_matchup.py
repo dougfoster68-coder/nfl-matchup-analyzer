@@ -1,4 +1,4 @@
-﻿"""
+"""
 NFL Matchup Analyzer
 --------------------
 Compares an offensive player's last N games against what their upcoming
@@ -690,7 +690,7 @@ def analyze_row(row: dict, vals: list, lines_expected: bool):
         trend = sum((v > line) if over else (v < line) for v in recent) / len(recent)
         score = 10 * (0.45 * min(max((conf - 0.5) / 0.35, 0), 1) + 0.35 * side_hits + 0.20 * trend)
         if trap:
-            score *= 0.55
+            score *= 0.45
         if row["missed_last_game"]:
             score *= 0.6
         if n < 6:
