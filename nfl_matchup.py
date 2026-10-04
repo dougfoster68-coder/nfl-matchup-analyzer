@@ -974,6 +974,9 @@ h2::before { content:""; width:6px; height:22px; background:var(--blue); border-
 #slip .leg { padding:10px 14px; border-bottom:1px solid var(--soft) }
 #slip select, #slip input { padding:5px 7px; border:1px solid var(--line); border-radius:7px; background:var(--card); color:var(--ink); font:inherit }
 #slip .tot { padding:12px 14px; background:var(--soft) } #slip .big { font:800 30px/1 "Barlow Condensed",sans-serif }
+#slip #plstake { font:800 20px/1 "Barlow Condensed",Inter,sans-serif; padding:7px 10px; min-width:84px; border:2px solid var(--blue);
+  border-radius:9px; color:var(--blue); cursor:pointer }
+#slip .betlbl { font:800 20px/1 "Barlow Condensed",sans-serif; letter-spacing:.03em; display:inline-flex; align-items:center; gap:6px }
 #slip .x { margin-left:auto; border:0; background:none; color:var(--mute); font-size:18px; cursor:pointer }
 .opener-wrap { margin:28px 0 10px }
 .opener-wrap > summary.opener { list-style:none; cursor:pointer; display:flex; align-items:center; flex-wrap:wrap; gap:6px 14px;
@@ -1738,7 +1741,7 @@ function renderSlip() {
     ${legs}
     <div class="tot"><div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
       <span class="big">${SLIP.length > 1 ? amOf(dec) : (SLIP.length ? amOf(dec) : "")}</span>
-      <label style="font-weight:700">Bet $<select id="plstake">${STAKE_OPTS.map(a => `<option${a === stake ? " selected" : ""}>${a}</option>`).join("")}</select></label>
+      <label class="betlbl">BET $<select id="plstake">${STAKE_OPTS.map(a => `<option${a === stake ? " selected" : ""}>${a}</option>`).join("")}</select></label>
       <span>pays <b>${money(stake * dec)}</b></span></div>
       <div class="pmeta" style="margin-top:6px">~${(100 * p).toFixed(p < 0.1 ? 1 : 0)}% est. hit chance (model, discounted). Posted lines priced at -110 —
       the free DraftKings feed has live lines but not prices; alt prices are estimates. Lines refresh every ~15 min. Not a bet: nothing here
