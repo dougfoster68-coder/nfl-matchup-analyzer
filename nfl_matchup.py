@@ -1391,7 +1391,7 @@ function renderLiveBets() {
       : `to win ${money(toWin)}`;
     const late = ((b.note || "").startsWith("LATE CHANGE") ? '<span class="tag tag-trap" title="' + esc(b.note) + '">LATE CHANGE</span>' : "")
       + (((BANK.bets || []).find(x => x.id === b.id && x.special) || {}).special
-         ? '<span class="tag tag-special">' + ((BANK.bets || []).find(x => x.id === b.id).special.replace("-", " ").toUpperCase()) + ' SPECIAL</span>' : "");
+         ? '<span class="tag tag-special">' + ((BANK.bets || []).find(x => x.id === b.id).special.replace("-longshot", " alt line").toUpperCase()) + ' SPECIAL</span>' : "");
     return `<article class="card"><div class="ch"><div class="teams" style="font-size:15px">${money(b.stake)} ${b.kind}${late}
         <span class="pmeta" style="margin-left:6px">${b.odds > 0 ? "+" : ""}${b.odds} · ${esc(b.game.replace("@", " @ "))}</span>
         <span class="kick"><span class="st st-${b.status === "pre" ? "void" : b.status}">${label[b.status]}</span><br>${res}</span></div></div>
@@ -1479,8 +1479,8 @@ document.getElementById("onepergame").addEventListener("input", renderParlays);
 const FEATURE = __FEATURE__;
 function renderSpecialTicker() {
   const wk = Math.max(0, ...(BANK.bets || []).map(b => b.week));
-  const names = {contrarian: "Contrarian Special", "contrarian-longshot": "Contrarian Longshot",
-                 primetime: "Primetime Special", "primetime-longshot": "Primetime Longshot"};
+  const names = {contrarian: "Contrarian Special", "contrarian-longshot": "Contrarian Alt Line Special",
+                 primetime: "Primetime Special", "primetime-longshot": "Primetime Alt Line Special"};
   const bars = (BANK.bets || []).filter(b => b.special && b.week === wk).map(sp => {
     const live = (BANK.live || []).find(b => b.id === sp.id);
     const legs = live ? live.legs : sp.legs, st = live ? live.status : sp.result;
@@ -2181,7 +2181,7 @@ def _value_leg(r: dict, why: str):
 
 
 def _boost_leg(r: dict, why: str, max_odds: int = 300) -> dict:
-    """Longshot leg: an over moves up to the next alt line at least 15% above the posted line (estimated
+    """Alt Line Special leg: an over moves up to the next alt line at least 15% above the posted line (estimated
     plus-money odds, skipped beyond `max_odds`). Unders stay put (alt ladders are overs only)."""
     side, line = r["pick"].split()
     line = float(line)
@@ -2222,9 +2222,11 @@ def contrarian_special(rows: list, stake: float, splits: dict | None = None, max
             if len(legs) == 4:
                 break
         if len(legs) >= 3:
+            if longshot and not any(l.get("alt") for l in legs):
+                return None  # the alt line version must actually use an alt line
             kind = "contrarian-longshot" if longshot else "contrarian"
             return {"kind": "parlay", "special": kind, "stake": round(stake, 2), "legs": legs,
-                    "game": "multi", "note": kind.replace("-", " ").upper() + " SPECIAL"}
+                    "game": "multi", "note": kind.replace("-longshot", " alt line").upper() + " SPECIAL"}
     return None
 
 
@@ -2263,9 +2265,11 @@ def primetime_special(rows: list, stake: float, games: set, longshot: bool = Fal
             break
     if len(legs) < 3:
         return None
+    if longshot and not any(l.get("alt") for l in legs):
+        return None  # the alt line version must actually use an alt line
     kind = "primetime-longshot" if longshot else "primetime"
     return {"kind": "parlay", "special": kind, "stake": round(stake, 2), "legs": legs, "game": "multi",
-            "note": kind.replace("-", " ").upper() + " SPECIAL"}
+            "note": kind.replace("-longshot", " alt line").upper() + " SPECIAL"}
 
 
 def weekly_parlays(pool: list, budget: float) -> list:
@@ -2402,7 +2406,7 @@ def cmd_autobet(args, stats, sched, season):
                  for b in _stake_prop(r, alloc[r["player_id"]])], remaining)
     if not any(b["kind"] == "parlay" and not b.get("special") for b in week_bets):
         new += _trim([dict(p, game="multi") for p in weekly_parlays(pool, core * PARLAY_SHARE)], core * PARLAY_SHARE)
-    half = round(special_amt / 2, 2)  # each special's 3% splits between the value and longshot versions
+    half = round(special_amt / 2, 2)  # each special's 3% splits between the best-value and alt line versions
     if not any(str(b.get("special", "")).startswith("contrarian") for b in week_bets):
         spl = load_week_splits(Path(args.snapshot_dir).parent / "splits", season, week)
         new += [x for x in (contrarian_special(pool, half, spl),
