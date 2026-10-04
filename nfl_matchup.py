@@ -604,7 +604,7 @@ def analyze_row(row: dict, vals: list, lines_expected: bool):
                  "receiving_yards": "rec yds"}[row["stat"]]
     vs = POS_GROUP[row["stat"]] or (f"{row['pos']}s")
 
-    if row["missed_last_game"]:
+    if row["missed_last_game"] and row.get("line") is None:
         notes.append({"t": "Missed team's last game — check injury status", "k": "warn"})
     if line is None and lines_expected:
         notes.append({"t": "No line posted for a regular contributor — possible injury or role change",
@@ -676,8 +676,6 @@ def analyze_row(row: dict, vals: list, lines_expected: bool):
                           "k": "info"})
         if abs(line - avg) / max(avg, 10) > 0.45:
             trap = True
-            notes.append({"t": f"Line ({line:g}) is far from the {avg:.0f} L10 avg — book likely "
-                               "knows about a role/injury change", "k": "warn"})
 
     # Rating (only for posted lines)
     rating = {"pick": "", "score": None, "grade": ""}
@@ -689,15 +687,51 @@ def analyze_row(row: dict, vals: list, lines_expected: bool):
         recent = vals[-3:]
         trend = sum((v > line) if over else (v < line) for v in recent) / len(recent)
         score = 10 * (0.45 * min(max((conf - 0.5) / 0.35, 0), 1) + 0.35 * side_hits + 0.20 * trend)
+
+        # Trap checks: reasons the attractive-looking side may be a setup
+        traps = []
         if trap:
+            traps.append(f"Line {line:g} vs {avg:.0f} L10 avg — gap this big usually means the book "
+                         "knows about an injury or role change")
             score *= 0.45
         if row["missed_last_game"]:
+            traps.append("Missed the team's last game — line may assume limited snaps")
             score *= 0.6
+        if over and u10 >= 2 and u3 <= u10 * 0.7 and u10 - u3 >= 2:
+            traps.append(f"Model likes the over on old usage, but {uname} fell to {u3:g}/game")
+            score *= 0.75
+        if not over and u10 >= 2 and u3 >= u10 * 1.3 and u3 - u10 >= 2:
+            traps.append(f"Model likes the under on old usage, but {uname} rose to {u3:g}/game")
+            score *= 0.75
+        opened = row.get("open")
+        moved = None if opened is None or pd.isna(opened) else line - opened
         if n < 6:
             score *= 0.8
+
+        # Contrarian angles (proxy: no free public-betting % feed, so use line movement and the
+        # well-known public lean toward overs on popular players)
+        popular = line >= {"passing_yards": 240, "rushing_yards": 60, "receiving_yards": 60}[row["stat"]]
+        contrarian = ""
+        if moved is not None and moved >= 3 and not over:
+            contrarian = (f"Fade the public: line climbed {opened:g} → {line:g} on over money, "
+                          f"but the model projects {row['proj']:g}")
+        elif moved is not None and moved <= -3 and not over and popular:
+            contrarian = (f"Sharp-side under: line dropped {opened:g} → {line:g} on a popular player "
+                          "despite the public's over lean, and the model agrees")
+        elif moved is not None and moved <= -3 and over and conf >= 0.6:
+            contrarian = (f"Buy low: market dropped this {opened:g} → {line:g}, "
+                          f"model still projects {row['proj']:g}")
+        elif popular and not over and conf >= 0.58:
+            contrarian = "Star under: the public rarely bets against popular players — model sides under"
+        if traps or score < 4.5:
+            contrarian = ""  # only surface contrarian angles that are playable
+
         grade = "A" if score >= 7.5 else "B" if score >= 6 else "C" if score >= 4.5 else "D"
         rating = {"pick": f"{'OVER' if over else 'UNDER'} {line:g}", "score": round(score, 1),
-                  "grade": grade}
+                  "grade": grade, "traps": traps, "contrarian": contrarian,
+                  # a trap is worth flagging when the bad side still looks tempting on the surface
+                  "trap_alert": bool(traps) and max(line, avg) >= 15 and (
+                      row["line_hit_rate"] >= 0.7 or row["line_hit_rate"] <= 0.3 or conf >= 0.7)}
     return notes, rating
 
 
@@ -778,10 +812,10 @@ PAGE_TEMPLATE = r"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <style>
 :root { --bg:#f6f5f1; --card:#fff; --ink:#1c1c1a; --mute:#6b6a64; --line:#e4e2db; --soft:#efeee8;
   --good:#17803f; --good-bg:#e2f3e8; --bad:#b4342b; --bad-bg:#fbe5e2; --warn:#a15c00; --warn-bg:#fff0d4;
-  --info:#3a5a8c; --info-bg:#e6edf8; --A:#17803f; --B:#2f7a8a; --C:#a07a12; --D:#8a8983; --accent:#1f3a5f; }
+  --info:#3a5a8c; --info-bg:#e6edf8; --con:#6b3fa0; --con-bg:#efe6fa; --A:#17803f; --B:#2f7a8a; --C:#a07a12; --D:#8a8983; --accent:#1f3a5f; }
 @media (prefers-color-scheme: dark) { :root { --bg:#131312; --card:#1d1d1b; --ink:#ecebe5; --mute:#9d9c95;
   --line:#34332f; --soft:#262623; --good:#62d290; --good-bg:#15301f; --bad:#f08a80; --bad-bg:#3a1d1a;
-  --warn:#f1b65a; --warn-bg:#382810; --info:#9dbcf0; --info-bg:#1b2638; --A:#4fc47f; --B:#5fbfd1;
+  --warn:#f1b65a; --warn-bg:#382810; --info:#9dbcf0; --info-bg:#1b2638; --con:#c9a8f5; --con-bg:#2b2040; --A:#4fc47f; --B:#5fbfd1;
   --C:#e0b84a; --D:#8f8e88; --accent:#9dbcf0; } }
 * { box-sizing:border-box }
 body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif }
@@ -815,6 +849,17 @@ h2 { font-size:18px; margin:28px 0 10px }
 .k-good { background:var(--good-bg); color:var(--good) } .k-bad { background:var(--bad-bg); color:var(--bad) }
 .k-warn { background:var(--warn-bg); color:var(--warn) } .k-info { background:var(--info-bg); color:var(--info) }
 .cf { padding:8px 14px 12px }
+.tag { font-size:10.5px; font-weight:700; letter-spacing:.04em; padding:1px 6px; border-radius:5px; margin-left:4px; vertical-align:1px }
+.tag-trap { background:var(--warn-bg); color:var(--warn) } .tag-con { background:var(--con-bg); color:var(--con) }
+.k-con { background:var(--con-bg); color:var(--con) }
+.duo { display:grid; grid-template-columns:repeat(auto-fit,minmax(380px,1fr)); gap:14px }
+@media (max-width:420px) { .duo { grid-template-columns:1fr } }
+.panel { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:4px 14px 8px }
+.panel h3 { font-size:15px; margin:12px 0 2px }
+.panel .why { color:var(--mute); font-size:12px; margin-bottom:6px }
+.item { padding:9px 0; border-bottom:1px solid var(--soft) }
+.item:last-child { border-bottom:0 }
+.reason { font-size:12.5px; margin-top:3px }
 .cf button { background:none; border:1px solid var(--line); color:var(--accent); border-radius:8px; padding:6px 10px; cursor:pointer; font:inherit; font-size:13px }
 .empty { color:var(--mute); padding:10px 0 }
 .bar { display:flex; gap:8px; flex-wrap:wrap; margin:6px 0 10px; align-items:center }
@@ -841,6 +886,17 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 <h2>This week's games</h2>
 <section class="games" id="games"></section>
 
+<h2>Trap alerts &amp; contrarian plays</h2>
+<div class="duo">
+  <section class="panel"><h3>⚠ Trap alerts</h3>
+    <div class="why">Props that look tempting on the surface (high hit rate or big model edge) but carry a red flag.</div>
+    <div id="traps"></div></section>
+  <section class="panel"><h3>↔ Contrarian plays</h3>
+    <div class="why">Going against public money. Free public-betting % isn't available, so this reads line movement
+    and the public's well-known lean toward overs on popular players.</div>
+    <div id="contra"></div></section>
+</div>
+
 <h2 id="all">All player props</h2>
 <div class="bar">
   <input type="search" id="q" placeholder="Search player or team">
@@ -848,6 +904,8 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
   <select id="stat"><option value="">All stats</option><option value="passing_yards">Passing yds</option>
     <option value="rushing_yards">Rushing yds</option><option value="receiving_yards">Receiving yds</option></select>
   <label><input type="checkbox" id="good"> A/B ratings only</label>
+  <label><input type="checkbox" id="trapf"> Traps</label>
+  <label><input type="checkbox" id="conf"> Contrarian</label>
   <label><input type="checkbox" id="hot"> Hit line __HITPCT__+ of last __N__</label>
 </div>
 <div class="tw"><table><thead><tr>
@@ -879,7 +937,14 @@ function kind(note, pick) {
 function chips(r, max) {
   const order = {warn:0, good:1, bad:2, info:3};
   const ns = (r.notes || []).map(n => ({t:n.t, k:kind(n, r.pick)})).sort((a, b) => order[a.k] - order[b.k]);
-  return `<div class="chips">${ns.slice(0, max ?? 99).map(n => `<span class="chip k-${n.k}">${esc(n.t)}</span>`).join("")}</div>`;
+  const extra = (r.traps || []).map(t => ({t:"Trap: " + t, k:"warn"}));
+  if (r.contrarian) extra.push({t:r.contrarian, k:"con"});
+  const all = extra.concat(ns);
+  return `<div class="chips">${all.slice(0, max ?? 99).map(n => `<span class="chip k-${n.k}">${esc(n.t)}</span>`).join("")}</div>`;
+}
+function tags(r) {
+  return (r.traps && r.traps.length ? `<span class="tag tag-trap">TRAP</span>` : "")
+    + (r.contrarian ? `<span class="tag tag-con">CONTRARIAN</span>` : "");
 }
 function grade(r) { return r.grade ? `<span class="g g${r.grade}" title="score ${r.score}/10">${r.grade}</span>` : `<span class="g gD" style="opacity:.35">–</span>`; }
 function logo(t) { return `<img src="https://a.espncdn.com/i/teamlogos/nfl/500/${(GAMES.logo[t] || t).toLowerCase()}.png" alt="" onerror="this.style.display='none'">`; }
@@ -907,7 +972,7 @@ function renderGames() {
     const rs = ROWS.filter(r => r.game === g.key && r.score != null).sort((a, b) => b.score - a.score);
     const top = rs.slice(0, 4);
     const plays = top.length ? top.map(r => `<div class="play">${grade(r)}<div class="pl">
-        <div><span class="pname">${esc(r.player)}</span> <span class="pmeta">${r.pos} · ${r.team}</span></div>
+        <div><span class="pname">${esc(r.player)}</span>${tags(r)} <span class="pmeta">${r.pos} · ${r.team}</span></div>
         <div><span class="pick ${r.pick.split(" ")[0]}">${r.pick}</span> <span class="pmeta">${STAT[r.stat]} · proj ${r.proj} · hit ${r.line_hits}</span></div>
         ${chips(r, 2)}</div></div>`).join("") : `<div class="empty">No player lines posted yet.</div>`;
     return `<article class="card"><div class="ch">
@@ -927,9 +992,11 @@ function renderRows() {
   const q = document.getElementById("q").value.toLowerCase(), gm = document.getElementById("game").value;
   const st = document.getElementById("stat").value, good = document.getElementById("good").checked;
   const hot = document.getElementById("hot").checked;
+  const trapf = document.getElementById("trapf").checked, conf = document.getElementById("conf").checked;
   const rs = ROWS.filter(r => (!q || (r.player + " " + r.team + " " + r.opp).toLowerCase().includes(q))
     && (!gm || r.game === gm) && (!st || r.stat === st) && (!good || r.grade === "A" || r.grade === "B")
-    && (!hot || (r.line_hit_rate != null && r.line_hit_rate >= HIT)));
+    && (!hot || (r.line_hit_rate != null && r.line_hit_rate >= HIT))
+    && (!trapf || (r.traps && r.traps.length)) && (!conf || r.contrarian));
   rs.sort((a, b) => {
     const x = a[sortKey], y = b[sortKey];
     if (x == null && y == null) return 0; if (x == null) return 1; if (y == null) return -1;
@@ -938,7 +1005,7 @@ function renderRows() {
   document.getElementById("rows").innerHTML = rs.map(r => {
     const move = r.open != null && r.line != null && r.open !== r.line ? `<div class="pmeta">open ${r.open}</div>` : "";
     return `<tr><td>${grade(r)}</td>
-      <td><span class="pname">${esc(r.player)}</span> <span class="pmeta">${r.pos} · ${r.team} vs ${r.opp} · ${STAT[r.stat]} · L${r.n} avg ${r.L10_avg}</span>${chips(r)}</td>
+      <td><span class="pname">${esc(r.player)}</span>${tags(r)} <span class="pmeta">${r.pos} · ${r.team} vs ${r.opp} · ${STAT[r.stat]} · L${r.n} avg ${r.L10_avg}</span>${chips(r)}</td>
       <td class="n">${r.pick ? `<span class="pick ${r.pick.split(" ")[0]}">${r.pick}</span>${move}` : `<span class="pmeta">no line</span>`}</td>
       <td class="n"><b>${r.proj}</b></td><td class="n">${r.line_hits || ""}</td><td class="n">${pct(r.p_over)}</td>
       <td class="n">${r.def_rank}/32</td><td>${spark(r)}</td>
@@ -948,11 +1015,28 @@ function renderRows() {
 
 const sel = document.getElementById("game");
 GAMES.list.forEach(g => sel.insertAdjacentHTML("beforeend", `<option value="${g.key}">${g.away} @ ${g.home}</option>`));
-["q","game","stat","good","hot"].forEach(id => document.getElementById(id).addEventListener("input", renderRows));
+["q","game","stat","good","hot","trapf","conf"].forEach(id => document.getElementById(id).addEventListener("input", renderRows));
 document.querySelectorAll("th[data-s]").forEach(th => th.onclick = () => {
   const k = th.dataset.s; sortDir = k === sortKey ? -sortDir : (k === "player" || k === "def_rank" ? 1 : -1); sortKey = k; renderRows();
 });
-renderGames(); renderRows();
+function renderPanels() {
+  const tempting = r => r.line_hit_rate >= 0.5 ? `OVER ${r.line}` : `UNDER ${r.line}`;
+  const tr = ROWS.filter(r => r.trap_alert)
+    .sort((a, b) => Math.abs(b.line_hit_rate - 0.5) - Math.abs(a.line_hit_rate - 0.5)).slice(0, 12);
+  document.getElementById("traps").innerHTML = tr.map(r => `<div class="item">
+      <span class="pname">${esc(r.player)}</span> <span class="pmeta">${r.pos} · ${r.team} vs ${r.opp} · ${STAT[r.stat]}</span>
+      <div class="reason">Looks like: <b>${tempting(r)}</b> <span class="pmeta">(hit ${r.line_hits}, model ${pct(Math.max(r.p_over, 1 - r.p_over))})</span></div>
+      ${r.traps.map(t => `<div class="reason" style="color:var(--warn)">⚠ ${esc(t)}</div>`).join("")}</div>`).join("")
+    || `<div class="empty">No trap alerts right now.</div>`;
+  const cr = ROWS.filter(r => r.contrarian).sort((a, b) => b.score - a.score).slice(0, 12);
+  document.getElementById("contra").innerHTML = cr.map(r => `<div class="item">${grade(r)}
+      <span class="pname" style="margin-left:6px">${esc(r.player)}</span> <span class="pmeta">${r.pos} · ${r.team} vs ${r.opp}</span>
+      <div class="reason"><span class="pick ${r.pick.split(" ")[0]}">${r.pick}</span> <span class="pmeta">${STAT[r.stat]} · proj ${r.proj} · hit ${r.line_hits}</span></div>
+      <div class="reason" style="color:var(--con)">${esc(r.contrarian)}</div>
+      ${(r.traps || []).map(t => `<div class="reason" style="color:var(--warn)">⚠ ${esc(t)}</div>`).join("")}</div>`).join("")
+    || `<div class="empty">No contrarian spots right now.</div>`;
+}
+renderGames(); renderPanels(); renderRows();
 </script></body></html>"""
 
 
