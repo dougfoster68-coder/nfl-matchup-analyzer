@@ -1018,9 +1018,6 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
   <a href="top5/" style="font-weight:700">Share the Top 5 →</a></div>
 <section class="top5" id="top5"></section>
 
-<h2>Gibbs Watch</h2>
-<section id="gibbs"></section>
-
 <h2>This week's games</h2>
 <section class="games" id="games"></section>
 
@@ -1313,7 +1310,7 @@ function countUp() {
     requestAnimationFrame(step);
   });
 }
-renderBank(); renderTicker(); renderTop5(); renderGibbs(); renderGames(); renderParlays(); renderPanels(); renderRows(); countUp();
+renderBank(); renderTicker(); renderTop5(); renderGames(); renderParlays(); renderPanels(); renderRows(); countUp();
 </script></body></html>"""
 
 
