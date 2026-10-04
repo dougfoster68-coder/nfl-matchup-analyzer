@@ -1528,7 +1528,7 @@ function renderGradeTracker() {
   const liveN = Object.values(G.week).reduce((a, x) => a + x.live, 0);
   document.getElementById("gtlead").innerHTML = `How each letter grade is doing in week ${G.week_no}, graded live as games are played
     ${liveN ? `· <span class="live" style="color:var(--bad)">LIVE</span> ${liveN} picks in progress` : ""}. Green bar = hit, red = miss,
-    blue = still live. Break-even at -110 is 52.4%. Season includes ${G.backtest_weeks.length ? "backtested weeks " + G.backtest_weeks.join(", ") + " and " : ""}live weeks.`;
+    blue = still live. Break-even at -110 is 52.4%. Season and week-by-week records start from week 1.`;
   const label = {A: "strong", B: "good", C: "lean", D: "pass"};
   document.getElementById("gtrack").innerHTML = "ABCD".split("").map(g => {
     const w = G.week[g], s = G.season[g], tot = Math.max(1, w.w + w.l + w.live);
@@ -1537,7 +1537,8 @@ function renderGradeTracker() {
       <div class="pct ${p == null ? "" : p >= 0.524 ? "pos" : "neg"}">${pct(w.w, w.l)}</div>
       <div class="rec"><b>${w.w}-${w.l}</b> this week${w.live ? ` · ${w.live} live` : ""}${w.pre ? ` · ${w.pre} to play` : ""}</div>
       <div class="hb"><i class="w" style="width:${100 * w.w / tot}%"></i><i class="l" style="width:${100 * w.l / tot}%"></i><i class="v" style="width:${100 * w.live / tot}%"></i></div>
-      <div class="sea">Season: ${s.w}-${s.l} (${pct(s.w, s.l)})</div></div>`;
+      <div class="sea">Season: ${s.w}-${s.l} (${pct(s.w, s.l)})</div>
+      <div class="sea">${(G.by_week || []).map(x => `Wk ${x.week}: <b>${pct(x[g][0], x[g][1])}</b>`).join(" · ")}</div></div>`;
   }).join("");
 }
 function renderSim() {
@@ -1788,18 +1789,24 @@ def grade_tracker(snap_dir: Path, season: int, week: int, live_props: list, stat
             key = {"win": "w", "loss": "l", "live": "live"}.get(st, "pre" if st == "pre" else None)
             if key:
                 wk[p["grade"]][key] += 1
-    season_t, backtest_weeks = blank(), []
+    season_t, backtest_weeks, by_week = blank(), [], {}
     for f in sorted(snap_dir.glob(f"{season}-w*.json")):
         snap = json.loads(f.read_text(encoding="utf-8"))
+        if snap["week"] > week:
+            continue
         if snap.get("backtest"):
             backtest_weeks.append(snap["week"])
         graded = grade_snapshot(snap, stats, sched, live if snap["week"] == week else None)
+        wk_t = {g: [0, 0] for g in "ABCD"}
         for p in graded:
             if p.get("traps") or p.get("grade") not in season_t:
                 continue
             if p["result"] in ("win", "loss"):
                 season_t[p["grade"]]["w" if p["result"] == "win" else "l"] += 1
-    return {"week": wk, "season": season_t, "backtest_weeks": backtest_weeks, "week_no": week}
+                wk_t[p["grade"]][0 if p["result"] == "win" else 1] += 1
+        by_week[snap["week"]] = wk_t
+    return {"week": wk, "season": season_t, "backtest_weeks": backtest_weeks, "week_no": week,
+            "by_week": [{"week": w_, **{g: v for g, v in t.items()}} for w_, t in sorted(by_week.items())]}
 
 
 def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | None, bank=None, feature=None,
