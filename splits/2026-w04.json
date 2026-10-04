@@ -1,0 +1,132 @@
+{
+ "season": 2026,
+ "week": 4,
+ "source": "https://www.scoresandodds.com/nfl/consensus-picks",
+ "games": {
+  "DEN@SF": {
+   "kickoff_utc": "2026-10-04T20:25:00Z",
+   "spread": [
+    {
+     "at": "2026-10-04T20:15+00:00",
+     "line": 3.0,
+     "bets_a": 43,
+     "bets_b": 57,
+     "money_a": 38,
+     "money_b": 62
+    }
+   ],
+   "total": [
+    {
+     "at": "2026-10-04T20:15+00:00",
+     "line": 48.5,
+     "bets_a": 54,
+     "bets_b": 46,
+     "money_a": 59,
+     "money_b": 41
+    }
+   ]
+  },
+  "KC@LV": {
+   "kickoff_utc": "2026-10-04T20:25:00Z",
+   "spread": [
+    {
+     "at": "2026-10-04T20:15+00:00",
+     "line": -5.5,
+     "bets_a": 54,
+     "bets_b": 46,
+     "money_a": 58,
+     "money_b": 42
+    }
+   ],
+   "total": [
+    {
+     "at": "2026-10-04T20:15+00:00",
+     "line": 47.5,
+     "bets_a": 54,
+     "bets_b": 46,
+     "money_a": 55,
+     "money_b": 45
+    }
+   ]
+  },
+  "LAC@SEA": {
+   "kickoff_utc": "2026-10-04T20:25:00Z",
+   "spread": [
+    {
+     "at": "2026-10-04T20:15+00:00",
+     "line": 7.0,
+     "bets_a": 43,
+     "bets_b": 57,
+     "money_a": 45,
+     "money_b": 55
+    }
+   ],
+   "total": [
+    {
+     "at": "2026-10-04T20:15+00:00",
+     "line": 42.5,
+     "bets_a": 59,
+     "bets_b": 41,
+     "money_a": 58,
+     "money_b": 42
+    }
+   ]
+  },
+  "DET@CAR": {
+   "kickoff_utc": "2026-10-05T00:20:00Z",
+   "spread": [
+    {
+     "at": "2026-10-04T20:15+00:00",
+     "line": -3.5,
+     "bets_a": 62,
+     "bets_b": 38,
+     "money_a": 66,
+     "money_b": 34
+    }
+   ],
+   "total": [
+    {
+     "at": "2026-10-04T20:15+00:00",
+     "line": 51.5,
+     "bets_a": 64,
+     "bets_b": 36,
+     "money_a": 76,
+     "money_b": 24
+    }
+   ]
+  },
+  "ATL@NO": {
+   "kickoff_utc": "2026-10-06T00:15:00Z",
+   "moneyline": [
+    {
+     "at": "2026-10-04T20:15+00:00",
+     "line": null,
+     "bets_a": 28,
+     "bets_b": 72,
+     "money_a": 41,
+     "money_b": 59
+    }
+   ],
+   "spread": [
+    {
+     "at": "2026-10-04T20:15+00:00",
+     "line": 1.5,
+     "bets_a": 56,
+     "bets_b": 44,
+     "money_a": 73,
+     "money_b": 27
+    }
+   ],
+   "total": [
+    {
+     "at": "2026-10-04T20:15+00:00",
+     "line": 47.5,
+     "bets_a": 46,
+     "bets_b": 54,
+     "money_a": 61,
+     "money_b": 39
+    }
+   ]
+  }
+ }
+}
