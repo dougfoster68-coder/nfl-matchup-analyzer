@@ -1105,7 +1105,10 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 <div class="lead"><span class="tag tag-con" style="margin-left:0">SUGGESTIONS ONLY · not in the paper bankroll</span>
 <a href="parlays/" style="font-weight:700">Share the parlays →</a> · Rebuilt every refresh from A/B-rated, trap-free props. Each rung adds the next-best leg.
 Payouts assume -110 per leg; hit chance discounts the model's confidence by about half, because models run hot.</div>
-<div class="bar"><label><input type="checkbox" id="onepergame"> One leg per game</label></div>
+<div class="bar"><label style="font-weight:700;color:var(--ink)">Bet amount
+  <select id="plstake"><option>5</option><option selected>10</option><option>20</option><option>25</option><option>50</option>
+  <option>100</option><option>250</option><option>500</option></select></label>
+  <label><input type="checkbox" id="onepergame"> One leg per game</label></div>
 <h3 id="uphead" style="font:700 18px/1.2 'Barlow Condensed',sans-serif;letter-spacing:.03em;text-transform:uppercase;margin:6px 0 8px">
   Upcoming games — tap + to add legs</h3>
 <section class="games" id="upgames" style="margin-bottom:16px"></section>
@@ -1548,12 +1551,22 @@ function renderParlays() {
     out += `<div class="pl-row"><div class="pl-n">${n}-LEG<small>parlay</small></div>
       <div class="pl-legs">${L.map((r, i) => `<div class="${i === n - 1 ? "new" : ""}"><span class="pick ${r.pick.split(" ")[0]}">${r.pick}</span>
         ${esc(r.player)} <span class="pmeta">${STAT[r.stat]} · ${r.team} vs ${r.opp} · ${r.grade}</span>${r.fill ? `<span class="tag tag-trap">${r.fill}</span>` : ""}</div>`).join("")}</div>
-      <div class="pl-pay"><div class="odds">${amer(dec)}</div><div class="pmeta">$10 pays $${(10 * dec).toFixed(2)}</div>
+      <div class="pl-pay"><div class="odds">${amer(dec)}</div><div class="pmeta">${money(betAmt())} pays <b>${money(betAmt() * dec)}</b></div>
         <div class="pmeta">~${Math.round(p * 100)}% est. hit</div></div></div>`;
   }
   document.getElementById("ladder").innerHTML = out || `<div class="empty">Not enough A/B-rated, trap-free legs yet.</div>`;
 }
 document.getElementById("onepergame").addEventListener("input", renderParlays);
+function betAmt() { const v = Number(document.getElementById("plstake").value); return v > 0 ? v : 10; }
+(function initStake() {  // remember the chosen amount in this browser; builder and slip share it
+  let v = null; try { v = localStorage.getItem("tt-slip-stake"); } catch (e) {}
+  const sel = document.getElementById("plstake");
+  if (v && [...sel.options].some(o => o.value === v)) sel.value = v;
+  sel.addEventListener("change", () => {
+    try { localStorage.setItem("tt-slip-stake", sel.value); } catch (e) {}
+    renderParlays(); if (typeof renderSlip === "function") renderSlip();
+  });
+})();
 const FEATURE = __FEATURE__;
 function renderSpecialTicker() {
   const wk = Math.max(0, ...(BANK.bets || []).map(b => b.week));
@@ -1728,13 +1741,13 @@ function renderSlip() {
           (${o.odds > 0 ? "+" : ""}${o.odds}${o.alt ? " est" : ""})</option>`).join("")}</select>
         <span class="pmeta">proj ${r.proj} · ~${Math.round(100 * legProb(r, c.side, c.line))}%</span> ${status}</div>${moved}</div>`;
   }).join("");
-  const stake = Number(localStorage.getItem("tt-slip-stake") || 10) || 10;
+  const stake = betAmt();
   el.innerHTML = `<div class="sh"><b>Hypothetical slip</b><span class="pmeta">${SLIP.length} leg${SLIP.length > 1 ? "s" : ""}</span>
       <button class="x" data-clear title="Clear all" style="font-size:12px">Clear all</button></div>
     ${legs}
     <div class="tot"><div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
       <span class="big">${SLIP.length > 1 ? amOf(dec) : (SLIP.length ? amOf(dec) : "")}</span>
-      <span>Stake $<input id="slipstake" type="number" min="1" step="1" value="${stake}" style="width:80px"></span>
+      <span>Bet <b>${money(stake)}</b> <span class="pmeta">(change with the Bet amount dropdown above)</span></span>
       <span>pays <b>${money(stake * dec)}</b></span></div>
       <div class="pmeta" style="margin-top:6px">~${(100 * p).toFixed(p < 0.1 ? 1 : 0)}% est. hit chance (model, discounted). Posted lines priced at -110 —
       the free DraftKings feed has live lines but not prices; alt prices are estimates. Lines refresh every ~15 min. Not a bet: nothing here
@@ -1752,7 +1765,7 @@ document.getElementById("slip").addEventListener("change", e => {
   if (e.target.dataset.pick !== undefined) {
     const i = Number(e.target.dataset.pick), r = rowById[SLIP[i].k], o = legChoices(r)[Number(e.target.value)];
     Object.assign(SLIP[i], {side: o.side, line: o.line, alt: o.alt, odds: o.odds}); saveSlip(); renderSlip();
-  } else if (e.target.id === "slipstake") { try { localStorage.setItem("tt-slip-stake", e.target.value); } catch (x) {} renderSlip(); }
+  }
 });
 renderBank(); renderSpecialTicker(); renderGradeTracker(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp(); paceTickers(45); syncAddButtons(); renderSlip(); document.getElementById("propcount").textContent = ROWS.length;
 </script></body></html>"""
