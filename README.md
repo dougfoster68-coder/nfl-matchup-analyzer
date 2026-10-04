@@ -38,6 +38,23 @@ open in your browser and it stays current.
 Other line sources: `--lines lines_template.csv` uses your own lines, and setting
 `$env:ODDS_API_KEY` uses consensus lines from https://the-odds-api.com.
 
+## Paper bankroll
+
+A $1,000 fake-money account tracked in `bets.json` and shown on the dashboard.
+
+- **Automatic picks** (`autobet`): on Thursdays, in the 3 hours before kickoff, the GitHub Action
+  places $200 of paper bets on that night's game. It's run once per game.
+  - Only A/B-rated props with no trap flags qualify, at most 4 picks.
+  - About 80% of the $200 goes to straight bets weighted by rating, and 20% to a 2-leg parlay of the top two.
+  - If nothing qualifies, it passes and bets nothing.
+- **Grading**: every refresh grades bets against final box scores. A player who doesn't play voids the leg.
+- **Manual bets**:
+  ```
+  python nfl_matchup.py bet --stake 50 --leg "Juwan Johnson|receiving_yards|over|40.5"
+  python nfl_matchup.py bankroll
+  ```
+  Repeat `--leg` to make a parlay. Run `git pull` first, because the Action commits bets too.
+
 ## How the math works
 
 - **Defense rank**: 1 = allows the fewest yards to that position, 32 = allows the most.

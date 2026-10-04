@@ -548,7 +548,7 @@ def build_week(args, stats, sched, season):
                         proj = avg * factor
                         std = vals.std(ddof=0)
                         row = {"game": f"{g.away_team}@{g.home_team}", "kickoff": f"{g.gameday} {g.gametime}",
-                               "team": team, "opp": opp, "player": pr.player_display_name, "pos": pos,
+                               "team": team, "opp": opp, "player": pr.player_display_name, "player_id": pr.player_id, "pos": pos,
                                "stat": stat, "n": len(vals), "L10_avg": round(avg, 1),
                                "L10_med": round(vals.median(), 1), "def_rank": rank,
                                "matchup_pct": int(round((factor - 1) * 100)), "proj": round(proj, 1),
@@ -849,6 +849,14 @@ h2 { font-size:18px; margin:28px 0 10px }
 .k-good { background:var(--good-bg); color:var(--good) } .k-bad { background:var(--bad-bg); color:var(--bad) }
 .k-warn { background:var(--warn-bg); color:var(--warn) } .k-info { background:var(--info-bg); color:var(--info) }
 .cf { padding:8px 14px 12px }
+.strip { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px }
+.stat { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:10px 14px; min-width:120px }
+.stat .v { font-size:20px; font-weight:700; font-variant-numeric:tabular-nums }
+.stat .l { color:var(--mute); font-size:12px }
+.pos { color:var(--good) } .neg { color:var(--bad) }
+.res { font-weight:700; font-size:12px; padding:2px 8px; border-radius:99px }
+.res-win { background:var(--good-bg); color:var(--good) } .res-loss { background:var(--bad-bg); color:var(--bad) }
+.res-pending { background:var(--info-bg); color:var(--info) } .res-void, .res-push { background:var(--soft); color:var(--mute) }
 .tag { font-size:10.5px; font-weight:700; letter-spacing:.04em; padding:1px 6px; border-radius:5px; margin-left:4px; vertical-align:1px }
 .tag-trap { background:var(--warn-bg); color:var(--warn) } .tag-con { background:var(--con-bg); color:var(--con) }
 .k-con { background:var(--con-bg); color:var(--con) }
@@ -881,6 +889,7 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
   <div class="legend"><span><span class="g gA">A</span> strong</span><span><span class="g gB">B</span> good</span>
   <span><span class="g gC">C</span> lean</span><span><span class="g gD">D</span> pass</span>
   <span>Rating = model projection vs line + hit rate + last 3 games, penalized for injury/role red flags.</span></div>
+  <div class="strip" id="bankstrip"></div>
 </header>
 
 <h2>This week's games</h2>
@@ -896,6 +905,11 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
     and the public's well-known lean toward overs on popular players.</div>
     <div id="contra"></div></section>
 </div>
+
+<h2 id="bank">Paper bankroll — Claude's picks</h2>
+<div class="sub" style="margin-bottom:10px">Fake money, real tracking. Started with $1,000. Bets are placed automatically from A/B-rated,
+trap-free props and graded against final box scores (a player who doesn't play voids the leg). Odds assumed -110 per leg.</div>
+<div class="panel" id="bankpanel"></div>
 
 <h2 id="all">All player props</h2>
 <div class="bar">
@@ -1037,11 +1051,43 @@ function renderPanels() {
       ${(r.traps || []).map(t => `<div class="reason" style="color:var(--warn)">⚠ ${esc(t)}</div>`).join("")}</div>`).join("")
     || `<div class="empty">No contrarian spots right now.</div>`;
 }
-renderGames(); renderPanels(); renderRows();
+const BANK = __BANK__;
+const money = v => (v < 0 ? "-$" : "$") + Math.abs(v).toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+function renderBank() {
+  const s = BANK.summary; if (!s) return;
+  const pl = s.profit, roi = s.roi == null ? "—" : (s.roi * 100).toFixed(1) + "%";
+  document.getElementById("bankstrip").innerHTML = `
+    <a class="stat" href="#bank" style="text-decoration:none;color:inherit"><div class="v">${money(s.balance)}</div><div class="l">Paper bankroll</div></a>
+    <div class="stat"><div class="v ${pl > 0 ? "pos" : pl < 0 ? "neg" : ""}">${pl >= 0 ? "+" : ""}${money(pl)}</div><div class="l">Profit / loss</div></div>
+    <div class="stat"><div class="v">${s.wins}-${s.losses}${s.voids ? "-" + s.voids : ""}</div><div class="l">Record · ROI ${roi}</div></div>
+    <div class="stat"><div class="v">${money(s.at_risk)}</div><div class="l">Open bets</div></div>`;
+  let chart = "";
+  if (s.history.length) {
+    const pts = [s.start].concat(s.history.map(h => h.balance)), W = 600, H = 120;
+    const lo = Math.min(...pts), hi = Math.max(...pts), span = Math.max(hi - lo, 1);
+    const xy = pts.map((v, i) => `${(i / Math.max(pts.length - 1, 1)) * (W - 10) + 5},${H - 8 - ((v - lo) / span) * (H - 16)}`).join(" ");
+    const y0 = H - 8 - ((s.start - lo) / span) * (H - 16);
+    chart = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:${W}px;height:auto;margin:10px 0">
+      <line x1="0" x2="${W}" y1="${y0}" y2="${y0}" stroke="var(--line)" stroke-dasharray="4 3"/>
+      <polyline points="${xy}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round"/></svg>`;
+  }
+  const bets = BANK.bets || [];
+  const toWin = b => b.stake * (b.odds > 0 ? b.odds / 100 : 100 / -b.odds);
+  const rows = bets.map(b => `<tr><td>W${b.week}<div class="pmeta">${b.game}</div></td>
+      <td>${b.legs.map(l => `<div><b>${esc(l.player)}</b> ${l.side.toUpperCase()} ${l.line} <span class="pmeta">${STAT[l.stat]}${l.actual != null ? " · actual " + l.actual : ""}</span>
+        <span class="res res-${l.result}">${l.result}</span></div>`).join("")}<div class="pmeta">${esc(b.note || "")}</div></td>
+      <td>${b.kind}</td><td class="n">${money(b.stake)}</td><td class="n">${b.odds > 0 ? "+" : ""}${b.odds}</td>
+      <td><span class="res res-${b.result}">${b.result}</span></td>
+      <td class="n ${b.profit > 0 ? "pos" : b.profit < 0 ? "neg" : ""}">${b.result === "pending" ? "to win " + money(toWin(b)) : (b.profit >= 0 ? "+" : "") + money(b.profit)}</td></tr>`).join("");
+  document.getElementById("bankpanel").innerHTML = chart + (bets.length
+    ? `<div style="overflow-x:auto"><table style="min-width:760px"><thead><tr><th>Week</th><th>Bet</th><th>Type</th><th>Stake</th><th>Odds</th><th>Result</th><th>P/L</th></tr></thead><tbody>${rows}</tbody></table></div>`
+    : `<div class="empty">No bets yet. First picks go in before Thursday Night Football.</div>`);
+}
+renderBank(); renderGames(); renderPanels(); renderRows();
 </script></body></html>"""
 
 
-def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | None):
+def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | None, bank=None):
     import html
     import json
 
@@ -1076,8 +1122,232 @@ def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | 
             .replace("__HITPCT__", f"{args.hit_rate:.0%}")
             .replace("__HIT__", str(args.hit_rate))
             .replace("__GAMES__", json.dumps(games_json))
+            .replace("__BANK__", json.dumps(bank or {}, default=str).replace("</", "<\\/"))
             .replace("__ROWS__", json.dumps(data, default=str).replace("</", "<\\/")))
     path.write_text(page, encoding="utf-8")
+
+
+# ----------------------------------------------------------------------------
+# Paper bankroll: ledger, auto-grading, and Claude's automatic Thursday bets
+# ----------------------------------------------------------------------------
+
+LEDGER = Path(__file__).parent / "bets.json"
+DEFAULT_ODDS = -110  # ESPN's feed has lines but no prices; assume standard juice
+
+
+def load_ledger() -> dict:
+    import json
+    if LEDGER.exists():
+        return json.loads(LEDGER.read_text(encoding="utf-8"))
+    return {"start_bankroll": 1000, "bets": []}
+
+
+def save_ledger(ledger: dict):
+    import json
+    LEDGER.write_text(json.dumps(ledger, indent=2) + "\n", encoding="utf-8")
+
+
+def american_to_decimal(odds: int) -> float:
+    return 1 + (odds / 100 if odds > 0 else 100 / -odds)
+
+
+def decimal_to_american(dec: float) -> int:
+    return int(round((dec - 1) * 100)) if dec >= 2 else int(round(-100 / (dec - 1)))
+
+
+def grade_ledger(ledger: dict, stats: pd.DataFrame, sched: pd.DataFrame) -> list:
+    """Grade every bet against final box scores. Returns bets with result/profit filled in.
+    A leg whose player didn't play is void (as sportsbooks do); a parlay pays on its live legs."""
+    finals = sched[sched["result"].notna()]
+    graded = []
+    for bet in ledger["bets"]:
+        legs, dec, states = [], 1.0, []
+        for leg in bet["legs"]:
+            g = finals[(finals["season"] == bet["season"]) & (finals["week"] == bet["week"]) &
+                       ((finals["home_team"] == leg["team"]) | (finals["away_team"] == leg["team"]))]
+            leg = dict(leg)
+            if g.empty:
+                leg["result"], leg["actual"] = "pending", None
+            else:
+                st = stats[(stats["player_id"] == leg["player_id"]) & (stats["season"] == bet["season"]) &
+                           (stats["week"] == bet["week"])]
+                if st.empty:
+                    leg["result"], leg["actual"] = "void", None
+                else:
+                    actual = float(st.iloc[0][leg["stat"]])
+                    leg["actual"] = actual
+                    if actual == leg["line"]:
+                        leg["result"] = "push"
+                    else:
+                        won = actual > leg["line"] if leg["side"] == "over" else actual < leg["line"]
+                        leg["result"] = "win" if won else "loss"
+            if leg["result"] == "win":
+                dec *= american_to_decimal(leg.get("odds", DEFAULT_ODDS))
+            states.append(leg["result"])
+            legs.append(leg)
+        b = dict(bet, legs=legs)
+        if "loss" in states:
+            b["result"], b["profit"] = "loss", -bet["stake"]
+        elif "pending" in states:
+            b["result"], b["profit"] = "pending", 0.0
+        elif "win" in states:
+            b["result"], b["profit"] = "win", round(bet["stake"] * (dec - 1), 2)
+        else:  # all legs void/push
+            b["result"], b["profit"] = "void", 0.0
+        graded.append(b)
+    return graded
+
+
+def bankroll_summary(ledger: dict, graded: list) -> dict:
+    graded = [b for b in graded if b["kind"] != "none"]
+    settled = [b for b in graded if b["result"] in ("win", "loss", "void")]
+    pending = [b for b in graded if b["result"] == "pending"]
+    profit = sum(b["profit"] for b in settled)
+    risked = sum(b["stake"] for b in settled if b["result"] != "void")
+    history, bal = [], ledger["start_bankroll"]
+    for b in sorted(settled, key=lambda x: x["placed_at"]):
+        bal += b["profit"]
+        history.append({"id": b["id"], "balance": round(bal, 2)})
+    return {
+        "start": ledger["start_bankroll"],
+        "balance": round(ledger["start_bankroll"] + profit, 2),
+        "at_risk": round(sum(b["stake"] for b in pending), 2),
+        "available": round(ledger["start_bankroll"] + profit - sum(b["stake"] for b in pending), 2),
+        "wins": sum(b["result"] == "win" for b in settled),
+        "losses": sum(b["result"] == "loss" for b in settled),
+        "voids": sum(b["result"] == "void" for b in settled),
+        "profit": round(profit, 2),
+        "roi": round(profit / risked, 4) if risked else None,
+        "history": history,
+    }
+
+
+def _bet_odds(legs) -> int:
+    dec = 1.0
+    for leg in legs:
+        dec *= american_to_decimal(leg.get("odds", DEFAULT_ODDS))
+    return decimal_to_american(dec)
+
+
+def _leg_from_row(r: dict) -> dict:
+    side, line = r["pick"].split()
+    return {"player": r["player"], "player_id": r["player_id"], "team": r["team"], "opp": r["opp"],
+            "stat": r["stat"], "side": side.lower(), "line": float(line), "odds": DEFAULT_ODDS,
+            "grade": r["grade"], "score": r["score"]}
+
+
+def choose_bets(rows: list, budget: float) -> list:
+    """Claude's staking plan. Only A/B-rated props with no trap flags qualify; best 4 at most.
+    ~80% of the budget goes to straight bets weighted by rating score (rounded to $5),
+    ~20% to a 2-leg parlay of the top two. No qualifiers -> no bet."""
+    picks = [r for r in rows if r.get("grade") in ("A", "B") and not r.get("traps")]
+    picks = sorted(picks, key=lambda r: r["score"], reverse=True)[:4]
+    if not picks:
+        return []
+    out = []
+    parlay_stake = round(budget * 0.2 / 5) * 5 if len(picks) >= 2 else 0
+    straight_budget = budget - parlay_stake if len(picks) >= 2 else budget / 2
+    total_score = sum(r["score"] for r in picks)
+    for r in picks:
+        stake = max(10, round(straight_budget * r["score"] / total_score / 5) * 5)
+        leg = _leg_from_row(r)
+        out.append({"kind": "straight", "stake": stake, "legs": [leg]})
+    if parlay_stake:
+        legs = [_leg_from_row(r) for r in picks[:2]]
+        out.append({"kind": "parlay", "stake": parlay_stake, "legs": legs})
+    return out
+
+
+def cmd_autobet(args, stats, sched, season):
+    """Place Claude's paper bets on today's games in a window before kickoff. Idempotent:
+    does nothing outside the window or if this game already has bets."""
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    now = datetime.now(ZoneInfo("America/New_York"))
+    if args.day and now.strftime("%A").lower() != args.day.lower() and not args.force:
+        print(f"autobet: today is {now:%A}, only betting on {args.day}s")
+        return
+    s = sched[(sched["season"] == season) & sched["result"].isna()]
+    today = s[s["gameday"] == now.strftime("%Y-%m-%d")]
+    if today.empty:
+        print("autobet: no games today")
+        return
+    ledger = load_ledger()
+    for g in today.itertuples():
+        key = f"{g.away_team}@{g.home_team}"
+        kick = datetime.strptime(f"{g.gameday} {g.gametime}", "%Y-%m-%d %H:%M").replace(
+            tzinfo=ZoneInfo("America/New_York"))
+        mins = (kick - now).total_seconds() / 60
+        if not args.force and not (15 <= mins <= args.window * 60):
+            print(f"autobet: {key} kicks off in {mins:.0f} min; outside betting window")
+            continue
+        if any(b["game"] == key and b["season"] == season and b["week"] == g.week for b in ledger["bets"]):
+            print(f"autobet: already bet {key}")
+            continue
+        wargs = argparse.Namespace(week=int(g.week), include_played=False, lines=None, refresh=True,
+                                   games=args.games, min_games=4, hit_rate=0.70)
+        _, _, rows, _ = build_week(wargs, stats, sched, season)
+        rows = [r for r in rows if r["game"] == key]
+        summary = bankroll_summary(ledger, grade_ledger(ledger, stats, sched))
+        budget = min(args.budget, max(summary["available"], 0))
+        picks = choose_bets(rows, budget)
+        if not picks:
+            ledger["bets"].append({"id": f"{season}-w{g.week}-{key}-nobet", "placed_at": now.isoformat(),
+                                   "season": season, "week": int(g.week), "game": key, "kind": "none",
+                                   "stake": 0, "legs": [], "note": "No A/B-rated, trap-free props — passed."})
+            print(f"autobet: {key} — nothing met the bar, passing")
+        for i, p in enumerate(picks, 1):
+            p.update({"id": f"{season}-w{g.week}-{key}-{i}", "placed_at": now.isoformat(), "season": season,
+                      "week": int(g.week), "game": key, "odds": _bet_odds(p["legs"]),
+                      "note": "Claude auto-pick"})
+            ledger["bets"].append(p)
+            desc = " + ".join(f"{l['player']} {l['side'].upper()} {l['line']:g} {l['stat']}" for l in p["legs"])
+            print(f"autobet: ${p['stake']} {p['kind']} ({p['odds']:+d}): {desc}")
+        save_ledger(ledger)
+
+
+def cmd_bet(args, stats, sched, season):
+    """Manually record a paper bet. --leg 'Player Name|stat|over|40.5' (repeat for a parlay)."""
+    from datetime import datetime
+    ledger = load_ledger()
+    legs = []
+    for spec in args.leg:
+        name, stat, side, line = [x.strip() for x in spec.split("|")]
+        pid = find_player(stats, name)
+        latest = stats[stats["player_id"] == pid].sort_values("game_order").iloc[-1]
+        legs.append({"player": latest["player_display_name"], "player_id": pid, "team": latest["team"],
+                     "stat": stat, "side": side.lower(), "line": float(line), "odds": args.odds})
+    g = next_game(sched, legs[0]["team"], season, args.week)
+    if g is None:
+        sys.exit("No upcoming game found for that player.")
+    home = legs[0]["team"] if g["home"] else g["opp"]
+    away = g["opp"] if g["home"] else legs[0]["team"]
+    for leg in legs:
+        leg["opp"] = g["opp"] if leg["team"] == legs[0]["team"] else legs[0]["team"]
+    bet = {"id": f"{season}-w{g['week']}-manual-{len(ledger['bets']) + 1}",
+           "placed_at": datetime.now().astimezone().isoformat(), "season": season, "week": g["week"],
+           "game": f"{away}@{home}", "kind": "parlay" if len(legs) > 1 else "straight",
+           "stake": args.stake, "legs": legs, "odds": _bet_odds(legs), "note": args.note or "manual"}
+    ledger["bets"].append(bet)
+    save_ledger(ledger)
+    print(f"Recorded ${args.stake} {bet['kind']} at {bet['odds']:+d}")
+
+
+def cmd_bankroll(args, stats, sched, season):
+    ledger = load_ledger()
+    graded = grade_ledger(ledger, stats, sched)
+    s = bankroll_summary(ledger, graded)
+    roi = f"{s['roi']:.1%}" if s["roi"] is not None else "n/a"
+    print(f"Balance ${s['balance']:,.2f} (start ${s['start']:,})  |  record {s['wins']}-{s['losses']}"
+          f"{'-' + str(s['voids']) + ' void' if s['voids'] else ''}  |  P/L ${s['profit']:+,.2f}  |  ROI {roi}"
+          f"  |  at risk ${s['at_risk']:,.2f}")
+    for b in graded:
+        if b["kind"] == "none":
+            continue
+        legs = " + ".join(f"{l['player']} {l['side']} {l['line']:g} ({l.get('actual', '-')}: {l['result']})"
+                          for l in b["legs"])
+        print(f"  W{b['week']} {b['game']:<9} ${b['stake']:>5} {b['kind']:<8} {b['odds']:+5d}  "
+              f"{b['result']:<7} {b['profit']:+8.2f}  {legs}")
 
 
 def cmd_week(args, stats, sched, season):
@@ -1094,7 +1364,11 @@ def cmd_week(args, stats, sched, season):
             pd.DataFrame(rows).to_csv(csv_path, index=False)
         # a published page re-polls every 5 min so viewers pick up new deploys
         refresh = int(args.live * 60) if args.live else (300 if args.html else None)
-        write_html(week, games, rows, source, args, html_path, refresh_secs=refresh)
+        ledger = load_ledger()
+        graded = grade_ledger(ledger, stats, sched)
+        bank = {"summary": bankroll_summary(ledger, graded),
+                "bets": [b for b in graded if b["kind"] != "none"][::-1]}
+        write_html(week, games, rows, source, args, html_path, refresh_secs=refresh, bank=bank)
         print(f"\nSaved {csv_path.name} and {html_path.name} in {out_dir}")
         if not args.live:
             return
@@ -1143,10 +1417,26 @@ def main():
     w.add_argument("--live", type=float, metavar="MIN", help="keep running, refresh lines every MIN minutes")
     w.add_argument("--html", help="write the dashboard to this path (e.g. site/index.html)")
 
+    ab = sub.add_parser("autobet", help="place Claude's paper bets on today's games (pre-kickoff window)")
+    ab.add_argument("--budget", type=float, default=200)
+    ab.add_argument("--day", default="Thursday", help="only bet on this weekday ('' = any day)")
+    ab.add_argument("--window", type=float, default=3.0, help="hours before kickoff to start betting")
+    ab.add_argument("--force", action="store_true", help="ignore day/time window (testing)")
+
+    bt = sub.add_parser("bet", help="record a manual paper bet")
+    bt.add_argument("--leg", action="append", required=True, help="'Player Name|stat|over|40.5' (repeat for parlay)")
+    bt.add_argument("--stake", type=float, required=True)
+    bt.add_argument("--odds", type=int, default=DEFAULT_ODDS, help="American odds per leg (default -110)")
+    bt.add_argument("--week", type=int)
+    bt.add_argument("--note")
+
+    sub.add_parser("bankroll", help="show paper bankroll and bet history")
+
     args = ap.parse_args()
     stats, sched, season = load_data(args.refresh)
     {"player": cmd_player, "slate": cmd_slate, "defense": cmd_defense,
-     "week": cmd_week}[args.cmd](args, stats, sched, season)
+     "week": cmd_week, "autobet": cmd_autobet, "bet": cmd_bet,
+     "bankroll": cmd_bankroll}[args.cmd](args, stats, sched, season)
 
 
 if __name__ == "__main__":

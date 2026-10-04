@@ -8,7 +8,7 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
+  contents: write   # autobet commits bets.json back to the repo
   pages: write
   id-token: write
 
@@ -35,6 +35,20 @@ jobs:
           path: cache
           key: nflverse-${{ github.run_id }}
           restore-keys: nflverse-
+
+      # Claude's paper bets: Thursdays, in the 3 hours before kickoff, once per game
+      - name: Place paper bets
+        run: python nfl_matchup.py autobet --budget 200 --day Thursday
+
+      - name: Save new bets
+        run: |
+          if ! git diff --quiet bets.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add bets.json
+            git commit -m "Paper bets placed $(TZ=America/New_York date '+%a %b %d %I:%M %p ET')"
+            git push
+          fi
 
       - name: Build dashboard
         run: python nfl_matchup.py week --html site/index.html
