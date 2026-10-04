@@ -1022,7 +1022,7 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 <section class="games" id="games"></section>
 
 <h2>Parlay builder</h2>
-<div class="lead">Rebuilt every refresh from A/B-rated, trap-free props. Each rung adds the next-best leg.
+<div class="lead"><a href="parlays/" style="font-weight:700">Share the parlays →</a> · Rebuilt every refresh from A/B-rated, trap-free props. Each rung adds the next-best leg.
 Payouts assume -110 per leg; hit chance discounts the model's confidence by about half, because models run hot.</div>
 <div class="bar"><label><input type="checkbox" id="onepergame"> One leg per game</label></div>
 <section class="ladder" id="ladder"></section>
@@ -2096,7 +2096,8 @@ h1 { margin:6px 0 4px; font:800 46px/0.95 "Barlow Condensed",sans-serif; letter-
 <div class="wrap">
 <section class="list">__PICKS__</section>
 <div class="actions"><button class="btn" id="share">Share these picks</button>
-<a class="btn alt" href="../">See every game &amp; rating →</a></div>
+<a class="btn alt" href="../">See every game &amp; rating →</a>
+<a class="btn alt" href="../top5/">Top 5</a><a class="btn alt" href="../parlays/">Parlays</a></div>
 <p class="fine">Ratings compare each player's last 10 games with the opponent defense's last 10 against the posted DraftKings line,
 then factor in how often the line has hit and recent form. Trap-flagged props are excluded. Lines move, so confirm at your
 sportsbook. For entertainment only, not betting advice. 21+. Gambling problem? Call 1-800-GAMBLER. A fan project, not affiliated
@@ -2158,6 +2159,64 @@ def write_top5(week, games, rows, path: Path):
     path.write_text(page, encoding="utf-8")
 
 
+def parlay_ladder(rows: list, max_legs: int = 7, per_game: int = 2) -> list:
+    """Same ladder as the dashboard: best A/B trap-free legs, one per player, max `per_game` per game."""
+    legs, count = [], {}
+    for r in sorted((r for r in rows if r.get("grade") in ("A", "B") and not r.get("traps")),
+                    key=lambda r: r["score"], reverse=True):
+        if r["player_id"] in {l["player_id"] for l in legs} or count.get(r["game"], 0) >= per_game:
+            continue
+        count[r["game"]] = count.get(r["game"], 0) + 1
+        legs.append(r)
+        if len(legs) == max_legs:
+            break
+    return legs
+
+
+def write_parlays(week, games, rows, path: Path):
+    import html as H
+    import json
+    stat_name = {"passing_yards": "pass yds", "rushing_yards": "rush yds", "receiving_yards": "rec yds"}
+    legs = parlay_ladder(rows)
+    leg_p = lambda r: 0.5 + (max(r["p_over"], 1 - r["p_over"]) - 0.5) * 0.45  # same discount as the dashboard
+    cards = ""
+    for n in range(2, len(legs) + 1):
+        dec = (1 + 100 / 110) ** n
+        p = math.prod(leg_p(r) for r in legs[:n])
+        items = "".join(
+            f"<div class='leg{' new' if i == n - 1 else ''}'><span class='{r['pick'].split()[0]}'><b>{r['pick']}</b></span> "
+            f"{H.escape(r['player'])} <span class='meta'>{stat_name[r['stat']]} · {r['team']} vs {r['opp']} · "
+            f"{r['grade']}</span></div>" for i, r in enumerate(legs[:n]))
+        cards += (f"<article class='pick rung' style='animation-delay:{n * 80}ms'><div class='rank'>{n}<small>legs</small></div>"
+                  f"<div><div class='odds'>{decimal_to_american(dec):+d}</div>{items}"
+                  f"<div class='meta pay'>$10 pays ${10 * dec:.2f} · ~{p:.0%} est. hit chance</div></div></article>")
+    if not cards:
+        cards = "<div class='empty'>Not enough A/B-rated, trap-free legs yet. Check back once more lines post.</div>"
+    desc = (f"{len(legs)}-leg ladder: " + " · ".join(f"{r['player']} {r['pick']} {stat_name[r['stat']]}" for r in legs)
+            if legs else "This week's NFL player prop parlay ladder.")
+    page = (TOP5_TEMPLATE
+            .replace("<title>Tids' Top 5 ·", "<title>Tids' Parlays ·")
+            .replace("Tids' Top 5 · NFL Week __WEEK__ player props", "Tids' Parlay Ladder · NFL Week __WEEK__")
+            .replace('content="Tids\' Top 5 · NFL Week __WEEK__"', 'content="Tids\' Parlay Ladder · NFL Week __WEEK__"')
+            .replace("<h1>Tids' Top 5</h1>", "<h1>Tids' Parlay Ladder</h1>")
+            .replace("The highest-rated player props on the board", "2- to 7-leg parlays built from the best A/B-rated, trap-free props")
+            .replace("Share these picks", "Share these parlays")
+            .replace("</style>", """.rung { align-items:start } .rank small { display:block; font:700 11px Inter,sans-serif; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--mute); -webkit-text-fill-color:var(--mute) }
+.odds { font:800 30px/1 "Barlow Condensed",sans-serif; color:var(--blue); margin-bottom:6px }
+.leg { padding:2px 0 } .leg.new b::after { content:"NEW"; font:700 9.5px/1 Inter,sans-serif; background:var(--blue);
+  color:#fff; padding:2px 5px; border-radius:4px; margin-left:6px; vertical-align:2px } .pay { margin-top:6px }
+</style>""")
+            .replace("__WEEK__", str(week)).replace("__DESC__", H.escape(desc))
+            .replace("__URL__", SITE_URL + "parlays/").replace("__UPDATED__", H.escape(_now_et()))
+            .replace("__PICKS__", cards)
+            .replace("__SHARETEXT__", json.dumps(f"Tids' Parlay Ladder, NFL Week {week}: " + desc).replace("</", "<\\/")))
+    page = page.replace("Ratings compare each player's", "Each rung adds the next-best leg (max 2 per game). Payouts assume "
+                        "-110 per leg; hit chance discounts the model's confidence by about half. Ratings compare each player's")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(page, encoding="utf-8")
+
+
 def cmd_week(args, stats, sched, season):
     out_dir = Path(__file__).parent
     while True:
@@ -2182,6 +2241,7 @@ def cmd_week(args, stats, sched, season):
                    feature=feature_player(stats, rows, season))
         if args.html:  # shareable Top 5 page next to the dashboard
             write_top5(week, games, rows, html_path.parent / "top5" / "index.html")
+            write_parlays(week, games, rows, html_path.parent / "parlays" / "index.html")
         print(f"\nSaved {csv_path.name} and {html_path.name} in {out_dir}")
         if not args.live:
             return
