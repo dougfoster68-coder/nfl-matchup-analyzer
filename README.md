@@ -108,6 +108,19 @@ python nfl_matchup.py splits --grade               # record of the big-bet side,
 python nfl_matchup.py splits --grade --week 4
 ```
 
+On the dashboard, each upcoming game's card shows the big-bet side for the spread, total and moneyline (% of bets vs % of money),
+tagged **SHARP** or **RLM** when it qualifies. The "Sharp money vs the public" panel lists every upcoming game line with a 10+ point
+money gap. Player props get a note when big money is on that game's total.
+
+## Live results
+
+While games are on, ESPN's live box scores grade everything on the fly:
+
+- **Our ratings:** the "Results as games finish" section and the started games' cards show each rated prop's actual yards vs the
+  line, marked Hit, Miss or Live, plus a running hit %.
+- **Paper bets:** open paper bets show at the top of the page, leg by leg, and the header shows **Live P/L**. The bankroll itself
+  still settles officially from the next-day box scores.
+
 ## How the math works
 
 - **Defense rank**: 1 = allows the fewest yards to that position, 32 = allows the most.

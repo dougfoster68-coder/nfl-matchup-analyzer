@@ -949,6 +949,19 @@ h2::before { content:""; width:6px; height:22px; background:var(--blue); border-
 .k-good { background:var(--good-bg); color:var(--good) } .k-bad { background:var(--bad-bg); color:var(--bad) }
 .k-warn { background:var(--warn-bg); color:var(--warn) } .k-info { background:var(--info-bg); color:var(--info) }
 .cf { padding:8px 14px 12px }
+.splits { margin-top:8px; display:grid; gap:5px }
+.sp { display:grid; grid-template-columns:62px 1fr auto; gap:8px; align-items:center; font-size:12px }
+.sp .mk { color:var(--mute); font-weight:600; text-transform:uppercase; letter-spacing:.04em; font-size:10.5px }
+.sp .bars { display:grid; gap:2px }
+.sp .bar2 { height:6px; border-radius:3px; background:var(--soft); position:relative; overflow:hidden }
+.sp .bar2 > i { position:absolute; inset:0 auto 0 0; border-radius:3px; background:var(--silver) }
+.sp .bar2.money > i { background:var(--blue) }
+.sp .who { white-space:nowrap; color:var(--mute) } .sp .who b { color:var(--ink) }
+.sharp { font:800 10px/1 Inter,sans-serif; letter-spacing:.06em; padding:3px 6px; border-radius:4px; background:var(--con-bg);
+  color:var(--con); margin-left:4px; vertical-align:1px }
+.rlm { background:var(--warn-bg); color:var(--warn) }
+.spl-legend { font-size:11px; color:var(--mute) } .spl-legend i { display:inline-block; width:10px; height:6px; border-radius:2px;
+  margin:0 3px 0 8px; vertical-align:1px }
 .st { font:800 11px/1 Inter,sans-serif; letter-spacing:.06em; padding:4px 7px; border-radius:5px; text-transform:uppercase; white-space:nowrap }
 .st-win { background:var(--good-bg); color:var(--good) } .st-loss { background:var(--bad-bg); color:var(--bad) }
 .st-live { background:var(--info-bg); color:var(--info) } .st-void, .st-push { background:var(--soft); color:var(--mute) }
@@ -1029,6 +1042,8 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 </div></header>
 <div class="ticker" aria-label="Tids Ticker: top rated plays"><span class="tlabel">Tids Ticker</span><div class="tscroll"><div class="tk" id="ticker"></div></div></div>
 <div class="wrap">
+  <section id="livebets" hidden><h2>Paper bets — live</h2><div class="lead" id="livebetsum"></div>
+    <div class="lres" id="livebetlist"></div></section>
   <div class="legend"><span><span class="g gA">A</span> strong</span><span><span class="g gB">B</span> good</span>
   <span><span class="g gC">C</span> lean</span><span><span class="g gD">D</span> pass</span>
   <span>Rating = model projection vs line + hit rate + last 3 games, penalized for injury/role red flags.</span></div>
@@ -1059,10 +1074,16 @@ Payouts assume -110 per leg; hit chance discounts the model's confidence by abou
     <div class="why">Props that look tempting on the surface (high hit rate or big model edge) but carry a red flag.</div>
     <div id="traps"></div></section>
   <section class="panel"><h3>↔ Contrarian plays</h3>
-    <div class="why">Going against public money. Free public-betting % isn't available, so this reads line movement
-    and the public's well-known lean toward overs on popular players.</div>
+    <div class="why">Going against public money. Sportsbooks don't publish bet splits for player props, so this reads prop
+    line movement and the public's lean toward overs on popular players. Real game-line splits are in the panel below.</div>
     <div id="contra"></div></section>
 </div>
+
+<section class="panel" style="margin-top:14px"><h3>💰 Sharp money vs the public, game lines</h3>
+  <div class="why">Real splits from ScoresAndOdds, pooled across sportsbooks. A <b>sharp lean</b> means a side has 10+ points more of
+  the money than of the bets and an average bet at least 2× bigger. That's fewer, bigger bettors, often pros. <b>RLM</b> (reverse
+  line movement) means the line moved toward that side even though most tickets are on the other side.</div>
+  <div id="sharp"></div></section>
 
 <h2 id="bank">Paper bankroll — Claude's picks</h2>
 <div class="sub" style="margin-bottom:10px">Fake money, real tracking. Started with $1,000. Each Thursday and Monday night game gets $200 spread
@@ -1108,10 +1129,19 @@ function kind(note, pick) {
   }
   return note.k;
 }
+const GSPLIT = Object.fromEntries((GAMES.list || []).map(g => [g.key, g.splits || {}]));
+function totalLean(r) {  // big money on the game total pushes yardage overs/unders in that game
+  const t = (GSPLIT[r.game] || {}).total;
+  if (!t || t.gap < 10 || !r.pick) return null;
+  const over = t.side === "a", pickOver = r.pick.startsWith("OVER");
+  return {t: `Big money on the game ${over ? "Over" : "Under"} ${t.line ?? ""} (${t["money_" + t.side]}% of $ on ${t["bets_" + t.side]}% of bets)`,
+          k: over === pickOver ? "good" : "bad"};
+}
 function chips(r, max) {
   const order = {warn:0, good:1, bad:2, info:3};
   const ns = (r.notes || []).map(n => ({t:n.t, k:kind(n, r.pick)})).sort((a, b) => order[a.k] - order[b.k]);
   const extra = (r.traps || []).map(t => ({t:"Trap: " + t, k:"warn"}));
+  const tl = totalLean(r); if (tl) extra.push(tl);
   if (r.contrarian) extra.push({t:r.contrarian, k:"con"});
   const all = extra.concat(ns);
   return `<div class="chips">${all.slice(0, max ?? 99).map(n => `<span class="chip k-${n.k}">${esc(n.t)}</span>`).join("")}</div>`;
@@ -1183,6 +1213,35 @@ function renderLive() {
       <div class="plays">${top.length ? top.map(liveRow).join("") : `<div class="empty">No rated props for this game.</div>`}</div></article>`;
   }).join("");
 }
+function splitBlock(g) {
+  const sp = g.splits || {}, names = {spread: "Spread", total: "Total", moneyline: "Money"};
+  const rows = ["spread", "total", "moneyline"].filter(m => sp[m]).map(m => {
+    const x = sp[m], side = x.side, lbl = esc(x.side_name) + (m === "spread" && x.line != null
+      ? " " + (side === "a" ? (x.line > 0 ? "+" : "") + x.line : (x.line < 0 ? "+" : "") + (-x.line)) : m === "total" && x.line != null ? " " + x.line : "");
+    return `<div class="sp"><span class="mk">${names[m]}</span>
+      <div class="bars" title="${esc(x.side_name)}: ${x["bets_" + side]}% of bets, ${x["money_" + side]}% of money">
+        <div class="bar2"><i style="width:${x["bets_" + side]}%"></i></div><div class="bar2 money"><i style="width:${x["money_" + side]}%"></i></div></div>
+      <span class="who"><b>${lbl}</b> ${x["bets_" + side]}%→${x["money_" + side]}%${x.sharp ? '<span class="sharp">SHARP</span>' : ""}${x.rlm ? '<span class="sharp rlm">RLM</span>' : ""}</span></div>`;
+  });
+  return rows.length ? `<div class="splits">${rows.join("")}<div class="spl-legend">Big-bet side:<i style="background:var(--silver)"></i>% of bets
+    <i style="background:var(--blue)"></i>% of money</div></div>` : "";
+}
+function renderSharp() {
+  const items = [];
+  for (const g of GAMES.list.filter(g => !LG[g.key])) for (const [m, x] of Object.entries(g.splits || {}))
+    if (x.sharp || x.rlm || x.gap >= 10) items.push({g, m, x});
+  items.sort((a, b) => b.x.gap - a.x.gap);
+  document.getElementById("sharp").innerHTML = items.map(({g, m, x}) => {
+    const side = x.side, line = x.line == null ? "" : m === "spread"
+      ? " " + (side === "a" ? (x.line > 0 ? "+" : "") + x.line : (x.line < 0 ? "+" : "") + (-x.line)) : m === "total" ? " " + x.line : "";
+    const moved = x.first_line != null && x.line != null && x.first_line !== x.line ? ` · line ${x.first_line} → ${x.line}` : "";
+    return `<div class="item"><span class="pname">${esc(x.side_name)}${line}</span>
+      <span class="pmeta">${m} · ${g.away} @ ${g.home} · ${kick(g).replace("<br>", " ")}</span>
+      ${x.sharp ? '<span class="sharp">SHARP</span>' : ""}${x.rlm ? '<span class="sharp rlm">RLM</span>' : ""}
+      <div class="reason"><b>${x["bets_" + side]}%</b> of bets but <b>${x["money_" + side]}%</b> of the money
+        (+${x.gap} pts, avg bet ${x.ratio}× the other side)${moved}</div></div>`;
+  }).join("") || `<div class="empty">No sharp leans right now. Splits update every refresh until kickoff.</div>`;
+}
 function renderGames() {
   document.getElementById("games").innerHTML = GAMES.list.map(g => {
     if (LG[g.key]) {  // kicked off: show the score and how our top picks are doing
@@ -1202,7 +1261,7 @@ function renderGames() {
     const lions = g.away === "DET" || g.home === "DET";
     return `<article class="card${lions ? " lions" : ""}"><div class="ch">${lions ? '<span class="lionsbadge">Lions game</span>' : ""}
         <div class="teams">${logo(g.away)}${g.away} <span class="at">@</span> ${logo(g.home)}${g.home}<span class="kick">${kick(g)}</span></div>
-        <div class="vegas">${esc(g.vegas)}</div></div>
+        <div class="vegas">${esc(g.vegas)}</div>${splitBlock(g)}</div>
       <div class="plays">${plays}</div>
       <div class="cf"><button data-game="${g.key}">All ${ROWS.filter(r => r.game === g.key).length} props in this game →</button></div></article>`;
   }).join("");
@@ -1263,6 +1322,42 @@ function renderPanels() {
 }
 const BANK = __BANK__;
 const money = v => (v < 0 ? "-$" : "$") + Math.abs(v).toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+function liveTile() {
+  const lb = BANK.live || []; if (!lb.length) return "";
+  const done = lb.filter(b => b.profit != null), pl = done.reduce((a, b) => a + b.profit, 0);
+  const going = lb.filter(b => b.status === "live").length;
+  return `<a class="stat" href="#livebets" style="text-decoration:none;color:inherit">
+    <div class="v ${pl > 0 ? "pos" : pl < 0 ? "neg" : ""}">${done.length ? (pl >= 0 ? "+" : "") + money(pl) : "—"}</div>
+    <div class="l">${going ? '<span class="live" style="color:inherit">LIVE</span> ' : ""}Live P/L · ${done.length} decided, ${going} in play</div></a>`;
+}
+function renderLiveBets() {
+  const lb = BANK.live || []; if (!lb.length) return;
+  document.getElementById("livebets").hidden = false;
+  const done = lb.filter(b => b.profit != null), pl = done.reduce((a, b) => a + b.profit, 0);
+  const W = lb.filter(b => b.status === "win").length, L = lb.filter(b => b.status === "loss").length;
+  document.getElementById("livebetsum").innerHTML = `${lb.length} open paper bets · <b>${W} won, ${L} lost</b> so far ·
+    live P/L <b class="${pl > 0 ? "pos" : pl < 0 ? "neg" : ""}">${(pl >= 0 ? "+" : "") + money(pl)}</b>.
+    Graded live from ESPN box scores; the bankroll settles officially from next-day stats.`;
+  const label = {win: "Won ✓", loss: "Lost ✗", live: "Live", pre: "Not started", void: "Void", push: "Push"};
+  document.getElementById("livebetlist").innerHTML = lb.map(b => {
+    const toWin = b.stake * (b.odds > 0 ? b.odds / 100 : 100 / -b.odds);
+    const legs = b.legs.map(l => {
+      const pct = l.line > 0 ? Math.min(100, ((l.actual || 0) / l.line) * 100) : (l.actual > 0 ? 100 : 0);
+      return `<div class="lrow"><div><span class="pname">${esc(l.player)}</span>
+          <span class="pmeta">${STAT[l.stat]}${l.alt ? " · alt " + l.alt + " (est " + (l.odds > 0 ? "+" : "") + l.odds + ")" : ""}</span>
+          <div><span class="pick ${l.side.toUpperCase()}">${l.side.toUpperCase()} ${l.line}</span>
+            <span class="pmeta">· actual <b>${l.actual ?? (l.status === "pre" ? "—" : "DNP")}</b>${l.game_detail ? " · " + esc(l.game_detail) : ""}</span></div>
+          ${l.status === "pre" ? "" : `<div class="prog ${l.status}"><i style="width:${pct}%"></i></div>`}</div>
+        <span class="st st-${l.status === "pre" ? "void" : l.status}">${label[l.status]}</span></div>`;
+    }).join("");
+    const res = b.profit != null ? `<b class="${b.profit > 0 ? "pos" : b.profit < 0 ? "neg" : ""}">${(b.profit >= 0 ? "+" : "") + money(b.profit)}</b>`
+      : `to win ${money(toWin)}`;
+    return `<article class="card"><div class="ch"><div class="teams" style="font-size:15px">${money(b.stake)} ${b.kind}
+        <span class="pmeta" style="margin-left:6px">${b.odds > 0 ? "+" : ""}${b.odds} · ${esc(b.game.replace("@", " @ "))}</span>
+        <span class="kick"><span class="st st-${b.status === "pre" ? "void" : b.status}">${label[b.status]}</span><br>${res}</span></div></div>
+      <div class="plays">${legs}</div></article>`;
+  }).join("");
+}
 function renderBank() {
   const s = BANK.summary; if (!s) return;
   const pl = s.profit, roi = s.roi == null ? "—" : (s.roi * 100).toFixed(1) + "%";
@@ -1275,7 +1370,7 @@ function renderBank() {
     <div class="stat"><div class="v ${winPct == null ? "" : winPct >= 0.524 ? "pos" : "neg"}">${winPct == null ? "—" : (winPct * 100).toFixed(1) + "%"}</div>
       <div class="l">Win % · legs ${s.legs_won}-${s.legs_lost}${legPct == null ? "" : " (" + Math.round(legPct * 100) + "%)"}</div></div>
     <div class="stat"><div class="v">${s.wins}-${s.losses}${s.voids ? "-" + s.voids : ""}</div><div class="l">Record · ROI ${roi}</div></div>
-    <div class="stat"><div class="v">${money(s.at_risk)}</div><div class="l">Open bets</div></div>`;
+    <div class="stat"><div class="v">${money(s.at_risk)}</div><div class="l">Open bets</div></div>${liveTile()}`;
   let chart = "";
   if (s.history.length) {
     const pts = [s.start].concat(s.history.map(h => h.balance)), W = 600, H = 120;
@@ -1385,7 +1480,7 @@ function countUp() {
     requestAnimationFrame(step);
   });
 }
-renderBank(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderParlays(); renderPanels(); renderRows(); countUp();
+renderBank(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp();
 </script></body></html>"""
 
 
@@ -1467,6 +1562,55 @@ def fetch_live_box(season: int, week: int, refresh: bool):
     return games, box
 
 
+def _leg_live(leg: dict, games: dict, box: dict) -> dict:
+    """Live status of one paper-bet leg: win/loss once decided, 'live' in progress, 'pre' before kickoff."""
+    key = next((k for k, g in games.items() if leg["team"] in (g["away"], g["home"])), None)
+    out = {"game_detail": "", "actual": None}
+    if key is None:
+        return {**out, "status": "pre"}
+    g = games[key]
+    rec = box.get(leg["player_id"])
+    played = rec is not None and rec.get("_game") == key
+    actual = rec.get(leg["stat"], 0.0) if played else 0.0
+    final = g["state"] == "post"
+    over = leg["side"] == "over"
+    if final and not played:
+        status = "void"
+    elif final and actual == leg["line"]:
+        status = "push"
+    elif over:
+        status = "win" if actual > leg["line"] else ("loss" if final else "live")
+    else:
+        status = "loss" if actual > leg["line"] else ("win" if final else "live")
+    score = f"{g['away']} {g['away_score']} – {g['home']} {g['home_score']}"
+    return {"status": status, "actual": actual if played or not final else None,
+            "game_detail": f"{score} · {g['detail']}"}
+
+
+def live_bets(pending: list, games: dict, box: dict) -> list:
+    """Open paper bets with each leg graded against live box scores. A bet is decided as soon as
+    any leg loses or every live leg has won; voided legs drop out like a sportsbook would."""
+    out = []
+    for b in pending:
+        legs = [dict(l, **_leg_live(l, games, box)) for l in b["legs"]]
+        states = [l["status"] for l in legs]
+        dec = 1.0
+        for l in legs:
+            if l["status"] == "win":
+                dec *= american_to_decimal(l.get("odds", DEFAULT_ODDS))
+        if "loss" in states:
+            status, pl = "loss", -b["stake"]
+        elif all(s_ in ("win", "void", "push") for s_ in states) and "win" in states:
+            status, pl = "win", round(b["stake"] * (dec - 1), 2)
+        elif all(s_ in ("void", "push") for s_ in states):
+            status, pl = "void", 0.0
+        else:
+            status, pl = ("pre" if all(s_ == "pre" for s_ in states) else "live"), None
+        out.append({"id": b["id"], "game": b["game"], "kind": b["kind"], "stake": b["stake"], "odds": b["odds"],
+                    "legs": legs, "status": status, "profit": pl})
+    return out
+
+
 def live_results(snap: dict, games: dict, box: dict) -> list:
     """Grade each pre-kickoff rated prop against the live box score.
     win/loss as soon as it's decided (over clears the line; under gets passed), else 'live';
@@ -1498,7 +1642,7 @@ def live_results(snap: dict, games: dict, box: dict) -> list:
 
 
 def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | None, bank=None, feature=None,
-               live=None):
+               live=None, splits=None):
     import html
     import json
 
@@ -1526,8 +1670,10 @@ def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | 
             spread = f"{fav} -{pts:g}" if pts else "Pick'em"
             vegas = (f"{spread} · O/U {g.total_line:g} · Implied: {g.away_team} "
                      f"{g.total_line - home_tt:.1f}, {g.home_team} {home_tt:.1f}")
-        game_list.append({"key": f"{g.away_team}@{g.home_team}", "away": g.away_team, "home": g.home_team,
-                          "gameday": str(g.gameday), "gametime": str(g.gametime), "vegas": vegas})
+        key = f"{g.away_team}@{g.home_team}"
+        game_list.append({"key": key, "away": g.away_team, "home": g.home_team,
+                          "gameday": str(g.gameday), "gametime": str(g.gametime), "vegas": vegas,
+                          "splits": (splits or {}).get(key, {})})
     games_json = {"list": game_list, "logo": ESPN_LOGO_ABBR}
 
     meta = f'\n<meta http-equiv="refresh" content="{refresh_secs}">' if refresh_secs else ""
@@ -2256,6 +2402,42 @@ def _side_name(game: str, market: str, side: str) -> str:
     return away if side == "a" else home
 
 
+def load_week_splits(snap_dir: Path, season: int, week: int) -> dict:
+    """Latest splits per game and market for the dashboard: {game: {market: {...}}}.
+    Uses this week's saved captures (so lines/splits freeze at kickoff and keep their open-to-close
+    movement); falls back to a live read when nothing has been captured yet (e.g. local runs)."""
+    import json
+    path = snap_dir / f"{season}-w{week:02d}.json"
+    caps: dict = {}
+    if path.exists():
+        for game, g in json.loads(path.read_text(encoding="utf-8")).get("games", {}).items():
+            for m in MARKETS:
+                if g.get(m):
+                    caps.setdefault(game, {})[m] = (g[m][0], g[m][-1])
+    else:
+        try:
+            for r in fetch_splits():
+                cap = {k: r[k] for k in ("line", "bets_a", "bets_b", "money_a", "money_b")}
+                caps.setdefault(r["game"], {})[r["market"]] = (cap, cap)
+        except Exception as exc:
+            print(f"[warn] betting splits unavailable: {exc}", file=sys.stderr)
+    out: dict = {}
+    for game, markets in caps.items():
+        for m, (first, last) in markets.items():
+            sig = split_signal(last)
+            moved = None
+            if m != "moneyline" and last["line"] is not None and first["line"] is not None:
+                d = last["line"] - first["line"]
+                moved = d != 0 and ((d < 0) if m == "spread" else (d > 0)) == (sig["side"] == "a")
+            out.setdefault(game, {})[m] = {
+                **{k: last[k] for k in ("line", "bets_a", "bets_b", "money_a", "money_b")},
+                "first_line": first["line"], "side": sig["side"], "side_name": _side_name(game, m, sig["side"]),
+                "gap": sig["gap"], "ratio": sig["ratio"] if sig["ratio"] != float("inf") else 99,
+                "sharp": sig["gap"] >= 10 and sig["ratio"] >= 2,
+                "rlm": bool(moved and last[f"bets_{sig['side']}"] < 50)}
+    return out
+
+
 def cmd_splits(args, stats, sched, season):
     """Save a pre-kickoff splits capture for this week's games, or grade captured weeks."""
     import json
@@ -2571,17 +2753,19 @@ def cmd_week(args, stats, sched, season):
         graded = grade_ledger(ledger, stats, sched)
         bank = {"summary": bankroll_summary(ledger, graded),
                 "bets": [b for b in graded if b["kind"] != "none"][::-1]}
-        live = {}
+        splits_dir = (Path(args.snapshot_dir).parent if args.snapshot_dir else Path("data")) / "splits"
+        splits = load_week_splits(splits_dir, season, week)
+        live, lg, box = {}, {}, {}
+        try:
+            lg, box = fetch_live_box(season, week, args.refresh)
+        except Exception as exc:  # live scores are a bonus; never block the dashboard
+            print(f"[warn] live results unavailable: {exc}", file=sys.stderr)
         snap_path = Path(args.snapshot_dir or "data/snapshots") / f"{season}-w{week:02d}.json"
-        if snap_path.exists():
-            try:
-                lg, box = fetch_live_box(season, week, args.refresh)
-                snap = json.loads(snap_path.read_text(encoding="utf-8"))
-                live = {"games": lg, "props": live_results(snap, lg, box)}
-            except Exception as exc:  # live scores are a bonus; never block the dashboard
-                print(f"[warn] live results unavailable: {exc}", file=sys.stderr)
+        snap = json.loads(snap_path.read_text(encoding="utf-8")) if snap_path.exists() else {}
+        live = {"games": lg, "props": live_results(snap, lg, box) if snap else []}
+        bank["live"] = live_bets([b for b in bank["bets"] if b["result"] == "pending"], lg, box)
         write_html(week, games, rows, source, args, html_path, refresh_secs=refresh, bank=bank, live=live,
-                   feature=feature_player(stats, rows, season))
+                   feature=feature_player(stats, rows, season), splits=splits)
         if args.html:  # shareable Top 5 page next to the dashboard
             write_top5(week, games, rows, html_path.parent / "top5" / "index.html")
             write_parlays(week, games, rows, html_path.parent / "parlays" / "index.html")
