@@ -3,6 +3,42 @@
  "week": 3,
  "backtest": true,
  "props": {
+  "00-0039917|passing_yards": {
+   "game": "ATL@GB",
+   "kickoff": "2026-09-24 20:15",
+   "team": "ATL",
+   "opp": "GB",
+   "player": "Michael Penix Jr.",
+   "player_id": "00-0039917",
+   "pos": "QB",
+   "stat": "passing_yards",
+   "line": 209.5,
+   "pick": "OVER 209.5",
+   "score": 3.1,
+   "grade": "D",
+   "p_over": 0.54,
+   "proj": 216.6,
+   "line_hits": "5/9",
+   "traps": []
+  },
+  "00-0039917|rushing_yards": {
+   "game": "ATL@GB",
+   "kickoff": "2026-09-24 20:15",
+   "team": "ATL",
+   "opp": "GB",
+   "player": "Michael Penix Jr.",
+   "player_id": "00-0039917",
+   "pos": "QB",
+   "stat": "rushing_yards",
+   "line": 4.5,
+   "pick": "OVER 4.5",
+   "score": 6.2,
+   "grade": "B",
+   "p_over": 0.7,
+   "proj": 8.5,
+   "line_hits": "6/9",
+   "traps": []
+  },
   "00-0037746|rushing_yards": {
    "game": "ATL@GB",
    "kickoff": "2026-09-24 20:15",
@@ -2610,6 +2646,26 @@
    "line_hits": "5/10",
    "traps": []
   },
+  "00-0035535|receiving_yards": {
+   "game": "TEN@NYG",
+   "kickoff": "2026-09-27 13:00",
+   "team": "NYG",
+   "opp": "TEN",
+   "player": "Darius Slayton",
+   "player_id": "00-0035535",
+   "pos": "WR",
+   "stat": "receiving_yards",
+   "line": 8.5,
+   "pick": "OVER 8.5",
+   "score": 4.0,
+   "grade": "D",
+   "p_over": 0.96,
+   "proj": 47.7,
+   "line_hits": "9/10",
+   "traps": [
+    "Line 8.5 vs 40 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ]
+  },
   "00-0036309|receiving_yards": {
    "game": "TEN@NYG",
    "kickoff": "2026-09-27 13:00",
@@ -3881,6 +3937,26 @@
    "line_hits": "5/10",
    "traps": []
   },
+  "00-0039855|receiving_yards": {
+   "game": "MIN@TB",
+   "kickoff": "2026-09-27 16:05",
+   "team": "TB",
+   "opp": "MIN",
+   "player": "Jalen McMillan",
+   "player_id": "00-0039855",
+   "pos": "WR",
+   "stat": "receiving_yards",
+   "line": 14.5,
+   "pick": "OVER 14.5",
+   "score": 2.5,
+   "grade": "D",
+   "p_over": 0.73,
+   "proj": 39.3,
+   "line_hits": "3/4",
+   "traps": [
+    "Line 14.5 vs 44 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ]
+  },
   "00-0033921|receiving_yards": {
    "game": "MIN@TB",
    "kickoff": "2026-09-27 16:05",
@@ -4439,6 +4515,24 @@
    "p_over": 0.54,
    "proj": 17.0,
    "line_hits": "7/10",
+   "traps": []
+  },
+  "00-0039338|receiving_yards": {
+   "game": "LV@NO",
+   "kickoff": "2026-09-27 16:25",
+   "team": "LV",
+   "opp": "NO",
+   "player": "Brock Bowers",
+   "player_id": "00-0039338",
+   "pos": "TE",
+   "stat": "receiving_yards",
+   "line": 49.5,
+   "pick": "OVER 49.5",
+   "score": 1.4,
+   "grade": "D",
+   "p_over": 0.5,
+   "proj": 49.3,
+   "line_hits": "4/10",
    "traps": []
   },
   "00-0039066|receiving_yards": {
@@ -5228,6 +5322,26 @@
    "line_hits": "6/9",
    "traps": [
     "Line 4.5 vs 14 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ]
+  },
+  "00-0030061|receiving_yards": {
+   "game": "PHI@CHI",
+   "kickoff": "2026-09-28 20:15",
+   "team": "PHI",
+   "opp": "CHI",
+   "player": "Zach Ertz",
+   "player_id": "00-0030061",
+   "pos": "TE",
+   "stat": "receiving_yards",
+   "line": 10.5,
+   "pick": "OVER 10.5",
+   "score": 4.1,
+   "grade": "D",
+   "p_over": 0.8,
+   "proj": 34.5,
+   "line_hits": "9/10",
+   "traps": [
+    "Line 10.5 vs 38 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ]
   },
   "00-0033246|receiving_yards": {
