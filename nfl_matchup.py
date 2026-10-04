@@ -839,7 +839,69 @@ body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 Inter,sy
 .wrap { max-width:1240px; margin:0 auto; padding:0 16px }
 .hero { background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dk) 100%); color:#fff;
   border-bottom:4px solid var(--silver) }
-.hero .wrap { padding-top:22px; padding-bottom:18px }
+.hero .wrap { padding-top:22px; padding-bottom:18px; position:relative; z-index:1 }
+.hero { position:relative; overflow:hidden; background-size:200% 200%; animation:heroShift 14s ease-in-out infinite }
+@keyframes heroShift { 0%,100% { background-position:0% 50% } 50% { background-position:100% 50% } }
+.hero::before { content:""; position:absolute; inset:-40% -10%; pointer-events:none; opacity:.22;
+  background:repeating-linear-gradient(100deg, transparent 0 46px, rgba(255,255,255,.55) 46px 49px, transparent 49px 120px);
+  animation:streak 2.6s linear infinite }
+@keyframes streak { from { transform:translateX(-120px) } to { transform:translateX(0) } }
+.hero .twosix { position:absolute; right:-10px; bottom:-34px; font:800 230px/1 "Barlow Condensed",sans-serif;
+  color:transparent; -webkit-text-stroke:3px rgba(255,255,255,.35); transform:skewX(-12deg); letter-spacing:-.04em;
+  text-shadow:0 0 40px rgba(176,183,188,.35); animation:glow 3.2s ease-in-out infinite; pointer-events:none; z-index:0 }
+@keyframes glow { 0%,100% { -webkit-text-stroke-color:rgba(255,255,255,.28) } 50% { -webkit-text-stroke-color:rgba(255,255,255,.6) } }
+@media (max-width:600px) { .hero .twosix { font-size:150px; bottom:-20px } }
+.live { display:inline-flex; align-items:center; gap:6px; font-weight:700; letter-spacing:.06em; color:#fff }
+.live::before { content:""; width:8px; height:8px; border-radius:50%; background:#5dff9d; box-shadow:0 0 0 0 rgba(93,255,157,.7);
+  animation:pulse 1.6s infinite }
+@keyframes pulse { 70% { box-shadow:0 0 0 9px rgba(93,255,157,0) } 100% { box-shadow:0 0 0 0 rgba(93,255,157,0) } }
+.ticker { background:#04121d; color:#e8f3fb; border-bottom:2px solid var(--silver); overflow:hidden; white-space:nowrap;
+  font:600 13px/34px Inter,sans-serif }
+.ticker .tk { display:inline-block; padding-left:100%; animation:tick 70s linear infinite }
+.ticker:hover .tk { animation-play-state:paused }
+@keyframes tick { to { transform:translateX(-100%) } }
+.ticker .it { margin-right:34px } .ticker .gr { display:inline-block; min-width:18px; text-align:center; border-radius:4px;
+  background:var(--blue); color:#fff; font-weight:800; margin-right:6px; padding:0 4px }
+.ticker .OVER { color:#7dffb1 } .ticker .UNDER { color:#ffa59b }
+.card, .tp, .pl-row, .panel { transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease }
+.card:hover, .tp:hover, .pl-row:hover { transform:translateY(-3px);
+  box-shadow:0 10px 28px -12px color-mix(in srgb,var(--blue) 55%,transparent); border-color:var(--blue) }
+.tp { overflow:hidden }
+.tp::after { content:""; position:absolute; top:0; left:-60%; width:40%; height:100%; pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent); transform:skewX(-20deg) }
+.tp:hover::after { animation:shine .8s ease }
+@keyframes shine { to { left:130% } }
+.tp .rank { background:linear-gradient(180deg,var(--blue),var(--silver)); -webkit-background-clip:text; background-clip:text;
+  color:transparent; opacity:.9 }
+.gA { box-shadow:0 0 0 0 color-mix(in srgb,var(--A) 60%,transparent); animation:aglow 2.4s infinite }
+@keyframes aglow { 0%,100% { box-shadow:0 0 0 0 color-mix(in srgb,var(--A) 0%,transparent) }
+  50% { box-shadow:0 0 12px 2px color-mix(in srgb,var(--A) 55%,transparent) } }
+.gibbs { position:relative; overflow:hidden; border-radius:16px; color:#fff; padding:18px 18px 16px;
+  background:linear-gradient(120deg,#021019 0%,#06324f 45%,var(--blue) 100%); border:2px solid var(--silver);
+  box-shadow:0 18px 40px -22px rgba(0,118,182,.9) }
+.gibbs::before { content:""; position:absolute; inset:-30% -10%; opacity:.18; pointer-events:none;
+  background:repeating-linear-gradient(100deg,transparent 0 30px,#fff 30px 32px,transparent 32px 90px); animation:streak 1.4s linear infinite }
+.gibbs .num { position:absolute; right:14px; top:-18px; font:800 170px/1 "Barlow Condensed",sans-serif; color:transparent;
+  -webkit-text-stroke:2px rgba(255,255,255,.45); transform:skewX(-12deg); pointer-events:none }
+.gibbs .in { position:relative; z-index:1 }
+.gibbs h3 { margin:0; font:800 34px/1 "Barlow Condensed",sans-serif; letter-spacing:.04em; text-transform:uppercase }
+.gibbs .kick { opacity:.8; font-size:12.5px; margin-top:4px }
+.gstats { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 }
+.gstat { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.22); border-radius:12px; padding:8px 14px; min-width:96px }
+.gstat .v { font:800 28px/1 "Barlow Condensed",sans-serif } .gstat .l { font-size:11.5px; opacity:.8; text-transform:uppercase; letter-spacing:.05em }
+.gprops { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:10px }
+.gprop { background:rgba(0,0,0,.28); border:1px solid rgba(255,255,255,.18); border-radius:12px; padding:10px 12px }
+.gprop .pk { font:800 24px/1.1 "Barlow Condensed",sans-serif; letter-spacing:.02em }
+.gprop .OVER { color:#7dffb1 } .gprop .UNDER { color:#ffa59b }
+.gprop .m { font-size:12px; opacity:.85 }
+.glog { display:flex; align-items:flex-end; gap:6px; height:92px; margin-top:12px }
+.glog .b { flex:1; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; gap:2px; font-size:10.5px; opacity:.95 }
+.glog .bar { width:100%; border-radius:4px 4px 0 0; background:linear-gradient(180deg,#9fd8ff,#0076b6);
+  transform-origin:bottom; animation:grow .9s cubic-bezier(.2,.8,.2,1) both }
+.glog .bar.rec { background:linear-gradient(180deg,#e6ecef,#8f989f) }
+@keyframes grow { from { transform:scaleY(0) } }
+.glog .td { color:#ffd166; font-weight:800 }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation:none !important; transition:none !important } }
 .brand { display:flex; align-items:center; gap:14px }
 .mark { width:52px; height:52px; border-radius:50%; border:3px solid var(--silver); display:grid; place-items:center;
   font:800 22px/1 "Barlow Condensed",sans-serif; letter-spacing:.02em; background:rgba(255,255,255,.08); flex:none }
@@ -933,13 +995,14 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 .pl-pay .odds { font:800 24px/1 "Barlow Condensed",sans-serif }
 @media (max-width:560px) { .pl-row { grid-template-columns:1fr; } .pl-pay { text-align:left } }
 </style></head><body>
-<header class="hero"><div class="wrap">
+<header class="hero"><div class="twosix" aria-hidden="true">__JERSEY__</div><div class="wrap">
   <div class="brand"><div class="mark">TT</div>
     <div><h1>Tids Takedowns</h1><div class="tagline">NFL Week __WEEK__ · player prop matchups, ratings &amp; picks ·
       <a href="reports/index.html" style="color:#fff;font-weight:600">Weekly report cards →</a></div></div></div>
   <div class="strip" id="bankstrip"></div>
-  <div class="sub">Updated __UPDATED__ · Lines: __SOURCE__ · Each player's last __N__ games vs. the opponent defense's last __N__</div>
+  <div class="sub"><span class="live">LIVE</span> · Updated __UPDATED__ · Lines: __SOURCE__ · Each player's last __N__ games vs. the opponent defense's last __N__</div>
 </div></header>
+<div class="ticker" aria-label="Top rated plays"><div class="tk" id="ticker"></div></div>
 <div class="wrap">
   <div class="legend"><span><span class="g gA">A</span> strong</span><span><span class="g gB">B</span> good</span>
   <span><span class="g gC">C</span> lean</span><span><span class="g gD">D</span> pass</span>
@@ -948,6 +1011,9 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 <h2>Tids' Top 5</h2>
 <div class="lead">The highest-rated plays on the board right now — no traps, one prop per player.</div>
 <section class="top5" id="top5"></section>
+
+<h2>Gibbs Watch</h2>
+<section id="gibbs"></section>
 
 <h2>This week's games</h2>
 <section class="games" id="games"></section>
@@ -1196,11 +1262,84 @@ function renderParlays() {
   document.getElementById("ladder").innerHTML = out || `<div class="empty">Not enough A/B-rated, trap-free legs yet.</div>`;
 }
 document.getElementById("onepergame").addEventListener("input", renderParlays);
-renderBank(); renderTop5(); renderGames(); renderParlays(); renderPanels(); renderRows();
+const FEATURE = __FEATURE__;
+function renderTicker() {
+  const items = bestLegs().slice(0, 14).map(r => `<span class="it"><span class="gr">${r.grade}</span>${esc(r.player)}
+    <span class="${r.pick.split(" ")[0]}">${r.pick}</span> ${STAT[r.stat]} · proj ${r.proj} · ${r.team} vs ${r.opp}</span>`);
+  document.getElementById("ticker").innerHTML = items.length ? items.join("") + items.join("")
+    : `<span class="it">Lines open soon — check back for this week's top plays</span>`;
+}
+function renderGibbs() {
+  const f = FEATURE, el = document.getElementById("gibbs");
+  if (!f || !f.name) { el.innerHTML = ""; return; }
+  const g = f.props.length ? GAMES.list.find(x => x.key === f.props[0].game) : null;
+  const props = f.props.length ? f.props.map(r => `<div class="gprop">
+      <div class="m">${STAT[r.stat].toUpperCase()} · vs ${r.opp}</div>
+      ${r.pick ? `<div class="pk"><span class="${r.pick.split(" ")[0]}">${r.pick}</span> ${grade(r)}</div>
+        <div class="m">proj ${r.proj} · hit ${r.line_hits} · L10 avg ${r.L10_avg}${r.open != null && r.open !== r.line ? ` · opened ${r.open}` : ""}</div>`
+        : `<div class="pk">No line yet</div><div class="m">proj ${r.proj} · L10 avg ${r.L10_avg}</div>`}
+      ${chips(r, 2)}</div>`).join("")
+    : `<div class="gprop"><div class="pk">Lions on bye / no lines yet</div><div class="m">Check back when this week's props post.</div></div>`;
+  const mx = Math.max(1, ...f.log.map(x => x.rush + Math.max(x.rec, 0)));
+  const log = f.log.map((x, i) => `<div class="b" title="${x.season} wk ${x.week} vs ${x.opp}: ${x.rush} rush, ${x.rec} rec, ${x.td} TD">
+      ${x.td ? `<span class="td">${x.td}TD</span>` : ""}
+      <div class="bar rec" style="height:${Math.max(x.rec, 0) / mx * 64}px;animation-delay:${i * 60}ms"></div>
+      <div class="bar" style="height:${Math.max(x.rush, 0) / mx * 64}px;animation-delay:${i * 60}ms;border-radius:0"></div>
+      <span>${x.opp}</span></div>`).join("");
+  const stat = (v, l) => `<div class="gstat"><div class="v" data-count="${v}">${v}</div><div class="l">${l}</div></div>`;
+  el.innerHTML = `<div class="gibbs"><div class="num" aria-hidden="true">${esc(f.jersey)}</div><div class="in">
+    <h3>${esc(f.name)}</h3>
+    <div class="kick">${f.team}${f.jersey ? " · #" + esc(f.jersey) : ""}${g ? " · " + kick(g).replace("<br>", " ") + " · " + g.away + " @ " + g.home : ""}</div>
+    <div class="gstats">${stat(f.rush_yds, `${f.season} rush yds`)}${stat(f.rush_td, "rush TD")}${stat(f.rec, "catches")}
+      ${stat(f.rec_yds, "rec yds")}${stat(f.rec_td, "rec TD")}${stat(f.rush_yds + f.rec_yds, "scrimmage yds")}</div>
+    <div class="gprops">${props}</div>
+    <div class="glog">${log}</div>
+    <div class="m" style="font-size:11.5px;opacity:.75;margin-top:4px">Last ${f.log.length} games · blue = rushing, silver = receiving · gold = touchdowns</div>
+  </div></div>`;
+}
+function countUp() {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  document.querySelectorAll("[data-count]").forEach(el => {
+    const end = Number(el.dataset.count); if (!isFinite(end) || end <= 0) return;
+    const t0 = performance.now(), dur = 1100;
+    const step = t => { const k = Math.min(1, (t - t0) / dur); el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3)));
+      if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  });
+}
+renderBank(); renderTicker(); renderTop5(); renderGibbs(); renderGames(); renderParlays(); renderPanels(); renderRows(); countUp();
 </script></body></html>"""
 
 
-def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | None, bank=None):
+FEATURE_PLAYER = "Jahmyr Gibbs"  # the site's featured player (Lions); jersey comes from roster data
+
+
+def feature_player(stats: pd.DataFrame, rows: list, season: int, name: str = FEATURE_PLAYER) -> dict:
+    """Season totals, recent game log and this week's rated props for the featured player."""
+    p = stats[stats["player_display_name"] == name].sort_values("game_order")
+    if p.empty:
+        return {}
+    cur = p[p["season"] == season].fillna(0)
+    tot = lambda c: int(cur[c].sum()) if c in cur else 0
+    log = [{"season": int(r.season), "week": int(r.week), "opp": r.opponent_team,
+            "rush": int(r.rushing_yards), "rec": int(r.receiving_yards),
+            "td": int((r.rushing_tds or 0) + (r.receiving_tds or 0))}
+           for r in p.tail(10).fillna(0).itertuples()]
+    keys = ("stat", "pick", "grade", "score", "proj", "line", "open", "line_hits", "p_over", "opp", "game",
+            "kickoff", "notes", "traps", "L10_avg", "contrarian")
+    props = [{k: r.get(k) for k in keys} for r in rows if r["player"] == name]
+    jersey = ""
+    roster = _cached_csv(PLAYERS_URL, "players.csv", False)
+    if roster is not None:
+        j = roster.loc[roster["gsis_id"] == p.iloc[-1]["player_id"], "jersey_number"].dropna()
+        jersey = str(int(j.iloc[0])) if len(j) else ""
+    return {"name": name, "team": p.iloc[-1]["team"], "jersey": jersey, "season": season, "games": len(cur),
+            "carries": tot("carries"), "rush_yds": tot("rushing_yards"), "rush_td": tot("rushing_tds"),
+            "rec": tot("receptions"), "rec_yds": tot("receiving_yards"), "rec_td": tot("receiving_tds"),
+            "log": log, "props": props}
+
+
+def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | None, bank=None, feature=None):
     import html
     import json
 
@@ -1212,6 +1351,13 @@ def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | 
         return v
 
     data = [{k: clean(v) for k, v in r.items()} for r in rows]
+
+    def clean_tree(o):
+        if isinstance(o, dict):
+            return {k: clean_tree(v) for k, v in o.items()}
+        if isinstance(o, list):
+            return [clean_tree(v) for v in o]
+        return clean(o)
     game_list = []
     for g in games.itertuples():
         vegas = "No game line yet"
@@ -1236,6 +1382,8 @@ def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | 
             .replace("__HIT__", str(args.hit_rate))
             .replace("__GAMES__", json.dumps(games_json))
             .replace("__BANK__", json.dumps(bank or {}, default=str).replace("</", "<\\/"))
+            .replace("__JERSEY__", html.escape(str((feature or {}).get("jersey", ""))))
+            .replace("__FEATURE__", json.dumps(clean_tree(feature or {}), default=str).replace("</", "<\\/"))
             .replace("__ROWS__", json.dumps(data, default=str).replace("</", "<\\/")))
     path.write_text(page, encoding="utf-8")
 
@@ -1911,7 +2059,8 @@ def cmd_week(args, stats, sched, season):
         graded = grade_ledger(ledger, stats, sched)
         bank = {"summary": bankroll_summary(ledger, graded),
                 "bets": [b for b in graded if b["kind"] != "none"][::-1]}
-        write_html(week, games, rows, source, args, html_path, refresh_secs=refresh, bank=bank)
+        write_html(week, games, rows, source, args, html_path, refresh_secs=refresh, bank=bank,
+                   feature=feature_player(stats, rows, season))
         print(f"\nSaved {csv_path.name} and {html_path.name} in {out_dir}")
         if not args.live:
             return
