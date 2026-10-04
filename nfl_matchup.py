@@ -2199,6 +2199,182 @@ def cmd_backtest(args, stats, sched, season):
         print(f"Report written to {args.markdown}")
 
 
+# ----------------------------------------------------------------------------
+# Betting splits: % of bets (tickets) vs % of money (handle)
+# ----------------------------------------------------------------------------
+
+SPLITS_URL = "https://www.scoresandodds.com/nfl/consensus-picks"
+SPLITS_TEAM_FIX = {"LAR": "LA", "WSH": "WAS", "JAC": "JAX", "LVR": "LV", "OAK": "LV", "SD": "LAC", "STL": "LA"}
+MARKETS = ("spread", "total", "moneyline")
+
+
+def fetch_splits() -> list:
+    """Current consensus splits (ScoresAndOdds / Action Network, pooled across books).
+    One dict per game and market; side 'a' is the away team (or the over), 'b' the home team (or the under)."""
+    import re
+    import urllib.request
+    req = urllib.request.Request(SPLITS_URL, headers={"User-Agent": "Mozilla/5.0"})
+    html = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "ignore")
+    out = []
+    for card in re.split(r'<div class="trend-card consensus ', html)[1:]:
+        market = re.match(r"consensus-table-(\w+)--", card)
+        teams = re.findall(r'class="team-flag" (\w+)""', card)
+        kick = re.search(r'data-value="([^"]+)"', card)
+        if not market or market.group(1) not in MARKETS or len(teams) < 2 or not kick:
+            continue
+        pcts = [int(p) for p in re.findall(r'class="percentage-[ab]"[^>]*>(\d+)%', card)]
+        if len(pcts) < 4:
+            continue
+        sides = re.search(r'trend-graph-sides">\s*<strong>([\s\S]*?)</strong>\s*<span>% of Bets</span>', card)
+        line = None
+        if sides and market.group(1) != "moneyline":
+            m = re.search(r"\([ou]?([+-]?[\d.]+)\)", sides.group(1))
+            line = float(m.group(1)) if m else None
+        away, home = (SPLITS_TEAM_FIX.get(t, t) for t in teams[:2])
+        out.append({"game": f"{away}@{home}", "kickoff_utc": kick.group(1), "market": market.group(1),
+                    "line": line, "bets_a": pcts[0], "bets_b": pcts[1], "money_a": pcts[2], "money_b": pcts[3]})
+    return out
+
+
+def split_signal(s: dict) -> dict:
+    """Which side the bigger bets are on, and how lopsided. ratio = average bet size on that side
+    divided by the average bet size on the other side."""
+    a_heavy = s["money_a"] - s["bets_a"] >= s["money_b"] - s["bets_b"]
+    side, other = ("a", "b") if a_heavy else ("b", "a")
+    gap = s[f"money_{side}"] - s[f"bets_{side}"]
+    try:
+        ratio = (s[f"money_{side}"] / s[f"bets_{side}"]) / (s[f"money_{other}"] / s[f"bets_{other}"])
+    except ZeroDivisionError:
+        ratio = float("inf")
+    return {"side": side, "gap": gap, "ratio": round(ratio, 2)}
+
+
+def _side_name(game: str, market: str, side: str) -> str:
+    away, home = game.split("@")
+    if market == "total":
+        return "Over" if side == "a" else "Under"
+    return away if side == "a" else home
+
+
+def cmd_splits(args, stats, sched, season):
+    """Save a pre-kickoff splits capture for this week's games, or grade captured weeks."""
+    import json
+    from datetime import datetime, timezone
+    snap_dir = Path(args.snapshot_dir)
+    if args.grade:
+        return grade_splits(snap_dir, season, args.week, sched)
+
+    rows = fetch_splits()
+    now = datetime.now(timezone.utc)
+    s = sched[sched["season"] == season]
+    week_of = {f"{g.away_team}@{g.home_team}": int(g.week) for g in s.itertuples()}
+    by_week: dict = {}
+    for r in rows:
+        kick = datetime.fromisoformat(r["kickoff_utc"].replace("Z", "+00:00"))
+        if r["game"] not in week_of or kick <= now:  # unknown matchup, or already kicked off
+            continue
+        by_week.setdefault(week_of[r["game"]], []).append(r)
+
+    stamp = now.isoformat(timespec="minutes")
+    for week, wrows in by_week.items():
+        path = snap_dir / f"{season}-w{week:02d}.json"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        snap = (json.loads(path.read_text(encoding="utf-8")) if path.exists()
+                else {"season": season, "week": week, "source": SPLITS_URL, "games": {}})
+        added = 0
+        for r in wrows:
+            g = snap["games"].setdefault(r["game"], {"kickoff_utc": r["kickoff_utc"]})
+            caps = g.setdefault(r["market"], [])
+            cap = {k: r[k] for k in ("line", "bets_a", "bets_b", "money_a", "money_b")}
+            if not caps or {k: caps[-1][k] for k in cap} != cap:  # only store changes
+                caps.append({"at": stamp, **cap})
+                added += 1
+        path.write_text(json.dumps(snap, indent=1) + "\n", encoding="utf-8")
+        print(f"Week {week}: {len(wrows)} game-markets, {added} changed since last capture -> {path}")
+
+    if not args.quiet:
+        print(f"\n{'game':9} {'market':9} {'line':>6}  {'bets':>9}  {'money':>9}  big-bet side")
+        for r in sorted(rows, key=lambda r: (r["kickoff_utc"], r["game"], r["market"])):
+            sig = split_signal(r)
+            flag = "  <-- sharp lean" if sig["gap"] >= 10 and sig["ratio"] >= 2 else ""
+            line = "" if r["line"] is None else f"{r['line']:g}"
+            print(f"{r['game']:9} {r['market']:9} {line:>6}  {r['bets_a']:>3}/{r['bets_b']:<3}%  "
+                  f"{r['money_a']:>3}/{r['money_b']:<3}%  {_side_name(r['game'], r['market'], sig['side'])} "
+                  f"+{sig['gap']} pts, {sig['ratio']:g}x avg bet{flag}")
+
+
+def _grade_market(market: str, side: str, line, away_score: float, home_score: float):
+    """'win' / 'loss' / 'push' for the given side. Spread line is the away team's number."""
+    if market == "moneyline":
+        if away_score == home_score:
+            return "push"
+        return "win" if (away_score > home_score) == (side == "a") else "loss"
+    if line is None:
+        return None
+    if market == "spread":
+        margin = away_score - home_score + line  # > 0 means the away team covered
+    else:
+        margin = away_score + home_score - line  # > 0 means the over hit
+    if margin == 0:
+        return "push"
+    return "win" if (margin > 0) == (side == "a") else "loss"
+
+
+def grade_splits(snap_dir: Path, season: int, week: int | None, sched: pd.DataFrame) -> None:
+    """Did the big-bet side win? Uses each market's last pre-kickoff capture, bucketed by money-vs-bets gap."""
+    import json
+    files = sorted(snap_dir.glob(f"{season}-w*.json"))
+    if week:
+        files = [f for f in files if f.stem == f"{season}-w{week:02d}"]
+    s = sched[sched["season"] == season].copy()
+    s["key"] = s["away_team"] + "@" + s["home_team"]
+    s = s.set_index("key")
+    recs = []
+    for f in files:
+        snap = json.loads(f.read_text(encoding="utf-8"))
+        for game, g in snap["games"].items():
+            if game not in s.index or pd.isna(s.loc[game, "result"]):
+                continue
+            away, home = float(s.loc[game, "away_score"]), float(s.loc[game, "home_score"])
+            for market in MARKETS:
+                caps = g.get(market)
+                if not caps:
+                    continue
+                close, first = caps[-1], caps[0]
+                sig = split_signal(close)
+                res = _grade_market(market, sig["side"], close["line"], away, home)
+                if res is None:
+                    continue
+                # reverse line movement: line moved toward the big-bet side while most tickets were on the other
+                moved = None
+                if market != "moneyline" and close["line"] is not None and first["line"] is not None:
+                    d = close["line"] - first["line"]  # spread: more negative = toward away; total: up = toward over
+                    toward_a = d < 0 if market == "spread" else d > 0
+                    moved = d != 0 and toward_a == (sig["side"] == "a")
+                recs.append({"week": snap["week"], "game": game, "market": market,
+                             "side": _side_name(game, market, sig["side"]), "gap": sig["gap"],
+                             "ratio": sig["ratio"], "rlm": bool(moved and close[f"bets_{sig['side']}"] < 50),
+                             "result": res})
+    if not recs:
+        print("No graded splits yet (need captured games that have finished).")
+        return
+    df = pd.DataFrame(recs)
+    df = df[df["result"] != "push"]
+    df["win"] = df["result"] == "win"
+    df["bucket"] = pd.cut(df["gap"], [-1, 4, 9, 19, 100], labels=["0-4", "5-9", "10-19", "20+"])
+
+    def show(title, grp):
+        t = grp["win"].agg(["sum", "size"])
+        t["pct"] = (t["sum"] / t["size"] * 100).round(0)
+        print(f"\n{title}\n" + t.rename(columns={"sum": "won", "size": "bets"}).to_string())
+    print(f"Big-bet side record, {len(df)} graded game-markets (weeks {sorted(df.week.unique())}). "
+          f"Break-even at -110 is 52.4%.")
+    show("By money-minus-bets gap (pts)", df.groupby("bucket", observed=True))
+    show("By market", df.groupby("market"))
+    show("Reverse line movement (line moved toward the big-bet side against the ticket majority)",
+         df.groupby("rlm"))
+
+
 SITE_URL = "https://dougfoster68-coder.github.io/nfl-matchup-analyzer/"
 
 TOP5_TEMPLATE = r"""<!doctype html><html lang="en"><head><meta charset="utf-8">
@@ -2485,12 +2661,18 @@ def main():
     bk.add_argument("--snapshot-dir", help="save the backtest ratings here so report cards include it")
     bk.add_argument("--markdown", help="write the backtest report as markdown")
 
+    sp = sub.add_parser("splits", help="save %% of bets vs %% of money for this week's games, or --grade a week")
+    sp.add_argument("--snapshot-dir", default="data/splits")
+    sp.add_argument("--grade", action="store_true", help="grade the big-bet side against final scores")
+    sp.add_argument("--week", type=int, help="with --grade: one week only (default: all captured weeks)")
+    sp.add_argument("--quiet", action="store_true", help="don't print the splits table")
+
     args = ap.parse_args()
     stats, sched, season = load_data(args.refresh)
     {"player": cmd_player, "slate": cmd_slate, "defense": cmd_defense,
      "week": cmd_week, "autobet": cmd_autobet, "bet": cmd_bet,
      "bankroll": cmd_bankroll, "report": cmd_report,
-     "backtest": cmd_backtest}[args.cmd](args, stats, sched, season)
+     "backtest": cmd_backtest, "splits": cmd_splits}[args.cmd](args, stats, sched, season)
 
 
 if __name__ == "__main__":

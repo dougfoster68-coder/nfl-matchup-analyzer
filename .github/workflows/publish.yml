@@ -56,6 +56,10 @@ jobs:
           git fetch --depth=1 origin data
           git worktree add data FETCH_HEAD
 
+      # % of bets vs % of money before each kickoff; a scrape failure shouldn't block the dashboard
+      - name: Capture betting splits
+        run: python nfl_matchup.py splits --snapshot-dir data/splits --quiet || echo "::warning::splits capture failed"
+
       - name: Build dashboard and report cards
         run: |
           python nfl_matchup.py week --html site/index.html --snapshot-dir data/snapshots

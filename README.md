@@ -84,6 +84,30 @@ Actions → Weekly report card → Run workflow, optionally with a week number.
 python nfl_matchup.py report --snapshot-dir data/snapshots --markdown report.md
 ```
 
+## Betting splits (% of bets vs % of money)
+
+Every refresh also saves the consensus betting splits for each game's spread, total and moneyline
+(from ScoresAndOdds, pooled across sportsbooks) to the `data` branch as `splits/<season>-w<week>.json`.
+A new capture is stored only when the numbers change, and a game stops updating at kickoff, so the last
+entry is the closing split.
+
+When a side's share of the money is well above its share of the bets, fewer people are betting bigger
+amounts on it, which is the classic sign of confident or sharp money. The report shows:
+
+- **Gap:** money % minus bets % on the big-bet side.
+- **Ratio:** the average bet size on that side divided by the average bet size on the other side.
+  For example, 30% of bets with 60% of money works out to 3.5x.
+- **Sharp lean:** a gap of 10+ points with a ratio of 2x or more.
+
+After games finish, `--grade` checks whether the big-bet side won, broken down by gap size, by market,
+and by reverse line movement (the line moved toward the big-bet side while most tickets were on the other side).
+
+```
+python nfl_matchup.py splits                       # show current splits and save a capture
+python nfl_matchup.py splits --grade               # record of the big-bet side, all captured weeks
+python nfl_matchup.py splits --grade --week 4
+```
+
 ## How the math works
 
 - **Defense rank**: 1 = allows the fewest yards to that position, 32 = allows the most.
