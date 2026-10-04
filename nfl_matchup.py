@@ -2181,7 +2181,7 @@ def _value_leg(r: dict, why: str):
 
 
 def _boost_leg(r: dict, why: str, max_odds: int = 300) -> dict:
-    """Alt Line Special leg: an over moves up to the next alt line at least 15% above the posted line (estimated
+    """Alt Line Special leg (alt lines used when available, not required): an over moves up to the next alt line at least 15% above the posted line (estimated
     plus-money odds, skipped beyond `max_odds`). Unders stay put (alt ladders are overs only)."""
     side, line = r["pick"].split()
     line = float(line)
@@ -2222,8 +2222,6 @@ def contrarian_special(rows: list, stake: float, splits: dict | None = None, max
             if len(legs) == 4:
                 break
         if len(legs) >= 3:
-            if longshot and not any(l.get("alt") for l in legs):
-                return None  # the alt line version must actually use an alt line
             kind = "contrarian-longshot" if longshot else "contrarian"
             return {"kind": "parlay", "special": kind, "stake": round(stake, 2), "legs": legs,
                     "game": "multi", "note": kind.replace("-longshot", " alt line").upper() + " SPECIAL"}
@@ -2265,8 +2263,6 @@ def primetime_special(rows: list, stake: float, games: set, longshot: bool = Fal
             break
     if len(legs) < 3:
         return None
-    if longshot and not any(l.get("alt") for l in legs):
-        return None  # the alt line version must actually use an alt line
     kind = "primetime-longshot" if longshot else "primetime"
     return {"kind": "parlay", "special": kind, "stake": round(stake, 2), "legs": legs, "game": "multi",
             "note": kind.replace("-longshot", " alt line").upper() + " SPECIAL"}
