@@ -1101,19 +1101,6 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 
   <section id="gradetrack" hidden><h2>Grade tracker</h2><div class="lead" id="gtlead"></div>
     <div class="gtrack" id="gtrack"></div></section>
-  <section id="livebets" hidden><h2>Paper bets — live</h2><div class="lead" id="livebetsum"></div>
-    <div id="latechanges"></div>
-    <div class="lres" id="livebetlist"></div></section>
-  <div class="legend"><span><span class="g gA">A</span> strong</span><span><span class="g gB">B</span> good</span>
-  <span><span class="g gC">C</span> lean</span><span><span class="g gD">D</span> pass</span>
-  <span>Rating = model projection vs line + hit rate + last 3 games, penalized for injury/role red flags.</span></div>
-
-
-
-<h2>This week's games</h2>
-<div class="lead" id="livesum"></div>
-<section class="games" id="games"></section>
-
 <h2>Parlay builder</h2>
 <div class="lead"><span class="tag tag-con" style="margin-left:0">SUGGESTIONS ONLY · not in the paper bankroll</span>
 <a href="parlays/" style="font-weight:700">Share the parlays →</a> · Rebuilt every refresh from A/B-rated, trap-free props. Each rung adds the next-best leg.
@@ -1128,6 +1115,21 @@ Payouts assume -110 per leg; hit chance discounts the model's confidence by abou
   <span class="op-sub"><span id="slipcount">0 legs</span> · tap <b>+</b> on any prop · hypothetical, live lines</span>
   <span class="op-btn"><span class="op-show">Tap to open</span><span class="op-hide">Close</span> <span class="chev">▾</span></span></summary>
   <section id="slip" aria-label="Hypothetical parlay slip"></section></details>
+
+  <section id="livebets" hidden><h2>Paper bets — live</h2><div class="lead" id="livebetsum"></div>
+    <div id="latechanges"></div>
+    <div class="lres" id="livebetlist"></div></section>
+  <div class="legend"><span><span class="g gA">A</span> strong</span><span><span class="g gB">B</span> good</span>
+  <span><span class="g gC">C</span> lean</span><span><span class="g gD">D</span> pass</span>
+  <span>Rating = model projection vs line + hit rate + last 3 games, penalized for injury/role red flags.</span></div>
+
+
+
+<h2>This week's games</h2>
+<div class="lead" id="livesum"></div>
+<section class="games" id="games"></section>
+
+
 
 <h2>Trap alerts &amp; contrarian plays</h2>
 <div class="duo">
