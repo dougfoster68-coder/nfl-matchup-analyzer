@@ -4,3 +4,5 @@ site/
 week*_report.csv
 week*_dashboard.html
 week_output.txt
+data/
+report.md

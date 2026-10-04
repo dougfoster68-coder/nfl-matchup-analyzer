@@ -55,6 +55,27 @@ A $1,000 fake-money account tracked in `bets.json` and shown on the dashboard.
   ```
   Repeat `--leg` to make a parlay. Run `git pull` first, because the Action commits bets too.
 
+## Weekly report cards
+
+Every refresh saves each rated prop's latest pre-kickoff rating, pick and line to the `data` branch
+(`snapshots/<season>-w<week>.json`). Once a prop's game kicks off, its entry stops changing.
+After games end, the props are graded against box scores:
+
+- **Game by game:** of our top 2, 3 … 10 rated props in each game, how many hit.
+- **Whole week:** the same tiers combined across every game. For example, the top 10 from each of
+  16 games is 160 props, and the report shows how many of those hit.
+- **By grade:** the hit % for A, B, C and D props.
+
+Trap-flagged props are left out. Voids (the player didn't play) and pushes are shown but don't count toward hit %.
+
+Report pages are at `/reports/` on the site. Every **Tuesday at 11 AM ET** the "Weekly report card"
+workflow also posts the completed week as a GitHub issue, which emails the repo owner. To rerun it, use
+Actions → Weekly report card → Run workflow, optionally with a week number.
+
+```
+python nfl_matchup.py report --snapshot-dir data/snapshots --markdown report.md
+```
+
 ## How the math works
 
 - **Defense rank**: 1 = allows the fewest yards to that position, 32 = allows the most.

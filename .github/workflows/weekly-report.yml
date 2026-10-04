@@ -1,0 +1,60 @@
+name: Weekly report card
+
+# Tuesday 11 AM ET (15:00 UTC during daylight time, 10 AM ET after the November clock change),
+# after Monday Night Football and the overnight stats update.
+on:
+  schedule:
+    - cron: "0 15 * * 2"
+  workflow_dispatch:
+    inputs:
+      week:
+        description: "Week number (blank = most recent completed week)"
+        required: false
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Load data branch
+        run: |
+          git fetch --depth=1 origin data
+          git worktree add data FETCH_HEAD
+
+      - name: Build report
+        id: build
+        run: |
+          python nfl_matchup.py --refresh report --snapshot-dir data/snapshots --markdown report.md \
+            ${{ github.event.inputs.week && format('--week {0}', github.event.inputs.week) || '' }} | tee out.txt
+          echo "title=$(grep '^TITLE=' out.txt | cut -d= -f2-)" >> "$GITHUB_OUTPUT"
+
+      - name: Post as issue
+        if: steps.build.outputs.title != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TITLE: "Tids Takedowns — ${{ steps.build.outputs.title }}"
+        run: |
+          {
+            echo "📊 Full report card: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/reports/"
+            echo
+            cat report.md
+          } > body.md
+          num=$(gh issue list --state all --search "\"$TITLE\" in:title" --json number,title \
+                -q ".[] | select(.title == env.TITLE) | .number" | head -1)
+          if [ -n "$num" ]; then
+            gh issue edit "$num" --body-file body.md
+          else
+            gh issue create --title "$TITLE" --body-file body.md
+          fi

@@ -924,7 +924,8 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 </style></head><body>
 <header class="hero"><div class="wrap">
   <div class="brand"><div class="mark">TT</div>
-    <div><h1>Tids Takedowns</h1><div class="tagline">NFL Week __WEEK__ · player prop matchups, ratings &amp; picks</div></div></div>
+    <div><h1>Tids Takedowns</h1><div class="tagline">NFL Week __WEEK__ · player prop matchups, ratings &amp; picks ·
+      <a href="reports/index.html" style="color:#fff;font-weight:600">Weekly report cards →</a></div></div></div>
   <div class="strip" id="bankstrip"></div>
   <div class="sub">Updated __UPDATED__ · Lines: __SOURCE__ · Each player's last __N__ games vs. the opponent defense's last __N__</div>
 </div></header>
@@ -1451,10 +1452,281 @@ def cmd_bankroll(args, stats, sched, season):
               f"{b['result']:<7} {b['profit']:+8.2f}  {legs}")
 
 
+# ----------------------------------------------------------------------------
+# Weekly report cards: snapshot ratings before kickoff, grade them after
+# ----------------------------------------------------------------------------
+
+SNAPSHOT_FIELDS = ["game", "kickoff", "team", "opp", "player", "player_id", "pos", "stat", "line",
+                   "pick", "score", "grade", "p_over", "proj", "line_hits", "traps"]
+TOP_NS = list(range(10, 1, -1))  # 10, 9, ..., 2
+
+
+def _et_now():
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    return datetime.now(ZoneInfo("America/New_York"))
+
+
+def _kickoff_et(kickoff: str):
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    return datetime.strptime(kickoff, "%Y-%m-%d %H:%M").replace(tzinfo=ZoneInfo("America/New_York"))
+
+
+def update_snapshot(snap_dir: str, season: int, week: int, rows: list) -> Path:
+    """Record each rated prop's latest pre-kickoff rating. Props freeze once their game starts,
+    so the stored version is (close to) the closing line we rated."""
+    import json
+    path = Path(snap_dir) / f"{season}-w{week:02d}.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    snap = (json.loads(path.read_text(encoding="utf-8")) if path.exists()
+            else {"season": season, "week": week, "props": {}})
+    now = _et_now()
+    for r in rows:
+        if not r.get("pick") or _kickoff_et(r["kickoff"]) <= now:
+            continue
+        rec = {k: r.get(k) for k in SNAPSHOT_FIELDS}
+        rec["captured_at"] = now.isoformat(timespec="minutes")
+        snap["props"][f"{r['player_id']}|{r['stat']}"] = rec
+    path.write_text(json.dumps(snap, indent=1, default=str) + "\n", encoding="utf-8")
+    return path
+
+
+def grade_snapshot(snap: dict, stats: pd.DataFrame, sched: pd.DataFrame) -> list:
+    season, week = snap["season"], snap["week"]
+    wk = sched[(sched["season"] == season) & (sched["week"] == week)]
+    final_teams = set(wk[wk["result"].notna()]["home_team"]) | set(wk[wk["result"].notna()]["away_team"])
+    st = stats[(stats["season"] == season) & (stats["week"] == week)].set_index("player_id")
+    out = []
+    for p in snap["props"].values():
+        p = dict(p)
+        side, line = p["pick"].split()
+        line = float(line)
+        if p["team"] not in final_teams:
+            p["result"], p["actual"] = "pending", None
+        elif p["player_id"] not in st.index:
+            p["result"], p["actual"] = "void", None
+        else:
+            actual = float(st.loc[p["player_id"]][p["stat"]])
+            p["actual"] = actual
+            if actual == line:
+                p["result"] = "push"
+            else:
+                p["result"] = "win" if (actual > line) == (side == "OVER") else "loss"
+        out.append(p)
+    return out
+
+
+def summarize_week(graded: list) -> dict:
+    """Per game: hit % of the top-N rated props (N = 2..10). Overall: same, pooled across games.
+    Ranking = our rating score, trap-flagged props excluded (we never recommended those)."""
+    games: dict = {}
+    for p in graded:
+        if not p.get("traps"):
+            games.setdefault(p["game"], []).append(p)
+    # each tier = [hit, missed, void/push, picked]; hit % = hit / (hit + missed)
+    per_game, overall = {}, {n: [0, 0, 0, 0] for n in TOP_NS}
+    for g, props in games.items():
+        props.sort(key=lambda p: p["score"] or 0, reverse=True)
+        top = props[:10]
+        tiers = {}
+        for n in TOP_NS:
+            picked = top[:n]  # a game with fewer than n rated props contributes what it has
+            t = [sum(p["result"] == "win" for p in picked), sum(p["result"] == "loss" for p in picked),
+                 sum(p["result"] in ("void", "push") for p in picked), len(picked)]
+            if len(top) >= n:
+                tiers[n] = t
+            for i in range(4):
+                overall[n][i] += t[i]
+        per_game[g] = {"tiers": tiers, "props": top,
+                       "kickoff": top[0]["kickoff"] if top else ""}
+    by_grade = {}
+    for gr in "ABCD":
+        d = [p for p in graded if p["grade"] == gr and not p.get("traps") and p["result"] in ("win", "loss")]
+        w = sum(p["result"] == "win" for p in d)
+        by_grade[gr] = [w, len(d) - w, 0, len(d)]
+    pending = sum(p["result"] == "pending" for p in graded)
+    return {"per_game": dict(sorted(per_game.items(), key=lambda kv: kv[1]["kickoff"])),
+            "overall": overall, "by_grade": by_grade, "pending": pending, "games": len(per_game)}
+
+
+def _pct(hit, missed, *_):
+    return f"{hit / (hit + missed):.0%}" if hit + missed else "—"
+
+
+def _tier_text(t) -> str:
+    """'4 of 5 hit (80%)' — voids/pushes noted, not counted."""
+    hit, missed, vp, _ = t
+    extra = f", {vp} void/push" if vp else ""
+    return f"{hit} of {hit + missed} hit ({_pct(*t)}){extra}"
+
+
+def report_markdown(season, week, summary, bank_line=None) -> str:
+    L = [f"# Tids Takedowns — Week {week} Report Card ({season})", ""]
+    if summary["pending"]:
+        L += [f"> {summary['pending']} props still pending (game or stats not final yet).", ""]
+    if bank_line:
+        L += [f"**Paper bankroll:** {bank_line}", ""]
+    L += [f"## Whole week — top N props from each of {summary['games']} games", "",
+          "| Top N per game | Props picked | Hit | Missed | Void/push | Hit % |", "|---|---|---|---|---|---|"]
+    for n in TOP_NS:
+        hit, missed, vp, picked = summary["overall"][n]
+        L.append(f"| Top {n} | {picked} | {hit} | {missed} | {vp} | **{_pct(hit, missed)}** |")
+    L += ["", "**By grade:** " + " · ".join(f"{g}: {_pct(*t)} ({t[0]}-{t[1]})"
+                                           for g, t in summary["by_grade"].items()), "",
+          "## Game by game", ""]
+    for g, info in summary["per_game"].items():
+        L += [f"### {g.replace('@', ' @ ')}", ""]
+        if info["tiers"]:
+            L += ["| Top N | Result |", "|---|---|"]
+            L += [f"| Top {n} | {_tier_text(info['tiers'][n])} |" for n in sorted(info["tiers"])]
+        else:
+            L.append("_Fewer than 2 rated props._")
+        L += ["",
+              "| # | Player | Pick | Grade | Actual | Result |", "|---|---|---|---|---|---|"]
+        for i, p in enumerate(info["props"], 1):
+            mark = {"win": "✅", "loss": "❌", "push": "➖", "void": "void", "pending": "…"}[p["result"]]
+            act = "" if p["actual"] is None else f"{p['actual']:g}"
+            stat = {"passing_yards": "pass", "rushing_yards": "rush", "receiving_yards": "rec"}[p["stat"]]
+            L.append(f"| {i} | {p['player']} ({p['team']}) | {p['pick']} {stat} | {p['grade']} | {act} | {mark} |")
+        L.append("")
+    L += ["_Ranking uses each prop's last rating before kickoff; trap-flagged props are excluded. "
+          "Pushes and voids (player didn't play) don't count. For entertainment only._"]
+    return "\n".join(L)
+
+
+REPORT_TEMPLATE = r"""<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>__TITLE__</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#eef2f6; --card:#fff; --ink:#0c1722; --mute:#5b6875; --line:#d9e1e8; --blue:#0076b6; --blue-dk:#005a8c;
+  --silver:#b0b7bc; --good:#11804a; --good-bg:#e1f3e9; --bad:#c0352b; --bad-bg:#fbe4e1; }
+@media (prefers-color-scheme: dark) { :root { --bg:#07111b; --card:#0f1c29; --ink:#e7edf2; --mute:#93a3b2; --line:#1f3244;
+  --blue:#1a8fd6; --blue-dk:#0b5e94; --silver:#8f989f; --good:#5fd394; --good-bg:#11301f; --bad:#f2877c; --bad-bg:#3a1b18; } }
+* { box-sizing:border-box } body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.5 Inter,system-ui,sans-serif }
+.hero { background:linear-gradient(135deg,var(--blue),var(--blue-dk)); color:#fff; border-bottom:4px solid var(--silver) }
+.wrap { max-width:1100px; margin:0 auto; padding:0 16px } .hero .wrap { padding:20px 16px }
+h1 { margin:0; font:800 34px/1 "Barlow Condensed",sans-serif; letter-spacing:.03em; text-transform:uppercase }
+h2 { font:700 22px/1.1 "Barlow Condensed",sans-serif; letter-spacing:.03em; text-transform:uppercase; margin:26px 0 10px }
+a { color:var(--blue) } .hero a { color:#fff }
+.card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin:10px 0; overflow-x:auto }
+table { border-collapse:collapse; width:100%; } th, td { padding:6px 8px; border-bottom:1px solid var(--line); text-align:left; white-space:nowrap }
+th { color:var(--mute); font-size:12px } tr:last-child td { border-bottom:0 }
+.big { font:800 22px/1 "Barlow Condensed",sans-serif } .win { color:var(--good) } .loss { color:var(--bad) }
+.tiers { display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 10px } .tier { background:var(--bg); border-radius:8px; padding:4px 8px; font-size:12.5px }
+.bar { height:8px; background:var(--line); border-radius:4px; min-width:120px } .bar > i { display:block; height:8px; border-radius:4px; background:var(--blue) }
+.mute { color:var(--mute); font-size:12px }
+.games { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:12px }
+</style></head><body>
+<header class="hero"><div class="wrap"><h1>__H1__</h1><div>__SUB__</div></div></header>
+<div class="wrap">__BODY__
+<p class="mute">Ranking uses each prop's last rating before kickoff; trap-flagged props are excluded. Pushes and voids (player
+didn't play) don't count. For entertainment only — not betting advice. 21+. 1-800-GAMBLER.</p></div></body></html>"""
+
+
+def report_html(season, week, summary, bank_line=None) -> str:
+    import html as H
+    rows = ""
+    for n in TOP_NS:
+        hit, missed, vp, picked = summary["overall"][n]
+        pct = hit / (hit + missed) if hit + missed else 0
+        rows += (f"<tr><td><b>Top {n}</b> per game</td><td>{picked}</td><td class='win'><b>{hit}</b></td>"
+                 f"<td class='loss'>{missed}</td><td>{vp}</td><td class='big'>{_pct(hit, missed)}</td>"
+                 f"<td><div class='bar'><i style='width:{pct * 100:.0f}%'></i></div></td></tr>")
+    grades = " · ".join(f"<b>{g}</b> {_pct(*t)} <span class='mute'>({t[0]}-{t[1]})</span>"
+                        for g, t in summary["by_grade"].items())
+    body = ""
+    if summary["pending"]:
+        body += f"<p class='mute'>{summary['pending']} props still pending (game or stats not final yet).</p>"
+    if bank_line:
+        body += f"<p><b>Paper bankroll:</b> {H.escape(bank_line)}</p>"
+    body += (f"<h2>Whole week — top N props from each of {summary['games']} games</h2><div class='card'><table>"
+             f"<tr><th>Picks</th><th>Props picked</th><th>Hit</th><th>Missed</th><th>Void/push</th><th>Hit %</th><th></th></tr>"
+             f"{rows}</table><p>By grade: {grades}</p></div><h2>Game by game</h2><div class='games'>")
+    for g, info in summary["per_game"].items():
+        tiers = "".join(f"<span class='tier'>Top {n}: <b>{t[0]}/{t[0] + t[1]}</b> ({_pct(*t)})</span>"
+                        for n, t in sorted(info["tiers"].items()))
+        trs = ""
+        for i, p in enumerate(info["props"], 1):
+            res = p["result"]
+            act = "" if p["actual"] is None else f"{p['actual']:g}"
+            stat = {"passing_yards": "pass", "rushing_yards": "rush", "receiving_yards": "rec"}[p["stat"]]
+            trs += (f"<tr><td>{i}</td><td>{H.escape(p['player'])} <span class='mute'>{p['team']}</span></td>"
+                    f"<td>{p['pick']} {stat}</td><td>{p['grade']}</td><td>{act}</td>"
+                    f"<td class='{res}'><b>{res.upper()}</b></td></tr>")
+        body += (f"<div class='card'><b class='big'>{g.replace('@', ' @ ')}</b><div class='tiers'>{tiers}</div>"
+                 f"<table><tr><th>#</th><th>Player</th><th>Pick</th><th>Gr</th><th>Actual</th><th></th></tr>{trs}</table></div>")
+    body += "</div>"
+    title = f"Week {week} Report Card"
+    return (REPORT_TEMPLATE.replace("__TITLE__", f"Tids Takedowns · {title}")
+            .replace("__H1__", f"Tids Takedowns — {title}")
+            .replace("__SUB__", f"{season} season · <a href='../index.html'>← back to this week's picks</a> · "
+                                f"<a href='index.html'>all report cards</a>")
+            .replace("__BODY__", body))
+
+
+def _bank_line(stats, sched, season, week) -> str:
+    ledger = load_ledger()
+    graded = [b for b in grade_ledger(ledger, stats, sched) if b["kind"] != "none"]
+    wk = [b for b in graded if b["season"] == season and b["week"] == week and b["result"] != "pending"]
+    s = bankroll_summary(ledger, graded)
+    pl = sum(b["profit"] for b in wk)
+    w = sum(b["result"] == "win" for b in wk)
+    l = sum(b["result"] == "loss" for b in wk)
+    return (f"week {week}: {w}-{l}, {'+' if pl >= 0 else '-'}${abs(pl):,.2f} · "
+            f"balance ${s['balance']:,.2f} (started ${s['start']:,})")
+
+
+def cmd_report(args, stats, sched, season):
+    """Build report cards from snapshots. --out writes HTML pages for every week;
+    --markdown writes the most recent completed week (or --week) as markdown."""
+    import json
+    snaps = sorted(Path(args.snapshot_dir).glob("*-w*.json")) if Path(args.snapshot_dir).exists() else []
+    weeks = []
+    for path in snaps:
+        snap = json.loads(path.read_text(encoding="utf-8"))
+        if not snap["props"]:
+            continue
+        summary = summarize_week(grade_snapshot(snap, stats, sched))
+        weeks.append((snap["season"], snap["week"], summary))
+    if args.out:
+        out = Path(args.out)
+        out.mkdir(parents=True, exist_ok=True)
+        links = ""
+        for s_, w_, summ in sorted(weeks, reverse=True):
+            (out / f"{s_}-w{w_:02d}.html").write_text(
+                report_html(s_, w_, summ, _bank_line(stats, sched, s_, w_)), encoding="utf-8")
+            t3 = summ["overall"][3]
+            links += (f"<div class='card'><a class='big' href='{s_}-w{w_:02d}.html'>Week {w_} · {s_}</a>"
+                      f"<div class='mute'>Top 10 per game: {_tier_text(summ['overall'][10])} · "
+                      f"Top 5: {_pct(*summ['overall'][5])} · Top 3: {_pct(*t3)} · Top 2: {_pct(*summ['overall'][2])}"
+                      f"{' · in progress' if summ['pending'] else ''}</div></div>")
+        (out / "index.html").write_text(
+            REPORT_TEMPLATE.replace("__TITLE__", "Tids Takedowns · Report Cards")
+            .replace("__H1__", "Tids Takedowns — Report Cards")
+            .replace("__SUB__", "How our top-rated props did each week · <a href='../index.html'>← back to picks</a>")
+            .replace("__BODY__", links or "<p>No completed weeks yet.</p>"), encoding="utf-8")
+        print(f"Wrote {len(weeks)} report card(s) to {out}")
+    if args.markdown:
+        done = [(s_, w_, summ) for s_, w_, summ in weeks
+                if (args.week is None or w_ == args.week)
+                and sched[(sched["season"] == s_) & (sched["week"] == w_)]["result"].notna().all()]
+        if not done:
+            print("No completed week to report.")
+            return
+        s_, w_, summ = max(done)
+        Path(args.markdown).write_text(report_markdown(s_, w_, summ, _bank_line(stats, sched, s_, w_)),
+                                       encoding="utf-8")
+        print(f"Week {w_} report written to {args.markdown}")
+        print(f"TITLE=Week {w_} Report Card ({s_})")
+
+
 def cmd_week(args, stats, sched, season):
     out_dir = Path(__file__).parent
     while True:
         week, games, rows, source = build_week(args, stats, sched, season)
+        if args.snapshot_dir:
+            update_snapshot(args.snapshot_dir, season, week, rows)
         if args.live:
             os.system("cls" if os.name == "nt" else "clear")
         print_week(week, games, rows, source, args)
@@ -1517,6 +1789,7 @@ def main():
     w.add_argument("--include-played", action="store_true", help="include games already finished")
     w.add_argument("--live", type=float, metavar="MIN", help="keep running, refresh lines every MIN minutes")
     w.add_argument("--html", help="write the dashboard to this path (e.g. site/index.html)")
+    w.add_argument("--snapshot-dir", help="save pre-kickoff ratings here for weekly report cards")
 
     ab = sub.add_parser("autobet", help="place Claude's paper bets on today's games (pre-kickoff window)")
     ab.add_argument("--budget", type=float, default=200)
@@ -1533,11 +1806,17 @@ def main():
 
     sub.add_parser("bankroll", help="show paper bankroll and bet history")
 
+    rp = sub.add_parser("report", help="weekly report cards: hit %% of our top-N props per game")
+    rp.add_argument("--snapshot-dir", default="data/snapshots")
+    rp.add_argument("--out", help="write HTML report pages for every week to this folder")
+    rp.add_argument("--markdown", help="write the latest completed week (or --week) as markdown")
+    rp.add_argument("--week", type=int)
+
     args = ap.parse_args()
     stats, sched, season = load_data(args.refresh)
     {"player": cmd_player, "slate": cmd_slate, "defense": cmd_defense,
      "week": cmd_week, "autobet": cmd_autobet, "bet": cmd_bet,
-     "bankroll": cmd_bankroll}[args.cmd](args, stats, sched, season)
+     "bankroll": cmd_bankroll, "report": cmd_report}[args.cmd](args, stats, sched, season)
 
 
 if __name__ == "__main__":

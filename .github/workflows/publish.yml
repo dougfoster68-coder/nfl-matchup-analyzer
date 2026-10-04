@@ -50,8 +50,27 @@ jobs:
             git push
           fi
 
-      - name: Build dashboard
-        run: python nfl_matchup.py week --html site/index.html
+      # Pre-kickoff rating snapshots live on the 'data' branch (keeps main's history clean)
+      - name: Load data branch
+        run: |
+          git fetch --depth=1 origin data
+          git worktree add data FETCH_HEAD
+
+      - name: Build dashboard and report cards
+        run: |
+          python nfl_matchup.py week --html site/index.html --snapshot-dir data/snapshots
+          python nfl_matchup.py report --snapshot-dir data/snapshots --out site/reports
+
+      - name: Save snapshots
+        working-directory: data
+        run: |
+          git add -A
+          if ! git diff --cached --quiet; then
+            git -c user.name="github-actions[bot]" \
+                -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+                commit -q -m "Rating snapshot $(TZ=America/New_York date '+%a %b %d %I:%M %p ET')"
+            git push origin HEAD:data
+          fi
 
       - uses: actions/upload-pages-artifact@v3
         with:
