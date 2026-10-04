@@ -3,7 +3,5827 @@
   "bets": [
     {
       "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Aaron Jones",
+          "player_id": "00-0033293",
+          "team": "MIN",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.3
+        }
+      ],
+      "game": "GB@MIN",
+      "id": "2026-w1-backtest-1",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Aaron Jones",
+          "player_id": "00-0033293",
+          "team": "MIN",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -255,
+          "grade": "A",
+          "score": 9.3,
+          "alt": "25+"
+        }
+      ],
+      "game": "GB@MIN",
+      "id": "2026-w1-backtest-2",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -255,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Aaron Jones",
+          "player_id": "00-0033293",
+          "team": "MIN",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": 475,
+          "grade": "A",
+          "score": 9.3,
+          "alt": "40+"
+        }
+      ],
+      "game": "GB@MIN",
+      "id": "2026-w1-backtest-3",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 475,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "J.K. Dobbins",
+          "player_id": "00-0036158",
+          "team": "DEN",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        }
+      ],
+      "game": "DEN@KC",
+      "id": "2026-w1-backtest-4",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "J.K. Dobbins",
+          "player_id": "00-0036158",
+          "team": "DEN",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": -305,
+          "grade": "A",
+          "score": 9.0,
+          "alt": "40+"
+        }
+      ],
+      "game": "DEN@KC",
+      "id": "2026-w1-backtest-5",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -305,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "J.K. Dobbins",
+          "player_id": "00-0036158",
+          "team": "DEN",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 59.5,
+          "odds": 240,
+          "grade": "A",
+          "score": 9.0,
+          "alt": "60+"
+        }
+      ],
+      "game": "DEN@KC",
+      "id": "2026-w1-backtest-6",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 240,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Emeka Egbuka",
+          "player_id": "00-0040129",
+          "team": "TB",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 58.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        }
+      ],
+      "game": "TB@CIN",
+      "id": "2026-w1-backtest-7",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Tyler Warren",
+          "player_id": "00-0040128",
+          "team": "IND",
+          "opp": "BAL",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 48.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        }
+      ],
+      "game": "BAL@IND",
+      "id": "2026-w1-backtest-8",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Kenny Gainwell",
+          "player_id": "00-0036919",
+          "team": "TB",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 22.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.5
+        }
+      ],
+      "game": "TB@CIN",
+      "id": "2026-w1-backtest-9",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Kenny Gainwell",
+          "player_id": "00-0036919",
+          "team": "TB",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -210,
+          "grade": "A",
+          "score": 8.5,
+          "alt": "20+"
+        }
+      ],
+      "game": "TB@CIN",
+      "id": "2026-w1-backtest-10",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -210,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Kenny Gainwell",
+          "player_id": "00-0036919",
+          "team": "TB",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": 410,
+          "grade": "A",
+          "score": 8.5,
+          "alt": "30+"
+        }
+      ],
+      "game": "TB@CIN",
+      "id": "2026-w1-backtest-11",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 410,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Chase Brown",
+          "player_id": "00-0038597",
+          "team": "CIN",
+          "opp": "TB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.3
+        }
+      ],
+      "game": "TB@CIN",
+      "id": "2026-w1-backtest-12",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Chase Brown",
+          "player_id": "00-0038597",
+          "team": "CIN",
+          "opp": "TB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -310,
+          "grade": "A",
+          "score": 8.3,
+          "alt": "20+"
+        }
+      ],
+      "game": "TB@CIN",
+      "id": "2026-w1-backtest-13",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -310,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Chase Brown",
+          "player_id": "00-0038597",
+          "team": "CIN",
+          "opp": "TB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": 240,
+          "grade": "A",
+          "score": 8.3,
+          "alt": "30+"
+        }
+      ],
+      "game": "TB@CIN",
+      "id": "2026-w1-backtest-14",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 240,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        }
+      ],
+      "game": "SF@LA",
+      "id": "2026-w1-backtest-15",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Deebo Samuel Sr.",
+          "player_id": "00-0035719",
+          "team": "SF",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.0
+        }
+      ],
+      "game": "SF@LA",
+      "id": "2026-w1-backtest-16",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Deebo Samuel Sr.",
+          "player_id": "00-0035719",
+          "team": "SF",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -190,
+          "grade": "A",
+          "score": 8.0,
+          "alt": "25+"
+        }
+      ],
+      "game": "SF@LA",
+      "id": "2026-w1-backtest-17",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -190,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Deebo Samuel Sr.",
+          "player_id": "00-0035719",
+          "team": "SF",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": 800,
+          "grade": "A",
+          "score": 8.0,
+          "alt": "40+"
+        }
+      ],
+      "game": "SF@LA",
+      "id": "2026-w1-backtest-18",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 800,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "LV",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.0
+        }
+      ],
+      "game": "MIA@LV",
+      "id": "2026-w1-backtest-19",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "LV",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 59.5,
+          "odds": -225,
+          "grade": "A",
+          "score": 8.0,
+          "alt": "60+"
+        }
+      ],
+      "game": "MIA@LV",
+      "id": "2026-w1-backtest-20",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -225,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "LV",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 89.5,
+          "odds": 365,
+          "grade": "A",
+          "score": 8.0,
+          "alt": "90+"
+        }
+      ],
+      "game": "MIA@LV",
+      "id": "2026-w1-backtest-21",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 365,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Kyler Murray",
+          "player_id": "00-0035228",
+          "team": "MIN",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 22.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.0
+        }
+      ],
+      "game": "GB@MIN",
+      "id": "2026-w1-backtest-22",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Kyler Murray",
+          "player_id": "00-0035228",
+          "team": "MIN",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -210,
+          "grade": "A",
+          "score": 8.0,
+          "alt": "20+"
+        }
+      ],
+      "game": "GB@MIN",
+      "id": "2026-w1-backtest-23",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -210,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Kyler Murray",
+          "player_id": "00-0035228",
+          "team": "MIN",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": 410,
+          "grade": "A",
+          "score": 8.0,
+          "alt": "30+"
+        }
+      ],
+      "game": "GB@MIN",
+      "id": "2026-w1-backtest-24",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 410,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Derrick Henry",
+          "player_id": "00-0032764",
+          "team": "BAL",
+          "opp": "IND",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 77.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.9
+        }
+      ],
+      "game": "BAL@IND",
+      "id": "2026-w1-backtest-25",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Derrick Henry",
+          "player_id": "00-0032764",
+          "team": "BAL",
+          "opp": "IND",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": -180,
+          "grade": "A",
+          "score": 7.9,
+          "alt": "70+"
+        }
+      ],
+      "game": "BAL@IND",
+      "id": "2026-w1-backtest-26",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -180,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Derrick Henry",
+          "player_id": "00-0032764",
+          "team": "BAL",
+          "opp": "IND",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 89.5,
+          "odds": 190,
+          "grade": "A",
+          "score": 7.9,
+          "alt": "90+"
+        }
+      ],
+      "game": "BAL@IND",
+      "id": "2026-w1-backtest-27",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 190,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Darnell Washington",
+          "player_id": "00-0038558",
+          "team": "PIT",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 16.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "ATL@PIT",
+      "id": "2026-w1-backtest-28",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Darnell Washington",
+          "player_id": "00-0038558",
+          "team": "PIT",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -200,
+          "grade": "A",
+          "score": 7.8,
+          "alt": "15+"
+        }
+      ],
+      "game": "ATL@PIT",
+      "id": "2026-w1-backtest-29",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -200,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Darnell Washington",
+          "player_id": "00-0038558",
+          "team": "PIT",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": 215,
+          "grade": "A",
+          "score": 7.8,
+          "alt": "20+"
+        }
+      ],
+      "game": "ATL@PIT",
+      "id": "2026-w1-backtest-30",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 215,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Jayden Reed",
+          "player_id": "00-0039146",
+          "team": "GB",
+          "opp": "MIN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 43.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "GB@MIN",
+      "id": "2026-w1-backtest-31",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Quinshon Judkins",
+          "player_id": "00-0040784",
+          "team": "CLE",
+          "opp": "JAX",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 57.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        }
+      ],
+      "game": "CLE@JAX",
+      "id": "2026-w1-backtest-32",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Cade Otton",
+          "player_id": "00-0038129",
+          "team": "TB",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 32.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.5
+        }
+      ],
+      "game": "TB@CIN",
+      "id": "2026-w1-backtest-33",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Cade Otton",
+          "player_id": "00-0038129",
+          "team": "TB",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -390,
+          "grade": "B",
+          "score": 7.5,
+          "alt": "25+"
+        }
+      ],
+      "game": "TB@CIN",
+      "id": "2026-w1-backtest-34",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -390,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Cade Otton",
+          "player_id": "00-0038129",
+          "team": "TB",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": 255,
+          "grade": "B",
+          "score": 7.5,
+          "alt": "40+"
+        }
+      ],
+      "game": "TB@CIN",
+      "id": "2026-w1-backtest-35",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 255,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Joe Burrow",
+          "player_id": "00-0036442",
+          "team": "CIN",
+          "opp": "TB",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 8.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.5
+        }
+      ],
+      "game": "TB@CIN",
+      "id": "2026-w1-backtest-36",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Jordan Addison",
+          "player_id": "00-0038994",
+          "team": "MIN",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 43.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.4
+        }
+      ],
+      "game": "GB@MIN",
+      "id": "2026-w1-backtest-37",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Baker Mayfield",
+          "player_id": "00-0034855",
+          "team": "TB",
+          "opp": "CIN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 17.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.2
+        }
+      ],
+      "game": "TB@CIN",
+      "id": "2026-w1-backtest-38",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Baker Mayfield",
+          "player_id": "00-0034855",
+          "team": "TB",
+          "opp": "CIN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -260,
+          "grade": "B",
+          "score": 7.2,
+          "alt": "15+"
+        }
+      ],
+      "game": "TB@CIN",
+      "id": "2026-w1-backtest-39",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -260,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Baker Mayfield",
+          "player_id": "00-0034855",
+          "team": "TB",
+          "opp": "CIN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 655,
+          "grade": "B",
+          "score": 7.2,
+          "alt": "25+"
+        }
+      ],
+      "game": "TB@CIN",
+      "id": "2026-w1-backtest-40",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 655,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Juwan Johnson",
+          "player_id": "00-0036040",
+          "team": "NO",
+          "opp": "DET",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 42.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.2
+        }
+      ],
+      "game": "NO@DET",
+      "id": "2026-w1-backtest-41",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Juwan Johnson",
+          "player_id": "00-0036040",
+          "team": "NO",
+          "opp": "DET",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -555,
+          "grade": "B",
+          "score": 7.2,
+          "alt": "30+"
+        }
+      ],
+      "game": "NO@DET",
+      "id": "2026-w1-backtest-42",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -555,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Juwan Johnson",
+          "player_id": "00-0036040",
+          "team": "NO",
+          "opp": "DET",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": 200,
+          "grade": "B",
+          "score": 7.2,
+          "alt": "50+"
+        }
+      ],
+      "game": "NO@DET",
+      "id": "2026-w1-backtest-43",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 200,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Saquon Barkley",
+          "player_id": "00-0034844",
+          "team": "PHI",
+          "opp": "WAS",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 77.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.2
+        }
+      ],
+      "game": "WAS@PHI",
+      "id": "2026-w1-backtest-44",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Saquon Barkley",
+          "player_id": "00-0034844",
+          "team": "PHI",
+          "opp": "WAS",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": -180,
+          "grade": "B",
+          "score": 7.2,
+          "alt": "70+"
+        }
+      ],
+      "game": "WAS@PHI",
+      "id": "2026-w1-backtest-45",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -180,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Saquon Barkley",
+          "player_id": "00-0034844",
+          "team": "PHI",
+          "opp": "WAS",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 89.5,
+          "odds": 190,
+          "grade": "B",
+          "score": 7.2,
+          "alt": "90+"
+        }
+      ],
+      "game": "WAS@PHI",
+      "id": "2026-w1-backtest-46",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 190,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Trey McBride",
+          "player_id": "00-0037744",
+          "team": "ARI",
+          "opp": "LAC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 56.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1
+        }
+      ],
+      "game": "ARI@LAC",
+      "id": "2026-w1-backtest-47",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Trey McBride",
+          "player_id": "00-0037744",
+          "team": "ARI",
+          "opp": "LAC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": -200,
+          "grade": "B",
+          "score": 7.1,
+          "alt": "50+"
+        }
+      ],
+      "game": "ARI@LAC",
+      "id": "2026-w1-backtest-48",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -200,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Trey McBride",
+          "player_id": "00-0037744",
+          "team": "ARI",
+          "opp": "LAC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": 275,
+          "grade": "B",
+          "score": 7.1,
+          "alt": "70+"
+        }
+      ],
+      "game": "ARI@LAC",
+      "id": "2026-w1-backtest-49",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 275,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Ladd McConkey",
+          "player_id": "00-0039915",
+          "team": "LAC",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 56.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1
+        }
+      ],
+      "game": "ARI@LAC",
+      "id": "2026-w1-backtest-50",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Jaylen Warren",
+          "player_id": "00-0037228",
+          "team": "PIT",
+          "opp": "ATL",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 42.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        }
+      ],
+      "game": "ATL@PIT",
+      "id": "2026-w1-backtest-51",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jaylen Warren",
+          "player_id": "00-0037228",
+          "team": "PIT",
+          "opp": "ATL",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -555,
+          "grade": "B",
+          "score": 7.0,
+          "alt": "30+"
+        }
+      ],
+      "game": "ATL@PIT",
+      "id": "2026-w1-backtest-52",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -555,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jaylen Warren",
+          "player_id": "00-0037228",
+          "team": "PIT",
+          "opp": "ATL",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": 200,
+          "grade": "B",
+          "score": 7.0,
+          "alt": "50+"
+        }
+      ],
+      "game": "ATL@PIT",
+      "id": "2026-w1-backtest-53",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 200,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Tyjae Spears",
+          "player_id": "00-0039032",
+          "team": "TEN",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 16.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        }
+      ],
+      "game": "NYJ@TEN",
+      "id": "2026-w1-backtest-54",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Tyjae Spears",
+          "player_id": "00-0039032",
+          "team": "TEN",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -200,
+          "grade": "B",
+          "score": 7.0,
+          "alt": "15+"
+        }
+      ],
+      "game": "NYJ@TEN",
+      "id": "2026-w1-backtest-55",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -200,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Tyjae Spears",
+          "player_id": "00-0039032",
+          "team": "TEN",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": 215,
+          "grade": "B",
+          "score": 7.0,
+          "alt": "20+"
+        }
+      ],
+      "game": "NYJ@TEN",
+      "id": "2026-w1-backtest-56",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 215,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "DAL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        }
+      ],
+      "game": "DAL@NYG",
+      "id": "2026-w1-backtest-57",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "DAL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -515,
+          "grade": "B",
+          "score": 7.0,
+          "alt": "15+"
+        }
+      ],
+      "game": "DAL@NYG",
+      "id": "2026-w1-backtest-58",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": -515,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "DAL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 230,
+          "grade": "B",
+          "score": 7.0,
+          "alt": "25+"
+        }
+      ],
+      "game": "DAL@NYG",
+      "id": "2026-w1-backtest-59",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 230,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 50,
+      "legs": [
+        {
+          "player": "Aaron Jones",
+          "player_id": "00-0033293",
+          "team": "MIN",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.3
+        },
+        {
+          "player": "J.K. Dobbins",
+          "player_id": "00-0036158",
+          "team": "DEN",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w1-backtest-60",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 264,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 50,
+      "legs": [
+        {
+          "player": "Emeka Egbuka",
+          "player_id": "00-0040129",
+          "team": "TB",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 58.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        },
+        {
+          "player": "Tyler Warren",
+          "player_id": "00-0040128",
+          "team": "IND",
+          "opp": "BAL",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 48.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w1-backtest-61",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 264,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 50,
+      "legs": [
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        },
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "LV",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.0
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w1-backtest-62",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 264,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 50,
+      "legs": [
+        {
+          "player": "Darnell Washington",
+          "player_id": "00-0038558",
+          "team": "PIT",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 16.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        },
+        {
+          "player": "Quinshon Judkins",
+          "player_id": "00-0040784",
+          "team": "CLE",
+          "opp": "JAX",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 57.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w1-backtest-63",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 264,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 60,
+      "legs": [
+        {
+          "player": "Aaron Jones",
+          "player_id": "00-0033293",
+          "team": "MIN",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.3
+        },
+        {
+          "player": "Tyler Warren",
+          "player_id": "00-0040128",
+          "team": "IND",
+          "opp": "BAL",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 48.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Darnell Washington",
+          "player_id": "00-0038558",
+          "team": "PIT",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 16.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w1-backtest-64",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 596,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 60,
+      "legs": [
+        {
+          "player": "J.K. Dobbins",
+          "player_id": "00-0036158",
+          "team": "DEN",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        },
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        },
+        {
+          "player": "Quinshon Judkins",
+          "player_id": "00-0040784",
+          "team": "CLE",
+          "opp": "JAX",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 57.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w1-backtest-65",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 596,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 60,
+      "legs": [
+        {
+          "player": "Emeka Egbuka",
+          "player_id": "00-0040129",
+          "team": "TB",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 58.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        },
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "LV",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.0
+        },
+        {
+          "player": "Aaron Jones",
+          "player_id": "00-0033293",
+          "team": "MIN",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.3
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w1-backtest-66",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 596,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 60,
+      "legs": [
+        {
+          "player": "Aaron Jones",
+          "player_id": "00-0033293",
+          "team": "MIN",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.3
+        },
+        {
+          "player": "Emeka Egbuka",
+          "player_id": "00-0040129",
+          "team": "TB",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 58.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        },
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        },
+        {
+          "player": "Darnell Washington",
+          "player_id": "00-0038558",
+          "team": "PIT",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 16.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w1-backtest-67",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 1228,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 60,
+      "legs": [
+        {
+          "player": "J.K. Dobbins",
+          "player_id": "00-0036158",
+          "team": "DEN",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        },
+        {
+          "player": "Tyler Warren",
+          "player_id": "00-0040128",
+          "team": "IND",
+          "opp": "BAL",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 48.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "LV",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.0
+        },
+        {
+          "player": "Quinshon Judkins",
+          "player_id": "00-0040784",
+          "team": "CLE",
+          "opp": "JAX",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 57.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w1-backtest-68",
+      "placed_at": "2026-w01 (backtest)",
+      "season": 2026,
+      "week": 1,
+      "odds": 1228,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "SF",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 54.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        }
+      ],
+      "game": "MIA@SF",
+      "id": "2026-w2-backtest-1",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "SF",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": -460,
+          "grade": "A",
+          "score": 9.0,
+          "alt": "40+"
+        }
+      ],
+      "game": "MIA@SF",
+      "id": "2026-w2-backtest-2",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -460,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "SF",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": 340,
+          "grade": "A",
+          "score": 9.0,
+          "alt": "70+"
+        }
+      ],
+      "game": "MIA@SF",
+      "id": "2026-w2-backtest-3",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 340,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Sione Vaki",
+          "player_id": "00-0039364",
+          "team": "DET",
+          "opp": "BUF",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 5.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        }
+      ],
+      "game": "DET@BUF",
+      "id": "2026-w2-backtest-4",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Greg Dulcich",
+          "player_id": "00-0037252",
+          "team": "MIA",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.6
+        }
+      ],
+      "game": "MIA@SF",
+      "id": "2026-w2-backtest-5",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Greg Dulcich",
+          "player_id": "00-0037252",
+          "team": "MIA",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -515,
+          "grade": "A",
+          "score": 8.6,
+          "alt": "15+"
+        }
+      ],
+      "game": "MIA@SF",
+      "id": "2026-w2-backtest-6",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -515,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Greg Dulcich",
+          "player_id": "00-0037252",
+          "team": "MIA",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 230,
+          "grade": "A",
+          "score": 8.6,
+          "alt": "25+"
+        }
+      ],
+      "game": "MIA@SF",
+      "id": "2026-w2-backtest-7",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 230,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Cooper Kupp",
+          "player_id": "00-0033908",
+          "team": "SEA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 23.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.5
+        }
+      ],
+      "game": "SEA@ARI",
+      "id": "2026-w2-backtest-8",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Cooper Kupp",
+          "player_id": "00-0033908",
+          "team": "SEA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -255,
+          "grade": "A",
+          "score": 8.5,
+          "alt": "20+"
+        }
+      ],
+      "game": "SEA@ARI",
+      "id": "2026-w2-backtest-9",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -255,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Cooper Kupp",
+          "player_id": "00-0033908",
+          "team": "SEA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": 310,
+          "grade": "A",
+          "score": 8.5,
+          "alt": "30+"
+        }
+      ],
+      "game": "SEA@ARI",
+      "id": "2026-w2-backtest-10",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 310,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Chris Olave",
+          "player_id": "00-0037239",
+          "team": "NO",
+          "opp": "BAL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 66.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.2
+        }
+      ],
+      "game": "NO@BAL",
+      "id": "2026-w2-backtest-11",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Chris Olave",
+          "player_id": "00-0037239",
+          "team": "NO",
+          "opp": "BAL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 59.5,
+          "odds": -185,
+          "grade": "A",
+          "score": 8.2,
+          "alt": "60+"
+        }
+      ],
+      "game": "NO@BAL",
+      "id": "2026-w2-backtest-12",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -185,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Chris Olave",
+          "player_id": "00-0037239",
+          "team": "NO",
+          "opp": "BAL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 79.5,
+          "odds": 230,
+          "grade": "A",
+          "score": 8.2,
+          "alt": "80+"
+        }
+      ],
+      "game": "NO@BAL",
+      "id": "2026-w2-backtest-13",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 230,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Tee Higgins",
+          "player_id": "00-0036410",
+          "team": "CIN",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 52.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.0
+        }
+      ],
+      "game": "CIN@HOU",
+      "id": "2026-w2-backtest-14",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Tee Higgins",
+          "player_id": "00-0036410",
+          "team": "CIN",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": -390,
+          "grade": "A",
+          "score": 8.0,
+          "alt": "40+"
+        }
+      ],
+      "game": "CIN@HOU",
+      "id": "2026-w2-backtest-15",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -390,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Tee Higgins",
+          "player_id": "00-0036410",
+          "team": "CIN",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": 440,
+          "grade": "A",
+          "score": 8.0,
+          "alt": "70+"
+        }
+      ],
+      "game": "CIN@HOU",
+      "id": "2026-w2-backtest-16",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 440,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Bijan Robinson",
+          "player_id": "00-0038542",
+          "team": "ATL",
+          "opp": "CAR",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 80.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "CAR@ATL",
+      "id": "2026-w2-backtest-17",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Bijan Robinson",
+          "player_id": "00-0038542",
+          "team": "ATL",
+          "opp": "CAR",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": -215,
+          "grade": "A",
+          "score": 7.8,
+          "alt": "70+"
+        }
+      ],
+      "game": "CAR@ATL",
+      "id": "2026-w2-backtest-18",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -215,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Bijan Robinson",
+          "player_id": "00-0038542",
+          "team": "ATL",
+          "opp": "CAR",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 99.5,
+          "odds": 280,
+          "grade": "A",
+          "score": 7.8,
+          "alt": "100+"
+        }
+      ],
+      "game": "CAR@ATL",
+      "id": "2026-w2-backtest-19",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 280,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "DK Metcalf",
+          "player_id": "00-0035640",
+          "team": "PIT",
+          "opp": "NE",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 59.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "PIT@NE",
+      "id": "2026-w2-backtest-20",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Chase Brown",
+          "player_id": "00-0038597",
+          "team": "CIN",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        }
+      ],
+      "game": "CIN@HOU",
+      "id": "2026-w2-backtest-21",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Chase Brown",
+          "player_id": "00-0038597",
+          "team": "CIN",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -515,
+          "grade": "A",
+          "score": 7.7,
+          "alt": "15+"
+        }
+      ],
+      "game": "CIN@HOU",
+      "id": "2026-w2-backtest-22",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -515,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Chase Brown",
+          "player_id": "00-0038597",
+          "team": "CIN",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 230,
+          "grade": "A",
+          "score": 7.7,
+          "alt": "25+"
+        }
+      ],
+      "game": "CIN@HOU",
+      "id": "2026-w2-backtest-23",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 230,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Cooper Rush",
+          "player_id": "00-0033662",
+          "team": "ATL",
+          "opp": "CAR",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 0.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.6
+        }
+      ],
+      "game": "CAR@ATL",
+      "id": "2026-w2-backtest-24",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Tyler Shough",
+          "player_id": "00-0040743",
+          "team": "NO",
+          "opp": "BAL",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 230.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.6
+        }
+      ],
+      "game": "NO@BAL",
+      "id": "2026-w2-backtest-25",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Tyler Shough",
+          "player_id": "00-0040743",
+          "team": "NO",
+          "opp": "BAL",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 199.5,
+          "odds": -215,
+          "grade": "A",
+          "score": 7.6,
+          "alt": "200+"
+        }
+      ],
+      "game": "NO@BAL",
+      "id": "2026-w2-backtest-26",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -215,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Tyler Shough",
+          "player_id": "00-0040743",
+          "team": "NO",
+          "opp": "BAL",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 274.5,
+          "odds": 225,
+          "grade": "A",
+          "score": 7.6,
+          "alt": "275+"
+        }
+      ],
+      "game": "NO@BAL",
+      "id": "2026-w2-backtest-27",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 225,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Foster Moreau",
+          "player_id": "00-0034981",
+          "team": "HOU",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.6
+        }
+      ],
+      "game": "CIN@HOU",
+      "id": "2026-w2-backtest-28",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Kayshon Boutte",
+          "player_id": "00-0038608",
+          "team": "HOU",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 36.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.5
+        }
+      ],
+      "game": "CIN@HOU",
+      "id": "2026-w2-backtest-29",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.5
+        }
+      ],
+      "game": "NYG@LA",
+      "id": "2026-w2-backtest-30",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -515,
+          "grade": "A",
+          "score": 7.5,
+          "alt": "15+"
+        }
+      ],
+      "game": "NYG@LA",
+      "id": "2026-w2-backtest-31",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -515,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 230,
+          "grade": "A",
+          "score": 7.5,
+          "alt": "25+"
+        }
+      ],
+      "game": "NYG@LA",
+      "id": "2026-w2-backtest-32",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 230,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Tony Pollard",
+          "player_id": "00-0035261",
+          "team": "TEN",
+          "opp": "PHI",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        }
+      ],
+      "game": "PHI@TEN",
+      "id": "2026-w2-backtest-33",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Tony Pollard",
+          "player_id": "00-0035261",
+          "team": "TEN",
+          "opp": "PHI",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -405,
+          "grade": "B",
+          "score": 7.3,
+          "alt": "30+"
+        }
+      ],
+      "game": "PHI@TEN",
+      "id": "2026-w2-backtest-34",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -405,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Tony Pollard",
+          "player_id": "00-0035261",
+          "team": "TEN",
+          "opp": "PHI",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": 305,
+          "grade": "B",
+          "score": 7.3,
+          "alt": "50+"
+        }
+      ],
+      "game": "PHI@TEN",
+      "id": "2026-w2-backtest-35",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 305,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Trevor Lawrence",
+          "player_id": "00-0036971",
+          "team": "JAX",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 17.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        }
+      ],
+      "game": "JAX@DEN",
+      "id": "2026-w2-backtest-36",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Trevor Lawrence",
+          "player_id": "00-0036971",
+          "team": "JAX",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -260,
+          "grade": "B",
+          "score": 7.3,
+          "alt": "15+"
+        }
+      ],
+      "game": "JAX@DEN",
+      "id": "2026-w2-backtest-37",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -260,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Trevor Lawrence",
+          "player_id": "00-0036971",
+          "team": "JAX",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 655,
+          "grade": "B",
+          "score": 7.3,
+          "alt": "25+"
+        }
+      ],
+      "game": "JAX@DEN",
+      "id": "2026-w2-backtest-38",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 655,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Justin Herbert",
+          "player_id": "00-0036355",
+          "team": "LAC",
+          "opp": "LV",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 224.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        }
+      ],
+      "game": "LV@LAC",
+      "id": "2026-w2-backtest-39",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Emeka Egbuka",
+          "player_id": "00-0040129",
+          "team": "TB",
+          "opp": "CLE",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 54.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1
+        }
+      ],
+      "game": "CLE@TB",
+      "id": "2026-w2-backtest-40",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Mack Hollins",
+          "player_id": "00-0033555",
+          "team": "NE",
+          "opp": "PIT",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 36.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        }
+      ],
+      "game": "PIT@NE",
+      "id": "2026-w2-backtest-41",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Mack Hollins",
+          "player_id": "00-0033555",
+          "team": "NE",
+          "opp": "PIT",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -290,
+          "grade": "B",
+          "score": 7.0,
+          "alt": "30+"
+        }
+      ],
+      "game": "PIT@NE",
+      "id": "2026-w2-backtest-42",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -290,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Mack Hollins",
+          "player_id": "00-0033555",
+          "team": "NE",
+          "opp": "PIT",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": 520,
+          "grade": "B",
+          "score": 7.0,
+          "alt": "50+"
+        }
+      ],
+      "game": "PIT@NE",
+      "id": "2026-w2-backtest-43",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 520,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "James Cook",
+          "player_id": "00-0037248",
+          "team": "BUF",
+          "opp": "DET",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        }
+      ],
+      "game": "DET@BUF",
+      "id": "2026-w2-backtest-44",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Derrick Henry",
+          "player_id": "00-0032764",
+          "team": "BAL",
+          "opp": "NO",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 94.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        }
+      ],
+      "game": "NO@BAL",
+      "id": "2026-w2-backtest-45",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Derrick Henry",
+          "player_id": "00-0032764",
+          "team": "BAL",
+          "opp": "NO",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 79.5,
+          "odds": -240,
+          "grade": "B",
+          "score": 6.9,
+          "alt": "80+"
+        }
+      ],
+      "game": "NO@BAL",
+      "id": "2026-w2-backtest-46",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -240,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Derrick Henry",
+          "player_id": "00-0032764",
+          "team": "BAL",
+          "opp": "NO",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 124.5,
+          "odds": 425,
+          "grade": "B",
+          "score": 6.9,
+          "alt": "125+"
+        }
+      ],
+      "game": "NO@BAL",
+      "id": "2026-w2-backtest-47",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 425,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Geno Smith",
+          "player_id": "00-0030565",
+          "team": "NYJ",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        }
+      ],
+      "game": "GB@NYJ",
+      "id": "2026-w2-backtest-48",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Tre Harris",
+          "player_id": "00-0040727",
+          "team": "LAC",
+          "opp": "LV",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 30.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        }
+      ],
+      "game": "LV@LAC",
+      "id": "2026-w2-backtest-49",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Kyle Monangai",
+          "player_id": "00-0040236",
+          "team": "CHI",
+          "opp": "MIN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 35.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        }
+      ],
+      "game": "MIN@CHI",
+      "id": "2026-w2-backtest-50",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Kyle Monangai",
+          "player_id": "00-0040236",
+          "team": "CHI",
+          "opp": "MIN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -255,
+          "grade": "B",
+          "score": 6.6,
+          "alt": "30+"
+        }
+      ],
+      "game": "MIN@CHI",
+      "id": "2026-w2-backtest-51",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -255,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Kyle Monangai",
+          "player_id": "00-0040236",
+          "team": "CHI",
+          "opp": "MIN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": 635,
+          "grade": "B",
+          "score": 6.6,
+          "alt": "50+"
+        }
+      ],
+      "game": "MIN@CHI",
+      "id": "2026-w2-backtest-52",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 635,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "MIA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.5
+        }
+      ],
+      "game": "MIA@SF",
+      "id": "2026-w2-backtest-53",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "MIA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 9.5,
+          "odds": -720,
+          "grade": "B",
+          "score": 6.5,
+          "alt": "10+"
+        }
+      ],
+      "game": "MIA@SF",
+      "id": "2026-w2-backtest-54",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": -720,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "MIA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": 490,
+          "grade": "B",
+          "score": 6.5,
+          "alt": "20+"
+        }
+      ],
+      "game": "MIA@SF",
+      "id": "2026-w2-backtest-55",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 490,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 50,
+      "legs": [
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "SF",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 54.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        },
+        {
+          "player": "Sione Vaki",
+          "player_id": "00-0039364",
+          "team": "DET",
+          "opp": "BUF",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 5.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w2-backtest-56",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 264,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 50,
+      "legs": [
+        {
+          "player": "Cooper Kupp",
+          "player_id": "00-0033908",
+          "team": "SEA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 23.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.5
+        },
+        {
+          "player": "Chris Olave",
+          "player_id": "00-0037239",
+          "team": "NO",
+          "opp": "BAL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 66.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.2
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w2-backtest-57",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 264,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 50,
+      "legs": [
+        {
+          "player": "Tee Higgins",
+          "player_id": "00-0036410",
+          "team": "CIN",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 52.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.0
+        },
+        {
+          "player": "Bijan Robinson",
+          "player_id": "00-0038542",
+          "team": "ATL",
+          "opp": "CAR",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 80.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w2-backtest-58",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 264,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 50,
+      "legs": [
+        {
+          "player": "DK Metcalf",
+          "player_id": "00-0035640",
+          "team": "PIT",
+          "opp": "NE",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 59.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        },
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.5
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w2-backtest-59",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 264,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 60,
+      "legs": [
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "SF",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 54.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        },
+        {
+          "player": "Chris Olave",
+          "player_id": "00-0037239",
+          "team": "NO",
+          "opp": "BAL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 66.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.2
+        },
+        {
+          "player": "DK Metcalf",
+          "player_id": "00-0035640",
+          "team": "PIT",
+          "opp": "NE",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 59.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w2-backtest-60",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 596,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 60,
+      "legs": [
+        {
+          "player": "Sione Vaki",
+          "player_id": "00-0039364",
+          "team": "DET",
+          "opp": "BUF",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 5.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        },
+        {
+          "player": "Tee Higgins",
+          "player_id": "00-0036410",
+          "team": "CIN",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 52.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.0
+        },
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.5
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w2-backtest-61",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 596,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 60,
+      "legs": [
+        {
+          "player": "Cooper Kupp",
+          "player_id": "00-0033908",
+          "team": "SEA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 23.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.5
+        },
+        {
+          "player": "Bijan Robinson",
+          "player_id": "00-0038542",
+          "team": "ATL",
+          "opp": "CAR",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 80.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        },
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "SF",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 54.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w2-backtest-62",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 596,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 60,
+      "legs": [
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "SF",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 54.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        },
+        {
+          "player": "Cooper Kupp",
+          "player_id": "00-0033908",
+          "team": "SEA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 23.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.5
+        },
+        {
+          "player": "Tee Higgins",
+          "player_id": "00-0036410",
+          "team": "CIN",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 52.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.0
+        },
+        {
+          "player": "DK Metcalf",
+          "player_id": "00-0035640",
+          "team": "PIT",
+          "opp": "NE",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 59.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w2-backtest-63",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 1228,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 60,
+      "legs": [
+        {
+          "player": "Sione Vaki",
+          "player_id": "00-0039364",
+          "team": "DET",
+          "opp": "BUF",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 5.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        },
+        {
+          "player": "Chris Olave",
+          "player_id": "00-0037239",
+          "team": "NO",
+          "opp": "BAL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 66.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.2
+        },
+        {
+          "player": "Bijan Robinson",
+          "player_id": "00-0038542",
+          "team": "ATL",
+          "opp": "CAR",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 80.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        },
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.5
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w2-backtest-64",
+      "placed_at": "2026-w02 (backtest)",
+      "season": 2026,
+      "week": 2,
+      "odds": 1228,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
       "stake": 15,
+      "legs": [
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "TEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 18.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.7
+        }
+      ],
+      "game": "TEN@NYG",
+      "id": "2026-w3-backtest-1",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "TEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -330,
+          "grade": "A",
+          "score": 9.7,
+          "alt": "15+"
+        }
+      ],
+      "game": "TEN@NYG",
+      "id": "2026-w3-backtest-2",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -330,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "TEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 440,
+          "grade": "A",
+          "score": 9.7,
+          "alt": "25+"
+        }
+      ],
+      "game": "TEN@NYG",
+      "id": "2026-w3-backtest-3",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 440,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Oronde Gadsden II",
+          "player_id": "00-0040189",
+          "team": "LAC",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 37.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.3
+        }
+      ],
+      "game": "LAC@BUF",
+      "id": "2026-w3-backtest-4",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Justin Herbert",
+          "player_id": "00-0036355",
+          "team": "LAC",
+          "opp": "BUF",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 230.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        }
+      ],
+      "game": "LAC@BUF",
+      "id": "2026-w3-backtest-5",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Darnell Washington",
+          "player_id": "00-0038558",
+          "team": "PIT",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.6
+        }
+      ],
+      "game": "CIN@PIT",
+      "id": "2026-w3-backtest-6",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Darnell Washington",
+          "player_id": "00-0038558",
+          "team": "PIT",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 9.5,
+          "odds": -720,
+          "grade": "A",
+          "score": 8.6,
+          "alt": "10+"
+        }
+      ],
+      "game": "CIN@PIT",
+      "id": "2026-w3-backtest-7",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -720,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Darnell Washington",
+          "player_id": "00-0038558",
+          "team": "PIT",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": 490,
+          "grade": "A",
+          "score": 8.6,
+          "alt": "20+"
+        }
+      ],
+      "game": "CIN@PIT",
+      "id": "2026-w3-backtest-8",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 490,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Josh Oliver",
+          "player_id": "00-0035249",
+          "team": "MIN",
+          "opp": "TB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.5
+        }
+      ],
+      "game": "MIN@TB",
+      "id": "2026-w3-backtest-9",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Baker Mayfield",
+          "player_id": "00-0034855",
+          "team": "TB",
+          "opp": "MIN",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 218.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.4
+        }
+      ],
+      "game": "MIN@TB",
+      "id": "2026-w3-backtest-10",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Tyler Warren",
+          "player_id": "00-0040128",
+          "team": "IND",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 47.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        }
+      ],
+      "game": "HOU@IND",
+      "id": "2026-w3-backtest-11",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Woody Marks",
+          "player_id": "00-0040583",
+          "team": "HOU",
+          "opp": "IND",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.0
+        }
+      ],
+      "game": "HOU@IND",
+      "id": "2026-w3-backtest-12",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Woody Marks",
+          "player_id": "00-0040583",
+          "team": "HOU",
+          "opp": "IND",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -255,
+          "grade": "A",
+          "score": 8.0,
+          "alt": "25+"
+        }
+      ],
+      "game": "HOU@IND",
+      "id": "2026-w3-backtest-13",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -255,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Woody Marks",
+          "player_id": "00-0040583",
+          "team": "HOU",
+          "opp": "IND",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": 475,
+          "grade": "A",
+          "score": 8.0,
+          "alt": "40+"
+        }
+      ],
+      "game": "HOU@IND",
+      "id": "2026-w3-backtest-14",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 475,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Hunter Henry",
+          "player_id": "00-0033090",
+          "team": "NE",
+          "opp": "JAX",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 42.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        }
+      ],
+      "game": "NE@JAX",
+      "id": "2026-w3-backtest-15",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Mack Hollins",
+          "player_id": "00-0033555",
+          "team": "NE",
+          "opp": "JAX",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 34.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.4
+        }
+      ],
+      "game": "NE@JAX",
+      "id": "2026-w3-backtest-16",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Mack Hollins",
+          "player_id": "00-0033555",
+          "team": "NE",
+          "opp": "JAX",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -225,
+          "grade": "B",
+          "score": 7.4,
+          "alt": "30+"
+        }
+      ],
+      "game": "NE@JAX",
+      "id": "2026-w3-backtest-17",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -225,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Mack Hollins",
+          "player_id": "00-0033555",
+          "team": "NE",
+          "opp": "JAX",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": 790,
+          "grade": "B",
+          "score": 7.4,
+          "alt": "50+"
+        }
+      ],
+      "game": "NE@JAX",
+      "id": "2026-w3-backtest-18",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 790,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Juwan Johnson",
+          "player_id": "00-0036040",
+          "team": "NO",
+          "opp": "LV",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 36.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        }
+      ],
+      "game": "LV@NO",
+      "id": "2026-w3-backtest-19",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Juwan Johnson",
+          "player_id": "00-0036040",
+          "team": "NO",
+          "opp": "LV",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -290,
+          "grade": "B",
+          "score": 7.3,
+          "alt": "30+"
+        }
+      ],
+      "game": "LV@NO",
+      "id": "2026-w3-backtest-20",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -290,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Juwan Johnson",
+          "player_id": "00-0036040",
+          "team": "NO",
+          "opp": "LV",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": 520,
+          "grade": "B",
+          "score": 7.3,
+          "alt": "50+"
+        }
+      ],
+      "game": "LV@NO",
+      "id": "2026-w3-backtest-21",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 520,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 60.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.2
+        }
+      ],
+      "game": "KC@MIA",
+      "id": "2026-w3-backtest-22",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": -275,
+          "grade": "B",
+          "score": 7.2,
+          "alt": "50+"
+        }
+      ],
+      "game": "KC@MIA",
+      "id": "2026-w3-backtest-23",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -275,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 79.5,
+          "odds": 415,
+          "grade": "B",
+          "score": 7.2,
+          "alt": "80+"
+        }
+      ],
+      "game": "KC@MIA",
+      "id": "2026-w3-backtest-24",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 415,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Wan'Dale Robinson",
+          "player_id": "00-0038117",
+          "team": "TEN",
+          "opp": "NYG",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 31.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1
+        }
+      ],
+      "game": "TEN@NYG",
+      "id": "2026-w3-backtest-25",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Wan'Dale Robinson",
+          "player_id": "00-0038117",
+          "team": "TEN",
+          "opp": "NYG",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -340,
+          "grade": "B",
+          "score": 7.1,
+          "alt": "25+"
+        }
+      ],
+      "game": "TEN@NYG",
+      "id": "2026-w3-backtest-26",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -340,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Wan'Dale Robinson",
+          "player_id": "00-0038117",
+          "team": "TEN",
+          "opp": "NYG",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": 310,
+          "grade": "B",
+          "score": 7.1,
+          "alt": "40+"
+        }
+      ],
+      "game": "TEN@NYG",
+      "id": "2026-w3-backtest-27",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 310,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Rachaad White",
+          "player_id": "00-0037256",
+          "team": "WAS",
+          "opp": "SEA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1
+        }
+      ],
+      "game": "SEA@WAS",
+      "id": "2026-w3-backtest-28",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Rachaad White",
+          "player_id": "00-0037256",
+          "team": "WAS",
+          "opp": "SEA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -415,
+          "grade": "B",
+          "score": 7.1,
+          "alt": "15+"
+        }
+      ],
+      "game": "SEA@WAS",
+      "id": "2026-w3-backtest-29",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -415,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Rachaad White",
+          "player_id": "00-0037256",
+          "team": "WAS",
+          "opp": "SEA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 310,
+          "grade": "B",
+          "score": 7.1,
+          "alt": "25+"
+        }
+      ],
+      "game": "SEA@WAS",
+      "id": "2026-w3-backtest-30",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 310,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Chase Brown",
+          "player_id": "00-0038597",
+          "team": "CIN",
+          "opp": "PIT",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 63.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        }
+      ],
+      "game": "CIN@PIT",
+      "id": "2026-w3-backtest-31",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Chase Brown",
+          "player_id": "00-0038597",
+          "team": "CIN",
+          "opp": "PIT",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": -335,
+          "grade": "B",
+          "score": 6.9,
+          "alt": "50+"
+        }
+      ],
+      "game": "CIN@PIT",
+      "id": "2026-w3-backtest-32",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -335,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Chase Brown",
+          "player_id": "00-0038597",
+          "team": "CIN",
+          "opp": "PIT",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 79.5,
+          "odds": 305,
+          "grade": "B",
+          "score": 6.9,
+          "alt": "80+"
+        }
+      ],
+      "game": "CIN@PIT",
+      "id": "2026-w3-backtest-33",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 305,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Matthew Stafford",
+          "player_id": "00-0026498",
+          "team": "LA",
+          "opp": "DEN",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 233.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        }
+      ],
+      "game": "LA@DEN",
+      "id": "2026-w3-backtest-34",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Matthew Stafford",
+          "player_id": "00-0026498",
+          "team": "LA",
+          "opp": "DEN",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 199.5,
+          "odds": -225,
+          "grade": "B",
+          "score": 6.9,
+          "alt": "200+"
+        }
+      ],
+      "game": "LA@DEN",
+      "id": "2026-w3-backtest-35",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -225,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Matthew Stafford",
+          "player_id": "00-0026498",
+          "team": "LA",
+          "opp": "DEN",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 274.5,
+          "odds": 210,
+          "grade": "B",
+          "score": 6.9,
+          "alt": "275+"
+        }
+      ],
+      "game": "LA@DEN",
+      "id": "2026-w3-backtest-36",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 210,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Tee Higgins",
+          "player_id": "00-0036410",
+          "team": "CIN",
+          "opp": "PIT",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 54.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.8
+        }
+      ],
+      "game": "CIN@PIT",
+      "id": "2026-w3-backtest-37",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Tee Higgins",
+          "player_id": "00-0036410",
+          "team": "CIN",
+          "opp": "PIT",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": -460,
+          "grade": "B",
+          "score": 6.8,
+          "alt": "40+"
+        }
+      ],
+      "game": "CIN@PIT",
+      "id": "2026-w3-backtest-38",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -460,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Tee Higgins",
+          "player_id": "00-0036410",
+          "team": "CIN",
+          "opp": "PIT",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": 340,
+          "grade": "B",
+          "score": 6.8,
+          "alt": "70+"
+        }
+      ],
+      "game": "CIN@PIT",
+      "id": "2026-w3-backtest-39",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 340,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Patrick Mahomes",
+          "player_id": "00-0033873",
+          "team": "KC",
+          "opp": "MIA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 15.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.7
+        }
+      ],
+      "game": "KC@MIA",
+      "id": "2026-w3-backtest-40",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Patrick Mahomes",
+          "player_id": "00-0033873",
+          "team": "KC",
+          "opp": "MIA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 9.5,
+          "odds": -975,
+          "grade": "B",
+          "score": 6.7,
+          "alt": "10+"
+        }
+      ],
+      "game": "KC@MIA",
+      "id": "2026-w3-backtest-41",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -975,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Patrick Mahomes",
+          "player_id": "00-0033873",
+          "team": "KC",
+          "opp": "MIA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": 315,
+          "grade": "B",
+          "score": 6.7,
+          "alt": "20+"
+        }
+      ],
+      "game": "KC@MIA",
+      "id": "2026-w3-backtest-42",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 315,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Kirk Cousins",
+          "player_id": "00-0029604",
+          "team": "LV",
+          "opp": "NO",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 216.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.7
+        }
+      ],
+      "game": "LV@NO",
+      "id": "2026-w3-backtest-43",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "DK Metcalf",
+          "player_id": "00-0035640",
+          "team": "PIT",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 51.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        }
+      ],
+      "game": "CIN@PIT",
+      "id": "2026-w3-backtest-44",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Will Shipley",
+          "player_id": "00-0039746",
+          "team": "PHI",
+          "opp": "CHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 2.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        }
+      ],
+      "game": "PHI@CHI",
+      "id": "2026-w3-backtest-45",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "J.K. Dobbins",
+          "player_id": "00-0036158",
+          "team": "DEN",
+          "opp": "LA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 51.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.5
+        }
+      ],
+      "game": "LA@DEN",
+      "id": "2026-w3-backtest-46",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "J.K. Dobbins",
+          "player_id": "00-0036158",
+          "team": "DEN",
+          "opp": "LA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": -360,
+          "grade": "B",
+          "score": 6.5,
+          "alt": "40+"
+        }
+      ],
+      "game": "LA@DEN",
+      "id": "2026-w3-backtest-47",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -360,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "J.K. Dobbins",
+          "player_id": "00-0036158",
+          "team": "DEN",
+          "opp": "LA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 59.5,
+          "odds": 190,
+          "grade": "B",
+          "score": 6.5,
+          "alt": "60+"
+        }
+      ],
+      "game": "LA@DEN",
+      "id": "2026-w3-backtest-48",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 190,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Jahmyr Gibbs",
+          "player_id": "00-0039139",
+          "team": "DET",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 35.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.4
+        }
+      ],
+      "game": "NYJ@DET",
+      "id": "2026-w3-backtest-49",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jahmyr Gibbs",
+          "player_id": "00-0039139",
+          "team": "DET",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -255,
+          "grade": "B",
+          "score": 6.4,
+          "alt": "30+"
+        }
+      ],
+      "game": "NYJ@DET",
+      "id": "2026-w3-backtest-50",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -255,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jahmyr Gibbs",
+          "player_id": "00-0039139",
+          "team": "DET",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": 635,
+          "grade": "B",
+          "score": 6.4,
+          "alt": "50+"
+        }
+      ],
+      "game": "NYJ@DET",
+      "id": "2026-w3-backtest-51",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 635,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Keon Coleman",
+          "player_id": "00-0039901",
+          "team": "BUF",
+          "opp": "LAC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 15.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.3
+        }
+      ],
+      "game": "LAC@BUF",
+      "id": "2026-w3-backtest-52",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Keon Coleman",
+          "player_id": "00-0039901",
+          "team": "BUF",
+          "opp": "LAC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 9.5,
+          "odds": -975,
+          "grade": "B",
+          "score": 6.3,
+          "alt": "10+"
+        }
+      ],
+      "game": "LAC@BUF",
+      "id": "2026-w3-backtest-53",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -975,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Keon Coleman",
+          "player_id": "00-0039901",
+          "team": "BUF",
+          "opp": "LAC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": 315,
+          "grade": "B",
+          "score": 6.3,
+          "alt": "20+"
+        }
+      ],
+      "game": "LAC@BUF",
+      "id": "2026-w3-backtest-54",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 315,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Darren Waller",
+          "player_id": "00-0031610",
+          "team": "CAR",
+          "opp": "CLE",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.3
+        }
+      ],
+      "game": "CAR@CLE",
+      "id": "2026-w3-backtest-55",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -110,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Darren Waller",
+          "player_id": "00-0031610",
+          "team": "CAR",
+          "opp": "CLE",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -415,
+          "grade": "B",
+          "score": 6.3,
+          "alt": "15+"
+        }
+      ],
+      "game": "CAR@CLE",
+      "id": "2026-w3-backtest-56",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": -415,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Darren Waller",
+          "player_id": "00-0031610",
+          "team": "CAR",
+          "opp": "CLE",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 310,
+          "grade": "B",
+          "score": 6.3,
+          "alt": "25+"
+        }
+      ],
+      "game": "CAR@CLE",
+      "id": "2026-w3-backtest-57",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 310,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 50,
+      "legs": [
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "TEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 18.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.7
+        },
+        {
+          "player": "Oronde Gadsden II",
+          "player_id": "00-0040189",
+          "team": "LAC",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 37.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.3
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w3-backtest-58",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 264,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 50,
+      "legs": [
+        {
+          "player": "Darnell Washington",
+          "player_id": "00-0038558",
+          "team": "PIT",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.6
+        },
+        {
+          "player": "Josh Oliver",
+          "player_id": "00-0035249",
+          "team": "MIN",
+          "opp": "TB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.5
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w3-backtest-59",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 264,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 50,
+      "legs": [
+        {
+          "player": "Tyler Warren",
+          "player_id": "00-0040128",
+          "team": "IND",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 47.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        },
+        {
+          "player": "Hunter Henry",
+          "player_id": "00-0033090",
+          "team": "NE",
+          "opp": "JAX",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 42.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w3-backtest-60",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 264,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 50,
+      "legs": [
+        {
+          "player": "Juwan Johnson",
+          "player_id": "00-0036040",
+          "team": "NO",
+          "opp": "LV",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 36.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        },
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 60.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.2
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w3-backtest-61",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 264,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 60,
+      "legs": [
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "TEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 18.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.7
+        },
+        {
+          "player": "Josh Oliver",
+          "player_id": "00-0035249",
+          "team": "MIN",
+          "opp": "TB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.5
+        },
+        {
+          "player": "Juwan Johnson",
+          "player_id": "00-0036040",
+          "team": "NO",
+          "opp": "LV",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 36.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w3-backtest-62",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 596,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 60,
+      "legs": [
+        {
+          "player": "Oronde Gadsden II",
+          "player_id": "00-0040189",
+          "team": "LAC",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 37.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.3
+        },
+        {
+          "player": "Tyler Warren",
+          "player_id": "00-0040128",
+          "team": "IND",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 47.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        },
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 60.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.2
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w3-backtest-63",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 596,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 60,
+      "legs": [
+        {
+          "player": "Darnell Washington",
+          "player_id": "00-0038558",
+          "team": "PIT",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.6
+        },
+        {
+          "player": "Hunter Henry",
+          "player_id": "00-0033090",
+          "team": "NE",
+          "opp": "JAX",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 42.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        },
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "TEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 18.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w3-backtest-64",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 596,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 60,
+      "legs": [
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "TEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 18.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.7
+        },
+        {
+          "player": "Darnell Washington",
+          "player_id": "00-0038558",
+          "team": "PIT",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.6
+        },
+        {
+          "player": "Tyler Warren",
+          "player_id": "00-0040128",
+          "team": "IND",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 47.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        },
+        {
+          "player": "Juwan Johnson",
+          "player_id": "00-0036040",
+          "team": "NO",
+          "opp": "LV",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 36.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w3-backtest-65",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 1228,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "parlay",
+      "stake": 60,
+      "legs": [
+        {
+          "player": "Oronde Gadsden II",
+          "player_id": "00-0040189",
+          "team": "LAC",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 37.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.3
+        },
+        {
+          "player": "Josh Oliver",
+          "player_id": "00-0035249",
+          "team": "MIN",
+          "opp": "TB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.5
+        },
+        {
+          "player": "Hunter Henry",
+          "player_id": "00-0033090",
+          "team": "NE",
+          "opp": "JAX",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 42.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        },
+        {
+          "player": "De'Von Achane",
+          "player_id": "00-0039040",
+          "team": "MIA",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 60.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.2
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w3-backtest-66",
+      "placed_at": "2026-w03 (backtest)",
+      "season": 2026,
+      "week": 3,
+      "odds": 1228,
+      "backtest": true,
+      "note": "*Simulated backtest: pre-kickoff ratings (stats before that week + DraftKings' final pre-game lines)"
+    },
+    {
+      "kind": "straight",
+      "stake": 26.54,
       "legs": [
         {
           "player": "Christian McCaffrey",
@@ -24,11 +5844,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 15
     },
     {
       "kind": "straight",
-      "stake": 15,
+      "stake": 26.54,
       "legs": [
         {
           "player": "Brock Purdy",
@@ -49,11 +5870,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 15
     },
     {
       "kind": "straight",
-      "stake": 10,
+      "stake": 17.69,
       "legs": [
         {
           "player": "Brock Purdy",
@@ -75,11 +5897,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -260
+      "odds": -260,
+      "stake_original": 10
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Brock Purdy",
@@ -101,11 +5924,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 655
+      "odds": 655,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 15,
+      "stake": 26.54,
       "legs": [
         {
           "player": "Jacory Croskey-Merritt",
@@ -126,11 +5950,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 15
     },
     {
       "kind": "straight",
-      "stake": 10,
+      "stake": 17.69,
       "legs": [
         {
           "player": "Juwan Johnson",
@@ -151,11 +5976,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 10
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Juwan Johnson",
@@ -177,11 +6003,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -285
+      "odds": -285,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Juwan Johnson",
@@ -203,11 +6030,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 190
+      "odds": 190,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 10,
+      "stake": 17.69,
       "legs": [
         {
           "player": "Cooper Kupp",
@@ -228,11 +6056,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 10
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Cooper Kupp",
@@ -254,11 +6083,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -310
+      "odds": -310,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Cooper Kupp",
@@ -280,11 +6110,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 240
+      "odds": 240,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 20,
+      "stake": 35.38,
       "legs": [
         {
           "player": "Jonathan Taylor",
@@ -305,11 +6136,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 20
     },
     {
       "kind": "straight",
-      "stake": 10,
+      "stake": 17.69,
       "legs": [
         {
           "player": "Tommy Tremble",
@@ -330,11 +6162,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 10
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Tommy Tremble",
@@ -356,11 +6189,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -150
+      "odds": -150,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Tommy Tremble",
@@ -382,11 +6216,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 110
+      "odds": 110,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 10,
+      "stake": 17.69,
       "legs": [
         {
           "player": "Rhamondre Stevenson",
@@ -407,11 +6242,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 10
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Rhamondre Stevenson",
@@ -433,11 +6269,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -390
+      "odds": -390,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Rhamondre Stevenson",
@@ -459,11 +6296,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 255
+      "odds": 255,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 10,
+      "stake": 17.69,
       "legs": [
         {
           "player": "Trevor Lawrence",
@@ -484,11 +6322,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 10
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Trevor Lawrence",
@@ -510,11 +6349,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -720
+      "odds": -720,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Trevor Lawrence",
@@ -536,11 +6376,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 490
+      "odds": 490,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 10,
+      "stake": 17.69,
       "legs": [
         {
           "player": "Pat Freiermuth",
@@ -561,11 +6402,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 10
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Pat Freiermuth",
@@ -587,11 +6429,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -165
+      "odds": -165,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Pat Freiermuth",
@@ -613,11 +6456,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 280
+      "odds": 280,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 20,
+      "stake": 35.38,
       "legs": [
         {
           "player": "David Montgomery",
@@ -638,11 +6482,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 20
     },
     {
       "kind": "straight",
-      "stake": 10,
+      "stake": 17.69,
       "legs": [
         {
           "player": "Kyren Williams",
@@ -663,11 +6508,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 10
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Kyren Williams",
@@ -689,11 +6535,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -220
+      "odds": -220,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Kyren Williams",
@@ -715,11 +6562,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 245
+      "odds": 245,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 20,
+      "stake": 35.38,
       "legs": [
         {
           "player": "Jared Goff",
@@ -740,11 +6588,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 20
     },
     {
       "kind": "straight",
-      "stake": 20,
+      "stake": 35.38,
       "legs": [
         {
           "player": "Alvin Kamara",
@@ -765,11 +6614,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 20
     },
     {
       "kind": "straight",
-      "stake": 20,
+      "stake": 35.38,
       "legs": [
         {
           "player": "Oronde Gadsden II",
@@ -790,11 +6640,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 20
     },
     {
       "kind": "straight",
-      "stake": 10,
+      "stake": 17.69,
       "legs": [
         {
           "player": "Chris Olave",
@@ -815,11 +6666,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 10
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Chris Olave",
@@ -841,11 +6693,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -210
+      "odds": -210,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Chris Olave",
@@ -867,11 +6720,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 155
+      "odds": 155,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 20,
+      "stake": 35.38,
       "legs": [
         {
           "player": "Mark Andrews",
@@ -892,11 +6746,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 20
     },
     {
       "kind": "straight",
-      "stake": 10,
+      "stake": 17.69,
       "legs": [
         {
           "player": "Deebo Samuel Sr.",
@@ -917,11 +6772,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 10
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Deebo Samuel Sr.",
@@ -943,11 +6799,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -200
+      "odds": -200,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Deebo Samuel Sr.",
@@ -969,11 +6826,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 215
+      "odds": 215,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 20,
+      "stake": 35.38,
       "legs": [
         {
           "player": "Michael Pittman",
@@ -994,11 +6852,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 20
     },
     {
       "kind": "straight",
-      "stake": 10,
+      "stake": 17.69,
       "legs": [
         {
           "player": "Darnell Mooney",
@@ -1019,11 +6878,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 10
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Darnell Mooney",
@@ -1045,11 +6905,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -515
+      "odds": -515,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Darnell Mooney",
@@ -1071,11 +6932,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 230
+      "odds": 230,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 10,
+      "stake": 17.69,
       "legs": [
         {
           "player": "Tucker Kraft",
@@ -1096,11 +6958,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 10
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Tucker Kraft",
@@ -1122,11 +6985,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -405
+      "odds": -405,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Tucker Kraft",
@@ -1148,11 +7012,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 305
+      "odds": 305,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 20,
+      "stake": 35.38,
       "legs": [
         {
           "player": "Ladd McConkey",
@@ -1173,11 +7038,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 20
     },
     {
       "kind": "straight",
-      "stake": 10,
+      "stake": 17.69,
       "legs": [
         {
           "player": "Darnell Washington",
@@ -1198,11 +7064,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 10
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Darnell Washington",
@@ -1224,11 +7091,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -165
+      "odds": -165,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Darnell Washington",
@@ -1250,11 +7118,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 135
+      "odds": 135,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 10,
+      "stake": 17.69,
       "legs": [
         {
           "player": "Cam Skattebo",
@@ -1275,11 +7144,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 10
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Cam Skattebo",
@@ -1301,11 +7171,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -260
+      "odds": -260,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Cam Skattebo",
@@ -1327,11 +7198,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 655
+      "odds": 655,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 10,
+      "stake": 17.69,
       "legs": [
         {
           "player": "Chris Godwin Jr.",
@@ -1352,11 +7224,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -110
+      "odds": -110,
+      "stake_original": 10
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Chris Godwin Jr.",
@@ -1378,11 +7251,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": -365
+      "odds": -365,
+      "stake_original": 5
     },
     {
       "kind": "straight",
-      "stake": 5,
+      "stake": 8.85,
       "legs": [
         {
           "player": "Chris Godwin Jr.",
@@ -1404,11 +7278,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 190
+      "odds": 190,
+      "stake_original": 5
     },
     {
       "kind": "parlay",
-      "stake": 50,
+      "stake": 88.45,
       "legs": [
         {
           "player": "Christian McCaffrey",
@@ -1441,11 +7316,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 264
+      "odds": 264,
+      "stake_original": 50
     },
     {
       "kind": "parlay",
-      "stake": 50,
+      "stake": 88.45,
       "legs": [
         {
           "player": "Juwan Johnson",
@@ -1478,11 +7354,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 264
+      "odds": 264,
+      "stake_original": 50
     },
     {
       "kind": "parlay",
-      "stake": 50,
+      "stake": 88.45,
       "legs": [
         {
           "player": "Tommy Tremble",
@@ -1515,11 +7392,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 264
+      "odds": 264,
+      "stake_original": 50
     },
     {
       "kind": "parlay",
-      "stake": 50,
+      "stake": 88.45,
       "legs": [
         {
           "player": "Trevor Lawrence",
@@ -1552,11 +7430,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 264
+      "odds": 264,
+      "stake_original": 50
     },
     {
       "kind": "parlay",
-      "stake": 60,
+      "stake": 106.0,
       "legs": [
         {
           "player": "Christian McCaffrey",
@@ -1601,11 +7480,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 596
+      "odds": 596,
+      "stake_original": 60
     },
     {
       "kind": "parlay",
-      "stake": 60,
+      "stake": 106.14,
       "legs": [
         {
           "player": "Jacory Croskey-Merritt",
@@ -1650,11 +7530,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 596
+      "odds": 596,
+      "stake_original": 60
     },
     {
       "kind": "parlay",
-      "stake": 60,
+      "stake": 106.14,
       "legs": [
         {
           "player": "Juwan Johnson",
@@ -1699,11 +7580,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 596
+      "odds": 596,
+      "stake_original": 60
     },
     {
       "kind": "parlay",
-      "stake": 60,
+      "stake": 106.14,
       "legs": [
         {
           "player": "Christian McCaffrey",
@@ -1760,11 +7642,12 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 1228
+      "odds": 1228,
+      "stake_original": 60
     },
     {
       "kind": "parlay",
-      "stake": 60,
+      "stake": 106.14,
       "legs": [
         {
           "player": "Jacory Croskey-Merritt",
@@ -1821,7 +7704,8 @@
       "placed_at": "2026-10-04T16:33:43.382008-04:00",
       "season": 2026,
       "week": 4,
-      "odds": 1228
+      "odds": 1228,
+      "stake_original": 60
     }
   ],
   "superseded": [
@@ -3493,5 +9377,9 @@
       "superseded_at": "2026-10-04T16:33:43.382008-04:00",
       "superseded_reason": "Tids changed the plan to an even split: $500 straights / $500 rotating cross-game parlays"
     }
-  ]
+  ],
+  "week_budgets": {
+    "4": 1769.02
+  },
+  "note": "Bankroll starts in week 1: weeks 1-3 are simulated backtests (flagged backtest); week-4 stakes were rescaled x1.76902 to the week-4 starting bankroll (originals in stake_original)."
 }

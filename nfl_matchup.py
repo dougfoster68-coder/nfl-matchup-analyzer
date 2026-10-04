@@ -1107,21 +1107,13 @@ Payouts assume -110 per leg; hit chance discounts the model's confidence by abou
   <div id="sharp"></div></section>
 
 <h2 id="bank">Paper bankroll — Claude's picks</h2>
-<div class="sub" style="margin-bottom:10px">Fake money, real tracking. Started with $1,000. Claude bets $1,000 per NFL week (Thursday–Monday), split evenly:
-<b>$500 in straight bets</b> on the top ~25 props across all games (weighted by rating, no player above $80; the strongest overs
-are split between the posted line, a safer alt line and a plus-money alt line) and <b>$500 in parlays</b> across different games,
+<div class="sub" style="margin-bottom:10px">Fake money, real tracking. Started with $1,000 in week 1*. Each week Claude bets the bankroll as it stood at the start of
+the week, split evenly: <b>half in straight bets</b> on the top ~25 props across all games (weighted by rating; the strongest overs
+are split between the posted line, a safer alt line and a plus-money alt line) and <b>half in parlays</b> across different games,
 with rotating legs (four 2-leg, three 3-leg and two 4-leg combos) so one missed pick can't sink them all.
 Each game is bet in the 3 hours before kickoff, and finished games settle right away from ESPN box scores. Bets are graded against final box scores;
 a player who doesn't play voids the leg. Main lines assume -110. Alt-line odds are estimates, marked "est".</div>
 <div class="panel" id="bankpanel"></div>
-
-<h2 id="sim">Simulated bankroll — if we'd started in week 1</h2>
-<div class="sub" style="margin-bottom:10px"><b>Hypothetical, not the real tracker.</b> Today's exact weekly plan ($500 straight bets +
-$500 rotating cross-game parlays, or the whole bankroll if it's under $1,000) replayed from week 1 with the same $1,000 start.
-Weeks before live tracking use backtest ratings: only stats from before that week plus DraftKings' final pre-game lines, graded
-against real box scores. The current week updates live. Main lines assume -110 and alt prices are estimates. These rules were
-chosen in week 4, partly after seeing results, so treat this as a what-if, not a track record.</div>
-<div class="panel" id="simpanel"></div>
 
 <h2 id="all">All player props</h2>
 <div class="bar">
@@ -1409,9 +1401,7 @@ function renderBank() {
     <div class="stat"><div class="v ${winPct == null ? "" : winPct >= 0.524 ? "pos" : "neg"}">${winPct == null ? "—" : (winPct * 100).toFixed(1) + "%"}</div>
       <div class="l">Win % · legs ${s.legs_won}-${s.legs_lost}${legPct == null ? "" : " (" + Math.round(legPct * 100) + "%)"}</div></div>
     <div class="stat"><div class="v">${s.wins}-${s.losses}${s.voids ? "-" + s.voids : ""}</div><div class="l">Record · ROI ${roi}</div></div>
-    <div class="stat"><div class="v">${money(s.at_risk)}</div><div class="l">Open bets</div></div>${liveTile()}${BANK.sim ? `
-    <a class="stat" href="#sim" style="text-decoration:none;color:inherit"><div class="v">${money(BANK.sim.balance)}</div>
-      <div class="l">If started wk 1 (sim)*</div></a>` : ""}`;
+    <div class="stat"><div class="v">${money(s.at_risk)}</div><div class="l">Open bets</div></div>${liveTile()}`;
   let chart = "";
   if (s.history.length) {
     const pts = [s.start].concat(s.history.map(h => h.balance)), W = 600, H = 120;
@@ -1424,7 +1414,7 @@ function renderBank() {
   }
   const bets = BANK.bets || [];
   const toWin = b => b.stake * (b.odds > 0 ? b.odds / 100 : 100 / -b.odds);
-  const rows = bets.map(b => `<tr><td>W${b.week}<div class="pmeta">${b.game}</div></td>
+  const rows = bets.map(b => `<tr><td>W${b.week}${b.backtest ? "*" : ""}<div class="pmeta">${b.game}</div></td>
       <td>${b.legs.map(l => `<div><b>${esc(l.player)}</b> ${l.side.toUpperCase()} ${l.line} <span class="pmeta">${STAT[l.stat]}${l.actual != null ? " · actual " + l.actual : ""}</span>
         <span class="res res-${l.result}">${l.result}</span></div>`).join("")}<div class="pmeta">${esc(b.note || "")}</div></td>
       <td>${b.kind}</td><td class="n">${money(b.stake)}</td><td class="n">${b.odds > 0 ? "+" : ""}${b.odds}</td>
@@ -1432,7 +1422,8 @@ function renderBank() {
       <td class="n ${b.profit > 0 ? "pos" : b.profit < 0 ? "neg" : ""}">${b.result === "pending" ? "to win " + money(toWin(b)) : (b.profit >= 0 ? "+" : "") + money(b.profit)}</td></tr>`).join("");
   document.getElementById("bankpanel").innerHTML = chart + (bets.length
     ? `<div style="overflow-x:auto"><table style="min-width:760px"><thead><tr><th>Week</th><th>Bet</th><th>Type</th><th>Stake</th><th>Odds</th><th>Result</th><th>P/L</th></tr></thead><tbody>${rows}</tbody></table></div>`
-    : `<div class="empty">No bets yet. First picks go in before Thursday Night Football; Monday nights too.</div>`);
+    : `<div class="empty">No bets yet.</div>`) + (bets.some(b => b.backtest)
+    ? `<div class="pmeta" style="font-size:11px;margin-top:6px">*Weeks ${[...new Set(bets.filter(b => b.backtest).map(b => b.week))].sort((a, b) => a - b).join(", ")} are simulated backtests.</div>` : "");
 }
 function bestLegs() {
   const seen = new Set();
@@ -1572,7 +1563,7 @@ function renderSim() {
       <th>Parlays ($500)</th><th>Week P/L</th><th>End</th></tr></thead><tbody>${rows}</tbody></table></div>${foot}
     ${hits ? `<h3 style="font-size:14px;margin:12px 0 4px">Parlays that hit</h3>${hits}` : ""}`;
 }
-renderBank(); renderSim(); renderGradeTracker(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp();
+renderBank(); renderGradeTracker(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp();
 </script></body></html>"""
 
 
@@ -2222,7 +2213,7 @@ def cmd_autobet(args, stats, sched, season):
     from zoneinfo import ZoneInfo
     import json
     now = datetime.now(ZoneInfo("America/New_York"))
-    weekly = args.weekly_budget
+    weekly = args.weekly_budget  # retro catch-ups use the flat amount; live weeks size from the bankroll below
     ledger = load_ledger()
     s = sched[sched["season"] == season]
     kick = lambda g: datetime.strptime(f"{g.gameday} {g.gametime}", "%Y-%m-%d %H:%M").replace(
@@ -2236,6 +2227,12 @@ def cmd_autobet(args, stats, sched, season):
         print("autobet: no games left this season")
         return
     week = int(pending["week"].min())
+    if args.bankroll_pct:
+        budgets = ledger.setdefault("week_budgets", {})
+        if str(week) not in budgets:  # earlier weeks are settled by now; lock this week's size once
+            settled = bankroll_summary(ledger, grade_ledger(ledger, stats, sched))["balance"]
+            budgets[str(week)] = round(max(settled, 0) * args.bankroll_pct, 2)
+        weekly = budgets[str(week)]
     wk_games = s[s["week"] == week]
     week_bets = [b for b in ledger["bets"] if b["season"] == season and b["week"] == week]
     bet_games = {b["game"] for b in week_bets}
@@ -3287,11 +3284,6 @@ def cmd_week(args, stats, sched, season):
         snap_path = Path(args.snapshot_dir or "data/snapshots") / f"{season}-w{week:02d}.json"
         snap = json.loads(snap_path.read_text(encoding="utf-8")) if snap_path.exists() else {}
         live = {"games": lg, "props": live_results(snap, lg, box) if snap else []}
-        try:
-            bank["sim"] = simulate_bankroll(Path(args.snapshot_dir or "data/snapshots"), season, week, stats, sched,
-                                            (week, lg, box))
-        except Exception as exc:
-            print(f"[warn] simulated bankroll unavailable: {exc}", file=sys.stderr)
         live["grades"] = grade_tracker(Path(args.snapshot_dir or "data/snapshots"), season, week, live["props"],
                                        stats, sched, (lg, box))
         bank["live"] = live_bets([b for b in bank["bets"] if b["result"] == "pending"], lg, box)
@@ -3350,7 +3342,9 @@ def main():
     w.add_argument("--snapshot-dir", help="save pre-kickoff ratings here for weekly report cards")
 
     ab = sub.add_parser("autobet", help="place Claude's weekly paper bets (each game in its pre-kickoff window)")
-    ab.add_argument("--weekly-budget", type=float, default=WEEKLY_BUDGET, help="paper money to bet per NFL week")
+    ab.add_argument("--weekly-budget", type=float, default=WEEKLY_BUDGET, help="flat paper money per week (if no --bankroll-pct)")
+    ab.add_argument("--bankroll-pct", type=float, default=1.0,
+                    help="bet this share of the bankroll each week, locked at the week's first bet (0 = use --weekly-budget)")
     ab.add_argument("--retro-week", type=int, help="one-time catch-up for a week already under way (pre-kickoff data only)")
     ab.add_argument("--replace", metavar="REASON", help="with --retro-week: supersede that week's existing bets (kept on record)")
     ab.add_argument("--snapshot-dir", default="data/snapshots", help="pre-kickoff rating snapshots (for --retro-week)")
