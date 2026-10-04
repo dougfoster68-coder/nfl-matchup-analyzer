@@ -1119,7 +1119,7 @@ Each game is bet in the 3 hours before kickoff, and finished games settle right 
 a player who doesn't play voids the leg. Main lines assume -110. Alt-line odds are estimates, marked "est".</div>
 <div class="panel" id="bankpanel"></div>
 
-<h2 id="all">All player props</h2>
+<details id="allprops"><summary style="cursor:pointer;list-style:none"><h2 id="all" style="display:inline-flex">All player props <span class="pmeta" style="font:500 13px Inter,sans-serif;text-transform:none;letter-spacing:0;margin-left:8px">(<span id="propcount"></span> props · tap to open)</span></h2></summary>
 <div class="bar">
   <input type="search" id="q" placeholder="Search player or team">
   <select id="game"><option value="">All games</option></select>
@@ -1135,6 +1135,7 @@ a player who doesn't play voids the leg. Main lines assume -110. Alt-line odds a
   <th data-s="proj">Proj</th><th data-s="line_hit_rate">Hit L__N__</th><th data-s="p_over">P(over)</th>
   <th data-s="def_rank">Opp rank</th><th>Last __N__ (bar = line)</th><th data-s="alt">Alt __HITPCT__+</th>
 </tr></thead><tbody id="rows"></tbody></table></div>
+</details>
 
 <footer>Opp rank: 1 = stingiest vs that position, 32 = most generous. Proj = player's L__N__ average × how much this defense
 allows vs league average (regressed toward average). P(over) is a model estimate, not a guarantee. Chip colors are relative to the pick
@@ -1297,6 +1298,7 @@ function renderGames() {
   }).join("");
   document.querySelectorAll(".cf button").forEach(b => b.onclick = () => {
     document.getElementById("game").value = b.dataset.game; renderRows();
+    document.getElementById("allprops").open = true;
     document.getElementById("all").scrollIntoView({behavior:"smooth"});
   });
 }
@@ -1595,7 +1597,7 @@ function paceTickers(pxPerSec) {  // same reading speed on every bar, however lo
     if (w) el.style.animationDuration = Math.max(30, w / pxPerSec) + "s";
   });
 }
-renderBank(); renderSpecialTicker(); renderGradeTracker(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp(); paceTickers(45);
+renderBank(); renderSpecialTicker(); renderGradeTracker(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp(); paceTickers(45); document.getElementById("propcount").textContent = ROWS.length;
 </script></body></html>"""
 
 
