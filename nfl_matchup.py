@@ -982,6 +982,16 @@ h2::before { content:""; width:6px; height:22px; background:var(--blue); border-
 .score { font:800 20px/1 "Barlow Condensed",sans-serif; letter-spacing:.02em; margin-top:6px }
 .score .clock { font:600 12px Inter,sans-serif; color:var(--mute); margin-left:6px }
 .score .clock.live { color:var(--bad) }
+.gtrack { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin:14px 0 4px }
+@media (max-width:640px) { .gtrack { grid-template-columns:repeat(2,minmax(0,1fr)) } }
+.gt { background:var(--card); border:1px solid var(--line); border-top:4px solid var(--D); border-radius:12px; padding:10px 12px }
+.gt.A { border-top-color:var(--A) } .gt.B { border-top-color:var(--B) } .gt.C { border-top-color:var(--C) }
+.gt .hd { display:flex; align-items:center; gap:8px; font-weight:700 }
+.gt .pct { font:800 30px/1 "Barlow Condensed",sans-serif; margin:6px 0 2px }
+.gt .rec { font-size:12.5px } .gt .sea { font-size:11.5px; color:var(--mute); margin-top:4px }
+.gt .hb { height:6px; border-radius:3px; background:var(--soft); margin-top:6px; overflow:hidden; display:flex }
+.gt .hb i { display:block; height:6px } .gt .hb .w { background:var(--good) } .gt .hb .l { background:var(--bad) }
+.gt .hb .v { background:var(--info); opacity:.6 }
 .lres { display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:14px }
 @media (max-width:420px) { .lres { grid-template-columns:1fr } }
 .lrow { display:grid; grid-template-columns:1fr auto; gap:8px; padding:8px 0; border-bottom:1px solid var(--soft); align-items:center }
@@ -1050,6 +1060,8 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 </div></header>
 <div class="ticker" aria-label="Tids Ticker: top rated plays"><span class="tlabel">Tids Ticker</span><div class="tscroll"><div class="tk" id="ticker"></div></div></div>
 <div class="wrap">
+  <section id="gradetrack" hidden><h2>Grade tracker</h2><div class="lead" id="gtlead"></div>
+    <div class="gtrack" id="gtrack"></div></section>
   <section id="livebets" hidden><h2>Paper bets — live</h2><div class="lead" id="livebetsum"></div>
     <div id="latechanges"></div>
     <div class="lres" id="livebetlist"></div></section>
@@ -1499,7 +1511,26 @@ function countUp() {
     requestAnimationFrame(step);
   });
 }
-renderBank(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp();
+function renderGradeTracker() {
+  const G = (typeof LIVE !== "undefined" && LIVE.grades) || null; if (!G) return;
+  document.getElementById("gradetrack").hidden = false;
+  const pct = (w, l) => w + l ? Math.round(100 * w / (w + l)) + "%" : "—";
+  const liveN = Object.values(G.week).reduce((a, x) => a + x.live, 0);
+  document.getElementById("gtlead").innerHTML = `How each letter grade is doing in week ${G.week_no}, graded live as games are played
+    ${liveN ? `· <span class="live" style="color:var(--bad)">LIVE</span> ${liveN} picks in progress` : ""}. Green bar = hit, red = miss,
+    blue = still live. Break-even at -110 is 52.4%. Season includes ${G.backtest_weeks.length ? "backtested weeks " + G.backtest_weeks.join(", ") + " and " : ""}live weeks.`;
+  const label = {A: "strong", B: "good", C: "lean", D: "pass"};
+  document.getElementById("gtrack").innerHTML = "ABCD".split("").map(g => {
+    const w = G.week[g], s = G.season[g], tot = Math.max(1, w.w + w.l + w.live);
+    const p = w.w + w.l ? w.w / (w.w + w.l) : null;
+    return `<div class="gt ${g}"><div class="hd"><span class="g g${g}">${g}</span> ${label[g]}</div>
+      <div class="pct ${p == null ? "" : p >= 0.524 ? "pos" : "neg"}">${pct(w.w, w.l)}</div>
+      <div class="rec"><b>${w.w}-${w.l}</b> this week${w.live ? ` · ${w.live} live` : ""}${w.pre ? ` · ${w.pre} to play` : ""}</div>
+      <div class="hb"><i class="w" style="width:${100 * w.w / tot}%"></i><i class="l" style="width:${100 * w.l / tot}%"></i><i class="v" style="width:${100 * w.live / tot}%"></i></div>
+      <div class="sea">Season: ${s.w}-${s.l} (${pct(s.w, s.l)})</div></div>`;
+  }).join("");
+}
+renderBank(); renderGradeTracker(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp();
 </script></body></html>"""
 
 
@@ -1658,6 +1689,37 @@ def live_results(snap: dict, games: dict, box: dict) -> list:
                    | {"line": line, "side": side, "actual": actual if played or not final else None,
                       "status": status, "final": final})
     return out
+
+
+def grade_tracker(snap_dir: Path, season: int, week: int, live_props: list, stats, sched, live) -> dict:
+    """Hit record by letter grade. 'week' = this week's rated props graded live (won/lost/live/upcoming);
+    'season' = every saved week (backtests included), graded from box scores. Trap-flagged props excluded."""
+    import json
+    blank = lambda: {g: {"w": 0, "l": 0, "live": 0, "pre": 0} for g in "ABCD"}
+    wk = blank()
+    snap_path = snap_dir / f"{season}-w{week:02d}.json"
+    started = {(p["player_id"], p["stat"]): p for p in live_props}
+    if snap_path.exists():
+        for p in json.loads(snap_path.read_text(encoding="utf-8"))["props"].values():
+            if p.get("traps") or p.get("grade") not in wk:
+                continue
+            lp = started.get((p["player_id"], p["stat"]))
+            st = lp["status"] if lp else "pre"
+            key = {"win": "w", "loss": "l", "live": "live"}.get(st, "pre" if st == "pre" else None)
+            if key:
+                wk[p["grade"]][key] += 1
+    season_t, backtest_weeks = blank(), []
+    for f in sorted(snap_dir.glob(f"{season}-w*.json")):
+        snap = json.loads(f.read_text(encoding="utf-8"))
+        if snap.get("backtest"):
+            backtest_weeks.append(snap["week"])
+        graded = grade_snapshot(snap, stats, sched, live if snap["week"] == week else None)
+        for p in graded:
+            if p.get("traps") or p.get("grade") not in season_t:
+                continue
+            if p["result"] in ("win", "loss"):
+                season_t[p["grade"]]["w" if p["result"] == "win" else "l"] += 1
+    return {"week": wk, "season": season_t, "backtest_weeks": backtest_weeks, "week_no": week}
 
 
 def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | None, bank=None, feature=None,
@@ -3138,6 +3200,8 @@ def cmd_week(args, stats, sched, season):
         snap_path = Path(args.snapshot_dir or "data/snapshots") / f"{season}-w{week:02d}.json"
         snap = json.loads(snap_path.read_text(encoding="utf-8")) if snap_path.exists() else {}
         live = {"games": lg, "props": live_results(snap, lg, box) if snap else []}
+        live["grades"] = grade_tracker(Path(args.snapshot_dir or "data/snapshots"), season, week, live["props"],
+                                       stats, sched, (lg, box))
         bank["live"] = live_bets([b for b in bank["bets"] if b["result"] == "pending"], lg, box)
         write_html(week, games, rows, source, args, html_path, refresh_secs=refresh, bank=bank, live=live,
                    feature=feature_player(stats, rows, season), splits=splits)
