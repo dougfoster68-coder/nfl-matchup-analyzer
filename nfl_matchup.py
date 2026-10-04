@@ -1563,7 +1563,13 @@ function renderGradeTracker() {
       <div class="sea">${(G.by_week || []).map(x => `Wk ${x.week}: <b>${pct(x[g][0], x[g][1])}</b>`).join(" · ")}</div></div>`;
   }).join("");
 }
-renderBank(); renderSpecialTicker(); renderGradeTracker(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp();
+function paceTickers(pxPerSec) {  // same reading speed on every bar, however long its content
+  document.querySelectorAll(".ticker .tk").forEach(el => {
+    const w = el.scrollWidth || 0;
+    if (w) el.style.animationDuration = Math.max(30, w / pxPerSec) + "s";
+  });
+}
+renderBank(); renderSpecialTicker(); renderGradeTracker(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp(); paceTickers(45);
 </script></body></html>"""
 
 
