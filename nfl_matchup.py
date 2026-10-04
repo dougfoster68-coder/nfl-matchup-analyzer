@@ -1,4 +1,4 @@
-"""
+﻿"""
 NFL Matchup Analyzer
 --------------------
 Compares an offensive player's last N games against what their upcoming
@@ -575,8 +575,130 @@ def build_week(args, stats, sched, season):
                                         "alt_book": (pr.player_id, stat) in miles_by_id,
                                         "alt_hits": f"{int((vals >= best).sum())}/{len(vals)}",
                                         "alt_p": round(prob_over(proj, std, best - 0.5), 2)})
+                        usage_col = USAGE_STAT[stat]
+                        usage = hist[usage_col]
+                        row.update({"usage_name": usage_col,
+                                    "usage_l3": round(usage.tail(3).mean(), 1),
+                                    "usage_l10": round(usage.mean(), 1)})
+                        lines_expected = bool(main_by_id) and avg >= min_avg * 1.5
+                        notes, rating = analyze_row(row, list(vals), lines_expected)
+                        row["notes"] = notes
+                        row.update(rating)
                         rows.append(row)
     return week, games, rows, source
+
+
+USAGE_STAT = {"passing_yards": "attempts", "rushing_yards": "carries", "receiving_yards": "targets"}
+POS_GROUP = {"passing_yards": "QBs", "rushing_yards": "the run", "receiving_yards": None}
+
+
+def analyze_row(row: dict, vals: list, lines_expected: bool):
+    """Scan a player's last-N games for things that stand out, and rate the prop.
+    Returns (notes, rating) where notes = [{"t": text, "k": good|bad|info}]
+    (written from the OVER bettor's point of view) and rating holds pick/score/grade."""
+    notes = []
+    n = len(vals)
+    avg = row["L10_avg"]
+    line = row.get("line")
+    stat_word = {"passing_yards": "pass yds", "rushing_yards": "rush yds",
+                 "receiving_yards": "rec yds"}[row["stat"]]
+    vs = POS_GROUP[row["stat"]] or (f"{row['pos']}s")
+
+    if row["missed_last_game"]:
+        notes.append({"t": "Missed team's last game â€” check injury status", "k": "warn"})
+    if line is None and lines_expected:
+        notes.append({"t": "No line posted for a regular contributor â€” possible injury or role change",
+                      "k": "warn"})
+
+    # Streaks against the posted line (most recent games last)
+    if line is not None:
+        streak_over = 0
+        for v in reversed(vals):
+            if v > line:
+                streak_over += 1
+            else:
+                break
+        streak_under = 0
+        for v in reversed(vals):
+            if v < line:
+                streak_under += 1
+            else:
+                break
+        if streak_over >= 3:
+            notes.append({"t": f"Over {line:g} in {streak_over} straight games", "k": "good"})
+        elif streak_under >= 3:
+            notes.append({"t": f"Under {line:g} in {streak_under} straight games", "k": "bad"})
+
+    # Recent form vs. 10-game baseline
+    l3 = sum(vals[-3:]) / min(3, n)
+    if avg > 0 and l3 - avg >= max(10, 0.25 * avg):
+        notes.append({"t": f"Trending up: {l3:.0f} {stat_word} last 3 vs {avg:.0f} L10 avg", "k": "good"})
+    elif avg > 0 and avg - l3 >= max(10, 0.25 * avg):
+        notes.append({"t": f"Trending down: {l3:.0f} {stat_word} last 3 vs {avg:.0f} L10 avg", "k": "bad"})
+
+    # Usage (targets / carries / attempts)
+    u3, u10, uname = row["usage_l3"], row["usage_l10"], row["usage_name"]
+    if u10 >= 2 and u3 >= u10 * 1.3 and u3 - u10 >= 2:
+        notes.append({"t": f"Bigger role: {u3:g} {uname}/game last 3 vs {u10:g} L10", "k": "good"})
+    elif u10 >= 2 and u3 <= u10 * 0.7 and u10 - u3 >= 2:
+        notes.append({"t": f"Shrinking role: {u3:g} {uname}/game last 3 vs {u10:g} L10", "k": "bad"})
+
+    # Floor / ceiling / volatility
+    lo, hi = min(vals), max(vals)
+    if n >= 6 and line is not None and lo > line:
+        notes.append({"t": f"Cleared {line:g} in all of the last {n} games (low {lo:g})", "k": "good"})
+    elif n >= 6 and avg >= 20 and lo >= 0.5 * avg:
+        notes.append({"t": f"Reliable floor: never under {lo:g} in last {n}", "k": "good"})
+    if line is not None:
+        big = sum(v >= 1.5 * line for v in vals)
+        if big >= 3:
+            notes.append({"t": f"Ceiling: {big} games of {1.5 * line:.0f}+ (1.5Ã— the line)", "k": "info"})
+    if avg >= 15 and n >= 6:
+        mean = sum(vals) / n
+        sd = (sum((v - mean) ** 2 for v in vals) / n) ** 0.5
+        if sd / mean > 0.75:
+            notes.append({"t": f"Boom-or-bust: ranged {lo:g} to {hi:g}", "k": "info"})
+
+    # Matchup extremes
+    if row["def_rank"] >= 29:
+        notes.append({"t": f"Soft matchup: {row['opp']} ranks {row['def_rank']}/32 vs {vs} ({stat_word})",
+                      "k": "good"})
+    elif 0 < row["def_rank"] <= 4:
+        notes.append({"t": f"Tough matchup: {row['opp']} ranks {row['def_rank']}/32 vs {vs} ({stat_word})",
+                      "k": "bad"})
+
+    # Market signals
+    trap = False
+    if line is not None:
+        if row.get("open") is not None and not pd.isna(row["open"]) and abs(line - row["open"]) >= 4:
+            direction = "up" if line > row["open"] else "down"
+            notes.append({"t": f"Line moved {direction} {row['open']:g} â†’ {line:g} since open",
+                          "k": "info"})
+        if abs(line - avg) / max(avg, 10) > 0.45:
+            trap = True
+            notes.append({"t": f"Line ({line:g}) is far from the {avg:.0f} L10 avg â€” book likely "
+                               "knows about a role/injury change", "k": "warn"})
+
+    # Rating (only for posted lines)
+    rating = {"pick": "", "score": None, "grade": ""}
+    if line is not None:
+        p = row["p_over"]
+        over = p >= 0.5
+        conf = p if over else 1 - p
+        side_hits = sum((v > line) if over else (v < line) for v in vals) / n
+        recent = vals[-3:]
+        trend = sum((v > line) if over else (v < line) for v in recent) / len(recent)
+        score = 10 * (0.45 * min(max((conf - 0.5) / 0.35, 0), 1) + 0.35 * side_hits + 0.20 * trend)
+        if trap:
+            score *= 0.55
+        if row["missed_last_game"]:
+            score *= 0.6
+        if n < 6:
+            score *= 0.8
+        grade = "A" if score >= 7.5 else "B" if score >= 6 else "C" if score >= 4.5 else "D"
+        rating = {"pick": f"{'OVER' if over else 'UNDER'} {line:g}", "score": round(score, 1),
+                  "grade": grade}
+    return notes, rating
 
 
 def print_week(week, games, rows, source, args):
@@ -648,101 +770,228 @@ def _now_et() -> str:
         return datetime.now().strftime("%a %b %d, %I:%M %p")
 
 
+ESPN_LOGO_ABBR = {"WAS": "wsh", "LA": "lar"}
+
+PAGE_TEMPLATE = r"""<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">__META__
+<title>NFL Week __WEEK__ Matchups</title>
+<style>
+:root { --bg:#f6f5f1; --card:#fff; --ink:#1c1c1a; --mute:#6b6a64; --line:#e4e2db; --soft:#efeee8;
+  --good:#17803f; --good-bg:#e2f3e8; --bad:#b4342b; --bad-bg:#fbe5e2; --warn:#a15c00; --warn-bg:#fff0d4;
+  --info:#3a5a8c; --info-bg:#e6edf8; --A:#17803f; --B:#2f7a8a; --C:#a07a12; --D:#8a8983; --accent:#1f3a5f; }
+@media (prefers-color-scheme: dark) { :root { --bg:#131312; --card:#1d1d1b; --ink:#ecebe5; --mute:#9d9c95;
+  --line:#34332f; --soft:#262623; --good:#62d290; --good-bg:#15301f; --bad:#f08a80; --bad-bg:#3a1d1a;
+  --warn:#f1b65a; --warn-bg:#382810; --info:#9dbcf0; --info-bg:#1b2638; --A:#4fc47f; --B:#5fbfd1;
+  --C:#e0b84a; --D:#8f8e88; --accent:#9dbcf0; } }
+* { box-sizing:border-box }
+body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif }
+.wrap { max-width:1240px; margin:0 auto; padding:0 16px }
+header { padding:24px 0 6px }
+h1 { margin:0; font-size:26px; letter-spacing:-.01em }
+h2 { font-size:18px; margin:28px 0 10px }
+.sub { color:var(--mute) }
+.legend { display:flex; gap:12px; flex-wrap:wrap; margin-top:10px; color:var(--mute); font-size:12px; align-items:center }
+.g { display:inline-grid; place-items:center; width:26px; height:26px; border-radius:7px; color:#fff; font-weight:700; font-size:13px; flex:none }
+.gA { background:var(--A) } .gB { background:var(--B) } .gC { background:var(--C) } .gD { background:var(--D) }
+.games { display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:14px }
+@media (max-width:420px) { .games { grid-template-columns:1fr } }
+.card { background:var(--card); border:1px solid var(--line); border-radius:14px; display:flex; flex-direction:column; overflow:hidden }
+.ch { padding:14px 14px 10px; border-bottom:1px solid var(--line) }
+.teams { display:flex; align-items:center; gap:8px; font-weight:700; font-size:17px }
+.teams img { width:30px; height:30px; object-fit:contain }
+.at { color:var(--mute); font-weight:400; font-size:14px }
+.kick { margin-left:auto; color:var(--mute); font-size:12px; font-weight:500; text-align:right }
+.vegas { color:var(--mute); font-size:12px; margin-top:6px }
+.plays { padding:6px 14px 4px; flex:1 }
+.play { display:flex; gap:10px; padding:9px 0; border-bottom:1px solid var(--soft) }
+.play:last-child { border-bottom:0 }
+.pl { min-width:0; flex:1 }
+.pname { font-weight:600 }
+.pmeta { color:var(--mute); font-size:12px }
+.pick { font-weight:700; white-space:nowrap }
+.OVER { color:var(--good) } .UNDER { color:var(--bad) }
+.chips { display:flex; flex-wrap:wrap; gap:4px; margin-top:4px }
+.chip { font-size:11.5px; padding:2px 7px; border-radius:99px; line-height:1.35 }
+.k-good { background:var(--good-bg); color:var(--good) } .k-bad { background:var(--bad-bg); color:var(--bad) }
+.k-warn { background:var(--warn-bg); color:var(--warn) } .k-info { background:var(--info-bg); color:var(--info) }
+.cf { padding:8px 14px 12px }
+.cf button { background:none; border:1px solid var(--line); color:var(--accent); border-radius:8px; padding:6px 10px; cursor:pointer; font:inherit; font-size:13px }
+.empty { color:var(--mute); padding:10px 0 }
+.bar { display:flex; gap:8px; flex-wrap:wrap; margin:6px 0 10px; align-items:center }
+.bar input[type=search], .bar select { padding:7px 10px; border:1px solid var(--line); border-radius:8px; background:var(--card); color:var(--ink); font:inherit }
+.bar label { display:flex; align-items:center; gap:6px; color:var(--mute) }
+.tw { background:var(--card); border:1px solid var(--line); border-radius:14px; overflow-x:auto }
+table { border-collapse:collapse; width:100%; min-width:980px }
+th, td { padding:9px 10px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top }
+th { color:var(--mute); font-weight:600; font-size:12px; cursor:pointer; white-space:nowrap; user-select:none }
+td.n { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap }
+tr:last-child td { border-bottom:0 }
+.spark { display:block }
+footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
+</style></head><body>
+<div class="wrap">
+<header>
+  <h1>NFL Week __WEEK__ Matchups &amp; Player Ratings</h1>
+  <div class="sub">Updated __UPDATED__ Â· Lines: __SOURCE__ Â· Each player's last __N__ games vs. the opponent defense's last __N__</div>
+  <div class="legend"><span><span class="g gA">A</span> strong</span><span><span class="g gB">B</span> good</span>
+  <span><span class="g gC">C</span> lean</span><span><span class="g gD">D</span> pass</span>
+  <span>Rating = model projection vs line + hit rate + last 3 games, penalized for injury/role red flags.</span></div>
+</header>
+
+<h2>This week's games</h2>
+<section class="games" id="games"></section>
+
+<h2 id="all">All player props</h2>
+<div class="bar">
+  <input type="search" id="q" placeholder="Search player or team">
+  <select id="game"><option value="">All games</option></select>
+  <select id="stat"><option value="">All stats</option><option value="passing_yards">Passing yds</option>
+    <option value="rushing_yards">Rushing yds</option><option value="receiving_yards">Receiving yds</option></select>
+  <label><input type="checkbox" id="good"> A/B ratings only</label>
+  <label><input type="checkbox" id="hot"> Hit line __HITPCT__+ of last __N__</label>
+</div>
+<div class="tw"><table><thead><tr>
+  <th data-s="score">Rating</th><th data-s="player">Player / what stands out</th><th data-s="pick">Pick</th>
+  <th data-s="proj">Proj</th><th data-s="line_hit_rate">Hit L__N__</th><th data-s="p_over">P(over)</th>
+  <th data-s="def_rank">Opp rank</th><th>Last __N__ (bar = line)</th><th data-s="alt">Alt __HITPCT__+</th>
+</tr></thead><tbody id="rows"></tbody></table></div>
+
+<footer>Opp rank: 1 = stingiest vs that position, 32 = most generous. Proj = player's L__N__ average Ã— how much this defense
+allows vs league average (regressed toward average). P(over) is a model estimate, not a guarantee. Chip colors are relative to the pick
+(green helps it, red hurts it, amber = red flag). Lines move â€” confirm at your sportsbook. Built from free nflverse stats and
+DraftKings lines via ESPN.<br><br>For entertainment and research only â€” not betting advice. 21+. Gambling problem? Call 1-800-GAMBLER.</footer>
+</div>
+<script>
+const ROWS = __ROWS__;
+const GAMES = __GAMES__;
+const HIT = __HIT__;
+const STAT = {passing_yards:"pass yds", rushing_yards:"rush yds", receiving_yards:"rec yds"};
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pct = v => v == null ? "" : Math.round(v * 100) + "%";
+
+function kind(note, pick) {
+  if (note.k === "good" || note.k === "bad") {
+    const under = (pick || "").startsWith("UNDER");
+    return under ? (note.k === "good" ? "bad" : "good") : note.k;
+  }
+  return note.k;
+}
+function chips(r, max) {
+  const order = {warn:0, good:1, bad:2, info:3};
+  const ns = (r.notes || []).map(n => ({t:n.t, k:kind(n, r.pick)})).sort((a, b) => order[a.k] - order[b.k]);
+  return `<div class="chips">${ns.slice(0, max ?? 99).map(n => `<span class="chip k-${n.k}">${esc(n.t)}</span>`).join("")}</div>`;
+}
+function grade(r) { return r.grade ? `<span class="g g${r.grade}" title="score ${r.score}/10">${r.grade}</span>` : `<span class="g gD" style="opacity:.35">â€“</span>`; }
+function logo(t) { return `<img src="https://a.espncdn.com/i/teamlogos/nfl/500/${(GAMES.logo[t] || t).toLowerCase()}.png" alt="" onerror="this.style.display='none'">`; }
+function kick(g) {
+  const d = new Date(g.gameday + "T12:00:00");
+  const [h, m] = g.gametime.split(":").map(Number);
+  const day = d.toLocaleDateString("en-US", {weekday:"short", month:"short", day:"numeric"});
+  return `${day}<br>${((h + 11) % 12) + 1}:${String(m).padStart(2, "0")} ${h < 12 ? "AM" : "PM"} ET`;
+}
+function spark(r) {
+  const vals = String(r.last10 || "").split(" ").map(Number).filter(v => !isNaN(v));
+  if (!vals.length) return "";
+  const W = 120, H = 30, bw = W / 10, max = Math.max(...vals, r.line || 0, 1);
+  const bars = vals.map((v, i) => {
+    const h = Math.max(1.5, (Math.max(v, 0) / max) * (H - 2));
+    const c = r.line == null ? "var(--D)" : v > r.line ? "var(--good)" : "var(--bad)";
+    return `<rect x="${i * bw + 1}" y="${H - h}" width="${bw - 2}" height="${h}" rx="1.5" fill="${c}" opacity=".85"><title>${v}</title></rect>`;
+  }).join("");
+  const ly = r.line == null ? "" : `<line x1="0" x2="${W}" y1="${H - (r.line / max) * (H - 2)}" y2="${H - (r.line / max) * (H - 2)}" stroke="var(--ink)" stroke-dasharray="3 2" stroke-width="1"/>`;
+  return `<svg class="spark" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${bars}${ly}</svg>`;
+}
+
+function renderGames() {
+  document.getElementById("games").innerHTML = GAMES.list.map(g => {
+    const rs = ROWS.filter(r => r.game === g.key && r.score != null).sort((a, b) => b.score - a.score);
+    const top = rs.slice(0, 4);
+    const plays = top.length ? top.map(r => `<div class="play">${grade(r)}<div class="pl">
+        <div><span class="pname">${esc(r.player)}</span> <span class="pmeta">${r.pos} Â· ${r.team}</span></div>
+        <div><span class="pick ${r.pick.split(" ")[0]}">${r.pick}</span> <span class="pmeta">${STAT[r.stat]} Â· proj ${r.proj} Â· hit ${r.line_hits}</span></div>
+        ${chips(r, 2)}</div></div>`).join("") : `<div class="empty">No player lines posted yet.</div>`;
+    return `<article class="card"><div class="ch">
+        <div class="teams">${logo(g.away)}${g.away} <span class="at">@</span> ${logo(g.home)}${g.home}<span class="kick">${kick(g)}</span></div>
+        <div class="vegas">${esc(g.vegas)}</div></div>
+      <div class="plays">${plays}</div>
+      <div class="cf"><button data-game="${g.key}">All ${ROWS.filter(r => r.game === g.key).length} props in this game â†’</button></div></article>`;
+  }).join("");
+  document.querySelectorAll(".cf button").forEach(b => b.onclick = () => {
+    document.getElementById("game").value = b.dataset.game; renderRows();
+    document.getElementById("all").scrollIntoView({behavior:"smooth"});
+  });
+}
+
+let sortKey = "score", sortDir = -1;
+function renderRows() {
+  const q = document.getElementById("q").value.toLowerCase(), gm = document.getElementById("game").value;
+  const st = document.getElementById("stat").value, good = document.getElementById("good").checked;
+  const hot = document.getElementById("hot").checked;
+  const rs = ROWS.filter(r => (!q || (r.player + " " + r.team + " " + r.opp).toLowerCase().includes(q))
+    && (!gm || r.game === gm) && (!st || r.stat === st) && (!good || r.grade === "A" || r.grade === "B")
+    && (!hot || (r.line_hit_rate != null && r.line_hit_rate >= HIT)));
+  rs.sort((a, b) => {
+    const x = a[sortKey], y = b[sortKey];
+    if (x == null && y == null) return 0; if (x == null) return 1; if (y == null) return -1;
+    return (typeof x === "string" ? x.localeCompare(y) : x - y) * sortDir;
+  });
+  document.getElementById("rows").innerHTML = rs.map(r => {
+    const move = r.open != null && r.line != null && r.open !== r.line ? `<div class="pmeta">open ${r.open}</div>` : "";
+    return `<tr><td>${grade(r)}</td>
+      <td><span class="pname">${esc(r.player)}</span> <span class="pmeta">${r.pos} Â· ${r.team} vs ${r.opp} Â· ${STAT[r.stat]} Â· L${r.n} avg ${r.L10_avg}</span>${chips(r)}</td>
+      <td class="n">${r.pick ? `<span class="pick ${r.pick.split(" ")[0]}">${r.pick}</span>${move}` : `<span class="pmeta">no line</span>`}</td>
+      <td class="n"><b>${r.proj}</b></td><td class="n">${r.line_hits || ""}</td><td class="n">${pct(r.p_over)}</td>
+      <td class="n">${r.def_rank}/32</td><td>${spark(r)}</td>
+      <td class="n">${r.alt ? `${r.alt}<div class="pmeta">${r.alt_hits} Â· ${pct(r.alt_p)}</div>` : ""}</td></tr>`;
+  }).join("") || `<tr><td colspan="9" class="empty">No matches.</td></tr>`;
+}
+
+const sel = document.getElementById("game");
+GAMES.list.forEach(g => sel.insertAdjacentHTML("beforeend", `<option value="${g.key}">${g.away} @ ${g.home}</option>`));
+["q","game","stat","good","hot"].forEach(id => document.getElementById(id).addEventListener("input", renderRows));
+document.querySelectorAll("th[data-s]").forEach(th => th.onclick = () => {
+  const k = th.dataset.s; sortDir = k === sortKey ? -sortDir : (k === "player" || k === "def_rank" ? 1 : -1); sortKey = k; renderRows();
+});
+renderGames(); renderRows();
+</script></body></html>"""
+
+
 def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | None):
     import html
     import json
 
-    data = json.dumps([{k: (None if isinstance(v, float) and math.isnan(v) else v)
-                        for k, v in r.items()} for r in rows], default=str)
-    games_info = []
+    def clean(v):
+        if isinstance(v, float) and math.isnan(v):
+            return None
+        if hasattr(v, "item"):  # numpy scalar
+            return v.item()
+        return v
+
+    data = [{k: clean(v) for k, v in r.items()} for r in rows]
+    game_list = []
     for g in games.itertuples():
-        info = f"{g.away_team} @ {g.home_team} · {g.gameday} {g.gametime}"
-        if pd.notna(g.total_line):
+        vegas = "No game line yet"
+        if pd.notna(g.total_line) and pd.notna(g.spread_line):
             home_tt = (g.total_line + g.spread_line) / 2
-            info += (f" · O/U {g.total_line} · implied {g.away_team} {g.total_line - home_tt:.1f}"
-                     f" / {g.home_team} {home_tt:.1f}")
-        games_info.append({"key": f"{g.away_team}@{g.home_team}", "label": info})
-    meta = f'<meta http-equiv="refresh" content="{refresh_secs}">' if refresh_secs else ""
-    page = f"""<!doctype html><html><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">{meta}
-<title>Week {week} Props</title>
-<style>
-:root {{ --bg:#f7f7f5; --card:#fff; --ink:#1d1d1b; --mute:#6b6b66; --line:#e3e2dd;
-        --good:#1a7f45; --good-bg:#e3f4ea; --bad:#b4342b; --bad-bg:#fbe6e4; --hot:#9a6400; --hot-bg:#fff3d6; }}
-@media (prefers-color-scheme: dark) {{ :root {{ --bg:#141413; --card:#1e1e1c; --ink:#ecebe6; --mute:#9c9b94;
-        --line:#33332f; --good:#5fd08f; --good-bg:#16301f; --bad:#f0857b; --bad-bg:#3a1c19; --hot:#f2c35c; --hot-bg:#352a10; }} }}
-* {{ box-sizing:border-box }}
-body {{ margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 system-ui,-apple-system,Segoe UI,sans-serif }}
-header {{ padding:20px 16px 8px; max-width:1200px; margin:auto }}
-h1 {{ margin:0 0 4px; font-size:22px }}
-.sub {{ color:var(--mute) }}
-.bar {{ display:flex; gap:8px; flex-wrap:wrap; max-width:1200px; margin:8px auto; padding:0 16px }}
-.bar input, .bar select {{ padding:7px 10px; border:1px solid var(--line); border-radius:8px; background:var(--card); color:var(--ink) }}
-.bar label {{ display:flex; align-items:center; gap:6px; color:var(--mute) }}
-main {{ max-width:1200px; margin:auto; padding:0 16px 40px }}
-.game {{ background:var(--card); border:1px solid var(--line); border-radius:12px; margin:14px 0; overflow:hidden }}
-.game h2 {{ font-size:15px; margin:0; padding:12px 14px; border-bottom:1px solid var(--line) }}
-.wrap {{ overflow-x:auto }}
-table {{ border-collapse:collapse; width:100%; min-width:860px }}
-th, td {{ padding:7px 10px; text-align:left; border-bottom:1px solid var(--line); white-space:nowrap }}
-th {{ color:var(--mute); font-weight:600; font-size:12px; cursor:pointer }}
-td.num {{ text-align:right; font-variant-numeric:tabular-nums }}
-.pill {{ padding:2px 8px; border-radius:99px; font-weight:600; font-size:12px }}
-.OVER {{ background:var(--good-bg); color:var(--good) }} .UNDER {{ background:var(--bad-bg); color:var(--bad) }}
-.hot {{ background:var(--hot-bg); color:var(--hot) }}
-.inj {{ color:var(--bad); font-size:12px }}
-.l10 {{ color:var(--mute); font-size:12px }}
-footer {{ color:var(--mute); font-size:12px; max-width:1200px; margin:auto; padding:0 16px 30px }}
-</style></head><body>
-<header><h1>Week {week} NFL yardage props</h1>
-<div class="sub">Lines: {html.escape(source)} · last {args.games} games vs opponent defense ·
-updated {_now_et()}{f' · auto-refresh every {refresh_secs}s' if refresh_secs else ''}</div></header>
-<div class="bar">
- <input id="q" placeholder="Search player or team">
- <select id="stat"><option value="">All stats</option><option>passing_yards</option><option>rushing_yards</option><option>receiving_yards</option></select>
- <label><input type="checkbox" id="hot"> 70%+ hit rate only</label>
- <label><input type="checkbox" id="lean"> Leans only</label>
-</div>
-<main id="out"></main>
-<footer>Def rank: 1 = stingiest vs that position, 32 = most generous. Matchup %: defense's allowed rate vs league avg (regressed).
-P(over) is a model estimate; lean shown only when it beats -110 break-even (52.4%) by 3+ points. Alt = highest milestone (N+) cleared {args.hit_rate:.0%}+ of last {args.games}.
-Check injury reports — red flags mark players who missed their team's last game.<br><br>
-For entertainment and research only — not betting advice. Lines move; confirm at your sportsbook. 21+. Gambling problem? Call 1-800-GAMBLER.</footer>
-<script>
-const ROWS = {data}; const GAMES = {json.dumps(games_info)}; const HIT = {args.hit_rate};
-const short = {{passing_yards:"pass yds", rushing_yards:"rush yds", receiving_yards:"rec yds"}};
-const pct = v => v == null ? "" : Math.round(v*100) + "%";
-function render() {{
-  const q = document.getElementById("q").value.toLowerCase(), st = document.getElementById("stat").value;
-  const hot = document.getElementById("hot").checked, lean = document.getElementById("lean").checked;
-  let out = "";
-  for (const g of GAMES) {{
-    const rs = ROWS.filter(r => r.game === g.key
-      && (!q || (r.player + " " + r.team).toLowerCase().includes(q)) && (!st || r.stat === st)
-      && (!hot || (r.line_hit_rate != null && r.line_hit_rate >= HIT)) && (!lean || r.lean));
-    if (!rs.length) continue;
-    out += `<section class="game"><h2>${{g.label}}</h2><div class="wrap"><table><tr>
-      <th>Player</th><th>Team</th><th>Stat</th><th>L10 avg</th><th>Opp rank</th><th>Matchup</th><th>Proj</th>
-      <th>Line</th><th>Hit L10</th><th>P(over)</th><th>Lean</th><th>Alt 70%+</th><th>Last 10</th></tr>`;
-    for (const r of rs) {{
-      const isHot = r.line_hit_rate != null && r.line_hit_rate >= HIT;
-      const move = r.open != null && r.line != null && r.open !== r.line ? ` <span class="l10">(open ${{r.open}})</span>` : "";
-      out += `<tr><td>${{r.pos}} <b>${{r.player}}</b>${{r.missed_last_game ? ' <span class="inj">missed last game</span>' : ''}}</td>
-        <td>${{r.team}} vs ${{r.opp}}</td><td>${{short[r.stat]}}</td><td class="num">${{r.L10_avg}}</td>
-        <td class="num">${{r.def_rank}}/32</td><td class="num">${{r.matchup_pct > 0 ? "+" : ""}}${{r.matchup_pct}}%</td>
-        <td class="num"><b>${{r.proj}}</b></td><td class="num">${{r.line ?? "—"}}${{move}}</td>
-        <td class="num">${{r.line_hits ? `<span class="pill ${{isHot ? 'hot' : ''}}">${{r.line_hits}}</span>` : ""}}</td>
-        <td class="num">${{pct(r.p_over)}}</td><td>${{r.lean ? `<span class="pill ${{r.lean}}">${{r.lean}}</span>` : ""}}</td>
-        <td>${{r.alt ? `${{r.alt}} <span class="l10">${{r.alt_hits}} · ${{pct(r.alt_p)}}</span>` : ""}}</td>
-        <td class="l10">${{r.last10}}</td></tr>`;
-    }}
-    out += "</table></div></section>";
-  }}
-  document.getElementById("out").innerHTML = out || "<p>No matches.</p>";
-}}
-["q","stat","hot","lean"].forEach(id => document.getElementById(id).addEventListener("input", render));
-render();
-</script></body></html>"""
+            fav, pts = (g.home_team, g.spread_line) if g.spread_line > 0 else (g.away_team, -g.spread_line)
+            spread = f"{fav} -{pts:g}" if pts else "Pick'em"
+            vegas = (f"{spread} Â· O/U {g.total_line:g} Â· Implied: {g.away_team} "
+                     f"{g.total_line - home_tt:.1f}, {g.home_team} {home_tt:.1f}")
+        game_list.append({"key": f"{g.away_team}@{g.home_team}", "away": g.away_team, "home": g.home_team,
+                          "gameday": str(g.gameday), "gametime": str(g.gametime), "vegas": vegas})
+    games_json = {"list": game_list, "logo": ESPN_LOGO_ABBR}
+
+    meta = f'\n<meta http-equiv="refresh" content="{refresh_secs}">' if refresh_secs else ""
+    page = (PAGE_TEMPLATE
+            .replace("__META__", meta)
+            .replace("__WEEK__", str(week))
+            .replace("__UPDATED__", html.escape(_now_et()))
+            .replace("__SOURCE__", html.escape(source))
+            .replace("__N__", str(args.games))
+            .replace("__HITPCT__", f"{args.hit_rate:.0%}")
+            .replace("__HIT__", str(args.hit_rate))
+            .replace("__GAMES__", json.dumps(games_json))
+            .replace("__ROWS__", json.dumps(data, default=str).replace("</", "<\\/")))
     path.write_text(page, encoding="utf-8")
 
 
