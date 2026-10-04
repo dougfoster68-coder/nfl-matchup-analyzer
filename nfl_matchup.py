@@ -808,21 +808,40 @@ ESPN_LOGO_ABBR = {"WAS": "wsh", "LA": "lar"}
 
 PAGE_TEMPLATE = r"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">__META__
-<title>NFL Week __WEEK__ Matchups</title>
+<title>Tids Takedowns · Week __WEEK__</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root { --bg:#f6f5f1; --card:#fff; --ink:#1c1c1a; --mute:#6b6a64; --line:#e4e2db; --soft:#efeee8;
-  --good:#17803f; --good-bg:#e2f3e8; --bad:#b4342b; --bad-bg:#fbe5e2; --warn:#a15c00; --warn-bg:#fff0d4;
-  --info:#3a5a8c; --info-bg:#e6edf8; --con:#6b3fa0; --con-bg:#efe6fa; --A:#17803f; --B:#2f7a8a; --C:#a07a12; --D:#8a8983; --accent:#1f3a5f; }
-@media (prefers-color-scheme: dark) { :root { --bg:#131312; --card:#1d1d1b; --ink:#ecebe5; --mute:#9d9c95;
-  --line:#34332f; --soft:#262623; --good:#62d290; --good-bg:#15301f; --bad:#f08a80; --bad-bg:#3a1d1a;
-  --warn:#f1b65a; --warn-bg:#382810; --info:#9dbcf0; --info-bg:#1b2638; --con:#c9a8f5; --con-bg:#2b2040; --A:#4fc47f; --B:#5fbfd1;
-  --C:#e0b84a; --D:#8f8e88; --accent:#9dbcf0; } }
+:root { --bg:#eef2f6; --card:#fff; --ink:#0c1722; --mute:#5b6875; --line:#d9e1e8; --soft:#edf1f5;
+  --blue:#0076b6; --blue-dk:#005a8c; --silver:#b0b7bc;
+  --good:#11804a; --good-bg:#e1f3e9; --bad:#c0352b; --bad-bg:#fbe4e1; --warn:#a15c00; --warn-bg:#fff0d4;
+  --info:#0067a0; --info-bg:#e2eff8; --con:#6b3fa0; --con-bg:#efe6fa;
+  --A:#0076b6; --B:#4f7f9e; --C:#a07a12; --D:#8a929a; --accent:#0076b6; }
+@media (prefers-color-scheme: dark) { :root { --bg:#07111b; --card:#0f1c29; --ink:#e7edf2; --mute:#93a3b2;
+  --line:#1f3244; --soft:#152536; --blue:#1a8fd6; --blue-dk:#0b5e94; --silver:#8f989f;
+  --good:#5fd394; --good-bg:#11301f; --bad:#f2877c; --bad-bg:#3a1b18; --warn:#f1b65a; --warn-bg:#352710;
+  --info:#7cc0ef; --info-bg:#122a40; --con:#c9a8f5; --con-bg:#2b2040;
+  --A:#1a8fd6; --B:#6f9bb8; --C:#e0b84a; --D:#7d868e; --accent:#5fb4ec; } }
 * { box-sizing:border-box }
-body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif }
+body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 Inter,system-ui,-apple-system,"Segoe UI",sans-serif }
+.cond { font-family:"Barlow Condensed",Inter,system-ui,sans-serif }
 .wrap { max-width:1240px; margin:0 auto; padding:0 16px }
-header { padding:24px 0 6px }
-h1 { margin:0; font-size:26px; letter-spacing:-.01em }
-h2 { font-size:18px; margin:28px 0 10px }
+.hero { background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dk) 100%); color:#fff;
+  border-bottom:4px solid var(--silver) }
+.hero .wrap { padding-top:22px; padding-bottom:18px }
+.brand { display:flex; align-items:center; gap:14px }
+.mark { width:52px; height:52px; border-radius:50%; border:3px solid var(--silver); display:grid; place-items:center;
+  font:800 22px/1 "Barlow Condensed",sans-serif; letter-spacing:.02em; background:rgba(255,255,255,.08); flex:none }
+h1 { margin:0; font:800 38px/1 "Barlow Condensed",sans-serif; letter-spacing:.03em; text-transform:uppercase }
+.tagline { opacity:.88; margin-top:4px }
+.hero .sub { color:rgba(255,255,255,.78); font-size:12.5px; margin-top:12px }
+.hero .stat { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.22); color:#fff }
+.hero .stat .l { color:rgba(255,255,255,.75) }
+.hero .stat .v.pos { color:#8ff0b6 } .hero .stat .v.neg { color:#ffb3aa }
+h2 { font:700 24px/1.1 "Barlow Condensed",sans-serif; letter-spacing:.03em; text-transform:uppercase; margin:30px 0 12px;
+  display:flex; align-items:center; gap:10px }
+h2::before { content:""; width:6px; height:22px; background:var(--blue); border-radius:2px }
+.lead { color:var(--mute); margin:-6px 0 12px; font-size:13px }
 .sub { color:var(--mute) }
 .legend { display:flex; gap:12px; flex-wrap:wrap; margin-top:10px; color:var(--mute); font-size:12px; align-items:center }
 .g { display:inline-grid; place-items:center; width:26px; height:26px; border-radius:7px; color:#fff; font-weight:700; font-size:13px; flex:none }
@@ -881,19 +900,51 @@ td.n { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap }
 tr:last-child td { border-bottom:0 }
 .spark { display:block }
 footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
+.top5 { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px }
+.tp { background:var(--card); border:1px solid var(--line); border-top:4px solid var(--blue); border-radius:12px;
+  padding:12px 14px; position:relative }
+.tp .rank { position:absolute; top:6px; right:12px; font:800 34px/1 "Barlow Condensed",sans-serif; color:var(--silver); opacity:.6 }
+.tp .pick { font:700 22px/1.1 "Barlow Condensed",sans-serif; letter-spacing:.02em; margin:6px 0 2px }
+.tp .who { display:flex; align-items:center; gap:8px }
+.card.lions { border:2px solid var(--blue); box-shadow:0 0 0 3px color-mix(in srgb,var(--blue) 18%,transparent) }
+.lionsbadge { display:inline-block; background:var(--blue); color:#fff; font:700 11px/1 Inter,sans-serif; letter-spacing:.05em;
+  padding:4px 7px; border-radius:5px; margin-bottom:6px; text-transform:uppercase }
+.ladder { display:grid; gap:10px }
+.pl-row { background:var(--card); border:1px solid var(--line); border-radius:12px; display:grid;
+  grid-template-columns:96px 1fr 120px; gap:12px; padding:12px 14px; align-items:start }
+.pl-n { font:800 26px/1 "Barlow Condensed",sans-serif; color:var(--blue) }
+.pl-n small { display:block; font:600 11px/1.4 Inter,sans-serif; color:var(--mute); letter-spacing:.04em; text-transform:uppercase }
+.pl-legs div { padding:2px 0 }
+.pl-legs .new { font-weight:700 }
+.pl-legs .new::after { content:"NEW"; font:700 9.5px/1 Inter,sans-serif; background:var(--blue); color:#fff; padding:2px 5px;
+  border-radius:4px; margin-left:6px; vertical-align:2px }
+.pl-pay { text-align:right }
+.pl-pay .odds { font:800 24px/1 "Barlow Condensed",sans-serif }
+@media (max-width:560px) { .pl-row { grid-template-columns:1fr; } .pl-pay { text-align:left } }
 </style></head><body>
-<div class="wrap">
-<header>
-  <h1>NFL Week __WEEK__ Matchups &amp; Player Ratings</h1>
+<header class="hero"><div class="wrap">
+  <div class="brand"><div class="mark">TT</div>
+    <div><h1>Tids Takedowns</h1><div class="tagline">NFL Week __WEEK__ · player prop matchups, ratings &amp; picks</div></div></div>
+  <div class="strip" id="bankstrip"></div>
   <div class="sub">Updated __UPDATED__ · Lines: __SOURCE__ · Each player's last __N__ games vs. the opponent defense's last __N__</div>
+</div></header>
+<div class="wrap">
   <div class="legend"><span><span class="g gA">A</span> strong</span><span><span class="g gB">B</span> good</span>
   <span><span class="g gC">C</span> lean</span><span><span class="g gD">D</span> pass</span>
   <span>Rating = model projection vs line + hit rate + last 3 games, penalized for injury/role red flags.</span></div>
-  <div class="strip" id="bankstrip"></div>
-</header>
+
+<h2>Tids' Top 5</h2>
+<div class="lead">The highest-rated plays on the board right now — no traps, one prop per player.</div>
+<section class="top5" id="top5"></section>
 
 <h2>This week's games</h2>
 <section class="games" id="games"></section>
+
+<h2>Parlay builder</h2>
+<div class="lead">Rebuilt every refresh from A/B-rated, trap-free props. Each rung adds the next-best leg.
+Payouts assume -110 per leg; hit chance discounts the model's confidence by about half, because models run hot.</div>
+<div class="bar"><label><input type="checkbox" id="onepergame"> One leg per game</label></div>
+<section class="ladder" id="ladder"></section>
 
 <h2>Trap alerts &amp; contrarian plays</h2>
 <div class="duo">
@@ -931,7 +982,7 @@ trap-free props and graded against final box scores (a player who doesn't play v
 <footer>Opp rank: 1 = stingiest vs that position, 32 = most generous. Proj = player's L__N__ average × how much this defense
 allows vs league average (regressed toward average). P(over) is a model estimate, not a guarantee. Chip colors are relative to the pick
 (green helps it, red hurts it, amber = red flag). Lines move — confirm at your sportsbook. Built from free nflverse stats and
-DraftKings lines via ESPN.<br><br>For entertainment and research only — not betting advice. 21+. Gambling problem? Call 1-800-GAMBLER.</footer>
+DraftKings lines via ESPN.<br><br>Tids Takedowns is a fan project, not affiliated with the NFL or the Detroit Lions. For entertainment and research only — not betting advice. 21+. Gambling problem? Call 1-800-GAMBLER.</footer>
 </div>
 <script>
 const ROWS = __ROWS__;
@@ -990,7 +1041,8 @@ function renderGames() {
         <div><span class="pname">${esc(r.player)}</span>${tags(r)} <span class="pmeta">${r.pos} · ${r.team}</span></div>
         <div><span class="pick ${r.pick.split(" ")[0]}">${r.pick}</span> <span class="pmeta">${STAT[r.stat]} · proj ${r.proj} · hit ${r.line_hits}</span></div>
         ${chips(r, 2)}</div></div>`).join("") : `<div class="empty">No player lines posted yet.</div>`;
-    return `<article class="card"><div class="ch">
+    const lions = g.away === "DET" || g.home === "DET";
+    return `<article class="card${lions ? " lions" : ""}"><div class="ch">${lions ? '<span class="lionsbadge">Lions game</span>' : ""}
         <div class="teams">${logo(g.away)}${g.away} <span class="at">@</span> ${logo(g.home)}${g.home}<span class="kick">${kick(g)}</span></div>
         <div class="vegas">${esc(g.vegas)}</div></div>
       <div class="plays">${plays}</div>
@@ -1083,7 +1135,49 @@ function renderBank() {
     ? `<div style="overflow-x:auto"><table style="min-width:760px"><thead><tr><th>Week</th><th>Bet</th><th>Type</th><th>Stake</th><th>Odds</th><th>Result</th><th>P/L</th></tr></thead><tbody>${rows}</tbody></table></div>`
     : `<div class="empty">No bets yet. First picks go in before Thursday Night Football.</div>`);
 }
-renderBank(); renderGames(); renderPanels(); renderRows();
+function bestLegs() {
+  const seen = new Set();
+  return ROWS.filter(r => (r.grade === "A" || r.grade === "B") && !(r.traps && r.traps.length))
+    .sort((a, b) => b.score - a.score)
+    .filter(r => !seen.has(r.player) && seen.add(r.player));
+}
+function goodNote(r) {
+  const n = (r.notes || []).map(n => ({t: n.t, k: kind(n, r.pick)})).find(n => n.k === "good");
+  return n ? `<div class="chips"><span class="chip k-good">${esc(n.t)}</span></div>` : "";
+}
+function renderTop5() {
+  const top = bestLegs().slice(0, 5);
+  const gm = Object.fromEntries(GAMES.list.map(g => [g.key, g]));
+  document.getElementById("top5").innerHTML = top.map((r, i) => `<div class="tp"><div class="rank">${i + 1}</div>
+      <div class="who">${grade(r)}<div><div class="pname">${esc(r.player)}</div>
+      <div class="pmeta">${r.pos} · ${r.team} vs ${r.opp}${gm[r.game] ? " · " + kick(gm[r.game]).replace("<br>", " ") : ""}</div></div></div>
+      <div class="pick ${r.pick.split(" ")[0]}">${r.pick} <span class="pmeta" style="font:500 13px Inter,sans-serif">${STAT[r.stat]}</span></div>
+      <div class="pmeta">proj ${r.proj} · hit ${r.line_hits} · score ${r.score}/10</div>${goodNote(r)}</div>`).join("")
+    || `<div class="empty">No A/B-rated plays posted yet — check back when lines open.</div>`;
+}
+function renderParlays() {
+  const one = document.getElementById("onepergame").checked;
+  const per = {}, legs = [];
+  for (const r of bestLegs()) {
+    if ((per[r.game] || 0) >= (one ? 1 : 2)) continue;
+    per[r.game] = (per[r.game] || 0) + 1; legs.push(r);
+    if (legs.length === 7) break;
+  }
+  const leg = r => { const c = Math.max(r.p_over, 1 - r.p_over); return 0.5 + (c - 0.5) * 0.55; };
+  const amer = d => d >= 2 ? "+" + Math.round((d - 1) * 100) : String(Math.round(-100 / (d - 1)));
+  let out = "";
+  for (let n = 2; n <= legs.length; n++) {
+    const L = legs.slice(0, n), dec = Math.pow(1 + 100 / 110, n), p = L.reduce((a, r) => a * leg(r), 1);
+    out += `<div class="pl-row"><div class="pl-n">${n}-LEG<small>parlay</small></div>
+      <div class="pl-legs">${L.map((r, i) => `<div class="${i === n - 1 ? "new" : ""}"><span class="pick ${r.pick.split(" ")[0]}">${r.pick}</span>
+        ${esc(r.player)} <span class="pmeta">${STAT[r.stat]} · ${r.team} vs ${r.opp} · ${r.grade}</span></div>`).join("")}</div>
+      <div class="pl-pay"><div class="odds">${amer(dec)}</div><div class="pmeta">$10 pays $${(10 * dec).toFixed(2)}</div>
+        <div class="pmeta">~${Math.round(p * 100)}% est. hit</div></div></div>`;
+  }
+  document.getElementById("ladder").innerHTML = out || `<div class="empty">Not enough A/B-rated, trap-free legs yet.</div>`;
+}
+document.getElementById("onepergame").addEventListener("input", renderParlays);
+renderBank(); renderTop5(); renderGames(); renderParlays(); renderPanels(); renderRows();
 </script></body></html>"""
 
 
