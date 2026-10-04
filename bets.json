@@ -1,4 +1,1557 @@
 {
   "start_bankroll": 1000,
-  "bets": []
+  "bets": [
+    {
+      "kind": "straight",
+      "stake": 45,
+      "legs": [
+        {
+          "player": "Christian McCaffrey",
+          "player_id": "00-0033280",
+          "team": "SF",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 45.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.7
+        }
+      ],
+      "game": "DEN@SF",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-1",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 17.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.3
+        }
+      ],
+      "game": "DEN@SF",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-2",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -175,
+          "grade": "A",
+          "score": 9.3,
+          "alt": "15+"
+        }
+      ],
+      "game": "DEN@SF",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-3",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -175
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 255,
+          "grade": "A",
+          "score": 9.3,
+          "alt": "25+"
+        }
+      ],
+      "game": "DEN@SF",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-4",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 255
+    },
+    {
+      "kind": "straight",
+      "stake": 45,
+      "legs": [
+        {
+          "player": "Jacory Croskey-Merritt",
+          "player_id": "00-0040242",
+          "team": "WAS",
+          "opp": "IND",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 5.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        }
+      ],
+      "game": "IND@WAS",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-5",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Juwan Johnson",
+          "player_id": "00-0036040",
+          "team": "NO",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 40.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.8
+        }
+      ],
+      "game": "ATL@NO",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-6",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Juwan Johnson",
+          "player_id": "00-0036040",
+          "team": "NO",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -285,
+          "grade": "A",
+          "score": 8.8,
+          "alt": "30+"
+        }
+      ],
+      "game": "ATL@NO",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-7",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -285
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Juwan Johnson",
+          "player_id": "00-0036040",
+          "team": "NO",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": 190,
+          "grade": "A",
+          "score": 8.8,
+          "alt": "50+"
+        }
+      ],
+      "game": "ATL@NO",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-8",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 190
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Cooper Kupp",
+          "player_id": "00-0033908",
+          "team": "SEA",
+          "opp": "LAC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.0
+        }
+      ],
+      "game": "LAC@SEA",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-9",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Cooper Kupp",
+          "player_id": "00-0033908",
+          "team": "SEA",
+          "opp": "LAC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -185,
+          "grade": "A",
+          "score": 8.0,
+          "alt": "20+"
+        }
+      ],
+      "game": "LAC@SEA",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-10",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -185
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Cooper Kupp",
+          "player_id": "00-0033908",
+          "team": "SEA",
+          "opp": "LAC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": 150,
+          "grade": "A",
+          "score": 8.0,
+          "alt": "30+"
+        }
+      ],
+      "game": "LAC@SEA",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-11",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 150
+    },
+    {
+      "kind": "straight",
+      "stake": 40,
+      "legs": [
+        {
+          "player": "Jonathan Taylor",
+          "player_id": "00-0036223",
+          "team": "IND",
+          "opp": "WAS",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 94.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "IND@WAS",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-12",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Tommy Tremble",
+          "player_id": "00-0037005",
+          "team": "CAR",
+          "opp": "DET",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 12.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        }
+      ],
+      "game": "DET@CAR",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-13",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Tommy Tremble",
+          "player_id": "00-0037005",
+          "team": "CAR",
+          "opp": "DET",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 9.5,
+          "odds": -150,
+          "grade": "A",
+          "score": 7.7,
+          "alt": "10+"
+        }
+      ],
+      "game": "DET@CAR",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-14",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -150
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Tommy Tremble",
+          "player_id": "00-0037005",
+          "team": "CAR",
+          "opp": "DET",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": 110,
+          "grade": "A",
+          "score": 7.7,
+          "alt": "15+"
+        }
+      ],
+      "game": "DET@CAR",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-15",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 110
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Rhamondre Stevenson",
+          "player_id": "00-0036875",
+          "team": "NE",
+          "opp": "BUF",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 32.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.6
+        }
+      ],
+      "game": "NE@BUF",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-16",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Rhamondre Stevenson",
+          "player_id": "00-0036875",
+          "team": "NE",
+          "opp": "BUF",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -390,
+          "grade": "A",
+          "score": 7.6,
+          "alt": "25+"
+        }
+      ],
+      "game": "NE@BUF",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-17",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -390
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Rhamondre Stevenson",
+          "player_id": "00-0036875",
+          "team": "NE",
+          "opp": "BUF",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": 255,
+          "grade": "A",
+          "score": 7.6,
+          "alt": "40+"
+        }
+      ],
+      "game": "NE@BUF",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-18",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 255
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Trevor Lawrence",
+          "player_id": "00-0036971",
+          "team": "JAX",
+          "opp": "CIN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.5
+        }
+      ],
+      "game": "JAX@CIN",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-19",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Trevor Lawrence",
+          "player_id": "00-0036971",
+          "team": "JAX",
+          "opp": "CIN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 9.5,
+          "odds": -720,
+          "grade": "B",
+          "score": 7.5,
+          "alt": "10+"
+        }
+      ],
+      "game": "JAX@CIN",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-20",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -720
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Trevor Lawrence",
+          "player_id": "00-0036971",
+          "team": "JAX",
+          "opp": "CIN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": 490,
+          "grade": "B",
+          "score": 7.5,
+          "alt": "20+"
+        }
+      ],
+      "game": "JAX@CIN",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-21",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 490
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Pat Freiermuth",
+          "player_id": "00-0036894",
+          "team": "PIT",
+          "opp": "CLE",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 28.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        }
+      ],
+      "game": "PIT@CLE",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-22",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Pat Freiermuth",
+          "player_id": "00-0036894",
+          "team": "PIT",
+          "opp": "CLE",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -165,
+          "grade": "B",
+          "score": 7.3,
+          "alt": "25+"
+        }
+      ],
+      "game": "PIT@CLE",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-23",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -165
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Pat Freiermuth",
+          "player_id": "00-0036894",
+          "team": "PIT",
+          "opp": "CLE",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": 280,
+          "grade": "B",
+          "score": 7.3,
+          "alt": "40+"
+        }
+      ],
+      "game": "PIT@CLE",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-24",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 280
+    },
+    {
+      "kind": "straight",
+      "stake": 35,
+      "legs": [
+        {
+          "player": "David Montgomery",
+          "player_id": "00-0035685",
+          "team": "HOU",
+          "opp": "DAL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.2
+        }
+      ],
+      "game": "DAL@HOU",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-25",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "PHI",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 57.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        }
+      ],
+      "game": "LA@PHI",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-26",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "PHI",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": -220,
+          "grade": "B",
+          "score": 7.0,
+          "alt": "50+"
+        }
+      ],
+      "game": "LA@PHI",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-27",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -220
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "PHI",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": 245,
+          "grade": "B",
+          "score": 7.0,
+          "alt": "70+"
+        }
+      ],
+      "game": "LA@PHI",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-28",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 245
+    },
+    {
+      "kind": "straight",
+      "stake": 35,
+      "legs": [
+        {
+          "player": "Jared Goff",
+          "player_id": "00-0033106",
+          "team": "DET",
+          "opp": "CAR",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 0.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        }
+      ],
+      "game": "DET@CAR",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-29",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 35,
+      "legs": [
+        {
+          "player": "Alvin Kamara",
+          "player_id": "00-0033906",
+          "team": "NO",
+          "opp": "ATL",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 37.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        }
+      ],
+      "game": "ATL@NO",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-30",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 35,
+      "legs": [
+        {
+          "player": "Oronde Gadsden II",
+          "player_id": "00-0040189",
+          "team": "LAC",
+          "opp": "SEA",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 30.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        }
+      ],
+      "game": "LAC@SEA",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-31",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Chris Olave",
+          "player_id": "00-0037239",
+          "team": "NO",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 85.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        }
+      ],
+      "game": "ATL@NO",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-32",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Chris Olave",
+          "player_id": "00-0037239",
+          "team": "NO",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": -210,
+          "grade": "B",
+          "score": 6.9,
+          "alt": "70+"
+        }
+      ],
+      "game": "ATL@NO",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-33",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -210
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Chris Olave",
+          "player_id": "00-0037239",
+          "team": "NO",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 99.5,
+          "odds": 155,
+          "grade": "B",
+          "score": 6.9,
+          "alt": "100+"
+        }
+      ],
+      "game": "ATL@NO",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-34",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 155
+    },
+    {
+      "kind": "straight",
+      "stake": 35,
+      "legs": [
+        {
+          "player": "Mark Andrews",
+          "player_id": "00-0034753",
+          "team": "BAL",
+          "opp": "TEN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 38.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.7
+        }
+      ],
+      "game": "TEN@BAL",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-35",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 35,
+      "legs": [
+        {
+          "player": "Michael Pittman",
+          "player_id": "00-0036252",
+          "team": "PIT",
+          "opp": "CLE",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 36.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.7
+        }
+      ],
+      "game": "PIT@CLE",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-36",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Deebo Samuel Sr.",
+          "player_id": "00-0035719",
+          "team": "SF",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 33.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.7
+        }
+      ],
+      "game": "DEN@SF",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-37",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Deebo Samuel Sr.",
+          "player_id": "00-0035719",
+          "team": "SF",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -155,
+          "grade": "B",
+          "score": 6.7,
+          "alt": "30+"
+        }
+      ],
+      "game": "DEN@SF",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-38",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -155
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Deebo Samuel Sr.",
+          "player_id": "00-0035719",
+          "team": "SF",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": 150,
+          "grade": "B",
+          "score": 6.7,
+          "alt": "40+"
+        }
+      ],
+      "game": "DEN@SF",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-39",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 150
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        }
+      ],
+      "game": "ARI@NYG",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-40",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -515,
+          "grade": "B",
+          "score": 6.6,
+          "alt": "15+"
+        }
+      ],
+      "game": "ARI@NYG",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-41",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -515
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 230,
+          "grade": "B",
+          "score": 6.6,
+          "alt": "25+"
+        }
+      ],
+      "game": "ARI@NYG",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-42",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 230
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Tucker Kraft",
+          "player_id": "00-0038996",
+          "team": "GB",
+          "opp": "TB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        }
+      ],
+      "game": "GB@TB",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-43",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Tucker Kraft",
+          "player_id": "00-0038996",
+          "team": "GB",
+          "opp": "TB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -405,
+          "grade": "B",
+          "score": 6.6,
+          "alt": "30+"
+        }
+      ],
+      "game": "GB@TB",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-44",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -405
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Tucker Kraft",
+          "player_id": "00-0038996",
+          "team": "GB",
+          "opp": "TB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": 305,
+          "grade": "B",
+          "score": 6.6,
+          "alt": "50+"
+        }
+      ],
+      "game": "GB@TB",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-45",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 305
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Darnell Washington",
+          "player_id": "00-0038558",
+          "team": "PIT",
+          "opp": "CLE",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        }
+      ],
+      "game": "PIT@CLE",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-46",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Darnell Washington",
+          "player_id": "00-0038558",
+          "team": "PIT",
+          "opp": "CLE",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -165,
+          "grade": "B",
+          "score": 6.6,
+          "alt": "15+"
+        }
+      ],
+      "game": "PIT@CLE",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-47",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -165
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Darnell Washington",
+          "player_id": "00-0038558",
+          "team": "PIT",
+          "opp": "CLE",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 135,
+          "grade": "B",
+          "score": 6.6,
+          "alt": "25+"
+        }
+      ],
+      "game": "PIT@CLE",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-48",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 135
+    },
+    {
+      "kind": "straight",
+      "stake": 30,
+      "legs": [
+        {
+          "player": "Ladd McConkey",
+          "player_id": "00-0039915",
+          "team": "LAC",
+          "opp": "SEA",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 47.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        }
+      ],
+      "game": "LAC@SEA",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-49",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Cam Skattebo",
+          "player_id": "00-0040715",
+          "team": "NYG",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 17.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.5
+        }
+      ],
+      "game": "ARI@NYG",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-50",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Cam Skattebo",
+          "player_id": "00-0040715",
+          "team": "NYG",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -260,
+          "grade": "B",
+          "score": 6.5,
+          "alt": "15+"
+        }
+      ],
+      "game": "ARI@NYG",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-51",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -260
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Cam Skattebo",
+          "player_id": "00-0040715",
+          "team": "NYG",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 655,
+          "grade": "B",
+          "score": 6.5,
+          "alt": "25+"
+        }
+      ],
+      "game": "ARI@NYG",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-52",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 655
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Chris Godwin Jr.",
+          "player_id": "00-0033921",
+          "team": "TB",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 25.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.5
+        }
+      ],
+      "game": "GB@TB",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-53",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Chris Godwin Jr.",
+          "player_id": "00-0033921",
+          "team": "TB",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -365,
+          "grade": "B",
+          "score": 6.5,
+          "alt": "20+"
+        }
+      ],
+      "game": "GB@TB",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-54",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -365
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Chris Godwin Jr.",
+          "player_id": "00-0033921",
+          "team": "TB",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": 190,
+          "grade": "B",
+          "score": 6.5,
+          "alt": "30+"
+        }
+      ],
+      "game": "GB@TB",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-55",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 190
+    },
+    {
+      "kind": "parlay",
+      "stake": 50,
+      "legs": [
+        {
+          "player": "Christian McCaffrey",
+          "player_id": "00-0033280",
+          "team": "SF",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 45.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.7
+        },
+        {
+          "player": "Jacory Croskey-Merritt",
+          "player_id": "00-0040242",
+          "team": "WAS",
+          "opp": "IND",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 5.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        }
+      ],
+      "game": "multi",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-56",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 264
+    },
+    {
+      "kind": "parlay",
+      "stake": 30,
+      "legs": [
+        {
+          "player": "Christian McCaffrey",
+          "player_id": "00-0033280",
+          "team": "SF",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 45.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.7
+        },
+        {
+          "player": "Jacory Croskey-Merritt",
+          "player_id": "00-0040242",
+          "team": "WAS",
+          "opp": "IND",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 5.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        },
+        {
+          "player": "Juwan Johnson",
+          "player_id": "00-0036040",
+          "team": "NO",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 40.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.8
+        }
+      ],
+      "game": "multi",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-57",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 596
+    },
+    {
+      "kind": "parlay",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Christian McCaffrey",
+          "player_id": "00-0033280",
+          "team": "SF",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 45.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.7
+        },
+        {
+          "player": "Jacory Croskey-Merritt",
+          "player_id": "00-0040242",
+          "team": "WAS",
+          "opp": "IND",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 5.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        },
+        {
+          "player": "Juwan Johnson",
+          "player_id": "00-0036040",
+          "team": "NO",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 40.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.8
+        },
+        {
+          "player": "Cooper Kupp",
+          "player_id": "00-0033908",
+          "team": "SEA",
+          "opp": "LAC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.0
+        }
+      ],
+      "game": "multi",
+      "note": "RETRO: placed after kickoff from ratings saved before kickoff (no results used)",
+      "id": "2026-w4-58",
+      "placed_at": "2026-10-04T16:23:17.656946-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 1228
+    }
+  ]
 }

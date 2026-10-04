@@ -1086,9 +1086,10 @@ Payouts assume -110 per leg; hit chance discounts the model's confidence by abou
   <div id="sharp"></div></section>
 
 <h2 id="bank">Paper bankroll — Claude's picks</h2>
-<div class="sub" style="margin-bottom:10px">Fake money, real tracking. Started with $1,000. Each Thursday and Monday night game gets $200 spread
-across up to 5 different players. No player gets more than 30% of it. The strongest overs are split between the posted line,
-a safer alt line and a plus-money alt line, and a small parlay rides on the top picks. Bets are graded against final box scores;
+<div class="sub" style="margin-bottom:10px">Fake money, real tracking. Started with $1,000. Claude bets $1,000 per NFL week (Thursday–Monday) on the week's best plays:
+the top ~25 props across all games, weighted by rating, with no player above $80. The strongest overs are split between the posted
+line, a safer alt line and a plus-money alt line, and $100 goes to a 2/3/4-leg parlay ladder across different games.
+Each game is bet in the 3 hours before kickoff, and finished games settle right away from ESPN box scores. Bets are graded against final box scores;
 a player who doesn't play voids the leg. Main lines assume -110. Alt-line odds are estimates, marked "est".</div>
 <div class="panel" id="bankpanel"></div>
 
@@ -1722,26 +1723,40 @@ def decimal_to_american(dec: float) -> int:
     return int(round((dec - 1) * 100)) if dec >= 2 else int(round(-100 / (dec - 1)))
 
 
-def grade_ledger(ledger: dict, stats: pd.DataFrame, sched: pd.DataFrame) -> list:
+def grade_ledger(ledger: dict, stats: pd.DataFrame, sched: pd.DataFrame, live=None) -> list:
     """Grade every bet against final box scores. Returns bets with result/profit filled in.
-    A leg whose player didn't play is void (as sportsbooks do); a parlay pays on its live legs."""
+    A leg whose player didn't play is void (as sportsbooks do); a parlay pays on its live legs.
+    live = (week, games, box) from fetch_live_box settles that week's finished games right away,
+    before nflverse publishes its box scores (~a day later)."""
     finals = sched[sched["result"].notna()]
+    live_week, lg, box = live or (None, {}, {})
+    espn_final = {t: k for k, g in lg.items() if g["state"] == "post" for t in (g["away"], g["home"])}
     graded = []
     for bet in ledger["bets"]:
         legs, dec, states = [], 1.0, []
+        use_live = bet["week"] == live_week
         for leg in bet["legs"]:
             g = finals[(finals["season"] == bet["season"]) & (finals["week"] == bet["week"]) &
                        ((finals["home_team"] == leg["team"]) | (finals["away_team"] == leg["team"]))]
             leg = dict(leg)
-            if g.empty:
+            st = stats[(stats["player_id"] == leg["player_id"]) & (stats["season"] == bet["season"]) &
+                       (stats["week"] == bet["week"])]
+            espn_key = espn_final.get(leg["team"]) if use_live else None
+            actual = None
+            if not st.empty:
+                actual = float(st.iloc[0][leg["stat"]])
+            elif espn_key:
+                rec = box.get(leg["player_id"])
+                if rec is not None and rec.get("_game") == espn_key:
+                    actual = float(rec.get(leg["stat"], 0.0))
+            if g.empty and not espn_key:
                 leg["result"], leg["actual"] = "pending", None
             else:
-                st = stats[(stats["player_id"] == leg["player_id"]) & (stats["season"] == bet["season"]) &
-                           (stats["week"] == bet["week"])]
-                if st.empty:
-                    leg["result"], leg["actual"] = "void", None
+                if actual is None:
+                    team_box = espn_key or not stats[(stats["season"] == bet["season"]) & (stats["week"] == bet["week"])
+                                                     & (stats["team"] == leg["team"])].empty
+                    leg["result"], leg["actual"] = ("void" if team_box else "pending"), None
                 else:
-                    actual = float(st.iloc[0][leg["stat"]])
                     leg["actual"] = actual
                     if actual == leg["line"]:
                         leg["result"] = "push"
@@ -1894,6 +1909,82 @@ def choose_bets(rows: list, budget: float, max_players: int = 5, max_share: floa
     return out
 
 
+def _qualifies(r: dict) -> bool:
+    return bool(r.get("pick")) and not r.get("traps") and (
+        r.get("grade") in ("A", "B") or (r.get("grade") == "C" and _conf(r) >= 0.55))
+
+
+def _stake_prop(r: dict, amt: float) -> list:
+    """Straight bets for one prop: A/B overs split 50/30/20 across the main line, a safer lower alt
+    line and a plus-money higher alt line (estimated odds); everything else on the main line."""
+    rnd = lambda x: int(round(x / 5) * 5)
+    side, line = r["pick"].split()
+    line = float(line)
+    ladder = sorted(set(r.get("ladder") or []) | set(FALLBACK_MILESTONES[r["stat"]]))
+    lower = [m for m in ladder if m - 0.5 <= line * 0.9 and m >= 1]
+    upper = [m for m in ladder if m - 0.5 >= line * 1.15]
+    if side == "OVER" and r["grade"] in ("A", "B") and lower and upper and rnd(amt * 0.2) >= 5:
+        safe, boom = max(lower), min(upper)
+        parts = [(rnd(amt * 0.5), None, DEFAULT_ODDS, ""),
+                 (rnd(amt * 0.3), safe - 0.5, estimate_alt_odds(line, safe, r.get("sd", 0)), f"{safe:g}+"),
+                 (rnd(amt * 0.2), boom - 0.5, estimate_alt_odds(line, boom, r.get("sd", 0)), f"{boom:g}+")]
+    else:
+        parts = [(rnd(amt), None, DEFAULT_ODDS, "")]
+    return [{"kind": "straight", "stake": st, "legs": [_leg_from_row(r, ln, odds, alt)]}
+            for st, ln, odds, alt in parts if st >= 5]
+
+
+WEEKLY_BUDGET = 1000
+PARLAY_SHARE = 0.10  # of the weekly budget, as a 2/3/4-leg ladder across different games
+
+
+def plan_week(pool: list, remaining: float, top_n: int = 25, player_cap: float = 80) -> tuple:
+    """Spread `remaining` straight-bet money over the best plays among the week's games that haven't
+    been bet yet: top `top_n` qualifying props (A/B ahead of C, one per player), weighted by rating,
+    no player above `player_cap`. Returns (picks, alloc)."""
+    ranked = sorted((r for r in pool if _qualifies(r)),
+                    key=lambda r: (r["grade"] in ("A", "B"), r["score"]), reverse=True)
+    picks, seen = [], set()
+    for r in ranked:
+        if r["player_id"] not in seen:
+            seen.add(r["player_id"])
+            picks.append(r)
+        if len(picks) == top_n:
+            break
+    alloc = {r["player_id"]: 0.0 for r in picks}
+    open_ids, left = set(alloc), remaining
+    while left > 1 and open_ids:  # water-fill by score with a per-player cap
+        tot = sum(r["score"] for r in picks if r["player_id"] in open_ids)
+        spill = 0.0
+        for r in picks:
+            if r["player_id"] in open_ids:
+                want = alloc[r["player_id"]] + left * r["score"] / tot
+                alloc[r["player_id"]] = min(want, player_cap)
+                spill += want - alloc[r["player_id"]]
+                if alloc[r["player_id"]] >= player_cap:
+                    open_ids.discard(r["player_id"])
+        left = spill
+    return picks, alloc
+
+
+def weekly_parlays(pool: list, budget: float) -> list:
+    """2-, 3- and 4-leg parlays (50/30/20 of `budget`) from the week's best A/B props, one leg per game."""
+    legs, games = [], set()
+    for r in sorted((r for r in pool if _qualifies(r) and r["grade"] in ("A", "B")),
+                    key=lambda r: r["score"], reverse=True):
+        if r["game"] not in games:
+            games.add(r["game"])
+            legs.append(r)
+        if len(legs) == 4:
+            break
+    out = []
+    for n, share in ((2, 0.5), (3, 0.3), (4, 0.2)):
+        stake = int(round(budget * share / 5) * 5)
+        if len(legs) >= n and stake >= 5:
+            out.append({"kind": "parlay", "stake": stake, "legs": [_leg_from_row(r) for r in legs[:n]]})
+    return out
+
+
 def choose_bets_v1(rows: list, budget: float) -> list:
     """Original plan (kept for backtest comparison). Only A/B-rated props with no trap flags qualify;
     best 4 at most. ~80% of the budget to straights weighted by rating, ~20% to a 2-leg parlay."""
@@ -1916,52 +2007,121 @@ def choose_bets_v1(rows: list, budget: float) -> list:
 
 
 def cmd_autobet(args, stats, sched, season):
-    """Place Claude's paper bets on today's games in a window before kickoff. Idempotent:
-    does nothing outside the window or if this game already has bets."""
+    """Claude's weekly paper bets ($WEEKLY_BUDGET per NFL week, Thursday through Monday).
+    Each game is bet once, in the `--window` hours before kickoff. Straight-bet money is planned across
+    every not-yet-started game of the week (best plays get it), so unspent money rolls forward. The
+    parlay money goes into a 2/3/4-leg cross-game ladder with the week's first bets.
+    --retro-week N: one-time catch-up for a week already under way, using only pre-kickoff data."""
     from datetime import datetime
     from zoneinfo import ZoneInfo
+    import json
     now = datetime.now(ZoneInfo("America/New_York"))
-    days = [d.strip().lower() for d in (args.day or "").split(",") if d.strip()]
-    if days and now.strftime("%A").lower() not in days and not args.force:
-        print(f"autobet: today is {now:%A}, only betting on {args.day}")
-        return
-    s = sched[(sched["season"] == season) & sched["result"].isna()]
-    today = s[s["gameday"] == now.strftime("%Y-%m-%d")]
-    if today.empty:
-        print("autobet: no games today")
-        return
+    weekly = args.weekly_budget
     ledger = load_ledger()
-    for g in today.itertuples():
-        key = f"{g.away_team}@{g.home_team}"
-        kick = datetime.strptime(f"{g.gameday} {g.gametime}", "%Y-%m-%d %H:%M").replace(
-            tzinfo=ZoneInfo("America/New_York"))
-        mins = (kick - now).total_seconds() / 60
-        if not args.force and not (15 <= mins <= args.window * 60):
-            print(f"autobet: {key} kicks off in {mins:.0f} min; outside betting window")
-            continue
-        if any(b["game"] == key and b["season"] == season and b["week"] == g.week for b in ledger["bets"]):
-            print(f"autobet: already bet {key}")
-            continue
-        wargs = argparse.Namespace(week=int(g.week), include_played=False, lines=None, refresh=True,
+    s = sched[sched["season"] == season]
+    kick = lambda g: datetime.strptime(f"{g.gameday} {g.gametime}", "%Y-%m-%d %H:%M").replace(
+        tzinfo=ZoneInfo("America/New_York"))
+
+    if args.retro_week:
+        return _autobet_retro(args, stats, sched, season, ledger, now, weekly)
+
+    pending = s[s["result"].isna()]
+    if pending.empty:
+        print("autobet: no games left this season")
+        return
+    week = int(pending["week"].min())
+    wk_games = s[s["week"] == week]
+    week_bets = [b for b in ledger["bets"] if b["season"] == season and b["week"] == week]
+    bet_games = {b["game"] for b in week_bets}
+    upcoming = [g for g in wk_games.itertuples() if kick(g) > now and f"{g.away_team}@{g.home_team}" not in bet_games]
+    window = {f"{g.away_team}@{g.home_team}" for g in upcoming
+              if args.force or 15 <= (kick(g) - now).total_seconds() / 60 <= args.window * 60}
+    if not window:
+        print(f"autobet: week {week} — no unbet game within {args.window:g}h of kickoff")
+        return
+
+    wargs = argparse.Namespace(week=week, include_played=False, lines=None, refresh=True,
+                               games=args.games, min_games=4, hit_rate=0.70)
+    _, _, rows, _ = build_week(wargs, stats, sched, season)
+    pool = [r for r in rows if r["game"] in {f"{g.away_team}@{g.home_team}" for g in upcoming}]
+    straight_spent = sum(b["stake"] for b in week_bets if b["kind"] == "straight")
+    remaining = max(weekly * (1 - PARLAY_SHARE) - straight_spent, 0)
+    summary = bankroll_summary(ledger, grade_ledger(ledger, stats, sched))
+    remaining = min(remaining, max(summary["available"], 0))
+    picks, alloc = plan_week(pool, remaining)
+    new = [dict(b, game=r["game"]) for r in picks if r["game"] in window for b in _stake_prop(r, alloc[r["player_id"]])]
+    if not any(b["kind"] == "parlay" for b in week_bets):
+        new += [dict(p, game="multi") for p in weekly_parlays(pool, weekly * PARLAY_SHARE)]
+    _record(ledger, new, season, week, now, "Claude weekly pick")
+    for key in window - {b["game"] for b in new}:
+        ledger["bets"].append({"id": f"{season}-w{week}-{key}-nobet", "placed_at": now.isoformat(),
+                               "season": season, "week": week, "game": key, "kind": "none", "stake": 0,
+                               "legs": [], "note": "No top plays in this game this week — passed."})
+    save_ledger(ledger)
+
+
+def _record(ledger: dict, bets: list, season: int, week: int, now, note: str):
+    n = len(ledger["bets"])
+    for i, b in enumerate(bets, 1):
+        b.update({"id": f"{season}-w{week}-{n + i}", "placed_at": now.isoformat(), "season": season,
+                  "week": week, "odds": _bet_odds(b["legs"]), "note": b.get("note", note)})
+        ledger["bets"].append(b)
+        desc = " + ".join(f"{l['player']} {l['side'].upper()} {l.get('alt') or format(l['line'], 'g')} {l['stat']}"
+                          for l in b["legs"])
+        print(f"  ${b['stake']:>4} {b['kind']:8} {b['odds']:+6d}  {desc}  [{b['note']}]")
+
+
+def _autobet_retro(args, stats, sched, season, ledger, now, weekly):
+    """Catch up a week that's already under way, honestly: every pick comes from data saved BEFORE that
+    game's kickoff (the frozen rating snapshot; for games before snapshots existed, a backtest with stats
+    frozen before the week and DraftKings' final pre-game lines). Results are never looked at; the same
+    weekly plan is applied to the whole week at once. Bets on started games are labeled 'retro'."""
+    import json
+    week = args.retro_week
+    if any(b["season"] == season and b["week"] == week for b in ledger["bets"]):
+        sys.exit(f"Week {week} already has bets in the ledger; retro is one-time only.")
+    snap_path = Path(args.snapshot_dir) / f"{season}-w{week:02d}.json"
+    snap = json.loads(snap_path.read_text(encoding="utf-8")) if snap_path.exists() else {"props": {}}
+    s = sched[(sched["season"] == season) & (sched["week"] == week)]
+    from zoneinfo import ZoneInfo
+    from datetime import datetime
+    kick = {f"{g.away_team}@{g.home_team}": datetime.strptime(f"{g.gameday} {g.gametime}", "%Y-%m-%d %H:%M")
+            .replace(tzinfo=ZoneInfo("America/New_York")) for g in s.itertuples()}
+    started = {k for k, t in kick.items() if t <= now}
+
+    pool = [dict(p) for p in snap["props"].values() if p.get("pick")]
+    have = {p["game"] for p in pool}
+    # games with no snapshot (played before snapshots began): backtest-style ratings, no results used
+    missing = {k for k in kick if k not in have and k in started}
+    if missing:
+        cutoff = season * 100 + week
+        sched_asof = sched.copy()
+        sched_asof.loc[(sched_asof["season"] == season) & (sched_asof["week"] >= week), "result"] = float("nan")
+        wk_rows = stats[(stats["season"] == season) & (stats["week"] == week)]
+        bargs = argparse.Namespace(week=week, include_played=True, lines=None, refresh=True, games=args.games,
+                                   min_games=4, hit_rate=0.70, backtest=True,
+                                   team_override=dict(zip(wk_rows["player_id"], wk_rows["team"])))
+        _, _, brows, _ = build_week(bargs, stats[stats["game_order"] < cutoff], sched_asof, season)
+        pool += [r for r in brows if r["game"] in missing and r.get("pick")]
+    # games not started yet: today's live ratings (same as a normal pre-kickoff bet)
+    upcoming = {k for k in kick if k not in started}
+    if upcoming:
+        wargs = argparse.Namespace(week=week, include_played=False, lines=None, refresh=True,
                                    games=args.games, min_games=4, hit_rate=0.70)
         _, _, rows, _ = build_week(wargs, stats, sched, season)
-        rows = [r for r in rows if r["game"] == key]
-        summary = bankroll_summary(ledger, grade_ledger(ledger, stats, sched))
-        budget = min(args.budget, max(summary["available"], 0))
-        picks = choose_bets(rows, budget)
-        if not picks:
-            ledger["bets"].append({"id": f"{season}-w{g.week}-{key}-nobet", "placed_at": now.isoformat(),
-                                   "season": season, "week": int(g.week), "game": key, "kind": "none",
-                                   "stake": 0, "legs": [], "note": "No qualifying trap-free props — passed."})
-            print(f"autobet: {key} — nothing met the bar, passing")
-        for i, p in enumerate(picks, 1):
-            p.update({"id": f"{season}-w{g.week}-{key}-{i}", "placed_at": now.isoformat(), "season": season,
-                      "week": int(g.week), "game": key, "odds": _bet_odds(p["legs"]),
-                      "note": "Claude auto-pick"})
-            ledger["bets"].append(p)
-            desc = " + ".join(f"{l['player']} {l['side'].upper()} {l['line']:g} {l['stat']}" for l in p["legs"])
-            print(f"autobet: ${p['stake']} {p['kind']} ({p['odds']:+d}): {desc}")
-        save_ledger(ledger)
+        pool = [p for p in pool if p["game"] not in upcoming] + [r for r in rows if r["game"] in upcoming]
+
+    picks, alloc = plan_week(pool, weekly * (1 - PARLAY_SHARE))
+    bets = [dict(b, game=r["game"]) for r in picks for b in _stake_prop(r, alloc[r["player_id"]])]
+    bets += [dict(p, game="multi") for p in weekly_parlays(pool, weekly * PARLAY_SHARE)]
+    for b in bets:
+        legs_games = {next((r["game"] for r in pool if r["player_id"] == l["player_id"]), "") for l in b["legs"]}
+        b["note"] = ("RETRO: placed after kickoff from ratings saved before kickoff (no results used)"
+                     if legs_games & started else "Claude weekly pick")
+    print(f"Week {week} retro plan: {len(picks)} plays, ${sum(b['stake'] for b in bets)} total "
+          f"({len(missing)} game(s) rated backtest-style: {', '.join(sorted(missing)) or 'none'})")
+    _record(ledger, bets, season, week, now, "Claude weekly pick")
+    save_ledger(ledger)
 
 
 def cmd_bet(args, stats, sched, season):
@@ -1993,7 +2153,15 @@ def cmd_bet(args, stats, sched, season):
 
 def cmd_bankroll(args, stats, sched, season):
     ledger = load_ledger()
-    graded = grade_ledger(ledger, stats, sched)
+    live = None
+    pend = sched[(sched["season"] == season) & sched["result"].isna()]
+    if not pend.empty:  # settle this week's finished games from ESPN without waiting for nflverse
+        week = int(pend["week"].min())
+        try:
+            live = (week, *fetch_live_box(season, week, False))
+        except Exception as exc:
+            print(f"[warn] ESPN box scores unavailable: {exc}", file=sys.stderr)
+    graded = grade_ledger(ledger, stats, sched, live=live)
     s = bankroll_summary(ledger, graded)
     roi = f"{s['roi']:.1%}" if s["roi"] is not None else "n/a"
     print(f"Balance ${s['balance']:,.2f} (start ${s['start']:,})  |  record {s['wins']}-{s['losses']}"
@@ -2769,17 +2937,18 @@ def cmd_week(args, stats, sched, season):
             pd.DataFrame(rows).to_csv(csv_path, index=False)
         # a published page re-polls every 5 min so viewers pick up new deploys
         refresh = int(args.live * 60) if args.live else (300 if args.html else None)
-        ledger = load_ledger()
-        graded = grade_ledger(ledger, stats, sched)
-        bank = {"summary": bankroll_summary(ledger, graded),
-                "bets": [b for b in graded if b["kind"] != "none"][::-1]}
-        splits_dir = (Path(args.snapshot_dir).parent if args.snapshot_dir else Path("data")) / "splits"
-        splits = load_week_splits(splits_dir, season, week)
         live, lg, box = {}, {}, {}
         try:
             lg, box = fetch_live_box(season, week, args.refresh)
         except Exception as exc:  # live scores are a bonus; never block the dashboard
             print(f"[warn] live results unavailable: {exc}", file=sys.stderr)
+        ledger = load_ledger()
+        # finished games settle right away from ESPN finals; nflverse confirms the next day
+        graded = grade_ledger(ledger, stats, sched, live=(week, lg, box))
+        bank = {"summary": bankroll_summary(ledger, graded),
+                "bets": [b for b in graded if b["kind"] != "none"][::-1]}
+        splits_dir = (Path(args.snapshot_dir).parent if args.snapshot_dir else Path("data")) / "splits"
+        splits = load_week_splits(splits_dir, season, week)
         snap_path = Path(args.snapshot_dir or "data/snapshots") / f"{season}-w{week:02d}.json"
         snap = json.loads(snap_path.read_text(encoding="utf-8")) if snap_path.exists() else {}
         live = {"games": lg, "props": live_results(snap, lg, box) if snap else []}
@@ -2838,10 +3007,10 @@ def main():
     w.add_argument("--html", help="write the dashboard to this path (e.g. site/index.html)")
     w.add_argument("--snapshot-dir", help="save pre-kickoff ratings here for weekly report cards")
 
-    ab = sub.add_parser("autobet", help="place Claude's paper bets on today's games (pre-kickoff window)")
-    ab.add_argument("--budget", type=float, default=200)
-    ab.add_argument("--day", default="Thursday,Monday",
-                    help="comma-separated weekdays to bet on ('' = any day)")
+    ab = sub.add_parser("autobet", help="place Claude's weekly paper bets (each game in its pre-kickoff window)")
+    ab.add_argument("--weekly-budget", type=float, default=WEEKLY_BUDGET, help="paper money to bet per NFL week")
+    ab.add_argument("--retro-week", type=int, help="one-time catch-up for a week already under way (pre-kickoff data only)")
+    ab.add_argument("--snapshot-dir", default="data/snapshots", help="pre-kickoff rating snapshots (for --retro-week)")
     ab.add_argument("--window", type=float, default=3.0, help="hours before kickoff to start betting")
     ab.add_argument("--force", action="store_true", help="ignore day/time window (testing)")
 

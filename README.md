@@ -42,20 +42,18 @@ Other line sources: `--lines lines_template.csv` uses your own lines, and settin
 
 A $1,000 fake-money account tracked in `bets.json` and shown on the dashboard.
 
-- **Automatic picks** (`autobet`): on Thursday and Monday nights, in the 3 hours before kickoff,
-  the GitHub Action places $200 of paper bets on each primetime game. It's run once per game.
-  The plan spreads the money so no single pick controls it:
-  - **Up to 5 different players**, one prop each. A/B-rated props come first, then C-rated props
-    the model still leans at least 55% on. Trap-flagged props never qualify. Small lines (0.5, 4.5 …) are allowed.
-  - **Weighted by rating**, with no player getting more than 30% of the $200. Anything over the cap stays in the bankroll.
-  - **Alt-line split** on A/B overs: 50% on the posted line, 30% on a safer lower alt line,
-    and 20% on a plus-money higher alt line, using DraftKings' milestone ladder. Unders stay on the main line.
-  - **15% on a parlay** of the top 2–3 players.
-  - The free feed has no alt-line prices, so alt odds are estimated. The estimate treats the posted line as the market's
-    middle outcome, uses the player's game-to-game spread, and adds a normal sportsbook margin.
-  - `python nfl_matchup.py backtest --week N` compares this plan with the original one on that week's
-    Thursday and Monday night games.
-- **Grading**: every refresh grades bets against final box scores. A player who doesn't play voids the leg.
+- **Automatic picks** (`autobet`): **$1,000 per NFL week** (Thursday through Monday) on the week's best plays.
+  - The money is planned across every game of the week that hasn't started. The top ~25 qualifying props
+    (A/B first, then C props the model leans at least 55% on, no traps, one per player) are weighted by rating,
+    with no player above $80. Small lines are allowed.
+  - Each game is bet once, in the 3 hours before its kickoff. Whatever isn't spent rolls forward to the rest of the week.
+  - A/B overs are split 50/30/20 between the posted line, a safer lower alt line and a plus-money higher alt line.
+    Alt-line odds are estimated, because the free feed has no alt prices.
+  - **$100 goes to a 2-, 3- and 4-leg parlay ladder across different games**, placed with the week's first bets.
+  - `autobet --retro-week N` is a one-time catch-up for a week already under way. It uses only data saved before
+    each kickoff, never results, and labels bets on started games **RETRO**. Week 4 of 2026 was placed this way.
+- **Grading**: finished games settle right away from ESPN's final box scores, and nflverse confirms them the next day.
+  A player who doesn't play voids the leg.
 - **Manual bets**:
   ```
   python nfl_matchup.py bet --stake 50 --leg "Juwan Johnson|receiving_yards|over|40.5"

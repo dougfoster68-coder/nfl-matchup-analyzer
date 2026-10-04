@@ -36,9 +36,9 @@ jobs:
           key: nflverse-${{ github.run_id }}
           restore-keys: nflverse-
 
-      # Claude's paper bets: Thursday & Monday nights, in the 3 hours before kickoff, once per game
+      # Claude's paper bets: $1,000 per NFL week on the best plays; each game bet in the 3 hours before kickoff
       - name: Place paper bets
-        run: python nfl_matchup.py autobet --budget 200 --day Thursday,Monday
+        run: python nfl_matchup.py autobet --weekly-budget 1000
 
       - name: Save new bets
         run: |
