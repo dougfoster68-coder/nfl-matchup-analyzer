@@ -1014,7 +1014,8 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
   <span>Rating = model projection vs line + hit rate + last 3 games, penalized for injury/role red flags.</span></div>
 
 <h2>Tids' Top 5</h2>
-<div class="lead">The highest-rated plays on the board right now — no traps, one prop per player.</div>
+<div class="lead">The highest-rated plays on the board right now — no traps, one prop per player.
+  <a href="top5/" style="font-weight:700">Share the Top 5 →</a></div>
 <section class="top5" id="top5"></section>
 
 <h2>Gibbs Watch</h2>
@@ -2044,6 +2045,122 @@ def cmd_backtest(args, stats, sched, season):
         print(f"Report written to {args.markdown}")
 
 
+SITE_URL = "https://dougfoster68-coder.github.io/nfl-matchup-analyzer/"
+
+TOP5_TEMPLATE = r"""<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="300">
+<title>Tids' Top 5 · NFL Week __WEEK__</title>
+<meta name="description" content="__DESC__">
+<meta property="og:type" content="website"><meta property="og:url" content="__URL__">
+<meta property="og:title" content="Tids' Top 5 · NFL Week __WEEK__ player props">
+<meta property="og:description" content="__DESC__">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Tids' Top 5 · NFL Week __WEEK__">
+<meta name="twitter:description" content="__DESC__">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#eef2f6; --card:#fff; --ink:#0c1722; --mute:#5b6875; --line:#d9e1e8; --blue:#0076b6; --blue-dk:#005a8c;
+  --silver:#b0b7bc; --good:#11804a; --bad:#c0352b; --A:#0076b6; --B:#4f7f9e; }
+@media (prefers-color-scheme: dark) { :root { --bg:#07111b; --card:#0f1c29; --ink:#e7edf2; --mute:#93a3b2; --line:#1f3244;
+  --blue:#1a8fd6; --blue-dk:#0b5e94; --silver:#8f989f; --good:#5fd394; --bad:#f2877c; --A:#1a8fd6; --B:#6f9bb8; } }
+* { box-sizing:border-box } body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.45 Inter,system-ui,sans-serif }
+.hero { position:relative; overflow:hidden; color:#fff; border-bottom:4px solid var(--silver);
+  background:linear-gradient(135deg,var(--blue),var(--blue-dk)); background-size:200% 200%; animation:shift 14s ease-in-out infinite }
+@keyframes shift { 0%,100% { background-position:0% 50% } 50% { background-position:100% 50% } }
+.hero::before { content:""; position:absolute; inset:-40% -10%; opacity:.2; pointer-events:none;
+  background:repeating-linear-gradient(100deg,transparent 0 46px,rgba(255,255,255,.55) 46px 49px,transparent 49px 120px);
+  animation:streak 2.6s linear infinite }
+@keyframes streak { from { transform:translateX(-120px) } to { transform:translateX(0) } }
+.wrap { max-width:720px; margin:0 auto; padding:0 16px } .hero .wrap { position:relative; padding:24px 16px 20px }
+.kicker { font:700 13px/1 Inter,sans-serif; letter-spacing:.12em; text-transform:uppercase; opacity:.85 }
+h1 { margin:6px 0 4px; font:800 46px/0.95 "Barlow Condensed",sans-serif; letter-spacing:.03em; text-transform:uppercase }
+.sub { opacity:.85; font-size:13px }
+.list { display:grid; gap:12px; margin:18px 0 }
+.pick { position:relative; overflow:hidden; display:grid; grid-template-columns:64px 1fr; gap:14px; align-items:center;
+  background:var(--card); border:1px solid var(--line); border-left:6px solid var(--blue); border-radius:14px; padding:14px 16px;
+  animation:rise .6s cubic-bezier(.2,.8,.2,1) both }
+@keyframes rise { from { opacity:0; transform:translateY(14px) } }
+.rank { font:800 56px/1 "Barlow Condensed",sans-serif; text-align:center;
+  background:linear-gradient(180deg,var(--blue),var(--silver)); -webkit-background-clip:text; background-clip:text; color:transparent }
+.name { font:700 18px/1.2 Inter,sans-serif } .meta { color:var(--mute); font-size:13px }
+.line { font:800 30px/1.05 "Barlow Condensed",sans-serif; letter-spacing:.02em; margin:4px 0 2px }
+.OVER { color:var(--good) } .UNDER { color:var(--bad) }
+.g { display:inline-grid; place-items:center; width:24px; height:24px; border-radius:6px; color:#fff; font:700 13px Inter,sans-serif;
+  vertical-align:3px; margin-left:6px } .gA { background:var(--A) } .gB { background:var(--B) }
+.why { margin-top:6px; font-size:12.5px; color:var(--good) }
+.actions { display:flex; gap:10px; flex-wrap:wrap; margin:6px 0 18px }
+.btn { appearance:none; border:0; border-radius:10px; padding:11px 16px; font:700 14px Inter,sans-serif; cursor:pointer;
+  background:var(--blue); color:#fff; text-decoration:none } .btn.alt { background:var(--card); color:var(--blue); border:1px solid var(--line) }
+.fine { color:var(--mute); font-size:12px; padding-bottom:30px }
+.empty { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px; color:var(--mute) }
+@media (prefers-reduced-motion: reduce) { *, *::before { animation:none !important } }
+</style></head><body>
+<header class="hero"><div class="wrap"><div class="kicker">Tids Takedowns · NFL Week __WEEK__</div>
+<h1>Tids' Top 5</h1><div class="sub">The highest-rated player props on the board · updated __UPDATED__</div></div></header>
+<div class="wrap">
+<section class="list">__PICKS__</section>
+<div class="actions"><button class="btn" id="share">Share these picks</button>
+<a class="btn alt" href="../">See every game &amp; rating →</a></div>
+<p class="fine">Ratings compare each player's last 10 games with the opponent defense's last 10 against the posted DraftKings line,
+then factor in how often the line has hit and recent form. Trap-flagged props are excluded. Lines move, so confirm at your
+sportsbook. For entertainment only, not betting advice. 21+. Gambling problem? Call 1-800-GAMBLER. A fan project, not affiliated
+with the NFL.</p></div>
+<script>
+document.getElementById("share").addEventListener("click", async () => {
+  const data = { title: document.title, text: __SHARETEXT__, url: location.href };
+  try {
+    if (navigator.share) { await navigator.share(data); return; }
+    await navigator.clipboard.writeText(data.text + "\n" + data.url);
+    const b = document.getElementById("share"); b.textContent = "Link copied!"; setTimeout(() => b.textContent = "Share these picks", 2000);
+  } catch (e) {}
+});
+</script></body></html>"""
+
+
+def top5_rows(rows: list) -> list:
+    """Same rule as the dashboard: A/B-rated, trap-free, best score first, one prop per player."""
+    seen, out = set(), []
+    for r in sorted((r for r in rows if r.get("grade") in ("A", "B") and not r.get("traps")),
+                    key=lambda r: r["score"], reverse=True):
+        if r["player_id"] not in seen:
+            seen.add(r["player_id"])
+            out.append(r)
+        if len(out) == 5:
+            break
+    return out
+
+
+def write_top5(week, games, rows, path: Path):
+    import html as H
+    import json
+    stat_name = {"passing_yards": "pass yds", "rushing_yards": "rush yds", "receiving_yards": "rec yds"}
+    kick = {}
+    for g in games.itertuples():
+        d = pd.to_datetime(g.gameday)
+        h, m = map(int, str(g.gametime).split(":"))
+        kick[f"{g.away_team}@{g.home_team}"] = f"{d:%a} {(h + 11) % 12 + 1}:{m:02d} {'AM' if h < 12 else 'PM'} ET"
+    top = top5_rows(rows)
+    cards = ""
+    for i, r in enumerate(top, 1):
+        side = r["pick"].split()[0]
+        good = next((n["t"] for n in r.get("notes", []) if (n["k"] == "good") == (side == "OVER") and n["k"] in ("good", "bad")), "")
+        cards += (f"<article class='pick' style='animation-delay:{i * 90}ms'><div class='rank'>{i}</div><div>"
+                  f"<div class='name'>{H.escape(r['player'])}<span class='g g{r['grade']}'>{r['grade']}</span></div>"
+                  f"<div class='meta'>{r['pos']} · {r['team']} vs {r['opp']} · {kick.get(r['game'], '')}</div>"
+                  f"<div class='line {side}'>{r['pick']} <span style='font-size:18px'>{stat_name[r['stat']]}</span></div>"
+                  f"<div class='meta'>Projection {r['proj']:g} · hit {r['line_hits']} of last 10 · rating {r['score']}/10</div>"
+                  + (f"<div class='why'>✓ {H.escape(good)}</div>" if good else "") + "</div></article>")
+    if not cards:
+        cards = "<div class='empty'>No A/B-rated plays posted yet. Lines usually open midweek, so check back soon.</div>"
+    desc = " · ".join(f"{i}. {r['player']} {r['pick']} {stat_name[r['stat']]}" for i, r in enumerate(top, 1)) \
+        or "This week's top-rated NFL player props."
+    share = f"Tids' Top 5, NFL Week {week}: " + desc
+    page = (TOP5_TEMPLATE.replace("__WEEK__", str(week)).replace("__DESC__", H.escape(desc))
+            .replace("__URL__", SITE_URL + "top5/").replace("__UPDATED__", H.escape(_now_et()))
+            .replace("__PICKS__", cards).replace("__SHARETEXT__", json.dumps(share).replace("</", "<\\/")))
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(page, encoding="utf-8")
+
+
 def cmd_week(args, stats, sched, season):
     out_dir = Path(__file__).parent
     while True:
@@ -2066,6 +2183,8 @@ def cmd_week(args, stats, sched, season):
                 "bets": [b for b in graded if b["kind"] != "none"][::-1]}
         write_html(week, games, rows, source, args, html_path, refresh_secs=refresh, bank=bank,
                    feature=feature_player(stats, rows, season))
+        if args.html:  # shareable Top 5 page next to the dashboard
+            write_top5(week, games, rows, html_path.parent / "top5" / "index.html")
         print(f"\nSaved {csv_path.name} and {html_path.name} in {out_dir}")
         if not args.live:
             return
