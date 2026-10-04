@@ -1083,13 +1083,8 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 
 
 
-<div id="liveblock" hidden>
-<h2>Results as games finish</h2>
-<div class="lead" id="livesum"></div>
-<section class="lres" id="lres"></section>
-</div>
-
 <h2>This week's games</h2>
+<div class="lead" id="livesum"></div>
 <section class="games" id="games"></section>
 
 <h2>Parlay builder</h2>
@@ -1224,7 +1219,6 @@ function liveRow(p) {
 function renderLive() {
   const keys = Object.keys(LG);
   if (!keys.length) return;
-  document.getElementById("liveblock").hidden = false;
   const clean = LP.filter(p => !(p.traps && p.traps.length));
   const W = clean.filter(p => p.status === "win").length, L = clean.filter(p => p.status === "loss").length;
   const ab = clean.filter(p => p.grade === "A" || p.grade === "B");
@@ -1234,16 +1228,6 @@ function renderLive() {
   document.getElementById("livesum").innerHTML = `Graded against live box scores, using each prop's rating at kickoff.
     <b>${W} of ${W + L} decided picks hit (${pct(W, L)})</b> · A/B picks: ${abW} of ${abW + abL} (${pct(abW, abL)})
     · ${live} still live · ${keys.filter(k => LG[k].state === "post").length} of ${keys.length} started games final`;
-  const order = keys.sort((a, b) => (LG[a].state === "in" ? 0 : 1) - (LG[b].state === "in" ? 0 : 1));
-  document.getElementById("lres").innerHTML = order.map(k => {
-    const s = LG[k], top = liveTop(k, 10);
-    const tiers = s.state === "post" ? [2, 3, 5, 10].filter(n => top.length >= n).map(n => {
-      const t = top.slice(0, n), w = t.filter(p => p.status === "win").length, l = t.filter(p => p.status === "loss").length;
-      return `<span class="tier">Top ${n}: <b>${w}/${w + l}</b></span>`; }).join("") : "";
-    return `<article class="card"><div class="ch"><div class="teams">${logo(s.away)}${s.away} <span class="at">@</span> ${logo(s.home)}${s.home}</div>
-      ${scoreLine(s)}${tiers ? `<div class="tiers">${tiers}</div>` : ""}</div>
-      <div class="plays">${top.length ? top.map(liveRow).join("") : `<div class="empty">No rated props for this game.</div>`}</div></article>`;
-  }).join("");
 }
 function splitBlock(g) {
   const sp = g.splits || {}, names = {spread: "Spread", total: "Total", moneyline: "Money"};
@@ -1274,15 +1258,29 @@ function renderSharp() {
         (+${x.gap} pts, avg bet ${x.ratio}× the other side)${moved}</div></div>`;
   }).join("") || `<div class="empty">No sharp leans right now. Splits update every refresh until kickoff.</div>`;
 }
+function gameTime(g) {
+  if (LG[g.key] && LG[g.key].date) return new Date(LG[g.key].date).getTime();
+  return new Date(`${g.gameday}T${g.gametime || "13:00"}:00-04:00`).getTime();
+}
+function resultCard(key, g) {  // a game that has kicked off: score, our top picks graded live
+  const s = LG[key], top = liveTop(key, 10);
+  const tiers = s.state === "post" ? [2, 3, 5, 10].filter(n => top.length >= n).map(n => {
+    const t = top.slice(0, n), w = t.filter(p => p.status === "win").length, l = t.filter(p => p.status === "loss").length;
+    return `<span class="tier">Top ${n}: <b>${w}/${w + l}</b></span>`; }).join("") : "";
+  const lions = s.away === "DET" || s.home === "DET";
+  return `<article class="card${lions ? " lions" : ""}"><div class="ch">${lions ? '<span class="lionsbadge">Lions game</span>' : ""}
+      <div class="teams">${logo(s.away)}${s.away} <span class="at">@</span> ${logo(s.home)}${s.home}</div>
+      ${scoreLine(s)}${tiers ? `<div class="tiers">${tiers}</div>` : ""}</div>
+    <div class="plays">${top.length ? top.slice(0, 5).map(liveRow).join("") +
+      (top.length > 5 ? `<details><summary class="pmeta" style="cursor:pointer;padding:6px 0">Show all ${top.length} rated picks</summary>${top.slice(5).map(liveRow).join("")}</details>` : "")
+      : `<div class="empty">No rated props for this game.</div>`}</div></article>`;
+}
 function renderGames() {
-  document.getElementById("games").innerHTML = GAMES.list.map(g => {
-    if (LG[g.key]) {  // kicked off: show the score and how our top picks are doing
-      const s = LG[g.key], top = liveTop(g.key, 4);
-      return `<article class="card"><div class="ch">
-          <div class="teams">${logo(g.away)}${g.away} <span class="at">@</span> ${logo(g.home)}${g.home}</div>${scoreLine(s)}</div>
-        <div class="plays">${top.length ? top.map(liveRow).join("") : `<div class="empty">No rated props for this game.</div>`}</div>
-        <div class="cf"><button onclick="document.getElementById('liveblock').scrollIntoView({behavior:'smooth'})">All results →</button></div></article>`;
-    }
+  const byKey = Object.fromEntries(GAMES.list.map(g => [g.key, g]));
+  for (const k of Object.keys(LG)) if (!byKey[k]) byKey[k] = {key: k, away: LG[k].away, home: LG[k].home};
+  const all = Object.values(byKey).sort((a, b) => gameTime(a) - gameTime(b));
+  document.getElementById("games").innerHTML = all.map(g => {
+    if (LG[g.key]) return resultCard(g.key, g);
     const rs = ROWS.filter(r => r.game === g.key && r.score != null && !(r.traps && r.traps.length))
       .sort((a, b) => b.score - a.score);
     const top = rs.slice(0, 4);
@@ -1619,7 +1617,7 @@ def fetch_live_box(season: int, week: int, refresh: bool):
         side = {c["homeAway"]: c for c in comp["competitors"]}
         ab = lambda c: ESPN_TEAM_FIX.get(c["team"]["abbreviation"], c["team"]["abbreviation"])
         key = f"{ab(side['away'])}@{ab(side['home'])}"
-        games[key] = {"state": st.get("state"), "detail": st.get("shortDetail", ""),
+        games[key] = {"state": st.get("state"), "detail": st.get("shortDetail", ""), "date": e.get("date"),
                       "away": ab(side["away"]), "home": ab(side["home"]),
                       "away_score": side["away"].get("score"), "home_score": side["home"].get("score")}
         started.append((key, e["id"]))
