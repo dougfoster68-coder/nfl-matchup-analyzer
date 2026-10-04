@@ -872,6 +872,12 @@ body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 Inter,sy
   font:800 16px/34px "Barlow Condensed",sans-serif; letter-spacing:.08em; text-transform:uppercase;
   clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%); box-shadow:6px 0 14px rgba(0,0,0,.45) }
 .ticker .tscroll { flex:1; overflow:hidden; min-width:0 }
+.ticker.special { background:#1c0f2e; border-bottom-color:#8b5cf6 } .ticker.special .tlabel { background:#6b3fa0 }
+.ticker.special .tk { animation-duration:45s }
+.ticker.special.primetime, .ticker.special.primetime-longshot { background:#0d1a2b; border-bottom-color:#f2c35c }
+.ticker.special.primetime .tlabel, .ticker.special.primetime-longshot .tlabel { background:#b8860b }
+.ticker.special.contrarian-longshot .tlabel, .ticker.special.primetime-longshot .tlabel { background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.14) 0 6px,transparent 6px 12px) } .ticker .won { color:#7dffb1 } .ticker .lost { color:#ffa59b; text-decoration:line-through }
+.tag-special { background:var(--con-bg); color:var(--con) }
 .ticker .tk { display:inline-block; padding-left:100%; animation:tick 70s linear infinite }
 @media (hover: hover) and (pointer: fine) { .ticker:hover .tk { animation-play-state:paused } }
 @keyframes tick { to { transform:translateX(-100%) } }
@@ -1059,6 +1065,7 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
   <div class="sub"><span class="live">LIVE</span> · Updated __UPDATED__ · Lines: __SOURCE__ · Each player's last __N__ games vs. the opponent defense's last __N__</div>
 </div></header>
 <div class="ticker" aria-label="Tids Ticker: top rated plays"><span class="tlabel">Tids Ticker</span><div class="tscroll"><div class="tk" id="ticker"></div></div></div>
+<div id="specials"></div>
 <div class="wrap">
   <section id="gradetrack" hidden><h2>Grade tracker</h2><div class="lead" id="gtlead"></div>
     <div class="gtrack" id="gtrack"></div></section>
@@ -1382,7 +1389,9 @@ function renderLiveBets() {
     }).join("");
     const res = b.profit != null ? `<b class="${b.profit > 0 ? "pos" : b.profit < 0 ? "neg" : ""}">${(b.profit >= 0 ? "+" : "") + money(b.profit)}</b>`
       : `to win ${money(toWin)}`;
-    const late = (b.note || "").startsWith("LATE CHANGE") ? '<span class="tag tag-trap" title="' + esc(b.note) + '">LATE CHANGE</span>' : "";
+    const late = ((b.note || "").startsWith("LATE CHANGE") ? '<span class="tag tag-trap" title="' + esc(b.note) + '">LATE CHANGE</span>' : "")
+      + (((BANK.bets || []).find(x => x.id === b.id && x.special) || {}).special
+         ? '<span class="tag tag-special">' + ((BANK.bets || []).find(x => x.id === b.id).special.replace("-", " ").toUpperCase()) + ' SPECIAL</span>' : "");
     return `<article class="card"><div class="ch"><div class="teams" style="font-size:15px">${money(b.stake)} ${b.kind}${late}
         <span class="pmeta" style="margin-left:6px">${b.odds > 0 ? "+" : ""}${b.odds} · ${esc(b.game.replace("@", " @ "))}</span>
         <span class="kick"><span class="st st-${b.status === "pre" ? "void" : b.status}">${label[b.status]}</span><br>${res}</span></div></div>
@@ -1468,6 +1477,26 @@ function renderParlays() {
 }
 document.getElementById("onepergame").addEventListener("input", renderParlays);
 const FEATURE = __FEATURE__;
+function renderSpecialTicker() {
+  const wk = Math.max(0, ...(BANK.bets || []).map(b => b.week));
+  const names = {contrarian: "Contrarian Special", "contrarian-longshot": "Contrarian Longshot",
+                 primetime: "Primetime Special", "primetime-longshot": "Primetime Longshot"};
+  const bars = (BANK.bets || []).filter(b => b.special && b.week === wk).map(sp => {
+    const live = (BANK.live || []).find(b => b.id === sp.id);
+    const legs = live ? live.legs : sp.legs, st = live ? live.status : sp.result;
+    const toWin = sp.stake * (sp.odds > 0 ? sp.odds / 100 : 100 / -sp.odds);
+    const head = `<span class="it"><b>${sp.legs.length}-LEG ${sp.odds > 0 ? "+" : ""}${sp.odds}</b> · ${money(sp.stake)} to win
+      <b>${money(toWin)}</b>${st && st !== "pending" && st !== "pre" ? ` · <b class="${st === "win" ? "won" : st === "loss" ? "lost" : ""}">${st.toUpperCase()}</b>` : ""}</span>`;
+    const items = legs.map(l => {
+      const r = l.result || l.status, cls = r === "win" ? "won" : r === "loss" ? "lost" : "";
+      return `<span class="it ${cls}"><span class="${l.side.toUpperCase()}">${l.side.toUpperCase()} ${l.line}</span>
+        ${esc(l.player)} ${STAT[l.stat]}${l.actual != null ? ` (${l.actual})` : ""}${l.why ? ` · <span style="opacity:.8">${esc(l.why)}</span>` : ""}</span>`;
+    }).join("");
+    return `<div class="ticker special ${sp.special}" aria-label="${names[sp.special] || "Special"}"><span class="tlabel">${names[sp.special] || "Special"}</span>
+      <div class="tscroll"><div class="tk">${(head + items).repeat(2)}</div></div></div>`;
+  });
+  document.getElementById("specials").innerHTML = bars.join("");
+}
 function renderTicker() {
   const items = bestLegs().slice(0, 14).map(r => `<span class="it"><span class="gr">${r.grade}</span>${esc(r.player)}
     <span class="${r.pick.split(" ")[0]}">${r.pick}</span> ${STAT[r.stat]} · proj ${r.proj} · ${r.team} vs ${r.opp}</span>`);
@@ -1534,7 +1563,7 @@ function renderGradeTracker() {
       <div class="sea">${(G.by_week || []).map(x => `Wk ${x.week}: <b>${pct(x[g][0], x[g][1])}</b>`).join(" · ")}</div></div>`;
   }).join("");
 }
-renderBank(); renderGradeTracker(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp();
+renderBank(); renderSpecialTicker(); renderGradeTracker(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp();
 </script></body></html>"""
 
 
@@ -2115,6 +2144,130 @@ def _trim(bets: list, cap: float) -> list:
     return bets
 
 
+SPECIAL_SHARE = 0.03  # of the week's bankroll: the Contrarian Special parlay
+
+
+def contrarian_reason(r: dict, splits: dict | None = None) -> str:
+    """Why a prop goes against the public, or ''. Prop bet splits aren't published, so this reads prop
+    line movement, the existing contrarian tag, and real game-total splits (public on the Over while the
+    money is on the Under) for unders."""
+    if not r.get("pick") or r.get("traps") or _conf(r) < 0.55:
+        return ""
+    over = r["pick"].startswith("OVER")
+    line, opened = r.get("line"), r.get("open")
+    moved = (line - opened) if (line is not None and opened is not None and opened == opened) else 0
+    if r.get("contrarian"):
+        return r["contrarian"]
+    if moved >= 2 and not over:
+        return f"Fade the public: line climbed {opened:g} → {line:g} on over money; model projects {r['proj']:g}"
+    if moved <= -2 and not over:
+        return f"Sharp-side under: line dropped {opened:g} → {line:g} against the public's over lean"
+    if moved <= -2 and over and _conf(r) >= 0.6:
+        return f"Buy low: line dropped {opened:g} → {line:g}, model still projects {r['proj']:g}"
+    t = ((splits or {}).get(r["game"]) or {}).get("total")
+    if t and not over and t["bets_a"] > 50 and t["money_b"] - t["bets_b"] >= 8:
+        return f"Fade the game Over: {t['bets_a']}% of bets on the Over but {t['money_b']}% of the money on the Under"
+    return ""
+
+
+def _value_leg(r: dict, why: str):
+    """Best-value leg for a special parlay, judged only at the real posted line and price (alt-line prices
+    are our own estimates, and our tail probabilities are rough, so 'value' found there isn't trustworthy).
+    Probability = 50/50 blend of our model and the price's implied probability. Returns (ev, leg)."""
+    dec = american_to_decimal(DEFAULT_ODDS)
+    p = 0.5 * _conf(r) + 0.5 * (1 / dec) / 1.048
+    ev = p * dec - 1
+    return ev, dict(_leg_from_row(r), why=why + f" · EV {ev:+.0%}", ev=round(ev, 3))
+
+
+def _boost_leg(r: dict, why: str, max_odds: int = 300) -> dict:
+    """Longshot leg: an over moves up to the next alt line at least 15% above the posted line (estimated
+    plus-money odds, skipped beyond `max_odds`). Unders stay put (alt ladders are overs only)."""
+    side, line = r["pick"].split()
+    line = float(line)
+    if side == "OVER":
+        ladder = sorted(set(r.get("ladder") or []) | set(FALLBACK_MILESTONES[r["stat"]]))
+        up = [x for x in ladder if x - 0.5 >= line * 1.15]
+        if up:
+            odds = estimate_alt_odds(line, up[0], r.get("sd", 0))
+            if 0 < odds <= max_odds:
+                return dict(_leg_from_row(r, up[0] - 0.5, odds, f"{up[0]:g}+"), why=why + f" · boosted to {up[0]:g}+")
+    return dict(_leg_from_row(r), why=why)
+
+
+def contrarian_special(rows: list, stake: float, splits: dict | None = None, max_per_game: int = 1,
+                       longshot: bool = False) -> dict | None:
+    """3-4 leg parlay of the week's best-value contrarian props (different games when possible)."""
+    cands = []
+    for r in rows:
+        why = contrarian_reason(r, splits)
+        if not why:
+            continue
+        if longshot:  # strongest contrarian leans, each pushed to a bigger payout
+            moved = abs((r.get("line") or 0) - (r.get("open") or r.get("line") or 0))
+            cands.append((_conf(r) + 0.01 * min(moved, 10), r, _boost_leg(r, why)))
+        else:
+            ev, leg = _value_leg(r, why)
+            if ev is not None and ev > 0:
+                cands.append((ev, r, leg))
+    cands.sort(key=lambda x: x[0], reverse=True)
+    for per_game in range(max_per_game, 4):  # relax one-per-game only if there aren't enough games left
+        legs, count, used = [], {}, set()
+        for _, r, leg in cands:
+            if r["player_id"] in used or count.get(r["game"], 0) >= per_game:
+                continue
+            used.add(r["player_id"])
+            count[r["game"]] = count.get(r["game"], 0) + 1
+            legs.append(leg)
+            if len(legs) == 4:
+                break
+        if len(legs) >= 3:
+            kind = "contrarian-longshot" if longshot else "contrarian"
+            return {"kind": "parlay", "special": kind, "stake": round(stake, 2), "legs": legs,
+                    "game": "multi", "note": kind.replace("-", " ").upper() + " SPECIAL"}
+    return None
+
+
+def primetime_games(wk_games) -> set:
+    """Sunday Night (Sunday kickoffs 7 PM ET or later) and Monday Night games."""
+    out = set()
+    for g in wk_games.itertuples():
+        day = pd.to_datetime(g.gameday).day_name()
+        if day == "Monday" or (day == "Sunday" and str(g.gametime) >= "19:00"):
+            out.add(f"{g.away_team}@{g.home_team}")
+    return out
+
+
+def primetime_special(rows: list, stake: float, games: set, longshot: bool = False) -> dict | None:
+    """3-4 leg parlay of the best-value A/B props from the Sunday and Monday night games (max 2 per game)."""
+    scored = []
+    for r in rows:
+        if r["game"] in games and _qualifies(r):
+            why = f"{r['grade']}-rated · proj {r['proj']:g}"
+            if longshot:
+                scored.append((r["score"] * GRADE_WEIGHT.get(r["grade"], 0.5), r, _boost_leg(r, why)))
+            else:
+                ev, leg = _value_leg(r, why)
+                if ev is not None and ev > 0:
+                    scored.append((ev, r, leg))
+    scored.sort(key=lambda x: x[0], reverse=True)
+    legs, count, used = [], {}, set()
+    per_game = 2 if len(games) > 1 else 4
+    for _, r, leg in scored:
+        if r["player_id"] in used or count.get(r["game"], 0) >= per_game:
+            continue
+        used.add(r["player_id"])
+        count[r["game"]] = count.get(r["game"], 0) + 1
+        legs.append(leg)
+        if len(legs) == 4:
+            break
+    if len(legs) < 3:
+        return None
+    kind = "primetime-longshot" if longshot else "primetime"
+    return {"kind": "parlay", "special": kind, "stake": round(stake, 2), "legs": legs, "game": "multi",
+            "note": kind.replace("-", " ").upper() + " SPECIAL"}
+
+
 def weekly_parlays(pool: list, budget: float) -> list:
     """Cross-game parlays with ROTATING legs, so one missed pick can't sink all the parlay money.
     Legs: the week's best A/B props, one per game (up to 8).
@@ -2237,15 +2390,28 @@ def cmd_autobet(args, stats, sched, season):
         save_ledger(ledger)
         return
     pool = [r for r in rows if r["game"] in {f"{g.away_team}@{g.home_team}" for g in upcoming}]
+    special_amt = round(weekly * SPECIAL_SHARE, 2)
+    prime = primetime_games(wk_games)
+    core = weekly - 2 * special_amt  # contrarian + primetime specials come off the top; the rest splits 50/50
     straight_spent = sum(b["stake"] for b in week_bets if b["kind"] == "straight")
-    remaining = max(weekly * (1 - PARLAY_SHARE) - straight_spent, 0)
+    remaining = max(core * (1 - PARLAY_SHARE) - straight_spent, 0)
     summary = bankroll_summary(ledger, grade_ledger(ledger, stats, sched))
     remaining = min(remaining, max(summary["available"], 0))
     picks, alloc = plan_week(pool, remaining)
     new = _trim([dict(b, game=r["game"]) for r in picks if r["game"] in window
                  for b in _stake_prop(r, alloc[r["player_id"]])], remaining)
-    if not any(b["kind"] == "parlay" for b in week_bets):
-        new += _trim([dict(p, game="multi") for p in weekly_parlays(pool, weekly * PARLAY_SHARE)], weekly * PARLAY_SHARE)
+    if not any(b["kind"] == "parlay" and not b.get("special") for b in week_bets):
+        new += _trim([dict(p, game="multi") for p in weekly_parlays(pool, core * PARLAY_SHARE)], core * PARLAY_SHARE)
+    half = round(special_amt / 2, 2)  # each special's 3% splits between the value and longshot versions
+    if not any(str(b.get("special", "")).startswith("contrarian") for b in week_bets):
+        spl = load_week_splits(Path(args.snapshot_dir).parent / "splits", season, week)
+        new += [x for x in (contrarian_special(pool, half, spl),
+                            contrarian_special(pool, special_amt - half, spl, longshot=True)) if x]
+    # primetime special: placed once the first Sunday/Monday night game is in its betting window
+    if prime & window and not any(str(b.get("special", "")).startswith("primetime") for b in week_bets):
+        pg = {k for k in prime if kick_by_game[k] > now}
+        new += [x for x in (primetime_special(rows, half, pg),
+                            primetime_special(rows, special_amt - half, pg, longshot=True)) if x]
     _record(ledger, new, season, week, now, "Claude weekly pick")
     for key in window - {b["game"] for b in new}:
         ledger["bets"].append({"id": f"{season}-w{week}-{key}-nobet", "placed_at": now.isoformat(),
@@ -2326,7 +2492,7 @@ def review_open_bets(ledger: dict, rows: list, kick_by_game: dict, now, season: 
                         "stake": stake, "from": old_txt, "to": new_txt, "reason": reason})
 
     for b in week_bets:  # parlays: swap a bad leg only while every leg's game is still to come
-        if b["kind"] != "parlay" or any(kick_by_game.get(_leg_game(l, kick_by_game), now) <= lock for l in b["legs"]):
+        if b["kind"] != "parlay" or b.get("special") or any(kick_by_game.get(_leg_game(l, kick_by_game), now) <= lock for l in b["legs"]):
             continue
         legs, swaps = [], []
         used = {l["player_id"] for l in b["legs"]}
