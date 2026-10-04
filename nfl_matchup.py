@@ -1517,51 +1517,22 @@ function renderGradeTracker() {
   document.getElementById("gradetrack").hidden = false;
   const pct = (w, l) => w + l ? Math.round(100 * w / (w + l)) + "%" : "—";
   const liveN = Object.values(G.week).reduce((a, x) => a + x.live, 0);
-  document.getElementById("gtlead").innerHTML = `How each letter grade is doing in week ${G.week_no}, graded live as games are played
-    ${liveN ? `· <span class="live" style="color:var(--bad)">LIVE</span> ${liveN} picks in progress` : ""}. Green bar = hit, red = miss,
-    blue = still live. Break-even at -110 is 52.4%. Season and week-by-week records start from week 1.`;
+  const seasonW = "ABCD".split("").reduce((a, g) => a + G.season[g].w, 0), seasonL = "ABCD".split("").reduce((a, g) => a + G.season[g].l, 0);
+  document.getElementById("gtlead").innerHTML = `Full-season hit rate for each letter grade, weeks ${(G.by_week || []).map(x => x.week).join(", ")}
+    (${seasonW + seasonL} graded picks), updating live as week ${G.week_no} plays out
+    ${liveN ? `· <span class="live" style="color:var(--bad)">LIVE</span> ${liveN} picks in progress` : ""}. Bar = season hits (green) vs misses (red).
+    Break-even at -110 is 52.4%.`;
   const label = {A: "strong", B: "good", C: "lean", D: "pass"};
   document.getElementById("gtrack").innerHTML = "ABCD".split("").map(g => {
-    const w = G.week[g], s = G.season[g], tot = Math.max(1, w.w + w.l + w.live);
-    const p = w.w + w.l ? w.w / (w.w + w.l) : null;
-    return `<div class="gt ${g}"><div class="hd"><span class="g g${g}">${g}</span> ${label[g]}</div>
-      <div class="pct ${p == null ? "" : p >= 0.524 ? "pos" : "neg"}">${pct(w.w, w.l)}</div>
-      <div class="rec"><b>${w.w}-${w.l}</b> this week${w.live ? ` · ${w.live} live` : ""}${w.pre ? ` · ${w.pre} to play` : ""}</div>
-      <div class="hb"><i class="w" style="width:${100 * w.w / tot}%"></i><i class="l" style="width:${100 * w.l / tot}%"></i><i class="v" style="width:${100 * w.live / tot}%"></i></div>
-      <div class="sea">Season: ${s.w}-${s.l} (${pct(s.w, s.l)})</div>
+    const w = G.week[g], s = G.season[g], tot = Math.max(1, s.w + s.l);
+    const p = s.w + s.l ? s.w / (s.w + s.l) : null;
+    return `<div class="gt ${g}"><div class="hd"><span class="g g${g}">${g}</span> ${label[g]} <span class="pmeta" style="margin-left:auto">season</span></div>
+      <div class="pct ${p == null ? "" : p >= 0.524 ? "pos" : "neg"}">${pct(s.w, s.l)}</div>
+      <div class="rec"><b>${s.w}-${s.l}</b> season</div>
+      <div class="hb"><i class="w" style="width:${100 * s.w / tot}%"></i><i class="l" style="width:${100 * s.l / tot}%"></i></div>
+      <div class="sea">This week: <b>${w.w}-${w.l}</b> (${pct(w.w, w.l)})${w.live ? ` · ${w.live} live` : ""}${w.pre ? ` · ${w.pre} to play` : ""}</div>
       <div class="sea">${(G.by_week || []).map(x => `Wk ${x.week}: <b>${pct(x[g][0], x[g][1])}</b>`).join(" · ")}</div></div>`;
   }).join("");
-}
-function renderSim() {
-  const S = BANK.sim; if (!S || !S.weeks.length) return;
-  const pts = S.history.map(h => h.balance), W = 600, H = 130;
-  const lo = Math.min(...pts, S.start), hi = Math.max(...pts, S.start), span = Math.max(hi - lo, 1);
-  const x = i => (i / Math.max(pts.length - 1, 1)) * (W - 40) + 20, y = v => H - 18 - ((v - lo) / span) * (H - 36);
-  const chart = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:${W}px;height:auto;margin:6px 0">
-    <line x1="0" x2="${W}" y1="${y(S.start)}" y2="${y(S.start)}" stroke="var(--line)" stroke-dasharray="4 3"/>
-    <polyline points="${pts.map((v, i) => x(i) + "," + y(v)).join(" ")}" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
-    ${pts.map((v, i) => `<circle cx="${x(i)}" cy="${y(v)}" r="3.5" fill="var(--accent)"><title>${S.history[i].label}: ${money(v)}</title></circle>
-      <text x="${x(i)}" y="${H - 3}" font-size="10" text-anchor="middle" fill="var(--mute)">${S.history[i].label}</text>`).join("")}</svg>`;
-  const pl = S.balance - S.start;
-  const rows = S.weeks.map(w => {
-    const wp = w.straight.pl + w.parlay.pl;
-    const cell = t => `${t.w}-${t.l} <b class="${t.pl > 0 ? "pos" : t.pl < 0 ? "neg" : ""}">${t.pl >= 0 ? "+" : ""}${money(t.pl)}</b>`;
-    return `<tr><td>Week ${w.week}${w.backtest ? "*" : ""}${w.in_progress ? ' <span class="st st-live">live</span>' : ""}</td>
-      <td class="n">${money(w.start)}</td><td>${cell(w.straight)}</td><td>${cell(w.parlay)}</td>
-      <td class="n"><b class="${wp > 0 ? "pos" : wp < 0 ? "neg" : ""}">${wp >= 0 ? "+" : ""}${money(wp)}</b>${w.in_progress ? `<div class="pmeta">${money(w.straight.pending + w.parlay.pending)} riding</div>` : ""}</td>
-      <td class="n"><b>${money(w.end)}</b></td></tr>`;
-  }).join("");
-  const bt = S.weeks.filter(w => w.backtest).map(w => w.week);
-  const foot = bt.length ? `<div class="pmeta" style="font-size:11px;margin-top:6px">*Week${bt.length > 1 ? "s" : ""} ${bt.length > 1 ? bt[0] + "–" + bt[bt.length - 1] : bt[0]} ${bt.length > 1 ? "are" : "is a"} simulated backtest${bt.length > 1 ? "s" : ""}.</div>` : "";
-  const hits = S.weeks.flatMap(w => w.parlay_hits.map(h => `<div class="reason">Wk ${w.week}${w.backtest ? "*" : ""}: $${h.stake} at ${h.odds > 0 ? "+" : ""}${h.odds} → <b class="pos">+${money(h.profit)}</b> · ${h.legs.map(esc).join(" + ")}</div>`)).join("");
-  document.getElementById("simpanel").innerHTML = `
-    <div class="strip" style="margin-top:6px">
-      <div class="stat"><div class="v">${money(S.balance)}</div><div class="l">Simulated bankroll</div></div>
-      <div class="stat"><div class="v ${pl > 0 ? "pos" : pl < 0 ? "neg" : ""}">${pl >= 0 ? "+" : ""}${money(pl)}</div><div class="l">Since week 1 (${Math.round(100 * pl / S.start)}%)</div></div></div>
-    ${chart}
-    <div style="overflow-x:auto"><table style="min-width:640px"><thead><tr><th>Week</th><th>Start</th><th>Straights ($500)</th>
-      <th>Parlays ($500)</th><th>Week P/L</th><th>End</th></tr></thead><tbody>${rows}</tbody></table></div>${foot}
-    ${hits ? `<h3 style="font-size:14px;margin:12px 0 4px">Parlays that hit</h3>${hits}` : ""}`;
 }
 renderBank(); renderGradeTracker(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp();
 </script></body></html>"""
