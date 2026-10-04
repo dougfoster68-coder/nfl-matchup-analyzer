@@ -1119,6 +1119,9 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 <a href="parlays/" style="font-weight:700">Share the parlays →</a> · Rebuilt every refresh from A/B-rated, trap-free props. Each rung adds the next-best leg.
 Payouts assume -110 per leg; hit chance discounts the model's confidence by about half, because models run hot.</div>
 <div class="bar"><label><input type="checkbox" id="onepergame"> One leg per game</label></div>
+<h3 id="uphead" style="font:700 18px/1.2 'Barlow Condensed',sans-serif;letter-spacing:.03em;text-transform:uppercase;margin:6px 0 8px">
+  Upcoming games — tap + to add legs</h3>
+<section class="games" id="upgames" style="margin-bottom:16px"></section>
 <section class="ladder" id="ladder"></section>
 
 <details id="slipwrap" class="opener-wrap"><summary class="opener"><span class="op-title">Build your own parlay</span>
@@ -1314,8 +1317,11 @@ function renderGames() {
   const byKey = Object.fromEntries(GAMES.list.map(g => [g.key, g]));
   for (const k of Object.keys(LG)) if (!byKey[k]) byKey[k] = {key: k, away: LG[k].away, home: LG[k].home};
   const all = Object.values(byKey).sort((a, b) => gameTime(a) - gameTime(b));
-  document.getElementById("games").innerHTML = all.map(g => {
-    if (LG[g.key]) return resultCard(g.key, g);
+  const started = all.filter(g => LG[g.key]), upcoming = all.filter(g => !LG[g.key]);
+  document.getElementById("games").innerHTML = started.map(g => resultCard(g.key, g)).join("")
+    || `<div class="empty">No games have started yet — this week's matchups are in the <a href="#uphead">Parlay builder</a> below.</div>`;
+  document.getElementById("uphead").style.display = upcoming.length ? "" : "none";
+  document.getElementById("upgames").innerHTML = upcoming.map(g => {
     const rs = ROWS.filter(r => r.game === g.key && r.score != null && !(r.traps && r.traps.length))
       .sort((a, b) => b.score - a.score);
     const top = rs.slice(0, 4);
