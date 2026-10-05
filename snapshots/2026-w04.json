@@ -4907,13 +4907,13 @@
    "stat": "passing_yards",
    "line": 223.5,
    "pick": "UNDER 223.5",
-   "score": 4.6,
-   "grade": "C",
-   "p_over": 0.38,
-   "proj": 201.5,
+   "score": 4.2,
+   "grade": "D",
+   "p_over": 0.41,
+   "proj": 207.6,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0039917|rushing_yards": {
    "game": "ATL@NO",
@@ -4925,14 +4925,14 @@
    "pos": "QB",
    "stat": "rushing_yards",
    "line": 5.5,
-   "pick": "OVER 5.5",
+   "pick": "UNDER 5.5",
    "score": 3.2,
    "grade": "D",
-   "p_over": 0.53,
-   "proj": 6.1,
+   "p_over": 0.48,
+   "proj": 5.2,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0037746|rushing_yards": {
    "game": "ATL@NO",
@@ -4944,16 +4944,14 @@
    "pos": "RB",
    "stat": "rushing_yards",
    "line": 29.5,
-   "pick": "UNDER 29.5",
-   "score": 2.9,
-   "grade": "D",
-   "p_over": 0.39,
-   "proj": 24.9,
+   "pick": "OVER 29.5",
+   "score": 5.3,
+   "grade": "C",
+   "p_over": 0.6,
+   "proj": 33.9,
    "line_hits": "3/10",
-   "traps": [
-    "Model likes the under on old usage, but carries rose to 10/game"
-   ],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "traps": [],
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0038542|rushing_yards": {
    "game": "ATL@NO",
@@ -4966,13 +4964,13 @@
    "stat": "rushing_yards",
    "line": 87.5,
    "pick": "OVER 87.5",
-   "score": 4.4,
-   "grade": "D",
-   "p_over": 0.68,
-   "proj": 111.1,
+   "score": 4.6,
+   "grade": "C",
+   "p_over": 0.7,
+   "proj": 116.2,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0038542|receiving_yards": {
    "game": "ATL@NO",
@@ -4985,13 +4983,13 @@
    "stat": "receiving_yards",
    "line": 38.5,
    "pick": "OVER 38.5",
-   "score": 2.3,
+   "score": 2.2,
    "grade": "D",
    "p_over": 0.52,
-   "proj": 39.8,
+   "proj": 40.3,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0035208|receiving_yards": {
    "game": "ATL@NO",
@@ -5003,14 +5001,14 @@
    "pos": "WR",
    "stat": "receiving_yards",
    "line": 7.5,
-   "pick": "OVER 7.5",
-   "score": 2.8,
+   "pick": "UNDER 7.5",
+   "score": 3.6,
    "grade": "D",
-   "p_over": 0.53,
-   "proj": 8.3,
+   "p_over": 0.47,
+   "proj": 6.9,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0037238|receiving_yards": {
    "game": "ATL@NO",
@@ -5023,13 +5021,13 @@
    "stat": "receiving_yards",
    "line": 77.5,
    "pick": "UNDER 77.5",
-   "score": 4.4,
+   "score": 4.1,
    "grade": "D",
-   "p_over": 0.4,
-   "proj": 64.0,
+   "p_over": 0.43,
+   "proj": 66.7,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0037741|receiving_yards": {
    "game": "ATL@NO",
@@ -5042,15 +5040,13 @@
    "stat": "receiving_yards",
    "line": 17.5,
    "pick": "UNDER 17.5",
-   "score": 3.4,
-   "grade": "D",
-   "p_over": 0.23,
-   "proj": 9.1,
+   "score": 7.6,
+   "grade": "A",
+   "p_over": 0.22,
+   "proj": 10.0,
    "line_hits": "2/10",
-   "traps": [
-    "Line 17.5 vs 11 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "traps": [],
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0032392|receiving_yards": {
    "game": "ATL@NO",
@@ -5063,13 +5059,13 @@
    "stat": "receiving_yards",
    "line": 10.5,
    "pick": "OVER 10.5",
-   "score": 5.4,
-   "grade": "C",
-   "p_over": 0.65,
-   "proj": 15.4,
+   "score": 6.8,
+   "grade": "B",
+   "p_over": 0.73,
+   "proj": 16.7,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0036970|receiving_yards": {
    "game": "ATL@NO",
@@ -5082,15 +5078,15 @@
    "stat": "receiving_yards",
    "line": 29.5,
    "pick": "OVER 29.5",
-   "score": 3.2,
+   "score": 2.5,
    "grade": "D",
-   "p_over": 0.7,
-   "proj": 55.0,
+   "p_over": 0.65,
+   "proj": 47.9,
    "line_hits": "5/10",
    "traps": [
     "Model likes the over on old usage, but targets fell to 2/game"
    ],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0040743|passing_yards": {
    "game": "ATL@NO",
@@ -5103,13 +5099,13 @@
    "stat": "passing_yards",
    "line": 258.5,
    "pick": "OVER 258.5",
-   "score": 4.0,
+   "score": 4.4,
    "grade": "D",
-   "p_over": 0.62,
-   "proj": 290.9,
+   "p_over": 0.66,
+   "proj": 303.7,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0040743|rushing_yards": {
    "game": "ATL@NO",
@@ -5121,14 +5117,14 @@
    "pos": "QB",
    "stat": "rushing_yards",
    "line": 18.5,
-   "pick": "OVER 18.5",
-   "score": 3.7,
+   "pick": "UNDER 18.5",
+   "score": 2.9,
    "grade": "D",
-   "p_over": 0.52,
-   "proj": 19.3,
+   "p_over": 0.43,
+   "proj": 16.2,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0033906|rushing_yards": {
    "game": "ATL@NO",
@@ -5141,13 +5137,13 @@
    "stat": "rushing_yards",
    "line": 37.5,
    "pick": "UNDER 37.5",
-   "score": 7.0,
-   "grade": "B",
-   "p_over": 0.33,
-   "proj": 27.7,
+   "score": 7.6,
+   "grade": "A",
+   "p_over": 0.29,
+   "proj": 25.6,
    "line_hits": "2/10",
    "traps": [],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0033906|receiving_yards": {
    "game": "ATL@NO",
@@ -5160,13 +5156,13 @@
    "stat": "receiving_yards",
    "line": 15.5,
    "pick": "UNDER 15.5",
-   "score": 5.1,
-   "grade": "C",
-   "p_over": 0.42,
-   "proj": 12.4,
+   "score": 6.0,
+   "grade": "B",
+   "p_over": 0.37,
+   "proj": 11.0,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0038551|rushing_yards": {
    "game": "ATL@NO",
@@ -5179,13 +5175,13 @@
    "stat": "rushing_yards",
    "line": 25.5,
    "pick": "UNDER 25.5",
-   "score": 4.4,
-   "grade": "D",
-   "p_over": 0.41,
-   "proj": 21.7,
+   "score": 4.9,
+   "grade": "C",
+   "p_over": 0.37,
+   "proj": 20.3,
    "line_hits": "4/9",
    "traps": [],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0037239|receiving_yards": {
    "game": "ATL@NO",
@@ -5198,13 +5194,13 @@
    "stat": "receiving_yards",
    "line": 86.5,
    "pick": "OVER 86.5",
-   "score": 5.8,
-   "grade": "C",
-   "p_over": 0.71,
-   "proj": 109.8,
+   "score": 6.8,
+   "grade": "B",
+   "p_over": 0.78,
+   "proj": 119.7,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0039424|receiving_yards": {
    "game": "ATL@NO",
@@ -5217,13 +5213,13 @@
    "stat": "receiving_yards",
    "line": 44.5,
    "pick": "OVER 44.5",
-   "score": 3.9,
-   "grade": "D",
-   "p_over": 0.59,
-   "proj": 50.4,
+   "score": 5.3,
+   "grade": "C",
+   "p_over": 0.68,
+   "proj": 55.9,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0035644|receiving_yards": {
    "game": "ATL@NO",
@@ -5236,13 +5232,13 @@
    "stat": "receiving_yards",
    "line": 16.5,
    "pick": "OVER 16.5",
-   "score": 3.1,
+   "score": 4.1,
    "grade": "D",
-   "p_over": 0.53,
-   "proj": 17.7,
+   "p_over": 0.58,
+   "proj": 19.7,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0036040|receiving_yards": {
    "game": "ATL@NO",
@@ -5255,13 +5251,13 @@
    "stat": "receiving_yards",
    "line": 39.5,
    "pick": "OVER 39.5",
-   "score": 8.9,
+   "score": 9.2,
    "grade": "A",
-   "p_over": 0.85,
-   "proj": 62.2,
+   "p_over": 0.86,
+   "proj": 63.1,
    "line_hits": "7/10",
    "traps": [],
-   "captured_at": "2026-10-04T23:50-04:00"
+   "captured_at": "2026-10-05T00:07-04:00"
   },
   "00-0033526|rushing_yards": {
    "game": "JAX@CIN",
