@@ -6653,89 +6653,6 @@
     },
     {
       "kind": "straight",
-      "stake": 7.08,
-      "legs": [
-        {
-          "player": "Chris Olave",
-          "player_id": "00-0037239",
-          "team": "NO",
-          "opp": "ATL",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 85.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 6.9
-        }
-      ],
-      "game": "ATL@NO",
-      "note": "Claude weekly pick",
-      "id": "2026-w4-32",
-      "placed_at": "2026-10-04T16:33:43.382008-04:00",
-      "season": 2026,
-      "week": 4,
-      "odds": -110,
-      "stake_original": 10,
-      "stake_before_specials": 17.69
-    },
-    {
-      "kind": "straight",
-      "stake": 3.54,
-      "legs": [
-        {
-          "player": "Chris Olave",
-          "player_id": "00-0037239",
-          "team": "NO",
-          "opp": "ATL",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 69.5,
-          "odds": -210,
-          "grade": "B",
-          "score": 6.9,
-          "alt": "70+"
-        }
-      ],
-      "game": "ATL@NO",
-      "note": "Claude weekly pick",
-      "id": "2026-w4-33",
-      "placed_at": "2026-10-04T16:33:43.382008-04:00",
-      "season": 2026,
-      "week": 4,
-      "odds": -210,
-      "stake_original": 5,
-      "stake_before_specials": 8.85
-    },
-    {
-      "kind": "straight",
-      "stake": 3.54,
-      "legs": [
-        {
-          "player": "Chris Olave",
-          "player_id": "00-0037239",
-          "team": "NO",
-          "opp": "ATL",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 99.5,
-          "odds": 155,
-          "grade": "B",
-          "score": 6.9,
-          "alt": "100+"
-        }
-      ],
-      "game": "ATL@NO",
-      "note": "Claude weekly pick",
-      "id": "2026-w4-34",
-      "placed_at": "2026-10-04T16:33:43.382008-04:00",
-      "season": 2026,
-      "week": 4,
-      "odds": 155,
-      "stake_original": 5,
-      "stake_before_specials": 8.85
-    },
-    {
-      "kind": "straight",
       "stake": 35.38,
       "legs": [
         {
@@ -9948,6 +9865,95 @@
       "odds": 31326982,
       "superseded_at": "2026-10-04T17:26:39.893935-04:00",
       "superseded_reason": "bug: value picker chose extreme alt lines from estimated prices; replaced seconds later"
+    },
+    {
+      "kind": "straight",
+      "stake": 7.08,
+      "legs": [
+        {
+          "player": "Chris Olave",
+          "player_id": "00-0037239",
+          "team": "NO",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 85.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        }
+      ],
+      "game": "ATL@NO",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-32",
+      "placed_at": "2026-10-04T16:33:43.382008-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110,
+      "stake_original": 10,
+      "stake_before_specials": 17.69,
+      "superseded_at": "2026-10-04T21:00:55.712113-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 3.54,
+      "legs": [
+        {
+          "player": "Chris Olave",
+          "player_id": "00-0037239",
+          "team": "NO",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": -210,
+          "grade": "B",
+          "score": 6.9,
+          "alt": "70+"
+        }
+      ],
+      "game": "ATL@NO",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-33",
+      "placed_at": "2026-10-04T16:33:43.382008-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -210,
+      "stake_original": 5,
+      "stake_before_specials": 8.85,
+      "superseded_at": "2026-10-04T21:00:55.712113-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 3.54,
+      "legs": [
+        {
+          "player": "Chris Olave",
+          "player_id": "00-0037239",
+          "team": "NO",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 99.5,
+          "odds": 155,
+          "grade": "B",
+          "score": 6.9,
+          "alt": "100+"
+        }
+      ],
+      "game": "ATL@NO",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-34",
+      "placed_at": "2026-10-04T16:33:43.382008-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": 155,
+      "stake_original": 5,
+      "stake_before_specials": 8.85,
+      "superseded_at": "2026-10-04T21:00:55.712113-04:00",
+      "superseded_reason": "late change before kickoff"
     }
   ],
   "week_budgets": {
@@ -9994,6 +10000,16 @@
       "from": "value specials at +134,936 / +31,326,982 (bug)",
       "to": "contrarian +1228 / primetime +1228",
       "reason": "Fixed: best-value specials now use real posted lines only"
+    },
+    {
+      "at": "2026-10-04T21:00-04:00",
+      "week": 4,
+      "game": "ATL@NO",
+      "kind": "straight",
+      "stake": 14.16,
+      "from": "Chris Olave OVER 85.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
     }
   ]
 }
