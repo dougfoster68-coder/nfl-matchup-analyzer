@@ -6600,33 +6600,6 @@
     },
     {
       "kind": "straight",
-      "stake": 14.16,
-      "legs": [
-        {
-          "player": "Alvin Kamara",
-          "player_id": "00-0033906",
-          "team": "NO",
-          "opp": "ATL",
-          "stat": "rushing_yards",
-          "side": "under",
-          "line": 37.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 7.0
-        }
-      ],
-      "game": "ATL@NO",
-      "note": "Claude weekly pick",
-      "id": "2026-w4-30",
-      "placed_at": "2026-10-04T16:33:43.382008-04:00",
-      "season": 2026,
-      "week": 4,
-      "odds": -110,
-      "stake_original": 20,
-      "stake_before_specials": 35.38
-    },
-    {
-      "kind": "straight",
       "stake": 35.38,
       "legs": [
         {
@@ -9954,6 +9927,35 @@
       "stake_before_specials": 8.85,
       "superseded_at": "2026-10-04T21:00:55.712113-04:00",
       "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 14.16,
+      "legs": [
+        {
+          "player": "Alvin Kamara",
+          "player_id": "00-0033906",
+          "team": "NO",
+          "opp": "ATL",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 37.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        }
+      ],
+      "game": "ATL@NO",
+      "note": "Claude weekly pick",
+      "id": "2026-w4-30",
+      "placed_at": "2026-10-04T16:33:43.382008-04:00",
+      "season": 2026,
+      "week": 4,
+      "odds": -110,
+      "stake_original": 20,
+      "stake_before_specials": 35.38,
+      "superseded_at": "2026-10-05T17:31:55.837131-04:00",
+      "superseded_reason": "late change before kickoff"
     }
   ],
   "week_budgets": {
@@ -10008,6 +10010,16 @@
       "kind": "straight",
       "stake": 14.16,
       "from": "Chris Olave OVER 85.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-05T17:31-04:00",
+      "week": 4,
+      "game": "ATL@NO",
+      "kind": "straight",
+      "stake": 14.16,
+      "from": "Alvin Kamara UNDER 37.5 rushing yards",
       "to": "nothing (money back to bankroll)",
       "reason": "plan now focuses on A/B picks (this one is a C)"
     }
