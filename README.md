@@ -131,7 +131,10 @@ While games are on, ESPN's live box scores grade everything on the fly:
 - **Defense rank**: 1 = allows the fewest yards to that position, 32 = allows the most.
 - **Matchup %**: the defense's yards allowed per game divided by the league average, pulled
   toward average by 4 games so a small sample doesn't swing it too far.
-- **Projection**: the player's L10 average × the matchup factor.
+- **Projection**: the player's weighted L10 average × the matchup factor. Games from this season count
+  1.5×, each older game counts 5% less than the one after it, and games with a former team count 0.6×,
+  so the model adjusts to the new season and to trades right away. Defenses are weighted the same way.
+  (Set `CURRENT_SEASON_WEIGHT`, `RECENCY_DECAY` and `OTHER_TEAM_WEIGHT` to 1.0 for a plain average.)
 - **P(over)**: a normal distribution built from the projection and the player's game-to-game variance.
 - **Lean**: shown only when the probability clears the -110 break-even of 52.4% by 3 points or more.
 

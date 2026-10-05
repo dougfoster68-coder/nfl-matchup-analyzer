@@ -26,6 +26,7 @@ import time
 from datetime import date
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 STATS_URL = "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_{season}.csv"
@@ -147,21 +148,51 @@ def player_last_n(stats: pd.DataFrame, player_id: str, n: int) -> pd.DataFrame:
     return p.tail(n)
 
 
-def defense_allowed(stats: pd.DataFrame, n: int) -> pd.DataFrame:
-    """Per-game stats allowed by each defense to each position, over each
-    defense's last n games. Returns rows indexed by (defense, position)."""
-    per_game = (stats.groupby(["opponent_team", "game_id", "game_order", "position"])[ALL_STATS]
+# Weighting the lookback window so the model adjusts to the new season right away instead of after
+# 10 games. Setting all three to 1.0 gives the old equal-weight last-10 behavior.
+CURRENT_SEASON_WEIGHT = 1.5   # a game from this season counts this many times a game from last season
+RECENCY_DECAY = 0.95          # each game further back counts this much of the one after it
+OTHER_TEAM_WEIGHT = 0.6       # games played for a former team (trades, free agency)
+
+
+def game_weights(hist: pd.DataFrame, season: int, team: str | None = None) -> np.ndarray:
+    """Weight for each row of a player's (or defense's) history, oldest first; sums to 1."""
+    k = np.arange(len(hist))[::-1]  # 0 = most recent game
+    w = RECENCY_DECAY ** k
+    w = w * np.where(hist["season"].to_numpy() == season, CURRENT_SEASON_WEIGHT, 1.0)
+    if team is not None and "team" in hist:
+        w = w * np.where(hist["team"].to_numpy() == team, 1.0, OTHER_TEAM_WEIGHT)
+    return w / w.sum()
+
+
+def weighted_mean_std(vals, w) -> tuple[float, float]:
+    v = np.asarray(vals, dtype=float)
+    mean = float((w * v).sum())
+    return mean, float(np.sqrt((w * (v - mean) ** 2).sum()))
+
+
+def defense_allowed(stats: pd.DataFrame, n: int, season: int | None = None) -> pd.DataFrame:
+    """Per-game stats allowed by each defense to each position, over each defense's last n games
+    (weighted toward this season and recent games when `season` is given).
+    Returns rows indexed by (defense, position)."""
+    per_game = (stats.groupby(["opponent_team", "game_id", "game_order", "season", "position"])[ALL_STATS]
                 .sum().reset_index())
     # Pick each defense's last n games (by any position appearing)
-    games = (per_game[["opponent_team", "game_id", "game_order"]].drop_duplicates()
+    games = (per_game[["opponent_team", "game_id", "game_order", "season"]].drop_duplicates()
              .sort_values("game_order"))
-    last_games = games.groupby("opponent_team").tail(n)
-    per_game = per_game.merge(last_games[["opponent_team", "game_id"]],
+    last_games = games.groupby("opponent_team").tail(n).copy()
+    last_games["w"] = 1.0
+    if season is not None:
+        for _, g in last_games.groupby("opponent_team"):
+            last_games.loc[g.index, "w"] = game_weights(g, season) * len(g)
+    per_game = per_game.merge(last_games[["opponent_team", "game_id", "w"]],
                               on=["opponent_team", "game_id"])
+    per_game[ALL_STATS] = per_game[ALL_STATS].mul(per_game["w"], axis=0)
     n_games = last_games.groupby("opponent_team").size().rename("games")
+    weight_sum = last_games.groupby("opponent_team")["w"].sum().rename("wsum")
     totals = per_game.groupby(["opponent_team", "position"])[ALL_STATS].sum()
-    totals = totals.join(n_games, on="opponent_team")
-    allowed = totals[ALL_STATS].div(totals["games"], axis=0)
+    totals = totals.join(n_games, on="opponent_team").join(weight_sum, on="opponent_team")
+    allowed = totals[ALL_STATS].div(totals["wsum"], axis=0)
     allowed["games"] = totals["games"]
     allowed.index.names = ["defense", "position"]
     return allowed
@@ -528,7 +559,7 @@ def build_week(args, stats, sched, season):
                                                    finished=getattr(args, "backtest", False))
         source = f"DraftKings via ESPN ({len(main_by_id)} yardage lines)"
 
-    allowed = defense_allowed(stats, args.games)
+    allowed = defense_allowed(stats, args.games, season)
     ordered = stats.sort_values("game_order")
     last_row = ordered.drop_duplicates("player_id", keep="last")
     team_override = getattr(args, "team_override", None)
@@ -550,9 +581,10 @@ def build_week(args, stats, sched, season):
                     hist = player_last_n(stats, pr.player_id, args.games)
                     if len(hist) < args.min_games:
                         continue
+                    w = game_weights(hist, season, team)
                     for stat, min_avg in PROPS_BY_POS[pos]:
                         vals = hist[stat]
-                        avg = vals.mean()
+                        avg, std = weighted_mean_std(vals, w)
                         main = main_by_id.get((pr.player_id, stat))
                         if main is None and (pr.player_display_name and
                                              (_norm(pr.player_display_name), stat) in name_lines):
@@ -564,7 +596,6 @@ def build_week(args, stats, sched, season):
                             continue
                         _, _, factor, rank = factors_by_pos[pos].get(stat, (0, 0, 1.0, 0))
                         proj = avg * factor
-                        std = vals.std(ddof=0)
                         row = {"game": f"{g.away_team}@{g.home_team}", "kickoff": f"{g.gameday} {g.gametime}",
                                "team": team, "opp": opp, "player": pr.player_display_name, "player_id": pr.player_id, "pos": pos,
                                "stat": stat, "n": len(vals), "L10_avg": round(avg, 1),
@@ -603,7 +634,7 @@ def build_week(args, stats, sched, season):
                                     "usage_l3": round(usage.tail(3).mean(), 1),
                                     "usage_l10": round(usage.mean(), 1)})
                         lines_expected = bool(main_by_id) and avg >= min_avg * 1.5
-                        notes, rating = analyze_row(row, list(vals), lines_expected)
+                        notes, rating = analyze_row(row, list(vals), lines_expected, w)
                         row["notes"] = notes
                         row.update(rating)
                         rows.append(row)
@@ -614,7 +645,7 @@ USAGE_STAT = {"passing_yards": "attempts", "rushing_yards": "carries", "receivin
 POS_GROUP = {"passing_yards": "QBs", "rushing_yards": "the run", "receiving_yards": None}
 
 
-def analyze_row(row: dict, vals: list, lines_expected: bool):
+def analyze_row(row: dict, vals: list, lines_expected: bool, weights=None):
     """Scan a player's last-N games for things that stand out, and rate the prop.
     Returns (notes, rating) where notes = [{"t": text, "k": good|bad|info}]
     (written from the OVER bettor's point of view) and rating holds pick/score/grade."""
@@ -705,7 +736,9 @@ def analyze_row(row: dict, vals: list, lines_expected: bool):
         p = row["p_over"]
         over = p >= 0.5
         conf = p if over else 1 - p
-        side_hits = sum((v > line) if over else (v < line) for v in vals) / n
+        # share of games on our side of the line, weighted toward this season and recent games
+        wts = weights if weights is not None else [1 / n] * n
+        side_hits = sum(wt for v, wt in zip(vals, wts) if ((v > line) if over else (v < line)))
         recent = vals[-3:]
         trend = sum((v > line) if over else (v < line) for v in recent) / len(recent)
         score = 10 * (0.45 * min(max((conf - 0.5) / 0.35, 0), 1) + 0.35 * side_hits + 0.20 * trend)
