@@ -1,0 +1,422 @@
+{
+ "season": 2026,
+ "week": 5,
+ "source": "https://www.scoresandodds.com/nfl/consensus-picks",
+ "games": {
+  "TB@DAL": {
+   "kickoff_utc": "2026-10-09T00:15:00Z",
+   "spread": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 10.0,
+     "bets_a": 49,
+     "bets_b": 51,
+     "money_a": 52,
+     "money_b": 48
+    }
+   ],
+   "total": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 47.5,
+     "bets_a": 61,
+     "bets_b": 39,
+     "money_a": 73,
+     "money_b": 27
+    }
+   ]
+  },
+  "PHI@JAX": {
+   "kickoff_utc": "2026-10-11T13:30:00Z",
+   "moneyline": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": null,
+     "bets_a": 61,
+     "bets_b": 39,
+     "money_a": 32,
+     "money_b": 68
+    }
+   ],
+   "spread": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 4.5,
+     "bets_a": 16,
+     "bets_b": 84,
+     "money_a": 47,
+     "money_b": 53
+    }
+   ],
+   "total": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 42.5,
+     "bets_a": 39,
+     "bets_b": 61,
+     "money_a": 37,
+     "money_b": 63
+    }
+   ]
+  },
+  "IND@PIT": {
+   "kickoff_utc": "2026-10-11T17:00:00Z",
+   "moneyline": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": null,
+     "bets_a": 30,
+     "bets_b": 70,
+     "money_a": 43,
+     "money_b": 57
+    }
+   ],
+   "spread": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 2.5,
+     "bets_a": 74,
+     "bets_b": 26,
+     "money_a": 77,
+     "money_b": 23
+    }
+   ],
+   "total": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 44.5,
+     "bets_a": 57,
+     "bets_b": 43,
+     "money_a": 50,
+     "money_b": 50
+    }
+   ]
+  },
+  "MIN@NO": {
+   "kickoff_utc": "2026-10-11T17:00:00Z",
+   "moneyline": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": null,
+     "bets_a": 78,
+     "bets_b": 22,
+     "money_a": 70,
+     "money_b": 30
+    }
+   ],
+   "spread": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": -1.5,
+     "bets_a": 62,
+     "bets_b": 38,
+     "money_a": 54,
+     "money_b": 46
+    }
+   ],
+   "total": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 42.5,
+     "bets_a": 65,
+     "bets_b": 35,
+     "money_a": 73,
+     "money_b": 27
+    }
+   ]
+  },
+  "CLE@NYJ": {
+   "kickoff_utc": "2026-10-11T17:00:00Z",
+   "moneyline": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": null,
+     "bets_a": 50,
+     "bets_b": 50,
+     "money_a": 45,
+     "money_b": 55
+    }
+   ],
+   "spread": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 1.5,
+     "bets_a": 81,
+     "bets_b": 19,
+     "money_a": 72,
+     "money_b": 28
+    }
+   ],
+   "total": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 40.5,
+     "bets_a": 66,
+     "bets_b": 34,
+     "money_a": 65,
+     "money_b": 35
+    }
+   ]
+  },
+  "CIN@MIA": {
+   "kickoff_utc": "2026-10-11T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": -7.0,
+     "bets_a": 74,
+     "bets_b": 26,
+     "money_a": 71,
+     "money_b": 29
+    }
+   ],
+   "total": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 41.5,
+     "bets_a": 60,
+     "bets_b": 40,
+     "money_a": 70,
+     "money_b": 30
+    }
+   ]
+  },
+  "LV@NE": {
+   "kickoff_utc": "2026-10-11T17:00:00Z",
+   "moneyline": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": null,
+     "bets_a": 26,
+     "bets_b": 74,
+     "money_a": 75,
+     "money_b": 25
+    }
+   ],
+   "spread": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 3.5,
+     "bets_a": 70,
+     "bets_b": 30,
+     "money_a": 79,
+     "money_b": 21
+    }
+   ],
+   "total": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 44.5,
+     "bets_a": 67,
+     "bets_b": 33,
+     "money_a": 73,
+     "money_b": 27
+    }
+   ]
+  },
+  "NYG@WAS": {
+   "kickoff_utc": "2026-10-11T17:00:00Z",
+   "moneyline": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": null,
+     "bets_a": 26,
+     "bets_b": 74,
+     "money_a": 46,
+     "money_b": 54
+    }
+   ],
+   "spread": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 3.0,
+     "bets_a": 74,
+     "bets_b": 26,
+     "money_a": 80,
+     "money_b": 20
+    }
+   ],
+   "total": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 43.5,
+     "bets_a": 76,
+     "bets_b": 24,
+     "money_a": 80,
+     "money_b": 20
+    }
+   ]
+  },
+  "HOU@TEN": {
+   "kickoff_utc": "2026-10-11T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": -6.5,
+     "bets_a": 62,
+     "bets_b": 38,
+     "money_a": 74,
+     "money_b": 26
+    }
+   ],
+   "total": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 39.5,
+     "bets_a": 66,
+     "bets_b": 34,
+     "money_a": 72,
+     "money_b": 28
+    }
+   ]
+  },
+  "CHI@GB": {
+   "kickoff_utc": "2026-10-11T17:00:00Z",
+   "moneyline": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": null,
+     "bets_a": 44,
+     "bets_b": 56,
+     "money_a": 77,
+     "money_b": 23
+    }
+   ],
+   "spread": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": -2.5,
+     "bets_a": 60,
+     "bets_b": 40,
+     "money_a": 63,
+     "money_b": 37
+    }
+   ],
+   "total": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 44.5,
+     "bets_a": 71,
+     "bets_b": 29,
+     "money_a": 68,
+     "money_b": 32
+    }
+   ]
+  },
+  "DEN@LAC": {
+   "kickoff_utc": "2026-10-11T20:05:00Z",
+   "moneyline": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": null,
+     "bets_a": 83,
+     "bets_b": 17,
+     "money_a": 70,
+     "money_b": 30
+    }
+   ],
+   "spread": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": -3.5,
+     "bets_a": 58,
+     "bets_b": 42,
+     "money_a": 42,
+     "money_b": 58
+    }
+   ],
+   "total": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 42.5,
+     "bets_a": 62,
+     "bets_b": 38,
+     "money_a": 72,
+     "money_b": 28
+    }
+   ]
+  },
+  "SF@SEA": {
+   "kickoff_utc": "2026-10-11T20:25:00Z",
+   "moneyline": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": null,
+     "bets_a": 25,
+     "bets_b": 75,
+     "money_a": 67,
+     "money_b": 33
+    }
+   ],
+   "spread": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 2.5,
+     "bets_a": 72,
+     "bets_b": 28,
+     "money_a": 90,
+     "money_b": 10
+    }
+   ],
+   "total": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 46.5,
+     "bets_a": 47,
+     "bets_b": 53,
+     "money_a": 64,
+     "money_b": 36
+    }
+   ]
+  },
+  "DET@ARI": {
+   "kickoff_utc": "2026-10-11T20:25:00Z",
+   "total": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 53.5,
+     "bets_a": 42,
+     "bets_b": 58,
+     "money_a": 18,
+     "money_b": 82
+    }
+   ]
+  },
+  "BAL@ATL": {
+   "kickoff_utc": "2026-10-12T00:20:00Z",
+   "total": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 46.5,
+     "bets_a": 41,
+     "bets_b": 59,
+     "money_a": 40,
+     "money_b": 60
+    }
+   ]
+  },
+  "BUF@LA": {
+   "kickoff_utc": "2026-10-13T00:15:00Z",
+   "moneyline": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": null,
+     "bets_a": 34,
+     "bets_b": 66,
+     "money_a": 65,
+     "money_b": 35
+    }
+   ],
+   "total": [
+    {
+     "at": "2026-10-06T07:09+00:00",
+     "line": 53.5,
+     "bets_a": 49,
+     "bets_b": 51,
+     "money_a": 54,
+     "money_b": 46
+    }
+   ]
+  }
+ }
+}
