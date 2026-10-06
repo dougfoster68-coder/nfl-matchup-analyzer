@@ -1788,6 +1788,14 @@
      "bets_b": 62,
      "money_a": 31,
      "money_b": 69
+    },
+    {
+     "at": "2026-10-06T18:32+00:00",
+     "line": 3.5,
+     "bets_a": 38,
+     "bets_b": 62,
+     "money_a": 31,
+     "money_b": 69
     }
    ],
    "moneyline": [
