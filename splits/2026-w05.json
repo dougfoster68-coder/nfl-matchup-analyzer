@@ -117,6 +117,14 @@
      "bets_b": 57,
      "money_a": 57,
      "money_b": 43
+    },
+    {
+     "at": "2026-10-07T00:40+00:00",
+     "line": 8.5,
+     "bets_a": 43,
+     "bets_b": 57,
+     "money_a": 56,
+     "money_b": 44
     }
    ],
    "total": [
@@ -2812,6 +2820,14 @@
      "bets_b": 58,
      "money_a": 30,
      "money_b": 70
+    },
+    {
+     "at": "2026-10-07T00:40+00:00",
+     "line": 3.5,
+     "bets_a": 43,
+     "bets_b": 57,
+     "money_a": 31,
+     "money_b": 69
     }
    ],
    "moneyline": [
