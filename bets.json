@@ -7882,6 +7882,585 @@
       "season": 2026,
       "week": 4,
       "odds": 1228
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Javonte Williams",
+          "player_id": "00-0036997",
+          "team": "DAL",
+          "opp": "TB",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 67.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        }
+      ],
+      "game": "TB@DAL",
+      "id": "2026-w5-1791495068-1",
+      "placed_at": "2026-10-08T17:31:08.581893-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 75,
+      "legs": [
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "SEA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 22.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.5
+        },
+        {
+          "player": "David Montgomery",
+          "player_id": "00-0035685",
+          "team": "HOU",
+          "opp": "TEN",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 45.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.1
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w5-1791495068-2",
+      "placed_at": "2026-10-08T17:31:08.581893-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 75,
+      "legs": [
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.4
+        },
+        {
+          "player": "Rome Odunze",
+          "player_id": "00-0039919",
+          "team": "CHI",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 40.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w5-1791495068-3",
+      "placed_at": "2026-10-08T17:31:08.581893-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 75,
+      "legs": [
+        {
+          "player": "Omarion Hampton",
+          "player_id": "00-0040666",
+          "team": "LAC",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.6
+        },
+        {
+          "player": "Tyler Allgeier",
+          "player_id": "00-0037263",
+          "team": "ARI",
+          "opp": "DET",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 11.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.6
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w5-1791495068-4",
+      "placed_at": "2026-10-08T17:31:08.581893-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 75,
+      "legs": [
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.6
+        },
+        {
+          "player": "Javonte Williams",
+          "player_id": "00-0036997",
+          "team": "DAL",
+          "opp": "TB",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 67.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w5-1791495068-5",
+      "placed_at": "2026-10-08T17:31:08.581893-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 90,
+      "legs": [
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "SEA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 22.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.5
+        },
+        {
+          "player": "Rome Odunze",
+          "player_id": "00-0039919",
+          "team": "CHI",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 40.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        },
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.6
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w5-1791495068-6",
+      "placed_at": "2026-10-08T17:31:08.581893-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 90,
+      "legs": [
+        {
+          "player": "David Montgomery",
+          "player_id": "00-0035685",
+          "team": "HOU",
+          "opp": "TEN",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 45.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.1
+        },
+        {
+          "player": "Omarion Hampton",
+          "player_id": "00-0040666",
+          "team": "LAC",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.6
+        },
+        {
+          "player": "Javonte Williams",
+          "player_id": "00-0036997",
+          "team": "DAL",
+          "opp": "TB",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 67.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w5-1791495068-7",
+      "placed_at": "2026-10-08T17:31:08.581893-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 90,
+      "legs": [
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.4
+        },
+        {
+          "player": "Tyler Allgeier",
+          "player_id": "00-0037263",
+          "team": "ARI",
+          "opp": "DET",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 11.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.6
+        },
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "SEA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 22.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.5
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w5-1791495068-8",
+      "placed_at": "2026-10-08T17:31:08.581893-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 90,
+      "legs": [
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "SEA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 22.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.5
+        },
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.4
+        },
+        {
+          "player": "Omarion Hampton",
+          "player_id": "00-0040666",
+          "team": "LAC",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.6
+        },
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.6
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w5-1791495068-9",
+      "placed_at": "2026-10-08T17:31:08.581893-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 1228,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 90,
+      "legs": [
+        {
+          "player": "David Montgomery",
+          "player_id": "00-0035685",
+          "team": "HOU",
+          "opp": "TEN",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 45.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.1
+        },
+        {
+          "player": "Rome Odunze",
+          "player_id": "00-0039919",
+          "team": "CHI",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 40.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        },
+        {
+          "player": "Tyler Allgeier",
+          "player_id": "00-0037263",
+          "team": "ARI",
+          "opp": "DET",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 11.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.6
+        },
+        {
+          "player": "Javonte Williams",
+          "player_id": "00-0036997",
+          "team": "DAL",
+          "opp": "TB",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 67.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w5-1791495068-10",
+      "placed_at": "2026-10-08T17:31:08.581893-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 1228,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "special": "contrarian",
+      "stake": 24.03,
+      "legs": [
+        {
+          "player": "David Montgomery",
+          "player_id": "00-0035685",
+          "team": "HOU",
+          "opp": "TEN",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 45.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.1,
+          "why": "Fade the game Over: 76% of bets on the Over but 35% of the money on the Under \u00b7 EV +28%",
+          "ev": 0.279
+        },
+        {
+          "player": "Geno Smith",
+          "player_id": "00-0030565",
+          "team": "NYJ",
+          "opp": "CLE",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.8,
+          "why": "Fade the game Over: 74% of bets on the Over but 35% of the money on the Under \u00b7 EV +25%",
+          "ev": 0.25
+        },
+        {
+          "player": "Javonte Williams",
+          "player_id": "00-0036997",
+          "team": "DAL",
+          "opp": "TB",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 67.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3,
+          "why": "Sharp-side under: line dropped 75.5 \u2192 67.5 on a popular player despite the public's over lean, and the model agrees \u00b7 EV +21%",
+          "ev": 0.212
+        },
+        {
+          "player": "Brock Bowers",
+          "player_id": "00-0039338",
+          "team": "LV",
+          "opp": "NE",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 71.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.5,
+          "why": "Star under: the public rarely bets against popular players \u2014 model sides under \u00b7 EV +17%",
+          "ev": 0.174
+        }
+      ],
+      "game": "multi",
+      "note": "CONTRARIAN SPECIAL",
+      "id": "2026-w5-1791495068-11",
+      "placed_at": "2026-10-08T17:31:08.581893-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 1228
+    },
+    {
+      "kind": "parlay",
+      "special": "contrarian-longshot",
+      "stake": 24.03,
+      "legs": [
+        {
+          "player": "Javonte Williams",
+          "player_id": "00-0036997",
+          "team": "DAL",
+          "opp": "TB",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 67.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3,
+          "why": "Sharp-side under: line dropped 75.5 \u2192 67.5 on a popular player despite the public's over lean, and the model agrees"
+        },
+        {
+          "player": "David Montgomery",
+          "player_id": "00-0035685",
+          "team": "HOU",
+          "opp": "TEN",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 45.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.1,
+          "why": "Fade the game Over: 76% of bets on the Over but 35% of the money on the Under"
+        },
+        {
+          "player": "Geno Smith",
+          "player_id": "00-0030565",
+          "team": "NYJ",
+          "opp": "CLE",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.8,
+          "why": "Fade the game Over: 74% of bets on the Over but 35% of the money on the Under"
+        },
+        {
+          "player": "Aaron Rodgers",
+          "player_id": "00-0023459",
+          "team": "PIT",
+          "opp": "IND",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 259.5,
+          "odds": 220,
+          "grade": "B",
+          "score": 6.5,
+          "alt": "260+",
+          "why": "Buy low: market dropped this 224.5 \u2192 218.5, model still projects 269.3 \u00b7 boosted to 260+"
+        }
+      ],
+      "game": "multi",
+      "note": "CONTRARIAN ALT LINE SPECIAL",
+      "id": "2026-w5-1791495068-12",
+      "placed_at": "2026-10-08T17:31:08.581893-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 2127
     }
   ],
   "superseded": [
@@ -9959,7 +10538,8 @@
     }
   ],
   "week_budgets": {
-    "4": 1769.02
+    "4": 1769.02,
+    "5": 1601.88
   },
   "note": "Bankroll starts in week 1: weeks 1-3 are simulated backtests (flagged backtest); week-4 stakes were rescaled x1.76902 to the week-4 starting bankroll (originals in stake_original).",
   "changes": [
