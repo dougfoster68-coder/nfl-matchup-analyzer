@@ -21,7 +21,7 @@
    "traps": [
     "Model likes the over on old usage, but carries fell to 2.7/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036919|receiving_yards": {
    "game": "TB@DAL",
@@ -32,15 +32,17 @@
    "player_id": "00-0036919",
    "pos": "RB",
    "stat": "receiving_yards",
-   "line": 12.5,
-   "pick": "OVER 12.5",
-   "score": 5.4,
-   "grade": "C",
-   "p_over": 0.65,
+   "line": 11.5,
+   "pick": "OVER 11.5",
+   "score": 2.6,
+   "grade": "D",
+   "p_over": 0.67,
    "proj": 20.4,
-   "line_hits": "7/10",
-   "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "line_hits": "8/10",
+   "traps": [
+    "Line 11.5 vs 21 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039361|rushing_yards": {
    "game": "TB@DAL",
@@ -51,15 +53,15 @@
    "player_id": "00-0039361",
    "pos": "RB",
    "stat": "rushing_yards",
-   "line": 52.5,
-   "pick": "OVER 52.5",
-   "score": 5.5,
+   "line": 53.5,
+   "pick": "OVER 53.5",
+   "score": 5.3,
    "grade": "C",
-   "p_over": 0.65,
+   "p_over": 0.63,
    "proj": 60.8,
    "line_hits": "7/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039361|receiving_yards": {
    "game": "TB@DAL",
@@ -70,15 +72,15 @@
    "player_id": "00-0039361",
    "pos": "RB",
    "stat": "receiving_yards",
-   "line": 12.5,
-   "pick": "OVER 12.5",
-   "score": 1.9,
+   "line": 11.5,
+   "pick": "OVER 11.5",
+   "score": 3.3,
    "grade": "D",
-   "p_over": 0.53,
+   "p_over": 0.55,
    "proj": 13.6,
-   "line_hits": "5/10",
+   "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033921|receiving_yards": {
    "game": "TB@DAL",
@@ -97,7 +99,7 @@
    "proj": 46.9,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040129|receiving_yards": {
    "game": "TB@DAL",
@@ -116,7 +118,7 @@
    "proj": 39.5,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040237|receiving_yards": {
    "game": "TB@DAL",
@@ -135,7 +137,7 @@
    "proj": 17.0,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0041048|receiving_yards": {
    "game": "TB@DAL",
@@ -154,7 +156,7 @@
    "proj": 36.2,
    "line_hits": "4/4",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038129|receiving_yards": {
    "game": "TB@DAL",
@@ -173,7 +175,7 @@
    "proj": 34.3,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033077|passing_yards": {
    "game": "TB@DAL",
@@ -192,7 +194,7 @@
    "proj": 262.1,
    "line_hits": "7/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033077|rushing_yards": {
    "game": "TB@DAL",
@@ -211,7 +213,7 @@
    "proj": 10.9,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036997|rushing_yards": {
    "game": "TB@DAL",
@@ -230,7 +232,7 @@
    "proj": 50.2,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036997|receiving_yards": {
    "game": "TB@DAL",
@@ -249,7 +251,7 @@
    "proj": 17.1,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037120|rushing_yards": {
    "game": "TB@DAL",
@@ -270,7 +272,7 @@
    "traps": [
     "Line 15.5 vs 9 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036358|receiving_yards": {
    "game": "TB@DAL",
@@ -289,7 +291,7 @@
    "proj": 85.1,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037247|receiving_yards": {
    "game": "TB@DAL",
@@ -308,7 +310,7 @@
    "proj": 49.3,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039410|receiving_yards": {
    "game": "TB@DAL",
@@ -327,7 +329,7 @@
    "proj": 29.3,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038041|receiving_yards": {
    "game": "TB@DAL",
@@ -346,7 +348,7 @@
    "proj": 27.1,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036389|passing_yards": {
    "game": "PHI@JAX",
@@ -386,7 +388,7 @@
    "traps": [
     "Model likes the under on old usage, but carries rose to 15/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040719|receiving_yards": {
    "game": "PHI@JAX",
@@ -405,7 +407,7 @@
    "proj": 9.5,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0034960|receiving_yards": {
    "game": "PHI@JAX",
@@ -424,7 +426,7 @@
    "proj": 39.8,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038606|receiving_yards": {
    "game": "PHI@JAX",
@@ -443,7 +445,7 @@
    "proj": 68.6,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039893|receiving_yards": {
    "game": "PHI@JAX",
@@ -462,7 +464,7 @@
    "proj": 33.1,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038935|receiving_yards": {
    "game": "PHI@JAX",
@@ -481,7 +483,7 @@
    "proj": 27.5,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038416|passing_yards": {
    "game": "CHI@GB",
@@ -502,7 +504,7 @@
    "traps": [
     "Line 218.5 vs 111 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036264|passing_yards": {
    "game": "CHI@GB",
@@ -521,7 +523,7 @@
    "proj": 235.3,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0029604|passing_yards": {
    "game": "LV@NE",
@@ -540,7 +542,7 @@
    "proj": 213.7,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039851|passing_yards": {
    "game": "LV@NE",
@@ -559,7 +561,7 @@
    "proj": 198.9,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037834|passing_yards": {
    "game": "SF@SEA",
@@ -578,7 +580,7 @@
    "proj": 219.2,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037834|rushing_yards": {
    "game": "SF@SEA",
@@ -597,7 +599,7 @@
    "proj": 39.6,
    "line_hits": "9/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033280|rushing_yards": {
    "game": "SF@SEA",
@@ -616,7 +618,7 @@
    "proj": 52.0,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033280|receiving_yards": {
    "game": "SF@SEA",
@@ -635,7 +637,7 @@
    "proj": 38.3,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0041052|rushing_yards": {
    "game": "SF@SEA",
@@ -656,7 +658,7 @@
    "traps": [
     "Line 15.5 vs 29 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0031408|receiving_yards": {
    "game": "SF@SEA",
@@ -675,7 +677,7 @@
    "proj": 44.4,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0035719|receiving_yards": {
    "game": "SF@SEA",
@@ -694,7 +696,7 @@
    "proj": 39.6,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033288|receiving_yards": {
    "game": "SF@SEA",
@@ -713,7 +715,7 @@
    "proj": 50.0,
    "line_hits": "7/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0034869|passing_yards": {
    "game": "SF@SEA",
@@ -732,7 +734,7 @@
    "proj": 196.4,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033908|receiving_yards": {
    "game": "SF@SEA",
@@ -751,7 +753,7 @@
    "proj": 29.6,
    "line_hits": "7/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037545|receiving_yards": {
    "game": "SF@SEA",
@@ -770,7 +772,7 @@
    "proj": 15.4,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038543|receiving_yards": {
    "game": "SF@SEA",
@@ -789,7 +791,7 @@
    "proj": 88.8,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039793|receiving_yards": {
    "game": "SF@SEA",
@@ -808,7 +810,7 @@
    "proj": 24.0,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0034857|passing_yards": {
    "game": "BUF@LA",
@@ -846,7 +848,7 @@
    "proj": 91.9,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0026498|passing_yards": {
    "game": "BUF@LA",
@@ -865,7 +867,7 @@
    "proj": 305.0,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037840|rushing_yards": {
    "game": "BUF@LA",
@@ -884,7 +886,7 @@
    "proj": 69.9,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037840|receiving_yards": {
    "game": "BUF@LA",
@@ -903,7 +905,7 @@
    "proj": 38.8,
    "line_hits": "7/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039738|rushing_yards": {
    "game": "BUF@LA",
@@ -922,7 +924,7 @@
    "proj": 39.3,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0031381|receiving_yards": {
    "game": "BUF@LA",
@@ -941,7 +943,7 @@
    "proj": 82.9,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039075|receiving_yards": {
    "game": "BUF@LA",
@@ -960,7 +962,7 @@
    "proj": 121.7,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0034857|rushing_yards": {
    "game": "BUF@LA",
@@ -979,7 +981,7 @@
    "proj": 32.5,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036389|rushing_yards": {
    "game": "PHI@JAX",
@@ -998,7 +1000,7 @@
    "proj": 24.0,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036971|passing_yards": {
    "game": "PHI@JAX",
@@ -1017,7 +1019,7 @@
    "proj": 214.4,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033537|passing_yards": {
    "game": "CLE@NYJ",
@@ -1036,7 +1038,7 @@
    "proj": 215.4,
    "line_hits": "3/4",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033537|rushing_yards": {
    "game": "CLE@NYJ",
@@ -1055,7 +1057,7 @@
    "proj": 21.7,
    "line_hits": "2/4",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0030565|passing_yards": {
    "game": "CLE@NYJ",
@@ -1074,7 +1076,7 @@
    "proj": 209.7,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040784|rushing_yards": {
    "game": "CLE@NYJ",
@@ -1093,7 +1095,7 @@
    "proj": 53.9,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0041037|receiving_yards": {
    "game": "CLE@NYJ",
@@ -1112,7 +1114,7 @@
    "proj": 65.6,
    "line_hits": "3/4",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0041547|receiving_yards": {
    "game": "CLE@NYJ",
@@ -1131,7 +1133,7 @@
    "proj": 33.4,
    "line_hits": "2/4",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040663|receiving_yards": {
    "game": "CLE@NYJ",
@@ -1142,15 +1144,15 @@
    "player_id": "00-0040663",
    "pos": "TE",
    "stat": "receiving_yards",
-   "line": 35.5,
-   "pick": "OVER 35.5",
-   "score": 6.1,
-   "grade": "B",
-   "p_over": 0.72,
+   "line": 36.5,
+   "pick": "OVER 36.5",
+   "score": 6.0,
+   "grade": "C",
+   "p_over": 0.71,
    "proj": 48.8,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0030565|rushing_yards": {
    "game": "CLE@NYJ",
@@ -1169,7 +1171,7 @@
    "proj": 4.6,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039794|rushing_yards": {
    "game": "CLE@NYJ",
@@ -1190,7 +1192,7 @@
    "traps": [
     "Line 73.5 vs 27 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039798|rushing_yards": {
    "game": "CLE@NYJ",
@@ -1209,7 +1211,7 @@
    "proj": 10.6,
    "line_hits": "2/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037740|receiving_yards": {
    "game": "CLE@NYJ",
@@ -1220,15 +1222,15 @@
    "player_id": "00-0037740",
    "pos": "WR",
    "stat": "receiving_yards",
-   "line": 70.5,
-   "pick": "UNDER 70.5",
-   "score": 5.3,
+   "line": 69.5,
+   "pick": "UNDER 69.5",
+   "score": 5.2,
    "grade": "C",
-   "p_over": 0.33,
+   "p_over": 0.34,
    "proj": 56.1,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036971|rushing_yards": {
    "game": "PHI@JAX",
@@ -1247,7 +1249,7 @@
    "proj": 17.5,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0041100|receiving_yards": {
    "game": "PHI@JAX",
@@ -1266,7 +1268,7 @@
    "proj": 18.4,
    "line_hits": "3/4",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0034869|rushing_yards": {
    "game": "SF@SEA",
@@ -1285,7 +1287,7 @@
    "proj": 2.7,
    "line_hits": "7/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039917|passing_yards": {
    "game": "BAL@ATL",
@@ -1304,7 +1306,7 @@
    "proj": 238.5,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037746|rushing_yards": {
    "game": "BAL@ATL",
@@ -1325,7 +1327,7 @@
    "traps": [
     "Model likes the under on old usage, but carries rose to 11.7/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038542|rushing_yards": {
    "game": "BAL@ATL",
@@ -1344,7 +1346,7 @@
    "proj": 96.7,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038542|receiving_yards": {
    "game": "BAL@ATL",
@@ -1365,7 +1367,7 @@
    "traps": [
     "Model likes the over on old usage, but targets fell to 2.7/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037238|receiving_yards": {
    "game": "BAL@ATL",
@@ -1384,7 +1386,7 @@
    "proj": 104.1,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037741|receiving_yards": {
    "game": "BAL@ATL",
@@ -1403,7 +1405,7 @@
    "proj": 24.9,
    "line_hits": "2/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036970|receiving_yards": {
    "game": "BAL@ATL",
@@ -1424,7 +1426,7 @@
    "traps": [
     "Model likes the over on old usage, but targets fell to 2.7/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0035993|passing_yards": {
    "game": "BAL@ATL",
@@ -1464,7 +1466,7 @@
    "proj": 84.2,
    "line_hits": "7/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0034975|rushing_yards": {
    "game": "BAL@ATL",
@@ -1483,7 +1485,7 @@
    "proj": 8.0,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039064|receiving_yards": {
    "game": "BAL@ATL",
@@ -1502,7 +1504,7 @@
    "proj": 107.8,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0034753|receiving_yards": {
    "game": "BAL@ATL",
@@ -1521,7 +1523,7 @@
    "proj": 33.2,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038933|receiving_yards": {
    "game": "BUF@LA",
@@ -1532,15 +1534,15 @@
    "player_id": "00-0038933",
    "pos": "TE",
    "stat": "receiving_yards",
-   "line": 49.5,
-   "pick": "UNDER 49.5",
-   "score": 4.8,
+   "line": 50.5,
+   "pick": "UNDER 50.5",
+   "score": 4.9,
    "grade": "C",
-   "p_over": 0.41,
+   "p_over": 0.4,
    "proj": 39.9,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040676|passing_yards": {
    "game": "HOU@TEN",
@@ -1559,7 +1561,7 @@
    "proj": 183.4,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0035261|rushing_yards": {
    "game": "HOU@TEN",
@@ -1578,7 +1580,7 @@
    "proj": 61.4,
    "line_hits": "7/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038117|receiving_yards": {
    "game": "HOU@TEN",
@@ -1599,7 +1601,7 @@
    "traps": [
     "Model likes the over on old usage, but targets fell to 5.7/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0041438|receiving_yards": {
    "game": "HOU@TEN",
@@ -1618,7 +1620,7 @@
    "proj": 79.4,
    "line_hits": "2/4",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039163|passing_yards": {
    "game": "HOU@TEN",
@@ -1637,7 +1639,7 @@
    "proj": 267.0,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036554|receiving_yards": {
    "game": "HOU@TEN",
@@ -1656,7 +1658,7 @@
    "proj": 86.7,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036355|passing_yards": {
    "game": "DEN@LAC",
@@ -1675,7 +1677,7 @@
    "proj": 196.3,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036355|rushing_yards": {
    "game": "DEN@LAC",
@@ -1694,7 +1696,7 @@
    "proj": 42.7,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039732|passing_yards": {
    "game": "DEN@LAC",
@@ -1713,7 +1715,7 @@
    "proj": 218.6,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039732|rushing_yards": {
    "game": "DEN@LAC",
@@ -1734,7 +1736,7 @@
    "traps": [
     "Model likes the over on old usage, but carries fell to 3.7/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036158|rushing_yards": {
    "game": "DEN@LAC",
@@ -1753,7 +1755,7 @@
    "proj": 54.8,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040730|rushing_yards": {
    "game": "DEN@LAC",
@@ -1774,7 +1776,7 @@
    "traps": [
     "Model likes the over on old usage, but carries fell to 4/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040730|receiving_yards": {
    "game": "DEN@LAC",
@@ -1793,7 +1795,7 @@
    "proj": 36.8,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039868|receiving_yards": {
    "game": "DEN@LAC",
@@ -1815,7 +1817,7 @@
     "Missed the team's last game \u2014 line may assume limited snaps",
     "Model likes the over on old usage, but targets fell to 1.3/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0034348|receiving_yards": {
    "game": "DEN@LAC",
@@ -1834,7 +1836,7 @@
    "proj": 33.9,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036613|receiving_yards": {
    "game": "DEN@LAC",
@@ -1853,7 +1855,7 @@
    "proj": 43.9,
    "line_hits": "2/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038976|receiving_yards": {
    "game": "DEN@LAC",
@@ -1874,7 +1876,7 @@
    "traps": [
     "Line 11.5 vs 24 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038454|rushing_yards": {
    "game": "DEN@LAC",
@@ -1893,7 +1895,7 @@
    "proj": 32.6,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040666|rushing_yards": {
    "game": "DEN@LAC",
@@ -1912,7 +1914,7 @@
    "proj": 53.4,
    "line_hits": "8/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033106|passing_yards": {
    "game": "DET@ARI",
@@ -1931,7 +1933,7 @@
    "proj": 324.7,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033119|passing_yards": {
    "game": "DET@ARI",
@@ -1950,7 +1952,7 @@
    "proj": 263.8,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039139|rushing_yards": {
    "game": "DET@ARI",
@@ -1969,7 +1971,7 @@
    "proj": 79.8,
    "line_hits": "2/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033119|rushing_yards": {
    "game": "DET@ARI",
@@ -1988,7 +1990,7 @@
    "proj": 10.4,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0041027|rushing_yards": {
    "game": "DET@ARI",
@@ -2007,7 +2009,7 @@
    "proj": 59.4,
    "line_hits": "2/4",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033106|rushing_yards": {
    "game": "DET@ARI",
@@ -2026,7 +2028,7 @@
    "proj": 2.6,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039139|receiving_yards": {
    "game": "DET@ARI",
@@ -2045,7 +2047,7 @@
    "proj": 42.8,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036963|receiving_yards": {
    "game": "DET@ARI",
@@ -2064,7 +2066,7 @@
    "proj": 82.3,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037240|receiving_yards": {
    "game": "DET@ARI",
@@ -2083,7 +2085,7 @@
    "proj": 73.5,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040669|receiving_yards": {
    "game": "DET@ARI",
@@ -2102,7 +2104,7 @@
    "proj": 41.0,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039065|receiving_yards": {
    "game": "DET@ARI",
@@ -2121,7 +2123,7 @@
    "proj": 72.4,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0041027|receiving_yards": {
    "game": "DET@ARI",
@@ -2140,7 +2142,7 @@
    "proj": 6.7,
    "line_hits": "2/4",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033307|receiving_yards": {
    "game": "DET@ARI",
@@ -2161,7 +2163,7 @@
    "traps": [
     "Missed the team's last game \u2014 line may assume limited snaps"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038559|receiving_yards": {
    "game": "DET@ARI",
@@ -2180,7 +2182,7 @@
    "proj": 85.7,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039849|receiving_yards": {
    "game": "DET@ARI",
@@ -2199,7 +2201,7 @@
    "proj": 36.6,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037744|receiving_yards": {
    "game": "DET@ARI",
@@ -2218,7 +2220,7 @@
    "proj": 93.8,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036275|rushing_yards": {
    "game": "CHI@GB",
@@ -2237,7 +2239,7 @@
    "proj": 84.2,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036275|receiving_yards": {
    "game": "CHI@GB",
@@ -2256,7 +2258,7 @@
    "proj": 16.9,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0032464|receiving_yards": {
    "game": "CHI@GB",
@@ -2275,7 +2277,7 @@
    "proj": 45.6,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039919|receiving_yards": {
    "game": "CHI@GB",
@@ -2294,7 +2296,7 @@
    "proj": 52.1,
    "line_hits": "9/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040735|receiving_yards": {
    "game": "CHI@GB",
@@ -2313,7 +2315,7 @@
    "proj": 57.6,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040126|receiving_yards": {
    "game": "CHI@GB",
@@ -2334,7 +2336,7 @@
    "traps": [
     "Model likes the over on old usage, but targets fell to 5.3/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038124|receiving_yards": {
    "game": "CHI@GB",
@@ -2353,7 +2355,7 @@
    "proj": 75.7,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040667|receiving_yards": {
    "game": "CHI@GB",
@@ -2374,7 +2376,7 @@
    "traps": [
     "Model likes the under on old usage, but targets rose to 8.3/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038996|receiving_yards": {
    "game": "CHI@GB",
@@ -2393,7 +2395,7 @@
    "proj": 37.6,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038611|rushing_yards": {
    "game": "PHI@JAX",
@@ -2414,7 +2416,7 @@
    "traps": [
     "Model likes the over on old usage, but carries fell to 6.7/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0035710|passing_yards": {
    "game": "IND@PIT",
@@ -2433,7 +2435,7 @@
    "proj": 203.9,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0023459|passing_yards": {
    "game": "IND@PIT",
@@ -2452,7 +2454,7 @@
    "proj": 269.3,
    "line_hits": "7/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0035710|rushing_yards": {
    "game": "IND@PIT",
@@ -2471,7 +2473,7 @@
    "proj": 7.0,
    "line_hits": "2/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036223|rushing_yards": {
    "game": "IND@PIT",
@@ -2490,7 +2492,7 @@
    "proj": 79.8,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036223|receiving_yards": {
    "game": "IND@PIT",
@@ -2509,7 +2511,7 @@
    "proj": 18.9,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038997|receiving_yards": {
    "game": "IND@PIT",
@@ -2528,7 +2530,7 @@
    "proj": 48.3,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040128|receiving_yards": {
    "game": "IND@PIT",
@@ -2549,7 +2551,7 @@
    "traps": [
     "Line 47.5 vs 30 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0035640|receiving_yards": {
    "game": "IND@PIT",
@@ -2568,7 +2570,7 @@
    "proj": 64.2,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036252|receiving_yards": {
    "game": "IND@PIT",
@@ -2606,7 +2608,7 @@
    "proj": 41.3,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036894|receiving_yards": {
    "game": "IND@PIT",
@@ -2625,7 +2627,7 @@
    "proj": 34.6,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038558|receiving_yards": {
    "game": "IND@PIT",
@@ -2644,7 +2646,7 @@
    "proj": 30.1,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033881|receiving_yards": {
    "game": "DEN@LAC",
@@ -2663,7 +2665,7 @@
    "proj": 17.5,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0035228|passing_yards": {
    "game": "MIN@NO",
@@ -2682,7 +2684,7 @@
    "proj": 152.6,
    "line_hits": "3/8",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0035228|rushing_yards": {
    "game": "MIN@NO",
@@ -2701,7 +2703,7 @@
    "proj": 17.1,
    "line_hits": "5/8",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033293|rushing_yards": {
    "game": "MIN@NO",
@@ -2720,7 +2722,7 @@
    "proj": 76.2,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033293|receiving_yards": {
    "game": "MIN@NO",
@@ -2731,15 +2733,15 @@
    "player_id": "00-0033293",
    "pos": "RB",
    "stat": "receiving_yards",
-   "line": 19.5,
-   "pick": "UNDER 19.5",
-   "score": 4.4,
+   "line": 18.5,
+   "pick": "UNDER 18.5",
+   "score": 4.0,
    "grade": "D",
-   "p_over": 0.36,
+   "p_over": 0.39,
    "proj": 14.3,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037239|receiving_yards": {
    "game": "MIN@NO",
@@ -2758,7 +2760,7 @@
    "proj": 94.6,
    "line_hits": "7/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039424|receiving_yards": {
    "game": "MIN@NO",
@@ -2777,7 +2779,7 @@
    "proj": 46.0,
    "line_hits": "8/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036040|receiving_yards": {
    "game": "MIN@NO",
@@ -2796,7 +2798,7 @@
    "proj": 44.2,
    "line_hits": "7/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036550|receiving_yards": {
    "game": "BAL@ATL",
@@ -2815,7 +2817,7 @@
    "proj": 32.4,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040122|receiving_yards": {
    "game": "LV@NE",
@@ -2834,7 +2836,7 @@
    "proj": 31.0,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038563|receiving_yards": {
    "game": "LV@NE",
@@ -2853,7 +2855,7 @@
    "proj": 41.1,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039066|receiving_yards": {
    "game": "LV@NE",
@@ -2872,7 +2874,7 @@
    "proj": 27.7,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039338|receiving_yards": {
    "game": "LV@NE",
@@ -2891,7 +2893,7 @@
    "proj": 51.0,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040236|rushing_yards": {
    "game": "CHI@GB",
@@ -2910,7 +2912,7 @@
    "proj": 71.9,
    "line_hits": "2/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037816|receiving_yards": {
    "game": "LV@NE",
@@ -2929,7 +2931,7 @@
    "proj": 52.0,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033090|receiving_yards": {
    "game": "LV@NE",
@@ -2948,7 +2950,7 @@
    "proj": 29.5,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0031503|passing_yards": {
    "game": "NYG@WAS",
@@ -2959,15 +2961,15 @@
    "player_id": "00-0031503",
    "pos": "QB",
    "stat": "passing_yards",
-   "line": 199.5,
-   "pick": "UNDER 199.5",
-   "score": 4.1,
+   "line": 195.5,
+   "pick": "UNDER 195.5",
+   "score": 4.0,
    "grade": "D",
-   "p_over": 0.43,
+   "p_over": 0.44,
    "proj": 180.2,
    "line_hits": "3/6",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039910|passing_yards": {
    "game": "NYG@WAS",
@@ -2988,7 +2990,7 @@
    "traps": [
     "Missed the team's last game \u2014 line may assume limited snaps"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0030279|receiving_yards": {
    "game": "IND@PIT",
@@ -3009,7 +3011,7 @@
    "traps": [
     "Missed the team's last game \u2014 line may assume limited snaps"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040122|rushing_yards": {
    "game": "LV@NE",
@@ -3028,7 +3030,7 @@
    "proj": 59.0,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0031503|rushing_yards": {
    "game": "NYG@WAS",
@@ -3047,7 +3049,7 @@
    "proj": 7.1,
    "line_hits": "3/6",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036893|rushing_yards": {
    "game": "NYG@WAS",
@@ -3066,7 +3068,7 @@
    "proj": 27.5,
    "line_hits": "2/6",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040715|rushing_yards": {
    "game": "NYG@WAS",
@@ -3077,15 +3079,15 @@
    "player_id": "00-0040715",
    "pos": "RB",
    "stat": "rushing_yards",
-   "line": 57.5,
-   "pick": "OVER 57.5",
-   "score": 4.6,
+   "line": 56.5,
+   "pick": "OVER 56.5",
+   "score": 4.7,
    "grade": "C",
-   "p_over": 0.54,
+   "p_over": 0.55,
    "proj": 59.4,
    "line_hits": "8/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040715|receiving_yards": {
    "game": "NYG@WAS",
@@ -3104,7 +3106,7 @@
    "proj": 20.2,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036309|receiving_yards": {
    "game": "NYG@WAS",
@@ -3115,15 +3117,15 @@
    "player_id": "00-0036309",
    "pos": "WR",
    "stat": "receiving_yards",
-   "line": 18.5,
-   "pick": "OVER 18.5",
-   "score": 6.1,
+   "line": 17.5,
+   "pick": "OVER 17.5",
+   "score": 6.5,
    "grade": "B",
-   "p_over": 0.66,
+   "p_over": 0.69,
    "proj": 25.0,
    "line_hits": "8/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039337|receiving_yards": {
    "game": "NYG@WAS",
@@ -3134,15 +3136,15 @@
    "player_id": "00-0039337",
    "pos": "WR",
    "stat": "receiving_yards",
-   "line": 55.5,
-   "pick": "OVER 55.5",
+   "line": 54.5,
+   "pick": "OVER 54.5",
    "score": 3.0,
    "grade": "D",
    "p_over": 0.55,
    "proj": 61.4,
    "line_hits": "4/8",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0041042|receiving_yards": {
    "game": "NYG@WAS",
@@ -3153,15 +3155,15 @@
    "player_id": "00-0041042",
    "pos": "WR",
    "stat": "receiving_yards",
-   "line": 27.5,
-   "pick": "OVER 27.5",
-   "score": 4.6,
+   "line": 26.5,
+   "pick": "OVER 26.5",
+   "score": 4.8,
    "grade": "C",
-   "p_over": 0.7,
+   "p_over": 0.72,
    "proj": 34.1,
    "line_hits": "2/4",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037838|receiving_yards": {
    "game": "NYG@WAS",
@@ -3172,15 +3174,15 @@
    "player_id": "00-0037838",
    "pos": "TE",
    "stat": "receiving_yards",
-   "line": 41.5,
-   "pick": "OVER 41.5",
-   "score": 3.2,
+   "line": 40.5,
+   "pick": "OVER 40.5",
+   "score": 3.4,
    "grade": "D",
-   "p_over": 0.59,
+   "p_over": 0.61,
    "proj": 48.1,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039910|rushing_yards": {
    "game": "NYG@WAS",
@@ -3202,7 +3204,7 @@
     "Missed the team's last game \u2014 line may assume limited snaps",
     "Model likes the over on old usage, but carries fell to 5.3/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040242|rushing_yards": {
    "game": "NYG@WAS",
@@ -3213,15 +3215,15 @@
    "player_id": "00-0040242",
    "pos": "RB",
    "stat": "rushing_yards",
-   "line": 55.5,
-   "pick": "UNDER 55.5",
-   "score": 5.8,
-   "grade": "C",
-   "p_over": 0.4,
+   "line": 56.5,
+   "pick": "UNDER 56.5",
+   "score": 6.1,
+   "grade": "B",
+   "p_over": 0.38,
    "proj": 48.2,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040743|passing_yards": {
    "game": "MIN@NO",
@@ -3240,7 +3242,7 @@
    "proj": 237.1,
    "line_hits": "9/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0034837|receiving_yards": {
    "game": "HOU@TEN",
@@ -3262,7 +3264,7 @@
     "Line 9.5 vs 31 L10 avg \u2014 gap this big usually means the book knows about an injury or role change",
     "Model likes the over on old usage, but targets fell to 1.7/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040170|receiving_yards": {
    "game": "HOU@TEN",
@@ -3281,7 +3283,7 @@
    "proj": 33.9,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040584|receiving_yards": {
    "game": "HOU@TEN",
@@ -3300,7 +3302,7 @@
    "proj": 17.9,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0035261|receiving_yards": {
    "game": "HOU@TEN",
@@ -3319,7 +3321,7 @@
    "proj": 5.3,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039032|receiving_yards": {
    "game": "HOU@TEN",
@@ -3340,7 +3342,7 @@
    "traps": [
     "Model likes the over on old usage, but targets fell to 1/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0035685|receiving_yards": {
    "game": "HOU@TEN",
@@ -3361,7 +3363,7 @@
    "traps": [
     "Line 7.5 vs 14 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040583|receiving_yards": {
    "game": "HOU@TEN",
@@ -3380,7 +3382,7 @@
    "proj": 7.1,
    "line_hits": "2/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038608|receiving_yards": {
    "game": "HOU@TEN",
@@ -3399,7 +3401,7 @@
    "proj": 33.4,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038618|receiving_yards": {
    "game": "HOU@TEN",
@@ -3420,7 +3422,7 @@
    "traps": [
     "Line 14.5 vs 38 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040138|receiving_yards": {
    "game": "HOU@TEN",
@@ -3439,7 +3441,7 @@
    "proj": 34.0,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0034383|receiving_yards": {
    "game": "HOU@TEN",
@@ -3458,7 +3460,7 @@
    "proj": 45.3,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038128|passing_yards": {
    "game": "CIN@MIA",
@@ -3479,7 +3481,7 @@
    "traps": [
     "Model likes the under on old usage, but attempts rose to 25.3/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039874|rushing_yards": {
    "game": "CIN@MIA",
@@ -3490,15 +3492,15 @@
    "player_id": "00-0039874",
    "pos": "RB",
    "stat": "rushing_yards",
-   "line": 22.5,
-   "pick": "UNDER 22.5",
-   "score": 4.7,
-   "grade": "C",
-   "p_over": 0.47,
+   "line": 21.5,
+   "pick": "UNDER 21.5",
+   "score": 4.5,
+   "grade": "D",
+   "p_over": 0.49,
    "proj": 20.7,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040198|rushing_yards": {
    "game": "CIN@MIA",
@@ -3520,7 +3522,7 @@
     "Line 45.5 vs 29 L10 avg \u2014 gap this big usually means the book knows about an injury or role change",
     "Model likes the under on old usage, but carries rose to 9.7/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036442|passing_yards": {
    "game": "CIN@MIA",
@@ -3539,7 +3541,7 @@
    "proj": 297.6,
    "line_hits": "8/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038597|rushing_yards": {
    "game": "CIN@MIA",
@@ -3558,7 +3560,7 @@
    "proj": 59.6,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039163|rushing_yards": {
    "game": "HOU@TEN",
@@ -3577,7 +3579,7 @@
    "proj": 12.0,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0035685|rushing_yards": {
    "game": "HOU@TEN",
@@ -3598,7 +3600,7 @@
    "traps": [
     "Line 48.5 vs 32 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040583|rushing_yards": {
    "game": "HOU@TEN",
@@ -3619,7 +3621,7 @@
    "traps": [
     "Model likes the over on old usage, but carries fell to 6.3/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040676|rushing_yards": {
    "game": "HOU@TEN",
@@ -3638,7 +3640,7 @@
    "proj": 7.9,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039032|rushing_yards": {
    "game": "HOU@TEN",
@@ -3657,7 +3659,7 @@
    "proj": 15.5,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038416|rushing_yards": {
    "game": "CHI@GB",
@@ -3678,7 +3680,7 @@
    "traps": [
     "Line 10.5 vs 2 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039811|rushing_yards": {
    "game": "CHI@GB",
@@ -3697,7 +3699,7 @@
    "proj": 19.5,
    "line_hits": "1/4",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040142|rushing_yards": {
    "game": "CHI@GB",
@@ -3719,7 +3721,7 @@
     "Line 36.5 vs 16 L10 avg \u2014 gap this big usually means the book knows about an injury or role change",
     "Model likes the under on old usage, but carries rose to 6.7/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036442|rushing_yards": {
    "game": "CIN@MIA",
@@ -3738,7 +3740,7 @@
    "proj": 6.3,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0033526|rushing_yards": {
    "game": "CIN@MIA",
@@ -3759,7 +3761,7 @@
    "traps": [
     "Model likes the over on old usage, but carries fell to 2.7/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038128|rushing_yards": {
    "game": "CIN@MIA",
@@ -3770,15 +3772,15 @@
    "player_id": "00-0038128",
    "pos": "QB",
    "stat": "rushing_yards",
-   "line": 32.5,
-   "pick": "OVER 32.5",
-   "score": 2.4,
+   "line": 33.5,
+   "pick": "UNDER 33.5",
+   "score": 3.4,
    "grade": "D",
-   "p_over": 0.5,
+   "p_over": 0.48,
    "proj": 32.4,
    "line_hits": "4/8",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039811|receiving_yards": {
    "game": "CHI@GB",
@@ -3797,7 +3799,7 @@
    "proj": 12.0,
    "line_hits": "1/4",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038090|receiving_yards": {
    "game": "CHI@GB",
@@ -3816,7 +3818,7 @@
    "proj": 7.5,
    "line_hits": "2/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040198|receiving_yards": {
    "game": "CIN@MIA",
@@ -3837,7 +3839,7 @@
    "traps": [
     "Line 10.5 vs 2 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039880|receiving_yards": {
    "game": "CIN@MIA",
@@ -3858,7 +3860,7 @@
    "traps": [
     "Model likes the under on old usage, but targets rose to 6.7/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037252|receiving_yards": {
    "game": "CIN@MIA",
@@ -3879,7 +3881,7 @@
    "traps": [
     "Missed the team's last game \u2014 line may assume limited snaps"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038797|rushing_yards": {
    "game": "SF@SEA",
@@ -3901,7 +3903,7 @@
     "Line 60.5 vs 42 L10 avg \u2014 gap this big usually means the book knows about an injury or role change",
     "Model likes the under on old usage, but carries rose to 17/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039299|rushing_yards": {
    "game": "SF@SEA",
@@ -3920,7 +3922,7 @@
    "proj": 14.8,
    "line_hits": "2/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037263|rushing_yards": {
    "game": "DET@ARI",
@@ -3941,7 +3943,7 @@
    "traps": [
     "Model likes the over on old usage, but carries fell to 5/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037263|receiving_yards": {
    "game": "DET@ARI",
@@ -3960,7 +3962,7 @@
    "proj": 7.0,
    "line_hits": "2/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038797|receiving_yards": {
    "game": "SF@SEA",
@@ -3979,7 +3981,7 @@
    "proj": 10.4,
    "line_hits": "1/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039299|receiving_yards": {
    "game": "SF@SEA",
@@ -3998,7 +4000,7 @@
    "proj": 13.6,
    "line_hits": "2/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040648|receiving_yards": {
    "game": "SF@SEA",
@@ -4019,7 +4021,7 @@
    "traps": [
     "Line 9.5 vs 22 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039917|rushing_yards": {
    "game": "BAL@ATL",
@@ -4038,7 +4040,7 @@
    "proj": 4.0,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0026498|rushing_yards": {
    "game": "BUF@LA",
@@ -4057,7 +4059,7 @@
    "proj": 6.6,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040878|rushing_yards": {
    "game": "LV@NE",
@@ -4076,7 +4078,7 @@
    "proj": 27.3,
    "line_hits": "2/4",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0029604|rushing_yards": {
    "game": "LV@NE",
@@ -4095,7 +4097,7 @@
    "proj": -0.3,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039851|rushing_yards": {
    "game": "LV@NE",
@@ -4114,7 +4116,7 @@
    "proj": 40.7,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038951|rushing_yards": {
    "game": "TB@DAL",
@@ -4136,7 +4138,7 @@
     "Line 11.5 vs 21 L10 avg \u2014 gap this big usually means the book knows about an injury or role change",
     "Model likes the over on old usage, but carries fell to 3/game"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039746|rushing_yards": {
    "game": "PHI@JAX",
@@ -4157,7 +4159,7 @@
    "traps": [
     "Line 36.5 vs 8 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040743|rushing_yards": {
    "game": "MIN@NO",
@@ -4178,7 +4180,7 @@
    "traps": [
     "Line 10.5 vs 21 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039746|receiving_yards": {
    "game": "PHI@JAX",
@@ -4199,7 +4201,7 @@
    "traps": [
     "Line 13.5 vs 5 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038393|receiving_yards": {
    "game": "PHI@JAX",
@@ -4218,7 +4220,7 @@
    "proj": 48.9,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0040867|receiving_yards": {
    "game": "PHI@JAX",
@@ -4239,7 +4241,7 @@
    "traps": [
     "Line 32.5 vs 17 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0035891|receiving_yards": {
    "game": "LV@NE",
@@ -4258,7 +4260,7 @@
    "proj": 11.8,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0038621|receiving_yards": {
    "game": "LV@NE",
@@ -4277,7 +4279,7 @@
    "proj": 20.2,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0037801|receiving_yards": {
    "game": "TB@DAL",
@@ -4288,17 +4290,17 @@
    "player_id": "00-0037801",
    "pos": "WR",
    "stat": "receiving_yards",
-   "line": 0.5,
-   "pick": "OVER 0.5",
-   "score": 2.4,
+   "line": 1.5,
+   "pick": "OVER 1.5",
+   "score": 2.3,
    "grade": "D",
-   "p_over": 0.69,
+   "p_over": 0.68,
    "proj": 11.9,
    "line_hits": "7/10",
    "traps": [
-    "Line 0.5 vs 14 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 1.5 vs 14 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0039530|receiving_yards": {
    "game": "TB@DAL",
@@ -4319,7 +4321,7 @@
    "traps": [
     "Line 1.5 vs 10 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   },
   "00-0036264|rushing_yards": {
    "game": "CHI@GB",
@@ -4338,7 +4340,7 @@
    "proj": 3.4,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-08T13:29-04:00"
+   "captured_at": "2026-10-08T13:46-04:00"
   }
  }
 }
