@@ -956,6 +956,14 @@
      "bets_b": 69,
      "money_a": 40,
      "money_b": 60
+    },
+    {
+     "at": "2026-10-09T15:29+00:00",
+     "line": null,
+     "bets_a": 31,
+     "bets_b": 69,
+     "money_a": 34,
+     "money_b": 66
     }
    ],
    "spread": [
@@ -1182,6 +1190,14 @@
      "bets_b": 64,
      "money_a": 32,
      "money_b": 68
+    },
+    {
+     "at": "2026-10-09T15:29+00:00",
+     "line": 7.5,
+     "bets_a": 37,
+     "bets_b": 63,
+     "money_a": 41,
+     "money_b": 59
     }
    ],
    "total": [
@@ -1993,6 +2009,14 @@
      "bets_b": 28,
      "money_a": 62,
      "money_b": 38
+    },
+    {
+     "at": "2026-10-09T15:29+00:00",
+     "line": 44.5,
+     "bets_a": 72,
+     "bets_b": 28,
+     "money_a": 63,
+     "money_b": 37
     }
    ]
   },
@@ -2214,6 +2238,14 @@
      "bets_b": 25,
      "money_a": 68,
      "money_b": 32
+    },
+    {
+     "at": "2026-10-09T15:29+00:00",
+     "line": null,
+     "bets_a": 75,
+     "bets_b": 25,
+     "money_a": 69,
+     "money_b": 31
     }
    ],
    "spread": [
@@ -2778,6 +2810,14 @@
      "bets_b": 24,
      "money_a": 73,
      "money_b": 27
+    },
+    {
+     "at": "2026-10-09T15:29+00:00",
+     "line": 41.5,
+     "bets_a": 76,
+     "bets_b": 24,
+     "money_a": 72,
+     "money_b": 28
     }
    ]
   },
@@ -3760,6 +3800,14 @@
      "bets_b": 25,
      "money_a": 87,
      "money_b": 13
+    },
+    {
+     "at": "2026-10-09T15:29+00:00",
+     "line": -6.5,
+     "bets_a": 75,
+     "bets_b": 25,
+     "money_a": 86,
+     "money_b": 14
     }
    ],
    "total": [
@@ -4792,6 +4840,14 @@
      "bets_b": 54,
      "money_a": 54,
      "money_b": 46
+    },
+    {
+     "at": "2026-10-09T15:29+00:00",
+     "line": null,
+     "bets_a": 46,
+     "bets_b": 54,
+     "money_a": 57,
+     "money_b": 43
     }
    ],
    "spread": [
@@ -5050,6 +5106,14 @@
      "bets_b": 25,
      "money_a": 75,
      "money_b": 25
+    },
+    {
+     "at": "2026-10-09T15:29+00:00",
+     "line": 3.5,
+     "bets_a": 74,
+     "bets_b": 26,
+     "money_a": 75,
+     "money_b": 25
     }
    ],
    "total": [
@@ -5252,6 +5316,14 @@
      "bets_b": 23,
      "money_a": 69,
      "money_b": 31
+    },
+    {
+     "at": "2026-10-09T15:29+00:00",
+     "line": 42.5,
+     "bets_a": 77,
+     "bets_b": 23,
+     "money_a": 70,
+     "money_b": 30
     }
    ]
   },
@@ -6032,6 +6104,14 @@
      "bets_b": 28,
      "money_a": 64,
      "money_b": 36
+    },
+    {
+     "at": "2026-10-09T15:29+00:00",
+     "line": null,
+     "bets_a": 72,
+     "bets_b": 28,
+     "money_a": 63,
+     "money_b": 37
     }
    ],
    "spread": [
@@ -6330,6 +6410,14 @@
      "bets_b": 43,
      "money_a": 45,
      "money_b": 55
+    },
+    {
+     "at": "2026-10-09T15:29+00:00",
+     "line": -1.5,
+     "bets_a": 57,
+     "bets_b": 43,
+     "money_a": 46,
+     "money_b": 54
     }
    ],
    "total": [
@@ -7147,6 +7235,14 @@
      "line": 41.5,
      "bets_a": 69,
      "bets_b": 31,
+     "money_a": 60,
+     "money_b": 40
+    },
+    {
+     "at": "2026-10-09T15:29+00:00",
+     "line": 41.5,
+     "bets_a": 70,
+     "bets_b": 30,
      "money_a": 60,
      "money_b": 40
     }
@@ -8509,6 +8605,14 @@
      "bets_b": 41,
      "money_a": 55,
      "money_b": 45
+    },
+    {
+     "at": "2026-10-09T15:29+00:00",
+     "line": -5.5,
+     "bets_a": 58,
+     "bets_b": 42,
+     "money_a": 55,
+     "money_b": 45
     }
    ]
   },
@@ -9454,6 +9558,14 @@
      "bets_b": 49,
      "money_a": 41,
      "money_b": 59
+    },
+    {
+     "at": "2026-10-09T15:29+00:00",
+     "line": null,
+     "bets_a": 51,
+     "bets_b": 49,
+     "money_a": 40,
+     "money_b": 60
     }
    ]
   },
@@ -9755,6 +9867,14 @@
      "bets_b": 45,
      "money_a": 33,
      "money_b": 67
+    },
+    {
+     "at": "2026-10-09T15:29+00:00",
+     "line": null,
+     "bets_a": 55,
+     "bets_b": 45,
+     "money_a": 36,
+     "money_b": 64
     }
    ],
    "total": [
