@@ -2089,6 +2089,14 @@
      "bets_b": 28,
      "money_a": 63,
      "money_b": 37
+    },
+    {
+     "at": "2026-10-09T18:57+00:00",
+     "line": 43.5,
+     "bets_a": 73,
+     "bets_b": 27,
+     "money_a": 64,
+     "money_b": 36
     }
    ]
   },
@@ -2326,6 +2334,14 @@
      "bets_b": 25,
      "money_a": 68,
      "money_b": 32
+    },
+    {
+     "at": "2026-10-09T18:57+00:00",
+     "line": null,
+     "bets_a": 75,
+     "bets_b": 25,
+     "money_a": 69,
+     "money_b": 31
     }
    ],
    "spread": [
@@ -2646,6 +2662,14 @@
      "line": -2.5,
      "bets_a": 56,
      "bets_b": 44,
+     "money_a": 52,
+     "money_b": 48
+    },
+    {
+     "at": "2026-10-09T18:57+00:00",
+     "line": -2.5,
+     "bets_a": 55,
+     "bets_b": 45,
      "money_a": 52,
      "money_b": 48
     }
@@ -4162,6 +4186,14 @@
      "bets_b": 29,
      "money_a": 79,
      "money_b": 21
+    },
+    {
+     "at": "2026-10-09T18:57+00:00",
+     "line": 43.5,
+     "bets_a": 71,
+     "bets_b": 29,
+     "money_a": 78,
+     "money_b": 22
     }
    ]
   },
@@ -4625,6 +4657,14 @@
      "bets_b": 29,
      "money_a": 76,
      "money_b": 24
+    },
+    {
+     "at": "2026-10-09T18:57+00:00",
+     "line": 3.5,
+     "bets_a": 71,
+     "bets_b": 29,
+     "money_a": 77,
+     "money_b": 23
     }
    ],
    "total": [
@@ -5306,6 +5346,14 @@
      "bets_b": 26,
      "money_a": 75,
      "money_b": 25
+    },
+    {
+     "at": "2026-10-09T18:57+00:00",
+     "line": 4.5,
+     "bets_a": 74,
+     "bets_b": 26,
+     "money_a": 74,
+     "money_b": 26
     }
    ],
    "total": [
@@ -5855,6 +5903,14 @@
      "line": -7.5,
      "bets_a": 71,
      "bets_b": 29,
+     "money_a": 65,
+     "money_b": 35
+    },
+    {
+     "at": "2026-10-09T18:57+00:00",
+     "line": -7.5,
+     "bets_a": 70,
+     "bets_b": 30,
      "money_a": 65,
      "money_b": 35
     }
@@ -8523,6 +8579,14 @@
      "bets_b": 44,
      "money_a": 59,
      "money_b": 41
+    },
+    {
+     "at": "2026-10-09T18:57+00:00",
+     "line": 54.5,
+     "bets_a": 56,
+     "bets_b": 44,
+     "money_a": 60,
+     "money_b": 40
     }
    ],
    "spread": [
