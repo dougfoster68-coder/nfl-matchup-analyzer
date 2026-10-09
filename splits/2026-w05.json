@@ -9444,6 +9444,14 @@
      "bets_b": 48,
      "money_a": 47,
      "money_b": 53
+    },
+    {
+     "at": "2026-10-09T17:57+00:00",
+     "line": 3.5,
+     "bets_a": 52,
+     "bets_b": 48,
+     "money_a": 47,
+     "money_b": 53
     }
    ],
    "moneyline": [
