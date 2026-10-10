@@ -4839,6 +4839,14 @@
      "bets_b": 64,
      "money_a": 63,
      "money_b": 37
+    },
+    {
+     "at": "2026-10-10T11:55+00:00",
+     "line": null,
+     "bets_a": 36,
+     "bets_b": 64,
+     "money_a": 62,
+     "money_b": 38
     }
    ],
    "spread": [
