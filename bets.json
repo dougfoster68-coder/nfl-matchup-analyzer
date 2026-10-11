@@ -9315,6 +9315,185 @@
       "season": 2026,
       "week": 5,
       "odds": 596
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Omarion Hampton",
+          "player_id": "00-0040666",
+          "team": "LAC",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 41.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        }
+      ],
+      "game": "DEN@LAC",
+      "id": "2026-w5-1791738433-1",
+      "placed_at": "2026-10-11T13:07:13.230519-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Omarion Hampton",
+          "player_id": "00-0040666",
+          "team": "LAC",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -255,
+          "grade": "B",
+          "score": 7.3,
+          "alt": "30+"
+        }
+      ],
+      "game": "DEN@LAC",
+      "id": "2026-w5-1791738433-2",
+      "placed_at": "2026-10-11T13:07:13.230519-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -255,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Omarion Hampton",
+          "player_id": "00-0040666",
+          "team": "LAC",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": 155,
+          "grade": "B",
+          "score": 7.3,
+          "alt": "50+"
+        }
+      ],
+      "game": "DEN@LAC",
+      "id": "2026-w5-1791738433-3",
+      "placed_at": "2026-10-11T13:07:13.230519-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 155,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Justin Herbert",
+          "player_id": "00-0036355",
+          "team": "LAC",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.8
+        }
+      ],
+      "game": "DEN@LAC",
+      "id": "2026-w5-1791738433-4",
+      "placed_at": "2026-10-11T13:07:13.230519-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Justin Herbert",
+          "player_id": "00-0036355",
+          "team": "LAC",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -170,
+          "grade": "B",
+          "score": 6.8,
+          "alt": "20+"
+        }
+      ],
+      "game": "DEN@LAC",
+      "id": "2026-w5-1791738433-5",
+      "placed_at": "2026-10-11T13:07:13.230519-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -170,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Justin Herbert",
+          "player_id": "00-0036355",
+          "team": "LAC",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": 140,
+          "grade": "B",
+          "score": 6.8,
+          "alt": "30+"
+        }
+      ],
+      "game": "DEN@LAC",
+      "id": "2026-w5-1791738433-6",
+      "placed_at": "2026-10-11T13:07:13.230519-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 140,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Oronde Gadsden II",
+          "player_id": "00-0040189",
+          "team": "LAC",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 34.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.5
+        }
+      ],
+      "game": "DEN@LAC",
+      "id": "2026-w5-1791738433-7",
+      "placed_at": "2026-10-11T13:07:13.230519-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
     }
   ],
   "superseded": [
