@@ -8899,83 +8899,6 @@
     },
     {
       "kind": "straight",
-      "stake": 10,
-      "legs": [
-        {
-          "player": "Jaylen Warren",
-          "player_id": "00-0037228",
-          "team": "PIT",
-          "opp": "IND",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 20.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 6.8
-        }
-      ],
-      "game": "IND@PIT",
-      "id": "2026-w5-1791727661-21",
-      "placed_at": "2026-10-11T10:07:41.941754-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Jaylen Warren",
-          "player_id": "00-0037228",
-          "team": "PIT",
-          "opp": "IND",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 14.5,
-          "odds": -210,
-          "grade": "B",
-          "score": 6.8,
-          "alt": "15+"
-        }
-      ],
-      "game": "IND@PIT",
-      "id": "2026-w5-1791727661-22",
-      "placed_at": "2026-10-11T10:07:41.941754-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -210,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Jaylen Warren",
-          "player_id": "00-0037228",
-          "team": "PIT",
-          "opp": "IND",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 24.5,
-          "odds": 140,
-          "grade": "B",
-          "score": 6.8,
-          "alt": "25+"
-        }
-      ],
-      "game": "IND@PIT",
-      "id": "2026-w5-1791727661-23",
-      "placed_at": "2026-10-11T10:07:41.941754-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": 140,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
       "stake": 25,
       "legs": [
         {
@@ -8997,83 +8920,6 @@
       "season": 2026,
       "week": 5,
       "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 10,
-      "legs": [
-        {
-          "player": "Aaron Rodgers",
-          "player_id": "00-0023459",
-          "team": "PIT",
-          "opp": "IND",
-          "stat": "passing_yards",
-          "side": "over",
-          "line": 218.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 6.5
-        }
-      ],
-      "game": "IND@PIT",
-      "id": "2026-w5-1791727661-25",
-      "placed_at": "2026-10-11T10:07:41.941754-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Aaron Rodgers",
-          "player_id": "00-0023459",
-          "team": "PIT",
-          "opp": "IND",
-          "stat": "passing_yards",
-          "side": "over",
-          "line": 189.5,
-          "odds": -210,
-          "grade": "B",
-          "score": 6.5,
-          "alt": "190+"
-        }
-      ],
-      "game": "IND@PIT",
-      "id": "2026-w5-1791727661-26",
-      "placed_at": "2026-10-11T10:07:41.941754-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -210,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Aaron Rodgers",
-          "player_id": "00-0023459",
-          "team": "PIT",
-          "opp": "IND",
-          "stat": "passing_yards",
-          "side": "over",
-          "line": 259.5,
-          "odds": 220,
-          "grade": "B",
-          "score": 6.5,
-          "alt": "260+"
-        }
-      ],
-      "game": "IND@PIT",
-      "id": "2026-w5-1791727661-27",
-      "placed_at": "2026-10-11T10:07:41.941754-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": 220,
       "note": "Claude weekly pick"
     },
     {
@@ -11813,6 +11659,172 @@
       "odds": 596,
       "superseded_at": "2026-10-11T11:28:08.293376-04:00",
       "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Jaylen Warren",
+          "player_id": "00-0037228",
+          "team": "PIT",
+          "opp": "IND",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.8
+        }
+      ],
+      "game": "IND@PIT",
+      "id": "2026-w5-1791727661-21",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T11:44:32.349964-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jaylen Warren",
+          "player_id": "00-0037228",
+          "team": "PIT",
+          "opp": "IND",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -210,
+          "grade": "B",
+          "score": 6.8,
+          "alt": "15+"
+        }
+      ],
+      "game": "IND@PIT",
+      "id": "2026-w5-1791727661-22",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -210,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T11:44:32.349964-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jaylen Warren",
+          "player_id": "00-0037228",
+          "team": "PIT",
+          "opp": "IND",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 140,
+          "grade": "B",
+          "score": 6.8,
+          "alt": "25+"
+        }
+      ],
+      "game": "IND@PIT",
+      "id": "2026-w5-1791727661-23",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 140,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T11:44:32.349964-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Aaron Rodgers",
+          "player_id": "00-0023459",
+          "team": "PIT",
+          "opp": "IND",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 218.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.5
+        }
+      ],
+      "game": "IND@PIT",
+      "id": "2026-w5-1791727661-25",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T11:44:32.349964-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Aaron Rodgers",
+          "player_id": "00-0023459",
+          "team": "PIT",
+          "opp": "IND",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 189.5,
+          "odds": -210,
+          "grade": "B",
+          "score": 6.5,
+          "alt": "190+"
+        }
+      ],
+      "game": "IND@PIT",
+      "id": "2026-w5-1791727661-26",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -210,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T11:44:32.349964-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Aaron Rodgers",
+          "player_id": "00-0023459",
+          "team": "PIT",
+          "opp": "IND",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 259.5,
+          "odds": 220,
+          "grade": "B",
+          "score": 6.5,
+          "alt": "260+"
+        }
+      ],
+      "game": "IND@PIT",
+      "id": "2026-w5-1791727661-27",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 220,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T11:44:32.349964-04:00",
+      "superseded_reason": "late change before kickoff"
     }
   ],
   "week_budgets": {
@@ -11940,6 +11952,26 @@
       "from": "Sam LaPorta OVER 51.5",
       "to": "Isaac TeSlaa OVER 25.5",
       "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-11T11:44-04:00",
+      "week": 5,
+      "game": "IND@PIT",
+      "kind": "straight",
+      "stake": 20,
+      "from": "Jaylen Warren OVER 20.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "line pulled (often an injury or inactive)"
+    },
+    {
+      "at": "2026-10-11T11:44-04:00",
+      "week": 5,
+      "game": "IND@PIT",
+      "kind": "straight",
+      "stake": 20,
+      "from": "Aaron Rodgers OVER 218.5 passing yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "line pulled (often an injury or inactive)"
     }
   ]
 }
