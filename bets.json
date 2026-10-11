@@ -9623,6 +9623,399 @@
       "week": 5,
       "odds": 110,
       "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 67.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.8
+        }
+      ],
+      "game": "BAL@ATL",
+      "id": "2026-w5-1791754184-1",
+      "placed_at": "2026-10-11T17:29:44.793901-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 59.5,
+          "odds": -150,
+          "grade": "A",
+          "score": 8.8,
+          "alt": "60+"
+        }
+      ],
+      "game": "BAL@ATL",
+      "id": "2026-w5-1791754184-2",
+      "placed_at": "2026-10-11T17:29:44.793901-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -150,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 79.5,
+          "odds": 145,
+          "grade": "A",
+          "score": 8.8,
+          "alt": "80+"
+        }
+      ],
+      "game": "BAL@ATL",
+      "id": "2026-w5-1791754184-3",
+      "placed_at": "2026-10-11T17:29:44.793901-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 145,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Rashod Bateman",
+          "player_id": "00-0036550",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 17.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.3
+        }
+      ],
+      "game": "BAL@ATL",
+      "id": "2026-w5-1791754184-4",
+      "placed_at": "2026-10-11T17:29:44.793901-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Rashod Bateman",
+          "player_id": "00-0036550",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -130,
+          "grade": "B",
+          "score": 6.3,
+          "alt": "15+"
+        }
+      ],
+      "game": "BAL@ATL",
+      "id": "2026-w5-1791754184-5",
+      "placed_at": "2026-10-11T17:29:44.793901-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -130,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Rashod Bateman",
+          "player_id": "00-0036550",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 135,
+          "grade": "B",
+          "score": 6.3,
+          "alt": "25+"
+        }
+      ],
+      "game": "BAL@ATL",
+      "id": "2026-w5-1791754184-6",
+      "placed_at": "2026-10-11T17:29:44.793901-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 135,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Tyler Huntley",
+          "player_id": "00-0035993",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 29.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.0
+        }
+      ],
+      "game": "BAL@ATL",
+      "id": "2026-w5-1791754184-7",
+      "placed_at": "2026-10-11T17:29:44.793901-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Justice Hill",
+          "player_id": "00-0034975",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 11.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.3
+        }
+      ],
+      "game": "BAL@ATL",
+      "id": "2026-w5-1791754184-8",
+      "placed_at": "2026-10-11T17:29:44.793901-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Michael Penix Jr.",
+          "player_id": "00-0039917",
+          "team": "ATL",
+          "opp": "BAL",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 0.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.2
+        }
+      ],
+      "game": "BAL@ATL",
+      "id": "2026-w5-1791754184-9",
+      "placed_at": "2026-10-11T17:29:44.793901-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Drake London",
+          "player_id": "00-0037238",
+          "team": "ATL",
+          "opp": "BAL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 82.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.0
+        }
+      ],
+      "game": "BAL@ATL",
+      "id": "2026-w5-1791754184-10",
+      "placed_at": "2026-10-11T17:29:44.793901-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "special": "primetime",
+      "stake": 24.03,
+      "legs": [
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 67.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.8,
+          "why": "A-rated \u00b7 proj 107.5 \u00b7 EV +26%",
+          "ev": 0.26
+        },
+        {
+          "player": "Matthew Stafford",
+          "player_id": "00-0026498",
+          "team": "LA",
+          "opp": "BUF",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 1.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9,
+          "why": "B-rated \u00b7 proj 6.6 \u00b7 EV +23%",
+          "ev": 0.231
+        },
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 22.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.8,
+          "why": "B-rated \u00b7 proj 39 \u00b7 EV +21%",
+          "ev": 0.212
+        },
+        {
+          "player": "Tyler Huntley",
+          "player_id": "00-0035993",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 29.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.0,
+          "why": "B-rated \u00b7 proj 16.6 \u00b7 EV +15%",
+          "ev": 0.155
+        }
+      ],
+      "game": "multi",
+      "note": "PRIMETIME SPECIAL",
+      "id": "2026-w5-1791754184-11",
+      "placed_at": "2026-10-11T17:29:44.793901-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 1228
+    },
+    {
+      "kind": "parlay",
+      "special": "primetime-longshot",
+      "stake": 24.03,
+      "legs": [
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 79.5,
+          "odds": 145,
+          "grade": "A",
+          "score": 8.8,
+          "alt": "80+",
+          "why": "A-rated \u00b7 proj 107.5 \u00b7 boosted to 80+"
+        },
+        {
+          "player": "Matthew Stafford",
+          "player_id": "00-0026498",
+          "team": "LA",
+          "opp": "BUF",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 1.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9,
+          "why": "B-rated \u00b7 proj 6.6"
+        },
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": 155,
+          "grade": "B",
+          "score": 6.8,
+          "alt": "30+",
+          "why": "B-rated \u00b7 proj 39 \u00b7 boosted to 30+"
+        },
+        {
+          "player": "Rashod Bateman",
+          "player_id": "00-0036550",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 135,
+          "grade": "B",
+          "score": 6.3,
+          "alt": "25+",
+          "why": "B-rated \u00b7 proj 32.4 \u00b7 boosted to 25+"
+        }
+      ],
+      "game": "multi",
+      "note": "PRIMETIME ALT LINE SPECIAL",
+      "id": "2026-w5-1791754184-12",
+      "placed_at": "2026-10-11T17:29:44.793901-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 2703
     }
   ],
   "superseded": [
