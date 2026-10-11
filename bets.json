@@ -9648,231 +9648,6 @@
       "week": 5,
       "odds": 110,
       "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Sam LaPorta",
-          "player_id": "00-0039065",
-          "team": "DET",
-          "opp": "ARI",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 52.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 6.0
-        }
-      ],
-      "game": "DET@ARI",
-      "id": "2026-w5-1791739607-7",
-      "placed_at": "2026-10-11T13:26:47.809366-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Rashid Shaheed",
-          "player_id": "00-0037545",
-          "team": "SEA",
-          "opp": "SF",
-          "stat": "receiving_yards",
-          "side": "under",
-          "line": 20.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 5.5
-        }
-      ],
-      "game": "SF@SEA",
-      "id": "2026-w5-1791739607-8",
-      "placed_at": "2026-10-11T13:26:47.809366-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Sione Vaki",
-          "player_id": "00-0039364",
-          "team": "DET",
-          "opp": "ARI",
-          "stat": "rushing_yards",
-          "side": "under",
-          "line": 8.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 5.4
-        }
-      ],
-      "game": "DET@ARI",
-      "id": "2026-w5-1791739607-9",
-      "placed_at": "2026-10-11T13:26:47.809366-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Jared Goff",
-          "player_id": "00-0033106",
-          "team": "DET",
-          "opp": "ARI",
-          "stat": "passing_yards",
-          "side": "over",
-          "line": 281.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 5.3
-        }
-      ],
-      "game": "DET@ARI",
-      "id": "2026-w5-1791739607-10",
-      "placed_at": "2026-10-11T13:26:47.809366-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Jameson Williams",
-          "player_id": "00-0037240",
-          "team": "DET",
-          "opp": "ARI",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 52.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 5.3
-        }
-      ],
-      "game": "DET@ARI",
-      "id": "2026-w5-1791739607-11",
-      "placed_at": "2026-10-11T13:26:47.809366-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Tyler Allgeier",
-          "player_id": "00-0037263",
-          "team": "ARI",
-          "opp": "DET",
-          "stat": "receiving_yards",
-          "side": "under",
-          "line": 9.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 5.3
-        }
-      ],
-      "game": "DET@ARI",
-      "id": "2026-w5-1791739607-12",
-      "placed_at": "2026-10-11T13:26:47.809366-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Sam Darnold",
-          "player_id": "00-0034869",
-          "team": "SEA",
-          "opp": "SF",
-          "stat": "passing_yards",
-          "side": "under",
-          "line": 235.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 5.2
-        }
-      ],
-      "game": "SF@SEA",
-      "id": "2026-w5-1791739607-13",
-      "placed_at": "2026-10-11T13:26:47.809366-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Jahmyr Gibbs",
-          "player_id": "00-0039139",
-          "team": "DET",
-          "opp": "ARI",
-          "stat": "rushing_yards",
-          "side": "under",
-          "line": 89.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 5.0
-        }
-      ],
-      "game": "DET@ARI",
-      "id": "2026-w5-1791739607-14",
-      "placed_at": "2026-10-11T13:26:47.809366-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Jeremiyah Love",
-          "player_id": "00-0041027",
-          "team": "ARI",
-          "opp": "DET",
-          "stat": "rushing_yards",
-          "side": "over",
-          "line": 45.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 4.8
-        }
-      ],
-      "game": "DET@ARI",
-      "id": "2026-w5-1791739607-15",
-      "placed_at": "2026-10-11T13:26:47.809366-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
     }
   ],
   "superseded": [
@@ -12383,6 +12158,249 @@
       "note": "Claude weekly pick",
       "superseded_at": "2026-10-11T11:44:32.349964-04:00",
       "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Sam LaPorta",
+          "player_id": "00-0039065",
+          "team": "DET",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 52.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 6.0
+        }
+      ],
+      "game": "DET@ARI",
+      "id": "2026-w5-1791739607-7",
+      "placed_at": "2026-10-11T13:26:47.809366-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T13:42:22.697808-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Rashid Shaheed",
+          "player_id": "00-0037545",
+          "team": "SEA",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.5
+        }
+      ],
+      "game": "SF@SEA",
+      "id": "2026-w5-1791739607-8",
+      "placed_at": "2026-10-11T13:26:47.809366-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T13:42:22.697808-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Sione Vaki",
+          "player_id": "00-0039364",
+          "team": "DET",
+          "opp": "ARI",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 8.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.4
+        }
+      ],
+      "game": "DET@ARI",
+      "id": "2026-w5-1791739607-9",
+      "placed_at": "2026-10-11T13:26:47.809366-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T13:42:22.697808-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jared Goff",
+          "player_id": "00-0033106",
+          "team": "DET",
+          "opp": "ARI",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 281.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.3
+        }
+      ],
+      "game": "DET@ARI",
+      "id": "2026-w5-1791739607-10",
+      "placed_at": "2026-10-11T13:26:47.809366-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T13:42:22.697808-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jameson Williams",
+          "player_id": "00-0037240",
+          "team": "DET",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 52.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.3
+        }
+      ],
+      "game": "DET@ARI",
+      "id": "2026-w5-1791739607-11",
+      "placed_at": "2026-10-11T13:26:47.809366-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T13:42:22.697808-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Tyler Allgeier",
+          "player_id": "00-0037263",
+          "team": "ARI",
+          "opp": "DET",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 9.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.3
+        }
+      ],
+      "game": "DET@ARI",
+      "id": "2026-w5-1791739607-12",
+      "placed_at": "2026-10-11T13:26:47.809366-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T13:42:22.697808-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Sam Darnold",
+          "player_id": "00-0034869",
+          "team": "SEA",
+          "opp": "SF",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 235.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.2
+        }
+      ],
+      "game": "SF@SEA",
+      "id": "2026-w5-1791739607-13",
+      "placed_at": "2026-10-11T13:26:47.809366-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T13:42:22.697808-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jahmyr Gibbs",
+          "player_id": "00-0039139",
+          "team": "DET",
+          "opp": "ARI",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 89.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.0
+        }
+      ],
+      "game": "DET@ARI",
+      "id": "2026-w5-1791739607-14",
+      "placed_at": "2026-10-11T13:26:47.809366-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T13:42:22.697808-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jeremiyah Love",
+          "player_id": "00-0041027",
+          "team": "ARI",
+          "opp": "DET",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 45.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 4.8
+        }
+      ],
+      "game": "DET@ARI",
+      "id": "2026-w5-1791739607-15",
+      "placed_at": "2026-10-11T13:26:47.809366-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T13:42:22.697808-04:00",
+      "superseded_reason": "late change before kickoff"
     }
   ],
   "week_budgets": {
@@ -12530,6 +12548,96 @@
       "from": "Aaron Rodgers OVER 218.5 passing yards",
       "to": "nothing (money back to bankroll)",
       "reason": "line pulled (often an injury or inactive)"
+    },
+    {
+      "at": "2026-10-11T13:42-04:00",
+      "week": 5,
+      "game": "DET@ARI",
+      "kind": "straight",
+      "stake": 5,
+      "from": "Sam LaPorta OVER 52.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-11T13:42-04:00",
+      "week": 5,
+      "game": "SF@SEA",
+      "kind": "straight",
+      "stake": 5,
+      "from": "Rashid Shaheed UNDER 20.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-11T13:42-04:00",
+      "week": 5,
+      "game": "DET@ARI",
+      "kind": "straight",
+      "stake": 5,
+      "from": "Sione Vaki UNDER 8.5 rushing yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-11T13:42-04:00",
+      "week": 5,
+      "game": "DET@ARI",
+      "kind": "straight",
+      "stake": 5,
+      "from": "Jared Goff OVER 281.5 passing yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-11T13:42-04:00",
+      "week": 5,
+      "game": "DET@ARI",
+      "kind": "straight",
+      "stake": 5,
+      "from": "Jameson Williams OVER 52.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-11T13:42-04:00",
+      "week": 5,
+      "game": "DET@ARI",
+      "kind": "straight",
+      "stake": 5,
+      "from": "Tyler Allgeier UNDER 9.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-11T13:42-04:00",
+      "week": 5,
+      "game": "SF@SEA",
+      "kind": "straight",
+      "stake": 5,
+      "from": "Sam Darnold UNDER 235.5 passing yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-11T13:42-04:00",
+      "week": 5,
+      "game": "DET@ARI",
+      "kind": "straight",
+      "stake": 5,
+      "from": "Jahmyr Gibbs UNDER 89.5 rushing yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-11T13:42-04:00",
+      "week": 5,
+      "game": "DET@ARI",
+      "kind": "straight",
+      "stake": 5,
+      "from": "Jeremiyah Love OVER 45.5 rushing yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
     }
   ]
 }
