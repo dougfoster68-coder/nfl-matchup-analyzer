@@ -8472,6 +8472,1003 @@
       "stake": 0,
       "legs": [],
       "note": "No top plays in this game this week \u2014 passed."
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Mike Gesicki",
+          "player_id": "00-0034829",
+          "team": "CIN",
+          "opp": "MIA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 30.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.2
+        }
+      ],
+      "game": "CIN@MIA",
+      "id": "2026-w5-1791727661-1",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Mike Gesicki",
+          "player_id": "00-0034829",
+          "team": "CIN",
+          "opp": "MIA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -170,
+          "grade": "A",
+          "score": 9.2,
+          "alt": "25+"
+        }
+      ],
+      "game": "CIN@MIA",
+      "id": "2026-w5-1791727661-2",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -170,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Mike Gesicki",
+          "player_id": "00-0034829",
+          "team": "CIN",
+          "opp": "MIA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": 175,
+          "grade": "A",
+          "score": 9.2,
+          "alt": "40+"
+        }
+      ],
+      "game": "CIN@MIA",
+      "id": "2026-w5-1791727661-3",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 175,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 45,
+      "legs": [
+        {
+          "player": "David Montgomery",
+          "player_id": "00-0035685",
+          "team": "HOU",
+          "opp": "TEN",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 43.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.8
+        }
+      ],
+      "game": "HOU@TEN",
+      "id": "2026-w5-1791727661-4",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 45,
+      "legs": [
+        {
+          "player": "Tyler Warren",
+          "player_id": "00-0040128",
+          "team": "IND",
+          "opp": "PIT",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 42.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.4
+        }
+      ],
+      "game": "IND@PIT",
+      "id": "2026-w5-1791727661-5",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Rhamondre Stevenson",
+          "player_id": "00-0036875",
+          "team": "NE",
+          "opp": "LV",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 37.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "LV@NE",
+      "id": "2026-w5-1791727661-6",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Rhamondre Stevenson",
+          "player_id": "00-0036875",
+          "team": "NE",
+          "opp": "LV",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -185,
+          "grade": "A",
+          "score": 7.8,
+          "alt": "30+"
+        }
+      ],
+      "game": "LV@NE",
+      "id": "2026-w5-1791727661-7",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -185,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Rhamondre Stevenson",
+          "player_id": "00-0036875",
+          "team": "NE",
+          "opp": "LV",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": 195,
+          "grade": "A",
+          "score": 7.8,
+          "alt": "50+"
+        }
+      ],
+      "game": "LV@NE",
+      "id": "2026-w5-1791727661-8",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 195,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Rome Odunze",
+          "player_id": "00-0039919",
+          "team": "CHI",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 41.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        }
+      ],
+      "game": "CHI@GB",
+      "id": "2026-w5-1791727661-9",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Rome Odunze",
+          "player_id": "00-0039919",
+          "team": "CHI",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -275,
+          "grade": "B",
+          "score": 7.3,
+          "alt": "30+"
+        }
+      ],
+      "game": "CHI@GB",
+      "id": "2026-w5-1791727661-10",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -275,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Rome Odunze",
+          "player_id": "00-0039919",
+          "team": "CHI",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": 165,
+          "grade": "B",
+          "score": 7.3,
+          "alt": "50+"
+        }
+      ],
+      "game": "CHI@GB",
+      "id": "2026-w5-1791727661-11",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 165,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Quinshon Judkins",
+          "player_id": "00-0040784",
+          "team": "CLE",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.2
+        }
+      ],
+      "game": "CLE@NYJ",
+      "id": "2026-w5-1791727661-12",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Quinshon Judkins",
+          "player_id": "00-0040784",
+          "team": "CLE",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 9.5,
+          "odds": -180,
+          "grade": "B",
+          "score": 7.2,
+          "alt": "10+"
+        }
+      ],
+      "game": "CLE@NYJ",
+      "id": "2026-w5-1791727661-13",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -180,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Quinshon Judkins",
+          "player_id": "00-0040784",
+          "team": "CLE",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": 145,
+          "grade": "B",
+          "score": 7.2,
+          "alt": "20+"
+        }
+      ],
+      "game": "CLE@NYJ",
+      "id": "2026-w5-1791727661-14",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 145,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "TreVeyon Henderson",
+          "player_id": "00-0040734",
+          "team": "NE",
+          "opp": "LV",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1
+        }
+      ],
+      "game": "LV@NE",
+      "id": "2026-w5-1791727661-15",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Kyler Murray",
+          "player_id": "00-0035228",
+          "team": "MIN",
+          "opp": "NO",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 212.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        }
+      ],
+      "game": "MIN@NO",
+      "id": "2026-w5-1791727661-16",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Tee Higgins",
+          "player_id": "00-0036410",
+          "team": "CIN",
+          "opp": "MIA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 59.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.8
+        }
+      ],
+      "game": "CIN@MIA",
+      "id": "2026-w5-1791727661-17",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Tee Higgins",
+          "player_id": "00-0036410",
+          "team": "CIN",
+          "opp": "MIA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": -175,
+          "grade": "B",
+          "score": 6.8,
+          "alt": "50+"
+        }
+      ],
+      "game": "CIN@MIA",
+      "id": "2026-w5-1791727661-18",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -175,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Tee Higgins",
+          "player_id": "00-0036410",
+          "team": "CIN",
+          "opp": "MIA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": 145,
+          "grade": "B",
+          "score": 6.8,
+          "alt": "70+"
+        }
+      ],
+      "game": "CIN@MIA",
+      "id": "2026-w5-1791727661-19",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 145,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Geno Smith",
+          "player_id": "00-0030565",
+          "team": "NYJ",
+          "opp": "CLE",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.8
+        }
+      ],
+      "game": "CLE@NYJ",
+      "id": "2026-w5-1791727661-20",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Jaylen Warren",
+          "player_id": "00-0037228",
+          "team": "PIT",
+          "opp": "IND",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.8
+        }
+      ],
+      "game": "IND@PIT",
+      "id": "2026-w5-1791727661-21",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jaylen Warren",
+          "player_id": "00-0037228",
+          "team": "PIT",
+          "opp": "IND",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -210,
+          "grade": "B",
+          "score": 6.8,
+          "alt": "15+"
+        }
+      ],
+      "game": "IND@PIT",
+      "id": "2026-w5-1791727661-22",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -210,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jaylen Warren",
+          "player_id": "00-0037228",
+          "team": "PIT",
+          "opp": "IND",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 140,
+          "grade": "B",
+          "score": 6.8,
+          "alt": "25+"
+        }
+      ],
+      "game": "IND@PIT",
+      "id": "2026-w5-1791727661-23",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 140,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "MarShawn Lloyd",
+          "player_id": "00-0039811",
+          "team": "GB",
+          "opp": "CHI",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.7
+        }
+      ],
+      "game": "CHI@GB",
+      "id": "2026-w5-1791727661-24",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Aaron Rodgers",
+          "player_id": "00-0023459",
+          "team": "PIT",
+          "opp": "IND",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 218.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.5
+        }
+      ],
+      "game": "IND@PIT",
+      "id": "2026-w5-1791727661-25",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Aaron Rodgers",
+          "player_id": "00-0023459",
+          "team": "PIT",
+          "opp": "IND",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 189.5,
+          "odds": -210,
+          "grade": "B",
+          "score": 6.5,
+          "alt": "190+"
+        }
+      ],
+      "game": "IND@PIT",
+      "id": "2026-w5-1791727661-26",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -210,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Aaron Rodgers",
+          "player_id": "00-0023459",
+          "team": "PIT",
+          "opp": "IND",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 259.5,
+          "odds": 220,
+          "grade": "B",
+          "score": 6.5,
+          "alt": "260+"
+        }
+      ],
+      "game": "IND@PIT",
+      "id": "2026-w5-1791727661-27",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 220,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "WAS",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 17.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.5
+        }
+      ],
+      "game": "NYG@WAS",
+      "id": "2026-w5-1791727661-28",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "WAS",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -155,
+          "grade": "B",
+          "score": 6.5,
+          "alt": "15+"
+        }
+      ],
+      "game": "NYG@WAS",
+      "id": "2026-w5-1791727661-29",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -155,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Darnell Mooney",
+          "player_id": "00-0036309",
+          "team": "NYG",
+          "opp": "WAS",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 195,
+          "grade": "B",
+          "score": 6.5,
+          "alt": "25+"
+        }
+      ],
+      "game": "NYG@WAS",
+      "id": "2026-w5-1791727661-30",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 195,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Harold Fannin Jr.",
+          "player_id": "00-0040663",
+          "team": "CLE",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 34.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.4
+        }
+      ],
+      "game": "CLE@NYJ",
+      "id": "2026-w5-1791727661-31",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Harold Fannin Jr.",
+          "player_id": "00-0040663",
+          "team": "CLE",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -160,
+          "grade": "B",
+          "score": 6.4,
+          "alt": "30+"
+        }
+      ],
+      "game": "CLE@NYJ",
+      "id": "2026-w5-1791727661-32",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -160,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Harold Fannin Jr.",
+          "player_id": "00-0040663",
+          "team": "CLE",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": 280,
+          "grade": "B",
+          "score": 6.4,
+          "alt": "50+"
+        }
+      ],
+      "game": "CLE@NYJ",
+      "id": "2026-w5-1791727661-33",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 280,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Kalif Raymond",
+          "player_id": "00-0032464",
+          "team": "CHI",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.3
+        }
+      ],
+      "game": "CHI@GB",
+      "id": "2026-w5-1791727661-34",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Kalif Raymond",
+          "player_id": "00-0032464",
+          "team": "CHI",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -130,
+          "grade": "B",
+          "score": 6.3,
+          "alt": "25+"
+        }
+      ],
+      "game": "CHI@GB",
+      "id": "2026-w5-1791727661-35",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -130,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Kalif Raymond",
+          "player_id": "00-0032464",
+          "team": "CHI",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": 165,
+          "grade": "B",
+          "score": 6.3,
+          "alt": "40+"
+        }
+      ],
+      "game": "CHI@GB",
+      "id": "2026-w5-1791727661-36",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 165,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Chris Olave",
+          "player_id": "00-0037239",
+          "team": "NO",
+          "opp": "MIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 81.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.3
+        }
+      ],
+      "game": "MIN@NO",
+      "id": "2026-w5-1791727661-37",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Chris Olave",
+          "player_id": "00-0037239",
+          "team": "NO",
+          "opp": "MIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": -180,
+          "grade": "B",
+          "score": 6.3,
+          "alt": "70+"
+        }
+      ],
+      "game": "MIN@NO",
+      "id": "2026-w5-1791727661-38",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -180,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Chris Olave",
+          "player_id": "00-0037239",
+          "team": "NO",
+          "opp": "MIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 99.5,
+          "odds": 185,
+          "grade": "B",
+          "score": 6.3,
+          "alt": "100+"
+        }
+      ],
+      "game": "MIN@NO",
+      "id": "2026-w5-1791727661-39",
+      "placed_at": "2026-10-11T10:07:41.941754-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 185,
+      "note": "Claude weekly pick"
     }
   ],
   "superseded": [
