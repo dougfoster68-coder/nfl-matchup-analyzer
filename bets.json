@@ -8461,6 +8461,17 @@
       "season": 2026,
       "week": 5,
       "odds": 596
+    },
+    {
+      "id": "2026-w5-PHI@JAX-nobet",
+      "placed_at": "2026-10-11T06:31:30.307047-04:00",
+      "season": 2026,
+      "week": 5,
+      "game": "PHI@JAX",
+      "kind": "none",
+      "stake": 0,
+      "legs": [],
+      "note": "No top plays in this game this week \u2014 passed."
     }
   ],
   "superseded": [
