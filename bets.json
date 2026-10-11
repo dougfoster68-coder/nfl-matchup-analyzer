@@ -9626,83 +9626,6 @@
     },
     {
       "kind": "straight",
-      "stake": 20,
-      "legs": [
-        {
-          "player": "Zay Flowers",
-          "player_id": "00-0039064",
-          "team": "BAL",
-          "opp": "ATL",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 67.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 8.8
-        }
-      ],
-      "game": "BAL@ATL",
-      "id": "2026-w5-1791754184-1",
-      "placed_at": "2026-10-11T17:29:44.793901-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 10,
-      "legs": [
-        {
-          "player": "Zay Flowers",
-          "player_id": "00-0039064",
-          "team": "BAL",
-          "opp": "ATL",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 59.5,
-          "odds": -150,
-          "grade": "A",
-          "score": 8.8,
-          "alt": "60+"
-        }
-      ],
-      "game": "BAL@ATL",
-      "id": "2026-w5-1791754184-2",
-      "placed_at": "2026-10-11T17:29:44.793901-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -150,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 10,
-      "legs": [
-        {
-          "player": "Zay Flowers",
-          "player_id": "00-0039064",
-          "team": "BAL",
-          "opp": "ATL",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 79.5,
-          "odds": 145,
-          "grade": "A",
-          "score": 8.8,
-          "alt": "80+"
-        }
-      ],
-      "game": "BAL@ATL",
-      "id": "2026-w5-1791754184-3",
-      "placed_at": "2026-10-11T17:29:44.793901-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": 145,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
       "stake": 10,
       "legs": [
         {
@@ -12802,6 +12725,89 @@
       "note": "Claude weekly pick",
       "superseded_at": "2026-10-11T17:47:13.963445-04:00",
       "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 67.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.8
+        }
+      ],
+      "game": "BAL@ATL",
+      "id": "2026-w5-1791754184-1",
+      "placed_at": "2026-10-11T17:29:44.793901-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T18:57:40.151961-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 59.5,
+          "odds": -150,
+          "grade": "A",
+          "score": 8.8,
+          "alt": "60+"
+        }
+      ],
+      "game": "BAL@ATL",
+      "id": "2026-w5-1791754184-2",
+      "placed_at": "2026-10-11T17:29:44.793901-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -150,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T18:57:40.151961-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 79.5,
+          "odds": 145,
+          "grade": "A",
+          "score": 8.8,
+          "alt": "80+"
+        }
+      ],
+      "game": "BAL@ATL",
+      "id": "2026-w5-1791754184-3",
+      "placed_at": "2026-10-11T17:29:44.793901-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 145,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T18:57:40.151961-04:00",
+      "superseded_reason": "late change before kickoff"
     }
   ],
   "week_budgets": {
@@ -13079,6 +13085,16 @@
       "from": "Drake London OVER 82.5 receiving yards",
       "to": "nothing (money back to bankroll)",
       "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-11T18:57-04:00",
+      "week": 5,
+      "game": "BAL@ATL",
+      "kind": "straight",
+      "stake": 40,
+      "from": "Zay Flowers OVER 67.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "line pulled (often an injury or inactive)"
     }
   ]
 }
