@@ -3712,6 +3712,14 @@
      "bets_b": 49,
      "money_a": 51,
      "money_b": 49
+    },
+    {
+     "at": "2026-10-11T14:57+00:00",
+     "line": -1.5,
+     "bets_a": 51,
+     "bets_b": 49,
+     "money_a": 51,
+     "money_b": 49
     }
    ],
    "total": [
@@ -4439,6 +4447,14 @@
      "bets_b": 32,
      "money_a": 71,
      "money_b": 29
+    },
+    {
+     "at": "2026-10-11T14:57+00:00",
+     "line": null,
+     "bets_a": 68,
+     "bets_b": 32,
+     "money_a": 70,
+     "money_b": 30
     }
    ],
    "spread": [
@@ -5163,6 +5179,14 @@
      "bets_b": 24,
      "money_a": 67,
      "money_b": 33
+    },
+    {
+     "at": "2026-10-11T14:57+00:00",
+     "line": 38.5,
+     "bets_a": 76,
+     "bets_b": 24,
+     "money_a": 64,
+     "money_b": 36
     }
    ]
   },
