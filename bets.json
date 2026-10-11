@@ -9804,81 +9804,6 @@
       "note": "Claude weekly pick"
     },
     {
-      "kind": "straight",
-      "stake": 10,
-      "legs": [
-        {
-          "player": "Justice Hill",
-          "player_id": "00-0034975",
-          "team": "BAL",
-          "opp": "ATL",
-          "stat": "rushing_yards",
-          "side": "under",
-          "line": 11.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 5.3
-        }
-      ],
-      "game": "BAL@ATL",
-      "id": "2026-w5-1791754184-8",
-      "placed_at": "2026-10-11T17:29:44.793901-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 10,
-      "legs": [
-        {
-          "player": "Michael Penix Jr.",
-          "player_id": "00-0039917",
-          "team": "ATL",
-          "opp": "BAL",
-          "stat": "rushing_yards",
-          "side": "over",
-          "line": 0.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 5.2
-        }
-      ],
-      "game": "BAL@ATL",
-      "id": "2026-w5-1791754184-9",
-      "placed_at": "2026-10-11T17:29:44.793901-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Drake London",
-          "player_id": "00-0037238",
-          "team": "ATL",
-          "opp": "BAL",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 82.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 5.0
-        }
-      ],
-      "game": "BAL@ATL",
-      "id": "2026-w5-1791754184-10",
-      "placed_at": "2026-10-11T17:29:44.793901-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
       "kind": "parlay",
       "special": "primetime",
       "stake": 24.03,
@@ -12796,6 +12721,87 @@
       "note": "Claude weekly pick",
       "superseded_at": "2026-10-11T15:09:38.078971-04:00",
       "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Justice Hill",
+          "player_id": "00-0034975",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 11.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.3
+        }
+      ],
+      "game": "BAL@ATL",
+      "id": "2026-w5-1791754184-8",
+      "placed_at": "2026-10-11T17:29:44.793901-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T17:47:13.963445-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Michael Penix Jr.",
+          "player_id": "00-0039917",
+          "team": "ATL",
+          "opp": "BAL",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 0.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.2
+        }
+      ],
+      "game": "BAL@ATL",
+      "id": "2026-w5-1791754184-9",
+      "placed_at": "2026-10-11T17:29:44.793901-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T17:47:13.963445-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Drake London",
+          "player_id": "00-0037238",
+          "team": "ATL",
+          "opp": "BAL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 82.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.0
+        }
+      ],
+      "game": "BAL@ATL",
+      "id": "2026-w5-1791754184-10",
+      "placed_at": "2026-10-11T17:29:44.793901-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T17:47:13.963445-04:00",
+      "superseded_reason": "late change before kickoff"
     }
   ],
   "week_budgets": {
@@ -13043,6 +13049,36 @@
       "from": "Oronde Gadsden II UNDER 34.5 receiving yards",
       "to": "nothing (money back to bankroll)",
       "reason": "line pulled (often an injury or inactive)"
+    },
+    {
+      "at": "2026-10-11T17:47-04:00",
+      "week": 5,
+      "game": "BAL@ATL",
+      "kind": "straight",
+      "stake": 10,
+      "from": "Justice Hill UNDER 11.5 rushing yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-11T17:47-04:00",
+      "week": 5,
+      "game": "BAL@ATL",
+      "kind": "straight",
+      "stake": 10,
+      "from": "Michael Penix Jr. OVER 0.5 rushing yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-11T17:47-04:00",
+      "week": 5,
+      "game": "BAL@ATL",
+      "kind": "straight",
+      "stake": 5,
+      "from": "Drake London OVER 82.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
     }
   ]
 }
