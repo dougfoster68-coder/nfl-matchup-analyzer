@@ -8723,6 +8723,14 @@
      "bets_b": 20,
      "money_a": 77,
      "money_b": 23
+    },
+    {
+     "at": "2026-10-11T12:59+00:00",
+     "line": 37.5,
+     "bets_a": 80,
+     "bets_b": 20,
+     "money_a": 76,
+     "money_b": 24
     }
    ]
   },
@@ -14667,6 +14675,14 @@
      "bets_b": 46,
      "money_a": 49,
      "money_b": 51
+    },
+    {
+     "at": "2026-10-11T12:59+00:00",
+     "line": null,
+     "bets_a": 54,
+     "bets_b": 46,
+     "money_a": 50,
+     "money_b": 50
     }
    ],
    "total": [
