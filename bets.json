@@ -8377,92 +8377,6 @@
       "odds": 596
     },
     {
-      "kind": "parlay",
-      "stake": 75,
-      "legs": [
-        {
-          "player": "Omarion Hampton",
-          "player_id": "00-0040666",
-          "team": "LAC",
-          "opp": "DEN",
-          "stat": "rushing_yards",
-          "side": "over",
-          "line": 39.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 7.6
-        },
-        {
-          "player": "Sam LaPorta",
-          "player_id": "00-0039065",
-          "team": "DET",
-          "opp": "ARI",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 51.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 7.2
-        }
-      ],
-      "game": "multi",
-      "note": "LATE CHANGE Fri 01:26 PM ET: Tyler Allgeier UNDER 11.5 \u2192 Sam LaPorta OVER 51.5 (plan now focuses on A/B picks (this one is a C))",
-      "id": "2026-w5-1791566814-1",
-      "placed_at": "2026-10-09T13:26:54.774224-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": 264
-    },
-    {
-      "kind": "parlay",
-      "stake": 90,
-      "legs": [
-        {
-          "player": "Zay Flowers",
-          "player_id": "00-0039064",
-          "team": "BAL",
-          "opp": "ATL",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 69.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 8.4
-        },
-        {
-          "player": "Sam LaPorta",
-          "player_id": "00-0039065",
-          "team": "DET",
-          "opp": "ARI",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 51.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 7.2
-        },
-        {
-          "player": "Brock Purdy",
-          "player_id": "00-0037834",
-          "team": "SF",
-          "opp": "SEA",
-          "stat": "rushing_yards",
-          "side": "over",
-          "line": 22.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 9.5
-        }
-      ],
-      "game": "multi",
-      "note": "LATE CHANGE Fri 01:26 PM ET: Tyler Allgeier UNDER 11.5 \u2192 Sam LaPorta OVER 51.5 (plan now focuses on A/B picks (this one is a C))",
-      "id": "2026-w5-1791566814-2",
-      "placed_at": "2026-10-09T13:26:54.774224-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": 596
-    },
-    {
       "id": "2026-w5-PHI@JAX-nobet",
       "placed_at": "2026-10-11T06:31:30.307047-04:00",
       "season": 2026,
@@ -9469,6 +9383,92 @@
       "week": 5,
       "odds": 185,
       "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 75,
+      "legs": [
+        {
+          "player": "Omarion Hampton",
+          "player_id": "00-0040666",
+          "team": "LAC",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.6
+        },
+        {
+          "player": "Isaac TeSlaa",
+          "player_id": "00-0040669",
+          "team": "DET",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 25.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.7
+        }
+      ],
+      "game": "multi",
+      "note": "LATE CHANGE Sun 11:28 AM ET: Sam LaPorta OVER 51.5 \u2192 Isaac TeSlaa OVER 25.5 (plan now focuses on A/B picks (this one is a C))",
+      "id": "2026-w5-1791732488-1",
+      "placed_at": "2026-10-11T11:28:08.293376-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 264
+    },
+    {
+      "kind": "parlay",
+      "stake": 90,
+      "legs": [
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.4
+        },
+        {
+          "player": "Isaac TeSlaa",
+          "player_id": "00-0040669",
+          "team": "DET",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 25.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.7
+        },
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "SEA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 22.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.5
+        }
+      ],
+      "game": "multi",
+      "note": "LATE CHANGE Sun 11:28 AM ET: Sam LaPorta OVER 51.5 \u2192 Isaac TeSlaa OVER 25.5 (plan now focuses on A/B picks (this one is a C))",
+      "id": "2026-w5-1791732488-2",
+      "placed_at": "2026-10-11T11:28:08.293376-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 596
     }
   ],
   "superseded": [
@@ -11723,6 +11723,96 @@
       "note": "Claude weekly pick",
       "superseded_at": "2026-10-09T13:26:54.774224-04:00",
       "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "parlay",
+      "stake": 75,
+      "legs": [
+        {
+          "player": "Omarion Hampton",
+          "player_id": "00-0040666",
+          "team": "LAC",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.6
+        },
+        {
+          "player": "Sam LaPorta",
+          "player_id": "00-0039065",
+          "team": "DET",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 51.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.2
+        }
+      ],
+      "game": "multi",
+      "note": "LATE CHANGE Fri 01:26 PM ET: Tyler Allgeier UNDER 11.5 \u2192 Sam LaPorta OVER 51.5 (plan now focuses on A/B picks (this one is a C))",
+      "id": "2026-w5-1791566814-1",
+      "placed_at": "2026-10-09T13:26:54.774224-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 264,
+      "superseded_at": "2026-10-11T11:28:08.293376-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "parlay",
+      "stake": 90,
+      "legs": [
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 69.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.4
+        },
+        {
+          "player": "Sam LaPorta",
+          "player_id": "00-0039065",
+          "team": "DET",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 51.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.2
+        },
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "SEA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 22.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.5
+        }
+      ],
+      "game": "multi",
+      "note": "LATE CHANGE Fri 01:26 PM ET: Tyler Allgeier UNDER 11.5 \u2192 Sam LaPorta OVER 51.5 (plan now focuses on A/B picks (this one is a C))",
+      "id": "2026-w5-1791566814-2",
+      "placed_at": "2026-10-09T13:26:54.774224-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 596,
+      "superseded_at": "2026-10-11T11:28:08.293376-04:00",
+      "superseded_reason": "late change before kickoff"
     }
   ],
   "week_budgets": {
@@ -11829,6 +11919,26 @@
       "stake": 90,
       "from": "Tyler Allgeier UNDER 11.5",
       "to": "Sam LaPorta OVER 51.5",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-11T11:28-04:00",
+      "week": 5,
+      "game": "parlay leg",
+      "kind": "parlay",
+      "stake": 75,
+      "from": "Sam LaPorta OVER 51.5",
+      "to": "Isaac TeSlaa OVER 25.5",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-11T11:28-04:00",
+      "week": 5,
+      "game": "parlay leg",
+      "kind": "parlay",
+      "stake": 90,
+      "from": "Sam LaPorta OVER 51.5",
+      "to": "Isaac TeSlaa OVER 25.5",
       "reason": "plan now focuses on A/B picks (this one is a C)"
     }
   ]
