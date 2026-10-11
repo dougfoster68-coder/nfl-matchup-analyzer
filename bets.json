@@ -9472,31 +9472,6 @@
     },
     {
       "kind": "straight",
-      "stake": 25,
-      "legs": [
-        {
-          "player": "Oronde Gadsden II",
-          "player_id": "00-0040189",
-          "team": "LAC",
-          "opp": "DEN",
-          "stat": "receiving_yards",
-          "side": "under",
-          "line": 34.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 6.5
-        }
-      ],
-      "game": "DEN@LAC",
-      "id": "2026-w5-1791738433-7",
-      "placed_at": "2026-10-11T13:07:13.230519-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
       "stake": 15,
       "legs": [
         {
@@ -12401,6 +12376,33 @@
       "note": "Claude weekly pick",
       "superseded_at": "2026-10-11T13:42:22.697808-04:00",
       "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Oronde Gadsden II",
+          "player_id": "00-0040189",
+          "team": "LAC",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 34.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.5
+        }
+      ],
+      "game": "DEN@LAC",
+      "id": "2026-w5-1791738433-7",
+      "placed_at": "2026-10-11T13:07:13.230519-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-11T15:09:38.078971-04:00",
+      "superseded_reason": "late change before kickoff"
     }
   ],
   "week_budgets": {
@@ -12638,6 +12640,16 @@
       "from": "Jeremiyah Love OVER 45.5 rushing yards",
       "to": "nothing (money back to bankroll)",
       "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-11T15:09-04:00",
+      "week": 5,
+      "game": "DEN@LAC",
+      "kind": "straight",
+      "stake": 25,
+      "from": "Oronde Gadsden II UNDER 34.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "line pulled (often an injury or inactive)"
     }
   ]
 }
