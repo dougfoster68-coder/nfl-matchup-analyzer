@@ -10068,131 +10068,6 @@
       "week": 5,
       "odds": 140,
       "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 25,
-      "legs": [
-        {
-          "player": "Blake Corum",
-          "player_id": "00-0039738",
-          "team": "LA",
-          "opp": "BUF",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 3.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 6.3
-        }
-      ],
-      "game": "BUF@LA",
-      "id": "2026-w5-1791840749-9",
-      "placed_at": "2026-10-12T17:32:29.155733-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 10,
-      "legs": [
-        {
-          "player": "Puka Nacua",
-          "player_id": "00-0039075",
-          "team": "LA",
-          "opp": "BUF",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 95.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 5.8
-        }
-      ],
-      "game": "BUF@LA",
-      "id": "2026-w5-1791840749-10",
-      "placed_at": "2026-10-12T17:32:29.155733-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 10,
-      "legs": [
-        {
-          "player": "Dalton Kincaid",
-          "player_id": "00-0038933",
-          "team": "BUF",
-          "opp": "LA",
-          "stat": "receiving_yards",
-          "side": "under",
-          "line": 53.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 5.3
-        }
-      ],
-      "game": "BUF@LA",
-      "id": "2026-w5-1791840749-11",
-      "placed_at": "2026-10-12T17:32:29.155733-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 10,
-      "legs": [
-        {
-          "player": "Davante Adams",
-          "player_id": "00-0031381",
-          "team": "LA",
-          "opp": "BUF",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 62.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 4.8
-        }
-      ],
-      "game": "BUF@LA",
-      "id": "2026-w5-1791840749-12",
-      "placed_at": "2026-10-12T17:32:29.155733-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 10,
-      "legs": [
-        {
-          "player": "Josh Allen",
-          "player_id": "00-0034857",
-          "team": "BUF",
-          "opp": "LA",
-          "stat": "rushing_yards",
-          "side": "under",
-          "line": 36.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 4.5
-        }
-      ],
-      "game": "BUF@LA",
-      "id": "2026-w5-1791840749-13",
-      "placed_at": "2026-10-12T17:32:29.155733-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
     }
   ],
   "superseded": [
@@ -13137,6 +13012,141 @@
       "note": "Claude weekly pick",
       "superseded_at": "2026-10-11T18:57:40.151961-04:00",
       "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Blake Corum",
+          "player_id": "00-0039738",
+          "team": "LA",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 3.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.3
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-9",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-12T17:55:23.685760-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Puka Nacua",
+          "player_id": "00-0039075",
+          "team": "LA",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 95.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.8
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-10",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-12T17:55:23.685760-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Dalton Kincaid",
+          "player_id": "00-0038933",
+          "team": "BUF",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 53.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.3
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-11",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-12T17:55:23.685760-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Davante Adams",
+          "player_id": "00-0031381",
+          "team": "LA",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 62.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 4.8
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-12",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-12T17:55:23.685760-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Josh Allen",
+          "player_id": "00-0034857",
+          "team": "BUF",
+          "opp": "LA",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 36.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 4.5
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-13",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-12T17:55:23.685760-04:00",
+      "superseded_reason": "late change before kickoff"
     }
   ],
   "week_budgets": {
@@ -13424,6 +13434,56 @@
       "from": "Zay Flowers OVER 67.5 receiving yards",
       "to": "nothing (money back to bankroll)",
       "reason": "line pulled (often an injury or inactive)"
+    },
+    {
+      "at": "2026-10-12T17:55-04:00",
+      "week": 5,
+      "game": "BUF@LA",
+      "kind": "straight",
+      "stake": 25,
+      "from": "Blake Corum OVER 3.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "now trap-flagged: Line 2.5 vs 7 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    },
+    {
+      "at": "2026-10-12T17:55-04:00",
+      "week": 5,
+      "game": "BUF@LA",
+      "kind": "straight",
+      "stake": 10,
+      "from": "Puka Nacua OVER 95.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-12T17:55-04:00",
+      "week": 5,
+      "game": "BUF@LA",
+      "kind": "straight",
+      "stake": 10,
+      "from": "Dalton Kincaid UNDER 53.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-12T17:55-04:00",
+      "week": 5,
+      "game": "BUF@LA",
+      "kind": "straight",
+      "stake": 10,
+      "from": "Davante Adams OVER 62.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-12T17:55-04:00",
+      "week": 5,
+      "game": "BUF@LA",
+      "kind": "straight",
+      "stake": 10,
+      "from": "Josh Allen UNDER 36.5 rushing yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
     }
   ]
 }
