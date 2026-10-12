@@ -9864,6 +9864,335 @@
       "season": 2026,
       "week": 5,
       "odds": 2703
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Matthew Stafford",
+          "player_id": "00-0026498",
+          "team": "LA",
+          "opp": "BUF",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 1.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-1",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Ty Johnson",
+          "player_id": "00-0035537",
+          "team": "BUF",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 16.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.8
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-2",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Ty Johnson",
+          "player_id": "00-0035537",
+          "team": "BUF",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -130,
+          "grade": "B",
+          "score": 6.8,
+          "alt": "15+"
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-3",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -130,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Ty Johnson",
+          "player_id": "00-0035537",
+          "team": "BUF",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": 120,
+          "grade": "B",
+          "score": 6.8,
+          "alt": "20+"
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-4",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 120,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "James Cook",
+          "player_id": "00-0037248",
+          "team": "BUF",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 11.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.7
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-5",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 23.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.7
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-6",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -150,
+          "grade": "B",
+          "score": 6.7,
+          "alt": "20+"
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-7",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -150,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": 140,
+          "grade": "B",
+          "score": 6.7,
+          "alt": "30+"
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-8",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": 140,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Blake Corum",
+          "player_id": "00-0039738",
+          "team": "LA",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 3.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.3
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-9",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Puka Nacua",
+          "player_id": "00-0039075",
+          "team": "LA",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 95.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.8
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-10",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Dalton Kincaid",
+          "player_id": "00-0038933",
+          "team": "BUF",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 53.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.3
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-11",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Davante Adams",
+          "player_id": "00-0031381",
+          "team": "LA",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 62.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 4.8
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-12",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Josh Allen",
+          "player_id": "00-0034857",
+          "team": "BUF",
+          "opp": "LA",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 36.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 4.5
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-13",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick"
     }
   ],
   "superseded": [
