@@ -9969,31 +9969,6 @@
     },
     {
       "kind": "straight",
-      "stake": 25,
-      "legs": [
-        {
-          "player": "James Cook",
-          "player_id": "00-0037248",
-          "team": "BUF",
-          "opp": "LA",
-          "stat": "receiving_yards",
-          "side": "under",
-          "line": 11.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 6.7
-        }
-      ],
-      "game": "BUF@LA",
-      "id": "2026-w5-1791840749-5",
-      "placed_at": "2026-10-12T17:32:29.155733-04:00",
-      "season": 2026,
-      "week": 5,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
       "stake": 10,
       "legs": [
         {
@@ -13147,6 +13122,33 @@
       "note": "Claude weekly pick",
       "superseded_at": "2026-10-12T17:55:23.685760-04:00",
       "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "James Cook",
+          "player_id": "00-0037248",
+          "team": "BUF",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 11.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.7
+        }
+      ],
+      "game": "BUF@LA",
+      "id": "2026-w5-1791840749-5",
+      "placed_at": "2026-10-12T17:32:29.155733-04:00",
+      "season": 2026,
+      "week": 5,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-12T19:28:45.371841-04:00",
+      "superseded_reason": "late change before kickoff"
     }
   ],
   "week_budgets": {
@@ -13484,6 +13486,16 @@
       "from": "Josh Allen UNDER 36.5 rushing yards",
       "to": "nothing (money back to bankroll)",
       "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-12T19:28-04:00",
+      "week": 5,
+      "game": "BUF@LA",
+      "kind": "straight",
+      "stake": 25,
+      "from": "James Cook UNDER 11.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "now trap-flagged: Line 12.5 vs 7 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
     }
   ]
 }
