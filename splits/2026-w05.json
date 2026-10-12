@@ -16035,6 +16035,14 @@
      "bets_b": 50,
      "money_a": 75,
      "money_b": 25
+    },
+    {
+     "at": "2026-10-12T22:08+00:00",
+     "line": null,
+     "bets_a": 49,
+     "bets_b": 51,
+     "money_a": 71,
+     "money_b": 29
     }
    ],
    "total": [
@@ -16373,6 +16381,14 @@
      "bets_b": 16,
      "money_a": 87,
      "money_b": 13
+    },
+    {
+     "at": "2026-10-12T22:08+00:00",
+     "line": 55.5,
+     "bets_a": 85,
+     "bets_b": 15,
+     "money_a": 86,
+     "money_b": 14
     }
    ],
    "spread": [
