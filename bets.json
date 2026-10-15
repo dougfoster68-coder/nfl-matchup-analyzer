@@ -10043,6 +10043,572 @@
       "week": 5,
       "odds": 140,
       "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 40,
+      "legs": [
+        {
+          "player": "Jayden Daniels",
+          "player_id": "00-0039910",
+          "team": "WAS",
+          "opp": "SF",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 205.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.6
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w6-1792100474-1",
+      "placed_at": "2026-10-15T17:41:14.156834-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 40,
+      "legs": [
+        {
+          "player": "Kendre Miller",
+          "player_id": "00-0038551",
+          "team": "NO",
+          "opp": "NYG",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 34.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        },
+        {
+          "player": "Derrick Henry",
+          "player_id": "00-0032764",
+          "team": "BAL",
+          "opp": "CLE",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 88.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.9
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w6-1792100474-2",
+      "placed_at": "2026-10-15T17:41:14.156834-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 40,
+      "legs": [
+        {
+          "player": "Jonathan Taylor",
+          "player_id": "00-0036223",
+          "team": "IND",
+          "opp": "TEN",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 89.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.9
+        },
+        {
+          "player": "Omarion Hampton",
+          "player_id": "00-0040666",
+          "team": "LAC",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 32.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w6-1792100474-3",
+      "placed_at": "2026-10-15T17:41:14.156834-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 40,
+      "legs": [
+        {
+          "player": "Jake Ferguson",
+          "player_id": "00-0038041",
+          "team": "DAL",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 26.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        },
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 26.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w6-1792100474-4",
+      "placed_at": "2026-10-15T17:41:14.156834-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 45,
+      "legs": [
+        {
+          "player": "Jayden Daniels",
+          "player_id": "00-0039910",
+          "team": "WAS",
+          "opp": "SF",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 205.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Derrick Henry",
+          "player_id": "00-0032764",
+          "team": "BAL",
+          "opp": "CLE",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 88.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.9
+        },
+        {
+          "player": "Jake Ferguson",
+          "player_id": "00-0038041",
+          "team": "DAL",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 26.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w6-1792100474-5",
+      "placed_at": "2026-10-15T17:41:14.156834-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 45,
+      "legs": [
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.6
+        },
+        {
+          "player": "Jonathan Taylor",
+          "player_id": "00-0036223",
+          "team": "IND",
+          "opp": "TEN",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 89.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.9
+        },
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 26.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w6-1792100474-6",
+      "placed_at": "2026-10-15T17:41:14.156834-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 45,
+      "legs": [
+        {
+          "player": "Kendre Miller",
+          "player_id": "00-0038551",
+          "team": "NO",
+          "opp": "NYG",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 34.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        },
+        {
+          "player": "Omarion Hampton",
+          "player_id": "00-0040666",
+          "team": "LAC",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 32.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        },
+        {
+          "player": "Jayden Daniels",
+          "player_id": "00-0039910",
+          "team": "WAS",
+          "opp": "SF",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 205.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w6-1792100474-7",
+      "placed_at": "2026-10-15T17:41:14.156834-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 45,
+      "legs": [
+        {
+          "player": "Jayden Daniels",
+          "player_id": "00-0039910",
+          "team": "WAS",
+          "opp": "SF",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 205.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Kendre Miller",
+          "player_id": "00-0038551",
+          "team": "NO",
+          "opp": "NYG",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 34.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        },
+        {
+          "player": "Jonathan Taylor",
+          "player_id": "00-0036223",
+          "team": "IND",
+          "opp": "TEN",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 89.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.9
+        },
+        {
+          "player": "Jake Ferguson",
+          "player_id": "00-0038041",
+          "team": "DAL",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 26.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w6-1792100474-8",
+      "placed_at": "2026-10-15T17:41:14.156834-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 1228,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 50,
+      "legs": [
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.6
+        },
+        {
+          "player": "Derrick Henry",
+          "player_id": "00-0032764",
+          "team": "BAL",
+          "opp": "CLE",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 88.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.9
+        },
+        {
+          "player": "Omarion Hampton",
+          "player_id": "00-0040666",
+          "team": "LAC",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 32.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        },
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 26.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w6-1792100474-9",
+      "placed_at": "2026-10-15T17:41:14.156834-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 1228,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "special": "contrarian",
+      "stake": 12.53,
+      "legs": [
+        {
+          "player": "Jonathan Taylor",
+          "player_id": "00-0036223",
+          "team": "IND",
+          "opp": "TEN",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 89.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.9,
+          "why": "Star under: the public rarely bets against popular players \u2014 model sides under \u00b7 EV +28%",
+          "ev": 0.279
+        },
+        {
+          "player": "Kayshon Boutte",
+          "player_id": "00-0038608",
+          "team": "HOU",
+          "opp": "JAX",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 25.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3,
+          "why": "Buy low: market dropped this 29.5 \u2192 25.5, model still projects 38.5 \u00b7 EV +25%",
+          "ev": 0.25
+        },
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.6,
+          "why": "Buy low: line dropped 22.5 \u2192 20.5, model still projects 37.4 \u00b7 EV +23%",
+          "ev": 0.231
+        },
+        {
+          "player": "Christian McCaffrey",
+          "player_id": "00-0033280",
+          "team": "SF",
+          "opp": "WAS",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 40.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1,
+          "why": "Fade the public: line climbed 38.5 \u2192 40.5 on over money; model projects 29.5 \u00b7 EV +22%",
+          "ev": 0.222
+        }
+      ],
+      "game": "multi",
+      "note": "CONTRARIAN SPECIAL",
+      "id": "2026-w6-1792100474-10",
+      "placed_at": "2026-10-15T17:41:14.156834-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 1228
+    },
+    {
+      "kind": "parlay",
+      "special": "contrarian-longshot",
+      "stake": 12.52,
+      "legs": [
+        {
+          "player": "Jonathan Taylor",
+          "player_id": "00-0036223",
+          "team": "IND",
+          "opp": "TEN",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 89.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.9,
+          "why": "Star under: the public rarely bets against popular players \u2014 model sides under"
+        },
+        {
+          "player": "Kayshon Boutte",
+          "player_id": "00-0038608",
+          "team": "HOU",
+          "opp": "JAX",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": 140,
+          "grade": "B",
+          "score": 7.3,
+          "alt": "30+",
+          "why": "Buy low: market dropped this 29.5 \u2192 25.5, model still projects 38.5 \u00b7 boosted to 30+"
+        },
+        {
+          "player": "Kyren Williams",
+          "player_id": "00-0037840",
+          "team": "LA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 125,
+          "grade": "A",
+          "score": 8.6,
+          "alt": "25+",
+          "why": "Buy low: line dropped 22.5 \u2192 20.5, model still projects 37.4 \u00b7 boosted to 25+"
+        },
+        {
+          "player": "Christian McCaffrey",
+          "player_id": "00-0033280",
+          "team": "SF",
+          "opp": "WAS",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 40.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1,
+          "why": "Fade the public: line climbed 38.5 \u2192 40.5 on over money; model projects 29.5"
+        }
+      ],
+      "game": "multi",
+      "note": "CONTRARIAN ALT LINE SPECIAL",
+      "id": "2026-w6-1792100474-11",
+      "placed_at": "2026-10-15T17:41:14.156834-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 1868
+    },
+    {
+      "id": "2026-w6-SEA@DEN-nobet",
+      "placed_at": "2026-10-15T17:41:14.156834-04:00",
+      "season": 2026,
+      "week": 6,
+      "game": "SEA@DEN",
+      "kind": "none",
+      "stake": 0,
+      "legs": [],
+      "note": "No top plays in this game this week \u2014 passed."
     }
   ],
   "superseded": [
@@ -13153,7 +13719,8 @@
   ],
   "week_budgets": {
     "4": 1769.02,
-    "5": 1601.88
+    "5": 1601.88,
+    "6": 834.85
   },
   "note": "Bankroll starts in week 1: weeks 1-3 are simulated backtests (flagged backtest); week-4 stakes were rescaled x1.76902 to the week-4 starting bankroll (originals in stake_original).",
   "changes": [
