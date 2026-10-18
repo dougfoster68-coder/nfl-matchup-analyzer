@@ -10049,43 +10049,6 @@
       "stake": 40,
       "legs": [
         {
-          "player": "Kendre Miller",
-          "player_id": "00-0038551",
-          "team": "NO",
-          "opp": "NYG",
-          "stat": "rushing_yards",
-          "side": "under",
-          "line": 34.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 8.1
-        },
-        {
-          "player": "Derrick Henry",
-          "player_id": "00-0032764",
-          "team": "BAL",
-          "opp": "CLE",
-          "stat": "rushing_yards",
-          "side": "over",
-          "line": 88.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 7.9
-        }
-      ],
-      "game": "multi",
-      "id": "2026-w6-1792100474-2",
-      "placed_at": "2026-10-15T17:41:14.156834-04:00",
-      "season": 2026,
-      "week": 6,
-      "odds": 264,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "parlay",
-      "stake": 40,
-      "legs": [
-        {
           "player": "Jonathan Taylor",
           "player_id": "00-0036223",
           "team": "IND",
@@ -10202,116 +10165,6 @@
       "season": 2026,
       "week": 6,
       "odds": 596,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "parlay",
-      "stake": 45,
-      "legs": [
-        {
-          "player": "Kendre Miller",
-          "player_id": "00-0038551",
-          "team": "NO",
-          "opp": "NYG",
-          "stat": "rushing_yards",
-          "side": "under",
-          "line": 34.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 8.1
-        },
-        {
-          "player": "Omarion Hampton",
-          "player_id": "00-0040666",
-          "team": "LAC",
-          "opp": "KC",
-          "stat": "rushing_yards",
-          "side": "over",
-          "line": 32.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 7.8
-        },
-        {
-          "player": "Jayden Daniels",
-          "player_id": "00-0039910",
-          "team": "WAS",
-          "opp": "SF",
-          "stat": "passing_yards",
-          "side": "under",
-          "line": 205.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 8.7
-        }
-      ],
-      "game": "multi",
-      "id": "2026-w6-1792100474-7",
-      "placed_at": "2026-10-15T17:41:14.156834-04:00",
-      "season": 2026,
-      "week": 6,
-      "odds": 596,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "parlay",
-      "stake": 45,
-      "legs": [
-        {
-          "player": "Jayden Daniels",
-          "player_id": "00-0039910",
-          "team": "WAS",
-          "opp": "SF",
-          "stat": "passing_yards",
-          "side": "under",
-          "line": 205.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 8.7
-        },
-        {
-          "player": "Kendre Miller",
-          "player_id": "00-0038551",
-          "team": "NO",
-          "opp": "NYG",
-          "stat": "rushing_yards",
-          "side": "under",
-          "line": 34.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 8.1
-        },
-        {
-          "player": "Jonathan Taylor",
-          "player_id": "00-0036223",
-          "team": "IND",
-          "opp": "TEN",
-          "stat": "rushing_yards",
-          "side": "under",
-          "line": 89.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 7.9
-        },
-        {
-          "player": "Jake Ferguson",
-          "player_id": "00-0038041",
-          "team": "DAL",
-          "opp": "GB",
-          "stat": "receiving_yards",
-          "side": "under",
-          "line": 26.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 7.8
-        }
-      ],
-      "game": "multi",
-      "id": "2026-w6-1792100474-8",
-      "placed_at": "2026-10-15T17:41:14.156834-04:00",
-      "season": 2026,
-      "week": 6,
-      "odds": 1228,
       "note": "Claude weekly pick"
     },
     {
@@ -10609,6 +10462,280 @@
       "season": 2026,
       "week": 6,
       "odds": 1228
+    },
+    {
+      "kind": "parlay",
+      "stake": 40,
+      "legs": [
+        {
+          "player": "Cam Skattebo",
+          "player_id": "00-0040715",
+          "team": "NYG",
+          "opp": "NO",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Derrick Henry",
+          "player_id": "00-0032764",
+          "team": "BAL",
+          "opp": "CLE",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 88.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.9
+        }
+      ],
+      "game": "multi",
+      "note": "LATE CHANGE Sun 07:30 AM ET: Kendre Miller UNDER 34.5 \u2192 Cam Skattebo OVER 49.5 (now trap-flagged: Line 35.5 vs 24 L10 avg \u2014 gap this big usually means the book knows about an injury or role change)",
+      "id": "2026-w6-1792323044-1",
+      "placed_at": "2026-10-18T07:30:44.245215-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 264
+    },
+    {
+      "kind": "parlay",
+      "stake": 45,
+      "legs": [
+        {
+          "player": "Cam Skattebo",
+          "player_id": "00-0040715",
+          "team": "NYG",
+          "opp": "NO",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Omarion Hampton",
+          "player_id": "00-0040666",
+          "team": "LAC",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 32.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        },
+        {
+          "player": "Jayden Daniels",
+          "player_id": "00-0039910",
+          "team": "WAS",
+          "opp": "SF",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 205.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        }
+      ],
+      "game": "multi",
+      "note": "LATE CHANGE Sun 07:30 AM ET: Kendre Miller UNDER 34.5 \u2192 Cam Skattebo OVER 49.5 (now trap-flagged: Line 35.5 vs 24 L10 avg \u2014 gap this big usually means the book knows about an injury or role change)",
+      "id": "2026-w6-1792323044-2",
+      "placed_at": "2026-10-18T07:30:44.245215-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 596
+    },
+    {
+      "kind": "parlay",
+      "stake": 45,
+      "legs": [
+        {
+          "player": "Jayden Daniels",
+          "player_id": "00-0039910",
+          "team": "WAS",
+          "opp": "SF",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 205.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Cam Skattebo",
+          "player_id": "00-0040715",
+          "team": "NYG",
+          "opp": "NO",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Jonathan Taylor",
+          "player_id": "00-0036223",
+          "team": "IND",
+          "opp": "TEN",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 89.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.9
+        },
+        {
+          "player": "Jake Ferguson",
+          "player_id": "00-0038041",
+          "team": "DAL",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 26.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "multi",
+      "note": "LATE CHANGE Sun 07:30 AM ET: Kendre Miller UNDER 34.5 \u2192 Cam Skattebo OVER 49.5 (now trap-flagged: Line 35.5 vs 24 L10 avg \u2014 gap this big usually means the book knows about an injury or role change)",
+      "id": "2026-w6-1792323044-3",
+      "placed_at": "2026-10-18T07:30:44.245215-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 1228
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Kayshon Boutte",
+          "player_id": "00-0038608",
+          "team": "HOU",
+          "opp": "JAX",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 23.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "HOU@JAX",
+      "id": "2026-w6-1792323044-1",
+      "placed_at": "2026-10-18T07:30:44.245215-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Kayshon Boutte",
+          "player_id": "00-0038608",
+          "team": "HOU",
+          "opp": "JAX",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -175,
+          "grade": "A",
+          "score": 7.8,
+          "alt": "20+"
+        }
+      ],
+      "game": "HOU@JAX",
+      "id": "2026-w6-1792323044-2",
+      "placed_at": "2026-10-18T07:30:44.245215-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": -175,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Kayshon Boutte",
+          "player_id": "00-0038608",
+          "team": "HOU",
+          "opp": "JAX",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": 175,
+          "grade": "A",
+          "score": 7.8,
+          "alt": "30+"
+        }
+      ],
+      "game": "HOU@JAX",
+      "id": "2026-w6-1792323044-3",
+      "placed_at": "2026-10-18T07:30:44.245215-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 175,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Jakobi Meyers",
+          "player_id": "00-0034960",
+          "team": "JAX",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 34.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1
+        }
+      ],
+      "game": "HOU@JAX",
+      "id": "2026-w6-1792323044-4",
+      "placed_at": "2026-10-18T07:30:44.245215-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Woody Marks",
+          "player_id": "00-0040583",
+          "team": "HOU",
+          "opp": "JAX",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 46.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        }
+      ],
+      "game": "HOU@JAX",
+      "id": "2026-w6-1792323044-5",
+      "placed_at": "2026-10-18T07:30:44.245215-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": -110,
+      "note": "Claude weekly pick"
     }
   ],
   "superseded": [
@@ -13868,6 +13995,159 @@
       "note": "Claude weekly pick",
       "superseded_at": "2026-10-16T17:28:35.952291-04:00",
       "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "parlay",
+      "stake": 40,
+      "legs": [
+        {
+          "player": "Kendre Miller",
+          "player_id": "00-0038551",
+          "team": "NO",
+          "opp": "NYG",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 34.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        },
+        {
+          "player": "Derrick Henry",
+          "player_id": "00-0032764",
+          "team": "BAL",
+          "opp": "CLE",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 88.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.9
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w6-1792100474-2",
+      "placed_at": "2026-10-15T17:41:14.156834-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 264,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-18T07:30:44.245215-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "parlay",
+      "stake": 45,
+      "legs": [
+        {
+          "player": "Kendre Miller",
+          "player_id": "00-0038551",
+          "team": "NO",
+          "opp": "NYG",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 34.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        },
+        {
+          "player": "Omarion Hampton",
+          "player_id": "00-0040666",
+          "team": "LAC",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 32.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        },
+        {
+          "player": "Jayden Daniels",
+          "player_id": "00-0039910",
+          "team": "WAS",
+          "opp": "SF",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 205.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w6-1792100474-7",
+      "placed_at": "2026-10-15T17:41:14.156834-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 596,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-18T07:30:44.245215-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "parlay",
+      "stake": 45,
+      "legs": [
+        {
+          "player": "Jayden Daniels",
+          "player_id": "00-0039910",
+          "team": "WAS",
+          "opp": "SF",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 205.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Kendre Miller",
+          "player_id": "00-0038551",
+          "team": "NO",
+          "opp": "NYG",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 34.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        },
+        {
+          "player": "Jonathan Taylor",
+          "player_id": "00-0036223",
+          "team": "IND",
+          "opp": "TEN",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 89.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.9
+        },
+        {
+          "player": "Jake Ferguson",
+          "player_id": "00-0038041",
+          "team": "DAL",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 26.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w6-1792100474-8",
+      "placed_at": "2026-10-15T17:41:14.156834-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 1228,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-18T07:30:44.245215-04:00",
+      "superseded_reason": "late change before kickoff"
     }
   ],
   "week_budgets": {
@@ -14246,6 +14526,36 @@
       "from": "Kyren Williams OVER 20.5",
       "to": "Tyler Higbee OVER 34.5",
       "reason": "now trap-flagged: Line 19.5 vs 36 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    },
+    {
+      "at": "2026-10-18T07:30-04:00",
+      "week": 6,
+      "game": "parlay leg",
+      "kind": "parlay",
+      "stake": 40,
+      "from": "Kendre Miller UNDER 34.5",
+      "to": "Cam Skattebo OVER 49.5",
+      "reason": "now trap-flagged: Line 35.5 vs 24 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    },
+    {
+      "at": "2026-10-18T07:30-04:00",
+      "week": 6,
+      "game": "parlay leg",
+      "kind": "parlay",
+      "stake": 45,
+      "from": "Kendre Miller UNDER 34.5",
+      "to": "Cam Skattebo OVER 49.5",
+      "reason": "now trap-flagged: Line 35.5 vs 24 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    },
+    {
+      "at": "2026-10-18T07:30-04:00",
+      "week": 6,
+      "game": "parlay leg",
+      "kind": "parlay",
+      "stake": 45,
+      "from": "Kendre Miller UNDER 34.5",
+      "to": "Cam Skattebo OVER 49.5",
+      "reason": "now trap-flagged: Line 35.5 vs 24 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
     }
   ]
 }
