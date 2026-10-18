@@ -11474,31 +11474,6 @@
       "stake": 10,
       "legs": [
         {
-          "player": "Khalil Shakir",
-          "player_id": "00-0037261",
-          "team": "BUF",
-          "opp": "LV",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 38.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 6.7
-        }
-      ],
-      "game": "BUF@LV",
-      "id": "2026-w6-1792345439-14",
-      "placed_at": "2026-10-18T13:43:59.540533-04:00",
-      "season": 2026,
-      "week": 6,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 10,
-      "legs": [
-        {
           "player": "Kenneth Walker III",
           "player_id": "00-0038134",
           "team": "KC",
@@ -11513,31 +11488,6 @@
       ],
       "game": "LAC@KC",
       "id": "2026-w6-1792345439-15",
-      "placed_at": "2026-10-18T13:43:59.540533-04:00",
-      "season": 2026,
-      "week": 6,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 10,
-      "legs": [
-        {
-          "player": "Oronde Gadsden II",
-          "player_id": "00-0040189",
-          "team": "LAC",
-          "opp": "KC",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 14.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 6.1
-        }
-      ],
-      "game": "LAC@KC",
-      "id": "2026-w6-1792345439-16",
       "placed_at": "2026-10-18T13:43:59.540533-04:00",
       "season": 2026,
       "week": 6,
@@ -14980,6 +14930,60 @@
       "note": "Claude weekly pick",
       "superseded_at": "2026-10-18T07:30:44.245215-04:00",
       "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Khalil Shakir",
+          "player_id": "00-0037261",
+          "team": "BUF",
+          "opp": "LV",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 38.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.7
+        }
+      ],
+      "game": "BUF@LV",
+      "id": "2026-w6-1792345439-14",
+      "placed_at": "2026-10-18T13:43:59.540533-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-18T15:42:31.683072-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Oronde Gadsden II",
+          "player_id": "00-0040189",
+          "team": "LAC",
+          "opp": "KC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.1
+        }
+      ],
+      "game": "LAC@KC",
+      "id": "2026-w6-1792345439-16",
+      "placed_at": "2026-10-18T13:43:59.540533-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-18T15:42:31.683072-04:00",
+      "superseded_reason": "late change before kickoff"
     }
   ],
   "week_budgets": {
@@ -15388,6 +15392,26 @@
       "from": "Kendre Miller UNDER 34.5",
       "to": "Cam Skattebo OVER 49.5",
       "reason": "now trap-flagged: Line 35.5 vs 24 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    },
+    {
+      "at": "2026-10-18T15:42-04:00",
+      "week": 6,
+      "game": "BUF@LV",
+      "kind": "straight",
+      "stake": 10,
+      "from": "Khalil Shakir OVER 38.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-18T15:42-04:00",
+      "week": 6,
+      "game": "LAC@KC",
+      "kind": "straight",
+      "stake": 10,
+      "from": "Oronde Gadsden II OVER 14.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
     }
   ]
 }
