@@ -11518,6 +11518,266 @@
       "week": 6,
       "odds": -110,
       "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Jake Ferguson",
+          "player_id": "00-0038041",
+          "team": "DAL",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.2
+        }
+      ],
+      "game": "DAL@GB",
+      "id": "2026-w6-1792360455-1",
+      "placed_at": "2026-10-18T17:54:15.770745-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jordan Love",
+          "player_id": "00-0036264",
+          "team": "GB",
+          "opp": "DAL",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 6.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.4
+        }
+      ],
+      "game": "DAL@GB",
+      "id": "2026-w6-1792360455-2",
+      "placed_at": "2026-10-18T17:54:15.770745-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Javonte Williams",
+          "player_id": "00-0036997",
+          "team": "DAL",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 69.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.2
+        }
+      ],
+      "game": "DAL@GB",
+      "id": "2026-w6-1792360455-3",
+      "placed_at": "2026-10-18T17:54:15.770745-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Ryan Flournoy",
+          "player_id": "00-0039410",
+          "team": "DAL",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 32.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.1
+        }
+      ],
+      "game": "DAL@GB",
+      "id": "2026-w6-1792360455-4",
+      "placed_at": "2026-10-18T17:54:15.770745-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Dak Prescott",
+          "player_id": "00-0033077",
+          "team": "DAL",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 4.6
+        }
+      ],
+      "game": "DAL@GB",
+      "id": "2026-w6-1792360455-5",
+      "placed_at": "2026-10-18T17:54:15.770745-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Christian Watson",
+          "player_id": "00-0038124",
+          "team": "GB",
+          "opp": "DAL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 76.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 4.6
+        }
+      ],
+      "game": "DAL@GB",
+      "id": "2026-w6-1792360455-6",
+      "placed_at": "2026-10-18T17:54:15.770745-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "special": "primetime",
+      "stake": 12.53,
+      "legs": [
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "WAS",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 18.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.6,
+          "why": "A-rated \u00b7 proj 30.7 \u00b7 EV +31%",
+          "ev": 0.308
+        },
+        {
+          "player": "Jayden Daniels",
+          "player_id": "00-0039910",
+          "team": "WAS",
+          "opp": "SF",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 206.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9,
+          "why": "A-rated \u00b7 proj 156 \u00b7 EV +26%",
+          "ev": 0.26
+        },
+        {
+          "player": "Jake Ferguson",
+          "player_id": "00-0038041",
+          "team": "DAL",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.2,
+          "why": "B-rated \u00b7 proj 17.5 \u00b7 EV +13%",
+          "ev": 0.126
+        }
+      ],
+      "game": "multi",
+      "note": "PRIMETIME SPECIAL",
+      "id": "2026-w6-1792360455-7",
+      "placed_at": "2026-10-18T17:54:15.770745-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 596
+    },
+    {
+      "kind": "parlay",
+      "special": "primetime-longshot",
+      "stake": 12.52,
+      "legs": [
+        {
+          "player": "Jayden Daniels",
+          "player_id": "00-0039910",
+          "team": "WAS",
+          "opp": "SF",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 206.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9,
+          "why": "A-rated \u00b7 proj 156"
+        },
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "WAS",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 255,
+          "grade": "A",
+          "score": 8.6,
+          "alt": "25+",
+          "why": "A-rated \u00b7 proj 30.7 \u00b7 boosted to 25+"
+        },
+        {
+          "player": "Jake Ferguson",
+          "player_id": "00-0038041",
+          "team": "DAL",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.2,
+          "why": "B-rated \u00b7 proj 17.5"
+        }
+      ],
+      "game": "multi",
+      "note": "PRIMETIME ALT LINE SPECIAL",
+      "id": "2026-w6-1792360455-8",
+      "placed_at": "2026-10-18T17:54:15.770745-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": 1194
     }
   ],
   "superseded": [
