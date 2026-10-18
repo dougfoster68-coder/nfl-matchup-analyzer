@@ -11545,131 +11545,6 @@
       "note": "Claude weekly pick"
     },
     {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Jordan Love",
-          "player_id": "00-0036264",
-          "team": "GB",
-          "opp": "DAL",
-          "stat": "rushing_yards",
-          "side": "under",
-          "line": 6.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 5.4
-        }
-      ],
-      "game": "DAL@GB",
-      "id": "2026-w6-1792360455-2",
-      "placed_at": "2026-10-18T17:54:15.770745-04:00",
-      "season": 2026,
-      "week": 6,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Javonte Williams",
-          "player_id": "00-0036997",
-          "team": "DAL",
-          "opp": "GB",
-          "stat": "rushing_yards",
-          "side": "under",
-          "line": 69.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 5.2
-        }
-      ],
-      "game": "DAL@GB",
-      "id": "2026-w6-1792360455-3",
-      "placed_at": "2026-10-18T17:54:15.770745-04:00",
-      "season": 2026,
-      "week": 6,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Ryan Flournoy",
-          "player_id": "00-0039410",
-          "team": "DAL",
-          "opp": "GB",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 32.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 5.1
-        }
-      ],
-      "game": "DAL@GB",
-      "id": "2026-w6-1792360455-4",
-      "placed_at": "2026-10-18T17:54:15.770745-04:00",
-      "season": 2026,
-      "week": 6,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Dak Prescott",
-          "player_id": "00-0033077",
-          "team": "DAL",
-          "opp": "GB",
-          "stat": "rushing_yards",
-          "side": "over",
-          "line": 10.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 4.6
-        }
-      ],
-      "game": "DAL@GB",
-      "id": "2026-w6-1792360455-5",
-      "placed_at": "2026-10-18T17:54:15.770745-04:00",
-      "season": 2026,
-      "week": 6,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "straight",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Christian Watson",
-          "player_id": "00-0038124",
-          "team": "GB",
-          "opp": "DAL",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 76.5,
-          "odds": -110,
-          "grade": "C",
-          "score": 4.6
-        }
-      ],
-      "game": "DAL@GB",
-      "id": "2026-w6-1792360455-6",
-      "placed_at": "2026-10-18T17:54:15.770745-04:00",
-      "season": 2026,
-      "week": 6,
-      "odds": -110,
-      "note": "Claude weekly pick"
-    },
-    {
       "kind": "parlay",
       "special": "primetime",
       "stake": 12.53,
@@ -15244,6 +15119,141 @@
       "note": "Claude weekly pick",
       "superseded_at": "2026-10-18T15:42:31.683072-04:00",
       "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jordan Love",
+          "player_id": "00-0036264",
+          "team": "GB",
+          "opp": "DAL",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 6.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.4
+        }
+      ],
+      "game": "DAL@GB",
+      "id": "2026-w6-1792360455-2",
+      "placed_at": "2026-10-18T17:54:15.770745-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-18T19:52:02.482142-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Javonte Williams",
+          "player_id": "00-0036997",
+          "team": "DAL",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 69.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.2
+        }
+      ],
+      "game": "DAL@GB",
+      "id": "2026-w6-1792360455-3",
+      "placed_at": "2026-10-18T17:54:15.770745-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-18T19:52:02.482142-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Ryan Flournoy",
+          "player_id": "00-0039410",
+          "team": "DAL",
+          "opp": "GB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 32.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.1
+        }
+      ],
+      "game": "DAL@GB",
+      "id": "2026-w6-1792360455-4",
+      "placed_at": "2026-10-18T17:54:15.770745-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-18T19:52:02.482142-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Dak Prescott",
+          "player_id": "00-0033077",
+          "team": "DAL",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 4.6
+        }
+      ],
+      "game": "DAL@GB",
+      "id": "2026-w6-1792360455-5",
+      "placed_at": "2026-10-18T17:54:15.770745-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-18T19:52:02.482142-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Christian Watson",
+          "player_id": "00-0038124",
+          "team": "GB",
+          "opp": "DAL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 76.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 4.6
+        }
+      ],
+      "game": "DAL@GB",
+      "id": "2026-w6-1792360455-6",
+      "placed_at": "2026-10-18T17:54:15.770745-04:00",
+      "season": 2026,
+      "week": 6,
+      "odds": -110,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-18T19:52:02.482142-04:00",
+      "superseded_reason": "late change before kickoff"
     }
   ],
   "week_budgets": {
@@ -15670,6 +15680,56 @@
       "kind": "straight",
       "stake": 10,
       "from": "Oronde Gadsden II OVER 14.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-18T19:52-04:00",
+      "week": 6,
+      "game": "DAL@GB",
+      "kind": "straight",
+      "stake": 5,
+      "from": "Jordan Love UNDER 6.5 rushing yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "rating dropped to D (3.7)"
+    },
+    {
+      "at": "2026-10-18T19:52-04:00",
+      "week": 6,
+      "game": "DAL@GB",
+      "kind": "straight",
+      "stake": 5,
+      "from": "Javonte Williams UNDER 69.5 rushing yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-18T19:52-04:00",
+      "week": 6,
+      "game": "DAL@GB",
+      "kind": "straight",
+      "stake": 5,
+      "from": "Ryan Flournoy OVER 32.5 receiving yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-18T19:52-04:00",
+      "week": 6,
+      "game": "DAL@GB",
+      "kind": "straight",
+      "stake": 5,
+      "from": "Dak Prescott OVER 10.5 rushing yards",
+      "to": "nothing (money back to bankroll)",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-18T19:52-04:00",
+      "week": 6,
+      "game": "DAL@GB",
+      "kind": "straight",
+      "stake": 5,
+      "from": "Christian Watson OVER 76.5 receiving yards",
       "to": "nothing (money back to bankroll)",
       "reason": "plan now focuses on A/B picks (this one is a C)"
     }
