@@ -11653,6 +11653,574 @@
       "season": 2026,
       "week": 6,
       "odds": 1194
+    },
+    {
+      "kind": "parlay",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Aaron Jones",
+          "player_id": "00-0033293",
+          "team": "MIN",
+          "opp": "IND",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 40.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.1
+        },
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w7-1792709142-1",
+      "placed_at": "2026-10-22T18:45:42.568427-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Greg Dulcich",
+          "player_id": "00-0037252",
+          "team": "MIA",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.4
+        },
+        {
+          "player": "Zachariah Branch",
+          "player_id": "00-0041044",
+          "team": "ATL",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 5.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.2
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w7-1792709142-2",
+      "placed_at": "2026-10-22T18:45:42.568427-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Jacoby Brissett",
+          "player_id": "00-0033119",
+          "team": "ARI",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.4
+        },
+        {
+          "player": "Ryan Flournoy",
+          "player_id": "00-0039410",
+          "team": "DAL",
+          "opp": "PHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 32.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w7-1792709142-3",
+      "placed_at": "2026-10-22T18:45:42.568427-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Darren Waller",
+          "player_id": "00-0031610",
+          "team": "CAR",
+          "opp": "TB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 21.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        },
+        {
+          "player": "Jaylen Warren",
+          "player_id": "00-0037228",
+          "team": "PIT",
+          "opp": "NO",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 25.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w7-1792709142-4",
+      "placed_at": "2026-10-22T18:45:42.568427-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Aaron Jones",
+          "player_id": "00-0033293",
+          "team": "MIN",
+          "opp": "IND",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 40.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.1
+        },
+        {
+          "player": "Zachariah Branch",
+          "player_id": "00-0041044",
+          "team": "ATL",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 5.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.2
+        },
+        {
+          "player": "Darren Waller",
+          "player_id": "00-0031610",
+          "team": "CAR",
+          "opp": "TB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 21.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w7-1792709142-5",
+      "placed_at": "2026-10-22T18:45:42.568427-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        },
+        {
+          "player": "Jacoby Brissett",
+          "player_id": "00-0033119",
+          "team": "ARI",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.4
+        },
+        {
+          "player": "Jaylen Warren",
+          "player_id": "00-0037228",
+          "team": "PIT",
+          "opp": "NO",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 25.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w7-1792709142-6",
+      "placed_at": "2026-10-22T18:45:42.568427-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Greg Dulcich",
+          "player_id": "00-0037252",
+          "team": "MIA",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.4
+        },
+        {
+          "player": "Ryan Flournoy",
+          "player_id": "00-0039410",
+          "team": "DAL",
+          "opp": "PHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 32.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        },
+        {
+          "player": "Aaron Jones",
+          "player_id": "00-0033293",
+          "team": "MIN",
+          "opp": "IND",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 40.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.1
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w7-1792709142-7",
+      "placed_at": "2026-10-22T18:45:42.568427-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Aaron Jones",
+          "player_id": "00-0033293",
+          "team": "MIN",
+          "opp": "IND",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 40.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.1
+        },
+        {
+          "player": "Greg Dulcich",
+          "player_id": "00-0037252",
+          "team": "MIA",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.4
+        },
+        {
+          "player": "Jacoby Brissett",
+          "player_id": "00-0033119",
+          "team": "ARI",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.4
+        },
+        {
+          "player": "Darren Waller",
+          "player_id": "00-0031610",
+          "team": "CAR",
+          "opp": "TB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 21.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w7-1792709142-8",
+      "placed_at": "2026-10-22T18:45:42.568427-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 1228,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        },
+        {
+          "player": "Zachariah Branch",
+          "player_id": "00-0041044",
+          "team": "ATL",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 5.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.2
+        },
+        {
+          "player": "Ryan Flournoy",
+          "player_id": "00-0039410",
+          "team": "DAL",
+          "opp": "PHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 32.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        },
+        {
+          "player": "Jaylen Warren",
+          "player_id": "00-0037228",
+          "team": "PIT",
+          "opp": "NO",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 25.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w7-1792709142-9",
+      "placed_at": "2026-10-22T18:45:42.568427-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 1228,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "special": "contrarian",
+      "stake": 6.74,
+      "legs": [
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9,
+          "why": "Buy low: market dropped this 27.5 \u2192 24.5, model still projects 47.8 \u00b7 EV +32%",
+          "ev": 0.317
+        },
+        {
+          "player": "Malachi Fields",
+          "player_id": "00-0041042",
+          "team": "NYG",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.4,
+          "why": "Buy low: line dropped 22.5 \u2192 20.5, model still projects 31.1 \u00b7 EV +26%",
+          "ev": 0.26
+        },
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "ATL",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "D",
+          "score": 4.1,
+          "why": "Fade the public: line climbed 17.5 \u2192 19.5 on over money; model projects 14.2 \u00b7 EV +17%",
+          "ev": 0.174
+        },
+        {
+          "player": "Tee Higgins",
+          "player_id": "00-0036410",
+          "team": "CIN",
+          "opp": "BAL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 64.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.2,
+          "why": "Buy low: line dropped 66.5 \u2192 64.5, model still projects 89.8 \u00b7 EV +17%",
+          "ev": 0.174
+        }
+      ],
+      "game": "multi",
+      "note": "CONTRARIAN SPECIAL",
+      "id": "2026-w7-1792709142-10",
+      "placed_at": "2026-10-22T18:45:42.568427-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 1228
+    },
+    {
+      "kind": "parlay",
+      "special": "contrarian-longshot",
+      "stake": 6.74,
+      "legs": [
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": 140,
+          "grade": "A",
+          "score": 8.9,
+          "alt": "30+",
+          "why": "Buy low: market dropped this 27.5 \u2192 24.5, model still projects 47.8 \u00b7 boosted to 30+"
+        },
+        {
+          "player": "Malachi Fields",
+          "player_id": "00-0041042",
+          "team": "NYG",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 160,
+          "grade": "B",
+          "score": 6.4,
+          "alt": "25+",
+          "why": "Buy low: line dropped 22.5 \u2192 20.5, model still projects 31.1 \u00b7 boosted to 25+"
+        },
+        {
+          "player": "J.K. Dobbins",
+          "player_id": "00-0036158",
+          "team": "DEN",
+          "opp": "ARI",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 59.5,
+          "odds": 170,
+          "grade": "C",
+          "score": 4.9,
+          "alt": "60+",
+          "why": "Buy low: market dropped this 58.5 \u2192 51.5, model still projects 64.7 \u00b7 boosted to 60+"
+        },
+        {
+          "player": "Mason Taylor",
+          "player_id": "00-0040736",
+          "team": "NYJ",
+          "opp": "MIA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 145,
+          "grade": "B",
+          "score": 7.0,
+          "alt": "25+",
+          "why": "Buy low: market dropped this 23.5 \u2192 20.5, model still projects 29.8 \u00b7 boosted to 25+"
+        }
+      ],
+      "game": "multi",
+      "note": "CONTRARIAN ALT LINE SPECIAL",
+      "id": "2026-w7-1792709142-11",
+      "placed_at": "2026-10-22T18:45:42.568427-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 4028
+    },
+    {
+      "id": "2026-w7-NE@CHI-nobet",
+      "placed_at": "2026-10-22T18:45:42.568427-04:00",
+      "season": 2026,
+      "week": 7,
+      "game": "NE@CHI",
+      "kind": "none",
+      "stake": 0,
+      "legs": [],
+      "note": "No top plays in this game this week \u2014 passed."
     }
   ],
   "superseded": [
@@ -15259,7 +15827,8 @@
   "week_budgets": {
     "4": 1769.02,
     "5": 1601.88,
-    "6": 834.85
+    "6": 834.85,
+    "7": 449.47
   },
   "note": "Bankroll starts in week 1: weeks 1-3 are simulated backtests (flagged backtest); week-4 stakes were rescaled x1.76902 to the week-4 starting bankroll (originals in stake_original).",
   "changes": [
