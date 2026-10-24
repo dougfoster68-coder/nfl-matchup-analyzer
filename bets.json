@@ -11659,43 +11659,6 @@
       "stake": 20,
       "legs": [
         {
-          "player": "Greg Dulcich",
-          "player_id": "00-0037252",
-          "team": "MIA",
-          "opp": "NYJ",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 20.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 8.4
-        },
-        {
-          "player": "Zachariah Branch",
-          "player_id": "00-0041044",
-          "team": "ATL",
-          "opp": "SF",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 5.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 8.2
-        }
-      ],
-      "game": "multi",
-      "id": "2026-w7-1792709142-2",
-      "placed_at": "2026-10-22T18:45:42.568427-04:00",
-      "season": 2026,
-      "week": 7,
-      "odds": 264,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "parlay",
-      "stake": 20,
-      "legs": [
-        {
           "player": "Jacoby Brissett",
           "player_id": "00-0033119",
           "team": "ARI",
@@ -11812,67 +11775,6 @@
       "season": 2026,
       "week": 7,
       "odds": 596,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "parlay",
-      "stake": 25,
-      "legs": [
-        {
-          "player": "Ashton Jeanty",
-          "player_id": "00-0040122",
-          "team": "LV",
-          "opp": "LA",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 24.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 8.9
-        },
-        {
-          "player": "Zachariah Branch",
-          "player_id": "00-0041044",
-          "team": "ATL",
-          "opp": "SF",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 5.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 8.2
-        },
-        {
-          "player": "Ryan Flournoy",
-          "player_id": "00-0039410",
-          "team": "DAL",
-          "opp": "PHI",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 32.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 7.0
-        },
-        {
-          "player": "Jaylen Warren",
-          "player_id": "00-0037228",
-          "team": "PIT",
-          "opp": "NO",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 25.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 6.6
-        }
-      ],
-      "game": "multi",
-      "id": "2026-w7-1792709142-9",
-      "placed_at": "2026-10-22T18:45:42.568427-04:00",
-      "season": 2026,
-      "week": 7,
-      "odds": 1228,
       "note": "Claude weekly pick"
     },
     {
@@ -12068,55 +11970,6 @@
       "stake": 25,
       "legs": [
         {
-          "player": "Josh Downs",
-          "player_id": "00-0038997",
-          "team": "IND",
-          "opp": "MIN",
-          "stat": "receiving_yards",
-          "side": "under",
-          "line": 51.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 6.9
-        },
-        {
-          "player": "Zachariah Branch",
-          "player_id": "00-0041044",
-          "team": "ATL",
-          "opp": "SF",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 5.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 8.2
-        },
-        {
-          "player": "Darren Waller",
-          "player_id": "00-0031610",
-          "team": "CAR",
-          "opp": "TB",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 21.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 6.9
-        }
-      ],
-      "game": "multi",
-      "note": "LATE CHANGE Fri 03:43 PM ET: Aaron Jones OVER 40.5 \u2192 Josh Downs UNDER 51.5 (now trap-flagged: Line 38.5 vs 72 L10 avg \u2014 gap this big usually means the book knows about an injury or role change)",
-      "id": "2026-w7-1792784626-2",
-      "placed_at": "2026-10-23T15:43:46.079649-04:00",
-      "season": 2026,
-      "week": 7,
-      "odds": 596
-    },
-    {
-      "kind": "parlay",
-      "stake": 25,
-      "legs": [
-        {
           "player": "Greg Dulcich",
           "player_id": "00-0037252",
           "team": "MIA",
@@ -12221,6 +12074,153 @@
       "season": 2026,
       "week": 7,
       "odds": 1228
+    },
+    {
+      "kind": "parlay",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Greg Dulcich",
+          "player_id": "00-0037252",
+          "team": "MIA",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.4
+        },
+        {
+          "player": "Christian McCaffrey",
+          "player_id": "00-0033280",
+          "team": "SF",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 46.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.5
+        }
+      ],
+      "game": "multi",
+      "note": "LATE CHANGE Sat 03:38 PM ET: Zachariah Branch OVER 5.5 \u2192 Christian McCaffrey UNDER 46.5 (plan now focuses on A/B picks (this one is a C))",
+      "id": "2026-w7-1792870733-1",
+      "placed_at": "2026-10-24T15:38:53.484041-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 264
+    },
+    {
+      "kind": "parlay",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        },
+        {
+          "player": "Christian McCaffrey",
+          "player_id": "00-0033280",
+          "team": "SF",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 46.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.5
+        },
+        {
+          "player": "Ryan Flournoy",
+          "player_id": "00-0039410",
+          "team": "DAL",
+          "opp": "PHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 32.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        },
+        {
+          "player": "Jaylen Warren",
+          "player_id": "00-0037228",
+          "team": "PIT",
+          "opp": "NO",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 25.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        }
+      ],
+      "game": "multi",
+      "note": "LATE CHANGE Sat 03:38 PM ET: Zachariah Branch OVER 5.5 \u2192 Christian McCaffrey UNDER 46.5 (plan now focuses on A/B picks (this one is a C))",
+      "id": "2026-w7-1792870733-2",
+      "placed_at": "2026-10-24T15:38:53.484041-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 1228
+    },
+    {
+      "kind": "parlay",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Josh Downs",
+          "player_id": "00-0038997",
+          "team": "IND",
+          "opp": "MIN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 51.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        },
+        {
+          "player": "Christian McCaffrey",
+          "player_id": "00-0033280",
+          "team": "SF",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 46.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.5
+        },
+        {
+          "player": "Darren Waller",
+          "player_id": "00-0031610",
+          "team": "CAR",
+          "opp": "TB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 21.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        }
+      ],
+      "game": "multi",
+      "note": "LATE CHANGE Sat 03:38 PM ET: Zachariah Branch OVER 5.5 \u2192 Christian McCaffrey UNDER 46.5 (plan now focuses on A/B picks (this one is a C))",
+      "id": "2026-w7-1792870733-3",
+      "placed_at": "2026-10-24T15:38:53.484041-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 596
     }
   ],
   "superseded": [
@@ -16026,6 +16026,159 @@
       "note": "Claude weekly pick",
       "superseded_at": "2026-10-23T15:43:46.079649-04:00",
       "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "parlay",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Greg Dulcich",
+          "player_id": "00-0037252",
+          "team": "MIA",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.4
+        },
+        {
+          "player": "Zachariah Branch",
+          "player_id": "00-0041044",
+          "team": "ATL",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 5.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.2
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w7-1792709142-2",
+      "placed_at": "2026-10-22T18:45:42.568427-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 264,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-24T15:38:53.484041-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "parlay",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        },
+        {
+          "player": "Zachariah Branch",
+          "player_id": "00-0041044",
+          "team": "ATL",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 5.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.2
+        },
+        {
+          "player": "Ryan Flournoy",
+          "player_id": "00-0039410",
+          "team": "DAL",
+          "opp": "PHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 32.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        },
+        {
+          "player": "Jaylen Warren",
+          "player_id": "00-0037228",
+          "team": "PIT",
+          "opp": "NO",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 25.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w7-1792709142-9",
+      "placed_at": "2026-10-22T18:45:42.568427-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 1228,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-24T15:38:53.484041-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "parlay",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Josh Downs",
+          "player_id": "00-0038997",
+          "team": "IND",
+          "opp": "MIN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 51.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        },
+        {
+          "player": "Zachariah Branch",
+          "player_id": "00-0041044",
+          "team": "ATL",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 5.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.2
+        },
+        {
+          "player": "Darren Waller",
+          "player_id": "00-0031610",
+          "team": "CAR",
+          "opp": "TB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 21.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        }
+      ],
+      "game": "multi",
+      "note": "LATE CHANGE Fri 03:43 PM ET: Aaron Jones OVER 40.5 \u2192 Josh Downs UNDER 51.5 (now trap-flagged: Line 38.5 vs 72 L10 avg \u2014 gap this big usually means the book knows about an injury or role change)",
+      "id": "2026-w7-1792784626-2",
+      "placed_at": "2026-10-23T15:43:46.079649-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 596,
+      "superseded_at": "2026-10-24T15:38:53.484041-04:00",
+      "superseded_reason": "late change before kickoff"
     }
   ],
   "week_budgets": {
@@ -16545,6 +16698,36 @@
       "from": "Aaron Jones OVER 40.5",
       "to": "Josh Downs UNDER 51.5",
       "reason": "now trap-flagged: Line 38.5 vs 72 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    },
+    {
+      "at": "2026-10-24T15:38-04:00",
+      "week": 7,
+      "game": "parlay leg",
+      "kind": "parlay",
+      "stake": 20,
+      "from": "Zachariah Branch OVER 5.5",
+      "to": "Christian McCaffrey UNDER 46.5",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-24T15:38-04:00",
+      "week": 7,
+      "game": "parlay leg",
+      "kind": "parlay",
+      "stake": 25,
+      "from": "Zachariah Branch OVER 5.5",
+      "to": "Christian McCaffrey UNDER 46.5",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-24T15:38-04:00",
+      "week": 7,
+      "game": "parlay leg",
+      "kind": "parlay",
+      "stake": 25,
+      "from": "Zachariah Branch OVER 5.5",
+      "to": "Christian McCaffrey UNDER 46.5",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
     }
   ]
 }
