@@ -1003,6 +1003,14 @@
      "bets_b": 41,
      "money_a": 64,
      "money_b": 36
+    },
+    {
+     "at": "2026-10-24T10:08+00:00",
+     "line": 44.5,
+     "bets_a": 60,
+     "bets_b": 40,
+     "money_a": 64,
+     "money_b": 36
     }
    ]
   },
@@ -1691,6 +1699,14 @@
      "bets_b": 29,
      "money_a": 60,
      "money_b": 40
+    },
+    {
+     "at": "2026-10-24T10:08+00:00",
+     "line": -2.5,
+     "bets_a": 72,
+     "bets_b": 28,
+     "money_a": 60,
+     "money_b": 40
     }
    ],
    "total": [
@@ -1978,6 +1994,14 @@
      "bets_b": 88,
      "money_a": 51,
      "money_b": 49
+    },
+    {
+     "at": "2026-10-24T10:08+00:00",
+     "line": null,
+     "bets_a": 12,
+     "bets_b": 88,
+     "money_a": 50,
+     "money_b": 50
     }
    ],
    "spread": [
@@ -2124,6 +2148,14 @@
      "bets_b": 37,
      "money_a": 47,
      "money_b": 53
+    },
+    {
+     "at": "2026-10-24T10:08+00:00",
+     "line": 10.5,
+     "bets_a": 63,
+     "bets_b": 37,
+     "money_a": 48,
+     "money_b": 52
     }
    ],
    "total": [
@@ -2963,6 +2995,14 @@
      "bets_b": 57,
      "money_a": 65,
      "money_b": 35
+    },
+    {
+     "at": "2026-10-24T10:08+00:00",
+     "line": null,
+     "bets_a": 44,
+     "bets_b": 56,
+     "money_a": 65,
+     "money_b": 35
     }
    ],
    "spread": [
@@ -3691,6 +3731,14 @@
      "bets_b": 69,
      "money_a": 32,
      "money_b": 68
+    },
+    {
+     "at": "2026-10-24T10:08+00:00",
+     "line": null,
+     "bets_a": 31,
+     "bets_b": 69,
+     "money_a": 26,
+     "money_b": 74
     }
    ],
    "total": [
@@ -4116,6 +4164,14 @@
      "bets_b": 22,
      "money_a": 80,
      "money_b": 20
+    },
+    {
+     "at": "2026-10-24T10:08+00:00",
+     "line": null,
+     "bets_a": 78,
+     "bets_b": 22,
+     "money_a": 84,
+     "money_b": 16
     }
    ],
    "spread": [
@@ -5218,6 +5274,14 @@
      "bets_b": 33,
      "money_a": 73,
      "money_b": 27
+    },
+    {
+     "at": "2026-10-24T10:08+00:00",
+     "line": -4.5,
+     "bets_a": 67,
+     "bets_b": 33,
+     "money_a": 72,
+     "money_b": 28
     }
    ]
   }
