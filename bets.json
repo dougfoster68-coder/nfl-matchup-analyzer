@@ -11693,92 +11693,6 @@
     },
     {
       "kind": "parlay",
-      "stake": 20,
-      "legs": [
-        {
-          "player": "Darren Waller",
-          "player_id": "00-0031610",
-          "team": "CAR",
-          "opp": "TB",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 21.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 6.9
-        },
-        {
-          "player": "Jaylen Warren",
-          "player_id": "00-0037228",
-          "team": "PIT",
-          "opp": "NO",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 25.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 6.6
-        }
-      ],
-      "game": "multi",
-      "id": "2026-w7-1792709142-4",
-      "placed_at": "2026-10-22T18:45:42.568427-04:00",
-      "season": 2026,
-      "week": 7,
-      "odds": 264,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "parlay",
-      "stake": 25,
-      "legs": [
-        {
-          "player": "Ashton Jeanty",
-          "player_id": "00-0040122",
-          "team": "LV",
-          "opp": "LA",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 24.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 8.9
-        },
-        {
-          "player": "Jacoby Brissett",
-          "player_id": "00-0033119",
-          "team": "ARI",
-          "opp": "DEN",
-          "stat": "rushing_yards",
-          "side": "over",
-          "line": 7.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 7.4
-        },
-        {
-          "player": "Jaylen Warren",
-          "player_id": "00-0037228",
-          "team": "PIT",
-          "opp": "NO",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 25.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 6.6
-        }
-      ],
-      "game": "multi",
-      "id": "2026-w7-1792709142-6",
-      "placed_at": "2026-10-22T18:45:42.568427-04:00",
-      "season": 2026,
-      "week": 7,
-      "odds": 596,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "parlay",
       "special": "contrarian",
       "stake": 6.74,
       "legs": [
@@ -12117,67 +12031,6 @@
       "stake": 25,
       "legs": [
         {
-          "player": "Ashton Jeanty",
-          "player_id": "00-0040122",
-          "team": "LV",
-          "opp": "LA",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 24.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 8.9
-        },
-        {
-          "player": "Christian McCaffrey",
-          "player_id": "00-0033280",
-          "team": "SF",
-          "opp": "ATL",
-          "stat": "receiving_yards",
-          "side": "under",
-          "line": 46.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 7.5
-        },
-        {
-          "player": "Ryan Flournoy",
-          "player_id": "00-0039410",
-          "team": "DAL",
-          "opp": "PHI",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 32.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 7.0
-        },
-        {
-          "player": "Jaylen Warren",
-          "player_id": "00-0037228",
-          "team": "PIT",
-          "opp": "NO",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 25.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 6.6
-        }
-      ],
-      "game": "multi",
-      "note": "LATE CHANGE Sat 03:38 PM ET: Zachariah Branch OVER 5.5 \u2192 Christian McCaffrey UNDER 46.5 (plan now focuses on A/B picks (this one is a C))",
-      "id": "2026-w7-1792870733-2",
-      "placed_at": "2026-10-24T15:38:53.484041-04:00",
-      "season": 2026,
-      "week": 7,
-      "odds": 1228
-    },
-    {
-      "kind": "parlay",
-      "stake": 25,
-      "legs": [
-        {
           "player": "Josh Downs",
           "player_id": "00-0038997",
           "team": "IND",
@@ -12221,6 +12074,153 @@
       "season": 2026,
       "week": 7,
       "odds": 596
+    },
+    {
+      "kind": "parlay",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Darren Waller",
+          "player_id": "00-0031610",
+          "team": "CAR",
+          "opp": "TB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 21.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        },
+        {
+          "player": "Rico Dowdle",
+          "player_id": "00-0036139",
+          "team": "PIT",
+          "opp": "NO",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.5
+        }
+      ],
+      "game": "multi",
+      "note": "LATE CHANGE Sun 09:21 AM ET: Jaylen Warren OVER 25.5 \u2192 Rico Dowdle OVER 7.5 (plan now focuses on A/B picks (this one is a C))",
+      "id": "2026-w7-1792934497-1",
+      "placed_at": "2026-10-25T09:21:37.574201-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 264
+    },
+    {
+      "kind": "parlay",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        },
+        {
+          "player": "Jacoby Brissett",
+          "player_id": "00-0033119",
+          "team": "ARI",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.4
+        },
+        {
+          "player": "Rico Dowdle",
+          "player_id": "00-0036139",
+          "team": "PIT",
+          "opp": "NO",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.5
+        }
+      ],
+      "game": "multi",
+      "note": "LATE CHANGE Sun 09:21 AM ET: Jaylen Warren OVER 25.5 \u2192 Rico Dowdle OVER 7.5 (plan now focuses on A/B picks (this one is a C))",
+      "id": "2026-w7-1792934497-2",
+      "placed_at": "2026-10-25T09:21:37.574201-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 596
+    },
+    {
+      "kind": "parlay",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        },
+        {
+          "player": "Christian McCaffrey",
+          "player_id": "00-0033280",
+          "team": "SF",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 46.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.5
+        },
+        {
+          "player": "Ryan Flournoy",
+          "player_id": "00-0039410",
+          "team": "DAL",
+          "opp": "PHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 32.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        },
+        {
+          "player": "Rico Dowdle",
+          "player_id": "00-0036139",
+          "team": "PIT",
+          "opp": "NO",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.5
+        }
+      ],
+      "game": "multi",
+      "note": "LATE CHANGE Sun 09:21 AM ET: Jaylen Warren OVER 25.5 \u2192 Rico Dowdle OVER 7.5 (plan now focuses on A/B picks (this one is a C))",
+      "id": "2026-w7-1792934497-3",
+      "placed_at": "2026-10-25T09:21:37.574201-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 1228
     }
   ],
   "superseded": [
@@ -16179,6 +16179,159 @@
       "odds": 596,
       "superseded_at": "2026-10-24T15:38:53.484041-04:00",
       "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "parlay",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Darren Waller",
+          "player_id": "00-0031610",
+          "team": "CAR",
+          "opp": "TB",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 21.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        },
+        {
+          "player": "Jaylen Warren",
+          "player_id": "00-0037228",
+          "team": "PIT",
+          "opp": "NO",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 25.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w7-1792709142-4",
+      "placed_at": "2026-10-22T18:45:42.568427-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 264,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-25T09:21:37.574201-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "parlay",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        },
+        {
+          "player": "Jacoby Brissett",
+          "player_id": "00-0033119",
+          "team": "ARI",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.4
+        },
+        {
+          "player": "Jaylen Warren",
+          "player_id": "00-0037228",
+          "team": "PIT",
+          "opp": "NO",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 25.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w7-1792709142-6",
+      "placed_at": "2026-10-22T18:45:42.568427-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 596,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-10-25T09:21:37.574201-04:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "parlay",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        },
+        {
+          "player": "Christian McCaffrey",
+          "player_id": "00-0033280",
+          "team": "SF",
+          "opp": "ATL",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 46.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.5
+        },
+        {
+          "player": "Ryan Flournoy",
+          "player_id": "00-0039410",
+          "team": "DAL",
+          "opp": "PHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 32.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        },
+        {
+          "player": "Jaylen Warren",
+          "player_id": "00-0037228",
+          "team": "PIT",
+          "opp": "NO",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 25.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        }
+      ],
+      "game": "multi",
+      "note": "LATE CHANGE Sat 03:38 PM ET: Zachariah Branch OVER 5.5 \u2192 Christian McCaffrey UNDER 46.5 (plan now focuses on A/B picks (this one is a C))",
+      "id": "2026-w7-1792870733-2",
+      "placed_at": "2026-10-24T15:38:53.484041-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 1228,
+      "superseded_at": "2026-10-25T09:21:37.574201-04:00",
+      "superseded_reason": "late change before kickoff"
     }
   ],
   "week_budgets": {
@@ -16727,6 +16880,36 @@
       "stake": 25,
       "from": "Zachariah Branch OVER 5.5",
       "to": "Christian McCaffrey UNDER 46.5",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-25T09:21-04:00",
+      "week": 7,
+      "game": "parlay leg",
+      "kind": "parlay",
+      "stake": 20,
+      "from": "Jaylen Warren OVER 25.5",
+      "to": "Rico Dowdle OVER 7.5",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-25T09:21-04:00",
+      "week": 7,
+      "game": "parlay leg",
+      "kind": "parlay",
+      "stake": 25,
+      "from": "Jaylen Warren OVER 25.5",
+      "to": "Rico Dowdle OVER 7.5",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
+    },
+    {
+      "at": "2026-10-25T09:21-04:00",
+      "week": 7,
+      "game": "parlay leg",
+      "kind": "parlay",
+      "stake": 25,
+      "from": "Jaylen Warren OVER 25.5",
+      "to": "Rico Dowdle OVER 7.5",
       "reason": "plan now focuses on A/B picks (this one is a C)"
     }
   ]
