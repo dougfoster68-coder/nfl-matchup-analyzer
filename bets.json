@@ -12221,6 +12221,81 @@
       "season": 2026,
       "week": 7,
       "odds": 1228
+    },
+    {
+      "kind": "straight",
+      "stake": 30,
+      "legs": [
+        {
+          "player": "Tyler Allgeier",
+          "player_id": "00-0037263",
+          "team": "ARI",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 11.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 10.0
+        }
+      ],
+      "game": "DEN@ARI",
+      "id": "2026-w7-1792948111-1",
+      "placed_at": "2026-10-25T13:08:31.278087-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Jacoby Brissett",
+          "player_id": "00-0033119",
+          "team": "ARI",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 6.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "DEN@ARI",
+      "id": "2026-w7-1792948111-2",
+      "placed_at": "2026-10-25T13:08:31.278087-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Jaylen Waddle",
+          "player_id": "00-0036613",
+          "team": "DEN",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 52.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        }
+      ],
+      "game": "DEN@ARI",
+      "id": "2026-w7-1792948111-3",
+      "placed_at": "2026-10-25T13:08:31.278087-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -110,
+      "note": "Claude weekly pick"
     }
   ],
   "superseded": [
