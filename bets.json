@@ -12500,6 +12500,269 @@
       "week": 7,
       "odds": -110,
       "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Sam Darnold",
+          "player_id": "00-0034869",
+          "team": "SEA",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 3.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        }
+      ],
+      "game": "KC@SEA",
+      "id": "2026-w7-1792965788-1",
+      "placed_at": "2026-10-25T18:03:08.487044-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Kenneth Walker III",
+          "player_id": "00-0038134",
+          "team": "KC",
+          "opp": "SEA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 79.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1
+        }
+      ],
+      "game": "KC@SEA",
+      "id": "2026-w7-1792965788-2",
+      "placed_at": "2026-10-25T18:03:08.487044-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Xavier Worthy",
+          "player_id": "00-0039894",
+          "team": "KC",
+          "opp": "SEA",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 50.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.1
+        }
+      ],
+      "game": "KC@SEA",
+      "id": "2026-w7-1792965788-3",
+      "placed_at": "2026-10-25T18:03:08.487044-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "George Holani",
+          "player_id": "00-0039299",
+          "team": "SEA",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 9.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.9
+        }
+      ],
+      "game": "KC@SEA",
+      "id": "2026-w7-1792965788-4",
+      "placed_at": "2026-10-25T18:03:08.487044-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Velus Jones Jr.",
+          "player_id": "00-0037745",
+          "team": "SEA",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 11.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 4.6
+        }
+      ],
+      "game": "KC@SEA",
+      "id": "2026-w7-1792965788-5",
+      "placed_at": "2026-10-25T18:03:08.487044-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "special": "primetime",
+      "stake": 6.74,
+      "legs": [
+        {
+          "player": "Tanner McKee",
+          "player_id": "00-0038400",
+          "team": "PHI",
+          "opp": "DAL",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 5.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0,
+          "why": "B-rated \u00b7 proj 2.3 \u00b7 EV +24%",
+          "ev": 0.241
+        },
+        {
+          "player": "Xavier Worthy",
+          "player_id": "00-0039894",
+          "team": "KC",
+          "opp": "SEA",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 50.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.1,
+          "why": "B-rated \u00b7 proj 33.3 \u00b7 EV +20%",
+          "ev": 0.203
+        },
+        {
+          "player": "Kenneth Walker III",
+          "player_id": "00-0038134",
+          "team": "KC",
+          "opp": "SEA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 79.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1,
+          "why": "B-rated \u00b7 proj 106.1 \u00b7 EV +18%",
+          "ev": 0.183
+        },
+        {
+          "player": "Ryan Flournoy",
+          "player_id": "00-0039410",
+          "team": "DAL",
+          "opp": "PHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 32.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0,
+          "why": "B-rated \u00b7 proj 50.4 \u00b7 EV +17%",
+          "ev": 0.174
+        }
+      ],
+      "game": "multi",
+      "note": "PRIMETIME SPECIAL",
+      "id": "2026-w7-1792965788-6",
+      "placed_at": "2026-10-25T18:03:08.487044-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 1228
+    },
+    {
+      "kind": "parlay",
+      "special": "primetime-longshot",
+      "stake": 6.74,
+      "legs": [
+        {
+          "player": "Sam Darnold",
+          "player_id": "00-0034869",
+          "team": "SEA",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 3.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3,
+          "why": "B-rated \u00b7 proj 6.6"
+        },
+        {
+          "player": "Kenneth Walker III",
+          "player_id": "00-0038134",
+          "team": "KC",
+          "opp": "SEA",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 99.5,
+          "odds": 205,
+          "grade": "B",
+          "score": 7.1,
+          "alt": "100+",
+          "why": "B-rated \u00b7 proj 106.1 \u00b7 boosted to 100+"
+        },
+        {
+          "player": "Ryan Flournoy",
+          "player_id": "00-0039410",
+          "team": "DAL",
+          "opp": "PHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": 135,
+          "grade": "B",
+          "score": 7.0,
+          "alt": "40+",
+          "why": "B-rated \u00b7 proj 50.4 \u00b7 boosted to 40+"
+        },
+        {
+          "player": "Tanner McKee",
+          "player_id": "00-0038400",
+          "team": "PHI",
+          "opp": "DAL",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 5.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0,
+          "why": "B-rated \u00b7 proj 2.3"
+        }
+      ],
+      "game": "multi",
+      "note": "PRIMETIME ALT LINE SPECIAL",
+      "id": "2026-w7-1792965788-7",
+      "placed_at": "2026-10-25T18:03:08.487044-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 2512
     }
   ],
   "superseded": [
