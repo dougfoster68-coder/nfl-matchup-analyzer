@@ -12296,6 +12296,210 @@
       "week": 7,
       "odds": -110,
       "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 25.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        }
+      ],
+      "game": "LA@LV",
+      "id": "2026-w7-1792956929-1",
+      "placed_at": "2026-10-25T15:35:29.166535-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -185,
+          "grade": "A",
+          "score": 8.9,
+          "alt": "20+"
+        }
+      ],
+      "game": "LA@LV",
+      "id": "2026-w7-1792956929-2",
+      "placed_at": "2026-10-25T15:35:29.166535-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -185,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": 125,
+          "grade": "A",
+          "score": 8.9,
+          "alt": "30+"
+        }
+      ],
+      "game": "LA@LV",
+      "id": "2026-w7-1792956929-3",
+      "placed_at": "2026-10-25T15:35:29.166535-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 125,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "MarShawn Lloyd",
+          "player_id": "00-0039811",
+          "team": "GB",
+          "opp": "DET",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 11.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.5
+        }
+      ],
+      "game": "GB@DET",
+      "id": "2026-w7-1792956929-4",
+      "placed_at": "2026-10-25T15:35:29.166535-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "MarShawn Lloyd",
+          "player_id": "00-0039811",
+          "team": "GB",
+          "opp": "DET",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 9.5,
+          "odds": -155,
+          "grade": "B",
+          "score": 7.5,
+          "alt": "10+"
+        }
+      ],
+      "game": "GB@DET",
+      "id": "2026-w7-1792956929-5",
+      "placed_at": "2026-10-25T15:35:29.166535-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -155,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "MarShawn Lloyd",
+          "player_id": "00-0039811",
+          "team": "GB",
+          "opp": "DET",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": 150,
+          "grade": "B",
+          "score": 7.5,
+          "alt": "15+"
+        }
+      ],
+      "game": "GB@DET",
+      "id": "2026-w7-1792956929-6",
+      "placed_at": "2026-10-25T15:35:29.166535-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": 150,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Jared Goff",
+          "player_id": "00-0033106",
+          "team": "DET",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 0.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.4
+        }
+      ],
+      "game": "GB@DET",
+      "id": "2026-w7-1792956929-7",
+      "placed_at": "2026-10-25T15:35:29.166535-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Kirk Cousins",
+          "player_id": "00-0029604",
+          "team": "LV",
+          "opp": "LA",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 0.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.2
+        }
+      ],
+      "game": "LA@LV",
+      "id": "2026-w7-1792956929-8",
+      "placed_at": "2026-10-25T15:35:29.166535-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -110,
+      "note": "Claude weekly pick"
     }
   ],
   "superseded": [
