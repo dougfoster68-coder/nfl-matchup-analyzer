@@ -1100,15 +1100,15 @@
    "player_id": "00-0033077",
    "pos": "QB",
    "stat": "passing_yards",
-   "line": 269.5,
-   "pick": "OVER 269.5",
-   "score": 3.6,
+   "line": 266.5,
+   "pick": "OVER 266.5",
+   "score": 3.8,
    "grade": "D",
-   "p_over": 0.51,
+   "p_over": 0.52,
    "proj": 271.6,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-25T20:20-04:00"
+   "captured_at": "2026-10-26T01:06-04:00"
   },
   "00-0036997|rushing_yards": {
    "game": "DAL@PHI",
@@ -1119,15 +1119,15 @@
    "player_id": "00-0036997",
    "pos": "RB",
    "stat": "rushing_yards",
-   "line": 64.5,
-   "pick": "UNDER 64.5",
-   "score": 6.3,
+   "line": 63.5,
+   "pick": "UNDER 63.5",
+   "score": 6.1,
    "grade": "B",
-   "p_over": 0.37,
+   "p_over": 0.39,
    "proj": 57.3,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-25T20:20-04:00"
+   "captured_at": "2026-10-26T01:06-04:00"
   },
   "00-0036997|receiving_yards": {
    "game": "DAL@PHI",
@@ -1146,7 +1146,7 @@
    "proj": 11.8,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-25T20:20-04:00"
+   "captured_at": "2026-10-26T01:06-04:00"
   },
   "00-0036358|receiving_yards": {
    "game": "DAL@PHI",
@@ -1157,15 +1157,15 @@
    "player_id": "00-0036358",
    "pos": "WR",
    "stat": "receiving_yards",
-   "line": 81.5,
-   "pick": "OVER 81.5",
-   "score": 3.2,
+   "line": 80.5,
+   "pick": "OVER 80.5",
+   "score": 3.3,
    "grade": "D",
-   "p_over": 0.58,
+   "p_over": 0.59,
    "proj": 94.3,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-25T20:20-04:00"
+   "captured_at": "2026-10-26T01:06-04:00"
   },
   "00-0037247|receiving_yards": {
    "game": "DAL@PHI",
@@ -1184,7 +1184,7 @@
    "proj": 79.2,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-25T20:20-04:00"
+   "captured_at": "2026-10-26T01:06-04:00"
   },
   "00-0039410|receiving_yards": {
    "game": "DAL@PHI",
@@ -1203,7 +1203,7 @@
    "proj": 50.8,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-25T20:20-04:00"
+   "captured_at": "2026-10-26T01:06-04:00"
   },
   "00-0038041|receiving_yards": {
    "game": "DAL@PHI",
@@ -1222,7 +1222,7 @@
    "proj": 14.3,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-25T20:20-04:00"
+   "captured_at": "2026-10-26T01:06-04:00"
   },
   "00-0038400|passing_yards": {
    "game": "DAL@PHI",
@@ -1244,7 +1244,7 @@
     "Line 196.5 vs 115 L10 avg \u2014 gap this big usually means the book knows about an injury or role change",
     "Model likes the under on old usage, but attempts rose to 28.3/game"
    ],
-   "captured_at": "2026-10-25T20:20-04:00"
+   "captured_at": "2026-10-26T01:06-04:00"
   },
   "00-0036442|passing_yards": {
    "game": "CIN@BAL",
@@ -1464,15 +1464,15 @@
    "player_id": "00-0034351",
    "pos": "TE",
    "stat": "receiving_yards",
-   "line": 48.5,
-   "pick": "UNDER 48.5",
-   "score": 5.3,
+   "line": 50.5,
+   "pick": "UNDER 50.5",
+   "score": 5.7,
    "grade": "C",
-   "p_over": 0.35,
+   "p_over": 0.32,
    "proj": 38.3,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-25T20:20-04:00"
+   "captured_at": "2026-10-26T01:06-04:00"
   },
   "00-0038994|receiving_yards": {
    "game": "IND@MIN",
@@ -3938,7 +3938,7 @@
    "proj": 2.4,
    "line_hits": "1/5",
    "traps": [],
-   "captured_at": "2026-10-25T20:20-04:00"
+   "captured_at": "2026-10-26T01:06-04:00"
   },
   "00-0033077|rushing_yards": {
    "game": "DAL@PHI",
@@ -3957,7 +3957,7 @@
    "proj": 11.0,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-25T20:20-04:00"
+   "captured_at": "2026-10-26T01:06-04:00"
   },
   "00-0039751|receiving_yards": {
    "game": "LA@LV",
@@ -4455,18 +4455,18 @@
    "player_id": "00-0034844",
    "pos": "RB",
    "stat": "rushing_yards",
-   "line": 69.5,
-   "pick": "OVER 69.5",
+   "line": 70.5,
+   "pick": "OVER 70.5",
    "score": 1.3,
    "grade": "D",
-   "p_over": 0.52,
+   "p_over": 0.51,
    "proj": 72.0,
    "line_hits": "6/10",
    "traps": [
     "Missed the team's last game \u2014 line may assume limited snaps",
     "Model likes the over on old usage, but carries fell to 7/game"
    ],
-   "captured_at": "2026-10-25T20:20-04:00"
+   "captured_at": "2026-10-26T01:06-04:00"
   },
   "00-0037614|receiving_yards": {
    "game": "TB@CAR",
@@ -5188,7 +5188,7 @@
     "Line 13.5 vs 4 L10 avg \u2014 gap this big usually means the book knows about an injury or role change",
     "Missed the team's last game \u2014 line may assume limited snaps"
    ],
-   "captured_at": "2026-10-25T20:20-04:00"
+   "captured_at": "2026-10-26T01:06-04:00"
   },
   "00-0040024|receiving_yards": {
    "game": "DAL@PHI",
@@ -5199,17 +5199,17 @@
    "player_id": "00-0040024",
    "pos": "WR",
    "stat": "receiving_yards",
-   "line": 39.5,
-   "pick": "UNDER 39.5",
-   "score": 3.3,
+   "line": 38.5,
+   "pick": "UNDER 38.5",
+   "score": 3.2,
    "grade": "D",
-   "p_over": 0.27,
+   "p_over": 0.28,
    "proj": 25.4,
    "line_hits": "1/10",
    "traps": [
-    "Line 39.5 vs 23 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 38.5 vs 23 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-25T20:20-04:00"
+   "captured_at": "2026-10-26T01:06-04:00"
   },
   "00-0040867|receiving_yards": {
    "game": "DAL@PHI",
@@ -5220,17 +5220,17 @@
    "player_id": "00-0040867",
    "pos": "WR",
    "stat": "receiving_yards",
-   "line": 38.5,
-   "pick": "UNDER 38.5",
-   "score": 3.8,
+   "line": 37.5,
+   "pick": "UNDER 37.5",
+   "score": 3.7,
    "grade": "D",
-   "p_over": 0.17,
+   "p_over": 0.19,
    "proj": 24.6,
    "line_hits": "1/6",
    "traps": [
-    "Line 38.5 vs 22 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 37.5 vs 22 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-10-25T20:20-04:00"
+   "captured_at": "2026-10-26T01:06-04:00"
   },
   "00-0040887|receiving_yards": {
    "game": "CIN@BAL",
@@ -5293,6 +5293,25 @@
     "Missed the team's last game \u2014 line may assume limited snaps"
    ],
    "captured_at": "2026-10-25T15:35-04:00"
+  },
+  "00-0039530|receiving_yards": {
+   "game": "DAL@PHI",
+   "kickoff": "2026-10-26 20:15",
+   "team": "DAL",
+   "opp": "PHI",
+   "player": "Brevyn Spann-Ford",
+   "player_id": "00-0039530",
+   "pos": "TE",
+   "stat": "receiving_yards",
+   "line": 7.5,
+   "pick": "OVER 7.5",
+   "score": 3.6,
+   "grade": "D",
+   "p_over": 0.59,
+   "proj": 10.8,
+   "line_hits": "5/10",
+   "traps": [],
+   "captured_at": "2026-10-26T01:06-04:00"
   }
  }
 }
