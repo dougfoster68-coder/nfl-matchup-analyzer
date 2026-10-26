@@ -12763,6 +12763,156 @@
       "season": 2026,
       "week": 7,
       "odds": 2512
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Tanner McKee",
+          "player_id": "00-0038400",
+          "team": "PHI",
+          "opp": "DAL",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 5.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        }
+      ],
+      "game": "DAL@PHI",
+      "id": "2026-w7-1793051078-1",
+      "placed_at": "2026-10-26T17:44:38.770109-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "George Pickens",
+          "player_id": "00-0037247",
+          "team": "DAL",
+          "opp": "PHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 63.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.5
+        }
+      ],
+      "game": "DAL@PHI",
+      "id": "2026-w7-1793051078-2",
+      "placed_at": "2026-10-26T17:44:38.770109-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Ryan Flournoy",
+          "player_id": "00-0039410",
+          "team": "DAL",
+          "opp": "PHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 36.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.5
+        }
+      ],
+      "game": "DAL@PHI",
+      "id": "2026-w7-1793051078-3",
+      "placed_at": "2026-10-26T17:44:38.770109-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Javonte Williams",
+          "player_id": "00-0036997",
+          "team": "DAL",
+          "opp": "PHI",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 63.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.1
+        }
+      ],
+      "game": "DAL@PHI",
+      "id": "2026-w7-1793051078-4",
+      "placed_at": "2026-10-26T17:44:38.770109-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Dallas Goedert",
+          "player_id": "00-0034351",
+          "team": "PHI",
+          "opp": "DAL",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 49.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.5
+        }
+      ],
+      "game": "DAL@PHI",
+      "id": "2026-w7-1793051078-5",
+      "placed_at": "2026-10-26T17:44:38.770109-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jake Ferguson",
+          "player_id": "00-0038041",
+          "team": "DAL",
+          "opp": "PHI",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 17.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 4.9
+        }
+      ],
+      "game": "DAL@PHI",
+      "id": "2026-w7-1793051078-6",
+      "placed_at": "2026-10-26T17:44:38.770109-04:00",
+      "season": 2026,
+      "week": 7,
+      "odds": -110,
+      "note": "Claude weekly pick"
     }
   ],
   "superseded": [
