@@ -11,15 +11,15 @@
    "player_id": "00-0039150",
    "pos": "QB",
    "stat": "passing_yards",
-   "line": 251.5,
-   "pick": "OVER 251.5",
+   "line": 252.5,
+   "pick": "OVER 252.5",
    "score": 4.2,
    "grade": "D",
    "p_over": 0.52,
    "proj": 256.2,
    "line_hits": "7/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0039150|rushing_yards": {
    "game": "CAR@GB",
@@ -38,7 +38,7 @@
    "proj": 8.8,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0036555|rushing_yards": {
    "game": "CAR@GB",
@@ -49,15 +49,15 @@
    "player_id": "00-0036555",
    "pos": "RB",
    "stat": "rushing_yards",
-   "line": 69.5,
-   "pick": "OVER 69.5",
-   "score": 2.7,
+   "line": 68.5,
+   "pick": "OVER 68.5",
+   "score": 2.8,
    "grade": "D",
-   "p_over": 0.5,
+   "p_over": 0.51,
    "proj": 69.1,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0036555|receiving_yards": {
    "game": "CAR@GB",
@@ -76,7 +76,7 @@
    "proj": 16.2,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0039491|receiving_yards": {
    "game": "CAR@GB",
@@ -87,15 +87,15 @@
    "player_id": "00-0039491",
    "pos": "WR",
    "stat": "receiving_yards",
-   "line": 63.5,
-   "pick": "OVER 63.5",
-   "score": 2.4,
+   "line": 62.5,
+   "pick": "OVER 62.5",
+   "score": 2.5,
    "grade": "D",
-   "p_over": 0.51,
+   "p_over": 0.52,
    "proj": 64.9,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0040124|receiving_yards": {
    "game": "CAR@GB",
@@ -106,15 +106,15 @@
    "player_id": "00-0040124",
    "pos": "WR",
    "stat": "receiving_yards",
-   "line": 71.5,
-   "pick": "OVER 71.5",
-   "score": 4.7,
-   "grade": "C",
-   "p_over": 0.58,
+   "line": 73.5,
+   "pick": "OVER 73.5",
+   "score": 4.3,
+   "grade": "D",
+   "p_over": 0.56,
    "proj": 81.4,
-   "line_hits": "7/10",
+   "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0031610|receiving_yards": {
    "game": "CAR@GB",
@@ -125,15 +125,15 @@
    "player_id": "00-0031610",
    "pos": "TE",
    "stat": "receiving_yards",
-   "line": 20.5,
-   "pick": "OVER 20.5",
-   "score": 5.8,
-   "grade": "C",
-   "p_over": 0.64,
+   "line": 18.5,
+   "pick": "OVER 18.5",
+   "score": 6.3,
+   "grade": "B",
+   "p_over": 0.68,
    "proj": 27.4,
    "line_hits": "7/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0036264|passing_yards": {
    "game": "CAR@GB",
@@ -152,7 +152,7 @@
    "proj": 247.3,
    "line_hits": "7/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0036264|rushing_yards": {
    "game": "CAR@GB",
@@ -171,7 +171,7 @@
    "proj": 4.9,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0035700|rushing_yards": {
    "game": "CAR@GB",
@@ -190,7 +190,7 @@
    "proj": 67.1,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0035700|receiving_yards": {
    "game": "CAR@GB",
@@ -209,7 +209,7 @@
    "proj": 15.9,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0039811|rushing_yards": {
    "game": "CAR@GB",
@@ -228,7 +228,7 @@
    "proj": 24.9,
    "line_hits": "4/7",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0038124|receiving_yards": {
    "game": "CAR@GB",
@@ -239,15 +239,15 @@
    "player_id": "00-0038124",
    "pos": "WR",
    "stat": "receiving_yards",
-   "line": 69.5,
-   "pick": "OVER 69.5",
-   "score": 2.3,
+   "line": 68.5,
+   "pick": "OVER 68.5",
+   "score": 2.4,
    "grade": "D",
-   "p_over": 0.52,
+   "p_over": 0.53,
    "proj": 71.8,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0040009|receiving_yards": {
    "game": "CAR@GB",
@@ -258,15 +258,15 @@
    "player_id": "00-0040009",
    "pos": "WR",
    "stat": "receiving_yards",
-   "line": 21.5,
-   "pick": "UNDER 21.5",
-   "score": 4.3,
-   "grade": "D",
-   "p_over": 0.38,
+   "line": 23.5,
+   "pick": "UNDER 23.5",
+   "score": 4.8,
+   "grade": "C",
+   "p_over": 0.34,
    "proj": 16.1,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0040667|receiving_yards": {
    "game": "CAR@GB",
@@ -277,15 +277,15 @@
    "player_id": "00-0040667",
    "pos": "WR",
    "stat": "receiving_yards",
-   "line": 62.5,
-   "pick": "OVER 62.5",
-   "score": 3.3,
+   "line": 63.5,
+   "pick": "OVER 63.5",
+   "score": 3.2,
    "grade": "D",
-   "p_over": 0.51,
+   "p_over": 0.5,
    "proj": 63.4,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0038996|receiving_yards": {
    "game": "CAR@GB",
@@ -296,15 +296,15 @@
    "player_id": "00-0038996",
    "pos": "TE",
    "stat": "receiving_yards",
-   "line": 43.5,
-   "pick": "OVER 43.5",
-   "score": 3.4,
+   "line": 42.5,
+   "pick": "OVER 42.5",
+   "score": 3.5,
    "grade": "D",
-   "p_over": 0.53,
+   "p_over": 0.54,
    "proj": 45.4,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0035228|passing_yards": {
    "game": "MIN@DET",
@@ -323,7 +323,7 @@
    "proj": 201.0,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0036322|receiving_yards": {
    "game": "MIN@DET",
@@ -334,15 +334,15 @@
    "player_id": "00-0036322",
    "pos": "WR",
    "stat": "receiving_yards",
-   "line": 78.5,
-   "pick": "UNDER 78.5",
-   "score": 6.1,
-   "grade": "B",
-   "p_over": 0.29,
+   "line": 74.5,
+   "pick": "UNDER 74.5",
+   "score": 5.5,
+   "grade": "C",
+   "p_over": 0.34,
    "proj": 63.0,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0038994|receiving_yards": {
    "game": "MIN@DET",
@@ -361,7 +361,7 @@
    "proj": 38.7,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0035229|receiving_yards": {
    "game": "MIN@DET",
@@ -380,7 +380,7 @@
    "proj": 57.4,
    "line_hits": "3/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0033106|passing_yards": {
    "game": "MIN@DET",
@@ -391,15 +391,15 @@
    "player_id": "00-0033106",
    "pos": "QB",
    "stat": "passing_yards",
-   "line": 268.5,
-   "pick": "UNDER 268.5",
-   "score": 2.4,
+   "line": 263.5,
+   "pick": "UNDER 263.5",
+   "score": 2.2,
    "grade": "D",
-   "p_over": 0.36,
+   "p_over": 0.38,
    "proj": 237.7,
    "line_hits": "8/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0039139|rushing_yards": {
    "game": "MIN@DET",
@@ -410,15 +410,15 @@
    "player_id": "00-0039139",
    "pos": "RB",
    "stat": "rushing_yards",
-   "line": 86.5,
-   "pick": "UNDER 86.5",
-   "score": 2.5,
+   "line": 84.5,
+   "pick": "OVER 84.5",
+   "score": 3.2,
    "grade": "D",
-   "p_over": 0.49,
+   "p_over": 0.51,
    "proj": 85.8,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0039139|receiving_yards": {
    "game": "MIN@DET",
@@ -429,15 +429,15 @@
    "player_id": "00-0039139",
    "pos": "RB",
    "stat": "receiving_yards",
-   "line": 39.5,
-   "pick": "UNDER 39.5",
-   "score": 6.3,
-   "grade": "B",
-   "p_over": 0.27,
+   "line": 34.5,
+   "pick": "UNDER 34.5",
+   "score": 4.9,
+   "grade": "C",
+   "p_over": 0.38,
    "proj": 29.3,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0036963|receiving_yards": {
    "game": "MIN@DET",
@@ -448,15 +448,15 @@
    "player_id": "00-0036963",
    "pos": "WR",
    "stat": "receiving_yards",
-   "line": 80.5,
-   "pick": "UNDER 80.5",
-   "score": 3.6,
+   "line": 76.5,
+   "pick": "OVER 76.5",
+   "score": 2.3,
    "grade": "D",
-   "p_over": 0.49,
+   "p_over": 0.52,
    "proj": 79.0,
    "line_hits": "4/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0037240|receiving_yards": {
    "game": "MIN@DET",
@@ -475,7 +475,7 @@
    "proj": 56.3,
    "line_hits": "5/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
   },
   "00-0039065|receiving_yards": {
    "game": "MIN@DET",
@@ -486,15 +486,55 @@
    "player_id": "00-0039065",
    "pos": "TE",
    "stat": "receiving_yards",
-   "line": 50.5,
-   "pick": "UNDER 50.5",
-   "score": 4.5,
-   "grade": "D",
-   "p_over": 0.32,
+   "line": 51.5,
+   "pick": "UNDER 51.5",
+   "score": 4.6,
+   "grade": "C",
+   "p_over": 0.31,
    "proj": 38.4,
    "line_hits": "6/10",
    "traps": [],
-   "captured_at": "2026-10-27T07:27-04:00"
+   "captured_at": "2026-10-27T12:48-04:00"
+  },
+  "00-0037614|receiving_yards": {
+   "game": "CAR@GB",
+   "kickoff": "2026-10-29 20:15",
+   "team": "CAR",
+   "opp": "GB",
+   "player": "John Metchie III",
+   "player_id": "00-0037614",
+   "pos": "WR",
+   "stat": "receiving_yards",
+   "line": 16.5,
+   "pick": "OVER 16.5",
+   "score": 7.2,
+   "grade": "B",
+   "p_over": 0.68,
+   "proj": 22.1,
+   "line_hits": "8/10",
+   "traps": [],
+   "captured_at": "2026-10-27T12:48-04:00"
+  },
+  "00-0039811|receiving_yards": {
+   "game": "CAR@GB",
+   "kickoff": "2026-10-29 20:15",
+   "team": "GB",
+   "opp": "CAR",
+   "player": "MarShawn Lloyd",
+   "player_id": "00-0039811",
+   "pos": "RB",
+   "stat": "receiving_yards",
+   "line": 5.5,
+   "pick": "OVER 5.5",
+   "score": 2.4,
+   "grade": "D",
+   "p_over": 0.62,
+   "proj": 9.2,
+   "line_hits": "5/7",
+   "traps": [
+    "Line 5.5 vs 10 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "captured_at": "2026-10-27T12:48-04:00"
   }
  }
 }
