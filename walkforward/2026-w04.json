@@ -6,11 +6,12 @@
  "params": {
   "proj_scale": {
    "passing_yards": 1.0,
-   "rushing_yards": 0.85,
+   "rushing_yards": 1.0,
    "receiving_yards": 1.0
   },
-  "hit_rate_bonus": 0.3,
-  "garbage_time_cut": 0.0
+  "hit_rate_bonus": 0.0,
+  "garbage_time_cut": 0.0,
+  "games": 18
  },
  "props": {
   "00-0035710|passing_yards": {
@@ -24,13 +25,13 @@
    "stat": "passing_yards",
    "line": 216.5,
    "pick": "OVER 216.5",
-   "score": 3.5,
+   "score": 2.0,
    "grade": "D",
-   "p_over": 0.6,
-   "proj": 236.5,
-   "line_hits": "5/10",
+   "p_over": 0.55,
+   "proj": 227.2,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 67.8
+   "sd": 28.4
   },
   "00-0035710|rushing_yards": {
    "game": "IND@WAS",
@@ -43,13 +44,15 @@
    "stat": "rushing_yards",
    "line": 11.5,
    "pick": "UNDER 11.5",
-   "score": 6.9,
-   "grade": "B",
-   "p_over": 0.47,
-   "proj": 10.4,
-   "line_hits": "2/10",
-   "traps": [],
-   "sd": 13.1
+   "score": 3.6,
+   "grade": "D",
+   "p_over": 0.06,
+   "proj": 7.5,
+   "line_hits": "0/3",
+   "traps": [
+    "Line 11.5 vs 6 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "sd": 2.6
   },
   "00-0036223|rushing_yards": {
    "game": "IND@WAS",
@@ -62,13 +65,13 @@
    "stat": "rushing_yards",
    "line": 94.5,
    "pick": "UNDER 94.5",
-   "score": 11.5,
-   "grade": "A",
-   "p_over": 0.07,
-   "proj": 61.9,
-   "line_hits": "1/10",
+   "score": 6.4,
+   "grade": "B",
+   "p_over": 0.17,
+   "proj": 70.9,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 21.2
+   "sd": 13.1
   },
   "00-0036223|receiving_yards": {
    "game": "IND@WAS",
@@ -80,14 +83,14 @@
    "pos": "RB",
    "stat": "receiving_yards",
    "line": 19.5,
-   "pick": "UNDER 19.5",
-   "score": 2.7,
+   "pick": "OVER 19.5",
+   "score": 4.0,
    "grade": "D",
-   "p_over": 0.49,
-   "proj": 19.0,
-   "line_hits": "4/10",
+   "p_over": 0.61,
+   "proj": 23.5,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 13.5
+   "sd": 14.9
   },
   "00-0032951|receiving_yards": {
    "game": "IND@WAS",
@@ -99,16 +102,14 @@
    "pos": "WR",
    "stat": "receiving_yards",
    "line": 24.5,
-   "pick": "UNDER 24.5",
-   "score": 3.8,
+   "pick": "OVER 24.5",
+   "score": 2.5,
    "grade": "D",
-   "p_over": 0.33,
-   "proj": 14.8,
-   "line_hits": "1/9",
-   "traps": [
-    "Line 24.5 vs 13 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 22.2
+   "p_over": 0.6,
+   "proj": 30.8,
+   "line_hits": "1/3",
+   "traps": [],
+   "sd": 25.2
   },
   "00-0038997|receiving_yards": {
    "game": "IND@WAS",
@@ -120,16 +121,14 @@
    "pos": "WR",
    "stat": "receiving_yards",
    "line": 70.5,
-   "pick": "UNDER 70.5",
-   "score": 2.9,
+   "pick": "OVER 70.5",
+   "score": 3.0,
    "grade": "D",
-   "p_over": 0.24,
-   "proj": 54.4,
-   "line_hits": "2/10",
-   "traps": [
-    "Line 70.5 vs 49 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 23.1
+   "p_over": 0.5,
+   "proj": 70.7,
+   "line_hits": "2/3",
+   "traps": [],
+   "sd": 17.6
   },
   "00-0040128|receiving_yards": {
    "game": "IND@WAS",
@@ -142,53 +141,15 @@
    "stat": "receiving_yards",
    "line": 56.5,
    "pick": "UNDER 56.5",
-   "score": 5.9,
-   "grade": "C",
-   "p_over": 0.06,
-   "proj": 34.3,
-   "line_hits": "0/10",
+   "score": 3.6,
+   "grade": "D",
+   "p_over": 0.11,
+   "proj": 34.1,
+   "line_hits": "0/3",
    "traps": [
-    "Line 56.5 vs 29 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 56.5 vs 30 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 14.6
-  },
-  "00-0032268|passing_yards": {
-   "game": "IND@WAS",
-   "kickoff": "2026-10-04 09:30",
-   "team": "WAS",
-   "opp": "IND",
-   "player": "Marcus Mariota",
-   "player_id": "00-0032268",
-   "pos": "QB",
-   "stat": "passing_yards",
-   "line": 205.5,
-   "pick": "UNDER 205.5",
-   "score": 5.3,
-   "grade": "C",
-   "p_over": 0.4,
-   "proj": 185.9,
-   "line_hits": "5/10",
-   "traps": [],
-   "sd": 74.3
-  },
-  "00-0032268|rushing_yards": {
-   "game": "IND@WAS",
-   "kickoff": "2026-10-04 09:30",
-   "team": "WAS",
-   "opp": "IND",
-   "player": "Marcus Mariota",
-   "player_id": "00-0032268",
-   "pos": "QB",
-   "stat": "rushing_yards",
-   "line": 25.5,
-   "pick": "UNDER 25.5",
-   "score": 5.9,
-   "grade": "C",
-   "p_over": 0.36,
-   "proj": 18.6,
-   "line_hits": "5/10",
-   "traps": [],
-   "sd": 18.9
+   "sd": 18.4
   },
   "00-0040242|rushing_yards": {
    "game": "IND@WAS",
@@ -201,15 +162,13 @@
    "stat": "rushing_yards",
    "line": 59.5,
    "pick": "UNDER 59.5",
-   "score": 4.9,
+   "score": 4.7,
    "grade": "C",
-   "p_over": 0.28,
-   "proj": 44.2,
-   "line_hits": "3/10",
-   "traps": [
-    "Model likes the under on old usage, but carries rose to 15.7/game"
-   ],
-   "sd": 26.4
+   "p_over": 0.33,
+   "proj": 51.4,
+   "line_hits": "1/3",
+   "traps": [],
+   "sd": 11.3
   },
   "00-0040242|receiving_yards": {
    "game": "IND@WAS",
@@ -222,13 +181,13 @@
    "stat": "receiving_yards",
    "line": 5.5,
    "pick": "UNDER 5.5",
-   "score": 11.2,
-   "grade": "A",
-   "p_over": 0.16,
-   "proj": 1.2,
-   "line_hits": "1/10",
+   "score": 4.9,
+   "grade": "C",
+   "p_over": 0.3,
+   "proj": 2.3,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 4.3
+   "sd": 6.1
   },
   "00-0031588|receiving_yards": {
    "game": "IND@WAS",
@@ -240,54 +199,14 @@
    "pos": "WR",
    "stat": "receiving_yards",
    "line": 56.5,
-   "pick": "OVER 56.5",
-   "score": 0.5,
-   "grade": "D",
-   "p_over": 0.51,
-   "proj": 57.3,
-   "line_hits": "2/10",
+   "pick": "UNDER 56.5",
+   "score": 6.4,
+   "grade": "B",
+   "p_over": 0.31,
+   "proj": 48.3,
+   "line_hits": "0/3",
    "traps": [],
-   "sd": 27.6
-  },
-  "00-0037742|receiving_yards": {
-   "game": "IND@WAS",
-   "kickoff": "2026-10-04 09:30",
-   "team": "WAS",
-   "opp": "IND",
-   "player": "Treylon Burks",
-   "player_id": "00-0037742",
-   "pos": "WR",
-   "stat": "receiving_yards",
-   "line": 18.5,
-   "pick": "UNDER 18.5",
-   "score": 7.7,
-   "grade": "A",
-   "p_over": 0.42,
-   "proj": 15.3,
-   "line_hits": "2/10",
-   "traps": [],
-   "sd": 15.4
-  },
-  "00-0037809|receiving_yards": {
-   "game": "IND@WAS",
-   "kickoff": "2026-10-04 09:30",
-   "team": "WAS",
-   "opp": "IND",
-   "player": "Chig Okonkwo",
-   "player_id": "00-0037809",
-   "pos": "TE",
-   "stat": "receiving_yards",
-   "line": 29.5,
-   "pick": "OVER 29.5",
-   "score": 2.0,
-   "grade": "D",
-   "p_over": 0.59,
-   "proj": 33.2,
-   "line_hits": "5/10",
-   "traps": [
-    "Missed the team's last game \u2014 line may assume limited snaps"
-   ],
-   "sd": 17.1
+   "sd": 9.1
   },
   "00-0040676|passing_yards": {
    "game": "TEN@BAL",
@@ -299,14 +218,14 @@
    "pos": "QB",
    "stat": "passing_yards",
    "line": 186.5,
-   "pick": "OVER 186.5",
-   "score": 1.0,
-   "grade": "D",
-   "p_over": 0.51,
-   "proj": 188.7,
-   "line_hits": "3/10",
+   "pick": "UNDER 186.5",
+   "score": 5.5,
+   "grade": "C",
+   "p_over": 0.39,
+   "proj": 169.3,
+   "line_hits": "0/3",
    "traps": [],
-   "sd": 55.1
+   "sd": 19.5
   },
   "00-0040676|rushing_yards": {
    "game": "TEN@BAL",
@@ -319,13 +238,13 @@
    "stat": "rushing_yards",
    "line": 10.5,
    "pick": "UNDER 10.5",
-   "score": 4.6,
-   "grade": "C",
+   "score": 3.6,
+   "grade": "D",
    "p_over": 0.44,
-   "proj": 9.0,
-   "line_hits": "3/10",
+   "proj": 9.2,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 9.3
+   "sd": 8.0
   },
   "00-0035261|rushing_yards": {
    "game": "TEN@BAL",
@@ -338,13 +257,13 @@
    "stat": "rushing_yards",
    "line": 50.5,
    "pick": "OVER 50.5",
-   "score": 3.9,
+   "score": 4.3,
    "grade": "D",
-   "p_over": 0.51,
-   "proj": 51.6,
-   "line_hits": "7/10",
+   "p_over": 0.63,
+   "proj": 57.1,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 34.7
+   "sd": 16.4
   },
   "00-0035261|receiving_yards": {
    "game": "TEN@BAL",
@@ -357,13 +276,13 @@
    "stat": "receiving_yards",
    "line": 9.5,
    "pick": "UNDER 9.5",
-   "score": 3.7,
+   "score": 4.3,
    "grade": "D",
-   "p_over": 0.48,
-   "proj": 9.1,
-   "line_hits": "4/10",
+   "p_over": 0.36,
+   "proj": 5.7,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 9.0
+   "sd": 10.5
   },
   "00-0039032|rushing_yards": {
    "game": "TEN@BAL",
@@ -375,14 +294,14 @@
    "pos": "RB",
    "stat": "rushing_yards",
    "line": 14.5,
-   "pick": "UNDER 14.5",
-   "score": 3.4,
+   "pick": "OVER 14.5",
+   "score": 2.6,
    "grade": "D",
-   "p_over": 0.48,
-   "proj": 13.6,
-   "line_hits": "5/10",
+   "p_over": 0.61,
+   "proj": 18.8,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 16.9
+   "sd": 15.7
   },
   "00-0039032|receiving_yards": {
    "game": "TEN@BAL",
@@ -394,36 +313,14 @@
    "pos": "RB",
    "stat": "receiving_yards",
    "line": 12.5,
-   "pick": "OVER 12.5",
-   "score": 4.1,
+   "pick": "UNDER 12.5",
+   "score": 3.9,
    "grade": "D",
-   "p_over": 0.65,
-   "proj": 18.5,
-   "line_hits": "5/10",
+   "p_over": 0.41,
+   "proj": 9.9,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 15.6
-  },
-  "00-0034837|receiving_yards": {
-   "game": "TEN@BAL",
-   "kickoff": "2026-10-04 13:00",
-   "team": "TEN",
-   "opp": "BAL",
-   "player": "Calvin Ridley",
-   "player_id": "00-0034837",
-   "pos": "WR",
-   "stat": "receiving_yards",
-   "line": 7.5,
-   "pick": "OVER 7.5",
-   "score": 3.7,
-   "grade": "D",
-   "p_over": 0.83,
-   "proj": 40.9,
-   "line_hits": "8/9",
-   "traps": [
-    "Line 7.5 vs 34 L10 avg \u2014 gap this big usually means the book knows about an injury or role change",
-    "Model likes the over on old usage, but targets fell to 1.3/game"
-   ],
-   "sd": 35.4
+   "sd": 12.0
   },
   "00-0038117|receiving_yards": {
    "game": "TEN@BAL",
@@ -436,15 +333,13 @@
    "stat": "receiving_yards",
    "line": 37.5,
    "pick": "OVER 37.5",
-   "score": 4.8,
-   "grade": "C",
-   "p_over": 0.72,
-   "proj": 58.7,
-   "line_hits": "6/10",
-   "traps": [
-    "Model likes the over on old usage, but targets fell to 6/game"
-   ],
-   "sd": 37.0
+   "score": 2.9,
+   "grade": "D",
+   "p_over": 0.5,
+   "proj": 37.7,
+   "line_hits": "2/3",
+   "traps": [],
+   "sd": 19.9
   },
   "00-0040170|receiving_yards": {
    "game": "TEN@BAL",
@@ -457,13 +352,13 @@
    "stat": "receiving_yards",
    "line": 19.5,
    "pick": "OVER 19.5",
-   "score": 5.4,
-   "grade": "C",
-   "p_over": 0.76,
-   "proj": 35.6,
-   "line_hits": "4/10",
+   "score": 3.3,
+   "grade": "D",
+   "p_over": 0.68,
+   "proj": 32.6,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 23.3
+   "sd": 27.3
   },
   "00-0040584|receiving_yards": {
    "game": "TEN@BAL",
@@ -476,13 +371,13 @@
    "stat": "receiving_yards",
    "line": 19.5,
    "pick": "UNDER 19.5",
-   "score": 4.0,
+   "score": 4.3,
    "grade": "D",
-   "p_over": 0.45,
-   "proj": 17.8,
-   "line_hits": "5/10",
+   "p_over": 0.37,
+   "proj": 17.2,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 14.8
+   "sd": 6.8
   },
   "00-0034796|passing_yards": {
    "game": "TEN@BAL",
@@ -495,13 +390,13 @@
    "stat": "passing_yards",
    "line": 216.5,
    "pick": "OVER 216.5",
-   "score": 3.3,
+   "score": 3.6,
    "grade": "D",
-   "p_over": 0.51,
-   "proj": 218.8,
-   "line_hits": "5/10",
+   "p_over": 0.57,
+   "proj": 230.5,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 61.5
+   "sd": 56.8
   },
   "00-0034796|rushing_yards": {
    "game": "TEN@BAL",
@@ -513,14 +408,14 @@
    "pos": "QB",
    "stat": "rushing_yards",
    "line": 31.5,
-   "pick": "UNDER 31.5",
-   "score": 4.6,
+   "pick": "OVER 31.5",
+   "score": 5.9,
    "grade": "C",
-   "p_over": 0.27,
-   "proj": 22.2,
-   "line_hits": "4/10",
+   "p_over": 0.65,
+   "proj": 36.3,
+   "line_hits": "3/3",
    "traps": [],
-   "sd": 15.2
+   "sd": 6.7
   },
   "00-0032764|rushing_yards": {
    "game": "TEN@BAL",
@@ -532,14 +427,14 @@
    "pos": "RB",
    "stat": "rushing_yards",
    "line": 98.5,
-   "pick": "UNDER 98.5",
-   "score": 4.7,
-   "grade": "C",
-   "p_over": 0.38,
-   "proj": 85.5,
-   "line_hits": "5/10",
+   "pick": "OVER 98.5",
+   "score": 2.3,
+   "grade": "D",
+   "p_over": 0.59,
+   "proj": 106.7,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 43.1
+   "sd": 31.6
   },
   "00-0032764|receiving_yards": {
    "game": "TEN@BAL",
@@ -552,13 +447,13 @@
    "stat": "receiving_yards",
    "line": 7.5,
    "pick": "OVER 7.5",
-   "score": 4.4,
-   "grade": "D",
-   "p_over": 0.6,
-   "proj": 10.8,
-   "line_hits": "5/10",
+   "score": 4.7,
+   "grade": "C",
+   "p_over": 0.68,
+   "proj": 11.7,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 12.9
+   "sd": 9.1
   },
   "00-0034975|rushing_yards": {
    "game": "TEN@BAL",
@@ -570,14 +465,14 @@
    "pos": "RB",
    "stat": "rushing_yards",
    "line": 17.5,
-   "pick": "UNDER 17.5",
-   "score": 4.2,
+   "pick": "OVER 17.5",
+   "score": 4.1,
    "grade": "D",
-   "p_over": 0.4,
-   "proj": 12.3,
-   "line_hits": "3/10",
+   "p_over": 0.61,
+   "proj": 20.7,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 19.7
+   "sd": 11.2
   },
   "00-0034975|receiving_yards": {
    "game": "TEN@BAL",
@@ -590,13 +485,13 @@
    "stat": "receiving_yards",
    "line": 11.5,
    "pick": "UNDER 11.5",
-   "score": 3.6,
-   "grade": "D",
-   "p_over": 0.47,
-   "proj": 10.7,
-   "line_hits": "5/10",
+   "score": 6.1,
+   "grade": "B",
+   "p_over": 0.19,
+   "proj": 6.8,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 11.0
+   "sd": 5.3
   },
   "00-0032398|receiving_yards": {
    "game": "TEN@BAL",
@@ -609,15 +504,15 @@
    "stat": "receiving_yards",
    "line": 9.5,
    "pick": "OVER 9.5",
-   "score": 2.2,
+   "score": 1.5,
    "grade": "D",
-   "p_over": 0.72,
-   "proj": 22.1,
-   "line_hits": "5/10",
+   "p_over": 0.69,
+   "proj": 20.6,
+   "line_hits": "1/3",
    "traps": [
-    "Line 9.5 vs 20 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 9.5 vs 20 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 22.1
+   "sd": 22.4
   },
   "00-0036550|receiving_yards": {
    "game": "TEN@BAL",
@@ -630,32 +525,13 @@
    "stat": "receiving_yards",
    "line": 26.5,
    "pick": "OVER 26.5",
-   "score": 3.0,
-   "grade": "D",
-   "p_over": 0.53,
-   "proj": 29.1,
-   "line_hits": "3/10",
+   "score": 4.8,
+   "grade": "C",
+   "p_over": 0.68,
+   "proj": 43.1,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 30.2
-  },
-  "00-0039064|receiving_yards": {
-   "game": "TEN@BAL",
-   "kickoff": "2026-10-04 13:00",
-   "team": "BAL",
-   "opp": "TEN",
-   "player": "Zay Flowers",
-   "player_id": "00-0039064",
-   "pos": "WR",
-   "stat": "receiving_yards",
-   "line": 71.5,
-   "pick": "OVER 71.5",
-   "score": 7.0,
-   "grade": "B",
-   "p_over": 0.71,
-   "proj": 96.0,
-   "line_hits": "6/10",
-   "traps": [],
-   "sd": 43.8
+   "sd": 35.7
   },
   "00-0034753|receiving_yards": {
    "game": "TEN@BAL",
@@ -668,13 +544,13 @@
    "stat": "receiving_yards",
    "line": 38.5,
    "pick": "UNDER 38.5",
-   "score": 6.6,
-   "grade": "B",
-   "p_over": 0.21,
-   "proj": 26.3,
-   "line_hits": "3/10",
+   "score": 4.7,
+   "grade": "C",
+   "p_over": 0.19,
+   "proj": 28.2,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 15.3
+   "sd": 11.9
   },
   "00-0039851|passing_yards": {
    "game": "NE@BUF",
@@ -687,13 +563,13 @@
    "stat": "passing_yards",
    "line": 232.5,
    "pick": "UNDER 232.5",
-   "score": 5.7,
+   "score": 5.5,
    "grade": "C",
-   "p_over": 0.4,
-   "proj": 213.0,
-   "line_hits": "4/10",
+   "p_over": 0.39,
+   "proj": 211.2,
+   "line_hits": "0/3",
    "traps": [],
-   "sd": 67.5
+   "sd": 12.4
   },
   "00-0039851|rushing_yards": {
    "game": "NE@BUF",
@@ -705,14 +581,14 @@
    "pos": "QB",
    "stat": "rushing_yards",
    "line": 27.5,
-   "pick": "OVER 27.5",
-   "score": 2.8,
+   "pick": "UNDER 27.5",
+   "score": 4.1,
    "grade": "D",
-   "p_over": 0.54,
-   "proj": 29.5,
-   "line_hits": "5/10",
+   "p_over": 0.39,
+   "proj": 23.8,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 18.4
+   "sd": 13.7
   },
   "00-0036875|rushing_yards": {
    "game": "NE@BUF",
@@ -725,13 +601,13 @@
    "stat": "rushing_yards",
    "line": 32.5,
    "pick": "OVER 32.5",
-   "score": 7.5,
-   "grade": "B",
-   "p_over": 0.64,
-   "proj": 42.5,
-   "line_hits": "8/10",
+   "score": 4.6,
+   "grade": "C",
+   "p_over": 0.67,
+   "proj": 38.2,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 27.4
+   "sd": 12.3
   },
   "00-0036875|receiving_yards": {
    "game": "NE@BUF",
@@ -744,51 +620,13 @@
    "stat": "receiving_yards",
    "line": 17.5,
    "pick": "OVER 17.5",
-   "score": 5.2,
-   "grade": "C",
-   "p_over": 0.71,
-   "proj": 29.4,
-   "line_hits": "6/10",
-   "traps": [],
-   "sd": 22.0
-  },
-  "00-0040734|rushing_yards": {
-   "game": "NE@BUF",
-   "kickoff": "2026-10-04 13:00",
-   "team": "NE",
-   "opp": "BUF",
-   "player": "TreVeyon Henderson",
-   "player_id": "00-0040734",
-   "pos": "RB",
-   "stat": "rushing_yards",
-   "line": 41.5,
-   "pick": "UNDER 41.5",
-   "score": 4.1,
+   "score": 2.4,
    "grade": "D",
-   "p_over": 0.45,
-   "proj": 36.2,
-   "line_hits": "4/10",
+   "p_over": 0.6,
+   "proj": 21.6,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 38.7
-  },
-  "00-0040734|receiving_yards": {
-   "game": "NE@BUF",
-   "kickoff": "2026-10-04 13:00",
-   "team": "NE",
-   "opp": "BUF",
-   "player": "TreVeyon Henderson",
-   "player_id": "00-0040734",
-   "pos": "RB",
-   "stat": "receiving_yards",
-   "line": 7.5,
-   "pick": "UNDER 7.5",
-   "score": 4.4,
-   "grade": "D",
-   "p_over": 0.44,
-   "proj": 6.3,
-   "line_hits": "4/10",
-   "traps": [],
-   "sd": 8.1
+   "sd": 16.8
   },
   "00-0033555|receiving_yards": {
    "game": "NE@BUF",
@@ -801,13 +639,13 @@
    "stat": "receiving_yards",
    "line": 43.5,
    "pick": "OVER 43.5",
-   "score": 5.8,
+   "score": 5.1,
    "grade": "C",
-   "p_over": 0.68,
-   "proj": 54.4,
-   "line_hits": "6/10",
+   "p_over": 0.71,
+   "proj": 59.2,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 23.9
+   "sd": 28.5
   },
   "00-0037816|receiving_yards": {
    "game": "NE@BUF",
@@ -820,13 +658,13 @@
    "stat": "receiving_yards",
    "line": 39.5,
    "pick": "OVER 39.5",
-   "score": 5.1,
+   "score": 4.6,
    "grade": "C",
-   "p_over": 0.63,
-   "proj": 53.1,
-   "line_hits": "5/10",
+   "p_over": 0.66,
+   "proj": 55.3,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 39.6
+   "sd": 38.7
   },
   "00-0038621|receiving_yards": {
    "game": "NE@BUF",
@@ -839,13 +677,13 @@
    "stat": "receiving_yards",
    "line": 28.5,
    "pick": "UNDER 28.5",
-   "score": 5.7,
-   "grade": "C",
-   "p_over": 0.32,
-   "proj": 21.6,
-   "line_hits": "4/10",
+   "score": 3.9,
+   "grade": "D",
+   "p_over": 0.4,
+   "proj": 25.5,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 15.2
+   "sd": 12.1
   },
   "00-0040131|receiving_yards": {
    "game": "NE@BUF",
@@ -858,13 +696,13 @@
    "stat": "receiving_yards",
    "line": 11.5,
    "pick": "OVER 11.5",
-   "score": 2.4,
+   "score": 3.1,
    "grade": "D",
-   "p_over": 0.55,
-   "proj": 13.4,
-   "line_hits": "3/10",
+   "p_over": 0.65,
+   "proj": 17.2,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 14.9
+   "sd": 14.4
   },
   "00-0033090|receiving_yards": {
    "game": "NE@BUF",
@@ -879,11 +717,11 @@
    "pick": "UNDER 30.5",
    "score": 5.5,
    "grade": "C",
-   "p_over": 0.3,
-   "proj": 20.8,
-   "line_hits": "6/10",
+   "p_over": 0.25,
+   "proj": 20.5,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 19.0
+   "sd": 14.6
   },
   "00-0034857|passing_yards": {
    "game": "NE@BUF",
@@ -896,13 +734,13 @@
    "stat": "passing_yards",
    "line": 245.5,
    "pick": "UNDER 245.5",
-   "score": 4.9,
-   "grade": "C",
-   "p_over": 0.27,
-   "proj": 201.5,
-   "line_hits": "6/10",
+   "score": 1.8,
+   "grade": "D",
+   "p_over": 0.47,
+   "proj": 239.7,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 61.7
+   "sd": 53.7
   },
   "00-0034857|rushing_yards": {
    "game": "NE@BUF",
@@ -915,55 +753,13 @@
    "stat": "rushing_yards",
    "line": 30.5,
    "pick": "OVER 30.5",
-   "score": 3.1,
+   "score": 2.5,
    "grade": "D",
-   "p_over": 0.54,
-   "proj": 32.6,
-   "line_hits": "6/10",
+   "p_over": 0.6,
+   "proj": 36.0,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 21.1
-  },
-  "00-0035537|rushing_yards": {
-   "game": "NE@BUF",
-   "kickoff": "2026-10-04 13:00",
-   "team": "BUF",
-   "opp": "NE",
-   "player": "Ty Johnson",
-   "player_id": "00-0035537",
-   "pos": "RB",
-   "stat": "rushing_yards",
-   "line": 4.5,
-   "pick": "OVER 4.5",
-   "score": 3.7,
-   "grade": "D",
-   "p_over": 0.69,
-   "proj": 10.1,
-   "line_hits": "8/10",
-   "traps": [
-    "Line 4.5 vs 13 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 11.0
-  },
-  "00-0035537|receiving_yards": {
-   "game": "NE@BUF",
-   "kickoff": "2026-10-04 13:00",
-   "team": "BUF",
-   "opp": "NE",
-   "player": "Ty Johnson",
-   "player_id": "00-0035537",
-   "pos": "RB",
-   "stat": "receiving_yards",
-   "line": 12.5,
-   "pick": "OVER 12.5",
-   "score": 5.3,
-   "grade": "C",
-   "p_over": 0.8,
-   "proj": 27.3,
-   "line_hits": "9/10",
-   "traps": [
-    "Line 12.5 vs 29 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 17.9
+   "sd": 21.9
   },
   "00-0037248|rushing_yards": {
    "game": "NE@BUF",
@@ -975,14 +771,14 @@
    "pos": "RB",
    "stat": "rushing_yards",
    "line": 87.5,
-   "pick": "UNDER 87.5",
-   "score": 3.5,
-   "grade": "D",
-   "p_over": 0.4,
-   "proj": 77.0,
-   "line_hits": "5/10",
+   "pick": "OVER 87.5",
+   "score": 5.8,
+   "grade": "C",
+   "p_over": 0.77,
+   "proj": 117.7,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 43.2
+   "sd": 41.6
   },
   "00-0037248|receiving_yards": {
    "game": "NE@BUF",
@@ -995,13 +791,13 @@
    "stat": "receiving_yards",
    "line": 8.5,
    "pick": "UNDER 8.5",
-   "score": 3.7,
-   "grade": "D",
-   "p_over": 0.49,
-   "proj": 8.2,
-   "line_hits": "4/10",
+   "score": 5.2,
+   "grade": "C",
+   "p_over": 0.28,
+   "proj": 5.6,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 9.4
+   "sd": 5.0
   },
   "00-0034827|receiving_yards": {
    "game": "NE@BUF",
@@ -1013,14 +809,14 @@
    "pos": "WR",
    "stat": "receiving_yards",
    "line": 50.5,
-   "pick": "UNDER 50.5",
+   "pick": "OVER 50.5",
    "score": 3.0,
    "grade": "D",
-   "p_over": 0.42,
-   "proj": 42.7,
-   "line_hits": "6/10",
+   "p_over": 0.51,
+   "proj": 51.4,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 38.9
+   "sd": 41.2
   },
   "00-0037261|receiving_yards": {
    "game": "NE@BUF",
@@ -1033,13 +829,13 @@
    "stat": "receiving_yards",
    "line": 35.5,
    "pick": "UNDER 35.5",
-   "score": 2.6,
+   "score": 3.1,
    "grade": "D",
-   "p_over": 0.47,
-   "proj": 33.7,
-   "line_hits": "5/10",
+   "p_over": 0.35,
+   "proj": 28.5,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 25.2
+   "sd": 18.7
   },
   "00-0039901|receiving_yards": {
    "game": "NE@BUF",
@@ -1052,15 +848,15 @@
    "stat": "receiving_yards",
    "line": 13.5,
    "pick": "OVER 13.5",
-   "score": 3.0,
+   "score": 2.6,
    "grade": "D",
-   "p_over": 0.72,
-   "proj": 25.5,
-   "line_hits": "7/10",
+   "p_over": 0.77,
+   "proj": 32.0,
+   "line_hits": "2/3",
    "traps": [
-    "Line 13.5 vs 30 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 13.5 vs 34 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 20.9
+   "sd": 25.1
   },
   "00-0035689|receiving_yards": {
    "game": "NE@BUF",
@@ -1072,16 +868,14 @@
    "pos": "TE",
    "stat": "receiving_yards",
    "line": 9.5,
-   "pick": "OVER 9.5",
-   "score": 1.6,
-   "grade": "D",
-   "p_over": 0.63,
-   "proj": 16.8,
-   "line_hits": "7/10",
-   "traps": [
-    "Line 9.5 vs 22 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 22.5
+   "pick": "UNDER 9.5",
+   "score": 8.0,
+   "grade": "A",
+   "p_over": 0.0,
+   "proj": 4.5,
+   "line_hits": "0/3",
+   "traps": [],
+   "sd": 0.9
   },
   "00-0038933|receiving_yards": {
    "game": "NE@BUF",
@@ -1093,14 +887,14 @@
    "pos": "TE",
    "stat": "receiving_yards",
    "line": 47.5,
-   "pick": "UNDER 47.5",
-   "score": 2.7,
-   "grade": "D",
-   "p_over": 0.49,
-   "proj": 46.6,
-   "line_hits": "4/10",
+   "pick": "OVER 47.5",
+   "score": 5.1,
+   "grade": "C",
+   "p_over": 0.72,
+   "proj": 69.1,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 38.7
+   "sd": 38.0
   },
   "00-0030565|passing_yards": {
    "game": "NYJ@CHI",
@@ -1113,13 +907,13 @@
    "stat": "passing_yards",
    "line": 227.5,
    "pick": "OVER 227.5",
-   "score": 4.0,
+   "score": 4.2,
    "grade": "D",
-   "p_over": 0.57,
-   "proj": 243.0,
-   "line_hits": "4/10",
+   "p_over": 0.62,
+   "proj": 255.2,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 60.6
+   "sd": 44.6
   },
   "00-0030565|rushing_yards": {
    "game": "NYJ@CHI",
@@ -1131,14 +925,14 @@
    "pos": "QB",
    "stat": "rushing_yards",
    "line": 11.5,
-   "pick": "UNDER 11.5",
-   "score": 5.7,
-   "grade": "C",
-   "p_over": 0.26,
-   "proj": 7.4,
-   "line_hits": "3/10",
+   "pick": "OVER 11.5",
+   "score": 4.4,
+   "grade": "D",
+   "p_over": 0.64,
+   "proj": 13.2,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 6.4
+   "sd": 4.0
   },
   "00-0039794|rushing_yards": {
    "game": "NYJ@CHI",
@@ -1151,15 +945,15 @@
    "stat": "rushing_yards",
    "line": 56.5,
    "pick": "UNDER 56.5",
-   "score": 5.9,
-   "grade": "C",
+   "score": 3.6,
+   "grade": "D",
    "p_over": 0.0,
-   "proj": 17.3,
-   "line_hits": "0/7",
+   "proj": 20.2,
+   "line_hits": "0/3",
    "traps": [
-    "Line 56.5 vs 20 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 56.5 vs 20 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 12.1
+   "sd": 14.0
   },
   "00-0039794|receiving_yards": {
    "game": "NYJ@CHI",
@@ -1172,55 +966,15 @@
    "stat": "receiving_yards",
    "line": 12.5,
    "pick": "UNDER 12.5",
-   "score": 5.6,
-   "grade": "C",
-   "p_over": 0.06,
-   "proj": 3.9,
-   "line_hits": "1/7",
+   "score": 3.6,
+   "grade": "D",
+   "p_over": 0.01,
+   "proj": 4.1,
+   "line_hits": "0/3",
    "traps": [
-    "Line 12.5 vs 4 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 12.5 vs 4 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 5.4
-  },
-  "00-0039798|rushing_yards": {
-   "game": "NYJ@CHI",
-   "kickoff": "2026-10-04 13:00",
-   "team": "NYJ",
-   "opp": "CHI",
-   "player": "Isaiah Davis",
-   "player_id": "00-0039798",
-   "pos": "RB",
-   "stat": "rushing_yards",
-   "line": 21.5,
-   "pick": "UNDER 21.5",
-   "score": 4.9,
-   "grade": "C",
-   "p_over": 0.23,
-   "proj": 9.7,
-   "line_hits": "2/10",
-   "traps": [
-    "Line 21.5 vs 11 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 16.2
-  },
-  "00-0039798|receiving_yards": {
-   "game": "NYJ@CHI",
-   "kickoff": "2026-10-04 13:00",
-   "team": "NYJ",
-   "opp": "CHI",
-   "player": "Isaiah Davis",
-   "player_id": "00-0039798",
-   "pos": "RB",
-   "stat": "receiving_yards",
-   "line": 9.5,
-   "pick": "UNDER 9.5",
-   "score": 8.1,
-   "grade": "A",
-   "p_over": 0.42,
-   "proj": 6.4,
-   "line_hits": "1/10",
-   "traps": [],
-   "sd": 15.1
+   "sd": 3.3
   },
   "00-0037740|receiving_yards": {
    "game": "NYJ@CHI",
@@ -1232,14 +986,14 @@
    "pos": "WR",
    "stat": "receiving_yards",
    "line": 76.5,
-   "pick": "UNDER 76.5",
-   "score": 2.7,
+   "pick": "OVER 76.5",
+   "score": 3.2,
    "grade": "D",
-   "p_over": 0.47,
-   "proj": 74.2,
-   "line_hits": "5/10",
+   "p_over": 0.53,
+   "proj": 78.8,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 32.6
+   "sd": 20.7
   },
   "00-0039451|receiving_yards": {
    "game": "NYJ@CHI",
@@ -1251,14 +1005,14 @@
    "pos": "WR",
    "stat": "receiving_yards",
    "line": 22.5,
-   "pick": "OVER 22.5",
-   "score": 3.4,
+   "pick": "UNDER 22.5",
+   "score": 3.8,
    "grade": "D",
-   "p_over": 0.56,
-   "proj": 24.8,
-   "line_hits": "6/10",
+   "p_over": 0.42,
+   "proj": 20.2,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 14.2
+   "sd": 10.9
   },
   "00-0037805|receiving_yards": {
    "game": "NYJ@CHI",
@@ -1271,13 +1025,13 @@
    "stat": "receiving_yards",
    "line": 17.5,
    "pick": "UNDER 17.5",
-   "score": 5.8,
-   "grade": "C",
-   "p_over": 0.34,
-   "proj": 12.4,
-   "line_hits": "3/10",
+   "score": 3.5,
+   "grade": "D",
+   "p_over": 0.44,
+   "proj": 15.2,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 12.6
+   "sd": 16.5
   },
   "00-0036275|rushing_yards": {
    "game": "NYJ@CHI",
@@ -1290,13 +1044,13 @@
    "stat": "rushing_yards",
    "line": 65.5,
    "pick": "OVER 65.5",
-   "score": 3.1,
-   "grade": "D",
-   "p_over": 0.51,
-   "proj": 65.9,
-   "line_hits": "4/10",
+   "score": 4.6,
+   "grade": "C",
+   "p_over": 0.66,
+   "proj": 79.0,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 26.9
+   "sd": 31.8
   },
   "00-0036275|receiving_yards": {
    "game": "NYJ@CHI",
@@ -1309,13 +1063,13 @@
    "stat": "receiving_yards",
    "line": 14.5,
    "pick": "OVER 14.5",
-   "score": 4.6,
-   "grade": "C",
-   "p_over": 0.7,
-   "proj": 24.3,
-   "line_hits": "4/10",
+   "score": 3.3,
+   "grade": "D",
+   "p_over": 0.68,
+   "proj": 25.0,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 18.5
+   "sd": 22.4
   },
   "00-0040236|rushing_yards": {
    "game": "NYJ@CHI",
@@ -1328,13 +1082,13 @@
    "stat": "rushing_yards",
    "line": 39.5,
    "pick": "OVER 39.5",
-   "score": 3.4,
-   "grade": "D",
-   "p_over": 0.54,
-   "proj": 41.8,
-   "line_hits": "4/10",
+   "score": 4.9,
+   "grade": "C",
+   "p_over": 0.7,
+   "proj": 54.9,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 24.6
+   "sd": 29.2
   },
   "00-0040236|receiving_yards": {
    "game": "NYJ@CHI",
@@ -1347,15 +1101,15 @@
    "stat": "receiving_yards",
    "line": 5.5,
    "pick": "OVER 5.5",
-   "score": 4.9,
-   "grade": "C",
-   "p_over": 0.87,
-   "proj": 20.6,
-   "line_hits": "7/10",
+   "score": 2.5,
+   "grade": "D",
+   "p_over": 0.76,
+   "proj": 12.5,
+   "line_hits": "2/3",
    "traps": [
-    "Line 5.5 vs 15 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 5.5 vs 11 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 13.6
+   "sd": 9.8
   },
   "00-0032464|receiving_yards": {
    "game": "NYJ@CHI",
@@ -1368,13 +1122,15 @@
    "stat": "receiving_yards",
    "line": 32.5,
    "pick": "OVER 32.5",
-   "score": 9.8,
-   "grade": "A",
-   "p_over": 0.71,
-   "proj": 49.1,
-   "line_hits": "7/10",
-   "traps": [],
-   "sd": 29.5
+   "score": 3.6,
+   "grade": "D",
+   "p_over": 0.92,
+   "proj": 64.1,
+   "line_hits": "3/3",
+   "traps": [
+    "Line 32.5 vs 71 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "sd": 22.4
   },
   "00-0039919|receiving_yards": {
    "game": "NYJ@CHI",
@@ -1387,13 +1143,13 @@
    "stat": "receiving_yards",
    "line": 32.5,
    "pick": "OVER 32.5",
-   "score": 8.3,
-   "grade": "A",
-   "p_over": 0.61,
-   "proj": 37.9,
-   "line_hits": "8/10",
+   "score": 6.8,
+   "grade": "B",
+   "p_over": 0.73,
+   "proj": 41.5,
+   "line_hits": "3/3",
    "traps": [],
-   "sd": 19.3
+   "sd": 4.0
   },
   "00-0040735|receiving_yards": {
    "game": "NYJ@CHI",
@@ -1406,13 +1162,13 @@
    "stat": "receiving_yards",
    "line": 46.5,
    "pick": "OVER 46.5",
-   "score": 3.8,
+   "score": 2.9,
    "grade": "D",
-   "p_over": 0.55,
-   "proj": 49.9,
-   "line_hits": "5/10",
+   "p_over": 0.5,
+   "proj": 46.7,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 29.5
+   "sd": 14.1
   },
   "00-0036290|receiving_yards": {
    "game": "NYJ@CHI",
@@ -1425,13 +1181,13 @@
    "stat": "receiving_yards",
    "line": 9.5,
    "pick": "OVER 9.5",
-   "score": 5.2,
-   "grade": "C",
-   "p_over": 0.69,
-   "proj": 17.1,
-   "line_hits": "7/10",
+   "score": 1.4,
+   "grade": "D",
+   "p_over": 0.5,
+   "proj": 9.6,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 15.1
+   "sd": 16.3
   },
   "00-0040126|receiving_yards": {
    "game": "NYJ@CHI",
@@ -1443,16 +1199,16 @@
    "pos": "TE",
    "stat": "receiving_yards",
    "line": 34.5,
-   "pick": "OVER 34.5",
-   "score": 2.3,
+   "pick": "UNDER 34.5",
+   "score": 3.6,
    "grade": "D",
-   "p_over": 0.63,
-   "proj": 48.1,
-   "line_hits": "5/10",
+   "p_over": 0.04,
+   "proj": 10.3,
+   "line_hits": "0/3",
    "traps": [
-    "Model likes the over on old usage, but targets fell to 3/game"
+    "Line 34.5 vs 12 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 41.8
+   "sd": 14.1
   },
   "00-0036971|passing_yards": {
    "game": "JAX@CIN",
@@ -1465,13 +1221,13 @@
    "stat": "passing_yards",
    "line": 255.5,
    "pick": "UNDER 255.5",
-   "score": 6.6,
-   "grade": "B",
-   "p_over": 0.47,
-   "proj": 248.7,
-   "line_hits": "3/10",
+   "score": 5.9,
+   "grade": "C",
+   "p_over": 0.35,
+   "proj": 225.9,
+   "line_hits": "0/3",
    "traps": [],
-   "sd": 42.1
+   "sd": 27.9
   },
   "00-0036971|rushing_yards": {
    "game": "JAX@CIN",
@@ -1483,14 +1239,14 @@
    "pos": "QB",
    "stat": "rushing_yards",
    "line": 14.5,
-   "pick": "OVER 14.5",
-   "score": 5.2,
-   "grade": "C",
-   "p_over": 0.68,
-   "proj": 20.5,
-   "line_hits": "7/10",
+   "pick": "UNDER 14.5",
+   "score": 3.5,
+   "grade": "D",
+   "p_over": 0.44,
+   "proj": 13.1,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 13.0
+   "sd": 9.8
   },
   "00-0038611|rushing_yards": {
    "game": "JAX@CIN",
@@ -1503,16 +1259,13 @@
    "stat": "rushing_yards",
    "line": 19.5,
    "pick": "OVER 19.5",
-   "score": 2.8,
+   "score": 4.0,
    "grade": "D",
-   "p_over": 0.68,
-   "proj": 28.9,
-   "line_hits": "8/10",
-   "traps": [
-    "Line 19.5 vs 37 L10 avg \u2014 gap this big usually means the book knows about an injury or role change",
-    "Model likes the over on old usage, but carries fell to 6.7/game"
-   ],
-   "sd": 20.6
+   "p_over": 0.6,
+   "proj": 22.0,
+   "line_hits": "2/3",
+   "traps": [],
+   "sd": 10.0
   },
   "00-0040719|rushing_yards": {
    "game": "JAX@CIN",
@@ -1524,16 +1277,14 @@
    "pos": "RB",
    "stat": "rushing_yards",
    "line": 56.5,
-   "pick": "UNDER 56.5",
-   "score": 4.1,
-   "grade": "D",
-   "p_over": 0.21,
-   "proj": 35.4,
-   "line_hits": "4/10",
-   "traps": [
-    "Model likes the under on old usage, but carries rose to 14.3/game"
-   ],
-   "sd": 26.5
+   "pick": "OVER 56.5",
+   "score": 5.3,
+   "grade": "C",
+   "p_over": 0.59,
+   "proj": 61.1,
+   "line_hits": "3/3",
+   "traps": [],
+   "sd": 3.6
   },
   "00-0040719|receiving_yards": {
    "game": "JAX@CIN",
@@ -1545,14 +1296,14 @@
    "pos": "RB",
    "stat": "receiving_yards",
    "line": 10.5,
-   "pick": "UNDER 10.5",
-   "score": 4.0,
-   "grade": "D",
-   "p_over": 0.41,
-   "proj": 8.3,
-   "line_hits": "3/10",
+   "pick": "OVER 10.5",
+   "score": 4.6,
+   "grade": "C",
+   "p_over": 0.66,
+   "proj": 14.9,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 9.5
+   "sd": 10.7
   },
   "00-0034960|receiving_yards": {
    "game": "JAX@CIN",
@@ -1564,14 +1315,14 @@
    "pos": "WR",
    "stat": "receiving_yards",
    "line": 40.5,
-   "pick": "UNDER 40.5",
-   "score": 3.6,
+   "pick": "OVER 40.5",
+   "score": 2.3,
    "grade": "D",
-   "p_over": 0.47,
-   "proj": 39.2,
-   "line_hits": "5/10",
+   "p_over": 0.58,
+   "proj": 43.4,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 19.8
+   "sd": 15.2
   },
   "00-0038606|receiving_yards": {
    "game": "JAX@CIN",
@@ -1584,13 +1335,13 @@
    "stat": "receiving_yards",
    "line": 76.5,
    "pick": "UNDER 76.5",
-   "score": 3.0,
+   "score": 2.3,
    "grade": "D",
    "p_over": 0.42,
-   "proj": 69.9,
-   "line_hits": "6/10",
+   "proj": 71.2,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 32.6
+   "sd": 24.9
   },
   "00-0039893|receiving_yards": {
    "game": "JAX@CIN",
@@ -1603,13 +1354,13 @@
    "stat": "receiving_yards",
    "line": 27.5,
    "pick": "OVER 27.5",
-   "score": 4.6,
-   "grade": "C",
-   "p_over": 0.57,
-   "proj": 31.4,
-   "line_hits": "7/10",
+   "score": 3.1,
+   "grade": "D",
+   "p_over": 0.52,
+   "proj": 28.1,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 21.0
+   "sd": 15.3
   },
   "00-0038935|receiving_yards": {
    "game": "JAX@CIN",
@@ -1621,14 +1372,16 @@
    "pos": "TE",
    "stat": "receiving_yards",
    "line": 35.5,
-   "pick": "OVER 35.5",
-   "score": 4.4,
+   "pick": "UNDER 35.5",
+   "score": 2.3,
    "grade": "D",
-   "p_over": 0.76,
-   "proj": 47.1,
-   "line_hits": "4/10",
-   "traps": [],
-   "sd": 13.6
+   "p_over": 0.44,
+   "proj": 33.7,
+   "line_hits": "0/3",
+   "traps": [
+    "Line 35.5 vs 24 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "sd": 6.2
   },
   "00-0036442|passing_yards": {
    "game": "JAX@CIN",
@@ -1641,13 +1394,13 @@
    "stat": "passing_yards",
    "line": 269.5,
    "pick": "UNDER 269.5",
-   "score": 5.0,
-   "grade": "C",
-   "p_over": 0.38,
-   "proj": 243.0,
-   "line_hits": "4/10",
+   "score": 3.7,
+   "grade": "D",
+   "p_over": 0.42,
+   "proj": 252.7,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 56.2
+   "sd": 31.2
   },
   "00-0036442|rushing_yards": {
    "game": "JAX@CIN",
@@ -1659,14 +1412,14 @@
    "pos": "QB",
    "stat": "rushing_yards",
    "line": 8.5,
-   "pick": "UNDER 8.5",
-   "score": 3.8,
+   "pick": "OVER 8.5",
+   "score": 4.3,
    "grade": "D",
-   "p_over": 0.42,
-   "proj": 6.9,
-   "line_hits": "3/10",
+   "p_over": 0.63,
+   "proj": 11.4,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 7.6
+   "sd": 8.6
   },
   "00-0033526|rushing_yards": {
    "game": "JAX@CIN",
@@ -1679,13 +1432,13 @@
    "stat": "rushing_yards",
    "line": 14.5,
    "pick": "UNDER 14.5",
-   "score": 3.5,
-   "grade": "D",
-   "p_over": 0.46,
-   "proj": 13.2,
-   "line_hits": "6/10",
+   "score": 6.0,
+   "grade": "C",
+   "p_over": 0.21,
+   "proj": 9.7,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 14.2
+   "sd": 5.9
   },
   "00-0033526|receiving_yards": {
    "game": "JAX@CIN",
@@ -1698,13 +1451,15 @@
    "stat": "receiving_yards",
    "line": 8.5,
    "pick": "OVER 8.5",
-   "score": 5.4,
-   "grade": "C",
-   "p_over": 0.67,
-   "proj": 12.5,
-   "line_hits": "5/10",
-   "traps": [],
-   "sd": 9.0
+   "score": 2.9,
+   "grade": "D",
+   "p_over": 0.85,
+   "proj": 19.0,
+   "line_hits": "2/3",
+   "traps": [
+    "Line 8.5 vs 17 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "sd": 10.2
   },
   "00-0038597|rushing_yards": {
    "game": "JAX@CIN",
@@ -1717,13 +1472,13 @@
    "stat": "rushing_yards",
    "line": 60.5,
    "pick": "UNDER 60.5",
-   "score": 5.2,
-   "grade": "C",
-   "p_over": 0.23,
-   "proj": 45.2,
-   "line_hits": "7/10",
+   "score": 2.4,
+   "grade": "D",
+   "p_over": 0.4,
+   "proj": 55.5,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 20.5
+   "sd": 10.3
   },
   "00-0038597|receiving_yards": {
    "game": "JAX@CIN",
@@ -1735,14 +1490,16 @@
    "pos": "RB",
    "stat": "receiving_yards",
    "line": 18.5,
-   "pick": "OVER 18.5",
-   "score": 3.7,
+   "pick": "UNDER 18.5",
+   "score": 2.7,
    "grade": "D",
-   "p_over": 0.59,
-   "proj": 21.8,
-   "line_hits": "6/10",
-   "traps": [],
-   "sd": 13.9
+   "p_over": 0.21,
+   "proj": 11.9,
+   "line_hits": "1/3",
+   "traps": [
+    "Line 18.5 vs 10 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "sd": 8.3
   },
   "00-0036410|receiving_yards": {
    "game": "JAX@CIN",
@@ -1755,13 +1512,13 @@
    "stat": "receiving_yards",
    "line": 63.5,
    "pick": "OVER 63.5",
-   "score": 6.1,
-   "grade": "B",
-   "p_over": 0.72,
-   "proj": 79.3,
-   "line_hits": "5/10",
+   "score": 6.0,
+   "grade": "C",
+   "p_over": 0.79,
+   "proj": 88.6,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 22.7
+   "sd": 15.7
   },
   "00-0036900|receiving_yards": {
    "game": "JAX@CIN",
@@ -1774,51 +1531,13 @@
    "stat": "receiving_yards",
    "line": 86.5,
    "pick": "UNDER 86.5",
-   "score": 4.2,
-   "grade": "D",
-   "p_over": 0.42,
-   "proj": 79.4,
-   "line_hits": "5/10",
+   "score": 4.8,
+   "grade": "C",
+   "p_over": 0.31,
+   "proj": 68.3,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 36.8
-  },
-  "00-0034829|receiving_yards": {
-   "game": "JAX@CIN",
-   "kickoff": "2026-10-04 13:00",
-   "team": "CIN",
-   "opp": "JAX",
-   "player": "Mike Gesicki",
-   "player_id": "00-0034829",
-   "pos": "TE",
-   "stat": "receiving_yards",
-   "line": 27.5,
-   "pick": "OVER 27.5",
-   "score": 4.4,
-   "grade": "D",
-   "p_over": 0.56,
-   "proj": 31.2,
-   "line_hits": "6/10",
-   "traps": [],
-   "sd": 25.2
-  },
-  "00-0035631|receiving_yards": {
-   "game": "JAX@CIN",
-   "kickoff": "2026-10-04 13:00",
-   "team": "CIN",
-   "opp": "JAX",
-   "player": "Drew Sample",
-   "player_id": "00-0035631",
-   "pos": "TE",
-   "stat": "receiving_yards",
-   "line": 7.5,
-   "pick": "OVER 7.5",
-   "score": 3.7,
-   "grade": "D",
-   "p_over": 0.52,
-   "proj": 7.9,
-   "line_hits": "6/10",
-   "traps": [],
-   "sd": 10.1
+   "sd": 36.1
   },
   "00-0033077|passing_yards": {
    "game": "DAL@HOU",
@@ -1831,13 +1550,13 @@
    "stat": "passing_yards",
    "line": 266.5,
    "pick": "UNDER 266.5",
-   "score": 2.0,
+   "score": 1.8,
    "grade": "D",
-   "p_over": 0.48,
-   "proj": 262.6,
-   "line_hits": "7/10",
+   "p_over": 0.46,
+   "proj": 256.8,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 80.9
+   "sd": 47.7
   },
   "00-0033077|rushing_yards": {
    "game": "DAL@HOU",
@@ -1849,14 +1568,16 @@
    "pos": "QB",
    "stat": "rushing_yards",
    "line": 10.5,
-   "pick": "UNDER 10.5",
-   "score": 1.5,
+   "pick": "OVER 10.5",
+   "score": 3.5,
    "grade": "D",
-   "p_over": 0.47,
-   "proj": 9.8,
-   "line_hits": "6/10",
-   "traps": [],
-   "sd": 9.2
+   "p_over": 0.82,
+   "proj": 15.5,
+   "line_hits": "3/3",
+   "traps": [
+    "Line 10.5 vs 20 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "sd": 4.9
   },
   "00-0036997|rushing_yards": {
    "game": "DAL@HOU",
@@ -1869,13 +1590,13 @@
    "stat": "rushing_yards",
    "line": 59.5,
    "pick": "UNDER 59.5",
-   "score": 5.8,
-   "grade": "C",
-   "p_over": 0.3,
-   "proj": 45.8,
-   "line_hits": "5/10",
+   "score": 3.7,
+   "grade": "D",
+   "p_over": 0.42,
+   "proj": 53.5,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 26.0
+   "sd": 30.2
   },
   "00-0036997|receiving_yards": {
    "game": "DAL@HOU",
@@ -1887,14 +1608,14 @@
    "pos": "RB",
    "stat": "receiving_yards",
    "line": 13.5,
-   "pick": "UNDER 13.5",
-   "score": 4.7,
-   "grade": "C",
-   "p_over": 0.34,
-   "proj": 9.0,
-   "line_hits": "4/10",
+   "pick": "OVER 13.5",
+   "score": 2.9,
+   "grade": "D",
+   "p_over": 0.5,
+   "proj": 13.4,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 11.0
+   "sd": 10.7
   },
   "00-0036358|receiving_yards": {
    "game": "DAL@HOU",
@@ -1907,13 +1628,13 @@
    "stat": "receiving_yards",
    "line": 76.5,
    "pick": "OVER 76.5",
-   "score": 4.7,
+   "score": 6.0,
    "grade": "C",
-   "p_over": 0.62,
-   "proj": 90.5,
-   "line_hits": "5/10",
+   "p_over": 0.79,
+   "proj": 112.4,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 45.6
+   "sd": 44.3
   },
   "00-0037247|receiving_yards": {
    "game": "DAL@HOU",
@@ -1926,13 +1647,13 @@
    "stat": "receiving_yards",
    "line": 68.5,
    "pick": "UNDER 68.5",
-   "score": 3.6,
-   "grade": "D",
-   "p_over": 0.47,
-   "proj": 65.7,
-   "line_hits": "5/10",
+   "score": 5.1,
+   "grade": "C",
+   "p_over": 0.28,
+   "proj": 55.0,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 39.8
+   "sd": 23.3
   },
   "00-0039410|receiving_yards": {
    "game": "DAL@HOU",
@@ -1944,14 +1665,16 @@
    "pos": "WR",
    "stat": "receiving_yards",
    "line": 33.5,
-   "pick": "OVER 33.5",
-   "score": 1.3,
+   "pick": "UNDER 33.5",
+   "score": 3.6,
    "grade": "D",
-   "p_over": 0.51,
-   "proj": 34.4,
-   "line_hits": "4/10",
-   "traps": [],
-   "sd": 29.1
+   "p_over": 0.13,
+   "proj": 24.1,
+   "line_hits": "0/3",
+   "traps": [
+    "Line 33.5 vs 22 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "sd": 0.5
   },
   "00-0038041|receiving_yards": {
    "game": "DAL@HOU",
@@ -1964,13 +1687,13 @@
    "stat": "receiving_yards",
    "line": 24.5,
    "pick": "OVER 24.5",
-   "score": 2.7,
+   "score": 2.4,
    "grade": "D",
-   "p_over": 0.56,
-   "proj": 27.1,
-   "line_hits": "4/10",
+   "p_over": 0.59,
+   "proj": 27.7,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 18.7
+   "sd": 14.9
   },
   "00-0039163|passing_yards": {
    "game": "DAL@HOU",
@@ -1983,13 +1706,13 @@
    "stat": "passing_yards",
    "line": 245.5,
    "pick": "OVER 245.5",
-   "score": 2.9,
+   "score": 3.1,
    "grade": "D",
-   "p_over": 0.5,
-   "proj": 245.6,
-   "line_hits": "4/10",
+   "p_over": 0.52,
+   "proj": 251.0,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 61.3
+   "sd": 77.2
   },
   "00-0039163|rushing_yards": {
    "game": "DAL@HOU",
@@ -2002,13 +1725,13 @@
    "stat": "rushing_yards",
    "line": 11.5,
    "pick": "OVER 11.5",
-   "score": 5.1,
-   "grade": "C",
-   "p_over": 0.71,
-   "proj": 16.6,
-   "line_hits": "2/10",
+   "score": 6.5,
+   "grade": "B",
+   "p_over": 0.97,
+   "proj": 35.7,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 9.2
+   "sd": 8.1
   },
   "00-0035685|rushing_yards": {
    "game": "DAL@HOU",
@@ -2021,15 +1744,13 @@
    "stat": "rushing_yards",
    "line": 44.5,
    "pick": "UNDER 44.5",
-   "score": 7.7,
-   "grade": "A",
-   "p_over": 0.2,
-   "proj": 29.5,
-   "line_hits": "2/10",
-   "traps": [
-    "Model likes the under on old usage, but carries rose to 12.3/game"
-   ],
-   "sd": 17.9
+   "score": 4.4,
+   "grade": "D",
+   "p_over": 0.36,
+   "proj": 37.5,
+   "line_hits": "1/3",
+   "traps": [],
+   "sd": 20.2
   },
   "00-0035685|receiving_yards": {
    "game": "DAL@HOU",
@@ -2042,13 +1763,13 @@
    "stat": "receiving_yards",
    "line": 10.5,
    "pick": "OVER 10.5",
-   "score": 10.8,
-   "grade": "A",
-   "p_over": 0.75,
-   "proj": 14.2,
-   "line_hits": "8/10",
+   "score": 7.2,
+   "grade": "B",
+   "p_over": 0.77,
+   "proj": 14.1,
+   "line_hits": "3/3",
    "traps": [],
-   "sd": 5.5
+   "sd": 2.1
   },
   "00-0040583|rushing_yards": {
    "game": "DAL@HOU",
@@ -2060,16 +1781,16 @@
    "pos": "RB",
    "stat": "rushing_yards",
    "line": 33.5,
-   "pick": "OVER 33.5",
-   "score": 2.4,
+   "pick": "UNDER 33.5",
+   "score": 2.5,
    "grade": "D",
-   "p_over": 0.55,
-   "proj": 37.0,
-   "line_hits": "6/10",
+   "p_over": 0.24,
+   "proj": 23.5,
+   "line_hits": "1/3",
    "traps": [
-    "Model likes the over on old usage, but carries fell to 7.3/game"
+    "Line 33.5 vs 21 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 30.5
+   "sd": 14.4
   },
   "00-0040583|receiving_yards": {
    "game": "DAL@HOU",
@@ -2082,34 +1803,13 @@
    "stat": "receiving_yards",
    "line": 10.5,
    "pick": "UNDER 10.5",
-   "score": 6.7,
-   "grade": "B",
-   "p_over": 0.41,
-   "proj": 8.4,
-   "line_hits": "2/10",
-   "traps": [],
-   "sd": 9.7
-  },
-  "00-0036554|receiving_yards": {
-   "game": "DAL@HOU",
-   "kickoff": "2026-10-04 13:00",
-   "team": "HOU",
-   "opp": "DAL",
-   "player": "Nico Collins",
-   "player_id": "00-0036554",
-   "pos": "WR",
-   "stat": "receiving_yards",
-   "line": 74.5,
-   "pick": "OVER 74.5",
-   "score": 2.4,
+   "score": 3.3,
    "grade": "D",
-   "p_over": 0.6,
-   "proj": 82.5,
-   "line_hits": "6/10",
-   "traps": [
-    "Missed the team's last game \u2014 line may assume limited snaps"
-   ],
-   "sd": 31.0
+   "p_over": 0.46,
+   "proj": 9.3,
+   "line_hits": "1/3",
+   "traps": [],
+   "sd": 12.1
   },
   "00-0038608|receiving_yards": {
    "game": "DAL@HOU",
@@ -2122,13 +1822,13 @@
    "stat": "receiving_yards",
    "line": 22.5,
    "pick": "OVER 22.5",
-   "score": 4.7,
-   "grade": "C",
-   "p_over": 0.7,
-   "proj": 31.7,
-   "line_hits": "5/10",
+   "score": 2.6,
+   "grade": "D",
+   "p_over": 0.61,
+   "proj": 24.9,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 17.4
+   "sd": 7.5
   },
   "00-0038618|receiving_yards": {
    "game": "DAL@HOU",
@@ -2141,13 +1841,13 @@
    "stat": "receiving_yards",
    "line": 28.5,
    "pick": "OVER 28.5",
-   "score": 6.1,
+   "score": 7.1,
    "grade": "B",
-   "p_over": 0.65,
-   "proj": 36.5,
-   "line_hits": "5/10",
+   "p_over": 0.76,
+   "proj": 38.1,
+   "line_hits": "3/3",
    "traps": [],
-   "sd": 21.3
+   "sd": 8.1
   },
   "00-0040138|receiving_yards": {
    "game": "DAL@HOU",
@@ -2160,13 +1860,15 @@
    "stat": "receiving_yards",
    "line": 12.5,
    "pick": "OVER 12.5",
-   "score": 6.6,
-   "grade": "B",
-   "p_over": 0.69,
-   "proj": 22.6,
-   "line_hits": "5/10",
-   "traps": [],
-   "sd": 20.0
+   "score": 3.6,
+   "grade": "D",
+   "p_over": 0.9,
+   "proj": 31.2,
+   "line_hits": "3/3",
+   "traps": [
+    "Line 12.5 vs 33 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "sd": 14.8
   },
   "00-0034383|receiving_yards": {
    "game": "DAL@HOU",
@@ -2179,13 +1881,13 @@
    "stat": "receiving_yards",
    "line": 40.5,
    "pick": "OVER 40.5",
-   "score": 3.1,
+   "score": 3.7,
    "grade": "D",
-   "p_over": 0.58,
-   "proj": 48.7,
-   "line_hits": "4/10",
+   "p_over": 0.72,
+   "proj": 69.9,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 40.8
+   "sd": 50.8
   },
   "00-0034981|receiving_yards": {
    "game": "DAL@HOU",
@@ -2198,15 +1900,15 @@
    "stat": "receiving_yards",
    "line": 7.5,
    "pick": "OVER 7.5",
-   "score": 2.7,
+   "score": 2.9,
    "grade": "D",
-   "p_over": 0.7,
-   "proj": 13.2,
-   "line_hits": "6/10",
+   "p_over": 0.84,
+   "proj": 19.0,
+   "line_hits": "2/3",
    "traps": [
-    "Line 7.5 vs 14 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 7.5 vs 18 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 10.8
+   "sd": 11.4
   },
   "00-0033119|passing_yards": {
    "game": "ARI@NYG",
@@ -2219,13 +1921,13 @@
    "stat": "passing_yards",
    "line": 231.5,
    "pick": "UNDER 231.5",
-   "score": 2.0,
+   "score": 2.2,
    "grade": "D",
-   "p_over": 0.48,
-   "proj": 228.3,
-   "line_hits": "7/10",
+   "p_over": 0.43,
+   "proj": 216.1,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 67.3
+   "sd": 86.5
   },
   "00-0033119|rushing_yards": {
    "game": "ARI@NYG",
@@ -2238,13 +1940,13 @@
    "stat": "rushing_yards",
    "line": 8.5,
    "pick": "UNDER 8.5",
-   "score": 4.2,
-   "grade": "D",
-   "p_over": 0.43,
-   "proj": 7.2,
-   "line_hits": "5/10",
+   "score": 5.7,
+   "grade": "C",
+   "p_over": 0.24,
+   "proj": 5.6,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 7.0
+   "sd": 4.2
   },
   "00-0037263|rushing_yards": {
    "game": "ARI@NYG",
@@ -2257,13 +1959,13 @@
    "stat": "rushing_yards",
    "line": 18.5,
    "pick": "OVER 18.5",
-   "score": 3.6,
+   "score": 2.1,
    "grade": "D",
-   "p_over": 0.6,
-   "proj": 24.6,
-   "line_hits": "6/10",
+   "p_over": 0.57,
+   "proj": 23.1,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 25.1
+   "sd": 26.7
   },
   "00-0033307|receiving_yards": {
    "game": "ARI@NYG",
@@ -2276,13 +1978,13 @@
    "stat": "receiving_yards",
    "line": 21.5,
    "pick": "OVER 21.5",
-   "score": 3.9,
-   "grade": "D",
-   "p_over": 0.56,
-   "proj": 25.3,
-   "line_hits": "4/10",
+   "score": 5.0,
+   "grade": "C",
+   "p_over": 0.7,
+   "proj": 35.9,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 24.9
+   "sd": 27.5
   },
   "00-0038559|receiving_yards": {
    "game": "ARI@NYG",
@@ -2294,14 +1996,14 @@
    "pos": "WR",
    "stat": "receiving_yards",
    "line": 58.5,
-   "pick": "OVER 58.5",
-   "score": 4.0,
+   "pick": "UNDER 58.5",
+   "score": 3.2,
    "grade": "D",
-   "p_over": 0.63,
-   "proj": 70.5,
-   "line_hits": "5/10",
+   "p_over": 0.47,
+   "proj": 56.1,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 35.6
+   "sd": 29.4
   },
   "00-0039849|receiving_yards": {
    "game": "ARI@NYG",
@@ -2314,13 +2016,13 @@
    "stat": "receiving_yards",
    "line": 34.5,
    "pick": "UNDER 34.5",
-   "score": 3.6,
-   "grade": "D",
-   "p_over": 0.49,
-   "proj": 33.6,
-   "line_hits": "4/10",
+   "score": 5.0,
+   "grade": "C",
+   "p_over": 0.29,
+   "proj": 25.0,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 27.3
+   "sd": 17.5
   },
   "00-0037744|receiving_yards": {
    "game": "ARI@NYG",
@@ -2333,91 +2035,13 @@
    "stat": "receiving_yards",
    "line": 61.5,
    "pick": "OVER 61.5",
-   "score": 4.7,
-   "grade": "C",
-   "p_over": 0.57,
+   "score": 3.8,
+   "grade": "D",
+   "p_over": 0.58,
    "proj": 66.2,
-   "line_hits": "7/10",
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 26.8
-  },
-  "00-0039041|receiving_yards": {
-   "game": "ARI@NYG",
-   "kickoff": "2026-10-04 13:00",
-   "team": "ARI",
-   "opp": "NYG",
-   "player": "Elijah Higgins",
-   "player_id": "00-0039041",
-   "pos": "TE",
-   "stat": "receiving_yards",
-   "line": 3.5,
-   "pick": "OVER 3.5",
-   "score": 2.4,
-   "grade": "D",
-   "p_over": 0.68,
-   "proj": 15.4,
-   "line_hits": "5/10",
-   "traps": [
-    "Line 3.5 vs 17 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 25.4
-  },
-  "00-0031503|passing_yards": {
-   "game": "ARI@NYG",
-   "kickoff": "2026-10-04 13:00",
-   "team": "NYG",
-   "opp": "ARI",
-   "player": "Jameis Winston",
-   "player_id": "00-0031503",
-   "pos": "QB",
-   "stat": "passing_yards",
-   "line": 208.5,
-   "pick": "UNDER 208.5",
-   "score": 7.4,
-   "grade": "B",
-   "p_over": 0.33,
-   "proj": 159.9,
-   "line_hits": "1/5",
-   "traps": [],
-   "sd": 109.6
-  },
-  "00-0031503|rushing_yards": {
-   "game": "ARI@NYG",
-   "kickoff": "2026-10-04 13:00",
-   "team": "NYG",
-   "opp": "ARI",
-   "player": "Jameis Winston",
-   "player_id": "00-0031503",
-   "pos": "QB",
-   "stat": "rushing_yards",
-   "line": 6.5,
-   "pick": "UNDER 6.5",
-   "score": 3.0,
-   "grade": "D",
-   "p_over": 0.43,
-   "proj": 5.5,
-   "line_hits": "3/5",
-   "traps": [],
-   "sd": 6.1
-  },
-  "00-0036893|rushing_yards": {
-   "game": "ARI@NYG",
-   "kickoff": "2026-10-04 13:00",
-   "team": "NYG",
-   "opp": "ARI",
-   "player": "Najee Harris",
-   "player_id": "00-0036893",
-   "pos": "RB",
-   "stat": "rushing_yards",
-   "line": 23.5,
-   "pick": "OVER 23.5",
-   "score": 3.4,
-   "grade": "D",
-   "p_over": 0.57,
-   "proj": 26.9,
-   "line_hits": "3/5",
-   "traps": [],
-   "sd": 20.1
+   "sd": 22.1
   },
   "00-0040715|rushing_yards": {
    "game": "ARI@NYG",
@@ -2430,13 +2054,13 @@
    "stat": "rushing_yards",
    "line": 63.5,
    "pick": "UNDER 63.5",
-   "score": 6.1,
-   "grade": "B",
-   "p_over": 0.43,
-   "proj": 59.3,
-   "line_hits": "3/10",
+   "score": 3.4,
+   "grade": "D",
+   "p_over": 0.46,
+   "proj": 61.3,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 22.7
+   "sd": 18.2
   },
   "00-0040715|receiving_yards": {
    "game": "ARI@NYG",
@@ -2448,14 +2072,14 @@
    "pos": "RB",
    "stat": "receiving_yards",
    "line": 17.5,
-   "pick": "OVER 17.5",
-   "score": 5.9,
-   "grade": "C",
-   "p_over": 0.68,
-   "proj": 25.8,
-   "line_hits": "6/10",
+   "pick": "UNDER 17.5",
+   "score": 1.6,
+   "grade": "D",
+   "p_over": 0.48,
+   "proj": 16.8,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 17.3
+   "sd": 16.3
   },
   "00-0036309|receiving_yards": {
    "game": "ARI@NYG",
@@ -2468,13 +2092,13 @@
    "stat": "receiving_yards",
    "line": 20.5,
    "pick": "OVER 20.5",
-   "score": 7.2,
+   "score": 6.5,
    "grade": "B",
-   "p_over": 0.77,
-   "proj": 31.5,
-   "line_hits": "7/10",
+   "p_over": 0.86,
+   "proj": 33.4,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 15.1
+   "sd": 12.0
   },
   "00-0039337|receiving_yards": {
    "game": "ARI@NYG",
@@ -2487,36 +2111,15 @@
    "stat": "receiving_yards",
    "line": 55.5,
    "pick": "UNDER 55.5",
-   "score": 4.4,
+   "score": 2.7,
    "grade": "D",
-   "p_over": 0.43,
-   "proj": 46.5,
-   "line_hits": "3/7",
-   "traps": [],
-   "sd": 48.4
-  },
-  "00-0039847|receiving_yards": {
-   "game": "ARI@NYG",
-   "kickoff": "2026-10-04 13:00",
-   "team": "NYG",
-   "opp": "ARI",
-   "player": "Theo Johnson",
-   "player_id": "00-0039847",
-   "pos": "TE",
-   "stat": "receiving_yards",
-   "line": 7.5,
-   "pick": "OVER 7.5",
-   "score": 2.0,
-   "grade": "D",
-   "p_over": 0.85,
-   "proj": 37.5,
-   "line_hits": "8/10",
+   "p_over": 0.21,
+   "proj": 33.1,
+   "line_hits": "1/3",
    "traps": [
-    "Line 7.5 vs 30 L10 avg \u2014 gap this big usually means the book knows about an injury or role change",
-    "Missed the team's last game \u2014 line may assume limited snaps",
-    "Model likes the over on old usage, but targets fell to 2.3/game"
+    "Line 55.5 vs 31 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 28.9
+   "sd": 27.7
   },
   "00-0037838|receiving_yards": {
    "game": "ARI@NYG",
@@ -2529,13 +2132,13 @@
    "stat": "receiving_yards",
    "line": 42.5,
    "pick": "OVER 42.5",
-   "score": 1.9,
+   "score": 1.5,
    "grade": "D",
-   "p_over": 0.53,
-   "proj": 44.9,
-   "line_hits": "2/10",
+   "p_over": 0.51,
+   "proj": 43.4,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 28.0
+   "sd": 27.0
   },
   "00-0026498|passing_yards": {
    "game": "LA@PHI",
@@ -2548,13 +2151,13 @@
    "stat": "passing_yards",
    "line": 246.5,
    "pick": "OVER 246.5",
-   "score": 7.1,
-   "grade": "B",
-   "p_over": 0.59,
-   "proj": 268.0,
-   "line_hits": "9/10",
+   "score": 4.2,
+   "grade": "D",
+   "p_over": 0.62,
+   "proj": 277.3,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 84.7
+   "sd": 98.5
   },
   "00-0026498|rushing_yards": {
    "game": "LA@PHI",
@@ -2567,13 +2170,13 @@
    "stat": "rushing_yards",
    "line": 0.5,
    "pick": "OVER 0.5",
-   "score": 4.9,
-   "grade": "C",
-   "p_over": 0.7,
-   "proj": 3.7,
-   "line_hits": "5/10",
+   "score": 3.4,
+   "grade": "D",
+   "p_over": 0.68,
+   "proj": 3.6,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 6.2
+   "sd": 6.7
   },
   "00-0037840|rushing_yards": {
    "game": "LA@PHI",
@@ -2586,13 +2189,13 @@
    "stat": "rushing_yards",
    "line": 57.5,
    "pick": "OVER 57.5",
-   "score": 5.1,
+   "score": 5.9,
    "grade": "C",
-   "p_over": 0.61,
-   "proj": 63.9,
-   "line_hits": "7/10",
+   "p_over": 0.78,
+   "proj": 78.6,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 19.5
+   "sd": 21.2
   },
   "00-0037840|receiving_yards": {
    "game": "LA@PHI",
@@ -2605,15 +2208,15 @@
    "stat": "receiving_yards",
    "line": 12.5,
    "pick": "OVER 12.5",
-   "score": 4.1,
+   "score": 2.3,
    "grade": "D",
-   "p_over": 0.73,
-   "proj": 24.6,
-   "line_hits": "8/10",
+   "p_over": 0.71,
+   "proj": 26.3,
+   "line_hits": "2/3",
    "traps": [
-    "Line 12.5 vs 29 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 12.5 vs 36 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 19.4
+   "sd": 25.4
   },
   "00-0039738|rushing_yards": {
    "game": "LA@PHI",
@@ -2626,34 +2229,13 @@
    "stat": "rushing_yards",
    "line": 39.5,
    "pick": "OVER 39.5",
-   "score": 4.4,
-   "grade": "D",
-   "p_over": 0.55,
-   "proj": 42.3,
-   "line_hits": "7/10",
-   "traps": [],
-   "sd": 22.6
-  },
-  "00-0039075|receiving_yards": {
-   "game": "LA@PHI",
-   "kickoff": "2026-10-04 13:00",
-   "team": "LA",
-   "opp": "PHI",
-   "player": "Puka Nacua",
-   "player_id": "00-0039075",
-   "pos": "WR",
-   "stat": "receiving_yards",
-   "line": 65.5,
-   "pick": "OVER 65.5",
-   "score": 5.8,
+   "score": 4.8,
    "grade": "C",
-   "p_over": 0.76,
-   "proj": 105.1,
-   "line_hits": "8/10",
-   "traps": [
-    "Missed the team's last game \u2014 line may assume limited snaps"
-   ],
-   "sd": 57.0
+   "p_over": 0.69,
+   "proj": 53.0,
+   "line_hits": "2/3",
+   "traps": [],
+   "sd": 26.7
   },
   "00-0031381|receiving_yards": {
    "game": "LA@PHI",
@@ -2666,32 +2248,15 @@
    "stat": "receiving_yards",
    "line": 66.5,
    "pick": "OVER 66.5",
-   "score": 4.6,
-   "grade": "C",
-   "p_over": 0.6,
-   "proj": 81.0,
-   "line_hits": "5/10",
-   "traps": [],
-   "sd": 58.5
-  },
-  "00-0033110|receiving_yards": {
-   "game": "LA@PHI",
-   "kickoff": "2026-10-04 13:00",
-   "team": "LA",
-   "opp": "PHI",
-   "player": "Tyler Higbee",
-   "player_id": "00-0033110",
-   "pos": "TE",
-   "stat": "receiving_yards",
-   "line": 30.5,
-   "pick": "UNDER 30.5",
-   "score": 5.0,
-   "grade": "C",
-   "p_over": 0.37,
-   "proj": 22.4,
-   "line_hits": "4/10",
-   "traps": [],
-   "sd": 24.7
+   "score": 2.7,
+   "grade": "D",
+   "p_over": 0.8,
+   "proj": 124.8,
+   "line_hits": "2/3",
+   "traps": [
+    "Line 66.5 vs 121 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "sd": 69.1
   },
   "00-0036389|passing_yards": {
    "game": "LA@PHI",
@@ -2704,13 +2269,13 @@
    "stat": "passing_yards",
    "line": 184.5,
    "pick": "OVER 184.5",
-   "score": 4.4,
+   "score": 2.9,
    "grade": "D",
-   "p_over": 0.58,
-   "proj": 198.1,
-   "line_hits": "6/10",
+   "p_over": 0.5,
+   "proj": 183.9,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 50.4
+   "sd": 45.9
   },
   "00-0036389|rushing_yards": {
    "game": "LA@PHI",
@@ -2723,13 +2288,13 @@
    "stat": "rushing_yards",
    "line": 26.5,
    "pick": "UNDER 26.5",
-   "score": 6.3,
-   "grade": "B",
-   "p_over": 0.27,
-   "proj": 18.4,
-   "line_hits": "5/10",
+   "score": 3.6,
+   "grade": "D",
+   "p_over": 0.44,
+   "proj": 24.7,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 13.5
+   "sd": 12.4
   },
   "00-0034844|rushing_yards": {
    "game": "LA@PHI",
@@ -2742,13 +2307,13 @@
    "stat": "rushing_yards",
    "line": 70.5,
    "pick": "UNDER 70.5",
-   "score": 3.4,
+   "score": 3.3,
    "grade": "D",
-   "p_over": 0.39,
-   "proj": 60.4,
-   "line_hits": "6/10",
+   "p_over": 0.32,
+   "proj": 54.6,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 37.5
+   "sd": 34.6
   },
   "00-0034844|receiving_yards": {
    "game": "LA@PHI",
@@ -2761,15 +2326,15 @@
    "stat": "receiving_yards",
    "line": 14.5,
    "pick": "UNDER 14.5",
-   "score": 3.9,
+   "score": 3.6,
    "grade": "D",
-   "p_over": 0.37,
-   "proj": 9.8,
-   "line_hits": "2/10",
+   "p_over": 0.03,
+   "proj": 2.1,
+   "line_hits": "0/3",
    "traps": [
-    "Line 14.5 vs 8 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 14.5 vs 2 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 14.6
+   "sd": 6.4
   },
   "00-0038555|rushing_yards": {
    "game": "LA@PHI",
@@ -2782,15 +2347,13 @@
    "stat": "rushing_yards",
    "line": 8.5,
    "pick": "OVER 8.5",
-   "score": 2.0,
+   "score": 2.2,
    "grade": "D",
-   "p_over": 0.66,
-   "proj": 18.3,
-   "line_hits": "5/10",
-   "traps": [
-    "Line 8.5 vs 22 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 23.5
+   "p_over": 0.57,
+   "proj": 11.2,
+   "line_hits": "1/3",
+   "traps": [],
+   "sd": 14.9
   },
   "00-0038393|receiving_yards": {
    "game": "LA@PHI",
@@ -2803,13 +2366,13 @@
    "stat": "receiving_yards",
    "line": 54.5,
    "pick": "UNDER 54.5",
-   "score": 3.9,
+   "score": 1.7,
    "grade": "D",
-   "p_over": 0.4,
-   "proj": 47.2,
-   "line_hits": "3/10",
+   "p_over": 0.48,
+   "proj": 53.3,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 28.9
+   "sd": 19.8
   },
   "00-0040024|receiving_yards": {
    "game": "LA@PHI",
@@ -2822,53 +2385,15 @@
    "stat": "receiving_yards",
    "line": 21.5,
    "pick": "UNDER 21.5",
-   "score": 3.2,
+   "score": 2.9,
    "grade": "D",
-   "p_over": 0.23,
-   "proj": 12.4,
-   "line_hits": "3/10",
+   "p_over": 0.13,
+   "proj": 7.8,
+   "line_hits": "1/3",
    "traps": [
-    "Line 21.5 vs 12 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 21.5 vs 9 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 12.4
-  },
-  "00-0030061|receiving_yards": {
-   "game": "LA@PHI",
-   "kickoff": "2026-10-04 13:00",
-   "team": "PHI",
-   "opp": "LA",
-   "player": "Zach Ertz",
-   "player_id": "00-0030061",
-   "pos": "TE",
-   "stat": "receiving_yards",
-   "line": 22.5,
-   "pick": "OVER 22.5",
-   "score": 2.8,
-   "grade": "D",
-   "p_over": 0.53,
-   "proj": 24.6,
-   "line_hits": "6/10",
-   "traps": [],
-   "sd": 29.4
-  },
-  "00-0033246|receiving_yards": {
-   "game": "LA@PHI",
-   "kickoff": "2026-10-04 13:00",
-   "team": "PHI",
-   "opp": "LA",
-   "player": "Johnny Mundt",
-   "player_id": "00-0033246",
-   "pos": "TE",
-   "stat": "receiving_yards",
-   "line": 8.5,
-   "pick": "UNDER 8.5",
-   "score": 4.4,
-   "grade": "D",
-   "p_over": 0.42,
-   "proj": 7.1,
-   "line_hits": "6/10",
-   "traps": [],
-   "sd": 7.2
+   "sd": 12.3
   },
   "00-0036264|passing_yards": {
    "game": "GB@TB",
@@ -2881,13 +2406,13 @@
    "stat": "passing_yards",
    "line": 236.5,
    "pick": "OVER 236.5",
-   "score": 3.5,
+   "score": 4.4,
    "grade": "D",
-   "p_over": 0.54,
-   "proj": 247.0,
-   "line_hits": "4/10",
+   "p_over": 0.64,
+   "proj": 273.6,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 96.5
+   "sd": 100.3
   },
   "00-0036264|rushing_yards": {
    "game": "GB@TB",
@@ -2900,13 +2425,15 @@
    "stat": "rushing_yards",
    "line": 5.5,
    "pick": "UNDER 5.5",
-   "score": 4.8,
-   "grade": "C",
-   "p_over": 0.45,
-   "proj": 4.5,
-   "line_hits": "5/10",
-   "traps": [],
-   "sd": 8.5
+   "score": 3.6,
+   "grade": "D",
+   "p_over": 0.0,
+   "proj": 0.0,
+   "line_hits": "0/3",
+   "traps": [
+    "Line 5.5 vs 0 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "sd": 0.0
   },
   "00-0040142|rushing_yards": {
    "game": "GB@TB",
@@ -2919,15 +2446,15 @@
    "stat": "rushing_yards",
    "line": 31.5,
    "pick": "UNDER 31.5",
-   "score": 5.1,
-   "grade": "C",
-   "p_over": 0.02,
-   "proj": 6.9,
-   "line_hits": "1/10",
+   "score": 2.9,
+   "grade": "D",
+   "p_over": 0.06,
+   "proj": 10.6,
+   "line_hits": "1/3",
    "traps": [
-    "Line 31.5 vs 10 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 31.5 vs 13 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 11.4
+   "sd": 13.8
   },
   "00-0038090|receiving_yards": {
    "game": "GB@TB",
@@ -2940,15 +2467,13 @@
    "stat": "receiving_yards",
    "line": 17.5,
    "pick": "UNDER 17.5",
-   "score": 4.4,
-   "grade": "D",
-   "p_over": 0.22,
-   "proj": 8.0,
-   "line_hits": "2/10",
-   "traps": [
-    "Line 17.5 vs 9 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 12.5
+   "score": 4.5,
+   "grade": "C",
+   "p_over": 0.34,
+   "proj": 11.8,
+   "line_hits": "1/3",
+   "traps": [],
+   "sd": 13.5
   },
   "00-0038124|receiving_yards": {
    "game": "GB@TB",
@@ -2961,13 +2486,13 @@
    "stat": "receiving_yards",
    "line": 66.5,
    "pick": "OVER 66.5",
-   "score": 3.3,
-   "grade": "D",
-   "p_over": 0.51,
-   "proj": 68.0,
-   "line_hits": "5/10",
+   "score": 4.8,
+   "grade": "C",
+   "p_over": 0.68,
+   "proj": 85.9,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 41.8
+   "sd": 42.7
   },
   "00-0040667|receiving_yards": {
    "game": "GB@TB",
@@ -2979,37 +2504,14 @@
    "pos": "WR",
    "stat": "receiving_yards",
    "line": 56.5,
-   "pick": "UNDER 56.5",
-   "score": 2.0,
-   "grade": "D",
-   "p_over": 0.42,
-   "proj": 48.5,
-   "line_hits": "4/10",
-   "traps": [
-    "Model likes the under on old usage, but targets rose to 10/game"
-   ],
-   "sd": 38.4
-  },
-  "00-0033858|receiving_yards": {
-   "game": "GB@TB",
-   "kickoff": "2026-10-04 13:00",
-   "team": "GB",
-   "opp": "TB",
-   "player": "Jonnu Smith",
-   "player_id": "00-0033858",
-   "pos": "TE",
-   "stat": "receiving_yards",
-   "line": 6.5,
-   "pick": "OVER 6.5",
-   "score": 3.4,
-   "grade": "D",
-   "p_over": 0.81,
-   "proj": 22.6,
-   "line_hits": "5/10",
-   "traps": [
-    "Line 6.5 vs 18 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 18.1
+   "pick": "OVER 56.5",
+   "score": 7.3,
+   "grade": "B",
+   "p_over": 0.78,
+   "proj": 77.3,
+   "line_hits": "3/3",
+   "traps": [],
+   "sd": 18.8
   },
   "00-0038996|receiving_yards": {
    "game": "GB@TB",
@@ -3021,14 +2523,14 @@
    "pos": "TE",
    "stat": "receiving_yards",
    "line": 39.5,
-   "pick": "OVER 39.5",
-   "score": 5.6,
-   "grade": "C",
-   "p_over": 0.74,
-   "proj": 64.6,
-   "line_hits": "6/10",
+   "pick": "UNDER 39.5",
+   "score": 3.5,
+   "grade": "D",
+   "p_over": 0.45,
+   "proj": 36.6,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 39.2
+   "sd": 21.1
   },
   "00-0036919|rushing_yards": {
    "game": "GB@TB",
@@ -3040,16 +2542,16 @@
    "pos": "RB",
    "stat": "rushing_yards",
    "line": 14.5,
-   "pick": "OVER 14.5",
-   "score": 2.5,
+   "pick": "UNDER 14.5",
+   "score": 2.7,
    "grade": "D",
-   "p_over": 0.56,
-   "proj": 17.7,
-   "line_hits": "7/10",
+   "p_over": 0.2,
+   "proj": 7.8,
+   "line_hits": "1/3",
    "traps": [
-    "Model likes the over on old usage, but carries fell to 3.3/game"
+    "Line 14.5 vs 7 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 20.0
+   "sd": 8.1
   },
   "00-0036919|receiving_yards": {
    "game": "GB@TB",
@@ -3061,17 +2563,14 @@
    "pos": "RB",
    "stat": "receiving_yards",
    "line": 9.5,
-   "pick": "OVER 9.5",
-   "score": 1.8,
+   "pick": "UNDER 9.5",
+   "score": 4.4,
    "grade": "D",
-   "p_over": 0.7,
-   "proj": 20.9,
-   "line_hits": "8/10",
-   "traps": [
-    "Line 9.5 vs 21 L10 avg \u2014 gap this big usually means the book knows about an injury or role change",
-    "Model likes the over on old usage, but targets fell to 3.3/game"
-   ],
-   "sd": 21.9
+   "p_over": 0.35,
+   "proj": 7.6,
+   "line_hits": "1/3",
+   "traps": [],
+   "sd": 4.8
   },
   "00-0039361|rushing_yards": {
    "game": "GB@TB",
@@ -3084,13 +2583,13 @@
    "stat": "rushing_yards",
    "line": 55.5,
    "pick": "OVER 55.5",
-   "score": 4.1,
+   "score": 3.8,
    "grade": "D",
-   "p_over": 0.62,
-   "proj": 62.4,
-   "line_hits": "6/10",
+   "p_over": 0.73,
+   "proj": 70.5,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 20.1
+   "sd": 20.5
   },
   "00-0039361|receiving_yards": {
    "game": "GB@TB",
@@ -3103,13 +2602,13 @@
    "stat": "receiving_yards",
    "line": 12.5,
    "pick": "OVER 12.5",
-   "score": 4.3,
+   "score": 3.0,
    "grade": "D",
-   "p_over": 0.64,
-   "proj": 22.0,
-   "line_hits": "6/10",
+   "p_over": 0.65,
+   "proj": 20.0,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 25.9
+   "sd": 19.8
   },
   "00-0033921|receiving_yards": {
    "game": "GB@TB",
@@ -3122,13 +2621,13 @@
    "stat": "receiving_yards",
    "line": 25.5,
    "pick": "OVER 25.5",
-   "score": 6.7,
+   "score": 6.2,
    "grade": "B",
-   "p_over": 0.75,
-   "proj": 43.7,
-   "line_hits": "6/10",
+   "p_over": 0.82,
+   "proj": 37.7,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 27.4
+   "sd": 9.0
   },
   "00-0040129|receiving_yards": {
    "game": "GB@TB",
@@ -3141,13 +2640,13 @@
    "stat": "receiving_yards",
    "line": 36.5,
    "pick": "OVER 36.5",
-   "score": 4.2,
-   "grade": "D",
-   "p_over": 0.58,
-   "proj": 40.9,
-   "line_hits": "5/10",
+   "score": 5.0,
+   "grade": "C",
+   "p_over": 0.7,
+   "proj": 48.3,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 21.4
+   "sd": 21.9
   },
   "00-0040237|receiving_yards": {
    "game": "GB@TB",
@@ -3160,13 +2659,15 @@
    "stat": "receiving_yards",
    "line": 10.5,
    "pick": "OVER 10.5",
-   "score": 3.5,
+   "score": 1.4,
    "grade": "D",
-   "p_over": 0.61,
-   "proj": 15.0,
-   "line_hits": "4/10",
-   "traps": [],
-   "sd": 16.4
+   "p_over": 0.66,
+   "proj": 19.6,
+   "line_hits": "1/3",
+   "traps": [
+    "Line 10.5 vs 19 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "sd": 21.4
   },
   "00-0038129|receiving_yards": {
    "game": "GB@TB",
@@ -3179,13 +2680,13 @@
    "stat": "receiving_yards",
    "line": 24.5,
    "pick": "OVER 24.5",
-   "score": 6.4,
+   "score": 7.2,
    "grade": "B",
-   "p_over": 0.65,
-   "proj": 33.3,
-   "line_hits": "6/10",
+   "p_over": 0.77,
+   "proj": 33.5,
+   "line_hits": "3/3",
    "traps": [],
-   "sd": 22.7
+   "sd": 12.4
   },
   "00-0038128|passing_yards": {
    "game": "MIA@MIN",
@@ -3197,16 +2698,14 @@
    "pos": "QB",
    "stat": "passing_yards",
    "line": 169.5,
-   "pick": "UNDER 169.5",
-   "score": 1.1,
-   "grade": "D",
-   "p_over": 0.45,
-   "proj": 159.1,
-   "line_hits": "4/7",
-   "traps": [
-    "Model likes the under on old usage, but attempts rose to 28.7/game"
-   ],
-   "sd": 79.3
+   "pick": "OVER 169.5",
+   "score": 7.0,
+   "grade": "B",
+   "p_over": 0.75,
+   "proj": 221.0,
+   "line_hits": "3/3",
+   "traps": [],
+   "sd": 9.3
   },
   "00-0038128|rushing_yards": {
    "game": "MIA@MIN",
@@ -3218,120 +2717,14 @@
    "pos": "QB",
    "stat": "rushing_yards",
    "line": 30.5,
-   "pick": "UNDER 30.5",
-   "score": 3.4,
+   "pick": "OVER 30.5",
+   "score": 3.9,
    "grade": "D",
-   "p_over": 0.39,
-   "proj": 24.7,
-   "line_hits": "4/7",
+   "p_over": 0.59,
+   "proj": 35.3,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 21.5
-  },
-  "00-0039874|rushing_yards": {
-   "game": "MIA@MIN",
-   "kickoff": "2026-10-04 16:05",
-   "team": "MIA",
-   "opp": "MIN",
-   "player": "Jaylen Wright",
-   "player_id": "00-0039874",
-   "pos": "RB",
-   "stat": "rushing_yards",
-   "line": 28.5,
-   "pick": "UNDER 28.5",
-   "score": 4.8,
-   "grade": "C",
-   "p_over": 0.38,
-   "proj": 19.4,
-   "line_hits": "3/10",
-   "traps": [
-    "Missed the team's last game \u2014 line may assume limited snaps"
-   ],
-   "sd": 29.6
-  },
-  "00-0039874|receiving_yards": {
-   "game": "MIA@MIN",
-   "kickoff": "2026-10-04 16:05",
-   "team": "MIA",
-   "opp": "MIN",
-   "player": "Jaylen Wright",
-   "player_id": "00-0039874",
-   "pos": "RB",
-   "stat": "receiving_yards",
-   "line": 5.5,
-   "pick": "UNDER 5.5",
-   "score": 4.2,
-   "grade": "D",
-   "p_over": 0.38,
-   "proj": 3.4,
-   "line_hits": "3/10",
-   "traps": [
-    "Missed the team's last game \u2014 line may assume limited snaps"
-   ],
-   "sd": 7.0
-  },
-  "00-0040198|rushing_yards": {
-   "game": "MIA@MIN",
-   "kickoff": "2026-10-04 16:05",
-   "team": "MIA",
-   "opp": "MIN",
-   "player": "Ollie Gordon II",
-   "player_id": "00-0040198",
-   "pos": "RB",
-   "stat": "rushing_yards",
-   "line": 25.5,
-   "pick": "UNDER 25.5",
-   "score": 3.4,
-   "grade": "D",
-   "p_over": 0.2,
-   "proj": 11.3,
-   "line_hits": "2/10",
-   "traps": [
-    "Line 25.5 vs 14 L10 avg \u2014 gap this big usually means the book knows about an injury or role change",
-    "Model likes the under on old usage, but carries rose to 9.7/game"
-   ],
-   "sd": 16.8
-  },
-  "00-0040198|receiving_yards": {
-   "game": "MIA@MIN",
-   "kickoff": "2026-10-04 16:05",
-   "team": "MIA",
-   "opp": "MIN",
-   "player": "Ollie Gordon II",
-   "player_id": "00-0040198",
-   "pos": "RB",
-   "stat": "receiving_yards",
-   "line": 7.5,
-   "pick": "UNDER 7.5",
-   "score": 5.1,
-   "grade": "C",
-   "p_over": 0.15,
-   "proj": 2.1,
-   "line_hits": "1/10",
-   "traps": [
-    "Line 7.5 vs 2 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 5.2
-  },
-  "00-0038824|receiving_yards": {
-   "game": "MIA@MIN",
-   "kickoff": "2026-10-04 16:05",
-   "team": "MIA",
-   "opp": "MIN",
-   "player": "Ryan Miller",
-   "player_id": "00-0038824",
-   "pos": "WR",
-   "stat": "receiving_yards",
-   "line": 3.5,
-   "pick": "OVER 3.5",
-   "score": 2.8,
-   "grade": "D",
-   "p_over": 0.72,
-   "proj": 21.0,
-   "line_hits": "4/10",
-   "traps": [
-    "Line 3.5 vs 22 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 29.7
+   "sd": 20.9
   },
   "00-0039880|receiving_yards": {
    "game": "MIA@MIN",
@@ -3343,16 +2736,14 @@
    "pos": "WR",
    "stat": "receiving_yards",
    "line": 40.5,
-   "pick": "UNDER 40.5",
-   "score": 3.2,
-   "grade": "D",
-   "p_over": 0.3,
-   "proj": 30.4,
-   "line_hits": "4/10",
-   "traps": [
-    "Model likes the under on old usage, but targets rose to 7.7/game"
-   ],
-   "sd": 19.7
+   "pick": "OVER 40.5",
+   "score": 7.1,
+   "grade": "B",
+   "p_over": 0.76,
+   "proj": 54.1,
+   "line_hits": "3/3",
+   "traps": [],
+   "sd": 5.6
   },
   "00-0037252|receiving_yards": {
    "game": "MIA@MIN",
@@ -3364,54 +2755,14 @@
    "pos": "TE",
    "stat": "receiving_yards",
    "line": 30.5,
-   "pick": "UNDER 30.5",
-   "score": 3.9,
+   "pick": "OVER 30.5",
+   "score": 1.9,
    "grade": "D",
-   "p_over": 0.42,
-   "proj": 27.3,
-   "line_hits": "6/10",
+   "p_over": 0.54,
+   "proj": 32.5,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 15.8
-  },
-  "00-0035228|passing_yards": {
-   "game": "MIA@MIN",
-   "kickoff": "2026-10-04 16:05",
-   "team": "MIN",
-   "opp": "MIA",
-   "player": "Kyler Murray",
-   "player_id": "00-0035228",
-   "pos": "QB",
-   "stat": "passing_yards",
-   "line": 203.5,
-   "pick": "UNDER 203.5",
-   "score": 4.5,
-   "grade": "D",
-   "p_over": 0.23,
-   "proj": 146.3,
-   "line_hits": "2/7",
-   "traps": [
-    "Line 203.5 vs 140 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 76.0
-  },
-  "00-0035228|rushing_yards": {
-   "game": "MIA@MIN",
-   "kickoff": "2026-10-04 16:05",
-   "team": "MIN",
-   "opp": "MIA",
-   "player": "Kyler Murray",
-   "player_id": "00-0035228",
-   "pos": "QB",
-   "stat": "rushing_yards",
-   "line": 21.5,
-   "pick": "UNDER 21.5",
-   "score": 5.4,
-   "grade": "C",
-   "p_over": 0.33,
-   "proj": 16.2,
-   "line_hits": "5/7",
-   "traps": [],
-   "sd": 11.7
+   "sd": 17.9
   },
   "00-0033293|rushing_yards": {
    "game": "MIA@MIN",
@@ -3423,14 +2774,14 @@
    "pos": "RB",
    "stat": "rushing_yards",
    "line": 66.5,
-   "pick": "UNDER 66.5",
-   "score": 6.1,
-   "grade": "B",
-   "p_over": 0.3,
-   "proj": 52.2,
-   "line_hits": "4/10",
+   "pick": "OVER 66.5",
+   "score": 2.0,
+   "grade": "D",
+   "p_over": 0.55,
+   "proj": 69.6,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 27.7
+   "sd": 27.2
   },
   "00-0033293|receiving_yards": {
    "game": "MIA@MIN",
@@ -3443,34 +2794,15 @@
    "stat": "receiving_yards",
    "line": 19.5,
    "pick": "UNDER 19.5",
-   "score": 2.8,
+   "score": 2.1,
    "grade": "D",
-   "p_over": 0.31,
-   "proj": 13.0,
-   "line_hits": "3/10",
+   "p_over": 0.32,
+   "proj": 12.1,
+   "line_hits": "1/3",
    "traps": [
-    "Line 19.5 vs 13 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 19.5 vs 12 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 13.0
-  },
-  "00-0036259|receiving_yards": {
-   "game": "MIA@MIN",
-   "kickoff": "2026-10-04 16:05",
-   "team": "MIN",
-   "opp": "MIA",
-   "player": "Jauan Jennings",
-   "player_id": "00-0036259",
-   "pos": "WR",
-   "stat": "receiving_yards",
-   "line": 27.5,
-   "pick": "UNDER 27.5",
-   "score": 4.9,
-   "grade": "C",
-   "p_over": 0.42,
-   "proj": 22.8,
-   "line_hits": "7/10",
-   "traps": [],
-   "sd": 22.4
+   "sd": 16.2
   },
   "00-0038994|receiving_yards": {
    "game": "MIA@MIN",
@@ -3483,36 +2815,15 @@
    "stat": "receiving_yards",
    "line": 62.5,
    "pick": "UNDER 62.5",
-   "score": 4.8,
-   "grade": "C",
-   "p_over": 0.18,
-   "proj": 32.1,
-   "line_hits": "2/10",
+   "score": 2.5,
+   "grade": "D",
+   "p_over": 0.24,
+   "proj": 35.5,
+   "line_hits": "1/3",
    "traps": [
-    "Line 62.5 vs 32 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 62.5 vs 38 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 32.7
-  },
-  "00-0040154|receiving_yards": {
-   "game": "MIA@MIN",
-   "kickoff": "2026-10-04 16:05",
-   "team": "MIN",
-   "opp": "MIA",
-   "player": "Tai Felton",
-   "player_id": "00-0040154",
-   "pos": "WR",
-   "stat": "receiving_yards",
-   "line": 15.5,
-   "pick": "UNDER 15.5",
-   "score": 5.9,
-   "grade": "C",
-   "p_over": 0.0,
-   "proj": 1.6,
-   "line_hits": "0/10",
-   "traps": [
-    "Line 15.5 vs 2 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 3.3
+   "sd": 38.7
   },
   "00-0035229|receiving_yards": {
    "game": "MIA@MIN",
@@ -3525,13 +2836,15 @@
    "stat": "receiving_yards",
    "line": 38.5,
    "pick": "UNDER 38.5",
-   "score": 8.3,
-   "grade": "A",
-   "p_over": 0.37,
-   "proj": 32.0,
-   "line_hits": "3/10",
-   "traps": [],
-   "sd": 19.4
+   "score": 3.5,
+   "grade": "D",
+   "p_over": 0.18,
+   "proj": 28.7,
+   "line_hits": "0/3",
+   "traps": [
+    "Line 38.5 vs 25 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "sd": 10.6
   },
   "00-0033873|passing_yards": {
    "game": "KC@LV",
@@ -3544,13 +2857,13 @@
    "stat": "passing_yards",
    "line": 239.5,
    "pick": "OVER 239.5",
-   "score": 3.8,
+   "score": 4.2,
    "grade": "D",
-   "p_over": 0.51,
-   "proj": 242.6,
-   "line_hits": "7/10",
+   "p_over": 0.62,
+   "proj": 267.5,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 72.2
+   "sd": 82.0
   },
   "00-0033873|rushing_yards": {
    "game": "KC@LV",
@@ -3563,13 +2876,13 @@
    "stat": "rushing_yards",
    "line": 15.5,
    "pick": "OVER 15.5",
-   "score": 4.7,
-   "grade": "C",
-   "p_over": 0.6,
-   "proj": 19.5,
-   "line_hits": "6/10",
+   "score": 3.1,
+   "grade": "D",
+   "p_over": 0.52,
+   "proj": 15.9,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 15.9
+   "sd": 9.3
   },
   "00-0038134|rushing_yards": {
    "game": "KC@LV",
@@ -3582,13 +2895,13 @@
    "stat": "rushing_yards",
    "line": 87.5,
    "pick": "OVER 87.5",
-   "score": 4.0,
-   "grade": "D",
-   "p_over": 0.54,
-   "proj": 92.2,
-   "line_hits": "6/10",
+   "score": 5.6,
+   "grade": "C",
+   "p_over": 0.76,
+   "proj": 117.2,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 43.4
+   "sd": 42.0
   },
   "00-0038134|receiving_yards": {
    "game": "KC@LV",
@@ -3601,13 +2914,13 @@
    "stat": "receiving_yards",
    "line": 22.5,
    "pick": "OVER 22.5",
-   "score": 3.5,
+   "score": 2.2,
    "grade": "D",
-   "p_over": 0.58,
-   "proj": 26.9,
-   "line_hits": "6/10",
+   "p_over": 0.57,
+   "proj": 27.0,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 22.8
+   "sd": 24.7
   },
   "00-0038104|receiving_yards": {
    "game": "KC@LV",
@@ -3620,13 +2933,13 @@
    "stat": "receiving_yards",
    "line": 21.5,
    "pick": "OVER 21.5",
-   "score": 4.3,
-   "grade": "D",
-   "p_over": 0.58,
-   "proj": 27.9,
-   "line_hits": "5/10",
+   "score": 4.5,
+   "grade": "C",
+   "p_over": 0.65,
+   "proj": 35.6,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 30.5
+   "sd": 36.2
   },
   "00-0039067|receiving_yards": {
    "game": "KC@LV",
@@ -3639,15 +2952,13 @@
    "stat": "receiving_yards",
    "line": 57.5,
    "pick": "OVER 57.5",
-   "score": 3.6,
+   "score": 3.7,
    "grade": "D",
-   "p_over": 0.6,
-   "proj": 66.1,
-   "line_hits": "6/10",
-   "traps": [
-    "Model likes the over on old usage, but targets fell to 5.7/game"
-   ],
-   "sd": 33.8
+   "p_over": 0.57,
+   "proj": 63.2,
+   "line_hits": "2/3",
+   "traps": [],
+   "sd": 31.0
   },
   "00-0039894|receiving_yards": {
    "game": "KC@LV",
@@ -3660,13 +2971,15 @@
    "stat": "receiving_yards",
    "line": 35.5,
    "pick": "UNDER 35.5",
-   "score": 6.4,
-   "grade": "B",
-   "p_over": 0.35,
-   "proj": 28.8,
-   "line_hits": "4/10",
-   "traps": [],
-   "sd": 17.7
+   "score": 3.6,
+   "grade": "D",
+   "p_over": 0.02,
+   "proj": 20.6,
+   "line_hits": "0/3",
+   "traps": [
+    "Line 35.5 vs 21 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "sd": 2.9
   },
   "00-0030506|receiving_yards": {
    "game": "KC@LV",
@@ -3678,14 +2991,14 @@
    "pos": "TE",
    "stat": "receiving_yards",
    "line": 49.5,
-   "pick": "UNDER 49.5",
-   "score": 2.3,
-   "grade": "D",
-   "p_over": 0.45,
-   "proj": 45.4,
-   "line_hits": "4/10",
+   "pick": "OVER 49.5",
+   "score": 7.9,
+   "grade": "A",
+   "p_over": 0.84,
+   "proj": 76.3,
+   "line_hits": "3/3",
    "traps": [],
-   "sd": 30.6
+   "sd": 17.8
   },
   "00-0036637|receiving_yards": {
    "game": "KC@LV",
@@ -3698,13 +3011,13 @@
    "stat": "receiving_yards",
    "line": 8.5,
    "pick": "OVER 8.5",
-   "score": 3.5,
+   "score": 3.1,
    "grade": "D",
-   "p_over": 0.59,
-   "proj": 11.8,
-   "line_hits": "5/10",
+   "p_over": 0.65,
+   "proj": 15.2,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 14.7
+   "sd": 17.6
   },
   "00-0029604|passing_yards": {
    "game": "KC@LV",
@@ -3717,13 +3030,13 @@
    "stat": "passing_yards",
    "line": 223.5,
    "pick": "UNDER 223.5",
-   "score": 4.6,
-   "grade": "C",
-   "p_over": 0.33,
-   "proj": 193.8,
-   "line_hits": "4/10",
+   "score": 2.6,
+   "grade": "D",
+   "p_over": 0.39,
+   "proj": 202.8,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 58.0
+   "sd": 42.1
   },
   "00-0029604|rushing_yards": {
    "game": "KC@LV",
@@ -3736,13 +3049,13 @@
    "stat": "rushing_yards",
    "line": 0.5,
    "pick": "UNDER 0.5",
-   "score": 3.3,
+   "score": 2.6,
    "grade": "D",
-   "p_over": 0.43,
-   "proj": -0.1,
-   "line_hits": "4/10",
+   "p_over": 0.39,
+   "proj": -0.6,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 3.2
+   "sd": 3.8
   },
   "00-0040122|rushing_yards": {
    "game": "KC@LV",
@@ -3754,14 +3067,14 @@
    "pos": "RB",
    "stat": "rushing_yards",
    "line": 59.5,
-   "pick": "UNDER 59.5",
-   "score": 5.0,
-   "grade": "C",
-   "p_over": 0.38,
-   "proj": 50.3,
-   "line_hits": "4/10",
+   "pick": "OVER 59.5",
+   "score": 1.6,
+   "grade": "D",
+   "p_over": 0.52,
+   "proj": 60.4,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 29.7
+   "sd": 23.4
   },
   "00-0040122|receiving_yards": {
    "game": "KC@LV",
@@ -3774,13 +3087,13 @@
    "stat": "receiving_yards",
    "line": 20.5,
    "pick": "OVER 20.5",
-   "score": 4.1,
-   "grade": "D",
-   "p_over": 0.57,
-   "proj": 23.9,
-   "line_hits": "5/10",
+   "score": 5.8,
+   "grade": "C",
+   "p_over": 0.78,
+   "proj": 30.2,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 18.6
+   "sd": 12.6
   },
   "00-0035891|receiving_yards": {
    "game": "KC@LV",
@@ -3793,13 +3106,13 @@
    "stat": "receiving_yards",
    "line": 10.5,
    "pick": "UNDER 10.5",
-   "score": 4.1,
+   "score": 3.8,
    "grade": "D",
-   "p_over": 0.47,
-   "proj": 9.5,
-   "line_hits": "3/10",
+   "p_over": 0.42,
+   "proj": 8.5,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 14.9
+   "sd": 10.4
   },
   "00-0037291|receiving_yards": {
    "game": "KC@LV",
@@ -3812,13 +3125,13 @@
    "stat": "receiving_yards",
    "line": 20.5,
    "pick": "UNDER 20.5",
-   "score": 5.0,
+   "score": 5.6,
    "grade": "C",
-   "p_over": 0.39,
-   "proj": 16.2,
-   "line_hits": "4/10",
+   "p_over": 0.25,
+   "proj": 15.6,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 15.2
+   "sd": 7.3
   },
   "00-0038563|receiving_yards": {
    "game": "KC@LV",
@@ -3831,13 +3144,13 @@
    "stat": "receiving_yards",
    "line": 38.5,
    "pick": "OVER 38.5",
-   "score": 3.3,
-   "grade": "D",
-   "p_over": 0.52,
-   "proj": 40.0,
-   "line_hits": "4/10",
+   "score": 4.8,
+   "grade": "C",
+   "p_over": 0.68,
+   "proj": 57.4,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 33.9
+   "sd": 39.9
   },
   "00-0039066|receiving_yards": {
    "game": "KC@LV",
@@ -3850,32 +3163,13 @@
    "stat": "receiving_yards",
    "line": 25.5,
    "pick": "OVER 25.5",
-   "score": 3.1,
+   "score": 3.6,
    "grade": "D",
-   "p_over": 0.51,
-   "proj": 26.3,
-   "line_hits": "4/10",
+   "p_over": 0.56,
+   "proj": 26.8,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 21.9
-  },
-  "00-0039338|receiving_yards": {
-   "game": "KC@LV",
-   "kickoff": "2026-10-04 16:25",
-   "team": "LV",
-   "opp": "KC",
-   "player": "Brock Bowers",
-   "player_id": "00-0039338",
-   "pos": "TE",
-   "stat": "receiving_yards",
-   "line": 70.5,
-   "pick": "UNDER 70.5",
-   "score": 5.4,
-   "grade": "C",
-   "p_over": 0.36,
-   "proj": 58.1,
-   "line_hits": "3/10",
-   "traps": [],
-   "sd": 34.5
+   "sd": 4.2
   },
   "00-0036355|passing_yards": {
    "game": "LAC@SEA",
@@ -3888,13 +3182,13 @@
    "stat": "passing_yards",
    "line": 202.5,
    "pick": "UNDER 202.5",
-   "score": 4.3,
+   "score": 3.0,
    "grade": "D",
-   "p_over": 0.34,
-   "proj": 176.4,
-   "line_hits": "5/10",
+   "p_over": 0.35,
+   "proj": 178.6,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 50.9
+   "sd": 14.1
   },
   "00-0036355|rushing_yards": {
    "game": "LAC@SEA",
@@ -3906,14 +3200,14 @@
    "pos": "QB",
    "stat": "rushing_yards",
    "line": 20.5,
-   "pick": "OVER 20.5",
-   "score": 3.9,
+   "pick": "UNDER 20.5",
+   "score": 4.2,
    "grade": "D",
-   "p_over": 0.6,
-   "proj": 25.6,
-   "line_hits": "6/10",
+   "p_over": 0.38,
+   "proj": 17.1,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 20.4
+   "sd": 10.9
   },
   "00-0038454|rushing_yards": {
    "game": "LAC@SEA",
@@ -3926,13 +3220,13 @@
    "stat": "rushing_yards",
    "line": 18.5,
    "pick": "OVER 18.5",
-   "score": 4.1,
-   "grade": "D",
-   "p_over": 0.54,
-   "proj": 20.5,
-   "line_hits": "6/10",
+   "score": 4.5,
+   "grade": "C",
+   "p_over": 0.65,
+   "proj": 25.5,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 22.0
+   "sd": 17.9
   },
   "00-0038454|receiving_yards": {
    "game": "LAC@SEA",
@@ -3945,15 +3239,15 @@
    "stat": "receiving_yards",
    "line": 11.5,
    "pick": "UNDER 11.5",
-   "score": 5.0,
-   "grade": "C",
-   "p_over": 0.15,
-   "proj": 3.9,
-   "line_hits": "2/10",
+   "score": 2.8,
+   "grade": "D",
+   "p_over": 0.17,
+   "proj": 3.2,
+   "line_hits": "1/3",
    "traps": [
-    "Line 11.5 vs 4 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 11.5 vs 3 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 7.2
+   "sd": 8.6
   },
   "00-0040666|rushing_yards": {
    "game": "LAC@SEA",
@@ -3965,14 +3259,14 @@
    "pos": "RB",
    "stat": "rushing_yards",
    "line": 46.5,
-   "pick": "UNDER 46.5",
-   "score": 2.9,
-   "grade": "D",
-   "p_over": 0.43,
-   "proj": 40.9,
-   "line_hits": "6/10",
+   "pick": "OVER 46.5",
+   "score": 4.8,
+   "grade": "C",
+   "p_over": 0.68,
+   "proj": 56.7,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 31.9
+   "sd": 21.5
   },
   "00-0040666|receiving_yards": {
    "game": "LAC@SEA",
@@ -3985,15 +3279,13 @@
    "stat": "receiving_yards",
    "line": 5.5,
    "pick": "OVER 5.5",
-   "score": 2.5,
+   "score": 2.1,
    "grade": "D",
-   "p_over": 0.74,
-   "proj": 13.5,
-   "line_hits": "6/10",
-   "traps": [
-    "Line 5.5 vs 12 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 12.7
+   "p_over": 0.56,
+   "proj": 7.0,
+   "line_hits": "1/3",
+   "traps": [],
+   "sd": 9.9
   },
   "00-0038544|receiving_yards": {
    "game": "LAC@SEA",
@@ -4006,13 +3298,15 @@
    "stat": "receiving_yards",
    "line": 36.5,
    "pick": "UNDER 36.5",
-   "score": 4.5,
+   "score": 2.9,
    "grade": "D",
-   "p_over": 0.42,
-   "proj": 29.8,
-   "line_hits": "4/10",
-   "traps": [],
-   "sd": 32.8
+   "p_over": 0.1,
+   "proj": 18.4,
+   "line_hits": "1/3",
+   "traps": [
+    "Line 36.5 vs 22 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "sd": 14.0
   },
   "00-0039915|receiving_yards": {
    "game": "LAC@SEA",
@@ -4024,14 +3318,14 @@
    "pos": "WR",
    "stat": "receiving_yards",
    "line": 47.5,
-   "pick": "UNDER 47.5",
-   "score": 5.3,
-   "grade": "C",
-   "p_over": 0.33,
-   "proj": 37.6,
-   "line_hits": "2/10",
+   "pick": "OVER 47.5",
+   "score": 3.8,
+   "grade": "D",
+   "p_over": 0.58,
+   "proj": 51.6,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 22.5
+   "sd": 19.3
   },
   "00-0040727|receiving_yards": {
    "game": "LAC@SEA",
@@ -4043,14 +3337,14 @@
    "pos": "WR",
    "stat": "receiving_yards",
    "line": 37.5,
-   "pick": "UNDER 37.5",
-   "score": 3.3,
+   "pick": "OVER 37.5",
+   "score": 3.9,
    "grade": "D",
-   "p_over": 0.44,
-   "proj": 34.3,
-   "line_hits": "4/10",
+   "p_over": 0.59,
+   "proj": 43.0,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 21.9
+   "sd": 22.9
   },
   "00-0040189|receiving_yards": {
    "game": "LAC@SEA",
@@ -4063,51 +3357,15 @@
    "stat": "receiving_yards",
    "line": 30.5,
    "pick": "UNDER 30.5",
-   "score": 9.8,
-   "grade": "A",
-   "p_over": 0.21,
-   "proj": 17.4,
-   "line_hits": "3/10",
-   "traps": [],
-   "sd": 16.0
-  },
-  "00-0034869|passing_yards": {
-   "game": "LAC@SEA",
-   "kickoff": "2026-10-04 16:25",
-   "team": "SEA",
-   "opp": "LAC",
-   "player": "Sam Darnold",
-   "player_id": "00-0034869",
-   "pos": "QB",
-   "stat": "passing_yards",
-   "line": 232.5,
-   "pick": "UNDER 232.5",
-   "score": 3.7,
+   "score": 3.0,
    "grade": "D",
-   "p_over": 0.46,
-   "proj": 219.6,
-   "line_hits": "5/10",
-   "traps": [],
-   "sd": 119.5
-  },
-  "00-0034869|rushing_yards": {
-   "game": "LAC@SEA",
-   "kickoff": "2026-10-04 16:25",
-   "team": "SEA",
-   "opp": "LAC",
-   "player": "Sam Darnold",
-   "player_id": "00-0034869",
-   "pos": "QB",
-   "stat": "rushing_yards",
-   "line": 4.5,
-   "pick": "OVER 4.5",
-   "score": 4.1,
-   "grade": "D",
-   "p_over": 0.53,
-   "proj": 5.0,
-   "line_hits": "7/10",
-   "traps": [],
-   "sd": 5.7
+   "p_over": 0.09,
+   "proj": 12.7,
+   "line_hits": "1/3",
+   "traps": [
+    "Line 30.5 vs 16 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "sd": 13.1
   },
   "00-0038797|rushing_yards": {
    "game": "LAC@SEA",
@@ -4120,15 +3378,13 @@
    "stat": "rushing_yards",
    "line": 45.5,
    "pick": "UNDER 45.5",
-   "score": 6.6,
-   "grade": "B",
-   "p_over": 0.28,
-   "proj": 25.4,
-   "line_hits": "2/10",
-   "traps": [
-    "Model likes the under on old usage, but carries rose to 10.7/game"
-   ],
-   "sd": 35.2
+   "score": 3.7,
+   "grade": "D",
+   "p_over": 0.43,
+   "proj": 38.7,
+   "line_hits": "1/3",
+   "traps": [],
+   "sd": 39.5
   },
   "00-0039299|rushing_yards": {
    "game": "LAC@SEA",
@@ -4141,15 +3397,15 @@
    "stat": "rushing_yards",
    "line": 30.5,
    "pick": "UNDER 30.5",
-   "score": 5.7,
-   "grade": "C",
-   "p_over": 0.02,
-   "proj": 9.8,
-   "line_hits": "1/10",
+   "score": 3.6,
+   "grade": "D",
+   "p_over": 0.07,
+   "proj": 18.1,
+   "line_hits": "0/3",
    "traps": [
-    "Line 30.5 vs 12 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 30.5 vs 17 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 10.1
+   "sd": 8.3
   },
   "00-0039299|receiving_yards": {
    "game": "LAC@SEA",
@@ -4161,14 +3417,14 @@
    "pos": "RB",
    "stat": "receiving_yards",
    "line": 11.5,
-   "pick": "UNDER 11.5",
-   "score": 5.5,
-   "grade": "C",
-   "p_over": 0.48,
-   "proj": 10.6,
-   "line_hits": "2/10",
+   "pick": "OVER 11.5",
+   "score": 2.5,
+   "grade": "D",
+   "p_over": 0.6,
+   "proj": 17.1,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 17.8
+   "sd": 22.4
   },
   "00-0033908|receiving_yards": {
    "game": "LAC@SEA",
@@ -4181,13 +3437,13 @@
    "stat": "receiving_yards",
    "line": 24.5,
    "pick": "OVER 24.5",
-   "score": 10.4,
-   "grade": "A",
-   "p_over": 0.81,
-   "proj": 38.0,
-   "line_hits": "8/10",
+   "score": 6.0,
+   "grade": "B",
+   "p_over": 0.8,
+   "proj": 34.8,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 15.3
+   "sd": 10.8
   },
   "00-0037545|receiving_yards": {
    "game": "LAC@SEA",
@@ -4200,13 +3456,13 @@
    "stat": "receiving_yards",
    "line": 23.5,
    "pick": "UNDER 23.5",
-   "score": 4.1,
-   "grade": "D",
-   "p_over": 0.45,
-   "proj": 20.9,
-   "line_hits": "4/10",
+   "score": 4.6,
+   "grade": "C",
+   "p_over": 0.34,
+   "proj": 18.3,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 21.3
+   "sd": 12.8
   },
   "00-0038543|receiving_yards": {
    "game": "LAC@SEA",
@@ -4219,34 +3475,13 @@
    "stat": "receiving_yards",
    "line": 94.5,
    "pick": "OVER 94.5",
-   "score": 5.7,
-   "grade": "C",
-   "p_over": 0.6,
-   "proj": 106.2,
-   "line_hits": "6/10",
+   "score": 7.7,
+   "grade": "A",
+   "p_over": 0.82,
+   "proj": 139.0,
+   "line_hits": "3/3",
    "traps": [],
-   "sd": 44.5
-  },
-  "00-0040648|receiving_yards": {
-   "game": "LAC@SEA",
-   "kickoff": "2026-10-04 16:25",
-   "team": "SEA",
-   "opp": "LAC",
-   "player": "Tory Horton",
-   "player_id": "00-0040648",
-   "pos": "WR",
-   "stat": "receiving_yards",
-   "line": 8.5,
-   "pick": "OVER 8.5",
-   "score": 3.5,
-   "grade": "D",
-   "p_over": 0.81,
-   "proj": 26.1,
-   "line_hits": "6/9",
-   "traps": [
-    "Line 8.5 vs 26 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 20.2
+   "sd": 14.3
   },
   "00-0039793|receiving_yards": {
    "game": "LAC@SEA",
@@ -4259,13 +3494,13 @@
    "stat": "receiving_yards",
    "line": 32.5,
    "pick": "UNDER 32.5",
-   "score": 4.0,
+   "score": 3.0,
    "grade": "D",
-   "p_over": 0.46,
-   "proj": 30.3,
-   "line_hits": "4/10",
+   "p_over": 0.49,
+   "proj": 32.0,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 23.8
+   "sd": 28.0
   },
   "00-0039732|passing_yards": {
    "game": "DEN@SF",
@@ -4278,13 +3513,13 @@
    "stat": "passing_yards",
    "line": 222.5,
    "pick": "UNDER 222.5",
-   "score": 3.6,
+   "score": 4.4,
    "grade": "D",
-   "p_over": 0.47,
-   "proj": 216.9,
-   "line_hits": "5/10",
+   "p_over": 0.36,
+   "proj": 197.2,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 73.6
+   "sd": 64.4
   },
   "00-0039732|rushing_yards": {
    "game": "DEN@SF",
@@ -4297,13 +3532,15 @@
    "stat": "rushing_yards",
    "line": 15.5,
    "pick": "UNDER 15.5",
-   "score": 6.9,
-   "grade": "B",
-   "p_over": 0.3,
-   "proj": 7.6,
-   "line_hits": "4/10",
-   "traps": [],
-   "sd": 15.0
+   "score": 3.6,
+   "grade": "D",
+   "p_over": 0.0,
+   "proj": 3.6,
+   "line_hits": "0/3",
+   "traps": [
+    "Line 15.5 vs 5 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "sd": 2.1
   },
   "00-0036158|rushing_yards": {
    "game": "DEN@SF",
@@ -4316,54 +3553,15 @@
    "stat": "rushing_yards",
    "line": 59.5,
    "pick": "UNDER 59.5",
-   "score": 4.1,
+   "score": 3.6,
    "grade": "D",
-   "p_over": 0.48,
-   "proj": 58.2,
-   "line_hits": "6/10",
-   "traps": [],
-   "sd": 25.1
-  },
-  "00-0040730|rushing_yards": {
-   "game": "DEN@SF",
-   "kickoff": "2026-10-04 16:25",
-   "team": "DEN",
-   "opp": "SF",
-   "player": "RJ Harvey",
-   "player_id": "00-0040730",
-   "pos": "RB",
-   "stat": "rushing_yards",
-   "line": 15.5,
-   "pick": "OVER 15.5",
-   "score": 3.4,
-   "grade": "D",
-   "p_over": 0.78,
-   "proj": 31.2,
-   "line_hits": "9/10",
+   "p_over": 0.11,
+   "proj": 41.8,
+   "line_hits": "0/3",
    "traps": [
-    "Line 15.5 vs 33 L10 avg \u2014 gap this big usually means the book knows about an injury or role change",
-    "Model likes the over on old usage, but carries fell to 6/game"
+    "Line 59.5 vs 41 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 20.5
-  },
-  "00-0040730|receiving_yards": {
-   "game": "DEN@SF",
-   "kickoff": "2026-10-04 16:25",
-   "team": "DEN",
-   "opp": "SF",
-   "player": "RJ Harvey",
-   "player_id": "00-0040730",
-   "pos": "RB",
-   "stat": "receiving_yards",
-   "line": 22.5,
-   "pick": "OVER 22.5",
-   "score": 8.2,
-   "grade": "A",
-   "p_over": 0.69,
-   "proj": 31.4,
-   "line_hits": "7/10",
-   "traps": [],
-   "sd": 18.0
+   "sd": 6.2
   },
   "00-0034348|receiving_yards": {
    "game": "DEN@SF",
@@ -4376,13 +3574,13 @@
    "stat": "receiving_yards",
    "line": 39.5,
    "pick": "UNDER 39.5",
-   "score": 3.4,
-   "grade": "D",
-   "p_over": 0.47,
-   "proj": 37.0,
-   "line_hits": "6/10",
+   "score": 6.1,
+   "grade": "B",
+   "p_over": 0.19,
+   "proj": 26.7,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 29.8
+   "sd": 14.4
   },
   "00-0036613|receiving_yards": {
    "game": "DEN@SF",
@@ -4395,13 +3593,13 @@
    "stat": "receiving_yards",
    "line": 58.5,
    "pick": "UNDER 58.5",
-   "score": 5.3,
-   "grade": "C",
-   "p_over": 0.38,
-   "proj": 43.5,
-   "line_hits": "3/10",
+   "score": 3.7,
+   "grade": "D",
+   "p_over": 0.43,
+   "proj": 47.9,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 50.4
+   "sd": 62.2
   },
   "00-0039868|receiving_yards": {
    "game": "DEN@SF",
@@ -4414,16 +3612,15 @@
    "stat": "receiving_yards",
    "line": 4.5,
    "pick": "OVER 4.5",
-   "score": 3.3,
+   "score": 2.9,
    "grade": "D",
-   "p_over": 0.78,
-   "proj": 26.2,
-   "line_hits": "8/10",
+   "p_over": 0.83,
+   "proj": 15.6,
+   "line_hits": "2/3",
    "traps": [
-    "Line 4.5 vs 29 L10 avg \u2014 gap this big usually means the book knows about an injury or role change",
-    "Model likes the over on old usage, but targets fell to 1.3/game"
+    "Line 4.5 vs 16 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 28.4
+   "sd": 11.4
   },
   "00-0040134|receiving_yards": {
    "game": "DEN@SF",
@@ -4436,35 +3633,13 @@
    "stat": "receiving_yards",
    "line": 22.5,
    "pick": "OVER 22.5",
-   "score": 7.4,
-   "grade": "B",
-   "p_over": 0.63,
-   "proj": 29.6,
-   "line_hits": "8/10",
-   "traps": [],
-   "sd": 21.3
-  },
-  "00-0036422|receiving_yards": {
-   "game": "DEN@SF",
-   "kickoff": "2026-10-04 16:25",
-   "team": "DEN",
-   "opp": "SF",
-   "player": "Adam Trautman",
-   "player_id": "00-0036422",
-   "pos": "TE",
-   "stat": "receiving_yards",
-   "line": 4.5,
-   "pick": "OVER 4.5",
-   "score": 2.5,
+   "score": 4.0,
    "grade": "D",
-   "p_over": 0.76,
-   "proj": 14.0,
-   "line_hits": "7/10",
-   "traps": [
-    "Line 4.5 vs 14 L10 avg \u2014 gap this big usually means the book knows about an injury or role change",
-    "Missed the team's last game \u2014 line may assume limited snaps"
-   ],
-   "sd": 13.2
+   "p_over": 0.6,
+   "proj": 27.5,
+   "line_hits": "2/3",
+   "traps": [],
+   "sd": 20.3
   },
   "00-0033881|receiving_yards": {
    "game": "DEN@SF",
@@ -4477,13 +3652,13 @@
    "stat": "receiving_yards",
    "line": 16.5,
    "pick": "OVER 16.5",
-   "score": 4.7,
-   "grade": "C",
-   "p_over": 0.59,
-   "proj": 19.9,
-   "line_hits": "6/10",
+   "score": 3.5,
+   "grade": "D",
+   "p_over": 0.56,
+   "proj": 19.2,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 15.5
+   "sd": 17.6
   },
   "00-0037834|passing_yards": {
    "game": "DEN@SF",
@@ -4496,13 +3671,13 @@
    "stat": "passing_yards",
    "line": 236.5,
    "pick": "OVER 236.5",
-   "score": 3.5,
-   "grade": "D",
-   "p_over": 0.5,
-   "proj": 237.5,
-   "line_hits": "6/10",
+   "score": 4.6,
+   "grade": "C",
+   "p_over": 0.66,
+   "proj": 277.7,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 64.0
+   "sd": 40.7
   },
   "00-0037834|rushing_yards": {
    "game": "DEN@SF",
@@ -4515,13 +3690,13 @@
    "stat": "rushing_yards",
    "line": 17.5,
    "pick": "OVER 17.5",
-   "score": 12.4,
+   "score": 8.0,
    "grade": "A",
-   "p_over": 0.91,
-   "proj": 33.5,
-   "line_hits": "8/10",
+   "p_over": 0.86,
+   "proj": 28.2,
+   "line_hits": "3/3",
    "traps": [],
-   "sd": 9.8
+   "sd": 2.2
   },
   "00-0033280|rushing_yards": {
    "game": "DEN@SF",
@@ -4534,13 +3709,13 @@
    "stat": "rushing_yards",
    "line": 67.5,
    "pick": "UNDER 67.5",
-   "score": 4.3,
+   "score": 1.9,
    "grade": "D",
-   "p_over": 0.35,
-   "proj": 53.9,
-   "line_hits": "5/10",
+   "p_over": 0.46,
+   "proj": 65.0,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 34.3
+   "sd": 23.1
   },
   "00-0033280|receiving_yards": {
    "game": "DEN@SF",
@@ -4553,13 +3728,13 @@
    "stat": "receiving_yards",
    "line": 45.5,
    "pick": "UNDER 45.5",
-   "score": 11.6,
-   "grade": "A",
-   "p_over": 0.21,
-   "proj": 34.4,
-   "line_hits": "1/10",
+   "score": 5.3,
+   "grade": "C",
+   "p_over": 0.41,
+   "proj": 42.1,
+   "line_hits": "0/3",
    "traps": [],
-   "sd": 13.5
+   "sd": 10.3
   },
   "00-0031408|receiving_yards": {
    "game": "DEN@SF",
@@ -4571,14 +3746,14 @@
    "pos": "WR",
    "stat": "receiving_yards",
    "line": 43.5,
-   "pick": "UNDER 43.5",
-   "score": 2.6,
+   "pick": "OVER 43.5",
+   "score": 3.4,
    "grade": "D",
-   "p_over": 0.49,
-   "proj": 42.6,
-   "line_hits": "4/10",
+   "p_over": 0.55,
+   "proj": 45.3,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 25.7
+   "sd": 8.6
   },
   "00-0035719|receiving_yards": {
    "game": "DEN@SF",
@@ -4591,11 +3766,11 @@
    "stat": "receiving_yards",
    "line": 33.5,
    "pick": "OVER 33.5",
-   "score": 6.9,
+   "score": 6.3,
    "grade": "B",
-   "p_over": 0.75,
-   "proj": 47.6,
-   "line_hits": "7/10",
+   "p_over": 0.83,
+   "proj": 53.4,
+   "line_hits": "2/3",
    "traps": [],
    "sd": 20.6
   },
@@ -4610,13 +3785,13 @@
    "stat": "receiving_yards",
    "line": 64.5,
    "pick": "OVER 64.5",
-   "score": 4.0,
+   "score": 3.2,
    "grade": "D",
    "p_over": 0.52,
-   "proj": 66.5,
-   "line_hits": "7/10",
+   "proj": 65.9,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 33.9
+   "sd": 32.1
   },
   "00-0033106|passing_yards": {
    "game": "DET@CAR",
@@ -4628,14 +3803,14 @@
    "pos": "QB",
    "stat": "passing_yards",
    "line": 258.5,
-   "pick": "OVER 258.5",
-   "score": 5.3,
-   "grade": "C",
-   "p_over": 0.52,
-   "proj": 262.0,
-   "line_hits": "7/10",
+   "pick": "UNDER 258.5",
+   "score": 2.0,
+   "grade": "D",
+   "p_over": 0.44,
+   "proj": 244.9,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 53.8
+   "sd": 48.7
   },
   "00-0033106|rushing_yards": {
    "game": "DET@CAR",
@@ -4648,13 +3823,15 @@
    "stat": "rushing_yards",
    "line": 0.5,
    "pick": "OVER 0.5",
-   "score": 7.6,
-   "grade": "A",
-   "p_over": 0.77,
-   "proj": 5.2,
-   "line_hits": "5/10",
-   "traps": [],
-   "sd": 6.3
+   "score": 3.6,
+   "grade": "D",
+   "p_over": 1.0,
+   "proj": 8.9,
+   "line_hits": "3/3",
+   "traps": [
+    "Line 0.5 vs 5 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "sd": 2.1
   },
   "00-0039139|rushing_yards": {
    "game": "DET@CAR",
@@ -4666,14 +3843,14 @@
    "pos": "RB",
    "stat": "rushing_yards",
    "line": 97.5,
-   "pick": "UNDER 97.5",
-   "score": 3.8,
-   "grade": "D",
-   "p_over": 0.43,
-   "proj": 87.8,
-   "line_hits": "3/10",
+   "pick": "OVER 97.5",
+   "score": 5.4,
+   "grade": "C",
+   "p_over": 0.74,
+   "proj": 125.5,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 56.2
+   "sd": 41.9
   },
   "00-0039139|receiving_yards": {
    "game": "DET@CAR",
@@ -4686,13 +3863,13 @@
    "stat": "receiving_yards",
    "line": 37.5,
    "pick": "OVER 37.5",
-   "score": 5.3,
-   "grade": "C",
-   "p_over": 0.66,
-   "proj": 45.6,
-   "line_hits": "5/10",
+   "score": 6.4,
+   "grade": "B",
+   "p_over": 0.83,
+   "proj": 56.0,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 20.0
+   "sd": 15.5
   },
   "00-0039364|rushing_yards": {
    "game": "DET@CAR",
@@ -4704,16 +3881,14 @@
    "pos": "RB",
    "stat": "rushing_yards",
    "line": 11.5,
-   "pick": "UNDER 11.5",
-   "score": 4.0,
+   "pick": "OVER 11.5",
+   "score": 3.8,
    "grade": "D",
-   "p_over": 0.3,
-   "proj": 6.9,
-   "line_hits": "1/10",
-   "traps": [
-    "Line 11.5 vs 6 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 9.0
+   "p_over": 0.72,
+   "proj": 16.9,
+   "line_hits": "1/3",
+   "traps": [],
+   "sd": 9.1
   },
   "00-0036963|receiving_yards": {
    "game": "DET@CAR",
@@ -4726,13 +3901,13 @@
    "stat": "receiving_yards",
    "line": 78.5,
    "pick": "UNDER 78.5",
-   "score": 3.4,
+   "score": 3.9,
    "grade": "D",
-   "p_over": 0.49,
-   "proj": 77.7,
-   "line_hits": "5/10",
+   "p_over": 0.41,
+   "proj": 66.6,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 53.5
+   "sd": 51.1
   },
   "00-0037240|receiving_yards": {
    "game": "DET@CAR",
@@ -4744,14 +3919,14 @@
    "pos": "WR",
    "stat": "receiving_yards",
    "line": 51.5,
-   "pick": "OVER 51.5",
-   "score": 2.0,
-   "grade": "D",
-   "p_over": 0.55,
-   "proj": 56.2,
-   "line_hits": "5/10",
+   "pick": "UNDER 51.5",
+   "score": 8.0,
+   "grade": "A",
+   "p_over": 0.15,
+   "proj": 37.6,
+   "line_hits": "0/3",
    "traps": [],
-   "sd": 38.5
+   "sd": 6.8
   },
   "00-0040669|receiving_yards": {
    "game": "DET@CAR",
@@ -4764,13 +3939,13 @@
    "stat": "receiving_yards",
    "line": 17.5,
    "pick": "OVER 17.5",
-   "score": 7.1,
-   "grade": "B",
-   "p_over": 0.63,
-   "proj": 25.6,
-   "line_hits": "7/10",
+   "score": 4.5,
+   "grade": "C",
+   "p_over": 0.65,
+   "proj": 28.2,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 23.6
+   "sd": 27.2
   },
   "00-0036754|receiving_yards": {
    "game": "DET@CAR",
@@ -4782,14 +3957,14 @@
    "pos": "TE",
    "stat": "receiving_yards",
    "line": 5.5,
-   "pick": "OVER 5.5",
-   "score": 4.0,
-   "grade": "D",
-   "p_over": 0.61,
-   "proj": 7.9,
-   "line_hits": "6/10",
+   "pick": "UNDER 5.5",
+   "score": 5.4,
+   "grade": "C",
+   "p_over": 0.26,
+   "proj": 3.6,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 8.8
+   "sd": 3.0
   },
   "00-0039065|receiving_yards": {
    "game": "DET@CAR",
@@ -4801,14 +3976,14 @@
    "pos": "TE",
    "stat": "receiving_yards",
    "line": 49.5,
-   "pick": "OVER 49.5",
-   "score": 2.3,
-   "grade": "D",
-   "p_over": 0.5,
-   "proj": 49.3,
-   "line_hits": "5/10",
+   "pick": "UNDER 49.5",
+   "score": 4.6,
+   "grade": "C",
+   "p_over": 0.34,
+   "proj": 43.3,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 21.3
+   "sd": 3.3
   },
   "00-0039150|passing_yards": {
    "game": "DET@CAR",
@@ -4821,13 +3996,13 @@
    "stat": "passing_yards",
    "line": 242.5,
    "pick": "OVER 242.5",
-   "score": 6.6,
-   "grade": "B",
-   "p_over": 0.69,
-   "proj": 294.3,
-   "line_hits": "5/10",
+   "score": 7.8,
+   "grade": "A",
+   "p_over": 0.83,
+   "proj": 366.0,
+   "line_hits": "3/3",
    "traps": [],
-   "sd": 82.5
+   "sd": 33.5
   },
   "00-0039150|rushing_yards": {
    "game": "DET@CAR",
@@ -4839,16 +4014,16 @@
    "pos": "QB",
    "stat": "rushing_yards",
    "line": 12.5,
-   "pick": "OVER 12.5",
-   "score": 1.2,
+   "pick": "UNDER 12.5",
+   "score": 3.6,
    "grade": "D",
-   "p_over": 0.5,
-   "proj": 12.4,
-   "line_hits": "6/10",
+   "p_over": 0.08,
+   "proj": 6.7,
+   "line_hits": "0/3",
    "traps": [
-    "Model likes the over on old usage, but carries fell to 1/game"
+    "Line 12.5 vs 5 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 13.6
+   "sd": 4.1
   },
   "00-0036265|rushing_yards": {
    "game": "DET@CAR",
@@ -4860,14 +4035,14 @@
    "pos": "RB",
    "stat": "rushing_yards",
    "line": 12.5,
-   "pick": "UNDER 12.5",
-   "score": 3.3,
+   "pick": "OVER 12.5",
+   "score": 3.1,
    "grade": "D",
-   "p_over": 0.42,
-   "proj": 10.4,
-   "line_hits": "4/9",
+   "p_over": 0.52,
+   "proj": 13.1,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 11.0
+   "sd": 12.6
   },
   "00-0036555|rushing_yards": {
    "game": "DET@CAR",
@@ -4880,16 +4055,13 @@
    "stat": "rushing_yards",
    "line": 66.5,
    "pick": "UNDER 66.5",
-   "score": 3.7,
+   "score": 4.0,
    "grade": "D",
-   "p_over": 0.14,
-   "proj": 39.3,
-   "line_hits": "2/10",
-   "traps": [
-    "Line 66.5 vs 45 L10 avg \u2014 gap this big usually means the book knows about an injury or role change",
-    "Model likes the under on old usage, but carries rose to 13.7/game"
-   ],
-   "sd": 25.0
+   "p_over": 0.39,
+   "proj": 60.4,
+   "line_hits": "1/3",
+   "traps": [],
+   "sd": 14.9
   },
   "00-0036555|receiving_yards": {
    "game": "DET@CAR",
@@ -4901,33 +4073,14 @@
    "pos": "RB",
    "stat": "receiving_yards",
    "line": 18.5,
-   "pick": "UNDER 18.5",
-   "score": 3.1,
+   "pick": "OVER 18.5",
+   "score": 4.2,
    "grade": "D",
-   "p_over": 0.46,
-   "proj": 17.3,
-   "line_hits": "4/10",
+   "p_over": 0.62,
+   "proj": 21.9,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 12.7
-  },
-  "00-0037614|receiving_yards": {
-   "game": "DET@CAR",
-   "kickoff": "2026-10-04 20:20",
-   "team": "CAR",
-   "opp": "DET",
-   "player": "John Metchie III",
-   "player_id": "00-0037614",
-   "pos": "WR",
-   "stat": "receiving_yards",
-   "line": 21.5,
-   "pick": "OVER 21.5",
-   "score": 2.1,
-   "grade": "D",
-   "p_over": 0.57,
-   "proj": 24.8,
-   "line_hits": "5/10",
-   "traps": [],
-   "sd": 17.7
+   "sd": 11.0
   },
   "00-0038840|receiving_yards": {
    "game": "DET@CAR",
@@ -4940,15 +4093,13 @@
    "stat": "receiving_yards",
    "line": 33.5,
    "pick": "UNDER 33.5",
-   "score": 3.9,
+   "score": 3.0,
    "grade": "D",
-   "p_over": 0.31,
-   "proj": 18.1,
-   "line_hits": "1/10",
-   "traps": [
-    "Line 33.5 vs 16 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 30.3
+   "p_over": 0.49,
+   "proj": 32.3,
+   "line_hits": "1/3",
+   "traps": [],
+   "sd": 39.6
   },
   "00-0039491|receiving_yards": {
    "game": "DET@CAR",
@@ -4961,13 +4112,13 @@
    "stat": "receiving_yards",
    "line": 48.5,
    "pick": "OVER 48.5",
-   "score": 6.3,
-   "grade": "B",
+   "score": 5.4,
+   "grade": "C",
    "p_over": 0.74,
-   "proj": 76.3,
-   "line_hits": "5/10",
+   "proj": 79.9,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 43.3
+   "sd": 49.1
   },
   "00-0040124|receiving_yards": {
    "game": "DET@CAR",
@@ -4980,13 +4131,13 @@
    "stat": "receiving_yards",
    "line": 72.5,
    "pick": "UNDER 72.5",
-   "score": 3.3,
+   "score": 1.7,
    "grade": "D",
-   "p_over": 0.42,
-   "proj": 66.0,
-   "line_hits": "5/10",
+   "p_over": 0.48,
+   "proj": 70.3,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 32.8
+   "sd": 35.6
   },
   "00-0031610|receiving_yards": {
    "game": "DET@CAR",
@@ -5001,11 +4152,11 @@
    "pick": "OVER 37.5",
    "score": 5.0,
    "grade": "C",
-   "p_over": 0.73,
-   "proj": 48.8,
-   "line_hits": "4/10",
+   "p_over": 0.84,
+   "proj": 58.0,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 18.3
+   "sd": 10.0
   },
   "00-0037005|receiving_yards": {
    "game": "DET@CAR",
@@ -5018,13 +4169,13 @@
    "stat": "receiving_yards",
    "line": 13.5,
    "pick": "OVER 13.5",
-   "score": 7.7,
-   "grade": "A",
-   "p_over": 0.87,
-   "proj": 32.2,
-   "line_hits": "5/10",
+   "score": 6.5,
+   "grade": "B",
+   "p_over": 0.93,
+   "proj": 36.3,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 16.5
+   "sd": 15.3
   },
   "00-0040187|receiving_yards": {
    "game": "DET@CAR",
@@ -5037,51 +4188,15 @@
    "stat": "receiving_yards",
    "line": 8.5,
    "pick": "OVER 8.5",
-   "score": 8.2,
-   "grade": "A",
-   "p_over": 0.82,
-   "proj": 19.4,
-   "line_hits": "5/10",
-   "traps": [],
-   "sd": 12.1
-  },
-  "00-0039917|passing_yards": {
-   "game": "ATL@NO",
-   "kickoff": "2026-10-05 20:15",
-   "team": "ATL",
-   "opp": "NO",
-   "player": "Michael Penix Jr.",
-   "player_id": "00-0039917",
-   "pos": "QB",
-   "stat": "passing_yards",
-   "line": 228.5,
-   "pick": "UNDER 228.5",
-   "score": 4.4,
+   "score": 3.6,
    "grade": "D",
-   "p_over": 0.39,
-   "proj": 208.8,
-   "line_hits": "5/10",
-   "traps": [],
-   "sd": 51.9
-  },
-  "00-0039917|rushing_yards": {
-   "game": "ATL@NO",
-   "kickoff": "2026-10-05 20:15",
-   "team": "ATL",
-   "opp": "NO",
-   "player": "Michael Penix Jr.",
-   "player_id": "00-0039917",
-   "pos": "QB",
-   "stat": "rushing_yards",
-   "line": 3.5,
-   "pick": "OVER 3.5",
-   "score": 3.2,
-   "grade": "D",
-   "p_over": 0.55,
-   "proj": 4.4,
-   "line_hits": "6/10",
-   "traps": [],
-   "sd": 7.6
+   "p_over": 0.97,
+   "proj": 30.4,
+   "line_hits": "3/3",
+   "traps": [
+    "Line 8.5 vs 20 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
+   ],
+   "sd": 12.0
   },
   "00-0037746|rushing_yards": {
    "game": "ATL@NO",
@@ -5093,16 +4208,14 @@
    "pos": "RB",
    "stat": "rushing_yards",
    "line": 29.5,
-   "pick": "UNDER 29.5",
-   "score": 1.3,
-   "grade": "D",
-   "p_over": 0.48,
-   "proj": 28.7,
-   "line_hits": "3/10",
-   "traps": [
-    "Model likes the under on old usage, but carries rose to 10/game"
-   ],
-   "sd": 17.7
+   "pick": "OVER 29.5",
+   "score": 8.0,
+   "grade": "A",
+   "p_over": 0.87,
+   "proj": 49.2,
+   "line_hits": "3/3",
+   "traps": [],
+   "sd": 9.1
   },
   "00-0038542|rushing_yards": {
    "game": "ATL@NO",
@@ -5115,13 +4228,13 @@
    "stat": "rushing_yards",
    "line": 89.5,
    "pick": "OVER 89.5",
-   "score": 2.9,
+   "score": 4.3,
    "grade": "D",
-   "p_over": 0.57,
-   "proj": 98.4,
-   "line_hits": "4/10",
+   "p_over": 0.77,
+   "proj": 131.1,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 54.2
+   "sd": 55.8
   },
   "00-0038542|receiving_yards": {
    "game": "ATL@NO",
@@ -5134,13 +4247,13 @@
    "stat": "receiving_yards",
    "line": 36.5,
    "pick": "OVER 36.5",
-   "score": 2.8,
+   "score": 2.0,
    "grade": "D",
-   "p_over": 0.55,
-   "proj": 40.3,
-   "line_hits": "5/10",
+   "p_over": 0.56,
+   "proj": 41.7,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 33.1
+   "sd": 35.5
   },
   "00-0035208|receiving_yards": {
    "game": "ATL@NO",
@@ -5153,13 +4266,13 @@
    "stat": "receiving_yards",
    "line": 8.5,
    "pick": "UNDER 8.5",
-   "score": 4.5,
-   "grade": "D",
-   "p_over": 0.42,
-   "proj": 6.9,
-   "line_hits": "4/10",
+   "score": 6.5,
+   "grade": "B",
+   "p_over": 0.09,
+   "proj": 5.1,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 7.5
+   "sd": 2.5
   },
   "00-0037238|receiving_yards": {
    "game": "ATL@NO",
@@ -5171,14 +4284,14 @@
    "pos": "WR",
    "stat": "receiving_yards",
    "line": 81.5,
-   "pick": "UNDER 81.5",
-   "score": 4.7,
-   "grade": "C",
-   "p_over": 0.41,
-   "proj": 67.2,
-   "line_hits": "4/10",
+   "pick": "OVER 81.5",
+   "score": 1.6,
+   "grade": "D",
+   "p_over": 0.51,
+   "proj": 83.5,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 60.4
+   "sd": 73.9
   },
   "00-0037741|receiving_yards": {
    "game": "ATL@NO",
@@ -5191,36 +4304,13 @@
    "stat": "receiving_yards",
    "line": 18.5,
    "pick": "UNDER 18.5",
-   "score": 4.6,
-   "grade": "C",
-   "p_over": 0.19,
-   "proj": 10.1,
-   "line_hits": "2/10",
-   "traps": [
-    "Line 18.5 vs 12 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 9.6
-  },
-  "00-0032392|receiving_yards": {
-   "game": "ATL@NO",
-   "kickoff": "2026-10-05 20:15",
-   "team": "ATL",
-   "opp": "NO",
-   "player": "Austin Hooper",
-   "player_id": "00-0032392",
-   "pos": "TE",
-   "stat": "receiving_yards",
-   "line": 6.5,
-   "pick": "OVER 6.5",
-   "score": 5.4,
-   "grade": "C",
-   "p_over": 0.84,
-   "proj": 16.7,
-   "line_hits": "7/10",
-   "traps": [
-    "Line 6.5 vs 14 L10 avg \u2014 gap this big usually means the book knows about an injury or role change"
-   ],
-   "sd": 10.3
+   "score": 6.6,
+   "grade": "B",
+   "p_over": 0.06,
+   "proj": 12.0,
+   "line_hits": "1/3",
+   "traps": [],
+   "sd": 3.7
   },
   "00-0036970|receiving_yards": {
    "game": "ATL@NO",
@@ -5232,16 +4322,16 @@
    "pos": "TE",
    "stat": "receiving_yards",
    "line": 31.5,
-   "pick": "OVER 31.5",
-   "score": 2.4,
+   "pick": "UNDER 31.5",
+   "score": 3.6,
    "grade": "D",
-   "p_over": 0.64,
-   "proj": 47.9,
-   "line_hits": "5/10",
+   "p_over": 0.0,
+   "proj": 8.5,
+   "line_hits": "0/3",
    "traps": [
-    "Model likes the over on old usage, but targets fell to 2/game"
+    "Line 31.5 vs 7 L3 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "sd": 46.7
+   "sd": 6.2
   },
   "00-0040743|passing_yards": {
    "game": "ATL@NO",
@@ -5254,13 +4344,13 @@
    "stat": "passing_yards",
    "line": 260.5,
    "pick": "OVER 260.5",
-   "score": 4.1,
+   "score": 3.7,
    "grade": "D",
-   "p_over": 0.66,
-   "proj": 305.7,
-   "line_hits": "4/10",
+   "p_over": 0.72,
+   "proj": 327.6,
+   "line_hits": "1/3",
    "traps": [],
-   "sd": 67.6
+   "sd": 72.8
   },
   "00-0040743|rushing_yards": {
    "game": "ATL@NO",
@@ -5273,89 +4363,13 @@
    "stat": "rushing_yards",
    "line": 17.5,
    "pick": "UNDER 17.5",
-   "score": 3.2,
+   "score": 3.1,
    "grade": "D",
-   "p_over": 0.39,
-   "proj": 13.7,
-   "line_hits": "7/10",
-   "traps": [],
-   "sd": 14.0
-  },
-  "00-0033906|rushing_yards": {
-   "game": "ATL@NO",
-   "kickoff": "2026-10-05 20:15",
-   "team": "NO",
-   "opp": "ATL",
-   "player": "Alvin Kamara",
-   "player_id": "00-0033906",
-   "pos": "RB",
-   "stat": "rushing_yards",
-   "line": 35.5,
-   "pick": "UNDER 35.5",
-   "score": 6.6,
-   "grade": "B",
-   "p_over": 0.27,
-   "proj": 21.7,
-   "line_hits": "3/10",
-   "traps": [],
-   "sd": 22.0
-  },
-  "00-0033906|receiving_yards": {
-   "game": "ATL@NO",
-   "kickoff": "2026-10-05 20:15",
-   "team": "NO",
-   "opp": "ATL",
-   "player": "Alvin Kamara",
-   "player_id": "00-0033906",
-   "pos": "RB",
-   "stat": "receiving_yards",
-   "line": 16.5,
-   "pick": "UNDER 16.5",
-   "score": 6.4,
-   "grade": "B",
    "p_over": 0.34,
-   "proj": 10.9,
-   "line_hits": "4/10",
+   "proj": 12.9,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 13.9
-  },
-  "00-0038551|rushing_yards": {
-   "game": "ATL@NO",
-   "kickoff": "2026-10-05 20:15",
-   "team": "NO",
-   "opp": "ATL",
-   "player": "Kendre Miller",
-   "player_id": "00-0038551",
-   "pos": "RB",
-   "stat": "rushing_yards",
-   "line": 26.5,
-   "pick": "UNDER 26.5",
-   "score": 6.1,
-   "grade": "B",
-   "p_over": 0.28,
-   "proj": 17.2,
-   "line_hits": "4/9",
-   "traps": [],
-   "sd": 16.1
-  },
-  "00-0038551|receiving_yards": {
-   "game": "ATL@NO",
-   "kickoff": "2026-10-05 20:15",
-   "team": "NO",
-   "opp": "ATL",
-   "player": "Kendre Miller",
-   "player_id": "00-0038551",
-   "pos": "RB",
-   "stat": "receiving_yards",
-   "line": 6.5,
-   "pick": "UNDER 6.5",
-   "score": 10.9,
-   "grade": "A",
-   "p_over": 0.2,
-   "proj": 3.0,
-   "line_hits": "3/9",
-   "traps": [],
-   "sd": 4.1
+   "sd": 11.4
   },
   "00-0037239|receiving_yards": {
    "game": "ATL@NO",
@@ -5368,13 +4382,13 @@
    "stat": "receiving_yards",
    "line": 86.5,
    "pick": "OVER 86.5",
-   "score": 7.0,
+   "score": 6.5,
    "grade": "B",
-   "p_over": 0.79,
-   "proj": 120.9,
-   "line_hits": "5/10",
+   "p_over": 0.87,
+   "proj": 143.4,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 43.4
+   "sd": 40.6
   },
   "00-0039424|receiving_yards": {
    "game": "ATL@NO",
@@ -5387,13 +4401,13 @@
    "stat": "receiving_yards",
    "line": 45.5,
    "pick": "OVER 45.5",
-   "score": 5.2,
-   "grade": "C",
-   "p_over": 0.67,
-   "proj": 56.4,
-   "line_hits": "4/10",
+   "score": 6.1,
+   "grade": "B",
+   "p_over": 0.81,
+   "proj": 65.8,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 24.5
+   "sd": 13.2
   },
   "00-0035644|receiving_yards": {
    "game": "ATL@NO",
@@ -5406,13 +4420,13 @@
    "stat": "receiving_yards",
    "line": 15.5,
    "pick": "OVER 15.5",
-   "score": 4.5,
-   "grade": "D",
-   "p_over": 0.61,
-   "proj": 19.7,
-   "line_hits": "4/10",
+   "score": 4.6,
+   "grade": "C",
+   "p_over": 0.66,
+   "proj": 21.8,
+   "line_hits": "2/3",
    "traps": [],
-   "sd": 15.0
+   "sd": 15.6
   },
   "00-0036040|receiving_yards": {
    "game": "ATL@NO",
@@ -5425,13 +4439,13 @@
    "stat": "receiving_yards",
    "line": 47.5,
    "pick": "OVER 47.5",
-   "score": 10.2,
-   "grade": "A",
-   "p_over": 0.76,
-   "proj": 63.1,
-   "line_hits": "6/10",
+   "score": 6.4,
+   "grade": "B",
+   "p_over": 0.69,
+   "proj": 57.2,
+   "line_hits": "3/3",
    "traps": [],
-   "sd": 18.4
+   "sd": 5.9
   }
  }
 }
