@@ -154,6 +154,14 @@ CURRENT_SEASON_WEIGHT = 1.5   # a game from this season counts this many times a
 RECENCY_DECAY = 0.95          # each game further back counts this much of the one after it
 OTHER_TEAM_WEIGHT = 0.6       # games played for a former team (trades, free agency)
 
+# 2026 tune-up (fit on Wks 1-5, checked on Wks 6-8). Yardage is right-skewed: a few big games pull
+# the average up, but books set lines near a typical (median) game, so an average-based projection
+# leaned over. Rush/rec overs hit only ~45-48% of lines. Shrink those projections toward the median.
+PROJ_SCALE = {"passing_yards": 1.0, "rushing_yards": 0.85, "receiving_yards": 0.90}
+HIT_RATE_BONUS = 0.15         # score boost when >=70% of (weighted) recent games landed on our side
+BIG_DOG_SPREAD = 6.5          # team getting this many points or more = likely trailing
+GARBAGE_TIME_CUT = 0.10       # pass/rec overs on big underdogs: 2026 garbage-time TDs run ~17% below normal
+
 
 def game_weights(hist: pd.DataFrame, season: int, team: str | None = None) -> np.ndarray:
     """Weight for each row of a player's (or defense's) history, oldest first; sums to 1."""
@@ -575,6 +583,9 @@ def build_week(args, stats, sched, season):
     for g in games.itertuples():
         for team, opp in ((g.away_team, g.home_team), (g.home_team, g.away_team)):
             factors_by_pos = {pos: matchup_factors(allowed, opp, pos) for pos in POSITIONS}
+            # points this team is favored by (negative = underdog); nflverse spread is home-team based
+            spread = g.spread_line if pd.notna(g.spread_line) else None
+            spread_team = None if spread is None else (spread if team == g.home_team else -spread)
             for pos in POSITIONS:
                 players = last_row[(last_row["team"] == team) & (last_row["position"] == pos)]
                 for pr in players.itertuples():
@@ -595,12 +606,13 @@ def build_week(args, stats, sched, season):
                                              (pos == "QB" and hist["attempts"].tail(3).mean() < 15)):
                             continue
                         _, _, factor, rank = factors_by_pos[pos].get(stat, (0, 0, 1.0, 0))
-                        proj = avg * factor
+                        proj = avg * factor * PROJ_SCALE[stat]
                         row = {"game": f"{g.away_team}@{g.home_team}", "kickoff": f"{g.gameday} {g.gametime}",
                                "team": team, "opp": opp, "player": pr.player_display_name, "player_id": pr.player_id, "pos": pos,
                                "stat": stat, "n": len(vals), "L10_avg": round(avg, 1),
                                "L10_med": round(vals.median(), 1), "def_rank": rank,
                                "matchup_pct": int(round((factor - 1) * 100)), "proj": round(proj, 1),
+                               "spread_team": spread_team,
                                # only meaningful in-season (a week-1 player's last game was last year)
                                "missed_last_game": pr.season == season and pr.game_id != team_last_game.get(team),
                                "last10": " ".join(f"{v:g}" for v in vals)}
@@ -742,6 +754,12 @@ def analyze_row(row: dict, vals: list, lines_expected: bool, weights=None):
         recent = vals[-3:]
         trend = sum((v > line) if over else (v < line) for v in recent) / len(recent)
         score = 10 * (0.45 * min(max((conf - 0.5) / 0.35, 0), 1) + 0.35 * side_hits + 0.20 * trend)
+        # 2026 trends: props that keep landing on our side hit ~60%; big-underdog pass/rec overs fade late
+        if side_hits >= 0.7:
+            score *= 1 + HIT_RATE_BONUS
+        big_dog = row.get("spread_team") is not None and row["spread_team"] <= -BIG_DOG_SPREAD
+        if over and big_dog and row["stat"] in ("passing_yards", "receiving_yards"):
+            score *= 1 - GARBAGE_TIME_CUT
 
         # Trap checks: reasons the attractive-looking side may be a setup
         traps = []
@@ -1186,8 +1204,8 @@ Payouts assume -110 per leg; hit chance discounts the model's confidence by abou
 
 <h2 id="bank">Paper bankroll — Claude's picks</h2>
 <div class="sub" style="margin-bottom:10px">Fake money, real tracking. Started with $1,000 in week 1*. Each week Claude bets the bankroll as it stood at the start of
-the week, split evenly: <b>half in straight bets</b> on the top ~25 props across all games (weighted by rating; the strongest overs
-are split between the posted line, a safer alt line and a plus-money alt line) and <b>half in parlays</b> across different games,
+the week: <b>90% in straight bets</b> on the top ~25 props across all games (weighted by rating; the strongest overs
+are split between the posted line, a safer alt line and a plus-money alt line) and <b>10% in parlays</b> across different games,
 with rotating legs (four 2-leg, three 3-leg and two 4-leg combos) so one missed pick can't sink them all.
 Each game is bet in the 3 hours before kickoff, and finished games settle right away from ESPN box scores. Bets are graded against final box scores;
 a player who doesn't play voids the leg. Main lines assume -110. Alt-line odds are estimates, marked "est".</div>
@@ -1492,6 +1510,10 @@ function renderBank() {
       <div class="l">Win % · legs ${s.legs_won}-${s.legs_lost}${legPct == null ? "" : " (" + Math.round(legPct * 100) + "%)"}</div></div>
     <div class="stat"><div class="v">${s.wins}-${s.losses}${s.voids ? "-" + s.voids : ""}</div><div class="l">Record · ROI ${roi}</div></div>
     <div class="stat"><div class="v">${money(s.at_risk)}</div><div class="l">Open bets</div></div>${liveTile()}`;
+  const wi = BANK.whatif;
+  const whatif = wi && wi.weeks.length ? `<div class="pmeta" style="margin-top:8px">What-if: today's model with today's betting rules,
+    replayed on weeks ${wi.weeks[0].week}–${wi.weeks[wi.weeks.length - 1].week}'s real lines, would have <b>${money(wi.balance)}</b> from ${money(wi.start)}
+    (${wi.weeks.map(w => `Wk ${w.week} ${money(w.end)}`).join(" · ")}). The table below is the paper bets actually placed.</div>` : "";
   let chart = "";
   if (s.history.length) {
     const pts = [s.start].concat(s.history.map(h => h.balance)), W = 600, H = 120;
@@ -1535,7 +1557,7 @@ function renderBank() {
       <div style="overflow-x:auto"><table style="min-width:760px"><thead><tr><th>Game</th><th>Bet</th><th>Type</th><th>Stake</th><th>Odds</th><th>Result</th><th>P/L</th></tr></thead>
       <tbody>${wb.map(betRow).join("")}</tbody></table></div></details>`;
   }).join("");
-  document.getElementById("bankpanel").innerHTML = chart + (bets.length
+  document.getElementById("bankpanel").innerHTML = whatif + chart + (bets.length
     ? `<div style="overflow-x:auto"><table style="min-width:720px"><thead><tr><th>Week</th><th>Start</th><th>Bet</th><th>Straights</th>
         <th>Parlays</th><th>Specials</th><th>Week P/L</th><th>End</th></tr></thead><tbody>${summary}</tbody></table></div>${detail}`
     : `<div class="empty">No bets yet.</div>`) + (bets.some(b => b.backtest)
@@ -2333,7 +2355,7 @@ def _stake_prop(r: dict, amt: float) -> list:
 
 
 WEEKLY_BUDGET = 1000
-PARLAY_SHARE = 0.50  # of the weekly budget: even split, parlays as rotating cross-game combos
+PARLAY_SHARE = 0.10  # of the weekly budget, as rotating cross-game combos (was 0.50; parlays swung the bank on luck)
 
 
 def plan_week(pool: list, remaining: float, top_n: int = 25, player_cap: float | None = None) -> tuple:
@@ -3681,6 +3703,10 @@ def cmd_week(args, stats, sched, season):
         live["grades"] = grade_tracker(Path(args.snapshot_dir or "data/snapshots"), season, week, live["props"],
                                        stats, sched, (lg, box))
         bank["live"] = live_bets([b for b in bank["bets"] if b["result"] == "pending"], lg, box)
+        # what-if: the current model + staking rules replayed on earlier weeks' real lines (data/rerated)
+        rerated = Path(args.snapshot_dir or "data/snapshots").parent / "rerated"
+        if rerated.exists():
+            bank["whatif"] = simulate_bankroll(rerated, season, week - 1, stats, sched, None)
         write_html(week, games, rows, source, args, html_path, refresh_secs=refresh, bank=bank, live=live,
                    feature=feature_player(stats, rows, season), splits=splits)
         if args.html:  # shareable Top 5 page next to the dashboard
