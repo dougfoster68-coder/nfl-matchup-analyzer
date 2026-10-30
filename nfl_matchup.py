@@ -943,15 +943,11 @@ body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 Inter,sy
 @keyframes spSpin { to { transform:rotate(40deg) } }
 @keyframes spOut { to { opacity:0; transform:scale(1.15); visibility:hidden } }
 @media (prefers-reduced-motion: reduce) { #splash * { animation:none !important } }
-.fresh-btn { display:inline-flex; align-items:baseline; gap:2px; margin:14px 0 4px; padding:10px 22px 12px; border-radius:14px; cursor:pointer;
-  background:linear-gradient(135deg,#ffffff,#dfe5e9 55%,#b0b7bc); border:3px solid #fff; color:#003a5c;
-  box-shadow:0 0 0 3px #0076b6, 0 8px 22px rgba(0,30,50,.45); transform:skewX(-8deg); transition:transform .15s, box-shadow .15s }
-.fresh-btn:hover { transform:skewX(-8deg) translateY(-2px) scale(1.03); box-shadow:0 0 0 3px #0076b6, 0 0 28px rgba(255,255,255,.7) }
-.fresh-btn:active { transform:skewX(-8deg) scale(.97) }
-.fresh-btn .hr { font:800 18px/1 "Barlow Condensed",sans-serif; letter-spacing:.06em; text-transform:uppercase; opacity:.75 }
-.fresh-btn .fr { font:900 34px/1 "Barlow Condensed",sans-serif; font-style:italic; letter-spacing:.04em; color:#0076b6;
-  text-shadow:0 2px 0 #fff, 0 0 14px rgba(0,118,182,.45); animation:freshPulse 2.4s ease-in-out infinite }
-@keyframes freshPulse { 0%,100% { text-shadow:0 2px 0 #fff, 0 0 10px rgba(0,118,182,.35) } 50% { text-shadow:0 2px 0 #fff, 0 0 22px rgba(0,118,182,.8) } }
+.fresh-btn { display:inline-flex; align-items:baseline; gap:1px; margin:10px 0 2px; padding:4px 11px; border-radius:99px; cursor:pointer;
+  background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.35); color:#d6ebf8; transition:background .15s }
+.fresh-btn:hover { background:rgba(255,255,255,.22) }
+.fresh-btn .hr { font:600 12px/1 Inter,sans-serif; letter-spacing:.03em }
+.fresh-btn .fr { font:800 14px/1 "Barlow Condensed",sans-serif; font-style:italic; letter-spacing:.05em; color:#fff }
 .tabs { position:sticky; top:0; z-index:40; background:linear-gradient(180deg,#0076b6,#005a8c);
   border-bottom:3px solid var(--silver); box-shadow:0 6px 18px rgba(0,40,70,.28) }
 .tabs-in { display:flex; gap:6px; overflow-x:auto; padding-top:8px; padding-bottom:8px; scrollbar-width:none }
