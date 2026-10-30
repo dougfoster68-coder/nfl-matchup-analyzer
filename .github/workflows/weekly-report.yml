@@ -12,7 +12,7 @@ on:
         required: false
 
 permissions:
-  contents: read
+  contents: write   # retune commits model_params.json (main) and re-rated weeks (data branch)
   issues: write
 
 jobs:
@@ -40,6 +40,28 @@ jobs:
             ${{ github.event.inputs.week && format('--week {0}', github.event.inputs.week) || '' }} | tee out.txt
           echo "title=$(grep '^TITLE=' out.txt | cut -d= -f2-)" >> "$GITHUB_OUTPUT"
 
+      # Re-fit the model settings on every finished week; switch only if they also win on the 3 newest weeks
+      - name: Retune model
+        run: python nfl_matchup.py retune --snapshot-dir data/snapshots --markdown retune.md
+
+      - name: Save retune
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet -- model_params.json || [ -n "$(git status --porcelain model_params.json)" ]; then
+            git add model_params.json
+            git commit -m "Weekly retune $(TZ=America/New_York date '+%a %b %d')"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+          cd data
+          git add -A rerated walkforward
+          if ! git diff --cached --quiet; then
+            git commit -q -m "Retune backtests $(TZ=America/New_York date '+%a %b %d')"
+            git pull -q --rebase origin data
+            git push origin HEAD:data
+          fi
+
       - name: Post as issue
         if: steps.build.outputs.title != ''
         env:
@@ -50,6 +72,7 @@ jobs:
             echo "📊 Full report card: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/reports/"
             echo
             cat report.md
+            if [ -f retune.md ]; then echo; cat retune.md; fi
           } > body.md
           num=$(gh issue list --state all --search "\"$TITLE\" in:title" --json number,title \
                 -q ".[] | select(.title == env.TITLE) | .number" | head -1)

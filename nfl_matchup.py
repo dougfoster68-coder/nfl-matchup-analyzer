@@ -19,6 +19,7 @@ Examples:
 
 import argparse
 import difflib
+import json
 import math
 import os
 import sys
@@ -154,13 +155,29 @@ CURRENT_SEASON_WEIGHT = 1.5   # a game from this season counts this many times a
 RECENCY_DECAY = 0.95          # each game further back counts this much of the one after it
 OTHER_TEAM_WEIGHT = 0.6       # games played for a former team (trades, free agency)
 
-# 2026 tune-up (fit on Wks 1-5, checked on Wks 6-8). Yardage is right-skewed: a few big games pull
-# the average up, but books set lines near a typical (median) game, so an average-based projection
-# leaned over. Rush/rec overs hit only ~45-48% of lines. Shrink those projections toward the median.
-PROJ_SCALE = {"passing_yards": 1.0, "rushing_yards": 0.85, "receiving_yards": 0.90}
-HIT_RATE_BONUS = 0.15         # score boost when >=70% of (weighted) recent games landed on our side
+# Tunable model settings. Yardage is right-skewed: a few big games pull the average up, but books set
+# lines near a typical (median) game, so an average-based projection leans over; proj_scale shrinks it.
+# hit_rate_bonus: score boost when >=70% of (weighted) recent games landed on our side.
+# garbage_time_cut: pass/rec overs on big underdogs (2026 garbage-time TDs run ~17% below normal).
+# The Tuesday `retune` job rewrites model_params.json; these are the fallbacks.
+DEFAULT_PARAMS = {"proj_scale": {"passing_yards": 1.0, "rushing_yards": 0.85, "receiving_yards": 0.90},
+                  "hit_rate_bonus": 0.15, "garbage_time_cut": 0.10}
+# the model as it stood before any tuning (walk-forward backtests start week 1 here)
+UNTUNED_PARAMS = {"proj_scale": {"passing_yards": 1.0, "rushing_yards": 1.0, "receiving_yards": 1.0},
+                  "hit_rate_bonus": 0.0, "garbage_time_cut": 0.0}
+PARAMS_FILE = Path(__file__).parent / "model_params.json"
 BIG_DOG_SPREAD = 6.5          # team getting this many points or more = likely trailing
-GARBAGE_TIME_CUT = 0.10       # pass/rec overs on big underdogs: 2026 garbage-time TDs run ~17% below normal
+
+
+def load_params() -> dict:
+    try:
+        saved = json.loads(PARAMS_FILE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return dict(DEFAULT_PARAMS)
+    return {k: saved.get(k, v) for k, v in DEFAULT_PARAMS.items()}
+
+
+MODEL_PARAMS = load_params()
 
 
 def game_weights(hist: pd.DataFrame, season: int, team: str | None = None) -> np.ndarray:
@@ -566,6 +583,10 @@ def build_week(args, stats, sched, season):
         main_by_id, miles_by_id = fetch_espn_props(season, week, args.refresh,
                                                    finished=getattr(args, "backtest", False))
         source = f"DraftKings via ESPN ({len(main_by_id)} yardage lines)"
+    if getattr(args, "main_lines", None) is not None:  # retune: the lines we actually rated pre-kickoff
+        main_by_id, miles_by_id, name_lines = args.main_lines, {}, {}
+        source = "saved pre-kickoff lines"
+    params = getattr(args, "params", None) or MODEL_PARAMS
 
     allowed = defense_allowed(stats, args.games, season)
     ordered = stats.sort_values("game_order")
@@ -606,7 +627,7 @@ def build_week(args, stats, sched, season):
                                              (pos == "QB" and hist["attempts"].tail(3).mean() < 15)):
                             continue
                         _, _, factor, rank = factors_by_pos[pos].get(stat, (0, 0, 1.0, 0))
-                        proj = avg * factor * PROJ_SCALE[stat]
+                        proj = avg * factor * params["proj_scale"][stat]
                         row = {"game": f"{g.away_team}@{g.home_team}", "kickoff": f"{g.gameday} {g.gametime}",
                                "team": team, "opp": opp, "player": pr.player_display_name, "player_id": pr.player_id, "pos": pos,
                                "stat": stat, "n": len(vals), "L10_avg": round(avg, 1),
@@ -646,7 +667,9 @@ def build_week(args, stats, sched, season):
                                     "usage_l3": round(usage.tail(3).mean(), 1),
                                     "usage_l10": round(usage.mean(), 1)})
                         lines_expected = bool(main_by_id) and avg >= min_avg * 1.5
-                        notes, rating = analyze_row(row, list(vals), lines_expected, w)
+                        notes, rating = analyze_row(row, list(vals), lines_expected, w, params)
+                        if getattr(args, "keep_hist", False):  # retune re-rates these with other settings
+                            row.update(proj_base=avg * factor, hist_vals=list(vals), hist_w=list(w))
                         row["notes"] = notes
                         row.update(rating)
                         rows.append(row)
@@ -657,7 +680,7 @@ USAGE_STAT = {"passing_yards": "attempts", "rushing_yards": "carries", "receivin
 POS_GROUP = {"passing_yards": "QBs", "rushing_yards": "the run", "receiving_yards": None}
 
 
-def analyze_row(row: dict, vals: list, lines_expected: bool, weights=None):
+def analyze_row(row: dict, vals: list, lines_expected: bool, weights=None, params=None):
     """Scan a player's last-N games for things that stand out, and rate the prop.
     Returns (notes, rating) where notes = [{"t": text, "k": good|bad|info}]
     (written from the OVER bettor's point of view) and rating holds pick/score/grade."""
@@ -755,11 +778,14 @@ def analyze_row(row: dict, vals: list, lines_expected: bool, weights=None):
         trend = sum((v > line) if over else (v < line) for v in recent) / len(recent)
         score = 10 * (0.45 * min(max((conf - 0.5) / 0.35, 0), 1) + 0.35 * side_hits + 0.20 * trend)
         # 2026 trends: props that keep landing on our side hit ~60%; big-underdog pass/rec overs fade late
-        if side_hits >= 0.7:
-            score *= 1 + HIT_RATE_BONUS
+        params = params or MODEL_PARAMS
+        hot = side_hits >= 0.7
         big_dog = row.get("spread_team") is not None and row["spread_team"] <= -BIG_DOG_SPREAD
-        if over and big_dog and row["stat"] in ("passing_yards", "receiving_yards"):
-            score *= 1 - GARBAGE_TIME_CUT
+        dog_over = over and big_dog and row["stat"] in ("passing_yards", "receiving_yards")
+        if hot:
+            score *= 1 + params["hit_rate_bonus"]
+        if dog_over:
+            score *= 1 - params["garbage_time_cut"]
 
         # Trap checks: reasons the attractive-looking side may be a setup
         traps = []
@@ -776,32 +802,12 @@ def analyze_row(row: dict, vals: list, lines_expected: bool, weights=None):
         if not over and u10 >= 2 and u3 >= u10 * 1.3 and u3 - u10 >= 2:
             traps.append(f"Model likes the under on old usage, but {uname} rose to {u3:g}/game")
             score *= 0.75
-        opened = row.get("open")
-        moved = None if opened is None or pd.isna(opened) else line - opened
         if n < 6:
             score *= 0.8
 
-        # Contrarian angles (proxy: no free public-betting % feed, so use line movement and the
-        # well-known public lean toward overs on popular players)
-        popular = line >= {"passing_yards": 240, "rushing_yards": 60, "receiving_yards": 60}[row["stat"]]
-        contrarian = ""
-        if moved is not None and moved >= 3 and not over:
-            contrarian = (f"Fade the public: line climbed {opened:g} → {line:g} on over money, "
-                          f"but the model projects {row['proj']:g}")
-        elif moved is not None and moved <= -3 and not over and popular:
-            contrarian = (f"Sharp-side under: line dropped {opened:g} → {line:g} on a popular player "
-                          "despite the public's over lean, and the model agrees")
-        elif moved is not None and moved <= -3 and over and conf >= 0.6:
-            contrarian = (f"Buy low: market dropped this {opened:g} → {line:g}, "
-                          f"model still projects {row['proj']:g}")
-        elif popular and not over and conf >= 0.58:
-            contrarian = "Star under: the public rarely bets against popular players — model sides under"
-        if traps or score < 4.5:
-            contrarian = ""  # only surface contrarian angles that are playable
-
         grade = "A" if score >= 7.5 else "B" if score >= 6 else "C" if score >= 4.5 else "D"
         rating = {"pick": f"{'OVER' if over else 'UNDER'} {line:g}", "score": round(score, 1),
-                  "grade": grade, "traps": traps, "contrarian": contrarian,
+                  "grade": grade, "traps": traps, "hot": hot, "dog_over": dog_over,
                   # a trap is worth flagging when the bad side still looks tempting on the surface
                   "trap_alert": bool(traps) and max(line, avg) >= 15 and (
                       row["line_hit_rate"] >= 0.7 or row["line_hit_rate"] <= 0.3 or conf >= 0.7)}
@@ -899,6 +905,59 @@ PAGE_TEMPLATE = r"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 Inter,system-ui,-apple-system,"Segoe UI",sans-serif }
 .cond { font-family:"Barlow Condensed",Inter,system-ui,sans-serif }
 .wrap { max-width:1240px; margin:0 auto; padding:0 16px }
+.tabs { position:sticky; top:0; z-index:40; background:linear-gradient(180deg,#0076b6,#005a8c);
+  border-bottom:3px solid var(--silver); box-shadow:0 6px 18px rgba(0,40,70,.28) }
+.tabs-in { display:flex; gap:6px; overflow-x:auto; padding-top:8px; padding-bottom:8px; scrollbar-width:none }
+.tabs-in::-webkit-scrollbar { display:none }
+.tabs button { flex:none; border:0; cursor:pointer; padding:9px 16px; border-radius:99px; background:rgba(255,255,255,.12); color:#e6f3fb;
+  font:800 17px/1 "Barlow Condensed",sans-serif; letter-spacing:.05em; text-transform:uppercase; transition:background .15s, transform .15s }
+.tabs button:hover { background:rgba(255,255,255,.24); transform:translateY(-1px) }
+.tabs button.on { background:#fff; color:#0076b6; box-shadow:0 0 0 2px var(--silver), 0 4px 12px rgba(0,0,0,.25) }
+.tabpane:not(.on) { display:none }
+.tabpane.on { animation:paneIn .25s ease }
+@keyframes paneIn { from { opacity:0; transform:translateY(6px) } to { opacity:1; transform:none } }
+.pound { position:relative; overflow:hidden; margin:26px 0 8px; padding:22px 18px 18px; border-radius:18px; color:#fff;
+  background:radial-gradient(120% 140% at 0% 0%,#1a9be0 0%,#0076b6 38%,#00476f 72%,#02223a 100%);
+  border:3px solid var(--silver); box-shadow:0 18px 40px rgba(0,58,92,.35), inset 0 1px 0 rgba(255,255,255,.35) }
+.pound::before { position:absolute; inset:0; pointer-events:none; opacity:.07; font-size:46px; letter-spacing:38px;
+  line-height:74px; word-break:break-all; transform:rotate(-14deg) scale(1.5); content:"🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾" }
+.pound::after { content:""; position:absolute; top:0; bottom:0; width:40%; left:-60%; pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.16),transparent); animation:shine 5.5s ease-in-out infinite }
+@keyframes shine { 0%,55% { left:-60% } 100% { left:130% } }
+.pound-hd { position:relative; z-index:1; display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 14px; margin-bottom:14px }
+.pound-title { font-weight:800; font-size:44px; line-height:1; letter-spacing:.02em; text-transform:uppercase; font-style:italic;
+  background:linear-gradient(180deg,#fff 0%,#e9eef1 45%,#b0b7bc 55%,#fff 100%); -webkit-background-clip:text; background-clip:text;
+  color:transparent; filter:drop-shadow(0 3px 0 rgba(0,30,50,.55)) }
+.pound-sub { color:#d6ebf8; font-weight:500 }
+.pound-grid { position:relative; z-index:1; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px }
+.dog { position:relative; background:linear-gradient(160deg,rgba(255,255,255,.16),rgba(255,255,255,.05)); border-radius:14px;
+  border:1px solid rgba(255,255,255,.28); padding:14px; backdrop-filter:blur(3px); transition:transform .2s, box-shadow .2s }
+.dog:hover { transform:translateY(-4px) rotate(-.4deg); box-shadow:0 14px 28px rgba(0,20,40,.45) }
+.dog.win { box-shadow:0 0 0 2px #5dff9d, 0 0 26px rgba(93,255,157,.45) }
+.dog-top { display:flex; align-items:center; gap:12px }
+.dog-av { flex:none; width:64px; height:64px; border-radius:50%; display:grid; place-items:center; font-size:36px;
+  background:radial-gradient(circle at 35% 30%,#fff,#dfe5e9 60%,#9aa3a9); border:3px solid #fff;
+  box-shadow:0 0 0 3px #0076b6, 0 6px 14px rgba(0,0,0,.35); animation:wag 3.4s ease-in-out infinite }
+.dog:nth-child(2) .dog-av { animation-delay:.6s } .dog:nth-child(3) .dog-av { animation-delay:1.2s }
+@keyframes wag { 0%,80%,100% { transform:rotate(0) } 85% { transform:rotate(-9deg) } 90% { transform:rotate(8deg) } 95% { transform:rotate(-4deg) } }
+.dog-name { font:800 30px/1 "Barlow Condensed",sans-serif; text-transform:uppercase; letter-spacing:.03em }
+.dog-title { font:700 12px/1.2 Inter,sans-serif; letter-spacing:.12em; text-transform:uppercase; color:#b9e2fb }
+.dog-rec { margin-left:auto; text-align:right; font:800 26px/1 "Barlow Condensed",sans-serif }
+.dog-rec small { display:block; font:600 10px/1.4 Inter,sans-serif; letter-spacing:.1em; color:#b9e2fb }
+.dog-how { margin:10px 0 8px; font-size:12px; color:#d6ebf8 }
+.dog-pick { background:rgba(2,24,40,.55); border-radius:10px; padding:9px 11px; margin-top:6px; border-left:4px solid var(--silver) }
+.dog-pick b.big { font:800 22px/1.05 "Barlow Condensed",sans-serif; letter-spacing:.02em }
+.dog-pick .meta { font-size:12px; color:#bcd4e4 }
+.dog-badge { display:inline-block; margin-top:9px; padding:3px 10px; border-radius:99px; font:800 12px/1.4 Inter,sans-serif;
+  letter-spacing:.08em; text-transform:uppercase; background:rgba(255,255,255,.18) }
+.dog-badge.win { background:#5dff9d; color:#043b1f } .dog-badge.loss { background:rgba(255,255,255,.12); color:#c9d3da; text-decoration:line-through }
+.dog-badge.pending { background:#fff; color:#0076b6 }
+.pound-weeks { position:relative; z-index:1; margin-top:12px; font-size:12px; color:#d6ebf8; overflow-x:auto }
+.pound-weeks table { border-collapse:collapse; min-width:520px; width:100% }
+.pound-weeks td, .pound-weeks th { padding:5px 8px; border-top:1px solid rgba(255,255,255,.15); text-align:left; font-weight:500 }
+.pound-weeks th { font:700 11px/1.2 Inter,sans-serif; letter-spacing:.1em; text-transform:uppercase; color:#b9e2fb; border-top:0 }
+.pw-win { color:#5dff9d; font-weight:800 } .pw-loss { color:#9fb3c1 } .pw-pending { color:#fff; font-weight:700 }
+@media (max-width:600px) { .pound-title { font-size:34px } .dog-name { font-size:26px } }
 .hero { background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dk) 100%); color:#fff;
   border-bottom:4px solid var(--silver) }
 .hero .wrap { padding-top:22px; padding-bottom:18px; position:relative; z-index:1 }
@@ -927,7 +986,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 Inter,sy
 .ticker.special .tk { animation-duration:45s }
 .ticker.special.primetime, .ticker.special.primetime-longshot { background:#0d1a2b; border-bottom-color:#f2c35c }
 .ticker.special.primetime .tlabel, .ticker.special.primetime-longshot .tlabel { background:#b8860b }
-.ticker.special.contrarian-longshot .tlabel, .ticker.special.primetime-longshot .tlabel { background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.14) 0 6px,transparent 6px 12px) } .ticker .won { color:#7dffb1 } .ticker .lost { color:#ffa59b; text-decoration:line-through }
+.ticker.special.primetime-longshot .tlabel { background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.14) 0 6px,transparent 6px 12px) } .ticker .won { color:#7dffb1 } .ticker .lost { color:#ffa59b; text-decoration:line-through }
 .tag-special { background:var(--con-bg); color:var(--con) }
 .ticker .tk { display:inline-block; padding-left:100%; animation:tick 70s linear infinite }
 @media (hover: hover) and (pointer: fine) { .ticker:hover .tk { animation-play-state:paused } }
@@ -1094,9 +1153,6 @@ h2::before { content:""; width:6px; height:22px; background:var(--blue); border-
 .res-pending { background:var(--info-bg); color:var(--info) } .res-void, .res-push { background:var(--soft); color:var(--mute) }
 .tag { font-size:10.5px; font-weight:700; letter-spacing:.04em; padding:1px 6px; border-radius:5px; margin-left:4px; vertical-align:1px }
 .tag-trap { background:var(--warn-bg); color:var(--warn) } .tag-con { background:var(--con-bg); color:var(--con) }
-.k-con { background:var(--con-bg); color:var(--con) }
-.duo { display:grid; grid-template-columns:repeat(auto-fit,minmax(380px,1fr)); gap:14px }
-@media (max-width:420px) { .duo { grid-template-columns:1fr } }
 .panel { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:4px 14px 8px }
 .panel h3 { font-size:15px; margin:12px 0 2px }
 .panel .why { color:var(--mute); font-size:12px; margin-bottom:6px }
@@ -1147,14 +1203,23 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 </div></header>
 <div class="ticker" aria-label="Tids Ticker: top rated plays"><span class="tlabel">Tids Ticker</span><div class="tscroll"><div class="tk" id="ticker"></div></div></div>
 <div id="specials"></div>
+<nav class="tabs" id="tabs" aria-label="Sections"><div class="wrap tabs-in">
+  <button data-tab="picks">🏠 Home</button><button data-tab="matchups">🏈 Matchups</button>
+  <button data-tab="live">📡 Live</button><button data-tab="research">🔎 Research</button></div></nav>
 <div class="wrap">
+<div class="tabpane" data-tab="picks">
 <h2>Tids' Top 5</h2>
 <div class="lead">The highest-rated plays on the board right now — no traps, one prop per player.
   <a href="top5/" style="font-weight:700">Share the Top 5 →</a></div>
 <section class="top5" id="top5"></section>
+  <div class="legend"><span><span class="g gA">A</span> strong</span><span><span class="g gB">B</span> good</span>
+  <span><span class="g gC">C</span> lean</span><span><span class="g gD">D</span> pass</span>
+  <span>Rating = model projection vs line + hit rate + last 3 games, penalized for injury/role red flags.</span></div>
 
   <section id="gradetrack" hidden><h2>Grade tracker</h2><div class="lead" id="gtlead"></div>
     <div class="gtrack" id="gtrack"></div></section>
+</div>
+<div class="tabpane" data-tab="matchups">
 <h2>Parlay builder</h2>
 <div class="lead"><span class="tag tag-con" style="margin-left:0">SUGGESTIONS ONLY · not in the paper bankroll</span>
 <a href="parlays/" style="font-weight:700">Share the parlays →</a> · Rebuilt every refresh from A/B-rated, trap-free props. Each rung adds the next-best leg.
@@ -1169,13 +1234,12 @@ Payouts assume -110 per leg; hit chance discounts the model's confidence by abou
   <span class="op-sub"><span id="slipcount">0 legs</span> · tap <b>+</b> on any prop · hypothetical, live lines</span>
   <span class="op-btn"><span class="op-show">Tap to open</span><span class="op-hide">Close</span> <span class="chev">▾</span></span></summary>
   <section id="slip" aria-label="Hypothetical parlay slip"></section></details>
+</div>
+<div class="tabpane" data-tab="live">
 
   <section id="livebets" hidden><h2>Paper bets — live</h2><div class="lead" id="livebetsum"></div>
     <div id="latechanges"></div>
     <div class="lres" id="livebetlist"></div></section>
-  <div class="legend"><span><span class="g gA">A</span> strong</span><span><span class="g gB">B</span> good</span>
-  <span><span class="g gC">C</span> lean</span><span><span class="g gD">D</span> pass</span>
-  <span>Rating = model projection vs line + hit rate + last 3 games, penalized for injury/role red flags.</span></div>
 
 
 
@@ -1185,16 +1249,12 @@ Payouts assume -110 per leg; hit chance discounts the model's confidence by abou
 
 
 
-<h2>Trap alerts &amp; contrarian plays</h2>
-<div class="duo">
-  <section class="panel"><h3>⚠ Trap alerts</h3>
-    <div class="why">Props that look tempting on the surface (high hit rate or big model edge) but carry a red flag.</div>
-    <div id="traps"></div></section>
-  <section class="panel"><h3>↔ Contrarian plays</h3>
-    <div class="why">Going against public money. Sportsbooks don't publish bet splits for player props, so this reads prop
-    line movement and the public's lean toward overs on popular players. Real game-line splits are in the panel below.</div>
-    <div id="contra"></div></section>
 </div>
+<div class="tabpane" data-tab="research">
+<h2>Trap alerts</h2>
+<section class="panel"><h3>⚠ Trap alerts</h3>
+  <div class="why">Props that look tempting on the surface (high hit rate or big model edge) but carry a red flag.</div>
+  <div id="traps"></div></section>
 
 <section class="panel" style="margin-top:14px"><h3>💰 Sharp money vs the public, game lines</h3>
   <div class="why">Real splits from ScoresAndOdds, pooled across sportsbooks. A <b>sharp lean</b> means a side has 10+ points more of
@@ -1202,6 +1262,17 @@ Payouts assume -110 per leg; hit chance discounts the model's confidence by abou
   line movement) means the line moved toward that side even though most tickets are on the other side.</div>
   <div id="sharp"></div></section>
 
+</div>
+<div class="tabpane" data-tab="picks">
+<section class="pound" id="dogs">
+  <div class="pound-hd"><div class="pound-title cond">The Dog Pound</div>
+    <div class="pound-sub">Aaron's crew picks from the model every week. Picks lock at kickoff. For fun only.</div></div>
+  <div class="pound-grid" id="pound"></div>
+  <div class="pound-weeks" id="poundweeks"></div>
+</section>
+
+</div>
+<div class="tabpane" data-tab="picks">
 <h2 id="bank">Paper bankroll — Claude's picks</h2>
 <div class="sub" style="margin-bottom:10px">Fake money, real tracking. Started with $1,000 in week 1*. Each week Claude bets the bankroll as it stood at the start of
 the week: <b>90% in straight bets</b> on the top ~25 props across all games (weighted by rating; the strongest overs
@@ -1210,6 +1281,8 @@ with rotating legs (four 2-leg, three 3-leg and two 4-leg combos) so one missed 
 Each game is bet in the 3 hours before kickoff, and finished games settle right away from ESPN box scores. Bets are graded against final box scores;
 a player who doesn't play voids the leg. Main lines assume -110. Alt-line odds are estimates, marked "est".</div>
 <div class="panel" id="bankpanel"></div>
+</div>
+<div class="tabpane" data-tab="research">
 
 <details id="allprops" class="opener-wrap"><summary class="opener"><span id="all" class="op-title">All player props</span><span class="op-sub"><span id="propcount"></span> props · search, filter &amp; sort</span><span class="op-btn"><span class="op-show">Tap to open</span><span class="op-hide">Close</span> <span class="chev">▾</span></span></summary>
 <div class="bar">
@@ -1219,7 +1292,6 @@ a player who doesn't play voids the leg. Main lines assume -110. Alt-line odds a
     <option value="rushing_yards">Rushing yds</option><option value="receiving_yards">Receiving yds</option></select>
   <label><input type="checkbox" id="good"> A/B ratings only</label>
   <label><input type="checkbox" id="trapf"> Traps</label>
-  <label><input type="checkbox" id="conf"> Contrarian</label>
   <label><input type="checkbox" id="hot"> Hit line __HITPCT__+ of last __N__</label>
 </div>
 <div class="tw"><table><thead><tr>
@@ -1229,6 +1301,7 @@ a player who doesn't play voids the leg. Main lines assume -110. Alt-line odds a
 </tr></thead><tbody id="rows"></tbody></table></div>
 </details>
 
+</div>
 <a id="slipbtn" href="#slipwrap">Slip (0)</a>
 <footer>Opp rank: 1 = stingiest vs that position, 32 = most generous. Proj = player's L__N__ average × how much this defense
 allows vs league average (regressed toward average). P(over) is a model estimate, not a guarantee. Chip colors are relative to the pick
@@ -1263,13 +1336,11 @@ function chips(r, max) {
   const ns = (r.notes || []).map(n => ({t:n.t, k:kind(n, r.pick)})).sort((a, b) => order[a.k] - order[b.k]);
   const extra = (r.traps || []).map(t => ({t:"Trap: " + t, k:"warn"}));
   const tl = totalLean(r); if (tl) extra.push(tl);
-  if (r.contrarian) extra.push({t:r.contrarian, k:"con"});
   const all = extra.concat(ns);
   return `<div class="chips">${all.slice(0, max ?? 99).map(n => `<span class="chip k-${n.k}">${esc(n.t)}</span>`).join("")}</div>`;
 }
 function tags(r) {
-  return (r.traps && r.traps.length ? `<span class="tag tag-trap">TRAP</span>` : "")
-    + (r.contrarian ? `<span class="tag tag-con">CONTRARIAN</span>` : "");
+  return r.traps && r.traps.length ? `<span class="tag tag-trap">TRAP</span>` : "";
 }
 function grade(r) { return r.grade ? `<span class="g g${r.grade}" title="score ${r.score}/10">${r.grade}</span>` : `<span class="g gD" style="opacity:.35">–</span>`; }
 function logo(t) { return `<img src="https://a.espncdn.com/i/teamlogos/nfl/500/${(GAMES.logo[t] || t).toLowerCase()}.png" alt="" onerror="this.style.display='none'">`; }
@@ -1375,7 +1446,7 @@ function renderGames() {
   const all = Object.values(byKey).sort((a, b) => gameTime(a) - gameTime(b));
   const started = all.filter(g => LG[g.key]), upcoming = all.filter(g => !LG[g.key]);
   document.getElementById("games").innerHTML = started.map(g => resultCard(g.key, g)).join("")
-    || `<div class="empty">No games have started yet — this week's matchups are in the <a href="#uphead">Parlay builder</a> below.</div>`;
+    || `<div class="empty">No games have started yet — this week's matchups are in the <a href="#uphead">Matchups</a> tab.</div>`;
   document.getElementById("uphead").style.display = upcoming.length ? "" : "none";
   document.getElementById("upgames").innerHTML = upcoming.map(g => {
     const rs = ROWS.filter(r => r.game === g.key && r.score != null && !(r.traps && r.traps.length))
@@ -1395,6 +1466,7 @@ function renderGames() {
   document.querySelectorAll(".cf button").forEach(b => b.onclick = () => {
     document.getElementById("game").value = b.dataset.game; renderRows();
     document.getElementById("allprops").open = true;
+    openTabFor(document.getElementById("all"));
     document.getElementById("all").scrollIntoView({behavior:"smooth"});
   });
 }
@@ -1404,11 +1476,11 @@ function renderRows() {
   const q = document.getElementById("q").value.toLowerCase(), gm = document.getElementById("game").value;
   const st = document.getElementById("stat").value, good = document.getElementById("good").checked;
   const hot = document.getElementById("hot").checked;
-  const trapf = document.getElementById("trapf").checked, conf = document.getElementById("conf").checked;
+  const trapf = document.getElementById("trapf").checked;
   const rs = ROWS.filter(r => (!q || (r.player + " " + r.team + " " + r.opp).toLowerCase().includes(q))
     && (!gm || r.game === gm) && (!st || r.stat === st) && (!good || r.grade === "A" || r.grade === "B")
     && (!hot || (r.line_hit_rate != null && r.line_hit_rate >= HIT))
-    && (!trapf || (r.traps && r.traps.length)) && (!conf || r.contrarian));
+    && (!trapf || (r.traps && r.traps.length)));
   rs.sort((a, b) => {
     const x = a[sortKey], y = b[sortKey];
     if (x == null && y == null) return 0; if (x == null) return 1; if (y == null) return -1;
@@ -1428,7 +1500,7 @@ function renderRows() {
 
 const sel = document.getElementById("game");
 GAMES.list.forEach(g => sel.insertAdjacentHTML("beforeend", `<option value="${g.key}">${g.away} @ ${g.home}</option>`));
-["q","game","stat","good","hot","trapf","conf"].forEach(id => document.getElementById(id).addEventListener("input", renderRows));
+["q","game","stat","good","hot","trapf"].forEach(id => document.getElementById(id).addEventListener("input", renderRows));
 document.querySelectorAll("th[data-s]").forEach(th => th.onclick = () => {
   const k = th.dataset.s; sortDir = k === sortKey ? -sortDir : (k === "player" || k === "def_rank" ? 1 : -1); sortKey = k; renderRows();
 });
@@ -1441,13 +1513,6 @@ function renderPanels() {
       <div class="reason">Looks like: <b>${tempting(r)}</b> <span class="pmeta">(hit ${r.line_hits}, model ${pct(Math.max(r.p_over, 1 - r.p_over))})</span></div>
       ${r.traps.map(t => `<div class="reason" style="color:var(--warn)">⚠ ${esc(t)}</div>`).join("")}</div>`).join("")
     || `<div class="empty">No trap alerts right now.</div>`;
-  const cr = ROWS.filter(r => r.contrarian).sort((a, b) => b.score - a.score).slice(0, 12);
-  document.getElementById("contra").innerHTML = cr.map(r => `<div class="item">${grade(r)}
-      <span class="pname" style="margin-left:6px">${esc(r.player)}</span> <span class="pmeta">${r.pos} · ${r.team} vs ${r.opp}</span>
-      <div class="reason"><span class="pick ${r.pick.split(" ")[0]}">${r.pick}</span> <span class="pmeta">${STAT[r.stat]} · proj ${r.proj} · hit ${r.line_hits}</span></div>
-      <div class="reason" style="color:var(--con)">${esc(r.contrarian)}</div>
-      ${(r.traps || []).map(t => `<div class="reason" style="color:var(--warn)">⚠ ${esc(t)}</div>`).join("")}</div>`).join("")
-    || `<div class="empty">No contrarian spots right now.</div>`;
 }
 const BANK = __BANK__;
 const money = v => (v < 0 ? "-$" : "$") + Math.abs(v).toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
@@ -1497,6 +1562,27 @@ function renderLiveBets() {
       <div class="plays">${legs}</div></article>`;
   }).join("");
 }
+function renderDogs() {
+  const D = BANK.dogs; if (!D || !D.weeks.length) { document.getElementById("dogs").style.display = "none"; return; }
+  const cur = D.weeks[D.weeks.length - 1];
+  const legTxt = l => `${esc(l.player)} ${l.pick}`;
+  const badge = r => r === "win" ? "✓ Good boy" : r === "loss" ? "Missed" : r === "void" ? "Void" : "Live / to play";
+  document.getElementById("pound").innerHTML = D.dogs.map(d => {
+    const p = cur.picks[d.name], [w, l] = d.record;
+    const pick = p && p.legs.length ? p.legs.map(x => `<div class="dog-pick"><b class="big">${esc(x.player)} ${x.pick}</b>
+        <div class="meta">${STAT[x.stat]} · ${x.team} vs ${x.opp} · grade ${x.grade || "–"}${x.actual != null ? " · actual " + x.actual : ""}</div></div>`).join("")
+        + `<span class="dog-badge ${p.result}">${badge(p.result)}</span>`
+      : `<div class="dog-pick"><div class="meta">Still sniffing out a pick…</div></div>`;
+    return `<article class="dog ${p && p.result === "win" ? "win" : ""}"><div class="dog-top"><div class="dog-av">${d.emoji}</div>
+      <div><div class="dog-name">${esc(d.name)}</div><div class="dog-title">${esc(d.title)}</div></div>
+      <div class="dog-rec">${w}-${l}<small>SEASON</small></div></div>
+      <div class="dog-how">${esc(d.how)} · Week ${cur.week}</div>${pick}</article>`;
+  }).join("");
+  const cell = p => p ? `<span class="pw-${p.result}">${p.legs.map(legTxt).join(" + ")}</span>` : "—";
+  document.getElementById("poundweeks").innerHTML = `<table><thead><tr><th>Week</th>${D.dogs.map(d => `<th>${esc(d.name)}</th>`).join("")}</tr></thead>
+    <tbody>${D.weeks.slice().reverse().map(wk => `<tr><td><b>${wk.week}${wk.backfilled ? "*" : ""}</b></td>${D.dogs.map(d => `<td>${cell(wk.picks[d.name])}</td>`).join("")}</tr>`).join("")}</tbody></table>
+    ${D.weeks.some(w => w.backfilled) ? `<div style="margin-top:6px">*Before the Dog Pound opened: picks back-filled from that week's pre-kickoff ratings.</div>` : ""}`;
+}
 function renderBank() {
   const s = BANK.summary; if (!s) return;
   const pl = s.profit, roi = s.roi == null ? "—" : (s.roi * 100).toFixed(1) + "%";
@@ -1506,14 +1592,18 @@ function renderBank() {
   document.getElementById("bankstrip").innerHTML = `
     <a class="stat" href="#bank" style="text-decoration:none;color:inherit"><div class="v">${money(s.balance)}</div><div class="l">Paper bankroll</div></a>
     <div class="stat"><div class="v ${pl > 0 ? "pos" : pl < 0 ? "neg" : ""}">${pl >= 0 ? "+" : ""}${money(pl)}</div><div class="l">Profit / loss</div></div>
-    <div class="stat"><div class="v ${winPct == null ? "" : winPct >= 0.524 ? "pos" : "neg"}">${winPct == null ? "—" : (winPct * 100).toFixed(1) + "%"}</div>
+    <div class="stat"><div class="v ${winPct != null && winPct >= 0.524 ? "pos" : ""}">${winPct == null ? "—" : (winPct * 100).toFixed(1) + "%"}</div>
       <div class="l">Win % · legs ${s.legs_won}-${s.legs_lost}${legPct == null ? "" : " (" + Math.round(legPct * 100) + "%)"}</div></div>
     <div class="stat"><div class="v">${s.wins}-${s.losses}${s.voids ? "-" + s.voids : ""}</div><div class="l">Record · ROI ${roi}</div></div>
     <div class="stat"><div class="v">${money(s.at_risk)}</div><div class="l">Open bets</div></div>${liveTile()}`;
-  const wi = BANK.whatif;
-  const whatif = wi && wi.weeks.length ? `<div class="pmeta" style="margin-top:8px">What-if: today's model with today's betting rules,
-    replayed on weeks ${wi.weeks[0].week}–${wi.weeks[wi.weeks.length - 1].week}'s real lines, would have <b>${money(wi.balance)}</b> from ${money(wi.start)}
-    (${wi.weeks.map(w => `Wk ${w.week} ${money(w.end)}`).join(" · ")}). The table below is the paper bets actually placed.</div>` : "";
+  const wi = BANK.whatif, wf = BANK.walkforward;
+  const span = x => `weeks ${x.weeks[0].week}–${x.weeks[x.weeks.length - 1].week}`;
+  const byWk = x => x.weeks.map(w => `Wk ${w.week} ${money(w.end)}`).join(" · ");
+  const whatif = (wi && wi.weeks.length ? `<div class="pmeta" style="margin-top:8px">What-if: this week's model settings and betting rules,
+    used since week 1 on ${span(wi)}'s real lines, would have <b>${money(wi.balance)}</b> from ${money(wi.start)} (${byWk(wi)}).</div>` : "")
+    + (wf && wf.weeks.length ? `<div class="pmeta" style="margin-top:4px">Re-tuning every Tuesday on only the weeks already played:
+    <b>${money(wf.balance)}</b> (${byWk(wf)}).</div>` : "")
+    + (wi || wf ? `<div class="pmeta" style="margin-top:4px">The table below is the paper bets actually placed.</div>` : "");
   let chart = "";
   if (s.history.length) {
     const pts = [s.start].concat(s.history.map(h => h.balance)), W = 600, H = 120;
@@ -1619,9 +1709,8 @@ function betAmt() { return STAKE; }
 const FEATURE = __FEATURE__;
 function renderSpecialTicker() {
   const wk = Math.max(0, ...(BANK.bets || []).map(b => b.week));
-  const names = {contrarian: "Contrarian", "contrarian-longshot": "Contrarian Alt Line",
-                 primetime: "Primetime", "primetime-longshot": "Primetime Alt Line"};
-  const bars = (BANK.bets || []).filter(b => b.special && b.week === wk).map(sp => {
+  const names = {primetime: "Primetime", "primetime-longshot": "Primetime Alt Line"};
+  const bars = (BANK.bets || []).filter(b => names[b.special] && b.week === wk).map(sp => {
     const live = (BANK.live || []).find(b => b.id === sp.id);
     const legs = live ? live.legs : sp.legs, st = live ? live.status : sp.result;
     const toWin = sp.stake * (sp.odds > 0 ? sp.odds / 100 : 100 / -sp.odds);
@@ -1696,7 +1785,7 @@ function renderGradeTracker() {
     const w = G.week[g], s = G.season[g], tot = Math.max(1, s.w + s.l);
     const p = s.w + s.l ? s.w / (s.w + s.l) : null;
     return `<div class="gt ${g}"><div class="hd"><span class="g g${g}">${g}</span> ${label[g]} <span class="pmeta" style="margin-left:auto">season</span></div>
-      <div class="pct ${p == null ? "" : p >= 0.524 ? "pos" : "neg"}">${pct(s.w, s.l)}</div>
+      <div class="pct ${p != null && p >= 0.524 ? "pos" : ""}">${pct(s.w, s.l)}</div>
       <div class="rec"><b>${s.w}-${s.l}</b> season</div>
       <div class="hb"><i class="w" style="width:${100 * s.w / tot}%"></i><i class="l" style="width:${100 * s.l / tot}%"></i></div>
       <div class="sea">This week: <b>${w.w}-${w.l}</b> (${pct(w.w, w.l)})${w.live ? ` · ${w.live} live` : ""}${w.pre ? ` · ${w.pre} to play` : ""}</div>
@@ -1820,7 +1909,30 @@ document.getElementById("slip").addEventListener("change", e => {
     Object.assign(SLIP[i], {side: o.side, line: o.line, alt: o.alt, odds: o.odds}); saveSlip(); renderSlip();
   }
 });
-renderBank(); renderSpecialTicker(); renderGradeTracker(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp(); paceTickers(45); syncAddButtons(); renderSlip(); document.getElementById("propcount").textContent = ROWS.length;
+function showTab(name, save = true) {
+  if (!document.querySelector(`.tabpane[data-tab="${name}"]`)) name = "picks";
+  document.querySelectorAll(".tabpane").forEach(el => el.classList.toggle("on", el.dataset.tab === name));
+  document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b.dataset.tab === name));
+  if (save) { try { localStorage.setItem("tt-tab", name); } catch (e) {} }
+}
+function openTabFor(el) {  // make sure the tab holding `el` is showing (for in-page links and scroll targets)
+  const pane = el && el.closest(".tabpane"); if (pane && !pane.classList.contains("on")) showTab(pane.dataset.tab);
+}
+document.querySelectorAll("#tabs button").forEach(b => b.onclick = () => {
+  showTab(b.dataset.tab); document.getElementById("tabs").scrollIntoView({block: "start"});
+});
+document.addEventListener("click", e => {
+  const a = e.target.closest('a[href^="#"]'); if (!a) return;
+  const el = document.getElementById(a.getAttribute("href").slice(1));
+  if (el) { openTabFor(el); if (el.tagName === "DETAILS") el.open = true; }
+}, true);
+(() => {
+  let saved = null; try { saved = localStorage.getItem("tt-tab"); } catch (e) {}
+  const target = location.hash && document.getElementById(location.hash.slice(1));
+  showTab(saved || "picks", false);
+  if (target) { openTabFor(target); setTimeout(() => target.scrollIntoView(), 0); }
+})();
+renderDogs(); renderBank(); renderSpecialTicker(); renderGradeTracker(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp(); paceTickers(45); syncAddButtons(); renderSlip(); document.getElementById("propcount").textContent = ROWS.length;
 </script></body></html>"""
 
 
@@ -1839,7 +1951,7 @@ def feature_player(stats: pd.DataFrame, rows: list, season: int, name: str = FEA
             "td": int((r.rushing_tds or 0) + (r.receiving_tds or 0))}
            for r in p.tail(10).fillna(0).itertuples()]
     keys = ("stat", "pick", "grade", "score", "proj", "line", "open", "line_hits", "p_over", "opp", "game",
-            "kickoff", "notes", "traps", "L10_avg", "contrarian")
+            "kickoff", "notes", "traps", "L10_avg")
     props = [{k: r.get(k) for k in keys} for r in rows if r["player"] == name]
     jersey = ""
     roster = _cached_csv(PLAYERS_URL, "players.csv", False)
@@ -2401,30 +2513,7 @@ def _trim(bets: list, cap: float) -> list:
     return bets
 
 
-SPECIAL_SHARE = 0.03  # of the week's bankroll: the Contrarian Special parlay
-
-
-def contrarian_reason(r: dict, splits: dict | None = None) -> str:
-    """Why a prop goes against the public, or ''. Prop bet splits aren't published, so this reads prop
-    line movement, the existing contrarian tag, and real game-total splits (public on the Over while the
-    money is on the Under) for unders."""
-    if not r.get("pick") or r.get("traps") or _conf(r) < 0.55:
-        return ""
-    over = r["pick"].startswith("OVER")
-    line, opened = r.get("line"), r.get("open")
-    moved = (line - opened) if (line is not None and opened is not None and opened == opened) else 0
-    if r.get("contrarian"):
-        return r["contrarian"]
-    if moved >= 2 and not over:
-        return f"Fade the public: line climbed {opened:g} → {line:g} on over money; model projects {r['proj']:g}"
-    if moved <= -2 and not over:
-        return f"Sharp-side under: line dropped {opened:g} → {line:g} against the public's over lean"
-    if moved <= -2 and over and _conf(r) >= 0.6:
-        return f"Buy low: line dropped {opened:g} → {line:g}, model still projects {r['proj']:g}"
-    t = ((splits or {}).get(r["game"]) or {}).get("total")
-    if t and not over and t["bets_a"] > 50 and t["money_b"] - t["bets_b"] >= 8:
-        return f"Fade the game Over: {t['bets_a']}% of bets on the Over but {t['money_b']}% of the money on the Under"
-    return ""
+SPECIAL_SHARE = 0.03  # of the week's bankroll: the Primetime Special parlay
 
 
 def _value_leg(r: dict, why: str):
@@ -2450,39 +2539,6 @@ def _boost_leg(r: dict, why: str, max_odds: int = 300) -> dict:
             if 0 < odds <= max_odds:
                 return dict(_leg_from_row(r, up[0] - 0.5, odds, f"{up[0]:g}+"), why=why + f" · boosted to {up[0]:g}+")
     return dict(_leg_from_row(r), why=why)
-
-
-def contrarian_special(rows: list, stake: float, splits: dict | None = None, max_per_game: int = 1,
-                       longshot: bool = False) -> dict | None:
-    """3-4 leg parlay of the week's best-value contrarian props (different games when possible)."""
-    cands = []
-    for r in rows:
-        why = contrarian_reason(r, splits)
-        if not why:
-            continue
-        if longshot:  # strongest contrarian leans, each pushed to a bigger payout
-            moved = abs((r.get("line") or 0) - (r.get("open") or r.get("line") or 0))
-            cands.append((_conf(r) + 0.01 * min(moved, 10), r, _boost_leg(r, why)))
-        else:
-            ev, leg = _value_leg(r, why)
-            if ev is not None and ev > 0:
-                cands.append((ev, r, leg))
-    cands.sort(key=lambda x: x[0], reverse=True)
-    for per_game in range(max_per_game, 4):  # relax one-per-game only if there aren't enough games left
-        legs, count, used = [], {}, set()
-        for _, r, leg in cands:
-            if r["player_id"] in used or count.get(r["game"], 0) >= per_game:
-                continue
-            used.add(r["player_id"])
-            count[r["game"]] = count.get(r["game"], 0) + 1
-            legs.append(leg)
-            if len(legs) == 4:
-                break
-        if len(legs) >= 3:
-            kind = "contrarian-longshot" if longshot else "contrarian"
-            return {"kind": "parlay", "special": kind, "stake": round(stake, 2), "legs": legs,
-                    "game": "multi", "note": kind.replace("-longshot", " alt line").upper() + " SPECIAL"}
-    return None
 
 
 def primetime_games(wk_games) -> set:
@@ -2649,7 +2705,7 @@ def cmd_autobet(args, stats, sched, season):
     pool = [r for r in rows if r["game"] in {f"{g.away_team}@{g.home_team}" for g in upcoming}]
     special_amt = round(weekly * SPECIAL_SHARE, 2)
     prime = primetime_games(wk_games)
-    core = weekly - 2 * special_amt  # contrarian + primetime specials come off the top; the rest splits 50/50
+    core = weekly - special_amt  # the primetime special comes off the top; the rest goes to the weekly plan
     straight_spent = sum(b["stake"] for b in week_bets if b["kind"] == "straight")
     remaining = max(core * (1 - PARLAY_SHARE) - straight_spent, 0)
     summary = bankroll_summary(ledger, grade_ledger(ledger, stats, sched))
@@ -2660,10 +2716,6 @@ def cmd_autobet(args, stats, sched, season):
     if not any(b["kind"] == "parlay" and not b.get("special") for b in week_bets):
         new += _trim([dict(p, game="multi") for p in weekly_parlays(pool, core * PARLAY_SHARE)], core * PARLAY_SHARE)
     half = round(special_amt / 2, 2)  # each special's 3% splits between the best-value and alt line versions
-    if not any(str(b.get("special", "")).startswith("contrarian") for b in week_bets):
-        spl = load_week_splits(Path(args.snapshot_dir).parent / "splits", season, week)
-        new += [x for x in (contrarian_special(pool, half, spl),
-                            contrarian_special(pool, special_amt - half, spl, longshot=True)) if x]
     # primetime special: placed once the first Sunday/Monday night game is in its betting window
     if prime & window and not any(str(b.get("special", "")).startswith("primetime") for b in week_bets):
         pg = {k for k in prime if kick_by_game[k] > now}
@@ -2932,6 +2984,83 @@ def _kickoff_et(kickoff: str):
     from datetime import datetime
     from zoneinfo import ZoneInfo
     return datetime.strptime(kickoff, "%Y-%m-%d %H:%M").replace(tzinfo=ZoneInfo("America/New_York"))
+
+
+# Aaron's dogs each make one pick a week from the model's ratings (trap-flagged props skipped)
+DOGS = [{"name": "Bruce", "emoji": "🐕", "title": "The Lock", "how": "Top-rated play on the whole board"},
+        {"name": "Kitty", "emoji": "🐩", "title": "The Under Dog", "how": "Best-rated under of the week"},
+        {"name": "Bun Bun", "emoji": "🐶", "title": "The Parlay Pup", "how": "2-leg parlay, next two best plays from different games"}]
+
+
+def dog_picks(props: list, locked: dict | None = None, can_pick=lambda p: True) -> dict:
+    """{dog name: [prop keys]}. A locked dog keeps its pick; the rest choose from props passing can_pick."""
+    locked = locked or {}
+    by_key = {f"{p['player_id']}|{p['stat']}": p for p in props}
+    pool = sorted((k for k, p in by_key.items() if p.get("pick") and not p.get("traps") and can_pick(p)),
+                  key=lambda k: by_key[k].get("score") or 0, reverse=True)
+    used = {by_key[k]["player_id"] for keys in locked.values() for k in keys if k in by_key}
+    out = {}
+    for dog in DOGS:
+        name = dog["name"]
+        if name in locked:
+            out[name] = locked[name]
+            continue
+        if name == "Bruce":
+            keys = pool[:1]
+        elif name == "Kitty":
+            keys = [k for k in pool if by_key[k]["pick"].startswith("UNDER") and by_key[k]["player_id"] not in used][:1]
+        else:
+            keys, games = [], set()
+            for k in pool:
+                if by_key[k]["player_id"] not in used and by_key[k]["game"] not in games:
+                    keys.append(k)
+                    games.add(by_key[k]["game"])
+                if len(keys) == 2:
+                    break
+            keys = keys if len(keys) == 2 else []
+        if keys:
+            out[name] = keys
+            used |= {by_key[k]["player_id"] for k in keys}
+    return out
+
+
+def lock_dog_picks(path: Path):
+    """Save the dogs' picks in the week's snapshot. A pick locks once any of its games kicks off;
+    unlocked dogs only pick from games that haven't started."""
+    snap = json.loads(path.read_text(encoding="utf-8"))
+    now = _et_now()
+    started = lambda k: k in snap["props"] and _kickoff_et(snap["props"][k]["kickoff"]) <= now
+    locked = {n: ks for n, ks in snap.get("dogs", {}).items() if any(started(k) for k in ks)}
+    snap["dogs"] = dog_picks(list(snap["props"].values()), locked,
+                             lambda p: _kickoff_et(p["kickoff"]) > now)
+    path.write_text(json.dumps(snap, indent=1, default=str) + "\n", encoding="utf-8")
+
+
+def dog_pound(snap_dir: Path, season: int, week: int, stats, sched, live=None) -> dict:
+    """Each dog's pick and result per week, plus season records. Weeks saved before the Dog Pound
+    started are back-filled from that week's pre-kickoff ratings (marked as backtests)."""
+    weeks, rec = [], {d["name"]: [0, 0] for d in DOGS}
+    for f in sorted(snap_dir.glob(f"{season}-w*.json")):
+        snap = json.loads(f.read_text(encoding="utf-8"))
+        w = snap["week"]
+        if w > week:
+            continue
+        graded = {f"{p['player_id']}|{p['stat']}": p
+                  for p in grade_snapshot(snap, stats, sched, live=live if w == week else None)}
+        picks = snap.get("dogs") or dog_picks(list(graded.values()))
+        out = {}
+        for name, keys in picks.items():
+            legs = [graded[k] for k in keys if k in graded]
+            res = [l["result"] for l in legs]
+            result = ("loss" if "loss" in res else "pending" if "pending" in res
+                      else "win" if "win" in res else "void")
+            if result in ("win", "loss"):
+                rec[name][result == "loss"] += 1
+            out[name] = {"result": result, "legs": [{k: l.get(k) for k in (
+                "player", "team", "opp", "pos", "stat", "pick", "grade", "score", "actual", "result", "game", "kickoff")}
+                for l in legs]}
+        weeks.append({"week": w, "backfilled": "dogs" not in snap, "picks": out})
+    return {"dogs": [dict(d, record=rec[d["name"]]) for d in DOGS], "weeks": weeks}
 
 
 def update_snapshot(snap_dir: str, season: int, week: int, rows: list) -> Path:
@@ -3268,6 +3397,211 @@ def cmd_backtest(args, stats, sched, season):
     if args.markdown:
         Path(args.markdown).write_text(md, encoding="utf-8")
         print(f"Report written to {args.markdown}")
+
+
+# ----------------------------------------------------------------------------
+# Weekly retune: re-fit the tunable settings on every finished week, then backtest the bankroll
+# ----------------------------------------------------------------------------
+
+RETUNE_GRID = {"rushing_yards": [0.80, 0.85, 0.90, 0.95, 1.0], "receiving_yards": [0.85, 0.90, 0.95, 1.0],
+               "passing_yards": [0.95, 1.0, 1.05], "hit_rate_bonus": [0.0, 0.15, 0.30],
+               "garbage_time_cut": [0.0, 0.10, 0.20]}
+RETUNE_TIERS = (2, 3, 5, 10)
+RETUNE_HOLDOUT = 3  # newest finished weeks held back to check a new setting before switching to it
+
+
+def _finished_weeks(snap_dir: Path, season: int, stats, sched) -> list:
+    """Weeks with a saved snapshot whose games are all final and in nflverse's box scores."""
+    out = []
+    for f in sorted(snap_dir.glob(f"{season}-w*.json")):
+        w = json.loads(f.read_text(encoding="utf-8"))["week"]
+        wk = sched[(sched["season"] == season) & (sched["week"] == w)]
+        if len(wk) and wk["result"].notna().all() and ((stats["season"] == season) & (stats["week"] == w)).any():
+            out.append(w)
+    return out
+
+
+def _rebuild_week(snap: dict, args, stats, sched, season: int) -> list:
+    """Every prop we rated that week, rebuilt on its saved pre-kickoff line with stats frozen before
+    the week, with the raw inputs kept so it can be re-rated under other settings."""
+    week = snap["week"]
+    lines = {(p["player_id"], p["stat"]): {"line": p["line"], "open": None, "updated": None}
+             for p in snap["props"].values() if p.get("line") is not None}
+    rosters = {p["player_id"]: p["team"] for p in snap["props"].values()}
+    stats_asof = stats[stats["game_order"] < season * 100 + week]
+    sched_asof = sched.copy()
+    later = (sched_asof["season"] == season) & (sched_asof["week"] >= week)
+    sched_asof.loc[later, "result"] = float("nan")
+    wargs = argparse.Namespace(week=week, include_played=True, lines=None, refresh=False, games=args.games,
+                               min_games=4, hit_rate=0.70, backtest=True, team_override=rosters,
+                               main_lines=lines, keep_hist=True, params=UNTUNED_PARAMS)
+    _, _, rows, _ = build_week(wargs, stats_asof, sched_asof, season)
+    actual = (stats[(stats["season"] == season) & (stats["week"] == week)]
+              .drop_duplicates("player_id").set_index("player_id"))
+    out = []
+    for r in rows:
+        if r.get("line") is None or (r["player_id"], r["stat"]) not in lines:
+            continue
+        r["week"] = week
+        r["actual"] = float(actual.loc[r["player_id"], r["stat"]]) if r["player_id"] in actual.index else None
+        out.append(r)
+    return out
+
+
+def rerate(r: dict, params: dict) -> dict:
+    """One rebuilt prop rated under `params` (same code path as the live model)."""
+    row = {k: v for k, v in r.items() if k not in ("notes", "pick", "score", "grade", "traps",
+                                                   "trap_alert", "hot", "dog_over")}
+    row["proj"] = round(r["proj_base"] * params["proj_scale"][r["stat"]], 1)
+    row["p_over"] = round(prob_over(row["proj"], r["sd"], r["line"]), 2)
+    notes, rating = analyze_row(row, r["hist_vals"], False, np.array(r["hist_w"]), params)
+    row.update(rating, notes=notes)
+    return row
+
+
+def _retune_table(rows: list) -> pd.DataFrame:
+    """Rate each prop once per projection scale with no bonus/cut; the bonus and cut are plain
+    multipliers on the score, so every combination can then be scored without re-rating."""
+    recs = []
+    for r in rows:
+        for scale in RETUNE_GRID[r["stat"]]:
+            p = {"proj_scale": dict(UNTUNED_PARAMS["proj_scale"], **{r["stat"]: scale}),
+                 "hit_rate_bonus": 0.0, "garbage_time_cut": 0.0}
+            x = rerate(r, p)
+            win = (None if r["actual"] is None or r["actual"] == r["line"]
+                   else float((r["actual"] > r["line"]) == x["pick"].startswith("OVER")))
+            recs.append({"week": r["week"], "game": r["game"], "stat": r["stat"], "scale": scale,
+                         "score": x["score"], "hot": x["hot"], "dog_over": x["dog_over"],
+                         "trap": bool(x["traps"]), "win": win})
+    return pd.DataFrame(recs)
+
+
+def _grid_params():
+    import itertools
+    for rush, rec, pas, hr, gt in itertools.product(*RETUNE_GRID.values()):
+        yield {"proj_scale": {"passing_yards": pas, "rushing_yards": rush, "receiving_yards": rec},
+               "hit_rate_bonus": hr, "garbage_time_cut": gt}
+
+
+def _score_params(table: pd.DataFrame, params: dict, weeks) -> dict:
+    """Hit % of the top-N rated props per game (trap-flagged excluded, like the report cards)."""
+    scale = table["stat"].map(params["proj_scale"])
+    t = table[(table["scale"] == scale) & table["week"].isin(weeks) & ~table["trap"]]
+    score = (t["score"] * np.where(t["hot"], 1 + params["hit_rate_bonus"], 1.0)
+             * np.where(t["dog_over"], 1 - params["garbage_time_cut"], 1.0))
+    t = t.assign(s=score).sort_values("s", ascending=False)
+    top = t.groupby(["week", "game"]).head(max(RETUNE_TIERS))
+    rank = top.groupby(["week", "game"]).cumcount()
+    tiers = {n: float(top[(rank < n) & top["win"].notna()]["win"].mean()) for n in RETUNE_TIERS}
+    tiers["avg"] = float(np.mean([tiers[n] for n in RETUNE_TIERS]))
+    return tiers
+
+
+def _best_params(table: pd.DataFrame, weeks) -> tuple:
+    best = max(_grid_params(), key=lambda p: _score_params(table, p, weeks)["avg"])
+    return best, _score_params(table, best, weeks)
+
+
+def _write_rerated(rows_by_week: dict, params_by_week: dict, out_dir: Path, season: int, note: str):
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for f in out_dir.glob(f"{season}-w*.json"):
+        f.unlink()
+    for w, rows in rows_by_week.items():
+        props = {}
+        for r in rows:
+            x = rerate(r, params_by_week[w])
+            props[f"{r['player_id']}|{r['stat']}"] = {k: x.get(k) for k in SNAPSHOT_FIELDS + ["sd"]}
+        (out_dir / f"{season}-w{w:02d}.json").write_text(
+            json.dumps({"season": season, "week": w, "backtest": True, "note": note,
+                        "params": params_by_week[w], "props": props}, indent=1, default=str) + "\n",
+            encoding="utf-8")
+
+
+def _params_text(p: dict) -> str:
+    s = p["proj_scale"]
+    return (f"projections x{s['rushing_yards']:g} rush / x{s['receiving_yards']:g} rec / "
+            f"x{s['passing_yards']:g} pass, +{p['hit_rate_bonus']:.0%} hot-hand bonus, "
+            f"-{p['garbage_time_cut']:.0%} big-underdog pass/rec overs")
+
+
+def _bank_weeks(sim: dict) -> str:
+    return " · ".join(f"Wk {x['week']} ${x['end']:,.0f}" for x in sim["weeks"])
+
+
+def cmd_retune(args, stats, sched, season):
+    """Every Tuesday: re-fit the model's settings on all finished weeks and backtest the bankroll.
+    1. Rebuild every prop we rated on its saved pre-kickoff line (stats frozen before that week).
+    2. Try every setting in RETUNE_GRID on all finished weeks except the newest RETUNE_HOLDOUT; switch to
+       the best one only if it also beats the current settings on those held-back weeks.
+    3. Year to date: (a) the chosen settings used since week 1 (hindsight) and (b) re-tuning every week
+       on only the weeks before it (walk-forward: what this routine would really have done)."""
+    snap_dir = Path(args.snapshot_dir)
+    weeks = _finished_weeks(snap_dir, season, stats, sched)
+    if not weeks:
+        sys.exit("No finished weeks with saved ratings yet.")
+    rows_by_week = {}
+    for w in weeks:
+        snap = json.loads((snap_dir / f"{season}-w{w:02d}.json").read_text(encoding="utf-8"))
+        rows_by_week[w] = _rebuild_week(snap, args, stats, sched, season)
+        print(f"Week {w}: rebuilt {len(rows_by_week[w])} props", file=sys.stderr)
+    table = _retune_table([r for rows in rows_by_week.values() for r in rows])
+
+    current = MODEL_PARAMS
+    if len(weeks) > RETUNE_HOLDOUT + 1:
+        train, hold = weeks[:-RETUNE_HOLDOUT], weeks[-RETUNE_HOLDOUT:]
+    else:
+        train, hold = weeks, []
+    cand, _ = _best_params(table, train)
+    cur_hold = _score_params(table, current, hold) if hold else None
+    cand_hold = _score_params(table, cand, hold) if hold else None
+    adopt = cand != current and (not hold or cand_hold["avg"] > cur_hold["avg"])
+    chosen = cand if adopt else current
+
+    # walk-forward: week 1 untuned, then each week tuned on the finished weeks before it
+    wf = {w: (UNTUNED_PARAMS if i == 0 else _best_params(table, weeks[:i])[0]) for i, w in enumerate(weeks)}
+    base = snap_dir.parent
+    _write_rerated(rows_by_week, {w: chosen for w in weeks}, base / "rerated", season,
+                   "Re-rated with this week's settings on the same pre-kickoff lines")
+    _write_rerated(rows_by_week, wf, base / "walkforward", season,
+                   "Each week rated with settings tuned only on the weeks before it")
+    hind = simulate_bankroll(base / "rerated", season, weeks[-1], stats, sched, None)
+    walk = simulate_bankroll(base / "walkforward", season, weeks[-1], stats, sched, None)
+    all_cur, all_chosen = _score_params(table, current, weeks), _score_params(table, chosen, weeks)
+
+    saved = {}
+    try:
+        saved = json.loads(PARAMS_FILE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        pass
+    history = [h for h in saved.get("history", []) if h.get("through_week") != weeks[-1]]
+    history.append({"through_week": weeks[-1], "updated": _et_now().isoformat(timespec="minutes"),
+                    "params": chosen, "switched": adopt, "candidate": cand,
+                    "holdout_weeks": hold, "holdout_current": cur_hold, "holdout_candidate": cand_hold,
+                    "ytd_hindsight": hind["balance"], "ytd_walkforward": walk["balance"]})
+    PARAMS_FILE.write_text(json.dumps(dict(chosen, season=season, tuned_through_week=weeks[-1],
+                                           history=history), indent=1) + "\n", encoding="utf-8")
+
+    pct = lambda t: " / ".join(f"{t[n]:.1%}" for n in RETUNE_TIERS)
+    md = [f"## Model retune — through Week {weeks[-1]}", "",
+          f"Tried {sum(1 for _ in _grid_params())} settings on Weeks {train[0]}–{train[-1]}"
+          + (f", then checked the best one on Weeks {hold[0]}–{hold[-1]}." if hold else "."), "",
+          f"- Current: {_params_text(current)}",
+          f"- Best on the tuning weeks: {_params_text(cand)}"]
+    if hold:
+        md.append(f"- Held-back weeks, top 2/3/5/10 hit rate: current {pct(cur_hold)} vs best {pct(cand_hold)}")
+    md += [f"- **{'Switched to the new settings' if adopt else 'Kept the current settings'}**", "",
+           f"Top 2/3/5/10 hit rate on all {len(weeks)} finished weeks: current {pct(all_cur)}, "
+           f"chosen {pct(all_chosen)}", "",
+           "**Paper bankroll year to date** ($1,000 start, today's betting rules, real pre-kickoff lines):",
+           f"- These settings used since Week 1: **${hind['balance']:,.2f}** ({_bank_weeks(hind)})",
+           f"- Re-tuning every week on only the weeks before it: **${walk['balance']:,.2f}** ({_bank_weeks(walk)})",
+           "",
+           "_The first number uses hindsight (settings picked with all these weeks known); the second is "
+           "what following this weekly routine would actually have produced._"]
+    text = "\n".join(md) + "\n"
+    print(text)
+    if args.markdown:
+        Path(args.markdown).write_text(text, encoding="utf-8")
 
 
 # ----------------------------------------------------------------------------
@@ -3673,7 +4007,7 @@ def cmd_week(args, stats, sched, season):
     while True:
         week, games, rows, source = build_week(args, stats, sched, season)
         if args.snapshot_dir:
-            update_snapshot(args.snapshot_dir, season, week, rows)
+            lock_dog_picks(update_snapshot(args.snapshot_dir, season, week, rows))
         if args.live:
             os.system("cls" if os.name == "nt" else "clear")
         print_week(week, games, rows, source, args)
@@ -3703,10 +4037,13 @@ def cmd_week(args, stats, sched, season):
         live["grades"] = grade_tracker(Path(args.snapshot_dir or "data/snapshots"), season, week, live["props"],
                                        stats, sched, (lg, box))
         bank["live"] = live_bets([b for b in bank["bets"] if b["result"] == "pending"], lg, box)
-        # what-if: the current model + staking rules replayed on earlier weeks' real lines (data/rerated)
-        rerated = Path(args.snapshot_dir or "data/snapshots").parent / "rerated"
-        if rerated.exists():
-            bank["whatif"] = simulate_bankroll(rerated, season, week - 1, stats, sched, None)
+        bank["dogs"] = dog_pound(Path(args.snapshot_dir or "data/snapshots"), season, week, stats, sched, (lg, box))
+        # what-if: today's settings + staking rules replayed on earlier weeks' real lines (data/rerated), and
+        # the weekly retune as it would really have run, each week tuned only on the weeks before it
+        for key, folder in (("whatif", "rerated"), ("walkforward", "walkforward")):
+            d = Path(args.snapshot_dir or "data/snapshots").parent / folder
+            if d.exists() and any(d.glob(f"{season}-w*.json")):
+                bank[key] = simulate_bankroll(d, season, week - 1, stats, sched, None)
         write_html(week, games, rows, source, args, html_path, refresh_secs=refresh, bank=bank, live=live,
                    feature=feature_player(stats, rows, season), splits=splits)
         if args.html:  # shareable Top 5 page next to the dashboard
@@ -3791,6 +4128,10 @@ def main():
     bk.add_argument("--snapshot-dir", help="save the backtest ratings here so report cards include it")
     bk.add_argument("--markdown", help="write the backtest report as markdown")
 
+    rt = sub.add_parser("retune", help="re-fit the model settings on finished weeks and backtest the bankroll")
+    rt.add_argument("--snapshot-dir", default="data/snapshots")
+    rt.add_argument("--markdown", help="write the retune summary as markdown")
+
     sp = sub.add_parser("splits", help="save %% of bets vs %% of money for this week's games, or --grade a week")
     sp.add_argument("--snapshot-dir", default="data/splits")
     sp.add_argument("--grade", action="store_true", help="grade the big-bet side against final scores")
@@ -3802,7 +4143,7 @@ def main():
     {"player": cmd_player, "slate": cmd_slate, "defense": cmd_defense,
      "week": cmd_week, "autobet": cmd_autobet, "bet": cmd_bet,
      "bankroll": cmd_bankroll, "report": cmd_report,
-     "backtest": cmd_backtest, "splits": cmd_splits}[args.cmd](args, stats, sched, season)
+     "backtest": cmd_backtest, "splits": cmd_splits, "retune": cmd_retune}[args.cmd](args, stats, sched, season)
 
 
 if __name__ == "__main__":
