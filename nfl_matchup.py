@@ -160,11 +160,14 @@ OTHER_TEAM_WEIGHT = 0.6       # games played for a former team (trades, free age
 # hit_rate_bonus: score boost when >=70% of (weighted) recent games landed on our side.
 # garbage_time_cut: pass/rec overs on big underdogs (2026 garbage-time TDs run ~17% below normal).
 # The Tuesday `retune` job rewrites model_params.json; these are the fallbacks.
+# games: how many of each player's (and defense's) most recent games to use, this season only (18 = all of them).
 DEFAULT_PARAMS = {"proj_scale": {"passing_yards": 1.0, "rushing_yards": 0.85, "receiving_yards": 0.90},
-                  "hit_rate_bonus": 0.15, "garbage_time_cut": 0.10}
+                  "hit_rate_bonus": 0.15, "garbage_time_cut": 0.10, "games": 18}
 # the model as it stood before any tuning (walk-forward backtests start week 1 here)
 UNTUNED_PARAMS = {"proj_scale": {"passing_yards": 1.0, "rushing_yards": 1.0, "receiving_yards": 1.0},
-                  "hit_rate_bonus": 0.0, "garbage_time_cut": 0.0}
+                  "hit_rate_bonus": 0.0, "garbage_time_cut": 0.0, "games": 18}
+SEASON_ONLY = True  # ratings use this season's games only (no carry-over from last season)
+SEASON_MIN_GAMES = 3  # this-season-only: a player needs this many 2026 games to be rated
 PARAMS_FILE = Path(__file__).parent / "model_params.json"
 BIG_DOG_SPREAD = 6.5          # team getting this many points or more = likely trailing
 
@@ -226,6 +229,8 @@ def defense_allowed(stats: pd.DataFrame, n: int, season: int | None = None) -> p
 def matchup_factors(allowed: pd.DataFrame, defense: str, position: str):
     """Returns {stat: (allowed_per_game, league_avg, shrunk_factor, rank)}.
     rank 1 = stingiest defense, 32 = most generous."""
+    if position not in allowed.index.get_level_values("position"):
+        return {}  # no games for this position yet (week 1 of a this-season-only window)
     pos = allowed.xs(position, level="position")
     if defense not in pos.index:
         return {}
@@ -558,8 +563,11 @@ def build_week(args, stats, sched, season):
     args.season_only limits every look-back (players and defenses) to this season's games."""
     import os
 
-    if getattr(args, "season_only", False):
+    if getattr(args, "season_only", SEASON_ONLY):
         stats = stats[stats["season"] == season]
+    min_games = min(args.min_games, args.games)
+    if getattr(args, "season_only", SEASON_ONLY):
+        min_games = min(min_games, SEASON_MIN_GAMES)
 
     s = sched[sched["season"] == season]
     if args.week is None:
@@ -618,7 +626,7 @@ def build_week(args, stats, sched, season):
                 players = last_row[(last_row["team"] == team) & (last_row["position"] == pos)]
                 for pr in players.itertuples():
                     hist = player_last_n(stats, pr.player_id, args.games)
-                    if len(hist) < args.min_games:
+                    if len(hist) < min_games:
                         continue
                     w = game_weights(hist, season, team)
                     for stat, min_avg in PROPS_BY_POS[pos]:
@@ -915,7 +923,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 Inter,sy
 .wrap { max-width:1240px; margin:0 auto; padding:0 16px }
 #splash { position:fixed; inset:0; z-index:9999; display:none; place-items:center; align-content:center; gap:10px; overflow:hidden;
   background:radial-gradient(circle at 50% 45%,#1a9be0 0%,#0076b6 35%,#003a5c 75%,#011726 100%); cursor:pointer }
-#splash.go { display:grid; animation:spOut .28s ease-in .95s forwards }
+#splash.go { display:grid; animation:spOut .26s ease-in .77s forwards }
 #splash .sp-rays { position:absolute; inset:-60%; opacity:.35; pointer-events:none;
   background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.55) 0 6deg,transparent 6deg 18deg); animation:spSpin 1.3s linear }
 #splash .sp-flash { position:absolute; inset:0; background:#fff; opacity:0; animation:spFlash .35s ease-out .12s; pointer-events:none; z-index:3 }
@@ -927,7 +935,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 Inter,sy
   font-size:clamp(34px,9vw,72px); line-height:1; text-shadow:0 4px 0 #003a5c, 0 0 24px rgba(255,255,255,.5);
   animation:spSlam .4s cubic-bezier(.3,1.8,.5,1) .3s both }
 #splash .sp-sub { position:relative; z-index:2; color:#d6ebf8; font-weight:700; letter-spacing:.3em; text-transform:uppercase;
-  font-size:clamp(13px,3vw,18px); animation:spFade .3s ease .5s both }
+  font-size:clamp(13px,3vw,18px); animation:spFade .25s ease .45s both }
 @keyframes spIn { 0% { transform:scale(.1) rotate(-200deg); opacity:0 } 100% { transform:scale(1) rotate(0); opacity:1 } }
 @keyframes spSlam { 0% { transform:scale(3) skewX(-12deg); opacity:0 } 100% { transform:scale(1) skewX(-12deg); opacity:1 } }
 @keyframes spFade { from { opacity:0; transform:translateY(8px) } to { opacity:1; transform:none } }
@@ -935,6 +943,15 @@ body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 Inter,sy
 @keyframes spSpin { to { transform:rotate(40deg) } }
 @keyframes spOut { to { opacity:0; transform:scale(1.15); visibility:hidden } }
 @media (prefers-reduced-motion: reduce) { #splash * { animation:none !important } }
+.fresh-btn { display:inline-flex; align-items:baseline; gap:2px; margin:14px 0 4px; padding:10px 22px 12px; border-radius:14px; cursor:pointer;
+  background:linear-gradient(135deg,#ffffff,#dfe5e9 55%,#b0b7bc); border:3px solid #fff; color:#003a5c;
+  box-shadow:0 0 0 3px #0076b6, 0 8px 22px rgba(0,30,50,.45); transform:skewX(-8deg); transition:transform .15s, box-shadow .15s }
+.fresh-btn:hover { transform:skewX(-8deg) translateY(-2px) scale(1.03); box-shadow:0 0 0 3px #0076b6, 0 0 28px rgba(255,255,255,.7) }
+.fresh-btn:active { transform:skewX(-8deg) scale(.97) }
+.fresh-btn .hr { font:800 18px/1 "Barlow Condensed",sans-serif; letter-spacing:.06em; text-transform:uppercase; opacity:.75 }
+.fresh-btn .fr { font:900 34px/1 "Barlow Condensed",sans-serif; font-style:italic; letter-spacing:.04em; color:#0076b6;
+  text-shadow:0 2px 0 #fff, 0 0 14px rgba(0,118,182,.45); animation:freshPulse 2.4s ease-in-out infinite }
+@keyframes freshPulse { 0%,100% { text-shadow:0 2px 0 #fff, 0 0 10px rgba(0,118,182,.35) } 50% { text-shadow:0 2px 0 #fff, 0 0 22px rgba(0,118,182,.8) } }
 .tabs { position:sticky; top:0; z-index:40; background:linear-gradient(180deg,#0076b6,#005a8c);
   border-bottom:3px solid var(--silver); box-shadow:0 6px 18px rgba(0,40,70,.28) }
 .tabs-in { display:flex; gap:6px; overflow-x:auto; padding-top:8px; padding-bottom:8px; scrollbar-width:none }
@@ -963,6 +980,18 @@ body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 Inter,sy
   background:linear-gradient(180deg,#fff 0%,#e9eef1 45%,#b0b7bc 55%,#fff 100%); -webkit-background-clip:text; background-clip:text;
   color:transparent; filter:drop-shadow(0 3px 0 rgba(0,30,50,.55)) }
 .pound-sub { color:#d6ebf8; font-weight:500 }
+.pound-board { position:relative; z-index:1; display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:8px; margin-bottom:14px }
+.pb-row { display:flex; align-items:center; gap:10px; padding:8px 12px; border-radius:12px; background:rgba(2,24,40,.45);
+  border:1px solid rgba(255,255,255,.18) }
+.pb-row.lead { background:linear-gradient(135deg,#ffffff,#d9e1e6); color:#003a5c; border-color:#fff; box-shadow:0 0 18px rgba(255,255,255,.45) }
+.pb-rank { font:800 26px/1 "Barlow Condensed",sans-serif; opacity:.8; width:22px }
+.pb-name { font:800 18px/1 "Barlow Condensed",sans-serif; text-transform:uppercase; letter-spacing:.03em }
+.pb-meta { font-size:11px; opacity:.85 }
+.pb-pl { margin-left:auto; text-align:right; font:800 20px/1 "Barlow Condensed",sans-serif }
+.pb-pl.up { color:#5dff9d } .pb-row.lead .pb-pl.up { color:#0a7a3d } .pb-pl.down { color:#c9d3da }
+.dog-bank { display:flex; justify-content:space-between; margin-top:10px; padding-top:8px; border-top:1px solid rgba(255,255,255,.18);
+  font:700 13px/1.2 Inter,sans-serif; color:#d6ebf8 }
+.dog-bank b { font:800 18px/1 "Barlow Condensed",sans-serif; color:#fff }
 .pound-grid { position:relative; z-index:1; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px }
 .dog { position:relative; background:linear-gradient(160deg,rgba(255,255,255,.16),rgba(255,255,255,.05)); border-radius:14px;
   border:1px solid rgba(255,255,255,.28); padding:14px; backdrop-filter:blur(3px); transition:transform .2s, box-shadow .2s }
@@ -1235,8 +1264,10 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
   <div class="brand"><div class="mark">TT</div>
     <div><h1>Tids Takedowns</h1><div class="tagline">NFL Week __WEEK__ · player prop matchups, ratings &amp; picks ·
       <a href="reports/index.html" style="color:#fff;font-weight:600">Weekly report cards →</a></div></div></div>
+  <button class="fresh-btn" id="freshbtn" type="button" title="Reload the latest lines and picks">
+    <span class="hr">Hit re-</span><span class="fr">FRESH</span></button>
   <div class="strip" id="bankstrip"></div>
-  <div class="sub"><span class="live">LIVE</span> · Updated __UPDATED__ · Lines: __SOURCE__ · Each player's last <span class="lbn">__N__</span> games vs. the opponent defense's last <span class="lbn">__N__</span><span class="lbs"></span></div>
+  <div class="sub"><span class="live">LIVE</span> · Updated __UPDATED__ · Lines: __SOURCE__ · Each player's <span class="lbw">last __N__ games</span> vs. what the opponent defense allowed in its <span class="lbw">last __N__ games</span> · 2026 games only</div>
 </div></header>
 <div class="ticker" aria-label="Tids Ticker: top rated plays"><span class="tlabel">Tids Ticker</span><div class="tscroll"><div class="tk" id="ticker"></div></div></div>
 <div id="specials"></div>
@@ -1306,6 +1337,7 @@ Payouts assume -110 per leg; hit chance discounts the model's confidence by abou
 <section class="pound" id="dogs">
   <div class="pound-hd"><div class="pound-title cond">The Dog Pound</div>
     <div class="pound-sub">Aaron's crew picks from the model every week. Picks lock at kickoff. For fun only.</div></div>
+  <div class="pound-board" id="poundboard"></div>
   <div class="pound-grid" id="pound"></div>
   <div class="pound-weeks" id="poundweeks"></div>
 </section>
@@ -1331,18 +1363,18 @@ a player who doesn't play voids the leg. Main lines assume -110. Alt-line odds a
     <option value="rushing_yards">Rushing yds</option><option value="receiving_yards">Receiving yds</option></select>
   <label><input type="checkbox" id="good"> A/B ratings only</label>
   <label><input type="checkbox" id="trapf"> Traps</label>
-  <label><input type="checkbox" id="hot"> Hit line __HITPCT__+ of last <span class="lbn">__N__</span></label>
+  <label><input type="checkbox" id="hot"> Hit line __HITPCT__+ of <span class="lbw">last __N__ games</span></label>
 </div>
 <div class="tw"><table><thead><tr>
   <th data-s="score">Rating</th><th data-s="player">Player / what stands out</th><th data-s="pick">Pick</th>
-  <th data-s="proj">Proj</th><th data-s="line_hit_rate">Hit L<span class="lbn">__N__</span></th><th data-s="p_over">P(over)</th>
-  <th data-s="def_rank">Opp rank</th><th>Last <span class="lbn">__N__</span> (bar = line)</th><th data-s="alt">Alt __HITPCT__+</th>
+  <th data-s="proj">Proj</th><th data-s="line_hit_rate">Hit <span class="lbs">L__N__</span></th><th data-s="p_over">P(over)</th>
+  <th data-s="def_rank">Opp rank</th><th><span class="lbw">Last __N__ games</span> (bar = line)</th><th data-s="alt">Alt __HITPCT__+</th>
 </tr></thead><tbody id="rows"></tbody></table></div>
 </details>
 
 </div>
 <a id="slipbtn" href="#slipwrap">Slip (0)</a>
-<footer>Opp rank: 1 = stingiest vs that position, 32 = most generous. Proj = player's L__N__ average × how much this defense
+<footer>Opp rank: 1 = stingiest vs that position, 32 = most generous. Proj = player's average over <span class="lbw">last __N__ games</span> × how much this defense
 allows vs league average (regressed toward average). P(over) is a model estimate, not a guarantee. Chip colors are relative to the pick
 (green helps it, red hurts it, amber = red flag). Lines move — confirm at your sportsbook. Built from free nflverse stats and
 DraftKings lines via ESPN.<br><br>Tids Takedowns is a fan project, not affiliated with the NFL or the Detroit Lions. For entertainment and research only — not betting advice. 21+. Gambling problem? Call 1-800-GAMBLER.</footer>
@@ -1607,6 +1639,16 @@ function renderDogs() {
   const cur = D.weeks[D.weeks.length - 1];
   const legTxt = l => `${esc(l.player)} ${l.pick}`;
   const badge = r => r === "win" ? "✓ Good boy" : r === "loss" ? "Missed" : r === "void" ? "Void" : "Live / to play";
+  const signed = v => (v >= 0 ? "+" : "-") + money(Math.abs(v)).replace("-", "");
+  const pctW = (w, l) => w + l ? Math.round(100 * w / (w + l)) + "%" : "—";
+  const s = BANK.summary || {};
+  const board = D.dogs.map(d => ({name: d.name, icon: d.emoji, pl: d.profit, w: d.record[0], l: d.record[1], bank: d.bank}))
+    .concat(s.balance != null ? [{name: "Claude", icon: "🤖", pl: s.profit, w: s.wins, l: s.losses, bank: s.balance}] : [])
+    .sort((a, b) => b.pl - a.pl);
+  document.getElementById("poundboard").innerHTML = board.map((x, i) => `<div class="pb-row${i === 0 ? " lead" : ""}">
+      <span class="pb-rank">${i + 1}</span><span style="font-size:22px">${x.icon}</span>
+      <div><div class="pb-name">${esc(x.name)}</div><div class="pb-meta">${x.w}-${x.l} · ${pctW(x.w, x.l)} · bank ${money(x.bank)}</div></div>
+      <div class="pb-pl ${x.pl >= 0 ? "up" : "down"}">${signed(x.pl)}</div></div>`).join("");
   document.getElementById("pound").innerHTML = D.dogs.map(d => {
     const p = cur.picks[d.name], [w, l] = d.record;
     const pick = p && p.legs.length ? p.legs.map(x => `<div class="dog-pick"><b class="big">${esc(x.player)} ${x.pick}</b>
@@ -1616,11 +1658,13 @@ function renderDogs() {
     return `<article class="dog ${p && p.result === "win" ? "win" : ""}"><div class="dog-top"><div class="dog-av">${d.emoji}</div>
       <div><div class="dog-name">${esc(d.name)}</div><div class="dog-title">${esc(d.title)}</div></div>
       <div class="dog-rec">${w}-${l}<small>SEASON</small></div></div>
-      <div class="dog-how">${esc(d.how)} · Week ${cur.week}</div>${pick}</article>`;
+      <div class="dog-how">${esc(d.how)} · Week ${cur.week}</div>${pick}
+      <div class="dog-bank"><span>Paper bank <b>${money(d.bank)}</b></span><span>${signed(d.profit)} · ${money(D.stake)}/pick</span></div></article>`;
   }).join("");
   const cell = p => p ? `<span class="pw-${p.result}">${p.legs.map(legTxt).join(" + ")}</span>` : "—";
   document.getElementById("poundweeks").innerHTML = `<table><thead><tr><th>Week</th>${D.dogs.map(d => `<th>${esc(d.name)}</th>`).join("")}</tr></thead>
     <tbody>${D.weeks.slice().reverse().map(wk => `<tr><td><b>${wk.week}${wk.backfilled ? "*" : ""}</b></td>${D.dogs.map(d => `<td>${cell(wk.picks[d.name])}</td>`).join("")}</tr>`).join("")}</tbody></table>
+    <div style="margin-top:6px">Each dog bets ${money(D.stake)} of paper money per pick at -110 a leg (Bun Bun's 2-leg parlay pays about +264), starting from ${money(D.start)}. Claude's row is the real paper bankroll below.</div>
     ${D.weeks.some(w => w.backfilled) ? `<div style="margin-top:6px">*Before the Dog Pound opened: picks back-filled from that week's pre-kickoff ratings.</div>` : ""}`;
 }
 function renderBank() {
@@ -1640,7 +1684,7 @@ function renderBank() {
   const span = x => `weeks ${x.weeks[0].week}–${x.weeks[x.weeks.length - 1].week}`;
   const byWk = x => x.weeks.map(w => `Wk ${w.week} ${money(w.end)}`).join(" · ");
   const whatif = (wi && wi.weeks.length ? `<div class="pmeta" style="margin-top:8px">What-if: this week's model settings and betting rules,
-    used since week 1 on ${span(wi)}'s real lines, would have <b>${money(wi.balance)}</b> from ${money(wi.start)} (${byWk(wi)}).</div>` : "")
+    used on ${span(wi)}'s real lines, would have <b>${money(wi.balance)}</b> from ${money(wi.start)} (${byWk(wi)}).</div>` : "")
     + (wf && wf.weeks.length ? `<div class="pmeta" style="margin-top:4px">Re-tuning every Tuesday on only the weeks already played:
     <b>${money(wf.balance)}</b> (${byWk(wf)}).</div>` : "")
     + (wi || wf ? `<div class="pmeta" style="margin-top:4px">The table below is the paper bets actually placed.</div>` : "");
@@ -1976,8 +2020,9 @@ function setLookback(key, save = true) {
   const meta = ROWVIEWS.meta.find(m => m.key === key) || ROWVIEWS.meta[0];
   ROWS = meta.key === "default" ? DEFAULT_ROWS : ROWVIEWS.rows[meta.key];
   rowById = {}; ROWS.forEach(r => { rowById[r.player_id + "|" + r.stat] = r; });
-  document.querySelectorAll(".lbn").forEach(el => el.textContent = meta.key === "s18" ? "2026" : meta.n);
-  document.querySelectorAll(".lbs").forEach(el => el.textContent = meta.key === "default" ? "" : " · 2026 games only");
+  const all = meta.n >= 18;
+  document.querySelectorAll(".lbw").forEach(el => el.textContent = all ? "2026 games" : `last ${meta.n} games`);
+  document.querySelectorAll(".lbs").forEach(el => el.textContent = all ? "2026" : `L${meta.n}`);
   document.getElementById("lookback").value = meta.key;
   if (save) { try { localStorage.setItem("tt-lookback", meta.key); } catch (e) {} }
 }
@@ -2000,12 +2045,13 @@ function rerenderBoard() {
   if (auto || !img.getAttribute("src")) { sp.remove(); return; }
   sp.classList.add("go");
   const done = () => sp.remove();
-  sp.addEventListener("click", done); setTimeout(done, 1300);
+  sp.addEventListener("click", done); setTimeout(done, 1100);
 })();
 if (__AUTORELOAD__) setTimeout(() => {
   try { sessionStorage.setItem("tt-auto", "1"); } catch (e) {}
   location.reload();
 }, __AUTORELOAD__ * 1000);
+document.getElementById("freshbtn").addEventListener("click", () => location.reload());
 renderDogs(); renderBank(); renderSpecialTicker(); renderGradeTracker(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp(); paceTickers(45); syncAddButtons(); renderSlip(); document.getElementById("propcount").textContent = ROWS.length;
 </script></body></html>"""
 
@@ -2253,16 +2299,17 @@ def grade_tracker(snap_dir: Path, season: int, week: int, live_props: list, stat
             "by_week": [{"week": w_, **{g: v for g, v in t.items()}} for w_, t in sorted(by_week.items())]}
 
 
-LOOKBACK_VIEWS = [("s3", "2026 only: last 3 games", 3), ("s5", "2026 only: last 5 games", 5),
-                  ("s18", "2026 only: whole season", 18)]
+LOOKBACK_VIEWS = [("s3", "Last 3 games", 3), ("s5", "Last 5 games", 5), ("s18", "Whole 2026 season", 18)]
 
 
 def lookback_views(args, stats, sched, season) -> dict:
     """Extra rating sets for the site's look-back picker, each using only this season's games."""
     out = {}
     for key, _, n in LOOKBACK_VIEWS:
+        if n == args.games:
+            continue  # that one is the main board
         vargs = argparse.Namespace(**vars(args))
-        vargs.games, vargs.min_games, vargs.season_only = n, min(args.min_games, n), True
+        vargs.games, vargs.season_only = n, True
         _, _, rows, _ = build_week(vargs, stats, sched, season)
         out[key] = rows
     return out
@@ -2283,7 +2330,8 @@ def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | 
     data = [{k: clean(v) for k, v in r.items()} for r in rows]
     skip = ("notes_all", "ladder")
     view_data = {k: [{c: clean(v) for c, v in r.items() if c not in skip} for r in rs] for k, rs in (views or {}).items()}
-    view_meta = [{"key": "default", "label": f"Last {args.games} games (model default)", "n": args.games}] + [
+    own = next((label for _, label, n in LOOKBACK_VIEWS if n == args.games), f"Last {args.games} games")
+    view_meta = [{"key": "default", "label": f"{own} (model)", "n": args.games}] + [
         {"key": k, "label": label, "n": n} for k, label, n in LOOKBACK_VIEWS if k in view_data]
 
     def clean_tree(o):
@@ -3143,15 +3191,36 @@ def lock_dog_picks(path: Path):
     path.write_text(json.dumps(snap, indent=1, default=str) + "\n", encoding="utf-8")
 
 
+DOG_STAKE = 100  # paper dollars per dog pick, -110 per leg (Bun Bun's 2-leg parlay pays about +264)
+DOG_START = 1000
+
+
+def _dog_profit(legs: list) -> float | None:
+    """Paper profit on one dog pick: a loss on any leg loses the stake; void/push legs drop out of a parlay."""
+    res = [l["result"] for l in legs]
+    if not legs or "pending" in res:
+        return None
+    if "loss" in res:
+        return -DOG_STAKE
+    wins = res.count("win")
+    return round(DOG_STAKE * (american_to_decimal(DEFAULT_ODDS) ** wins - 1), 2)
+
+
 def dog_pound(snap_dir: Path, season: int, week: int, stats, sched, live=None) -> dict:
     """Each dog's pick and result per week, plus season records. Weeks saved before the Dog Pound
     started are back-filled from that week's pre-kickoff ratings (marked as backtests)."""
     weeks, rec = [], {d["name"]: [0, 0] for d in DOGS}
+    bank = {d["name"]: float(DOG_START) for d in DOGS}
     for f in sorted(snap_dir.glob(f"{season}-w*.json")):
         snap = json.loads(f.read_text(encoding="utf-8"))
         w = snap["week"]
         if w > week:
             continue
+        if "dogs" not in snap:  # before the Dog Pound opened: back-fill from today's model on that week's lines
+            redo = snap_dir.parent / "rerated" / f.name
+            if not redo.exists():
+                continue
+            snap = json.loads(redo.read_text(encoding="utf-8"))
         graded = {f"{p['player_id']}|{p['stat']}": p
                   for p in grade_snapshot(snap, stats, sched, live=live if w == week else None)}
         picks = snap.get("dogs") or dog_picks(list(graded.values()))
@@ -3163,11 +3232,32 @@ def dog_pound(snap_dir: Path, season: int, week: int, stats, sched, live=None) -
                       else "win" if "win" in res else "void")
             if result in ("win", "loss"):
                 rec[name][result == "loss"] += 1
-            out[name] = {"result": result, "legs": [{k: l.get(k) for k in (
+            profit = _dog_profit(legs)
+            if profit is not None:
+                bank[name] = round(bank[name] + profit, 2)
+            out[name] = {"result": result, "profit": profit, "bank": bank[name], "legs": [{k: l.get(k) for k in (
                 "player", "team", "opp", "pos", "stat", "pick", "grade", "score", "actual", "result", "game", "kickoff")}
                 for l in legs]}
         weeks.append({"week": w, "backfilled": "dogs" not in snap, "picks": out})
-    return {"dogs": [dict(d, record=rec[d["name"]]) for d in DOGS], "weeks": weeks}
+    return {"dogs": [dict(d, record=rec[d["name"]], bank=bank[d["name"]], profit=round(bank[d["name"]] - DOG_START, 2))
+                     for d in DOGS], "weeks": weeks, "stake": DOG_STAKE, "start": DOG_START}
+
+
+def dog_markdown(pound: dict, week: int) -> str:
+    """Dog Pound section for the weekly report: each dog's pick that week, record, paper bank."""
+    wk = next((w for w in pound["weeks"] if w["week"] == week), None)
+    if not wk:
+        return ""
+    lines = ["## 🐾 The Dog Pound", "",
+             f"${pound['stake']} paper per pick, -110 per leg, ${pound['start']:,} start.", "",
+             "| Dog | Week " + str(week) + " pick | Result | Season | Bank |", "|---|---|---|---|---|"]
+    for d in sorted(pound["dogs"], key=lambda d: -d["profit"]):
+        p = wk["picks"].get(d["name"], {"legs": [], "result": "—", "profit": None})
+        pick = " + ".join(f"{l['player']} {l['pick']} ({STAT_SHORT[l['stat']]}, actual "
+                          f"{'DNP' if l['actual'] is None else format(l['actual'], 'g')})" for l in p["legs"]) or "no pick"
+        res = p["result"] + ("" if p.get("profit") is None else f" {p['profit']:+,.2f}")
+        lines.append(f"| {d['emoji']} {d['name']} | {pick} | {res} | {d['record'][0]}-{d['record'][1]} | ${d['bank']:,.2f} |")
+    return "\n".join(lines) + "\n"
 
 
 def update_snapshot(snap_dir: str, season: int, week: int, rows: list) -> Path:
@@ -3434,8 +3524,9 @@ def cmd_report(args, stats, sched, season):
             print("No completed week to report.")
             return
         s_, w_, summ = max(done)
+        dogs = dog_markdown(dog_pound(Path(args.snapshot_dir), s_, w_, stats, sched), w_)
         Path(args.markdown).write_text(report_markdown(s_, w_, summ, _bank_line(stats, sched, s_, w_),
-                                                       label=summ["label"]),
+                                                       label=summ["label"]) + ("\n" + dogs if dogs else ""),
                                        encoding="utf-8")
         print(f"Week {w_} report written to {args.markdown}")
         print(f"TITLE=Week {w_} Report Card ({s_})")
@@ -3512,7 +3603,7 @@ def cmd_backtest(args, stats, sched, season):
 
 RETUNE_GRID = {"rushing_yards": [0.80, 0.85, 0.90, 0.95, 1.0], "receiving_yards": [0.85, 0.90, 0.95, 1.0],
                "passing_yards": [0.95, 1.0, 1.05], "hit_rate_bonus": [0.0, 0.15, 0.30],
-               "garbage_time_cut": [0.0, 0.10, 0.20]}
+               "garbage_time_cut": [0.0, 0.10, 0.20], "games": [3, 5, 18]}
 RETUNE_TIERS = (2, 3, 5, 10)
 RETUNE_HOLDOUT = 3  # newest finished weeks held back to check a new setting before switching to it
 
@@ -3541,7 +3632,7 @@ def _rebuild_week(snap: dict, args, stats, sched, season: int) -> list:
     sched_asof.loc[later, "result"] = float("nan")
     wargs = argparse.Namespace(week=week, include_played=True, lines=None, refresh=False, games=args.games,
                                min_games=4, hit_rate=0.70, backtest=True, team_override=rosters,
-                               main_lines=lines, keep_hist=True, params=UNTUNED_PARAMS)
+                               main_lines=lines, keep_hist=True, params=UNTUNED_PARAMS, season_only=SEASON_ONLY)
     _, _, rows, _ = build_week(wargs, stats_asof, sched_asof, season)
     actual = (stats[(stats["season"] == season) & (stats["week"] == week)]
               .drop_duplicates("player_id").set_index("player_id"))
@@ -3577,7 +3668,7 @@ def _retune_table(rows: list) -> pd.DataFrame:
             x = rerate(r, p)
             win = (None if r["actual"] is None or r["actual"] == r["line"]
                    else float((r["actual"] > r["line"]) == x["pick"].startswith("OVER")))
-            recs.append({"week": r["week"], "game": r["game"], "stat": r["stat"], "scale": scale,
+            recs.append({"week": r["week"], "game": r["game"], "stat": r["stat"], "scale": scale, "games": r["window"],
                          "score": x["score"], "hot": x["hot"], "dog_over": x["dog_over"],
                          "trap": bool(x["traps"]), "win": win})
     return pd.DataFrame(recs)
@@ -3585,15 +3676,16 @@ def _retune_table(rows: list) -> pd.DataFrame:
 
 def _grid_params():
     import itertools
-    for rush, rec, pas, hr, gt in itertools.product(*RETUNE_GRID.values()):
+    for rush, rec, pas, hr, gt, n in itertools.product(*RETUNE_GRID.values()):
         yield {"proj_scale": {"passing_yards": pas, "rushing_yards": rush, "receiving_yards": rec},
-               "hit_rate_bonus": hr, "garbage_time_cut": gt}
+               "hit_rate_bonus": hr, "garbage_time_cut": gt, "games": n}
 
 
 def _score_params(table: pd.DataFrame, params: dict, weeks) -> dict:
     """Hit % of the top-N rated props per game (trap-flagged excluded, like the report cards)."""
     scale = table["stat"].map(params["proj_scale"])
-    t = table[(table["scale"] == scale) & table["week"].isin(weeks) & ~table["trap"]]
+    t = table[(table["scale"] == scale) & (table["games"] == params.get("games", 18))
+              & table["week"].isin(weeks) & ~table["trap"]]
     score = (t["score"] * np.where(t["hot"], 1 + params["hit_rate_bonus"], 1.0)
              * np.where(t["dog_over"], 1 - params["garbage_time_cut"], 1.0))
     t = t.assign(s=score).sort_values("s", ascending=False)
@@ -3613,9 +3705,9 @@ def _write_rerated(rows_by_week: dict, params_by_week: dict, out_dir: Path, seas
     out_dir.mkdir(parents=True, exist_ok=True)
     for f in out_dir.glob(f"{season}-w*.json"):
         f.unlink()
-    for w, rows in rows_by_week.items():
+    for w, by_n in rows_by_week.items():
         props = {}
-        for r in rows:
+        for r in by_n[params_by_week[w].get("games", 18)]:
             x = rerate(r, params_by_week[w])
             props[f"{r['player_id']}|{r['stat']}"] = {k: x.get(k) for k in SNAPSHOT_FIELDS + ["sd"]}
         (out_dir / f"{season}-w{w:02d}.json").write_text(
@@ -3626,7 +3718,8 @@ def _write_rerated(rows_by_week: dict, params_by_week: dict, out_dir: Path, seas
 
 def _params_text(p: dict) -> str:
     s = p["proj_scale"]
-    return (f"projections x{s['rushing_yards']:g} rush / x{s['receiving_yards']:g} rec / "
+    window = "whole season" if p.get("games", 18) >= 18 else f"last {p['games']} games"
+    return (f"2026 {window}, projections x{s['rushing_yards']:g} rush / x{s['receiving_yards']:g} rec / "
             f"x{s['passing_yards']:g} pass, +{p['hit_rate_bonus']:.0%} hot-hand bonus, "
             f"-{p['garbage_time_cut']:.0%} big-underdog pass/rec overs")
 
@@ -3646,12 +3739,19 @@ def cmd_retune(args, stats, sched, season):
     weeks = _finished_weeks(snap_dir, season, stats, sched)
     if not weeks:
         sys.exit("No finished weeks with saved ratings yet.")
-    rows_by_week = {}
+    rows_by_week = {}  # week -> {look-back window: rebuilt props}
     for w in weeks:
         snap = json.loads((snap_dir / f"{season}-w{w:02d}.json").read_text(encoding="utf-8"))
-        rows_by_week[w] = _rebuild_week(snap, args, stats, sched, season)
-        print(f"Week {w}: rebuilt {len(rows_by_week[w])} props", file=sys.stderr)
-    table = _retune_table([r for rows in rows_by_week.values() for r in rows])
+        by_n = {}
+        for n in RETUNE_GRID["games"]:
+            wargs = argparse.Namespace(**vars(args))
+            wargs.games = n
+            by_n[n] = [dict(r, window=n) for r in _rebuild_week(snap, wargs, stats, sched, season)]
+        if any(by_n.values()):  # week 1 has no games yet this season
+            rows_by_week[w] = by_n
+        print(f"Week {w}: rebuilt " + ", ".join(f"{len(v)} (last {n})" for n, v in by_n.items()), file=sys.stderr)
+    weeks = list(rows_by_week)
+    table = _retune_table([r for by_n in rows_by_week.values() for rows in by_n.values() for r in rows])
 
     current = MODEL_PARAMS
     if len(weeks) > RETUNE_HOLDOUT + 1:
@@ -3700,7 +3800,7 @@ def cmd_retune(args, stats, sched, season):
            f"Top 2/3/5/10 hit rate on all {len(weeks)} finished weeks: current {pct(all_cur)}, "
            f"chosen {pct(all_chosen)}", "",
            "**Paper bankroll year to date** ($1,000 start, today's betting rules, real pre-kickoff lines):",
-           f"- These settings used since Week 1: **${hind['balance']:,.2f}** ({_bank_weeks(hind)})",
+           f"- These settings used since Week {weeks[0]}: **${hind['balance']:,.2f}** ({_bank_weeks(hind)})",
            f"- Re-tuning every week on only the weeks before it: **${walk['balance']:,.2f}** ({_bank_weeks(walk)})",
            "",
            "_The first number uses hindsight (settings picked with all these weeks known); the second is "
@@ -3979,7 +4079,7 @@ h1 { margin:6px 0 4px; font:800 46px/0.95 "Barlow Condensed",sans-serif; letter-
 <div class="actions"><button class="btn" id="share">Share these picks</button>
 <a class="btn alt" href="../">See every game &amp; rating →</a>
 <a class="btn alt" href="../top5/">Top 5</a><a class="btn alt" href="../parlays/">Parlays</a></div>
-<p class="fine">Ratings compare each player's last 10 games with the opponent defense's last 10 against the posted DraftKings line,
+<p class="fine">Ratings compare each player's 2026 games with what the opponent defense has allowed this season against the posted DraftKings line,
 then factor in how often the line has hit and recent form. Trap-flagged props are excluded. Lines move, so confirm at your
 sportsbook. For entertainment only, not betting advice. 21+. Gambling problem? Call 1-800-GAMBLER. A fan project, not affiliated
 with the NFL.</p></div>
@@ -4026,7 +4126,7 @@ def write_top5(week, games, rows, path: Path):
                   f"<div class='name'>{H.escape(r['player'])}<span class='g g{r['grade']}'>{r['grade']}</span></div>"
                   f"<div class='meta'>{r['pos']} · {r['team']} vs {r['opp']} · {kick.get(r['game'], '')}</div>"
                   f"<div class='line {side}'>{r['pick']} <span style='font-size:18px'>{stat_name[r['stat']]}</span></div>"
-                  f"<div class='meta'>Projection {r['proj']:g} · hit {r['line_hits']} of last 10 · rating {r['score']}/10</div>"
+                  f"<div class='meta'>Projection {r['proj']:g} · hit {r['line_hits']} games · rating {r['score']}/10</div>"
                   + (f"<div class='why'>✓ {H.escape(good)}</div>" if good else "") + "</div></article>")
     if not cards:
         cards = "<div class='empty'>No A/B-rated plays posted yet. Lines usually open midweek, so check back soon.</div>"
@@ -4172,7 +4272,7 @@ def cmd_week(args, stats, sched, season):
 
 def main():
     ap = argparse.ArgumentParser(description="NFL player vs. defense matchup analyzer")
-    ap.add_argument("--games", type=int, default=10, help="lookback window (default 10)")
+    ap.add_argument("--games", type=int, help="look-back window in games, this season only (default: the tuned setting)")
     ap.add_argument("--refresh", action="store_true", help="force re-download of data")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
@@ -4248,6 +4348,8 @@ def main():
     sp.add_argument("--quiet", action="store_true", help="don't print the splits table")
 
     args = ap.parse_args()
+    if args.games is None:
+        args.games = MODEL_PARAMS["games"]
     stats, sched, season = load_data(args.refresh)
     {"player": cmd_player, "slate": cmd_slate, "defense": cmd_defense,
      "week": cmd_week, "autobet": cmd_autobet, "bet": cmd_bet,
