@@ -554,8 +554,12 @@ def load_lines_csv(path: str) -> dict:
 
 
 def build_week(args, stats, sched, season):
-    """Compute every player/prop row for the target week. Returns (week, games, rows, source)."""
+    """Compute every player/prop row for the target week. Returns (week, games, rows, source).
+    args.season_only limits every look-back (players and defenses) to this season's games."""
     import os
+
+    if getattr(args, "season_only", False):
+        stats = stats[stats["season"] == season]
 
     s = sched[sched["season"] == season]
     if args.week is None:
@@ -579,10 +583,13 @@ def build_week(args, stats, sched, season):
     elif os.environ.get("ODDS_API_KEY"):
         name_lines = fetch_odds_api_lines(os.environ["ODDS_API_KEY"])
         source = f"The Odds API ({len(name_lines)} lines)"
+    elif getattr(args, "prefetched", None):  # look-back variants reuse the lines already pulled this run
+        main_by_id, miles_by_id, source = args.prefetched
     else:
         main_by_id, miles_by_id = fetch_espn_props(season, week, args.refresh,
                                                    finished=getattr(args, "backtest", False))
         source = f"DraftKings via ESPN ({len(main_by_id)} yardage lines)"
+        args.prefetched = (main_by_id, miles_by_id, source)
     if getattr(args, "main_lines", None) is not None:  # retune: the lines we actually rated pre-kickoff
         main_by_id, miles_by_id, name_lines = args.main_lines, {}, {}
         source = "saved pre-kickoff lines"
@@ -687,6 +694,7 @@ def analyze_row(row: dict, vals: list, lines_expected: bool, weights=None, param
     notes = []
     n = len(vals)
     avg = row["L10_avg"]
+    ln = f"L{n}"  # look-back label, e.g. L10
     line = row.get("line")
     stat_word = {"passing_yards": "pass yds", "rushing_yards": "rush yds",
                  "receiving_yards": "rec yds"}[row["stat"]]
@@ -720,16 +728,16 @@ def analyze_row(row: dict, vals: list, lines_expected: bool, weights=None, param
     # Recent form vs. 10-game baseline
     l3 = sum(vals[-3:]) / min(3, n)
     if avg > 0 and l3 - avg >= max(10, 0.25 * avg):
-        notes.append({"t": f"Trending up: {l3:.0f} {stat_word} last 3 vs {avg:.0f} L10 avg", "k": "good"})
+        notes.append({"t": f"Trending up: {l3:.0f} {stat_word} last 3 vs {avg:.0f} {ln} avg", "k": "good"})
     elif avg > 0 and avg - l3 >= max(10, 0.25 * avg):
-        notes.append({"t": f"Trending down: {l3:.0f} {stat_word} last 3 vs {avg:.0f} L10 avg", "k": "bad"})
+        notes.append({"t": f"Trending down: {l3:.0f} {stat_word} last 3 vs {avg:.0f} {ln} avg", "k": "bad"})
 
     # Usage (targets / carries / attempts)
     u3, u10, uname = row["usage_l3"], row["usage_l10"], row["usage_name"]
     if u10 >= 2 and u3 >= u10 * 1.3 and u3 - u10 >= 2:
-        notes.append({"t": f"Bigger role: {u3:g} {uname}/game last 3 vs {u10:g} L10", "k": "good"})
+        notes.append({"t": f"Bigger role: {u3:g} {uname}/game last 3 vs {u10:g} {ln}", "k": "good"})
     elif u10 >= 2 and u3 <= u10 * 0.7 and u10 - u3 >= 2:
-        notes.append({"t": f"Shrinking role: {u3:g} {uname}/game last 3 vs {u10:g} L10", "k": "bad"})
+        notes.append({"t": f"Shrinking role: {u3:g} {uname}/game last 3 vs {u10:g} {ln}", "k": "bad"})
 
     # Floor / ceiling / volatility
     lo, hi = min(vals), max(vals)
@@ -790,7 +798,7 @@ def analyze_row(row: dict, vals: list, lines_expected: bool, weights=None, param
         # Trap checks: reasons the attractive-looking side may be a setup
         traps = []
         if trap:
-            traps.append(f"Line {line:g} vs {avg:.0f} L10 avg — gap this big usually means the book "
+            traps.append(f"Line {line:g} vs {avg:.0f} {ln} avg — gap this big usually means the book "
                          "knows about an injury or role change")
             score *= 0.45
         if row["missed_last_game"]:
@@ -905,6 +913,28 @@ PAGE_TEMPLATE = r"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 Inter,system-ui,-apple-system,"Segoe UI",sans-serif }
 .cond { font-family:"Barlow Condensed",Inter,system-ui,sans-serif }
 .wrap { max-width:1240px; margin:0 auto; padding:0 16px }
+#splash { position:fixed; inset:0; z-index:9999; display:none; place-items:center; align-content:center; gap:10px; overflow:hidden;
+  background:radial-gradient(circle at 50% 45%,#1a9be0 0%,#0076b6 35%,#003a5c 75%,#011726 100%); cursor:pointer }
+#splash.go { display:grid; animation:spOut .28s ease-in .95s forwards }
+#splash .sp-rays { position:absolute; inset:-60%; opacity:.35; pointer-events:none;
+  background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.55) 0 6deg,transparent 6deg 18deg); animation:spSpin 1.3s linear }
+#splash .sp-flash { position:absolute; inset:0; background:#fff; opacity:0; animation:spFlash .35s ease-out .12s; pointer-events:none; z-index:3 }
+#splash .sp-ring { position:relative; z-index:2; width:min(56vw,280px); aspect-ratio:1; border-radius:50%; padding:6px;
+  background:conic-gradient(#fff,#b0b7bc,#fff,#b0b7bc,#fff); box-shadow:0 0 0 6px #0076b6, 0 0 60px 12px rgba(255,255,255,.45);
+  animation:spIn .55s cubic-bezier(.2,1.6,.4,1) both }
+#splash .sp-face { width:100%; height:100%; border-radius:50%; object-fit:cover; display:block }
+#splash .sp-text { position:relative; z-index:2; color:#fff; font-weight:800; font-style:italic; letter-spacing:.04em;
+  font-size:clamp(34px,9vw,72px); line-height:1; text-shadow:0 4px 0 #003a5c, 0 0 24px rgba(255,255,255,.5);
+  animation:spSlam .4s cubic-bezier(.3,1.8,.5,1) .3s both }
+#splash .sp-sub { position:relative; z-index:2; color:#d6ebf8; font-weight:700; letter-spacing:.3em; text-transform:uppercase;
+  font-size:clamp(13px,3vw,18px); animation:spFade .3s ease .5s both }
+@keyframes spIn { 0% { transform:scale(.1) rotate(-200deg); opacity:0 } 100% { transform:scale(1) rotate(0); opacity:1 } }
+@keyframes spSlam { 0% { transform:scale(3) skewX(-12deg); opacity:0 } 100% { transform:scale(1) skewX(-12deg); opacity:1 } }
+@keyframes spFade { from { opacity:0; transform:translateY(8px) } to { opacity:1; transform:none } }
+@keyframes spFlash { 0% { opacity:.85 } 100% { opacity:0 } }
+@keyframes spSpin { to { transform:rotate(40deg) } }
+@keyframes spOut { to { opacity:0; transform:scale(1.15); visibility:hidden } }
+@media (prefers-reduced-motion: reduce) { #splash * { animation:none !important } }
 .tabs { position:sticky; top:0; z-index:40; background:linear-gradient(180deg,#0076b6,#005a8c);
   border-bottom:3px solid var(--silver); box-shadow:0 6px 18px rgba(0,40,70,.28) }
 .tabs-in { display:flex; gap:6px; overflow-x:auto; padding-top:8px; padding-bottom:8px; scrollbar-width:none }
@@ -912,6 +942,10 @@ body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 Inter,sy
 .tabs button { flex:none; border:0; cursor:pointer; padding:9px 16px; border-radius:99px; background:rgba(255,255,255,.12); color:#e6f3fb;
   font:800 17px/1 "Barlow Condensed",sans-serif; letter-spacing:.05em; text-transform:uppercase; transition:background .15s, transform .15s }
 .tabs button:hover { background:rgba(255,255,255,.24); transform:translateY(-1px) }
+.lookback { flex:none; margin-left:auto; display:flex; align-items:center; gap:8px; color:#e6f3fb;
+  font:800 15px/1 "Barlow Condensed",sans-serif; letter-spacing:.05em; text-transform:uppercase; white-space:nowrap }
+.lookback select { border:2px solid var(--silver); border-radius:99px; padding:6px 10px; background:#fff; color:#0076b6;
+  font:700 13px/1.1 Inter,sans-serif; cursor:pointer }
 .tabs button.on { background:#fff; color:#0076b6; box-shadow:0 0 0 2px var(--silver), 0 4px 12px rgba(0,0,0,.25) }
 .tabpane:not(.on) { display:none }
 .tabpane.on { animation:paneIn .25s ease }
@@ -1194,18 +1228,23 @@ footer { color:var(--mute); font-size:12px; padding:24px 0 40px }
 .pl-pay .odds { font:800 24px/1 "Barlow Condensed",sans-serif }
 @media (max-width:560px) { .pl-row { grid-template-columns:1fr; } .pl-pay { text-align:left } }
 </style></head><body>
+<div id="splash" aria-hidden="true"><div class="sp-flash"></div><div class="sp-rays"></div>
+  <div class="sp-ring"><img class="sp-face" src="__SPLASH__" alt=""></div>
+  <div class="sp-text cond">TAKEDOWN TIME</div><div class="sp-sub cond">Tids Takedowns</div></div>
 <header class="hero"><div class="twosix" aria-hidden="true">__JERSEY__</div><div class="wrap">
   <div class="brand"><div class="mark">TT</div>
     <div><h1>Tids Takedowns</h1><div class="tagline">NFL Week __WEEK__ · player prop matchups, ratings &amp; picks ·
       <a href="reports/index.html" style="color:#fff;font-weight:600">Weekly report cards →</a></div></div></div>
   <div class="strip" id="bankstrip"></div>
-  <div class="sub"><span class="live">LIVE</span> · Updated __UPDATED__ · Lines: __SOURCE__ · Each player's last __N__ games vs. the opponent defense's last __N__</div>
+  <div class="sub"><span class="live">LIVE</span> · Updated __UPDATED__ · Lines: __SOURCE__ · Each player's last <span class="lbn">__N__</span> games vs. the opponent defense's last <span class="lbn">__N__</span><span class="lbs"></span></div>
 </div></header>
 <div class="ticker" aria-label="Tids Ticker: top rated plays"><span class="tlabel">Tids Ticker</span><div class="tscroll"><div class="tk" id="ticker"></div></div></div>
 <div id="specials"></div>
 <nav class="tabs" id="tabs" aria-label="Sections"><div class="wrap tabs-in">
   <button data-tab="picks">🏠 Home</button><button data-tab="matchups">🏈 Matchups</button>
-  <button data-tab="live">📡 Live</button><button data-tab="research">🔎 Research</button></div></nav>
+  <button data-tab="live">📡 Live</button><button data-tab="research">🔎 Research</button>
+  <label class="lookback" title="How many past games each rating looks at">Look back
+    <select id="lookback"></select></label></div></nav>
 <div class="wrap">
 <div class="tabpane" data-tab="picks">
 <h2>Tids' Top 5</h2>
@@ -1292,12 +1331,12 @@ a player who doesn't play voids the leg. Main lines assume -110. Alt-line odds a
     <option value="rushing_yards">Rushing yds</option><option value="receiving_yards">Receiving yds</option></select>
   <label><input type="checkbox" id="good"> A/B ratings only</label>
   <label><input type="checkbox" id="trapf"> Traps</label>
-  <label><input type="checkbox" id="hot"> Hit line __HITPCT__+ of last __N__</label>
+  <label><input type="checkbox" id="hot"> Hit line __HITPCT__+ of last <span class="lbn">__N__</span></label>
 </div>
 <div class="tw"><table><thead><tr>
   <th data-s="score">Rating</th><th data-s="player">Player / what stands out</th><th data-s="pick">Pick</th>
-  <th data-s="proj">Proj</th><th data-s="line_hit_rate">Hit L__N__</th><th data-s="p_over">P(over)</th>
-  <th data-s="def_rank">Opp rank</th><th>Last __N__ (bar = line)</th><th data-s="alt">Alt __HITPCT__+</th>
+  <th data-s="proj">Proj</th><th data-s="line_hit_rate">Hit L<span class="lbn">__N__</span></th><th data-s="p_over">P(over)</th>
+  <th data-s="def_rank">Opp rank</th><th>Last <span class="lbn">__N__</span> (bar = line)</th><th data-s="alt">Alt __HITPCT__+</th>
 </tr></thead><tbody id="rows"></tbody></table></div>
 </details>
 
@@ -1309,7 +1348,8 @@ allows vs league average (regressed toward average). P(over) is a model estimate
 DraftKings lines via ESPN.<br><br>Tids Takedowns is a fan project, not affiliated with the NFL or the Detroit Lions. For entertainment and research only — not betting advice. 21+. Gambling problem? Call 1-800-GAMBLER.</footer>
 </div>
 <script>
-const ROWS = __ROWS__;
+let ROWS = __ROWS__;
+const DEFAULT_ROWS = ROWS, ROWVIEWS = __ROWVIEWS__;
 const GAMES = __GAMES__;
 const HIT = __HIT__;
 const STAT = {passing_yards:"pass yds", rushing_yards:"rush yds", receiving_yards:"rec yds"};
@@ -1739,8 +1779,8 @@ function renderGibbs() {
   const props = f.props.length ? f.props.map(r => `<div class="gprop">
       <div class="m">${STAT[r.stat].toUpperCase()} · vs ${r.opp}</div>
       ${r.pick ? `<div class="pk"><span class="${r.pick.split(" ")[0]}">${r.pick}</span> ${grade(r)}</div>
-        <div class="m">proj ${r.proj} · hit ${r.line_hits} · L10 avg ${r.L10_avg}${r.open != null && r.open !== r.line ? ` · opened ${r.open}` : ""}</div>`
-        : `<div class="pk">No line yet</div><div class="m">proj ${r.proj} · L10 avg ${r.L10_avg}</div>`}
+        <div class="m">proj ${r.proj} · hit ${r.line_hits} · L${r.n} avg ${r.L10_avg}${r.open != null && r.open !== r.line ? ` · opened ${r.open}` : ""}</div>`
+        : `<div class="pk">No line yet</div><div class="m">proj ${r.proj} · L${r.n} avg ${r.L10_avg}</div>`}
       ${chips(r, 2)}</div>`).join("")
     : `<div class="gprop"><div class="pk">Lions on bye / no lines yet</div><div class="m">Check back when this week's props post.</div></div>`;
   const mx = Math.max(1, ...f.log.map(x => x.rush + Math.max(x.rec, 0)));
@@ -1803,7 +1843,7 @@ const SLIP_KEY = "tt-slip-v1";
 let SLIP = [];
 try { SLIP = JSON.parse(localStorage.getItem(SLIP_KEY) || "[]"); } catch (e) { SLIP = []; }
 const saveSlip = () => { try { localStorage.setItem(SLIP_KEY, JSON.stringify(SLIP)); } catch (e) {} };
-const rowById = {}; ROWS.forEach(r => { rowById[r.player_id + "|" + r.stat] = r; });
+let rowById = {}; ROWS.forEach(r => { rowById[r.player_id + "|" + r.stat] = r; });
 const liveById = {}; (typeof LP !== "undefined" ? LP : []).forEach(p => { liveById[p.player_id + "|" + p.stat] = p; });
 const ncdf = z => 0.5 * (1 + erf(z / Math.SQRT2));
 function erf(x) { const t = 1 / (1 + 0.3275911 * Math.abs(x)), y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x); return x >= 0 ? y : -y; }
@@ -1932,8 +1972,47 @@ document.addEventListener("click", e => {
   showTab(saved || "picks", false);
   if (target) { openTabFor(target); setTimeout(() => target.scrollIntoView(), 0); }
 })();
+function setLookback(key, save = true) {
+  const meta = ROWVIEWS.meta.find(m => m.key === key) || ROWVIEWS.meta[0];
+  ROWS = meta.key === "default" ? DEFAULT_ROWS : ROWVIEWS.rows[meta.key];
+  rowById = {}; ROWS.forEach(r => { rowById[r.player_id + "|" + r.stat] = r; });
+  document.querySelectorAll(".lbn").forEach(el => el.textContent = meta.key === "s18" ? "2026" : meta.n);
+  document.querySelectorAll(".lbs").forEach(el => el.textContent = meta.key === "default" ? "" : " · 2026 games only");
+  document.getElementById("lookback").value = meta.key;
+  if (save) { try { localStorage.setItem("tt-lookback", meta.key); } catch (e) {} }
+}
+function rerenderBoard() {
+  renderTicker(); renderTop5(); renderGames(); renderParlays(); renderPanels(); renderRows(); syncAddButtons();
+  document.getElementById("propcount").textContent = ROWS.length;
+}
+(() => {
+  const sel = document.getElementById("lookback");
+  sel.innerHTML = ROWVIEWS.meta.map(m => `<option value="${m.key}">${esc(m.label)}</option>`).join("");
+  if (ROWVIEWS.meta.length < 2) { sel.closest("label").style.display = "none"; return; }
+  let saved = null; try { saved = localStorage.getItem("tt-lookback"); } catch (e) {}
+  setLookback(saved || "default", false);
+  sel.addEventListener("change", () => { setLookback(sel.value); rerenderBoard(); });
+})();
+(() => {
+  const sp = document.getElementById("splash"), img = sp.querySelector("img");
+  let seen = false; try { seen = sessionStorage.getItem("tt-splash") === "1"; sessionStorage.setItem("tt-splash", "1"); } catch (e) {}
+  if (seen || !img.getAttribute("src")) { sp.remove(); return; }
+  sp.classList.add("go");
+  const done = () => sp.remove();
+  sp.addEventListener("click", done); setTimeout(done, 1300);
+})();
 renderDogs(); renderBank(); renderSpecialTicker(); renderGradeTracker(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp(); paceTickers(45); syncAddButtons(); renderSlip(); document.getElementById("propcount").textContent = ROWS.length;
 </script></body></html>"""
+
+
+SPLASH_IMAGE = Path(__file__).parent / "assets" / "splash.jpg"  # 1-second intro on page load
+
+
+def splash_uri() -> str:
+    import base64
+    if not SPLASH_IMAGE.exists():
+        return ""
+    return "data:image/jpeg;base64," + base64.b64encode(SPLASH_IMAGE.read_bytes()).decode()
 
 
 FEATURE_PLAYER = "Jahmyr Gibbs"  # the site's featured player (Lions); jersey comes from roster data
@@ -2169,8 +2248,23 @@ def grade_tracker(snap_dir: Path, season: int, week: int, live_props: list, stat
             "by_week": [{"week": w_, **{g: v for g, v in t.items()}} for w_, t in sorted(by_week.items())]}
 
 
+LOOKBACK_VIEWS = [("s3", "2026 only: last 3 games", 3), ("s5", "2026 only: last 5 games", 5),
+                  ("s18", "2026 only: whole season", 18)]
+
+
+def lookback_views(args, stats, sched, season) -> dict:
+    """Extra rating sets for the site's look-back picker, each using only this season's games."""
+    out = {}
+    for key, _, n in LOOKBACK_VIEWS:
+        vargs = argparse.Namespace(**vars(args))
+        vargs.games, vargs.min_games, vargs.season_only = n, min(args.min_games, n), True
+        _, _, rows, _ = build_week(vargs, stats, sched, season)
+        out[key] = rows
+    return out
+
+
 def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | None, bank=None, feature=None,
-               live=None, splits=None):
+               live=None, splits=None, views=None):
     import html
     import json
 
@@ -2182,6 +2276,10 @@ def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | 
         return v
 
     data = [{k: clean(v) for k, v in r.items()} for r in rows]
+    skip = ("notes_all", "ladder")
+    view_data = {k: [{c: clean(v) for c, v in r.items() if c not in skip} for r in rs] for k, rs in (views or {}).items()}
+    view_meta = [{"key": "default", "label": f"Last {args.games} games (model default)", "n": args.games}] + [
+        {"key": k, "label": label, "n": n} for k, label, n in LOOKBACK_VIEWS if k in view_data]
 
     def clean_tree(o):
         if isinstance(o, dict):
@@ -2218,6 +2316,8 @@ def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | 
             .replace("__JERSEY__", html.escape(str((feature or {}).get("jersey", ""))))
             .replace("__LIVE__", json.dumps(clean_tree(live or {}), default=str).replace("</", "<\\/"))
             .replace("__FEATURE__", json.dumps(clean_tree(feature or {}), default=str).replace("</", "<\\/"))
+            .replace("__SPLASH__", splash_uri())
+            .replace("__ROWVIEWS__", json.dumps({"meta": view_meta, "rows": view_data}, default=str).replace("</", "<\\/"))
             .replace("__ROWS__", json.dumps(data, default=str).replace("</", "<\\/")))
     path.write_text(page, encoding="utf-8")
 
@@ -4005,7 +4105,9 @@ def cmd_week(args, stats, sched, season):
     import json
     out_dir = Path(__file__).parent
     while True:
+        args.prefetched = None  # pull fresh lines each refresh
         week, games, rows, source = build_week(args, stats, sched, season)
+        views = lookback_views(args, stats, sched, season) if args.html else {}
         if args.snapshot_dir:
             lock_dog_picks(update_snapshot(args.snapshot_dir, season, week, rows))
         if args.live:
@@ -4045,7 +4147,7 @@ def cmd_week(args, stats, sched, season):
             if d.exists() and any(d.glob(f"{season}-w*.json")):
                 bank[key] = simulate_bankroll(d, season, week - 1, stats, sched, None)
         write_html(week, games, rows, source, args, html_path, refresh_secs=refresh, bank=bank, live=live,
-                   feature=feature_player(stats, rows, season), splits=splits)
+                   feature=feature_player(stats, rows, season), splits=splits, views=views)
         if args.html:  # shareable Top 5 page next to the dashboard
             write_top5(week, games, rows, html_path.parent / "top5" / "index.html")
             write_parlays(week, games, rows, html_path.parent / "parlays" / "index.html")
