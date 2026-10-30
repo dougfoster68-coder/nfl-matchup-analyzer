@@ -1995,12 +1995,17 @@ function rerenderBoard() {
 })();
 (() => {
   const sp = document.getElementById("splash"), img = sp.querySelector("img");
-  let seen = false; try { seen = sessionStorage.getItem("tt-splash") === "1"; sessionStorage.setItem("tt-splash", "1"); } catch (e) {}
-  if (seen || !img.getAttribute("src")) { sp.remove(); return; }
+  // plays on every load the viewer does; skipped only on the page's own timed refresh
+  let auto = false; try { auto = sessionStorage.getItem("tt-auto") === "1"; sessionStorage.removeItem("tt-auto"); } catch (e) {}
+  if (auto || !img.getAttribute("src")) { sp.remove(); return; }
   sp.classList.add("go");
   const done = () => sp.remove();
   sp.addEventListener("click", done); setTimeout(done, 1300);
 })();
+if (__AUTORELOAD__) setTimeout(() => {
+  try { sessionStorage.setItem("tt-auto", "1"); } catch (e) {}
+  location.reload();
+}, __AUTORELOAD__ * 1000);
 renderDogs(); renderBank(); renderSpecialTicker(); renderGradeTracker(); renderLiveBets(); renderTicker(); renderTop5(); renderLive(); renderGames(); renderSharp(); renderParlays(); renderPanels(); renderRows(); countUp(); paceTickers(45); syncAddButtons(); renderSlip(); document.getElementById("propcount").textContent = ROWS.length;
 </script></body></html>"""
 
@@ -2302,7 +2307,8 @@ def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | 
                           "splits": (splits or {}).get(key, {})})
     games_json = {"list": game_list, "logo": ESPN_LOGO_ABBR}
 
-    meta = f'\n<meta http-equiv="refresh" content="{refresh_secs}">' if refresh_secs else ""
+    meta = ""
+    autoreload = refresh_secs or 0
     page = (PAGE_TEMPLATE
             .replace("__META__", meta)
             .replace("__WEEK__", str(week))
@@ -2317,6 +2323,7 @@ def write_html(week, games, rows, source, args, path: Path, refresh_secs: int | 
             .replace("__LIVE__", json.dumps(clean_tree(live or {}), default=str).replace("</", "<\\/"))
             .replace("__FEATURE__", json.dumps(clean_tree(feature or {}), default=str).replace("</", "<\\/"))
             .replace("__SPLASH__", splash_uri())
+            .replace("__AUTORELOAD__", str(autoreload))
             .replace("__ROWVIEWS__", json.dumps({"meta": view_meta, "rows": view_data}, default=str).replace("</", "<\\/"))
             .replace("__ROWS__", json.dumps(data, default=str).replace("</", "<\\/")))
     path.write_text(page, encoding="utf-8")
