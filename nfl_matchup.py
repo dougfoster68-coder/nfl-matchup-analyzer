@@ -994,7 +994,9 @@ body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 Inter,sy
 .dog:hover { transform:translateY(-4px) rotate(-.4deg); box-shadow:0 14px 28px rgba(0,20,40,.45) }
 .dog.win { box-shadow:0 0 0 2px #5dff9d, 0 0 26px rgba(93,255,157,.45) }
 .dog-top { display:flex; align-items:center; gap:12px }
-.dog-av { flex:none; width:64px; height:64px; border-radius:50%; display:grid; place-items:center; font-size:36px;
+.dog-av img { width:100%; height:100%; border-radius:50%; object-fit:cover; display:block }
+.pb-av { width:30px; height:30px; border-radius:50%; object-fit:cover; border:2px solid #fff; flex:none }
+.dog-av { flex:none; width:64px; height:64px; border-radius:50%; display:grid; place-items:center; font-size:36px; overflow:hidden;
   background:radial-gradient(circle at 35% 30%,#fff,#dfe5e9 60%,#9aa3a9); border:3px solid #fff;
   box-shadow:0 0 0 3px #0076b6, 0 6px 14px rgba(0,0,0,.35); animation:wag 3.4s ease-in-out infinite }
 .dog:nth-child(2) .dog-av { animation-delay:.6s } .dog:nth-child(3) .dog-av { animation-delay:1.2s }
@@ -1638,7 +1640,7 @@ function renderDogs() {
   const signed = v => (v >= 0 ? "+" : "-") + money(Math.abs(v)).replace("-", "");
   const pctW = (w, l) => w + l ? Math.round(100 * w / (w + l)) + "%" : "—";
   const s = BANK.summary || {};
-  const board = D.dogs.map(d => ({name: d.name, icon: d.emoji, pl: d.profit, w: d.record[0], l: d.record[1], bank: d.bank}))
+  const board = D.dogs.map(d => ({name: d.name, icon: d.photo ? `<img class="pb-av" src="${d.photo}" alt="">` : d.emoji, pl: d.profit, w: d.record[0], l: d.record[1], bank: d.bank}))
     .concat(s.balance != null ? [{name: "Claude", icon: "🤖", pl: s.profit, w: s.wins, l: s.losses, bank: s.balance}] : [])
     .sort((a, b) => b.pl - a.pl);
   document.getElementById("poundboard").innerHTML = board.map((x, i) => `<div class="pb-row${i === 0 ? " lead" : ""}">
@@ -1651,7 +1653,7 @@ function renderDogs() {
         <div class="meta">${STAT[x.stat]} · ${x.team} vs ${x.opp} · grade ${x.grade || "–"}${x.actual != null ? " · actual " + x.actual : ""}</div></div>`).join("")
         + `<span class="dog-badge ${p.result}">${badge(p.result)}</span>`
       : `<div class="dog-pick"><div class="meta">Still sniffing out a pick…</div></div>`;
-    return `<article class="dog ${p && p.result === "win" ? "win" : ""}"><div class="dog-top"><div class="dog-av">${d.emoji}</div>
+    return `<article class="dog ${p && p.result === "win" ? "win" : ""}"><div class="dog-top"><div class="dog-av">${d.photo ? `<img src="${d.photo}" alt="${esc(d.name)}">` : d.emoji}</div>
       <div><div class="dog-name">${esc(d.name)}</div><div class="dog-title">${esc(d.title)}</div></div>
       <div class="dog-rec">${w}-${l}<small>SEASON</small></div></div>
       <div class="dog-how">${esc(d.how)} · Week ${cur.week}</div>${pick}
@@ -3235,8 +3237,16 @@ def dog_pound(snap_dir: Path, season: int, week: int, stats, sched, live=None) -
                 "player", "team", "opp", "pos", "stat", "pick", "grade", "score", "actual", "result", "game", "kickoff")}
                 for l in legs]}
         weeks.append({"week": w, "backfilled": "dogs" not in snap, "picks": out})
-    return {"dogs": [dict(d, record=rec[d["name"]], bank=bank[d["name"]], profit=round(bank[d["name"]] - DOG_START, 2))
-                     for d in DOGS], "weeks": weeks, "stake": DOG_STAKE, "start": DOG_START}
+    return {"dogs": [dict(d, record=rec[d["name"]], bank=bank[d["name"]], profit=round(bank[d["name"]] - DOG_START, 2),
+                          photo=dog_photo(d["name"])) for d in DOGS],
+            "weeks": weeks, "stake": DOG_STAKE, "start": DOG_START}
+
+
+def dog_photo(name: str) -> str:
+    """The dog's avatar from assets/dogs/<name>.jpg as a data URI ('' falls back to the emoji)."""
+    import base64
+    f = Path(__file__).parent / "assets" / "dogs" / (name.lower().replace(" ", "") + ".jpg")
+    return "data:image/jpeg;base64," + base64.b64encode(f.read_bytes()).decode() if f.exists() else ""
 
 
 def dog_markdown(pound: dict, week: int) -> str:
