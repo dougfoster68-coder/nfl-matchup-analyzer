@@ -12913,6 +12913,409 @@
       "week": 7,
       "odds": -110,
       "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 55,
+      "legs": [
+        {
+          "player": "Noah Gray",
+          "player_id": "00-0036637",
+          "team": "KC",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 15.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.3
+        }
+      ],
+      "game": "KC@DEN",
+      "id": "2026-w8-1793558864-1",
+      "placed_at": "2026-11-01T13:47:44.340447-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 35,
+      "legs": [
+        {
+          "player": "Noah Gray",
+          "player_id": "00-0036637",
+          "team": "KC",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 9.5,
+          "odds": -185,
+          "grade": "A",
+          "score": 9.3,
+          "alt": "10+"
+        }
+      ],
+      "game": "KC@DEN",
+      "id": "2026-w8-1793558864-2",
+      "placed_at": "2026-11-01T13:47:44.340447-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": -185,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Noah Gray",
+          "player_id": "00-0036637",
+          "team": "KC",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": 125,
+          "grade": "A",
+          "score": 9.3,
+          "alt": "20+"
+        }
+      ],
+      "game": "KC@DEN",
+      "id": "2026-w8-1793558864-3",
+      "placed_at": "2026-11-01T13:47:44.340447-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": 125,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 110,
+      "legs": [
+        {
+          "player": "Justin Herbert",
+          "player_id": "00-0036355",
+          "team": "LAC",
+          "opp": "LA",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 207.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.4
+        }
+      ],
+      "game": "LAC@LA",
+      "id": "2026-w8-1793558864-4",
+      "placed_at": "2026-11-01T13:47:44.340447-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 75,
+      "legs": [
+        {
+          "player": "Evan Engram",
+          "player_id": "00-0033881",
+          "team": "DEN",
+          "opp": "KC",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.9
+        }
+      ],
+      "game": "KC@DEN",
+      "id": "2026-w8-1793558864-5",
+      "placed_at": "2026-11-01T13:47:44.340447-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 75,
+      "legs": [
+        {
+          "player": "Kyle Williams",
+          "player_id": "00-0040131",
+          "team": "NE",
+          "opp": "MIA",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 23.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.7
+        }
+      ],
+      "game": "NE@MIA",
+      "id": "2026-w8-1793558864-6",
+      "placed_at": "2026-11-01T13:47:44.340447-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 75,
+      "legs": [
+        {
+          "player": "Bo Nix",
+          "player_id": "00-0039732",
+          "team": "DEN",
+          "opp": "KC",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 211.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        }
+      ],
+      "game": "KC@DEN",
+      "id": "2026-w8-1793558864-7",
+      "placed_at": "2026-11-01T13:47:44.340447-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 75,
+      "legs": [
+        {
+          "player": "Jaylen Waddle",
+          "player_id": "00-0036613",
+          "team": "DEN",
+          "opp": "KC",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 40.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        }
+      ],
+      "game": "KC@DEN",
+      "id": "2026-w8-1793558864-8",
+      "placed_at": "2026-11-01T13:47:44.340447-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 70,
+      "legs": [
+        {
+          "player": "Jonah Coleman",
+          "player_id": "00-0041496",
+          "team": "DEN",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 45.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.3
+        }
+      ],
+      "game": "KC@DEN",
+      "id": "2026-w8-1793558864-9",
+      "placed_at": "2026-11-01T13:47:44.340447-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 70,
+      "legs": [
+        {
+          "player": "Drake Maye",
+          "player_id": "00-0039851",
+          "team": "NE",
+          "opp": "MIA",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 25.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.2
+        }
+      ],
+      "game": "NE@MIA",
+      "id": "2026-w8-1793558864-10",
+      "placed_at": "2026-11-01T13:47:44.340447-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 35,
+      "legs": [
+        {
+          "player": "J.K. Dobbins",
+          "player_id": "00-0036158",
+          "team": "DEN",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 30.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.0
+        }
+      ],
+      "game": "KC@DEN",
+      "id": "2026-w8-1793558864-11",
+      "placed_at": "2026-11-01T13:47:44.340447-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "J.K. Dobbins",
+          "player_id": "00-0036158",
+          "team": "DEN",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -240,
+          "grade": "B",
+          "score": 6.0,
+          "alt": "25+"
+        }
+      ],
+      "game": "KC@DEN",
+      "id": "2026-w8-1793558864-12",
+      "placed_at": "2026-11-01T13:47:44.340447-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": -240,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "J.K. Dobbins",
+          "player_id": "00-0036158",
+          "team": "DEN",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": 285,
+          "grade": "B",
+          "score": 6.0,
+          "alt": "40+"
+        }
+      ],
+      "game": "KC@DEN",
+      "id": "2026-w8-1793558864-13",
+      "placed_at": "2026-11-01T13:47:44.340447-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": 285,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Rachaad White",
+          "player_id": "00-0037256",
+          "team": "WAS",
+          "opp": "PHI",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 40.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.7
+        },
+        {
+          "player": "Noah Gray",
+          "player_id": "00-0036637",
+          "team": "KC",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 15.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.3
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w8-1793558864-14",
+      "placed_at": "2026-11-01T13:47:44.340447-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Justin Herbert",
+          "player_id": "00-0036355",
+          "team": "LAC",
+          "opp": "LA",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 207.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.4
+        },
+        {
+          "player": "Jaxon Smith-Njigba",
+          "player_id": "00-0038543",
+          "team": "SEA",
+          "opp": "CHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 97.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.0
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w8-1793558864-15",
+      "placed_at": "2026-11-01T13:47:44.340447-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": 264,
+      "note": "Claude weekly pick"
     }
   ],
   "superseded": [
@@ -17030,7 +17433,8 @@
     "4": 1769.02,
     "5": 1601.88,
     "6": 834.85,
-    "7": 449.47
+    "7": 449.47,
+    "8": 1253.11
   },
   "note": "Bankroll starts in week 1: weeks 1-3 are simulated backtests (flagged backtest); week-4 stakes were rescaled x1.76902 to the week-4 starting bankroll (originals in stake_original).",
   "changes": [
