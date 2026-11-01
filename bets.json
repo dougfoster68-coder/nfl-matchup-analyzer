@@ -13316,6 +13316,268 @@
       "week": 8,
       "odds": 264,
       "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 80,
+      "legs": [
+        {
+          "player": "Rachaad White",
+          "player_id": "00-0037256",
+          "team": "WAS",
+          "opp": "PHI",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 41.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.7
+        }
+      ],
+      "game": "PHI@WAS",
+      "id": "2026-w8-1793572437-1",
+      "placed_at": "2026-11-01T17:33:57.004471-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 50,
+      "legs": [
+        {
+          "player": "Darius Cooper",
+          "player_id": "00-0040024",
+          "team": "PHI",
+          "opp": "WAS",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 26.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.8
+        }
+      ],
+      "game": "PHI@WAS",
+      "id": "2026-w8-1793572437-2",
+      "placed_at": "2026-11-01T17:33:57.004471-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Jayden Daniels",
+          "player_id": "00-0039910",
+          "team": "WAS",
+          "opp": "PHI",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 203.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.0
+        }
+      ],
+      "game": "PHI@WAS",
+      "id": "2026-w8-1793572437-3",
+      "placed_at": "2026-11-01T17:33:57.004471-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Treylon Burks",
+          "player_id": "00-0037742",
+          "team": "WAS",
+          "opp": "PHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 22.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 4.9
+        }
+      ],
+      "game": "PHI@WAS",
+      "id": "2026-w8-1793572437-4",
+      "placed_at": "2026-11-01T17:33:57.004471-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Antonio Williams",
+          "player_id": "00-0041040",
+          "team": "WAS",
+          "opp": "PHI",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 37.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 4.8
+        }
+      ],
+      "game": "PHI@WAS",
+      "id": "2026-w8-1793572437-5",
+      "placed_at": "2026-11-01T17:33:57.004471-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "special": "primetime",
+      "stake": 18.8,
+      "legs": [
+        {
+          "player": "Rachaad White",
+          "player_id": "00-0037256",
+          "team": "WAS",
+          "opp": "PHI",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 41.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.7,
+          "why": "A-rated \u00b7 proj 29.2 \u00b7 EV +32%",
+          "ev": 0.317
+        },
+        {
+          "player": "Tory Horton",
+          "player_id": "00-0040648",
+          "team": "SEA",
+          "opp": "CHI",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6,
+          "why": "B-rated \u00b7 proj 13.5 \u00b7 EV +8%",
+          "ev": 0.078
+        },
+        {
+          "player": "Darius Cooper",
+          "player_id": "00-0040024",
+          "team": "PHI",
+          "opp": "WAS",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 26.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.8,
+          "why": "B-rated \u00b7 proj 20.1 \u00b7 EV +6%",
+          "ev": 0.059
+        },
+        {
+          "player": "Jaxon Smith-Njigba",
+          "player_id": "00-0038543",
+          "team": "SEA",
+          "opp": "CHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 97.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.0,
+          "why": "A-rated \u00b7 proj 105.6 \u00b7 EV +4%",
+          "ev": 0.04
+        }
+      ],
+      "game": "multi",
+      "note": "PRIMETIME SPECIAL",
+      "id": "2026-w8-1793572437-6",
+      "placed_at": "2026-11-01T17:33:57.004471-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": 1228
+    },
+    {
+      "kind": "parlay",
+      "special": "primetime-longshot",
+      "stake": 18.79,
+      "legs": [
+        {
+          "player": "Rachaad White",
+          "player_id": "00-0037256",
+          "team": "WAS",
+          "opp": "PHI",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 41.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.7,
+          "why": "A-rated \u00b7 proj 29.2"
+        },
+        {
+          "player": "Jaxon Smith-Njigba",
+          "player_id": "00-0038543",
+          "team": "SEA",
+          "opp": "CHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 119.5,
+          "odds": 270,
+          "grade": "A",
+          "score": 8.0,
+          "alt": "120+",
+          "why": "A-rated \u00b7 proj 105.6 \u00b7 boosted to 120+"
+        },
+        {
+          "player": "Darius Cooper",
+          "player_id": "00-0040024",
+          "team": "PHI",
+          "opp": "WAS",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 26.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.8,
+          "why": "B-rated \u00b7 proj 20.1"
+        },
+        {
+          "player": "Tory Horton",
+          "player_id": "00-0040648",
+          "team": "SEA",
+          "opp": "CHI",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6,
+          "why": "B-rated \u00b7 proj 13.5"
+        }
+      ],
+      "game": "multi",
+      "note": "PRIMETIME ALT LINE SPECIAL",
+      "id": "2026-w8-1793572437-7",
+      "placed_at": "2026-11-01T17:33:57.004471-05:00",
+      "season": 2026,
+      "week": 8,
+      "odds": 2474
     }
   ],
   "superseded": [
