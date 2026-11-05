@@ -13578,6 +13578,525 @@
       "season": 2026,
       "week": 8,
       "odds": 2474
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "JAX",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 50.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        }
+      ],
+      "game": "JAX@BAL",
+      "id": "2026-w9-1793919118-1",
+      "placed_at": "2026-11-05T17:51:58.153713-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "JAX",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": -160,
+          "grade": "A",
+          "score": 9.0,
+          "alt": "40+"
+        }
+      ],
+      "game": "JAX@BAL",
+      "id": "2026-w9-1793919118-2",
+      "placed_at": "2026-11-05T17:51:58.153713-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -160,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "JAX",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 59.5,
+          "odds": 125,
+          "grade": "A",
+          "score": 9.0,
+          "alt": "60+"
+        }
+      ],
+      "game": "JAX@BAL",
+      "id": "2026-w9-1793919118-3",
+      "placed_at": "2026-11-05T17:51:58.153713-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 125,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Derrick Henry",
+          "player_id": "00-0032764",
+          "team": "BAL",
+          "opp": "JAX",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 70.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.2
+        }
+      ],
+      "game": "JAX@BAL",
+      "id": "2026-w9-1793919118-4",
+      "placed_at": "2026-11-05T17:51:58.153713-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Stefon Diggs",
+          "player_id": "00-0031588",
+          "team": "WAS",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 44.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 11.6
+        },
+        {
+          "player": "Jadarian Price",
+          "player_id": "00-0041512",
+          "team": "SEA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 8.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 10.4
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w9-1793919118-5",
+      "placed_at": "2026-11-05T17:51:58.153713-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Kenny Gainwell",
+          "player_id": "00-0036919",
+          "team": "TB",
+          "opp": "CHI",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.8
+        },
+        {
+          "player": "Rhamondre Stevenson",
+          "player_id": "00-0036875",
+          "team": "NE",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 54.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w9-1793919118-6",
+      "placed_at": "2026-11-05T17:51:58.153713-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Quinshon Judkins",
+          "player_id": "00-0040784",
+          "team": "CLE",
+          "opp": "NO",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 67.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.3
+        },
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "JAX",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 50.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w9-1793919118-7",
+      "placed_at": "2026-11-05T17:51:58.153713-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Kayshon Boutte",
+          "player_id": "00-0038608",
+          "team": "HOU",
+          "opp": "LAC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 17.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        },
+        {
+          "player": "Evan Engram",
+          "player_id": "00-0033881",
+          "team": "DEN",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.8
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w9-1793919118-8",
+      "placed_at": "2026-11-05T17:51:58.153713-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Stefon Diggs",
+          "player_id": "00-0031588",
+          "team": "WAS",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 44.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 11.6
+        },
+        {
+          "player": "Rhamondre Stevenson",
+          "player_id": "00-0036875",
+          "team": "NE",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 54.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.7
+        },
+        {
+          "player": "Kayshon Boutte",
+          "player_id": "00-0038608",
+          "team": "HOU",
+          "opp": "LAC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 17.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w9-1793919118-9",
+      "placed_at": "2026-11-05T17:51:58.153713-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Jadarian Price",
+          "player_id": "00-0041512",
+          "team": "SEA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 8.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 10.4
+        },
+        {
+          "player": "Quinshon Judkins",
+          "player_id": "00-0040784",
+          "team": "CLE",
+          "opp": "NO",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 67.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.3
+        },
+        {
+          "player": "Evan Engram",
+          "player_id": "00-0033881",
+          "team": "DEN",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.8
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w9-1793919118-10",
+      "placed_at": "2026-11-05T17:51:58.153713-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Kenny Gainwell",
+          "player_id": "00-0036919",
+          "team": "TB",
+          "opp": "CHI",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.8
+        },
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "JAX",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 50.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        },
+        {
+          "player": "Stefon Diggs",
+          "player_id": "00-0031588",
+          "team": "WAS",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 44.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 11.6
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w9-1793919118-11",
+      "placed_at": "2026-11-05T17:51:58.153713-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Stefon Diggs",
+          "player_id": "00-0031588",
+          "team": "WAS",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 44.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 11.6
+        },
+        {
+          "player": "Kenny Gainwell",
+          "player_id": "00-0036919",
+          "team": "TB",
+          "opp": "CHI",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.8
+        },
+        {
+          "player": "Quinshon Judkins",
+          "player_id": "00-0040784",
+          "team": "CLE",
+          "opp": "NO",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 67.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.3
+        },
+        {
+          "player": "Kayshon Boutte",
+          "player_id": "00-0038608",
+          "team": "HOU",
+          "opp": "LAC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 17.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w9-1793919118-12",
+      "placed_at": "2026-11-05T17:51:58.153713-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 1228,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Jadarian Price",
+          "player_id": "00-0041512",
+          "team": "SEA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 8.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 10.4
+        },
+        {
+          "player": "Rhamondre Stevenson",
+          "player_id": "00-0036875",
+          "team": "NE",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 54.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.7
+        },
+        {
+          "player": "Zay Flowers",
+          "player_id": "00-0039064",
+          "team": "BAL",
+          "opp": "JAX",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 50.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        },
+        {
+          "player": "Evan Engram",
+          "player_id": "00-0033881",
+          "team": "DEN",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.8
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w9-1793919118-13",
+      "placed_at": "2026-11-05T17:51:58.153713-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 1228,
+      "note": "Claude weekly pick"
     }
   ],
   "superseded": [
@@ -17696,7 +18215,8 @@
     "5": 1601.88,
     "6": 834.85,
     "7": 449.47,
-    "8": 1253.11
+    "8": 1253.11,
+    "9": 991.71
   },
   "note": "Bankroll starts in week 1: weeks 1-3 are simulated backtests (flagged backtest); week-4 stakes were rescaled x1.76902 to the week-4 starting bankroll (originals in stake_original).",
   "changes": [
