@@ -75,7 +75,7 @@ td { border-bottom:1px solid var(--grid); padding:6px }
 
 <section id="p-season" role="tabpanel" hidden>
 <h2>Record by rule</h2>
-<div class="tbl"><table><thead><tr><th>Rule</th><th class="n">ATS</th><th class="n">Win %</th><th class="n">$100 ATS</th><th class="n">Dogs SU</th><th class="n">$100 ML</th></tr></thead><tbody id="rulebody"></tbody></table></div>
+<div class="tbl"><table><thead><tr><th>Rule</th><th class="n">ATS</th><th class="n">Win %</th><th class="n">$100 ATS</th></tr></thead><tbody id="rulebody"></tbody></table></div>
 
 <h2>Profit at $100 a pick</h2>
 <div class="chart" id="c1"><div class="tip"></div></div>
@@ -84,12 +84,13 @@ td { border-bottom:1px solid var(--grid); padding:6px }
 <div class="tbl"><table><thead><tr><th>Week</th><th class="n">70%+</th><th class="n">$</th><th class="n">Stats 3+</th><th class="n">$</th></tr></thead><tbody id="weekbody"></tbody></table></div>
 
 <h2>Every pick</h2>
-<div class="tbl"><table><thead><tr><th>Wk</th><th>Bet</th><th>Rule</th><th>Final</th><th></th><th class="n">ML</th></tr></thead><tbody id="tbody"></tbody></table></div>
+<div class="tbl"><table><thead><tr><th>Wk</th><th>Bet</th><th>Rule</th><th>Final</th><th></th></tr></thead><tbody id="tbody"></tbody></table></div>
 </section>
 
 <div class="rules">
 <p><span class="pill" style="background:var(--s1)">70%+</span>: 70% or more of bets are on one team, so we take the other.</p>
 <p><span class="pill" style="background:var(--s2)">Stats 3+</span>: the stats and the public both like the same team by 3+ points over the line. Looks too easy, so we take the other.</p>
+<p><b>Small dogs:</b> when our side is getting 3 points or less, the moneyline (shown on the card) is worth a look. Close games are usually won outright, and you get plus money. Not tested yet, so it's a suggestion, not a rule.</p>
 </div>
 <p class="fine">Spread bets at -110. Public numbers update every 15 minutes until kickoff. Entertainment only. 21+. 1-800-GAMBLER.</p>
 </main>
@@ -102,13 +103,14 @@ const chip = k => `<span class="pill" style="background:${RULE[k][1]}">${RULE[k]
 $("wk").textContent = D.week; document.querySelectorAll(".wk2").forEach(e => e.textContent = D.week); $("upd").textContent = D.updated;
 
 const part = (k, label, s) => `<div class="stat"><div class="lab">${k ? `<span class="dot" style="background:${k === "70" ? "#5b8ad6" : "var(--orange)"}"></span>` : ""}${label}</div><div class="num">${rec(s)}</div><div class="amt ${s.units >= 0 ? "up" : "down"}">${money(s.units)} at $100</div></div>`;
-$("record").innerHTML = part("70", "70%+", S["70"]) + part("agree", "Stats 3+", S.agree) + part(null, "70%+ dogs, moneyline", S.ml_70);
+$("record").innerHTML = part("70", "70%+", S["70"]) + part("agree", "Stats 3+", S.agree) + part(null, "Both rules", S.both);
 
 const kick = iso => new Date(iso).toLocaleString("en-US", {weekday: "short", hour: "numeric", minute: "2-digit", timeZone: "America/New_York"});
 const resTxt = r => r === "W" ? `<span class="res W">✓ Won</span>` : r === "L" ? `<span class="res L">✕ Lost</span>` : r === "P" ? `<span class="res">Push</span>` : "";
+const smallDog = r => r.dog && r.ml && parseFloat(r.fade.split(" ").pop()) <= 3;
 const wk = D.rows.filter(r => r.week === D.week).sort((a, b) => a.kickoff.localeCompare(b.kickoff));
 $("picks").innerHTML = wk.length ? wk.map(r => `<div class="pick${r.result ? " done" : ""}">
-  <div class="bet">${r.fade}${r.dog && r.ml ? `<small>ML +${r.ml}</small>` : ""}</div>
+  <div class="bet">${r.fade}${smallDog(r) ? `<small>or ML +${r.ml}</small>` : ""}</div>
   <div class="right">${r.result ? resTxt(r.result) + `<div>${r.score}</div>` : r.state === "in" ? `● Live<div>${r.score}</div>` : kick(r.kickoff)}</div>
   <div class="info">${r.rules.map(chip).join(" ")}<span>${r.away} @ ${r.home} · ${r.public_pct}% of bets on ${r.public}</span></div>
 </div>`).join("") : `<div class="empty">No picks yet. Check back closer to Sunday.</div>`;
@@ -149,10 +151,9 @@ function drawChart() {
 
 const cls = v => v >= 0 ? "up2" : "dn2";
 $("tbody").innerHTML = D.rows.filter(r => r.result).sort((a, b) => b.week - a.week || a.kickoff.localeCompare(b.kickoff))
-  .map(r => `<tr><td>${r.week}</td><td><b>${r.fade}</b></td><td>${r.rules.map(chip).join(" ")}</td><td>${r.score.replace(" – ", ", ")}</td><td>${resTxt(r.result)}</td><td class="n">${r.dog && r.ml ? "+" + r.ml + " " + (r.su === "W" ? "✓" : r.su === "L" ? "✕" : "") : ""}</td></tr>`).join("");
-const ruleRow = (label, k) => { const a = S[k], m = S["ml_" + k];
-  return `<tr><td>${label}</td><td class="n"><b>${rec(a)}</b></td><td class="n">${a.pct ?? "–"}%</td><td class="n ${cls(a.units)}">${money(a.units)}</td>
-  <td class="n">${rec(m)}</td><td class="n ${cls(m.units)}">${m.w + m.l ? money(m.units) : "–"}</td></tr>`; };
+  .map(r => `<tr><td>${r.week}</td><td><b>${r.fade}</b></td><td>${r.rules.map(chip).join(" ")}</td><td>${r.score.replace(" – ", ", ")}</td><td>${resTxt(r.result)}</td></tr>`).join("");
+const ruleRow = (label, k) => { const a = S[k];
+  return `<tr><td>${label}</td><td class="n"><b>${rec(a)}</b></td><td class="n">${a.pct ?? "–"}%</td><td class="n ${cls(a.units)}">${money(a.units)}</td></tr>`; };
 $("rulebody").innerHTML = ruleRow(chip("70"), "70") + ruleRow(chip("agree"), "agree") + ruleRow(chip("70") + " " + chip("agree") + " both", "both");
 let prev = {"70": 0, agree: 0};
 $("weekbody").innerHTML = S.weekly.map(w => { const d70 = w["70"] - prev["70"], dag = w.agree - prev.agree; prev = w;
