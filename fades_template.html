@@ -63,11 +63,18 @@ td { border-bottom:1px solid var(--grid); padding:6px }
 .league a[aria-selected=true] { background:var(--orange); color:#fff }
 .record { margin-top:14px !important }
 .tabs a { cursor:pointer }
+.beardown { position:fixed; inset:0; z-index:99; display:grid; place-items:center; background:var(--navy);
+  border-bottom:8px solid var(--orange); animation:bd 1s ease-in forwards; pointer-events:none }
+.beardown span { color:#fff; font:900 clamp(44px,12vw,120px)/1 system-ui,-apple-system,"Segoe UI",sans-serif; letter-spacing:.04em;
+  text-shadow:0 4px 0 var(--orange); animation:bdpop 1s ease-out forwards }
+@keyframes bd { 0%,75% { opacity:1 } 100% { opacity:0; visibility:hidden } }
+@keyframes bdpop { 0% { transform:scale(.85) } 30% { transform:scale(1) } 100% { transform:scale(1.04) } }
 [hidden] { display:none !important }
 .tbl { background:var(--card); border:1px solid var(--ring); border-radius:12px; padding:4px 14px 8px; overflow-x:auto }
 .tbl table { margin-top:4px } td.n, th.n { text-align:right } .up2 { color:var(--win); font-weight:700 } .dn2 { color:var(--loss); font-weight:700 }
 .note { color:var(--ink2); font-size:13.5px; margin:10px 2px 0 }
 </style></head><body>
+<div class="beardown" aria-hidden="true"><span>BEAR DOWN</span></div>
 <header class="hero"><div class="wrap"><div class="kicker"><span id="lg"></span> · Week <span id="wk"></span></div>
 <h1>Fade the Public</h1><div class="upd">Updated <span id="upd"></span></div>
 <nav class="league" id="league"><a href="#" data-lg="nfl">NFL</a><a href="#college" data-lg="cfb">College</a></nav>
