@@ -1,0 +1,129 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="300">
+<title>Fade the Public · NFL Week __WEEK__</title>
+<meta name="description" content="This week's NFL picks against the public.">
+<meta property="og:type" content="website"><meta property="og:url" content="__URL__">
+<meta property="og:title" content="Fade the Public · NFL Week __WEEK__">
+<style>
+:root { color-scheme: light;
+  --navy:#0b162a; --orange:#c83803; --page:#f3f4f6; --card:#ffffff; --ink:#0b162a; --ink2:#4b5567; --mute:#7c8596;
+  --grid:#e3e6eb; --axis:#c4c9d2; --ring:rgba(11,22,42,.10);
+  --s1:#1f4e9c; --s2:#c83803; --win:#11804a; --loss:#c0352b; --hero-ink:#ffffff; }
+@media (prefers-color-scheme: dark) { :root { color-scheme: dark;
+  --page:#08101f; --card:#13213a; --ink:#eef1f6; --ink2:#b5bfd0; --mute:#8390a6;
+  --grid:#1f2f4b; --axis:#2c3e5e; --ring:rgba(255,255,255,.08);
+  --s1:#5b8ad6; --s2:#e0571e; --win:#4cc38a; --loss:#f2877c; } }
+* { box-sizing:border-box }
+body { margin:0; background:var(--page); color:var(--ink); font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif }
+.wrap { max-width:860px; margin:0 auto; padding:0 18px }
+.hero { background:var(--navy); color:var(--hero-ink); border-bottom:5px solid var(--orange) }
+.hero .wrap { padding-top:26px; padding-bottom:22px }
+.kicker { font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--orange) }
+h1 { font-size:34px; line-height:1.05; margin:6px 0 2px; font-weight:800; letter-spacing:-.01em }
+.upd { color:#a9b4c8; font-size:13px }
+.record { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:20px }
+.stat { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.10); border-radius:12px; padding:10px 14px }
+.stat .lab { font-size:12px; font-weight:600; color:#c8d0de; display:flex; align-items:center; gap:6px }
+.stat .num { font-size:26px; font-weight:800; margin-top:2px; color:#fff }
+.stat .amt { font-size:14px; font-weight:700 } .stat .amt.up { color:#7ee2a8 } .stat .amt.down { color:#ff9c8f }
+@media (max-width:560px) { .record { grid-template-columns:1fr 1fr } .stat:last-child { grid-column:1 / -1 } h1 { font-size:28px } }
+h2 { font-size:13px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--ink2); margin:30px 0 10px }
+.dot { display:inline-block; width:9px; height:9px; border-radius:50%; flex:none }
+.pill { display:inline-block; font-size:11px; font-weight:800; letter-spacing:.04em; padding:2px 8px; border-radius:99px; color:#fff; vertical-align:1px }
+.picks { display:grid; gap:10px }
+.pick { display:grid; grid-template-columns:1fr auto; align-items:center; gap:4px 12px; background:var(--card);
+  border:1px solid var(--ring); border-left:5px solid var(--orange); border-radius:12px; padding:13px 16px;
+  box-shadow:0 1px 2px rgba(11,22,42,.06) }
+.pick.done { opacity:.75 }
+.bet { font-size:24px; font-weight:800; letter-spacing:-.01em } .bet small { font-size:13px; font-weight:700; color:var(--ink2); margin-left:8px }
+.info { grid-column:1; font-size:13px; color:var(--ink2); display:flex; flex-wrap:wrap; gap:6px; align-items:center }
+.right { grid-row:1 / span 2; grid-column:2; text-align:right; font-size:13px; color:var(--ink2); font-weight:600 }
+.res { font-weight:800; font-size:15px } .res.W { color:var(--win) } .res.L { color:var(--loss) }
+.chart { background:var(--card); border:1px solid var(--ring); border-radius:12px; padding:12px 12px 6px; position:relative }
+svg text { font:12px system-ui,-apple-system,"Segoe UI",sans-serif; fill:var(--mute) }
+svg .lbl { fill:var(--ink2); font-weight:600 } svg .val { fill:var(--ink); font-weight:800; font-size:13px }
+.tip { position:absolute; pointer-events:none; background:var(--card); color:var(--ink); border:1px solid var(--ring); border-radius:8px;
+  padding:7px 10px; font-size:12.5px; box-shadow:0 4px 14px rgba(0,0,0,.15); display:none; white-space:nowrap }
+details { margin-top:30px; background:var(--card); border:1px solid var(--ring); border-radius:12px; padding:12px 16px }
+summary { cursor:pointer; font-weight:800; font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink2) }
+table { width:100%; border-collapse:collapse; font-size:13.5px; font-variant-numeric:tabular-nums; margin-top:10px }
+th { text-align:left; font-size:12px; color:var(--ink2); font-weight:600; border-bottom:1px solid var(--axis); padding:6px }
+td { border-bottom:1px solid var(--grid); padding:6px }
+.rules { color:var(--ink2); font-size:13.5px; margin:26px 0 0 } .rules p { margin:6px 0 }
+.fine { color:var(--mute); font-size:12px; margin:16px 0 40px }
+.empty { color:var(--ink2); padding:14px 16px; background:var(--card); border:1px solid var(--ring); border-radius:12px }
+</style></head><body>
+<header class="hero"><div class="wrap"><div class="kicker">NFL · Week <span id="wk"></span></div>
+<h1>Fade the Public</h1><div class="upd">Updated <span id="upd"></span></div>
+<div class="record" id="record"></div></div></header>
+<main class="wrap">
+<h2>This week</h2>
+<div class="picks" id="picks"></div>
+
+<h2>Profit at $100 a pick</h2>
+<div class="chart" id="c1"><div class="tip"></div></div>
+
+<details><summary>Past picks</summary>
+<table><thead><tr><th>Wk</th><th>Bet</th><th>Rule</th><th>Final</th><th></th></tr></thead><tbody id="tbody"></tbody></table></details>
+
+<div class="rules">
+<p><span class="pill" style="background:var(--s1)">70%+</span>: 70% or more of bets are on one team, so we take the other.</p>
+<p><span class="pill" style="background:var(--s2)">Stats 3+</span>: the stats and the public both like the same team by 3+ points over the line. Looks too easy, so we take the other.</p>
+</div>
+<p class="fine">Spread bets at -110. Public numbers update every 15 minutes until kickoff. Entertainment only. 21+. 1-800-GAMBLER.</p>
+</main>
+<script>
+const D = __DATA__, S = D.summary, $ = id => document.getElementById(id);
+const money = v => (v < 0 ? "−$" : "+$") + Math.abs(Math.round(v)).toLocaleString();
+const rec = s => `${s.w}-${s.l}` + (s.p ? `-${s.p}` : "");
+const RULE = {"70": ["70%+", "var(--s1)"], agree: ["Stats 3+", "var(--s2)"]};
+const chip = k => `<span class="pill" style="background:${RULE[k][1]}">${RULE[k][0]}</span>`;
+$("wk").textContent = D.week; $("upd").textContent = D.updated;
+
+const part = (k, label, s) => `<div class="stat"><div class="lab">${k ? `<span class="dot" style="background:${k === "70" ? "#5b8ad6" : "var(--orange)"}"></span>` : ""}${label}</div><div class="num">${rec(s)}</div><div class="amt ${s.units >= 0 ? "up" : "down"}">${money(s.units)} at $100</div></div>`;
+$("record").innerHTML = part("70", "70%+", S["70"]) + part("agree", "Stats 3+", S.agree) + part(null, "70%+ dogs, moneyline", S.ml_70);
+
+const kick = iso => new Date(iso).toLocaleString("en-US", {weekday: "short", hour: "numeric", minute: "2-digit", timeZone: "America/New_York"});
+const resTxt = r => r === "W" ? `<span class="res W">✓ Won</span>` : r === "L" ? `<span class="res L">✕ Lost</span>` : r === "P" ? `<span class="res">Push</span>` : "";
+const wk = D.rows.filter(r => r.week === D.week).sort((a, b) => a.kickoff.localeCompare(b.kickoff));
+$("picks").innerHTML = wk.length ? wk.map(r => `<div class="pick${r.result ? " done" : ""}">
+  <div class="bet">${r.fade}${r.dog && r.ml ? `<small>ML +${r.ml}</small>` : ""}</div>
+  <div class="right">${r.result ? resTxt(r.result) + `<div>${r.score}</div>` : r.state === "in" ? `● Live<div>${r.score}</div>` : kick(r.kickoff)}</div>
+  <div class="info">${r.rules.map(chip).join(" ")}<span>${r.away} @ ${r.home} · ${r.public_pct}% of bets on ${r.public}</span></div>
+</div>`).join("") : `<div class="empty">No picks yet. Check back closer to Sunday.</div>`;
+
+(function () {
+  const box = $("c1"), W = Math.max(320, box.clientWidth - 24), Hh = W < 600 ? 220 : 260, m = {l: 50, r: W < 600 ? 92 : 104, t: 12, b: 26};
+  const pts = [{week: 0, "70": 0, agree: 0}, ...S.weekly], vals = pts.flatMap(p => [p["70"], p.agree]);
+  const step = [100, 250, 500, 1000].find(s => (Math.max(...vals) - Math.min(0, ...vals)) / s <= 6) || 2000;
+  const lo = Math.floor(Math.min(0, ...vals) / step) * step, hi = Math.ceil(Math.max(...vals) / step) * step;
+  const x = i => m.l + i * (W - m.l - m.r) / (pts.length - 1), y = v => m.t + (hi - v) / (hi - lo) * (Hh - m.t - m.b);
+  let h = "";
+  for (let v = lo; v <= hi; v += step) h += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(${v === 0 ? "--axis" : "--grid"})"/><text x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end">${v === 0 ? "$0" : "$" + v.toLocaleString()}</text>`;
+  pts.forEach((p, i) => h += `<text x="${x(i)}" y="${Hh - 6}" text-anchor="middle">${i === 0 ? "" : (W < 600 ? "" : "Wk ") + p.week}</text>`);
+  const last = pts[pts.length - 1]; let ya = y(last["70"]), yb = y(last.agree);
+  if (Math.abs(ya - yb) < 30) { const mid = (ya + yb) / 2, d = ya <= yb ? -1 : 1; ya = mid + d * 15; yb = mid - d * 15; }
+  for (const [k, ly] of [["70", ya], ["agree", yb]]) {
+    h += `<polyline fill="none" stroke="${RULE[k][1]}" stroke-width="2" stroke-linejoin="round" points="${pts.map((p, i) => x(i) + "," + y(p[k])).join(" ")}"/>`;
+    h += `<circle cx="${x(pts.length - 1)}" cy="${y(last[k])}" r="4" fill="${RULE[k][1]}" stroke="var(--card)" stroke-width="2"/>`;
+    h += `<text class="lbl" x="${x(pts.length - 1) + 10}" y="${ly - 2}">${RULE[k][0]}</text><text class="val" x="${x(pts.length - 1) + 10}" y="${ly + 13}">${money(last[k])}</text>`;
+  }
+  h += `<line id="xh" y1="${m.t}" y2="${Hh - m.b}" stroke="var(--axis)" visibility="hidden"/><rect id="hit" x="${m.l}" width="${W - m.l - m.r}" height="${Hh}" fill="transparent"/>`;
+  const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  s.setAttribute("viewBox", `0 0 ${W} ${Hh}`); s.setAttribute("width", "100%"); s.setAttribute("role", "img");
+  s.setAttribute("aria-label", `Profit: 70%+ ${money(last["70"])}, Stats 3+ ${money(last.agree)}`);
+  s.innerHTML = h; box.appendChild(s);
+  const xh = s.querySelector("#xh"), tip = box.querySelector(".tip"), hit = s.querySelector("#hit");
+  hit.addEventListener("mousemove", e => {
+    const r = s.getBoundingClientRect(), i = Math.max(0, Math.min(pts.length - 1, Math.round(((e.clientX - r.left) * W / r.width - m.l) / ((W - m.l - m.r) / (pts.length - 1))))), p = pts[i];
+    xh.setAttribute("x1", x(i)); xh.setAttribute("x2", x(i)); xh.setAttribute("visibility", "visible");
+    tip.innerHTML = i ? `<b>Week ${p.week}</b><br>70%+: ${money(p["70"])}<br>Stats 3+: ${money(p.agree)}` : "Start: $0";
+    tip.style.display = "block"; const br = box.getBoundingClientRect();
+    tip.style.left = Math.min(e.clientX - br.left + 12, br.width - tip.offsetWidth - 6) + "px"; tip.style.top = (e.clientY - br.top + 10) + "px";
+  });
+  hit.addEventListener("mouseleave", () => { xh.setAttribute("visibility", "hidden"); tip.style.display = "none"; });
+})();
+
+$("tbody").innerHTML = D.rows.filter(r => r.result).sort((a, b) => b.week - a.week || a.kickoff.localeCompare(b.kickoff))
+  .map(r => `<tr><td>${r.week}</td><td><b>${r.fade}</b></td><td>${r.rules.map(chip).join(" ")}</td><td>${r.score.replace(" – ", ", ")}</td><td>${resTxt(r.result)}</td></tr>`).join("");
+</script></body></html>

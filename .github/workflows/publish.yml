@@ -65,6 +65,10 @@ jobs:
           python nfl_matchup.py week --html site/index.html --snapshot-dir data/snapshots
           python nfl_matchup.py report --snapshot-dir data/snapshots --out site/reports
 
+      # Fade the Public page (site/fades/); also backfills splits for finished games that were never captured
+      - name: Build Fade the Public
+        run: python fades.py --splits-dir data/splits --out site/fades/index.html || echo "::warning::fades page failed"
+
       - name: Save snapshots
         working-directory: data
         run: |
