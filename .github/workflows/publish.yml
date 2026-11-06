@@ -66,8 +66,11 @@ jobs:
           python nfl_matchup.py report --snapshot-dir data/snapshots --out site/reports
 
       # Fade the Public page (site/fades/); also backfills splits for finished games that were never captured
+      # College tab: saves this week's NCAAF splits to data/splits_cfb and writes the college data
       - name: Build Fade the Public
-        run: python fades.py --splits-dir data/splits --out site/fades/index.html || echo "::warning::fades page failed"
+        run: |
+          python fades_cfb.py --splits-dir data/splits_cfb --data-out cache/cfb_fades.json || echo "::warning::college fades failed"
+          python fades.py --splits-dir data/splits --out site/fades/index.html --cfb-json cache/cfb_fades.json || echo "::warning::fades page failed"
 
       - name: Save snapshots
         working-directory: data

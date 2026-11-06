@@ -1,9 +1,9 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="300">
-<title>Fade the Public · NFL Week __WEEK__</title>
+<title>Fade the Public · __LEAGUE__ Week __WEEK__</title>
 <meta name="description" content="This week's NFL picks against the public.">
 <meta property="og:type" content="website"><meta property="og:url" content="__URL__">
-<meta property="og:title" content="Fade the Public · NFL Week __WEEK__">
+<meta property="og:title" content="Fade the Public · __LEAGUE__ Week __WEEK__">
 <style>
 :root { color-scheme: light;
   --navy:#0b162a; --orange:#c83803; --page:#f3f4f6; --card:#ffffff; --ink:#0b162a; --ink2:#4b5567; --mute:#7c8596;
@@ -20,6 +20,8 @@ body { margin:0; background:var(--page); color:var(--ink); font:15px/1.45 system
 .hero .wrap { padding-top:26px; padding-bottom:22px }
 .kicker { font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--orange) }
 h1 { font-size:34px; line-height:1.05; margin:6px 0 2px; font-weight:800; letter-spacing:-.01em }
+.switch { float:right; color:#fff; text-decoration:none; letter-spacing:.06em; border:1px solid rgba(255,255,255,.35); border-radius:99px; padding:3px 10px; font-size:11px }
+.switch:hover { background:rgba(255,255,255,.1) }
 .upd { color:#a9b4c8; font-size:13px }
 .record { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:20px }
 .stat { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.10); border-radius:12px; padding:10px 14px }
@@ -56,16 +58,22 @@ td { border-bottom:1px solid var(--grid); padding:6px }
 .tabs { display:flex; gap:4px; margin-top:20px; border-bottom:1px solid var(--axis) }
 .tabs a { padding:10px 16px; font-weight:800; font-size:14px; color:var(--ink2); text-decoration:none; border-bottom:3px solid transparent; margin-bottom:-1px }
 .tabs a[aria-selected=true] { color:var(--ink); border-bottom-color:var(--orange) }
+.league { display:inline-flex; gap:4px; margin-top:16px; padding:4px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); border-radius:99px }
+.league a { color:#c8d0de; text-decoration:none; font-weight:800; font-size:14px; padding:6px 18px; border-radius:99px }
+.league a[aria-selected=true] { background:var(--orange); color:#fff }
+.record { margin-top:14px !important }
+.tabs a { cursor:pointer }
 [hidden] { display:none !important }
 .tbl { background:var(--card); border:1px solid var(--ring); border-radius:12px; padding:4px 14px 8px; overflow-x:auto }
 .tbl table { margin-top:4px } td.n, th.n { text-align:right } .up2 { color:var(--win); font-weight:700 } .dn2 { color:var(--loss); font-weight:700 }
 .note { color:var(--ink2); font-size:13.5px; margin:10px 2px 0 }
 </style></head><body>
-<header class="hero"><div class="wrap"><div class="kicker">NFL · Week <span id="wk"></span></div>
+<header class="hero"><div class="wrap"><div class="kicker"><span id="lg"></span> · Week <span id="wk"></span></div>
 <h1>Fade the Public</h1><div class="upd">Updated <span id="upd"></span></div>
+<nav class="league" id="league"><a href="#" data-lg="nfl">NFL</a><a href="#college" data-lg="cfb">College</a></nav>
 <div class="record" id="record"></div></div></header>
 <main class="wrap">
-<nav class="tabs" role="tablist"><a href="#week" id="t-week" role="tab">This week</a><a href="#season" id="t-season" role="tab">Season to date</a></nav>
+<nav class="tabs" role="tablist"><a id="t-week" role="tab">This week</a><a id="t-season" role="tab">Season to date</a></nav>
 
 <section id="p-week" role="tabpanel">
 <h2>Week <span class="wk2"></span> picks</h2>
@@ -95,37 +103,32 @@ td { border-bottom:1px solid var(--grid); padding:6px }
 <p class="fine">Spread bets at -110. Public numbers update every 15 minutes until kickoff. Entertainment only. 21+. 1-800-GAMBLER.</p>
 </main>
 <script>
-const D = __DATA__, S = D.summary, $ = id => document.getElementById(id);
+const ALL = __DATA__, $ = id => document.getElementById(id);
+const LG = {nfl: ALL, cfb: ALL.cfb};
 const money = v => (v < 0 ? "−$" : "+$") + Math.abs(Math.round(v)).toLocaleString();
 const rec = s => `${s.w}-${s.l}` + (s.p ? `-${s.p}` : "");
 const RULE = {"70": ["70%+", "var(--s1)"], agree: ["Stats 3+", "var(--s2)"]};
 const chip = k => `<span class="pill" style="background:${RULE[k][1]}">${RULE[k][0]}</span>`;
-$("wk").textContent = D.week; document.querySelectorAll(".wk2").forEach(e => e.textContent = D.week); $("upd").textContent = D.updated;
-
-const part = (k, label, s) => `<div class="stat"><div class="lab">${k ? `<span class="dot" style="background:${k === "70" ? "#5b8ad6" : "var(--orange)"}"></span>` : ""}${label}</div><div class="num">${rec(s)}</div><div class="amt ${s.units >= 0 ? "up" : "down"}">${money(s.units)} at $100</div></div>`;
-$("record").innerHTML = part("70", "70%+", S["70"]) + part("agree", "Stats 3+", S.agree) + part(null, "Both rules", S.both);
-
+const cls = v => v >= 0 ? "up2" : "dn2";
 const kick = iso => new Date(iso).toLocaleString("en-US", {weekday: "short", hour: "numeric", minute: "2-digit", timeZone: "America/New_York"});
 const resTxt = r => r === "W" ? `<span class="res W">✓ Won</span>` : r === "L" ? `<span class="res L">✕ Lost</span>` : r === "P" ? `<span class="res">Push</span>` : "";
 const smallDog = r => r.dog && r.ml && parseFloat(r.fade.split(" ").pop()) <= 3;
-const wk = D.rows.filter(r => r.week === D.week).sort((a, b) => a.kickoff.localeCompare(b.kickoff));
-$("picks").innerHTML = wk.length ? wk.map(r => `<div class="pick${r.result ? " done" : ""}">
-  <div class="bet">${r.fade}${smallDog(r) ? `<small>or ML +${r.ml}</small>` : ""}</div>
-  <div class="right">${r.result ? resTxt(r.result) + `<div>${r.score}</div>` : r.state === "in" ? `● Live<div>${r.score}</div>` : kick(r.kickoff)}</div>
-  <div class="info">${r.rules.map(chip).join(" ")}<span>${r.away} @ ${r.home} · ${r.public_pct}% of bets on ${r.public}</span></div>
-</div>`).join("") : `<div class="empty">No picks yet. Check back closer to Sunday.</div>`;
+const part = (k, label, s) => `<div class="stat"><div class="lab">${k ? `<span class="dot" style="background:${k === "70" ? "#5b8ad6" : "var(--orange)"}"></span>` : ""}${label}</div><div class="num">${rec(s)}</div><div class="amt ${s.units >= 0 ? "up" : "down"}">${money(s.units)} at $100</div></div>`;
+$("upd").textContent = ALL.updated;
+if (!ALL.cfb) $("league").hidden = true;
 
-let drawn = false;
-function drawChart() {
-  if (drawn) return; drawn = true;
-  const box = $("c1"), W = Math.max(320, box.clientWidth - 24), Hh = W < 600 ? 220 : 260, m = {l: 50, r: W < 600 ? 92 : 104, t: 12, b: 26};
+function drawChart(S) {
+  const box = $("c1"); box.querySelector("svg")?.remove();
+  const W = Math.max(320, box.clientWidth - 24), Hh = W < 600 ? 220 : 260, m = {l: 50, r: W < 600 ? 92 : 104, t: 12, b: 26};
   const pts = [{week: 0, "70": 0, agree: 0}, ...S.weekly], vals = pts.flatMap(p => [p["70"], p.agree]);
   const step = [100, 250, 500, 1000].find(s => (Math.max(...vals) - Math.min(0, ...vals)) / s <= 6) || 2000;
-  const lo = Math.floor(Math.min(0, ...vals) / step) * step, hi = Math.ceil(Math.max(...vals) / step) * step;
-  const x = i => m.l + i * (W - m.l - m.r) / (pts.length - 1), y = v => m.t + (hi - v) / (hi - lo) * (Hh - m.t - m.b);
+  const lo = Math.floor(Math.min(0, ...vals) / step) * step, hi = Math.ceil(Math.max(...vals) / step) * step || step;
+  const n = Math.max(1, pts.length - 1);
+  const x = i => m.l + i * (W - m.l - m.r) / n, y = v => m.t + (hi - v) / (hi - lo) * (Hh - m.t - m.b);
+  const every = pts.length > 12 ? 2 : 1;
   let h = "";
-  for (let v = lo; v <= hi; v += step) h += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(${v === 0 ? "--axis" : "--grid"})"/><text x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end">${v === 0 ? "$0" : "$" + v.toLocaleString()}</text>`;
-  pts.forEach((p, i) => h += `<text x="${x(i)}" y="${Hh - 6}" text-anchor="middle">${i === 0 ? "" : (W < 600 ? "" : "Wk ") + p.week}</text>`);
+  for (let v = lo; v <= hi; v += step) h += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(${v === 0 ? "--axis" : "--grid"})"/><text x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end">${v === 0 ? "$0" : (v < 0 ? "−$" : "$") + Math.abs(v).toLocaleString()}</text>`;
+  pts.forEach((p, i) => { if (i && i % every === 0) h += `<text x="${x(i)}" y="${Hh - 6}" text-anchor="middle">${(W < 600 ? "" : "Wk ") + p.week}</text>`; });
   const last = pts[pts.length - 1]; let ya = y(last["70"]), yb = y(last.agree);
   if (Math.abs(ya - yb) < 30) { const mid = (ya + yb) / 2, d = ya <= yb ? -1 : 1; ya = mid + d * 15; yb = mid - d * 15; }
   for (const [k, ly] of [["70", ya], ["agree", yb]]) {
@@ -140,7 +143,7 @@ function drawChart() {
   s.innerHTML = h; box.appendChild(s);
   const xh = s.querySelector("#xh"), tip = box.querySelector(".tip"), hit = s.querySelector("#hit");
   hit.addEventListener("mousemove", e => {
-    const r = s.getBoundingClientRect(), i = Math.max(0, Math.min(pts.length - 1, Math.round(((e.clientX - r.left) * W / r.width - m.l) / ((W - m.l - m.r) / (pts.length - 1))))), p = pts[i];
+    const r = s.getBoundingClientRect(), i = Math.max(0, Math.min(pts.length - 1, Math.round(((e.clientX - r.left) * W / r.width - m.l) / ((W - m.l - m.r) / n)))), p = pts[i];
     xh.setAttribute("x1", x(i)); xh.setAttribute("x2", x(i)); xh.setAttribute("visibility", "visible");
     tip.innerHTML = i ? `<b>Week ${p.week}</b><br>70%+: ${money(p["70"])}<br>Stats 3+: ${money(p.agree)}` : "Start: $0";
     tip.style.display = "block"; const br = box.getBoundingClientRect();
@@ -149,22 +152,39 @@ function drawChart() {
   hit.addEventListener("mouseleave", () => { xh.setAttribute("visibility", "hidden"); tip.style.display = "none"; });
 }
 
-const cls = v => v >= 0 ? "up2" : "dn2";
-$("tbody").innerHTML = D.rows.filter(r => r.result).sort((a, b) => b.week - a.week || a.kickoff.localeCompare(b.kickoff))
-  .map(r => `<tr><td>${r.week}</td><td><b>${r.fade}</b></td><td>${r.rules.map(chip).join(" ")}</td><td>${r.score.replace(" – ", ", ")}</td><td>${resTxt(r.result)}</td></tr>`).join("");
-const ruleRow = (label, k) => { const a = S[k];
-  return `<tr><td>${label}</td><td class="n"><b>${rec(a)}</b></td><td class="n">${a.pct ?? "–"}%</td><td class="n ${cls(a.units)}">${money(a.units)}</td></tr>`; };
-$("rulebody").innerHTML = ruleRow(chip("70"), "70") + ruleRow(chip("agree"), "agree") + ruleRow(chip("70") + " " + chip("agree") + " both", "both");
-let prev = {"70": 0, agree: 0};
-$("weekbody").innerHTML = S.weekly.map(w => { const d70 = w["70"] - prev["70"], dag = w.agree - prev.agree; prev = w;
-  const cell = (n, r, d) => n ? `<td class="n">${r}</td><td class="n ${cls(d)}">${money(d)}</td>` : `<td class="n">–</td><td class="n">–</td>`;
-  return `<tr><td>${w.week}${w.week === D.week ? " (so far)" : ""}</td>${cell(w["70_n"], w["70_rec"], d70)}${cell(w.agree_n, w.agree_rec, dag)}</tr>`; }).reverse().join("")
-  + `<tr><td><b>Total</b></td><td class="n"><b>${rec(S["70"])}</b></td><td class="n ${cls(S["70"].units)}"><b>${money(S["70"].units)}</b></td><td class="n"><b>${rec(S.agree)}</b></td><td class="n ${cls(S.agree.units)}"><b>${money(S.agree.units)}</b></td></tr>`;
-const both = wk.filter(r => r.rules.length === 2);
-$("bothnote").innerHTML = both.length ? `<b>Both rules this week:</b> ${both.map(r => r.fade).join(", ")}` : "No game hits both rules this week yet. That can change as the public numbers move.";
-function show() { const season = location.hash === "#season";
+function render(lg, season) {
+  const D = LG[lg], S = D.summary, name = lg === "cfb" ? "College Football" : "NFL";
+  document.title = `Fade the Public · ${name} Week ${D.week}`;
+  $("lg").textContent = name; $("wk").textContent = D.week;
+  document.querySelectorAll(".wk2").forEach(e => e.textContent = D.week);
+  $("record").innerHTML = part("70", "70%+", S["70"]) + part("agree", "Stats 3+", S.agree) + part(null, "Both rules", S.both);
+  const wk = D.rows.filter(r => r.week === D.week).sort((a, b) => a.kickoff.localeCompare(b.kickoff) || b.rules.length - a.rules.length);
+  $("picks").innerHTML = wk.length ? wk.map(r => `<div class="pick${r.result ? " done" : ""}">
+    <div class="bet">${r.fade}${smallDog(r) ? `<small>or ML +${r.ml}</small>` : ""}</div>
+    <div class="right">${r.result ? resTxt(r.result) + `<div>${r.score}</div>` : r.state === "in" ? `● Live<div>${r.score}</div>` : kick(r.kickoff)}</div>
+    <div class="info">${r.rules.map(chip).join(" ")}<span>${r.away} @ ${r.home} · ${r.public_pct}% of bets on ${r.public}</span></div>
+  </div>`).join("") : `<div class="empty">No picks yet. Check back closer to game day.</div>`;
+  const both = wk.filter(r => r.rules.length === 2);
+  $("bothnote").innerHTML = both.length ? `<b>Both rules this week:</b> ${both.map(r => r.fade).join(", ")}` : "No game hits both rules this week yet. That can change as the public numbers move.";
+  $("tbody").innerHTML = D.rows.filter(r => r.result).sort((a, b) => b.week - a.week || a.kickoff.localeCompare(b.kickoff))
+    .map(r => `<tr><td>${r.week}</td><td><b>${r.fade}</b></td><td>${r.rules.map(chip).join(" ")}</td><td>${r.score.replace(" – ", ", ")}</td><td>${resTxt(r.result)}</td></tr>`).join("");
+  const ruleRow = (label, k) => { const a = S[k];
+    return `<tr><td>${label}</td><td class="n"><b>${rec(a)}</b></td><td class="n">${a.pct ?? "–"}%</td><td class="n ${cls(a.units)}">${money(a.units)}</td></tr>`; };
+  $("rulebody").innerHTML = ruleRow(chip("70"), "70") + ruleRow(chip("agree"), "agree") + ruleRow(chip("70") + " " + chip("agree") + " both", "both");
+  let prev = {"70": 0, agree: 0};
+  $("weekbody").innerHTML = S.weekly.map(w => { const d70 = w["70"] - prev["70"], dag = w.agree - prev.agree; prev = w;
+    const cell = (c, r, d) => c ? `<td class="n">${r}</td><td class="n ${cls(d)}">${money(d)}</td>` : `<td class="n">–</td><td class="n">–</td>`;
+    return `<tr><td>${w.week}${w.week === D.week ? " (so far)" : ""}</td>${cell(w["70_n"], w["70_rec"], d70)}${cell(w.agree_n, w.agree_rec, dag)}</tr>`; }).reverse().join("")
+    + `<tr><td><b>Total</b></td><td class="n"><b>${rec(S["70"])}</b></td><td class="n ${cls(S["70"].units)}"><b>${money(S["70"].units)}</b></td><td class="n"><b>${rec(S.agree)}</b></td><td class="n ${cls(S.agree.units)}"><b>${money(S.agree.units)}</b></td></tr>`;
   $("p-week").hidden = season; $("p-season").hidden = !season;
   $("t-week").setAttribute("aria-selected", !season); $("t-season").setAttribute("aria-selected", season);
-  if (season) drawChart(); }
+  $("t-week").href = lg === "cfb" ? "#college" : "#"; $("t-season").href = lg === "cfb" ? "#college-season" : "#season";
+  document.querySelectorAll("#league a").forEach(a => a.setAttribute("aria-selected", a.dataset.lg === lg));
+  if (season) drawChart(S);
+}
+function show() {
+  const h = location.hash, lg = h.startsWith("#college") && LG.cfb ? "cfb" : "nfl";
+  render(lg, h === "#season" || h === "#college-season");
+}
 addEventListener("hashchange", show); show();
 </script></body></html>

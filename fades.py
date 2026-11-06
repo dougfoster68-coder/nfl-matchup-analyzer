@@ -310,14 +310,20 @@ def agree_buckets(season: int, sched: pd.DataFrame, splits_dir: Path, cur: int) 
 
 # ---------------------------------------------------------------------------- page
 
-def write_page(path: Path, rows: list, cur: int, summ: dict, buckets: list, season: int):
+def write_page(path: Path, rows: list, cur: int, summ: dict, buckets: list, season: int,
+               league: str = "NFL", url: str | None = None, other: tuple = ("College football", "college/"),
+               cfb: dict | None = None):
     data = {"season": season, "week": cur, "updated": nm._now_et(), "rows": rows, "summary": summ,
-            "buckets": buckets, "rules": {"public_min": PUBLIC_MIN, "agree_min": AGREE_MIN}}
-    page = (FADES_TEMPLATE.replace("__WEEK__", str(cur)).replace("__URL__", nm.SITE_URL + "fades/")
+            "buckets": buckets, "rules": {"public_min": PUBLIC_MIN, "agree_min": AGREE_MIN},
+            "league": league, "other": {"label": other[0], "href": other[1]}}
+    if cfb:
+        data["cfb"] = cfb
+    page = (FADES_TEMPLATE.replace("__WEEK__", str(cur)).replace("__URL__", url or nm.SITE_URL + "fades/")
+            .replace("__LEAGUE__", league)
             .replace("__DATA__", json.dumps(data).replace("</", "<\\/")))
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(page, encoding="utf-8")
-    print(f"Fade the Public: week {cur}, {len([r for r in rows if r['week'] == cur])} picks -> {path}")
+    print(f"Fade the Public ({league}): week {cur}, {len([r for r in rows if r['week'] == cur])} picks -> {path}")
 
 
 FADES_TEMPLATE = (Path(__file__).parent / "fades_template.html").read_text(encoding="utf-8") \
@@ -331,13 +337,17 @@ def main():
     ap.add_argument("--json", help="also write the picks as JSON here")
     ap.add_argument("--no-live", action="store_true", help="don't read live splits for uncaptured games")
     ap.add_argument("--refresh", action="store_true")
+    ap.add_argument("--cfb-json", help="college data written by fades_cfb.py --data-out (adds the College tab)")
     a = ap.parse_args()
     _, sched, season = nm.load_data(a.refresh)
     splits_dir = Path(a.splits_dir)
     rows, cur = build(season, sched, splits_dir, not a.no_live, a.refresh)
     summ = summary(rows, cur)
     buckets = agree_buckets(season, sched, splits_dir, cur)
-    write_page(Path(a.out), rows, cur, summ, buckets, season)
+    cfb = None
+    if a.cfb_json and Path(a.cfb_json).exists():
+        cfb = json.loads(Path(a.cfb_json).read_text(encoding="utf-8"))
+    write_page(Path(a.out), rows, cur, summ, buckets, season, cfb=cfb)
     if a.json:
         Path(a.json).write_text(json.dumps({"rows": rows, "summary": summ, "buckets": buckets}, indent=1), encoding="utf-8")
     for k, lab in (("70", "Fade 70%+"), ("agree", "Stats agree 3+"), ("both", "Both")):
