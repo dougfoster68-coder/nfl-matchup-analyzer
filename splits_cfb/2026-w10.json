@@ -1,0 +1,553 @@
+{
+ "season": 2026,
+ "week": 10,
+ "source": "https://www.scoresandodds.com/ncaaf/consensus-picks",
+ "games": {
+  "Virginia Tech@SMU": {
+   "kickoff_utc": "2026-11-07T00:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 5.5,
+     "bets_a": 52,
+     "bets_b": 48,
+     "money_a": 66,
+     "money_b": 34
+    }
+   ]
+  },
+  "South Florida@East Carolina": {
+   "kickoff_utc": "2026-11-07T00:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 1.5,
+     "bets_a": 62,
+     "bets_b": 38,
+     "money_a": 80,
+     "money_b": 20
+    }
+   ]
+  },
+  "Nebraska@Illinois": {
+   "kickoff_utc": "2026-11-07T01:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": -4.5,
+     "bets_a": 45,
+     "bets_b": 55,
+     "money_a": 35,
+     "money_b": 65
+    }
+   ]
+  },
+  "New Mexico@Nevada": {
+   "kickoff_utc": "2026-11-07T02:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": -10.0,
+     "bets_a": 61,
+     "bets_b": 39,
+     "money_a": 50,
+     "money_b": 50
+    }
+   ]
+  },
+  "TCU@Arizona": {
+   "kickoff_utc": "2026-11-07T03:15:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 7.0,
+     "bets_a": 34,
+     "bets_b": 66,
+     "money_a": 38,
+     "money_b": 62
+    }
+   ]
+  },
+  "North Carolina@UConn": {
+   "kickoff_utc": "2026-11-07T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": -7.5,
+     "bets_a": 77,
+     "bets_b": 23,
+     "money_a": 66,
+     "money_b": 34
+    }
+   ]
+  },
+  "Florida State@Boston College": {
+   "kickoff_utc": "2026-11-07T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": -6.5,
+     "bets_a": 64,
+     "bets_b": 36,
+     "money_a": 78,
+     "money_b": 22
+    }
+   ]
+  },
+  "UCLA@Minnesota": {
+   "kickoff_utc": "2026-11-07T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": -4.0,
+     "bets_a": 56,
+     "bets_b": 44,
+     "money_a": 56,
+     "money_b": 44
+    }
+   ]
+  },
+  "Texas@Missouri": {
+   "kickoff_utc": "2026-11-07T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": -2.5,
+     "bets_a": 68,
+     "bets_b": 32,
+     "money_a": 77,
+     "money_b": 23
+    }
+   ]
+  },
+  "Clemson@Syracuse": {
+   "kickoff_utc": "2026-11-07T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": -2.5,
+     "bets_a": 69,
+     "bets_b": 31,
+     "money_a": 49,
+     "money_b": 51
+    }
+   ]
+  },
+  "Iowa State@Baylor": {
+   "kickoff_utc": "2026-11-07T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 10.0,
+     "bets_a": 75,
+     "bets_b": 25,
+     "money_a": 81,
+     "money_b": 19
+    }
+   ]
+  },
+  "BYU@Utah": {
+   "kickoff_utc": "2026-11-07T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 4.5,
+     "bets_a": 61,
+     "bets_b": 39,
+     "money_a": 50,
+     "money_b": 50
+    }
+   ]
+  },
+  "Tulsa@Tulane": {
+   "kickoff_utc": "2026-11-07T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": -3.0,
+     "bets_a": 42,
+     "bets_b": 58,
+     "money_a": 68,
+     "money_b": 32
+    }
+   ]
+  },
+  "Maryland@Purdue": {
+   "kickoff_utc": "2026-11-07T17:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 5.5,
+     "bets_a": 69,
+     "bets_b": 31,
+     "money_a": 18,
+     "money_b": 82
+    }
+   ]
+  },
+  "Duke@NC State": {
+   "kickoff_utc": "2026-11-07T17:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": -4.0,
+     "bets_a": 64,
+     "bets_b": 36,
+     "money_a": 59,
+     "money_b": 41
+    }
+   ]
+  },
+  "Arkansas@Auburn": {
+   "kickoff_utc": "2026-11-07T17:45:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 10.5,
+     "bets_a": 53,
+     "bets_b": 47,
+     "money_a": 40,
+     "money_b": 60
+    }
+   ]
+  },
+  "Old Dominion@Coastal Carolina": {
+   "kickoff_utc": "2026-11-07T18:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 6.5,
+     "bets_a": 59,
+     "bets_b": 41,
+     "money_a": 67,
+     "money_b": 33
+    }
+   ]
+  },
+  "Oklahoma State@Kansas State": {
+   "kickoff_utc": "2026-11-07T18:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": -6.5,
+     "bets_a": 40,
+     "bets_b": 60,
+     "money_a": 55,
+     "money_b": 45
+    }
+   ]
+  },
+  "Georgia State@App State": {
+   "kickoff_utc": "2026-11-07T19:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 6.5,
+     "bets_a": 72,
+     "bets_b": 28,
+     "money_a": 73,
+     "money_b": 27
+    }
+   ]
+  },
+  "Texas A&M@South Carolina": {
+   "kickoff_utc": "2026-11-07T20:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 7.0,
+     "bets_a": 53,
+     "bets_b": 47,
+     "money_a": 54,
+     "money_b": 46
+    }
+   ]
+  },
+  "Marshall@Georgia Southern": {
+   "kickoff_utc": "2026-11-07T20:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 8.5,
+     "bets_a": 85,
+     "bets_b": 15,
+     "money_a": 77,
+     "money_b": 23
+    }
+   ]
+  },
+  "Cincinnati@Houston": {
+   "kickoff_utc": "2026-11-07T20:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 10.5,
+     "bets_a": 61,
+     "bets_b": 39,
+     "money_a": 54,
+     "money_b": 46
+    }
+   ]
+  },
+  "Penn State@Washington": {
+   "kickoff_utc": "2026-11-07T20:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 2.5,
+     "bets_a": 60,
+     "bets_b": 40,
+     "money_a": 66,
+     "money_b": 34
+    }
+   ]
+  },
+  "Oregon@Ohio State": {
+   "kickoff_utc": "2026-11-07T20:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 7.5,
+     "bets_a": 48,
+     "bets_b": 52,
+     "money_a": 50,
+     "money_b": 50
+    }
+   ]
+  },
+  "Alabama@LSU": {
+   "kickoff_utc": "2026-11-07T20:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 6.0,
+     "bets_a": 83,
+     "bets_b": 17,
+     "money_a": 76,
+     "money_b": 24
+    }
+   ]
+  },
+  "Merrimack@Wake Forest": {
+   "kickoff_utc": "2026-11-07T20:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 47.5,
+     "bets_a": 62,
+     "bets_b": 38,
+     "money_a": 61,
+     "money_b": 39
+    }
+   ]
+  },
+  "Rice@North Texas": {
+   "kickoff_utc": "2026-11-07T21:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 16.5,
+     "bets_a": 58,
+     "bets_b": 42,
+     "money_a": 44,
+     "money_b": 56
+    }
+   ]
+  },
+  "Rutgers@Wisconsin": {
+   "kickoff_utc": "2026-11-07T21:15:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 18.5,
+     "bets_a": 73,
+     "bets_b": 27,
+     "money_a": 86,
+     "money_b": 14
+    }
+   ]
+  },
+  "Vanderbilt@Mississippi State": {
+   "kickoff_utc": "2026-11-07T21:15:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 3.0,
+     "bets_a": 37,
+     "bets_b": 63,
+     "money_a": 21,
+     "money_b": 79
+    }
+   ]
+  },
+  "Boise State@Colorado State": {
+   "kickoff_utc": "2026-11-07T23:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": -17.5,
+     "bets_a": 51,
+     "bets_b": 49,
+     "money_a": 50,
+     "money_b": 50
+    }
+   ]
+  },
+  "Kentucky@Tennessee": {
+   "kickoff_utc": "2026-11-07T23:15:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 5.5,
+     "bets_a": 80,
+     "bets_b": 20,
+     "money_a": 54,
+     "money_b": 46
+    }
+   ]
+  },
+  "Colorado@Arizona State": {
+   "kickoff_utc": "2026-11-08T00:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 3.5,
+     "bets_a": 27,
+     "bets_b": 73,
+     "money_a": 26,
+     "money_b": 74
+    }
+   ]
+  },
+  "Georgia@Ole Miss": {
+   "kickoff_utc": "2026-11-08T00:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": -3.5,
+     "bets_a": 59,
+     "bets_b": 41,
+     "money_a": 56,
+     "money_b": 44
+    }
+   ]
+  },
+  "Miami@Notre Dame": {
+   "kickoff_utc": "2026-11-08T00:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 7.0,
+     "bets_a": 85,
+     "bets_b": 15,
+     "money_a": 62,
+     "money_b": 38
+    }
+   ]
+  },
+  "Oklahoma@Florida": {
+   "kickoff_utc": "2026-11-08T00:45:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 6.0,
+     "bets_a": 40,
+     "bets_b": 60,
+     "money_a": 23,
+     "money_b": 77
+    }
+   ]
+  },
+  "West Virginia@Texas Tech": {
+   "kickoff_utc": "2026-11-08T02:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-06T23:51+00:00",
+     "line": 16.5,
+     "bets_a": 76,
+     "bets_b": 24,
+     "money_a": 90,
+     "money_b": 10
+    }
+   ]
+  },
+  "Ohio@Akron": {
+   "kickoff_utc": "2026-11-04T00:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": -12.5,
+     "bets_a": 59,
+     "bets_b": 41,
+     "money_a": 60,
+     "money_b": 40
+    }
+   ]
+  },
+  "Buffalo@Miami (OH)": {
+   "kickoff_utc": "2026-11-04T01:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": 6.5,
+     "bets_a": 54,
+     "bets_b": 46,
+     "money_a": 47,
+     "money_b": 53
+    }
+   ]
+  },
+  "Ball State@Massachusetts": {
+   "kickoff_utc": "2026-11-05T00:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": 2.5,
+     "bets_a": 39,
+     "bets_b": 61,
+     "money_a": 17,
+     "money_b": 83
+    }
+   ]
+  },
+  "Central Michigan@Eastern Michigan": {
+   "kickoff_utc": "2026-11-05T00:30:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": -2.5,
+     "bets_a": 44,
+     "bets_b": 56,
+     "money_a": 53,
+     "money_b": 47
+    }
+   ]
+  },
+  "UTSA@Florida Atlantic": {
+   "kickoff_utc": "2026-11-06T00:30:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": -7.0,
+     "bets_a": 46,
+     "bets_b": 54,
+     "money_a": 36,
+     "money_b": 64
+    }
+   ]
+  },
+  "James Madison@Southern Miss": {
+   "kickoff_utc": "2026-11-06T01:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": -13.5,
+     "bets_a": 64,
+     "bets_b": 36,
+     "money_a": 55,
+     "money_b": 45
+    }
+   ]
+  }
+ }
+}
