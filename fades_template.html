@@ -52,19 +52,40 @@ td { border-bottom:1px solid var(--grid); padding:6px }
 .rules { color:var(--ink2); font-size:13.5px; margin:26px 0 0 } .rules p { margin:6px 0 }
 .fine { color:var(--mute); font-size:12px; margin:16px 0 40px }
 .empty { color:var(--ink2); padding:14px 16px; background:var(--card); border:1px solid var(--ring); border-radius:12px }
+
+.tabs { display:flex; gap:4px; margin-top:20px; border-bottom:1px solid var(--axis) }
+.tabs a { padding:10px 16px; font-weight:800; font-size:14px; color:var(--ink2); text-decoration:none; border-bottom:3px solid transparent; margin-bottom:-1px }
+.tabs a[aria-selected=true] { color:var(--ink); border-bottom-color:var(--orange) }
+[hidden] { display:none !important }
+.tbl { background:var(--card); border:1px solid var(--ring); border-radius:12px; padding:4px 14px 8px; overflow-x:auto }
+.tbl table { margin-top:4px } td.n, th.n { text-align:right } .up2 { color:var(--win); font-weight:700 } .dn2 { color:var(--loss); font-weight:700 }
+.note { color:var(--ink2); font-size:13.5px; margin:10px 2px 0 }
 </style></head><body>
 <header class="hero"><div class="wrap"><div class="kicker">NFL · Week <span id="wk"></span></div>
 <h1>Fade the Public</h1><div class="upd">Updated <span id="upd"></span></div>
 <div class="record" id="record"></div></div></header>
 <main class="wrap">
-<h2>This week</h2>
+<nav class="tabs" role="tablist"><a href="#week" id="t-week" role="tab">This week</a><a href="#season" id="t-season" role="tab">Season to date</a></nav>
+
+<section id="p-week" role="tabpanel">
+<h2>Week <span class="wk2"></span> picks</h2>
 <div class="picks" id="picks"></div>
+<p class="note" id="bothnote"></p>
+</section>
+
+<section id="p-season" role="tabpanel" hidden>
+<h2>Record by rule</h2>
+<div class="tbl"><table><thead><tr><th>Rule</th><th class="n">ATS</th><th class="n">Win %</th><th class="n">$100 ATS</th><th class="n">Dogs SU</th><th class="n">$100 ML</th></tr></thead><tbody id="rulebody"></tbody></table></div>
 
 <h2>Profit at $100 a pick</h2>
 <div class="chart" id="c1"><div class="tip"></div></div>
 
-<details><summary>Past picks</summary>
-<table><thead><tr><th>Wk</th><th>Bet</th><th>Rule</th><th>Final</th><th></th></tr></thead><tbody id="tbody"></tbody></table></details>
+<h2>Week by week</h2>
+<div class="tbl"><table><thead><tr><th>Week</th><th class="n">70%+</th><th class="n">$</th><th class="n">Stats 3+</th><th class="n">$</th></tr></thead><tbody id="weekbody"></tbody></table></div>
+
+<h2>Every pick</h2>
+<div class="tbl"><table><thead><tr><th>Wk</th><th>Bet</th><th>Rule</th><th>Final</th><th></th><th class="n">ML</th></tr></thead><tbody id="tbody"></tbody></table></div>
+</section>
 
 <div class="rules">
 <p><span class="pill" style="background:var(--s1)">70%+</span>: 70% or more of bets are on one team, so we take the other.</p>
@@ -78,7 +99,7 @@ const money = v => (v < 0 ? "−$" : "+$") + Math.abs(Math.round(v)).toLocaleStr
 const rec = s => `${s.w}-${s.l}` + (s.p ? `-${s.p}` : "");
 const RULE = {"70": ["70%+", "var(--s1)"], agree: ["Stats 3+", "var(--s2)"]};
 const chip = k => `<span class="pill" style="background:${RULE[k][1]}">${RULE[k][0]}</span>`;
-$("wk").textContent = D.week; $("upd").textContent = D.updated;
+$("wk").textContent = D.week; document.querySelectorAll(".wk2").forEach(e => e.textContent = D.week); $("upd").textContent = D.updated;
 
 const part = (k, label, s) => `<div class="stat"><div class="lab">${k ? `<span class="dot" style="background:${k === "70" ? "#5b8ad6" : "var(--orange)"}"></span>` : ""}${label}</div><div class="num">${rec(s)}</div><div class="amt ${s.units >= 0 ? "up" : "down"}">${money(s.units)} at $100</div></div>`;
 $("record").innerHTML = part("70", "70%+", S["70"]) + part("agree", "Stats 3+", S.agree) + part(null, "70%+ dogs, moneyline", S.ml_70);
@@ -92,7 +113,9 @@ $("picks").innerHTML = wk.length ? wk.map(r => `<div class="pick${r.result ? " d
   <div class="info">${r.rules.map(chip).join(" ")}<span>${r.away} @ ${r.home} · ${r.public_pct}% of bets on ${r.public}</span></div>
 </div>`).join("") : `<div class="empty">No picks yet. Check back closer to Sunday.</div>`;
 
-(function () {
+let drawn = false;
+function drawChart() {
+  if (drawn) return; drawn = true;
   const box = $("c1"), W = Math.max(320, box.clientWidth - 24), Hh = W < 600 ? 220 : 260, m = {l: 50, r: W < 600 ? 92 : 104, t: 12, b: 26};
   const pts = [{week: 0, "70": 0, agree: 0}, ...S.weekly], vals = pts.flatMap(p => [p["70"], p.agree]);
   const step = [100, 250, 500, 1000].find(s => (Math.max(...vals) - Math.min(0, ...vals)) / s <= 6) || 2000;
@@ -122,8 +145,25 @@ $("picks").innerHTML = wk.length ? wk.map(r => `<div class="pick${r.result ? " d
     tip.style.left = Math.min(e.clientX - br.left + 12, br.width - tip.offsetWidth - 6) + "px"; tip.style.top = (e.clientY - br.top + 10) + "px";
   });
   hit.addEventListener("mouseleave", () => { xh.setAttribute("visibility", "hidden"); tip.style.display = "none"; });
-})();
+}
 
+const cls = v => v >= 0 ? "up2" : "dn2";
 $("tbody").innerHTML = D.rows.filter(r => r.result).sort((a, b) => b.week - a.week || a.kickoff.localeCompare(b.kickoff))
-  .map(r => `<tr><td>${r.week}</td><td><b>${r.fade}</b></td><td>${r.rules.map(chip).join(" ")}</td><td>${r.score.replace(" – ", ", ")}</td><td>${resTxt(r.result)}</td></tr>`).join("");
+  .map(r => `<tr><td>${r.week}</td><td><b>${r.fade}</b></td><td>${r.rules.map(chip).join(" ")}</td><td>${r.score.replace(" – ", ", ")}</td><td>${resTxt(r.result)}</td><td class="n">${r.dog && r.ml ? "+" + r.ml + " " + (r.su === "W" ? "✓" : r.su === "L" ? "✕" : "") : ""}</td></tr>`).join("");
+const ruleRow = (label, k) => { const a = S[k], m = S["ml_" + k];
+  return `<tr><td>${label}</td><td class="n"><b>${rec(a)}</b></td><td class="n">${a.pct ?? "–"}%</td><td class="n ${cls(a.units)}">${money(a.units)}</td>
+  <td class="n">${rec(m)}</td><td class="n ${cls(m.units)}">${m.w + m.l ? money(m.units) : "–"}</td></tr>`; };
+$("rulebody").innerHTML = ruleRow(chip("70"), "70") + ruleRow(chip("agree"), "agree") + ruleRow(chip("70") + " " + chip("agree") + " both", "both");
+let prev = {"70": 0, agree: 0};
+$("weekbody").innerHTML = S.weekly.map(w => { const d70 = w["70"] - prev["70"], dag = w.agree - prev.agree; prev = w;
+  const cell = (n, r, d) => n ? `<td class="n">${r}</td><td class="n ${cls(d)}">${money(d)}</td>` : `<td class="n">–</td><td class="n">–</td>`;
+  return `<tr><td>${w.week}${w.week === D.week ? " (so far)" : ""}</td>${cell(w["70_n"], w["70_rec"], d70)}${cell(w.agree_n, w.agree_rec, dag)}</tr>`; }).reverse().join("")
+  + `<tr><td><b>Total</b></td><td class="n"><b>${rec(S["70"])}</b></td><td class="n ${cls(S["70"].units)}"><b>${money(S["70"].units)}</b></td><td class="n"><b>${rec(S.agree)}</b></td><td class="n ${cls(S.agree.units)}"><b>${money(S.agree.units)}</b></td></tr>`;
+const both = wk.filter(r => r.rules.length === 2);
+$("bothnote").innerHTML = both.length ? `<b>Both rules this week:</b> ${both.map(r => r.fade).join(", ")}` : "No game hits both rules this week yet. That can change as the public numbers move.";
+function show() { const season = location.hash === "#season";
+  $("p-week").hidden = season; $("p-season").hidden = !season;
+  $("t-week").setAttribute("aria-selected", !season); $("t-season").setAttribute("aria-selected", season);
+  if (season) drawChart(); }
+addEventListener("hashchange", show); show();
 </script></body></html>
