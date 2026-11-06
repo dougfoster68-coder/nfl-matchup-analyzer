@@ -96,14 +96,14 @@ td { border-bottom:1px solid var(--grid); padding:6px }
 <div class="chart" id="c1"><div class="tip"></div></div>
 
 <h2>Week by week</h2>
-<div class="tbl"><table><thead><tr><th>Week</th><th class="n">70%+</th><th class="n">$</th><th class="n">Stats 3+</th><th class="n">$</th></tr></thead><tbody id="weekbody"></tbody></table></div>
+<div class="tbl"><table><thead><tr><th>Week</th><th class="n" id="pubth">70%+</th><th class="n">$</th><th class="n">Stats 3+</th><th class="n">$</th></tr></thead><tbody id="weekbody"></tbody></table></div>
 
 <h2>Every pick</h2>
 <div class="tbl"><table><thead><tr><th>Wk</th><th>Bet</th><th>Rule</th><th>Final</th><th></th></tr></thead><tbody id="tbody"></tbody></table></div>
 </section>
 
 <div class="rules">
-<p><span class="pill" style="background:var(--s1)">70%+</span>: 70% or more of bets are on one team, so we take the other.</p>
+<p><span class="pill" style="background:var(--s1)" id="pubpill">70%+</span>: <span id="pubtxt">70% or more of bets are on one team, so we take the other.</span></p>
 <p><span class="pill" style="background:var(--s2)">Stats 3+</span>: the stats and the public both like the same team by 3+ points over the line. Looks too easy, so we take the other.</p>
 <p><b>Small dogs:</b> when our side is getting 3 points or less, the moneyline (shown on the card) is worth a look. Close games are usually won outright, and you get plus money. Not tested yet, so it's a suggestion, not a rule.</p>
 </div>
@@ -146,13 +146,13 @@ function drawChart(S) {
   h += `<line id="xh" y1="${m.t}" y2="${Hh - m.b}" stroke="var(--axis)" visibility="hidden"/><rect id="hit" x="${m.l}" width="${W - m.l - m.r}" height="${Hh}" fill="transparent"/>`;
   const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   s.setAttribute("viewBox", `0 0 ${W} ${Hh}`); s.setAttribute("width", "100%"); s.setAttribute("role", "img");
-  s.setAttribute("aria-label", `Profit: 70%+ ${money(last["70"])}, Stats 3+ ${money(last.agree)}`);
+  s.setAttribute("aria-label", `Profit: ${RULE["70"][0]} ${money(last["70"])}, Stats 3+ ${money(last.agree)}`);
   s.innerHTML = h; box.appendChild(s);
   const xh = s.querySelector("#xh"), tip = box.querySelector(".tip"), hit = s.querySelector("#hit");
   hit.addEventListener("mousemove", e => {
     const r = s.getBoundingClientRect(), i = Math.max(0, Math.min(pts.length - 1, Math.round(((e.clientX - r.left) * W / r.width - m.l) / ((W - m.l - m.r) / n)))), p = pts[i];
     xh.setAttribute("x1", x(i)); xh.setAttribute("x2", x(i)); xh.setAttribute("visibility", "visible");
-    tip.innerHTML = i ? `<b>Week ${p.week}</b><br>70%+: ${money(p["70"])}<br>Stats 3+: ${money(p.agree)}` : "Start: $0";
+    tip.innerHTML = i ? `<b>Week ${p.week}</b><br>${RULE["70"][0]}: ${money(p["70"])}<br>Stats 3+: ${money(p.agree)}` : "Start: $0";
     tip.style.display = "block"; const br = box.getBoundingClientRect();
     tip.style.left = Math.min(e.clientX - br.left + 12, br.width - tip.offsetWidth - 6) + "px"; tip.style.top = (e.clientY - br.top + 10) + "px";
   });
@@ -161,10 +161,15 @@ function drawChart(S) {
 
 function render(lg, season) {
   const D = LG[lg], S = D.summary, name = lg === "cfb" ? "College Football" : "NFL";
+  const pm = (D.rules && D.rules.public_min) || 70;
+  RULE["70"][0] = pm + "%+";
+  $("pubpill").textContent = pm + "%+";
+  $("pubtxt").textContent = `${pm}% or more of bets are on one team, so we take the other.` + (lg === "cfb" ? " (College uses 80%; the edge at 70% was too thin.)" : "");
   document.title = `Fade the Public · ${name} Week ${D.week}`;
   $("lg").textContent = name; $("wk").textContent = D.week;
   document.querySelectorAll(".wk2").forEach(e => e.textContent = D.week);
-  $("record").innerHTML = part("70", "70%+", S["70"]) + part("agree", "Stats 3+", S.agree) + part(null, "Both rules", S.both);
+  $("pubth").textContent = RULE["70"][0];
+  $("record").innerHTML = part("70", RULE["70"][0], S["70"]) + part("agree", "Stats 3+", S.agree) + part(null, "Both rules", S.both);
   const wk = D.rows.filter(r => r.week === D.week).sort((a, b) => a.kickoff.localeCompare(b.kickoff) || b.rules.length - a.rules.length);
   $("picks").innerHTML = wk.length ? wk.map(r => `<div class="pick${r.result ? " done" : ""}">
     <div class="bet">${r.fade}${smallDog(r) ? `<small>or ML +${r.ml}</small>` : ""}</div>

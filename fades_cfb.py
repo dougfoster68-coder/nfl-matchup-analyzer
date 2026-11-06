@@ -1,7 +1,7 @@
 """Fade the Public, college football data (the College tab on site/fades/).
 
 Same two rules as the NFL page (fades.py):
-  * 70%+     - 70% or more of spread tickets on one side -> take the other side.
+  * 80%+     - 80% or more of spread tickets on one side -> take the other side (NFL uses 70%).
   * Stats 3+ - our stats model agrees with the public side by 3+ points vs the line -> fade anyway.
 
 College differences:
@@ -40,6 +40,7 @@ HFA = 2.5
 CAP = 28
 PRIOR_W = 0.35
 RIDGE = 3.0
+PUBLIC_MIN = 80   # college: public rule fires at 80%+ (70% was too weak in the 2026 backtest)
 # ScoresAndOdds name -> ESPN location name
 NAME_FIX = {"Appalachian State": "App State", "Grambling State": "Grambling", "LIU": "Long Island University",
             "Louisiana-Monroe": "UL Monroe", "Miami (FL)": "Miami", "Nicholls State": "Nicholls",
@@ -231,7 +232,7 @@ def build(season: int, splits_dir: Path, refresh: bool) -> tuple[list, int]:
             edge = R.get(r.home, 0.0) - R.get(r.away, 0.0) + (0 if r.neutral else HFA) - away_line
             stats_away = edge < 0
             agree = (stats_away == pub_away) and abs(edge) >= fades.AGREE_MIN
-            big = pub_pct >= fades.PUBLIC_MIN
+            big = pub_pct >= PUBLIC_MIN
             if not (big or agree):
                 continue
             fade_team, pub_team = (r.home, r.away) if pub_away else (r.away, r.home)
@@ -272,9 +273,10 @@ def main():
     rows, cur = build(season, Path(a.splits_dir), a.refresh)
     summ = fades.summary(rows, cur)
     out = Path(a.data_out); out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps({"season": season, "week": cur, "rows": rows, "summary": summ}), encoding="utf-8")
+    out.write_text(json.dumps({"season": season, "week": cur, "rows": rows, "summary": summ,
+                               "rules": {"public_min": PUBLIC_MIN, "agree_min": fades.AGREE_MIN}}), encoding="utf-8")
     print(f"College: week {cur}, {len([r for r in rows if r['week'] == cur])} picks -> {out}")
-    for k, lab in (("70", "70%+"), ("agree", "Stats 3+"), ("both", "Both")):
+    for k, lab in (("70", f"{PUBLIC_MIN}%+"), ("agree", "Stats 3+"), ("both", "Both")):
         s = summ[k]
         print(f"  {lab:9} {s['w']}-{s['l']}-{s['p']}  ${s['units']:+,.2f} at $100")
 
