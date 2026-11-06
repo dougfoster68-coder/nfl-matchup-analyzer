@@ -375,6 +375,149 @@
      "money_b": 24
     }
    ]
+  },
+  "PIT@CLE": {
+   "kickoff_utc": "2026-10-02T00:15:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": -2.5,
+     "bets_a": 41,
+     "bets_b": 59,
+     "money_a": 47,
+     "money_b": 53
+    }
+   ]
+  },
+  "IND@WAS": {
+   "kickoff_utc": "2026-10-04T13:30:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": -4.5,
+     "bets_a": 42,
+     "bets_b": 58,
+     "money_a": 62,
+     "money_b": 38
+    }
+   ]
+  },
+  "TEN@BAL": {
+   "kickoff_utc": "2026-10-04T17:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": 11.5,
+     "bets_a": 26,
+     "bets_b": 74,
+     "money_a": 19,
+     "money_b": 81
+    }
+   ]
+  },
+  "NE@BUF": {
+   "kickoff_utc": "2026-10-04T17:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": 7.0,
+     "bets_a": 34,
+     "bets_b": 66,
+     "money_a": 32,
+     "money_b": 68
+    }
+   ]
+  },
+  "NYJ@CHI": {
+   "kickoff_utc": "2026-10-04T17:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": 3.5,
+     "bets_a": 47,
+     "bets_b": 53,
+     "money_a": 50,
+     "money_b": 50
+    }
+   ]
+  },
+  "JAX@CIN": {
+   "kickoff_utc": "2026-10-04T17:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": 2.5,
+     "bets_a": 63,
+     "bets_b": 37,
+     "money_a": 62,
+     "money_b": 38
+    }
+   ]
+  },
+  "DAL@HOU": {
+   "kickoff_utc": "2026-10-04T17:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": 3.0,
+     "bets_a": 82,
+     "bets_b": 18,
+     "money_a": 83,
+     "money_b": 17
+    }
+   ]
+  },
+  "ARI@NYG": {
+   "kickoff_utc": "2026-10-04T17:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": -2.5,
+     "bets_a": 58,
+     "bets_b": 42,
+     "money_a": 48,
+     "money_b": 52
+    }
+   ]
+  },
+  "LA@PHI": {
+   "kickoff_utc": "2026-10-04T17:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": -4.5,
+     "bets_a": 53,
+     "bets_b": 47,
+     "money_a": 43,
+     "money_b": 57
+    }
+   ]
+  },
+  "GB@TB": {
+   "kickoff_utc": "2026-10-04T17:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": -2.5,
+     "bets_a": 55,
+     "bets_b": 45,
+     "money_a": 37,
+     "money_b": 63
+    }
+   ]
+  },
+  "MIA@MIN": {
+   "kickoff_utc": "2026-10-04T20:05:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": 10.0,
+     "bets_a": 26,
+     "bets_b": 74,
+     "money_a": 42,
+     "money_b": 58
+    }
+   ]
   }
  }
 }
