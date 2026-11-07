@@ -314,8 +314,8 @@ def agree_buckets(season: int, sched: pd.DataFrame, splits_dir: Path, cur: int) 
 # pre-kickoff snapshot (data/snapshots); props with no snapshot have no projection.
 PROP_TRENDS = [
     {"key": "qbr", "title": "QB rushing unders", "pill": "QB rush", "stat": "rushing_yards", "unit": "rush yds",
-     "keep": lambda r: r.get("pos") == "QB",
-     "desc": "the under on a quarterback's rushing yards. The public loves the over on running QBs, and most games come in under."},
+     "keep": lambda r: r.get("pos") == "QB" and r["line"] >= 10,   # lines under 10 went 51-42, ~break-even at -120
+     "desc": "the under on a quarterback's rushing yards, lines of 10+ only. The public loves the over on running QBs, and most games come in under. Lines under 10 were about break-even, so they're left off. Pass if DraftKings charges worse than -120 on the under."},
     # Receiving unders (model projects under) went 278-227 thru Wk 8 but were taken off the page 11/6
     # (thin edge, ~break-even at -120). Re-add the entry here to bring the list back.
 ]
