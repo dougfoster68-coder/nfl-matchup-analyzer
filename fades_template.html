@@ -90,9 +90,7 @@ td { border-bottom:1px solid var(--grid); padding:6px }
 <h2>Week <span class="wk2"></span> picks</h2>
 <div class="picks" id="picks"></div>
 <p class="note" id="bothnote"></p>
-<div id="qbr-week"><h2 class="qbrhead">QB rushing unders <button id="qbrtoggle" class="toggle" aria-pressed="false"></button></h2>
-<div id="qbrbox"><div class="picks" id="qbrpicks"></div></div>
-<p class="note" id="qbrnote"></p></div>
+<div id="props-week"></div>
 </section>
 
 <section id="p-season" role="tabpanel" hidden>
@@ -105,8 +103,7 @@ td { border-bottom:1px solid var(--grid); padding:6px }
 <h2>Week by week</h2>
 <div class="tbl"><table><thead><tr><th>Week</th><th class="n" id="pubth">70%+</th><th class="n">$</th><th class="n">Stats 3+</th><th class="n">$</th></tr></thead><tbody id="weekbody"></tbody></table></div>
 
-<div id="qbr-season"><h2>QB rushing unders</h2>
-<div class="tbl"><table><thead><tr><th>Week</th><th class="n">Record</th><th class="n">$</th></tr></thead><tbody id="qbrbody"></tbody></table></div></div>
+<div id="props-season"></div>
 
 <h2>Every pick</h2>
 <div class="tbl"><table><thead><tr><th>Wk</th><th>Bet</th><th>Rule</th><th>Final</th><th></th></tr></thead><tbody id="tbody"></tbody></table></div>
@@ -115,7 +112,7 @@ td { border-bottom:1px solid var(--grid); padding:6px }
 <div class="rules">
 <p><span class="pill" style="background:var(--s1)" id="pubpill">70%+</span>: <span id="pubtxt">70% or more of bets are on one team, so we take the other.</span></p>
 <p><span class="pill" style="background:var(--s2)">Stats 3+</span>: the stats and the public both like the same team by 3+ points over the line. Looks too easy, so we take the other.</p>
-<p><span class="pill" style="background:var(--navy)">QB rush</span>: the under on a quarterback's rushing yards (NFL only). The public loves the over on running QBs, and most games come in under. Only listed when DraftKings has the under posted; confirm in the app, since DraftKings can pull a side close to kickoff.</p>
+<div id="props-rules"></div>
 <p><b>Small dogs:</b> when our side is getting 3 points or less, the moneyline (shown on the card) is worth a look. Close games are usually won outright, and you get plus money. Not tested yet, so it's a suggestion, not a rule.</p>
 </div>
 <p class="fine">Spread bets at -110. Public numbers update every 15 minutes until kickoff. Entertainment only. 21+. 1-800-GAMBLER.</p>
@@ -205,34 +202,32 @@ function render(lg, season) {
   $("t-week").setAttribute("aria-selected", !season); $("t-season").setAttribute("aria-selected", season);
   $("t-week").href = lg === "cfb" ? "#college" : "#"; $("t-season").href = lg === "cfb" ? "#college-season" : "#season";
   document.querySelectorAll("#league a").forEach(a => a.setAttribute("aria-selected", a.dataset.lg === lg));
-  const Q = lg === "nfl" ? ALL.qbr : null;
-  $("qbr-week").hidden = !Q; $("qbr-season").hidden = !Q;
-  if (Q) {
-    const qs = Q.summary;
-    $("qbrpicks").innerHTML = Q.week.length ? Q.week.slice().sort((a, b) => String(a.kickoff).localeCompare(String(b.kickoff))).map(r => `<div class="pick${r.result ? " done" : ""}">
-      <div class="bet">${r.player} <small>under ${r.line} rush yds</small></div>
-      <div class="right">${r.result ? resTxt(r.result) + `<div>${r.actual} yds</div>` : (r.kickoff ? kick(r.kickoff) : "")}</div>
-      <div class="info"><span class="pill" style="background:var(--navy)">QB rush</span><span>${r.team} vs ${r.opp}${r.open != null && r.open !== r.line ? ` · opened ${r.open}` : ""}</span></div>
-    </div>`).join("") : `<div class="empty">No QB rushing lines posted yet. DraftKings usually posts them midweek.</div>`;
-    $("qbrnote").innerHTML = `Season: <b>${rec(qs)}</b> on QB rushing unders (<span class="${cls(qs.units)}">${money(qs.units)}</span> at $100, -110). Under posted on DraftKings at last check; confirm in the app.`
-      + (Q.skipped && Q.skipped.length ? ` Left off (no under posted): ${Q.skipped.join(", ")}.` : "");
-    $("qbrbody").innerHTML = Q.weekly.slice().reverse().map(w => `<tr><td>${w.week}${w.week === D.week ? " (so far)" : ""}</td><td class="n">${w.rec}</td><td class="n ${cls(w.units)}">${money(w.units)}</td></tr>`).join("")
-      + `<tr><td><b>Total</b></td><td class="n"><b>${rec(qs)}</b></td><td class="n ${cls(qs.units)}"><b>${money(qs.units)}</b></td></tr>`;
-  }
+  const PT = lg === "nfl" && ALL.props ? ALL.props : [];
+  $("props-week").innerHTML = PT.map(t => `<h2 class="qbrhead">${t.title} <button class="toggle" data-k="${t.key}"></button></h2>
+    <div id="box-${t.key}"><div class="picks">${t.week.length ? t.week.slice().sort((a, b) => String(a.kickoff).localeCompare(String(b.kickoff))).map(r => `<div class="pick${r.result ? " done" : ""}">
+      <div class="bet">${r.player} <small>under ${r.line} ${t.unit}</small></div>
+      <div class="right">${r.result ? resTxt(r.result) + `<div>${r.actual} yds</div>` : (r.kickoff && new Date(r.kickoff) < Date.now() - 4 * 3600e3 ? "Waiting on stats" : (r.kickoff ? kick(r.kickoff) : ""))}</div>
+      <div class="info"><span class="pill" style="background:var(--navy)">${t.pill}</span><span>${r.team} vs ${r.opp}${r.proj != null ? ` · we project ${Math.round(r.proj)}` : ""}${r.open != null && r.open !== r.line ? ` · opened ${r.open}` : ""}</span></div>
+    </div>`).join("") : `<div class="empty">None posted yet. DraftKings usually posts props midweek.</div>`}</div></div>
+    <p class="note">Season: <b>${rec(t.summary)}</b> (<span class="${cls(t.summary.units)}">${money(t.summary.units)}</span> at $100, -110). Under posted on DraftKings at last check; confirm in the app.${t.skipped.length ? ` Left off (no under posted): ${t.skipped.join(", ")}.` : ""}</p>`).join("");
+  $("props-season").innerHTML = PT.map(t => `<h2>${t.title}</h2><div class="tbl"><table><thead><tr><th>Week</th><th class="n">Record</th><th class="n">$</th></tr></thead><tbody>
+    ${t.weekly.slice().reverse().map(w => `<tr><td>${w.week}${w.week === D.week ? " (so far)" : ""}</td><td class="n">${w.rec}</td><td class="n ${cls(w.units)}">${money(w.units)}</td></tr>`).join("")}
+    <tr><td><b>Total</b></td><td class="n"><b>${rec(t.summary)}</b></td><td class="n ${cls(t.summary.units)}"><b>${money(t.summary.units)}</b></td></tr></tbody></table></div>`).join("");
+  $("props-rules").innerHTML = PT.map(t => `<p><span class="pill" style="background:var(--navy)">${t.pill}</span>: ${t.desc} NFL only. Listed only when DraftKings has the under posted; confirm in the app, since DraftKings can pull a side close to kickoff.</p>`).join("");
+  document.querySelectorAll("#props-week .toggle").forEach(b => propSet(b.dataset.k, propOn(b.dataset.k)));
   if (season) drawChart(S);
 }
 function show() {
   const h = location.hash, lg = h.startsWith("#college") && LG.cfb ? "cfb" : "nfl";
   render(lg, h === "#season" || h === "#college-season");
 }
-function qbrSet(on) {
-  try { localStorage.setItem("qbr", on ? "1" : "0"); } catch (e) {}
-  const n = ALL.qbr ? ALL.qbr.week.length : 0;
-  $("qbrbox").hidden = !on; $("qbrtoggle").setAttribute("aria-pressed", on);
-  $("qbrtoggle").textContent = on ? "Hide" : `Show ${n}`;
+function propOn(k) { try { return localStorage.getItem("prop_" + k) === "1"; } catch (e) { return false; } }
+function propSet(k, on) {
+  try { localStorage.setItem("prop_" + k, on ? "1" : "0"); } catch (e) {}
+  const t = (ALL.props || []).find(x => x.key === k), b = document.querySelector(`#props-week .toggle[data-k="${k}"]`);
+  if (!t || !b) return;
+  $("box-" + k).hidden = !on; b.setAttribute("aria-pressed", on); b.textContent = on ? "Hide" : `Show ${t.week.length}`;
 }
-$("qbrtoggle").addEventListener("click", () => qbrSet($("qbrbox").hidden));
-let qbrOn = false; try { qbrOn = localStorage.getItem("qbr") === "1"; } catch (e) {}
-qbrSet(qbrOn);
+$("props-week").addEventListener("click", e => { const k = e.target.dataset && e.target.dataset.k; if (k) propSet(k, $("box-" + k).hidden); });
 addEventListener("hashchange", show); show();
 </script></body></html>

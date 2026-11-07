@@ -308,7 +308,20 @@ def agree_buckets(season: int, sched: pd.DataFrame, splits_dir: Path, cur: int) 
              "pct": round(100 * v[0] / (v[0] + v[1]), 1) if v[0] + v[1] else None} for lab, v in tally.items()]
 
 
-# ---------------------------------------------------------------------------- QB rushing unders
+# ---------------------------------------------------------------------------- prop unders
+
+# Each trend: which stat, and which props qualify. "proj" is our model's projection from the
+# pre-kickoff snapshot (data/snapshots); props with no snapshot have no projection.
+PROP_TRENDS = [
+    {"key": "qbr", "title": "QB rushing unders", "pill": "QB rush", "stat": "rushing_yards", "unit": "rush yds",
+     "keep": lambda r: r.get("pos") == "QB",
+     "desc": "the under on a quarterback's rushing yards. The public loves the over on running QBs, and most games come in under."},
+    {"key": "rec", "title": "Receiving unders", "pill": "Rec under", "stat": "receiving_yards", "unit": "rec yds",
+     "keep": lambda r: r.get("proj") is not None and not pd.isna(r.get("proj")) and r["proj"] < r["line"],
+     "desc": "the under on receiving yards when our model also projects the player under the line."},
+]
+ESPN_STAT_TYPE = {"rushing_yards": "12", "receiving_yards": "13", "passing_yards": "8"}
+
 
 def _players() -> pd.DataFrame:
     p = pd.read_csv(nm.CACHE_DIR / "players.csv", usecols=["gsis_id", "display_name", "position", "latest_team", "espn_id"],
@@ -316,15 +329,26 @@ def _players() -> pd.DataFrame:
     return p.dropna(subset=["gsis_id"])
 
 
-def qb_rush_live(season: int, week: int) -> list:
-    """This week's QB rushing-yard props on DraftKings (via ESPN) for games not yet started.
-    ESPN lists a main prop twice when DraftKings posts both the over and the under; a prop listed
-    once has a side missing, so we only keep props that show up twice (under available)."""
+def _utc(k) -> str:
+    """Snapshot kickoffs are Eastern time like '2026-11-08 16:25'; return ISO UTC."""
+    try:
+        t = pd.Timestamp(str(k))
+        t = t.tz_localize("America/New_York") if t.tzinfo is None else t
+        return t.tz_convert("UTC").strftime("%Y-%m-%dT%H:%M:%SZ")
+    except Exception:
+        return ""
+
+
+def espn_prop_board(season: int, week: int) -> dict:
+    """DraftKings main yardage props (via ESPN) for games not yet started: {(gsis_id, stat): {...}}.
+    ESPN lists a prop twice when DraftKings posts both the over and the under; listed once means a side
+    is missing, so 'both' = under available."""
     from collections import defaultdict
     board = nm._get_json(f"{nm.ESPN_SCOREBOARD}?{nm.espn_week_query(week)}&dates={season}")
     id_map = nm.espn_to_gsis(False)
     pl = _players().set_index("gsis_id")
-    out = []
+    types = {v: k for k, v in ESPN_STAT_TYPE.items()}
+    out = {}
     for e in board.get("events", []):
         if e.get("status", {}).get("type", {}).get("state") != "pre":
             continue
@@ -340,99 +364,105 @@ def qb_rush_live(season: int, week: int) -> list:
                 print(f"[warn] props {e['id']}: {exc}", file=sys.stderr)
                 break
             for it in d.get("items", []):
-                if it.get("type", {}).get("id") != "12":
-                    continue
+                stat = types.get(it.get("type", {}).get("id"))
                 m = re.search(r"/athletes/(\d+)", it.get("athlete", {}).get("$ref", ""))
                 cur = it.get("current", {}).get("target", {}).get("value")
-                if m and cur is not None:
-                    seen[m.group(1)].append((float(cur), it.get("open", {}).get("target", {}).get("value")))
+                if stat and m and cur is not None:
+                    seen[(m.group(1), stat)].append((float(cur), it.get("open", {}).get("target", {}).get("value")))
             pages = d.get("pageCount", 1)
             page += 1
-        for eid, entries in seen.items():
+        for (eid, stat), entries in seen.items():
             gid = id_map.get(eid)
-            if not gid or gid not in pl.index or pl.loc[gid, "position"] != "QB":
+            if not gid or gid not in pl.index:
                 continue
             line = entries[-1][0]
-            both = sum(1 for x in entries if x[0] == line) >= 2
             team = pl.loc[gid, "latest_team"]
-            out.append({"week": week, "player": pl.loc[gid, "display_name"], "player_id": gid, "team": team,
-                        "opp": side["home"] if team == side["away"] else side["away"],
-                        "game": f"{side['away']}@{side['home']}", "kickoff": e.get("date", ""),
-                        "line": line, "open": entries[-1][1], "under_listed": both})
+            out[(gid, stat)] = {"player": pl.loc[gid, "display_name"], "player_id": gid, "pos": pl.loc[gid, "position"],
+                                "team": team, "opp": side["home"] if team == side["away"] else side["away"],
+                                "game": f"{side['away']}@{side['home']}", "kickoff": e.get("date", ""), "stat": stat,
+                                "line": line, "open": entries[-1][1],
+                                "both": sum(1 for x in entries if x[0] == line) >= 2}
     return out
 
 
-def _utc(k) -> str:
-    """Snapshot kickoffs are Eastern time like '2026-11-08 16:25'; return ISO UTC."""
-    try:
-        t = pd.Timestamp(str(k))
-        t = t.tz_localize("America/New_York") if t.tzinfo is None else t
-        return t.tz_convert("UTC").strftime("%Y-%m-%dT%H:%M:%SZ")
-    except Exception:
-        return ""
+def _snap_props(snap_dir: Path, season: int, wk: int) -> list:
+    path = snap_dir / f"{season}-w{wk:02d}.json"
+    if not path.exists():
+        return []
+    props = json.loads(path.read_text(encoding="utf-8")).get("props", {})
+    return [p for p in (props.values() if isinstance(props, dict) else props) if isinstance(p, dict)]
 
 
-def qb_rush(season: int, cur: int, snap_dir: Path, stats: pd.DataFrame) -> dict:
-    """QB rushing unders: graded history from the pre-kickoff prop snapshots, plus this week's board."""
-    pl = _players().set_index("gsis_id")
-    st = stats[(stats.season == season)][["player_id", "week", "rushing_yards"]]
-    rows = []
-    for wk in range(1, cur + 1):
-        path = snap_dir / f"{season}-w{wk:02d}.json"
-        if not path.exists():
-            continue
-        props = json.loads(path.read_text(encoding="utf-8")).get("props", {})
-        for p in (props.values() if isinstance(props, dict) else props):
-            if not isinstance(p, dict) or p.get("stat") != "rushing_yards" or p.get("pos") != "QB":
-                continue
-            rows.append({"week": wk, "player": p["player"], "player_id": p["player_id"], "team": p["team"],
-                         "opp": p["opp"], "game": p["game"], "line": float(p["line"]),
-                         "kickoff": _utc(p.get("kickoff", "")), "under_listed": None})
-    hist = pd.DataFrame(rows).drop_duplicates(["week", "player_id"], keep="last") if rows else pd.DataFrame()
-    graded = []
-    if len(hist):
-        hist = hist.merge(st, on=["player_id", "week"], how="left")
-        for r in hist.itertuples():
-            res = None
-            if pd.notna(r.rushing_yards):
-                res = "P" if r.rushing_yards == r.line else ("W" if r.rushing_yards < r.line else "L")
-            graded.append({"week": r.week, "player": r.player, "team": r.team, "opp": r.opp, "game": r.game,
-                           "line": r.line, "kickoff": r.kickoff, "actual": None if pd.isna(r.rushing_yards) else float(r.rushing_yards),
-                           "result": res})
-    # this week: live board for games not started; started games come from the snapshot rows above
-    live = []
+def prop_trends(season: int, cur: int, snap_dir: Path, stats: pd.DataFrame) -> list:
+    st = stats[stats.season == season]
     try:
-        live = qb_rush_live(season, cur)
+        board = espn_prop_board(season, cur)
     except Exception as exc:
-        print(f"[warn] QB rushing board failed: {exc}", file=sys.stderr)
-    started = {(g["week"], g["player"]) for g in graded}
-    week_rows = [g for g in graded if g["week"] == cur] + \
-                [dict(r, actual=None, result=None) for r in live if r["under_listed"] and (cur, r["player"]) not in started]
-    done = [g for g in graded if g["result"]]
-    weekly, run = [], 0.0
-    for wk in range(1, cur + 1):
-        recw = record([g for g in done if g["week"] == wk])
-        run += recw["units"]
-        if recw["w"] + recw["l"] + recw["p"]:
-            weekly.append({"week": wk, "rec": f"{recw['w']}-{recw['l']}" + (f"-{recw['p']}" if recw["p"] else ""),
-                           "units": recw["units"], "cum": round(run, 2)})
-    skipped = [r["player"] for r in live if not r["under_listed"]]
-    return {"week": week_rows, "summary": record(done), "weekly": weekly, "history": [g for g in done if g["week"] < cur],
-            "skipped": skipped}
+        print(f"[warn] DraftKings prop board failed: {exc}", file=sys.stderr)
+        board = {}
+    out = []
+    for T in PROP_TRENDS:
+        stat = T["stat"]
+        graded, skipped = [], set()
+        actual = {(r.player_id, r.week): getattr(r, stat) for r in st[["player_id", "week", stat]].itertuples()}
+        for wk in range(1, cur + 1):
+            rows = {}
+            for p in _snap_props(snap_dir, season, wk):
+                if p.get("stat") != stat:
+                    continue
+                r = {"week": wk, "player": p["player"], "player_id": p["player_id"], "pos": p.get("pos"), "team": p["team"],
+                     "opp": p["opp"], "game": p["game"], "line": float(p["line"]), "proj": p.get("proj"),
+                     "open": None, "kickoff": _utc(p.get("kickoff", ""))}
+                if wk == cur and (p["player_id"], stat) in board:   # game not started: use the live line
+                    b = board[(p["player_id"], stat)]
+                    if not b["both"]:
+                        if T["keep"]({**r, "line": b["line"]}):
+                            skipped.add(p["player"])
+                        continue
+                    r.update(line=b["line"], open=b["open"])
+                if T["keep"](r):
+                    rows[p["player_id"]] = r
+            if wk == cur:   # live props with no snapshot yet (only trends that don't need a projection)
+                for (gid, s), b in board.items():
+                    if s == stat and gid not in rows:
+                        r = {**b, "week": wk, "proj": None}
+                        if T["keep"](r):
+                            if b["both"]:
+                                rows[gid] = r
+                            else:
+                                skipped.add(b["player"])
+            for r in rows.values():
+                a = actual.get((r["player_id"], wk))
+                act = float(a) if a is not None and pd.notna(a) else None
+                r["actual"] = act
+                r["result"] = None if act is None else ("P" if act == r["line"] else ("W" if act < r["line"] else "L"))
+                graded.append(r)
+        done = [g for g in graded if g["result"]]
+        weekly, run = [], 0.0
+        for wk in range(1, cur + 1):
+            rw = record([g for g in done if g["week"] == wk])
+            run += rw["units"]
+            if rw["w"] + rw["l"] + rw["p"]:
+                weekly.append({"week": wk, "rec": f"{rw['w']}-{rw['l']}" + (f"-{rw['p']}" if rw["p"] else ""),
+                               "units": rw["units"], "cum": round(run, 2)})
+        week_rows = [{k: v for k, v in g.items() if k != "player_id"} for g in graded if g["week"] == cur]
+        out.append({"key": T["key"], "title": T["title"], "pill": T["pill"], "unit": T["unit"], "desc": T["desc"],
+                    "week": week_rows, "summary": record(done), "weekly": weekly, "skipped": sorted(skipped)})
+    return out
 
 
 # ---------------------------------------------------------------------------- page
 
 def write_page(path: Path, rows: list, cur: int, summ: dict, buckets: list, season: int,
                league: str = "NFL", url: str | None = None, other: tuple = ("College football", "college/"),
-               cfb: dict | None = None, qbr: dict | None = None):
+               cfb: dict | None = None, props: list | None = None):
     data = {"season": season, "week": cur, "updated": nm._now_et(), "rows": rows, "summary": summ,
             "buckets": buckets, "rules": {"public_min": PUBLIC_MIN, "agree_min": AGREE_MIN},
             "league": league, "other": {"label": other[0], "href": other[1]}}
     if cfb:
         data["cfb"] = cfb
-    if qbr:
-        data["qbr"] = qbr
+    if props:
+        data["props"] = props
     page = (FADES_TEMPLATE.replace("__WEEK__", str(cur)).replace("__URL__", url or nm.SITE_URL + "fades/")
             .replace("__LEAGUE__", league)
             .replace("__DATA__", json.dumps(data).replace("</", "<\\/")))
@@ -463,14 +493,15 @@ def main():
     cfb = None
     if a.cfb_json and Path(a.cfb_json).exists():
         cfb = json.loads(Path(a.cfb_json).read_text(encoding="utf-8"))
-    qbr = None
+    props = None
     try:
-        qbr = qb_rush(season, cur, Path(a.snapshot_dir), stats)
-        q = qbr["summary"]
-        print(f"  QB rush unders {q['w']}-{q['l']}-{q['p']}  ${q['units']:+,.2f} at $100; this week {len(qbr['week'])} listed, {len(qbr['skipped'])} skipped (no under)")
+        props = prop_trends(season, cur, Path(a.snapshot_dir), stats)
+        for t in props:
+            q = t["summary"]
+            print(f"  {t['title']}: {q['w']}-{q['l']}-{q['p']}  ${q['units']:+,.2f} at $100; this week {len(t['week'])} listed, {len(t['skipped'])} skipped (no under)")
     except Exception as exc:
-        print(f"[warn] QB rushing unders failed: {exc}", file=sys.stderr)
-    write_page(Path(a.out), rows, cur, summ, buckets, season, cfb=cfb, qbr=qbr)
+        print(f"[warn] prop unders failed: {exc}", file=sys.stderr)
+    write_page(Path(a.out), rows, cur, summ, buckets, season, cfb=cfb, props=props)
     if a.json:
         Path(a.json).write_text(json.dumps({"rows": rows, "summary": summ, "buckets": buckets}, indent=1), encoding="utf-8")
     for k, lab in (("70", "Fade 70%+"), ("agree", "Stats agree 3+"), ("both", "Both")):
