@@ -308,16 +308,131 @@ def agree_buckets(season: int, sched: pd.DataFrame, splits_dir: Path, cur: int) 
              "pct": round(100 * v[0] / (v[0] + v[1]), 1) if v[0] + v[1] else None} for lab, v in tally.items()]
 
 
+# ---------------------------------------------------------------------------- QB rushing unders
+
+def _players() -> pd.DataFrame:
+    p = pd.read_csv(nm.CACHE_DIR / "players.csv", usecols=["gsis_id", "display_name", "position", "latest_team", "espn_id"],
+                    low_memory=False)
+    return p.dropna(subset=["gsis_id"])
+
+
+def qb_rush_live(season: int, week: int) -> list:
+    """This week's QB rushing-yard props on DraftKings (via ESPN) for games not yet started.
+    ESPN lists a main prop twice when DraftKings posts both the over and the under; a prop listed
+    once has a side missing, so we only keep props that show up twice (under available)."""
+    from collections import defaultdict
+    board = nm._get_json(f"{nm.ESPN_SCOREBOARD}?{nm.espn_week_query(week)}&dates={season}")
+    id_map = nm.espn_to_gsis(False)
+    pl = _players().set_index("gsis_id")
+    out = []
+    for e in board.get("events", []):
+        if e.get("status", {}).get("type", {}).get("state") != "pre":
+            continue
+        comp = e["competitions"][0]
+        side = {c["homeAway"]: nm.ESPN_TEAM_FIX.get(c["team"]["abbreviation"], c["team"]["abbreviation"])
+                for c in comp["competitors"]}
+        seen = defaultdict(list)
+        page, pages = 1, 1
+        while page <= pages:
+            try:
+                d = nm._get_json(nm.ESPN_PROPS.format(eid=e["id"], page=page))
+            except Exception as exc:
+                print(f"[warn] props {e['id']}: {exc}", file=sys.stderr)
+                break
+            for it in d.get("items", []):
+                if it.get("type", {}).get("id") != "12":
+                    continue
+                m = re.search(r"/athletes/(\d+)", it.get("athlete", {}).get("$ref", ""))
+                cur = it.get("current", {}).get("target", {}).get("value")
+                if m and cur is not None:
+                    seen[m.group(1)].append((float(cur), it.get("open", {}).get("target", {}).get("value")))
+            pages = d.get("pageCount", 1)
+            page += 1
+        for eid, entries in seen.items():
+            gid = id_map.get(eid)
+            if not gid or gid not in pl.index or pl.loc[gid, "position"] != "QB":
+                continue
+            line = entries[-1][0]
+            both = sum(1 for x in entries if x[0] == line) >= 2
+            team = pl.loc[gid, "latest_team"]
+            out.append({"week": week, "player": pl.loc[gid, "display_name"], "player_id": gid, "team": team,
+                        "opp": side["home"] if team == side["away"] else side["away"],
+                        "game": f"{side['away']}@{side['home']}", "kickoff": e.get("date", ""),
+                        "line": line, "open": entries[-1][1], "under_listed": both})
+    return out
+
+
+def _utc(k) -> str:
+    """Snapshot kickoffs are Eastern time like '2026-11-08 16:25'; return ISO UTC."""
+    try:
+        t = pd.Timestamp(str(k))
+        t = t.tz_localize("America/New_York") if t.tzinfo is None else t
+        return t.tz_convert("UTC").strftime("%Y-%m-%dT%H:%M:%SZ")
+    except Exception:
+        return ""
+
+
+def qb_rush(season: int, cur: int, snap_dir: Path, stats: pd.DataFrame) -> dict:
+    """QB rushing unders: graded history from the pre-kickoff prop snapshots, plus this week's board."""
+    pl = _players().set_index("gsis_id")
+    st = stats[(stats.season == season)][["player_id", "week", "rushing_yards"]]
+    rows = []
+    for wk in range(1, cur + 1):
+        path = snap_dir / f"{season}-w{wk:02d}.json"
+        if not path.exists():
+            continue
+        props = json.loads(path.read_text(encoding="utf-8")).get("props", {})
+        for p in (props.values() if isinstance(props, dict) else props):
+            if not isinstance(p, dict) or p.get("stat") != "rushing_yards" or p.get("pos") != "QB":
+                continue
+            rows.append({"week": wk, "player": p["player"], "player_id": p["player_id"], "team": p["team"],
+                         "opp": p["opp"], "game": p["game"], "line": float(p["line"]),
+                         "kickoff": _utc(p.get("kickoff", "")), "under_listed": None})
+    hist = pd.DataFrame(rows).drop_duplicates(["week", "player_id"], keep="last") if rows else pd.DataFrame()
+    graded = []
+    if len(hist):
+        hist = hist.merge(st, on=["player_id", "week"], how="left")
+        for r in hist.itertuples():
+            res = None
+            if pd.notna(r.rushing_yards):
+                res = "P" if r.rushing_yards == r.line else ("W" if r.rushing_yards < r.line else "L")
+            graded.append({"week": r.week, "player": r.player, "team": r.team, "opp": r.opp, "game": r.game,
+                           "line": r.line, "kickoff": r.kickoff, "actual": None if pd.isna(r.rushing_yards) else float(r.rushing_yards),
+                           "result": res})
+    # this week: live board for games not started; started games come from the snapshot rows above
+    live = []
+    try:
+        live = qb_rush_live(season, cur)
+    except Exception as exc:
+        print(f"[warn] QB rushing board failed: {exc}", file=sys.stderr)
+    started = {(g["week"], g["player"]) for g in graded}
+    week_rows = [g for g in graded if g["week"] == cur] + \
+                [dict(r, actual=None, result=None) for r in live if r["under_listed"] and (cur, r["player"]) not in started]
+    done = [g for g in graded if g["result"]]
+    weekly, run = [], 0.0
+    for wk in range(1, cur + 1):
+        recw = record([g for g in done if g["week"] == wk])
+        run += recw["units"]
+        if recw["w"] + recw["l"] + recw["p"]:
+            weekly.append({"week": wk, "rec": f"{recw['w']}-{recw['l']}" + (f"-{recw['p']}" if recw["p"] else ""),
+                           "units": recw["units"], "cum": round(run, 2)})
+    skipped = [r["player"] for r in live if not r["under_listed"]]
+    return {"week": week_rows, "summary": record(done), "weekly": weekly, "history": [g for g in done if g["week"] < cur],
+            "skipped": skipped}
+
+
 # ---------------------------------------------------------------------------- page
 
 def write_page(path: Path, rows: list, cur: int, summ: dict, buckets: list, season: int,
                league: str = "NFL", url: str | None = None, other: tuple = ("College football", "college/"),
-               cfb: dict | None = None):
+               cfb: dict | None = None, qbr: dict | None = None):
     data = {"season": season, "week": cur, "updated": nm._now_et(), "rows": rows, "summary": summ,
             "buckets": buckets, "rules": {"public_min": PUBLIC_MIN, "agree_min": AGREE_MIN},
             "league": league, "other": {"label": other[0], "href": other[1]}}
     if cfb:
         data["cfb"] = cfb
+    if qbr:
+        data["qbr"] = qbr
     page = (FADES_TEMPLATE.replace("__WEEK__", str(cur)).replace("__URL__", url or nm.SITE_URL + "fades/")
             .replace("__LEAGUE__", league)
             .replace("__DATA__", json.dumps(data).replace("</", "<\\/")))
@@ -337,9 +452,10 @@ def main():
     ap.add_argument("--json", help="also write the picks as JSON here")
     ap.add_argument("--no-live", action="store_true", help="don't read live splits for uncaptured games")
     ap.add_argument("--refresh", action="store_true")
+    ap.add_argument("--snapshot-dir", default="data/snapshots", help="pre-kickoff prop snapshots (QB rushing unders)")
     ap.add_argument("--cfb-json", help="college data written by fades_cfb.py --data-out (adds the College tab)")
     a = ap.parse_args()
-    _, sched, season = nm.load_data(a.refresh)
+    stats, sched, season = nm.load_data(a.refresh)
     splits_dir = Path(a.splits_dir)
     rows, cur = build(season, sched, splits_dir, not a.no_live, a.refresh)
     summ = summary(rows, cur)
@@ -347,7 +463,14 @@ def main():
     cfb = None
     if a.cfb_json and Path(a.cfb_json).exists():
         cfb = json.loads(Path(a.cfb_json).read_text(encoding="utf-8"))
-    write_page(Path(a.out), rows, cur, summ, buckets, season, cfb=cfb)
+    qbr = None
+    try:
+        qbr = qb_rush(season, cur, Path(a.snapshot_dir), stats)
+        q = qbr["summary"]
+        print(f"  QB rush unders {q['w']}-{q['l']}-{q['p']}  ${q['units']:+,.2f} at $100; this week {len(qbr['week'])} listed, {len(qbr['skipped'])} skipped (no under)")
+    except Exception as exc:
+        print(f"[warn] QB rushing unders failed: {exc}", file=sys.stderr)
+    write_page(Path(a.out), rows, cur, summ, buckets, season, cfb=cfb, qbr=qbr)
     if a.json:
         Path(a.json).write_text(json.dumps({"rows": rows, "summary": summ, "buckets": buckets}, indent=1), encoding="utf-8")
     for k, lab in (("70", "Fade 70%+"), ("agree", "Stats agree 3+"), ("both", "Both")):
