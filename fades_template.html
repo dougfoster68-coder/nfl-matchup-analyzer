@@ -120,7 +120,7 @@ td { border-bottom:1px solid var(--grid); padding:6px }
 
 <section id="p-parlay" role="tabpanel" hidden>
 <h2>This week's ladder</h2>
-<p class="note" style="margin-top:0">The strongest open picks, no two from the same game: 3 spread fades, then the best QB rushing unders (NFL). Each rung adds one leg.</p>
+<p class="note" style="margin-top:0" id="ladnote"></p>
 <div id="ladder"></div>
 <h2 id="builder">Build your own</h2>
 <div class="tbl" style="padding:10px 14px"><div class="slipbar"><label>Stake $<input id="stake" type="number" min="1" value="10" inputmode="decimal"></label><button class="toggle" id="clearslip">Clear</button></div>
@@ -288,6 +288,9 @@ function ladder(lg) {
 const tagHtml = t => t === "qb" ? `<span class="pill" style="background:var(--navy)">QB rush</span>` : chip(t);
 function renderParlay(lg) {
   const lad = ladder(lg), {spread, props} = parlayLegs(lg);
+  $("ladnote").textContent = lg === "nfl"
+    ? "The strongest open picks, no two from the same game: 3 spread fades, then the best QB rushing unders. Each rung adds one leg."
+    : "The strongest open picks, no two from the same game, best first. Each rung adds one leg.";
   LEGS = [...spread, ...props];
   $("ladder").innerHTML = lad.length < 3 ? `<div class="empty">Not enough open picks for a 3-leg parlay right now.</div>` :
     [3, 4, 5].filter(n => n <= lad.length).map(n => {
