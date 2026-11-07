@@ -161,10 +161,12 @@ function drawChart(S) {
 
 function render(lg, season) {
   const D = LG[lg], S = D.summary, name = lg === "cfb" ? "College Football" : "NFL";
-  const pm = (D.rules && D.rules.public_min) || 70;
-  RULE["70"][0] = pm + "%+";
-  $("pubpill").textContent = pm + "%+";
-  $("pubtxt").textContent = `${pm}% or more of bets are on one team, so we take the other.` + (lg === "cfb" ? " (College uses 80%; the edge at 70% was too thin.)" : "");
+  const pm = (D.rules && D.rules.public_min) || 70, px = D.rules && D.rules.public_max;
+  RULE["70"][0] = px ? `${pm}–${px}%` : pm + "%+";
+  $("pubpill").textContent = RULE["70"][0];
+  $("pubtxt").textContent = px
+    ? `${pm}–${px}% of bets are on one team, so we take the other. College only: below 80% the edge was too thin, and 85%+ was mostly huge early-season underdogs.`
+    : `${pm}% or more of bets are on one team, so we take the other.`;
   document.title = `Fade the Public · ${name} Week ${D.week}`;
   $("lg").textContent = name; $("wk").textContent = D.week;
   document.querySelectorAll(".wk2").forEach(e => e.textContent = D.week);
