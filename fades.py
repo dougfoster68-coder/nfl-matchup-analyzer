@@ -316,9 +316,8 @@ PROP_TRENDS = [
     {"key": "qbr", "title": "QB rushing unders", "pill": "QB rush", "stat": "rushing_yards", "unit": "rush yds",
      "keep": lambda r: r.get("pos") == "QB",
      "desc": "the under on a quarterback's rushing yards. The public loves the over on running QBs, and most games come in under."},
-    {"key": "rec", "title": "Receiving unders", "pill": "Rec under", "stat": "receiving_yards", "unit": "rec yds",
-     "keep": lambda r: r.get("proj") is not None and not pd.isna(r.get("proj")) and r["proj"] < r["line"],
-     "desc": "the under on receiving yards when our model also projects the player under the line."},
+    # Receiving unders (model projects under) went 278-227 thru Wk 8 but were taken off the page 11/6
+    # (thin edge, ~break-even at -120). Re-add the entry here to bring the list back.
 ]
 ESPN_STAT_TYPE = {"rushing_yards": "12", "receiving_yards": "13", "passing_yards": "8"}
 
