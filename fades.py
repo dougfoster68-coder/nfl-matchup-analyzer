@@ -444,7 +444,17 @@ def prop_trends(season: int, cur: int, snap_dir: Path, stats: pd.DataFrame) -> l
             if rw["w"] + rw["l"] + rw["p"]:
                 weekly.append({"week": wk, "rec": f"{rw['w']}-{rw['l']}" + (f"-{rw['p']}" if rw["p"] else ""),
                                "units": rw["units"], "cum": round(run, 2)})
-        week_rows = [{k: v for k, v in g.items() if k != "player_id"} for g in graded if g["week"] == cur]
+        week_rows = []
+        for g in graded:
+            if g["week"] != cur:
+                continue
+            prior = [v for (pid, w), v in actual.items() if pid == g["player_id"] and w < cur and pd.notna(v)]
+            g = {k: v for k, v in g.items() if k != "player_id"}
+            if prior:   # this player's season so far, for ranking parlay legs
+                g["season_med"] = float(pd.Series(prior).median())
+                g["season_under"] = sum(1 for v in prior if v < g["line"])
+                g["season_n"] = len(prior)
+            week_rows.append(g)
         out.append({"key": T["key"], "title": T["title"], "pill": T["pill"], "unit": T["unit"], "desc": T["desc"],
                     "week": week_rows, "summary": record(done), "weekly": weekly, "skipped": sorted(skipped)})
     return out

@@ -73,6 +73,15 @@ td { border-bottom:1px solid var(--grid); padding:6px }
 .toggle { font:800 12px system-ui,sans-serif; letter-spacing:.04em; text-transform:none; border:1px solid var(--ring); background:var(--card);
   color:var(--ink2); border-radius:99px; padding:6px 14px; cursor:pointer }
 .toggle[aria-pressed=true] { background:var(--navy); color:#fff; border-color:var(--navy) }
+.rung { background:var(--card); border:1px solid var(--ring); border-left:5px solid var(--orange); border-radius:12px; padding:12px 16px; margin-bottom:10px }
+.rhead { display:flex; flex-wrap:wrap; gap:6px 16px; align-items:baseline; font-size:13px; color:var(--ink2); margin-bottom:6px }
+.rhead b { font-size:17px; color:var(--ink) } .odds { font-size:20px; font-weight:800; color:var(--orange) }
+.leg { padding:3px 0; font-size:14px } .leg .sub, .legrow .sub, .slip .sub { color:var(--ink2); font-size:12.5px }
+.leg.new b::after { content:"NEW"; font-size:9.5px; font-weight:800; background:var(--orange); color:#fff; padding:1px 5px; border-radius:4px; margin-left:6px; vertical-align:2px }
+.legrow { display:block; padding:8px 2px; border-top:1px solid var(--grid); cursor:pointer; font-size:14px } .legrow input { margin-right:8px; transform:scale(1.2) }
+.slipbar { display:flex; justify-content:space-between; align-items:center; gap:10px; font-weight:700 }
+.slipbar input { width:80px; font:700 15px system-ui,sans-serif; padding:5px 8px; border:1px solid var(--axis); border-radius:8px; background:var(--card); color:var(--ink) }
+.slip { padding:10px 0; font-size:14px } .warn { color:var(--loss); font-size:12.5px; margin-top:4px }
 [hidden] { display:none !important }
 .tbl { background:var(--card); border:1px solid var(--ring); border-radius:12px; padding:4px 14px 8px; overflow-x:auto }
 .tbl table { margin-top:4px } td.n, th.n { text-align:right } .up2 { color:var(--win); font-weight:700 } .dn2 { color:var(--loss); font-weight:700 }
@@ -84,7 +93,7 @@ td { border-bottom:1px solid var(--grid); padding:6px }
 <nav class="league" id="league"><a href="#" data-lg="nfl">NFL</a><a href="#college" data-lg="cfb">College</a></nav>
 <div class="record" id="record"></div></div></header>
 <main class="wrap">
-<nav class="tabs" role="tablist"><a id="t-week" role="tab">This week</a><a id="t-season" role="tab">Season to date</a></nav>
+<nav class="tabs" role="tablist"><a id="t-week" role="tab">This week</a><a id="t-season" role="tab">Season to date</a><a id="t-parlay" role="tab">Parlay</a></nav>
 
 <section id="p-week" role="tabpanel">
 <h2>Week <span class="wk2"></span> picks</h2>
@@ -107,6 +116,16 @@ td { border-bottom:1px solid var(--grid); padding:6px }
 
 <h2>Every pick</h2>
 <div class="tbl"><table><thead><tr><th>Wk</th><th>Bet</th><th>Rule</th><th>Final</th><th></th></tr></thead><tbody id="tbody"></tbody></table></div>
+</section>
+
+<section id="p-parlay" role="tabpanel" hidden>
+<h2>This week's ladder</h2>
+<p class="note" style="margin-top:0">The strongest open picks, no two from the same game: 3 spread fades, then the best QB rushing unders (NFL). Each rung adds one leg.</p>
+<div id="ladder"></div>
+<h2 id="builder">Build your own</h2>
+<div class="tbl" style="padding:10px 14px"><div class="slipbar"><label>Stake $<input id="stake" type="number" min="1" value="10" inputmode="decimal"></label><button class="toggle" id="clearslip">Clear</button></div>
+<div id="slip" class="slip"></div><div id="legs"></div></div>
+<p class="note">Payouts assume -110 on every leg; unders priced at -120 or worse pay less. Est. hit chance uses each rule's season win rate with the edge cut in half, since small samples run hot. Started games drop off.</p>
 </section>
 
 <div class="rules">
@@ -198,9 +217,11 @@ function render(lg, season) {
     const cell = (c, r, d) => c ? `<td class="n">${r}</td><td class="n ${cls(d)}">${money(d)}</td>` : `<td class="n">–</td><td class="n">–</td>`;
     return `<tr><td>${w.week}${w.week === D.week ? " (so far)" : ""}</td>${cell(w["70_n"], w["70_rec"], d70)}${cell(w.agree_n, w.agree_rec, dag)}</tr>`; }).reverse().join("")
     + `<tr><td><b>Total</b></td><td class="n"><b>${rec(S["70"])}</b></td><td class="n ${cls(S["70"].units)}"><b>${money(S["70"].units)}</b></td><td class="n"><b>${rec(S.agree)}</b></td><td class="n ${cls(S.agree.units)}"><b>${money(S.agree.units)}</b></td></tr>`;
-  $("p-week").hidden = season; $("p-season").hidden = !season;
-  $("t-week").setAttribute("aria-selected", !season); $("t-season").setAttribute("aria-selected", season);
-  $("t-week").href = lg === "cfb" ? "#college" : "#"; $("t-season").href = lg === "cfb" ? "#college-season" : "#season";
+  const view = season === true ? "season" : season || "week";
+  $("p-week").hidden = view !== "week"; $("p-season").hidden = view !== "season"; $("p-parlay").hidden = view !== "parlay";
+  $("t-week").setAttribute("aria-selected", view === "week"); $("t-season").setAttribute("aria-selected", view === "season"); $("t-parlay").setAttribute("aria-selected", view === "parlay");
+  $("t-week").href = lg === "cfb" ? "#college" : "#"; $("t-season").href = lg === "cfb" ? "#college-season" : "#season"; $("t-parlay").href = lg === "cfb" ? "#college-parlay" : "#parlay";
+  if (view === "parlay") renderParlay(lg);
   document.querySelectorAll("#league a").forEach(a => a.setAttribute("aria-selected", a.dataset.lg === lg));
   const PT = lg === "nfl" && ALL.props ? ALL.props : [];
   $("props-week").innerHTML = PT.map(t => `<h2 class="qbrhead">${t.title} <button class="toggle" data-k="${t.key}"></button></h2>
@@ -215,11 +236,11 @@ function render(lg, season) {
     <tr><td><b>Total</b></td><td class="n"><b>${rec(t.summary)}</b></td><td class="n ${cls(t.summary.units)}"><b>${money(t.summary.units)}</b></td></tr></tbody></table></div>`).join("");
   $("props-rules").innerHTML = PT.map(t => `<p><span class="pill" style="background:var(--navy)">${t.pill}</span>: ${t.desc} NFL only. Listed only when DraftKings has the under posted; confirm in the app, since DraftKings can pull a side close to kickoff.</p>`).join("");
   document.querySelectorAll("#props-week .toggle").forEach(b => propSet(b.dataset.k, propOn(b.dataset.k)));
-  if (season) drawChart(S);
+  if (view === "season") drawChart(S);
 }
 function show() {
   const h = location.hash, lg = h.startsWith("#college") && LG.cfb ? "cfb" : "nfl";
-  render(lg, h === "#season" || h === "#college-season");
+  render(lg, h.endsWith("season") ? "season" : h.endsWith("parlay") ? "parlay" : "week");
 }
 function propOn(k) { try { return localStorage.getItem("prop_" + k) === "1"; } catch (e) { return false; } }
 function propSet(k, on) {
@@ -229,5 +250,70 @@ function propSet(k, on) {
   $("box-" + k).hidden = !on; b.setAttribute("aria-pressed", on); b.textContent = on ? "Hide" : `Show ${t.week.length}`;
 }
 $("props-week").addEventListener("click", e => { const k = e.target.dataset && e.target.dataset.k; if (k) propSet(k, $("box-" + k).hidden); });
+
+// ---------------------------------------------------------------- parlay tab
+const DEC = 1 + 100 / 110;
+const amer = d => d >= 2 ? "+" + Math.round((d - 1) * 100) : "-" + Math.round(100 / (d - 1));
+const legP = pct => 0.5 + ((pct || 52.4) / 100 - 0.5) / 2;   // rule win %, edge cut in half (small samples run hot)
+let SLIP = new Set(), LEGS = [];
+
+function parlayLegs(lg) {
+  const D = LG[lg], S = D.summary, now = Date.now();
+  const open = r => !r.result && r.state !== "in" && (!r.kickoff || new Date(r.kickoff) > now);
+  const rulePct = r => r.rules.length === 2 ? S.both.pct : r.rules.includes("70") ? S["70"].pct : S.agree.pct;
+  const spread = D.rows.filter(r => r.week === D.week && open(r)).map(r => ({
+    id: "s:" + r.game, game: r.game, kickoff: r.kickoff, label: r.fade, sub: `${r.away} @ ${r.home}`,
+    tags: r.rules, p: legP(rulePct(r)),
+    rank: legP(rulePct(r)) * 1000 + r.public_pct   // strongest rule first, then most lopsided public
+  })).sort((a, b) => b.rank - a.rank);
+  const props = [];
+  if (lg === "nfl") for (const t of (ALL.props || [])) for (const r of t.week) if (open(r)) props.push({
+    id: `p:${t.key}:${r.player}`, game: r.game, kickoff: r.kickoff, label: `${r.player} u${r.line}`,
+    sub: `${t.unit} · ${r.team} vs ${r.opp}${r.season_n ? ` · under in ${r.season_under} of ${r.season_n}, median ${Math.round(r.season_med)}` : ""}`,
+    tags: ["qb"], p: legP(t.summary.pct),
+    rank: r.season_n >= 4 ? 10 * r.season_under / r.season_n + Math.min(r.line - r.season_med, 15) / 3 : -99   // 4+ games to rank
+  });
+  props.sort((a, b) => b.rank - a.rank);
+  return {spread, props};
+}
+
+function ladder(lg) {
+  const {spread, props} = parlayLegs(lg), used = new Set(), legs = [];
+  for (const r of spread) { if (legs.length === 3) break; if (!used.has(r.game)) { legs.push(r); used.add(r.game); } }
+  const extra = lg === "nfl" ? props : spread;
+  for (const r of extra) { if (legs.length === 5) break; if (r.rank > -99 && !used.has(r.game) && !legs.includes(r)) { legs.push(r); used.add(r.game); } }
+  return legs;
+}
+
+const tagHtml = t => t === "qb" ? `<span class="pill" style="background:var(--navy)">QB rush</span>` : chip(t);
+function renderParlay(lg) {
+  const lad = ladder(lg), {spread, props} = parlayLegs(lg);
+  LEGS = [...spread, ...props];
+  $("ladder").innerHTML = lad.length < 3 ? `<div class="empty">Not enough open picks for a 3-leg parlay right now.</div>` :
+    [3, 4, 5].filter(n => n <= lad.length).map(n => {
+      const legs = lad.slice(0, n), d = DEC ** n, p = legs.reduce((a, l) => a * l.p, 1);
+      return `<div class="rung"><div class="rhead"><b>${n}-leg</b><span class="odds">${amer(d)}</span><span>$10 pays $${(10 * d).toFixed(2)}</span><span>~${Math.round(p * 100)}% est. hit · break-even ${(100 / d).toFixed(1)}%</span></div>
+        ${legs.map((l, i) => `<div class="leg${i === n - 1 && n > 3 ? " new" : ""}">${l.tags.map(tagHtml).join(" ")} <b>${l.label}</b> <span class="sub">${l.sub}</span></div>`).join("")}</div>`;
+    }).join("") + (lad.length ? `<button class="toggle" id="loadlad">Load the ${lad.length}-leg into the builder</button>` : "");
+  const lb = $("loadlad"); if (lb) lb.onclick = () => { SLIP = new Set(lad.map(l => l.id)); drawSlip(); $("builder").scrollIntoView({behavior: "smooth"}); };
+  $("legs").innerHTML = LEGS.length ? LEGS.map(l => `<label class="legrow"><input type="checkbox" data-id="${l.id}"${SLIP.has(l.id) ? " checked" : ""}>
+    ${l.tags.map(tagHtml).join(" ")} <b>${l.label}</b> <span class="sub">${l.sub} · ${kick(l.kickoff)}</span></label>`).join("") : `<div class="empty">No open picks right now.</div>`;
+  drawSlip();
+}
+
+function drawSlip() {
+  document.querySelectorAll("#legs input").forEach(c => c.checked = SLIP.has(c.dataset.id));
+  const legs = LEGS.filter(l => SLIP.has(l.id)), n = legs.length, stake = Math.max(0, parseFloat($("stake").value) || 0);
+  const games = legs.map(l => l.game), dup = games.filter((g, i) => games.indexOf(g) !== i);
+  if (n < 2) { $("slip").innerHTML = `<span class="sub">Pick 2 or more legs.</span>`; return; }
+  const d = DEC ** n, p = legs.reduce((a, l) => a * l.p, 1);
+  $("slip").innerHTML = `<b>${n}-leg</b> <span class="odds">${amer(d)}</span> · $${stake.toFixed(0)} pays <b>$${(stake * d).toFixed(2)}</b>
+    · ~${Math.round(p * 100)}% est. hit · break-even ${(100 / d).toFixed(1)}%`
+    + (dup.length ? `<div class="warn">Two legs from the same game (${[...new Set(dup)].join(", ")}). DraftKings may only allow that as a same-game parlay.</div>` : "");
+}
+$("legs").addEventListener("change", e => { const id = e.target.dataset.id; if (!id) return; e.target.checked ? SLIP.add(id) : SLIP.delete(id); drawSlip(); });
+$("stake").addEventListener("input", drawSlip);
+$("clearslip").addEventListener("click", () => { SLIP.clear(); drawSlip(); });
+
 addEventListener("hashchange", show); show();
 </script></body></html>
