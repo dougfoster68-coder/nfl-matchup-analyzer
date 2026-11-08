@@ -14757,6 +14757,539 @@
       "week": 9,
       "odds": -110,
       "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 30,
+      "legs": [
+        {
+          "player": "Jadarian Price",
+          "player_id": "00-0041512",
+          "team": "SEA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 10.4
+        }
+      ],
+      "game": "ARI@SEA",
+      "id": "2026-w9-1794169669-1",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 30,
+      "legs": [
+        {
+          "player": "Rhamondre Stevenson",
+          "player_id": "00-0036875",
+          "team": "NE",
+          "opp": "GB",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 55.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 10.0
+        }
+      ],
+      "game": "GB@NE",
+      "id": "2026-w9-1794169669-2",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 36.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.9
+        }
+      ],
+      "game": "LV@SF",
+      "id": "2026-w9-1794169669-3",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -230,
+          "grade": "A",
+          "score": 9.9,
+          "alt": "30+"
+        }
+      ],
+      "game": "LV@SF",
+      "id": "2026-w9-1794169669-4",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -230,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": 350,
+          "grade": "A",
+          "score": 9.9,
+          "alt": "50+"
+        }
+      ],
+      "game": "LV@SF",
+      "id": "2026-w9-1794169669-5",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 350,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Jaxon Smith-Njigba",
+          "player_id": "00-0038543",
+          "team": "SEA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 95.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.6
+        }
+      ],
+      "game": "ARI@SEA",
+      "id": "2026-w9-1794169669-6",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jaxon Smith-Njigba",
+          "player_id": "00-0038543",
+          "team": "SEA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 79.5,
+          "odds": -255,
+          "grade": "A",
+          "score": 8.6,
+          "alt": "80+"
+        }
+      ],
+      "game": "ARI@SEA",
+      "id": "2026-w9-1794169669-7",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -255,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jaxon Smith-Njigba",
+          "player_id": "00-0038543",
+          "team": "SEA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 119.5,
+          "odds": 305,
+          "grade": "A",
+          "score": 8.6,
+          "alt": "120+"
+        }
+      ],
+      "game": "ARI@SEA",
+      "id": "2026-w9-1794169669-8",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 305,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Quentin Johnston",
+          "player_id": "00-0038544",
+          "team": "LAC",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 28.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.3
+        }
+      ],
+      "game": "HOU@LAC",
+      "id": "2026-w9-1794169669-9",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Quentin Johnston",
+          "player_id": "00-0038544",
+          "team": "LAC",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -165,
+          "grade": "A",
+          "score": 8.3,
+          "alt": "25+"
+        }
+      ],
+      "game": "HOU@LAC",
+      "id": "2026-w9-1794169669-10",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -165,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Quentin Johnston",
+          "player_id": "00-0038544",
+          "team": "LAC",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": 280,
+          "grade": "A",
+          "score": 8.3,
+          "alt": "40+"
+        }
+      ],
+      "game": "HOU@LAC",
+      "id": "2026-w9-1794169669-11",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 280,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Jordan Love",
+          "player_id": "00-0036264",
+          "team": "GB",
+          "opp": "NE",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 3.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.3
+        }
+      ],
+      "game": "GB@NE",
+      "id": "2026-w9-1794169669-12",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Tre Harris",
+          "player_id": "00-0040727",
+          "team": "LAC",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 28.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.8
+        }
+      ],
+      "game": "HOU@LAC",
+      "id": "2026-w9-1794169669-13",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Tre Harris",
+          "player_id": "00-0040727",
+          "team": "LAC",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": -150,
+          "grade": "B",
+          "score": 6.8,
+          "alt": "25+"
+        }
+      ],
+      "game": "HOU@LAC",
+      "id": "2026-w9-1794169669-14",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -150,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Tre Harris",
+          "player_id": "00-0040727",
+          "team": "LAC",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": 210,
+          "grade": "B",
+          "score": 6.8,
+          "alt": "40+"
+        }
+      ],
+      "game": "HOU@LAC",
+      "id": "2026-w9-1794169669-15",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 210,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "George Kittle",
+          "player_id": "00-0033288",
+          "team": "SF",
+          "opp": "LV",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 71.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.5
+        }
+      ],
+      "game": "LV@SF",
+      "id": "2026-w9-1794169669-16",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Kaelon Black",
+          "player_id": "00-0041052",
+          "team": "SF",
+          "opp": "LV",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 40.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.3
+        }
+      ],
+      "game": "LV@SF",
+      "id": "2026-w9-1794169669-17",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "AJ Barner",
+          "player_id": "00-0039793",
+          "team": "SEA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 24.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.3
+        }
+      ],
+      "game": "ARI@SEA",
+      "id": "2026-w9-1794169669-18",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Jordan Watkins",
+          "player_id": "00-0040172",
+          "team": "SF",
+          "opp": "LV",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 26.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.2
+        }
+      ],
+      "game": "LV@SF",
+      "id": "2026-w9-1794169669-19",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Jalen Nailor",
+          "player_id": "00-0037291",
+          "team": "LV",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.1
+        }
+      ],
+      "game": "LV@SF",
+      "id": "2026-w9-1794169669-20",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Michael Mayer",
+          "player_id": "00-0039066",
+          "team": "LV",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 30.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.1
+        }
+      ],
+      "game": "LV@SF",
+      "id": "2026-w9-1794169669-21",
+      "placed_at": "2026-11-08T15:27:49.833074-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
     }
   ],
   "superseded": [
