@@ -14097,6 +14097,666 @@
       "week": 9,
       "odds": 1228,
       "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 45,
+      "legs": [
+        {
+          "player": "Stefon Diggs",
+          "player_id": "00-0031588",
+          "team": "WAS",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 46.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 11.6
+        }
+      ],
+      "game": "LA@WAS",
+      "id": "2026-w9-1794154137-1",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Laquon Treadwell",
+          "player_id": "00-0032951",
+          "team": "IND",
+          "opp": "DAL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 15.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 10.2
+        }
+      ],
+      "game": "DAL@IND",
+      "id": "2026-w9-1794154137-2",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Laquon Treadwell",
+          "player_id": "00-0032951",
+          "team": "IND",
+          "opp": "DAL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 9.5,
+          "odds": -205,
+          "grade": "A",
+          "score": 10.2,
+          "alt": "10+"
+        }
+      ],
+      "game": "DAL@IND",
+      "id": "2026-w9-1794154137-3",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -205,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Laquon Treadwell",
+          "player_id": "00-0032951",
+          "team": "IND",
+          "opp": "DAL",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": 135,
+          "grade": "A",
+          "score": 10.2,
+          "alt": "20+"
+        }
+      ],
+      "game": "DAL@IND",
+      "id": "2026-w9-1794154137-4",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 135,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 35,
+      "legs": [
+        {
+          "player": "Bryce Young",
+          "player_id": "00-0039150",
+          "team": "CAR",
+          "opp": "DEN",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.4
+        }
+      ],
+      "game": "DEN@CAR",
+      "id": "2026-w9-1794154137-5",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 35,
+      "legs": [
+        {
+          "player": "Darius Cooper",
+          "player_id": "00-0040024",
+          "team": "PHI",
+          "opp": "NYG",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 28.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.4
+        }
+      ],
+      "game": "NYG@PHI",
+      "id": "2026-w9-1794154137-6",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Noah Gray",
+          "player_id": "00-0036637",
+          "team": "KC",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.2
+        }
+      ],
+      "game": "NYJ@KC",
+      "id": "2026-w9-1794154137-7",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Noah Gray",
+          "player_id": "00-0036637",
+          "team": "KC",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 9.5,
+          "odds": -175,
+          "grade": "A",
+          "score": 9.2,
+          "alt": "10+"
+        }
+      ],
+      "game": "NYJ@KC",
+      "id": "2026-w9-1794154137-8",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -175,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Noah Gray",
+          "player_id": "00-0036637",
+          "team": "KC",
+          "opp": "NYJ",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": 140,
+          "grade": "A",
+          "score": 9.2,
+          "alt": "20+"
+        }
+      ],
+      "game": "NYJ@KC",
+      "id": "2026-w9-1794154137-9",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 140,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 35,
+      "legs": [
+        {
+          "player": "Quinshon Judkins",
+          "player_id": "00-0040784",
+          "team": "CLE",
+          "opp": "NO",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 64.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.8
+        }
+      ],
+      "game": "CLE@NO",
+      "id": "2026-w9-1794154137-10",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 30,
+      "legs": [
+        {
+          "player": "Ryan Flournoy",
+          "player_id": "00-0039410",
+          "team": "DAL",
+          "opp": "IND",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 45.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.2
+        }
+      ],
+      "game": "DAL@IND",
+      "id": "2026-w9-1794154137-11",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "J.K. Dobbins",
+          "player_id": "00-0036158",
+          "team": "DEN",
+          "opp": "CAR",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 25.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        }
+      ],
+      "game": "DEN@CAR",
+      "id": "2026-w9-1794154137-12",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "J.K. Dobbins",
+          "player_id": "00-0036158",
+          "team": "DEN",
+          "opp": "CAR",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -210,
+          "grade": "A",
+          "score": 8.1,
+          "alt": "20+"
+        }
+      ],
+      "game": "DEN@CAR",
+      "id": "2026-w9-1794154137-13",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -210,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "J.K. Dobbins",
+          "player_id": "00-0036158",
+          "team": "DEN",
+          "opp": "CAR",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": 140,
+          "grade": "A",
+          "score": 8.1,
+          "alt": "30+"
+        }
+      ],
+      "game": "DEN@CAR",
+      "id": "2026-w9-1794154137-14",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 140,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 30,
+      "legs": [
+        {
+          "player": "Evan Engram",
+          "player_id": "00-0033881",
+          "team": "DEN",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 18.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        }
+      ],
+      "game": "DEN@CAR",
+      "id": "2026-w9-1794154137-15",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 30,
+      "legs": [
+        {
+          "player": "Jaylen Waddle",
+          "player_id": "00-0036613",
+          "team": "DEN",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 47.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        }
+      ],
+      "game": "DEN@CAR",
+      "id": "2026-w9-1794154137-16",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Jonathan Taylor",
+          "player_id": "00-0036223",
+          "team": "IND",
+          "opp": "DAL",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 63.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.5
+        }
+      ],
+      "game": "DAL@IND",
+      "id": "2026-w9-1794154137-17",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Jonathan Taylor",
+          "player_id": "00-0036223",
+          "team": "IND",
+          "opp": "DAL",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 49.5,
+          "odds": -265,
+          "grade": "A",
+          "score": 7.5,
+          "alt": "50+"
+        }
+      ],
+      "game": "DAL@IND",
+      "id": "2026-w9-1794154137-18",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -265,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jonathan Taylor",
+          "player_id": "00-0036223",
+          "team": "IND",
+          "opp": "DAL",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 79.5,
+          "odds": 240,
+          "grade": "A",
+          "score": 7.5,
+          "alt": "80+"
+        }
+      ],
+      "game": "DAL@IND",
+      "id": "2026-w9-1794154137-19",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 240,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Amon-Ra St. Brown",
+          "player_id": "00-0036963",
+          "team": "DET",
+          "opp": "MIA",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 78.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        }
+      ],
+      "game": "DET@MIA",
+      "id": "2026-w9-1794154137-20",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Javonte Williams",
+          "player_id": "00-0036997",
+          "team": "DAL",
+          "opp": "IND",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 73.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1
+        }
+      ],
+      "game": "DAL@IND",
+      "id": "2026-w9-1794154137-21",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Jerry Jeudy",
+          "player_id": "00-0036407",
+          "team": "CLE",
+          "opp": "NO",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 13.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1
+        }
+      ],
+      "game": "CLE@NO",
+      "id": "2026-w9-1794154137-22",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jerry Jeudy",
+          "player_id": "00-0036407",
+          "team": "CLE",
+          "opp": "NO",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 9.5,
+          "odds": -150,
+          "grade": "B",
+          "score": 7.1,
+          "alt": "10+"
+        }
+      ],
+      "game": "CLE@NO",
+      "id": "2026-w9-1794154137-23",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -150,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jerry Jeudy",
+          "player_id": "00-0036407",
+          "team": "CLE",
+          "opp": "NO",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": 140,
+          "grade": "B",
+          "score": 7.1,
+          "alt": "20+"
+        }
+      ],
+      "game": "CLE@NO",
+      "id": "2026-w9-1794154137-24",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": 140,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Rachaad White",
+          "player_id": "00-0037256",
+          "team": "WAS",
+          "opp": "LA",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 35.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1
+        }
+      ],
+      "game": "LA@WAS",
+      "id": "2026-w9-1794154137-25",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Antonio Williams",
+          "player_id": "00-0041040",
+          "team": "WAS",
+          "opp": "LA",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 49.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1
+        }
+      ],
+      "game": "LA@WAS",
+      "id": "2026-w9-1794154137-26",
+      "placed_at": "2026-11-08T11:08:57.636344-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
     }
   ],
   "superseded": [
