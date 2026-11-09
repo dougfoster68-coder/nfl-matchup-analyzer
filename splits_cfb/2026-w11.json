@@ -13,6 +13,118 @@
      "bets_b": 54,
      "money_a": 60,
      "money_b": 40
+    },
+    {
+     "at": "2026-11-09T22:50+00:00",
+     "line": -14.0,
+     "bets_a": 54,
+     "bets_b": 46,
+     "money_a": 47,
+     "money_b": 53
+    }
+   ]
+  },
+  "Kent State@Bowling Green": {
+   "kickoff_utc": "2026-11-11T00:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-09T22:50+00:00",
+     "line": 5.5,
+     "bets_a": 57,
+     "bets_b": 43,
+     "money_a": 35,
+     "money_b": 65
+    }
+   ]
+  },
+  "Ohio@Miami (OH)": {
+   "kickoff_utc": "2026-11-11T01:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-09T22:50+00:00",
+     "line": -1.5,
+     "bets_a": 57,
+     "bets_b": 43,
+     "money_a": 41,
+     "money_b": 59
+    }
+   ]
+  },
+  "Massachusetts@Toledo": {
+   "kickoff_utc": "2026-11-12T00:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-09T22:50+00:00",
+     "line": 14.5,
+     "bets_a": 63,
+     "bets_b": 37,
+     "money_a": 38,
+     "money_b": 62
+    }
+   ]
+  },
+  "Sacramento State@Central Michigan": {
+   "kickoff_utc": "2026-11-12T00:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-09T22:50+00:00",
+     "line": 18.5,
+     "bets_a": 64,
+     "bets_b": 36,
+     "money_a": 30,
+     "money_b": 70
+    }
+   ]
+  },
+  "Memphis@South Florida": {
+   "kickoff_utc": "2026-11-13T01:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-09T22:50+00:00",
+     "line": -4.0,
+     "bets_a": 62,
+     "bets_b": 38,
+     "money_a": 37,
+     "money_b": 63
+    }
+   ]
+  },
+  "Illinois@UCLA": {
+   "kickoff_utc": "2026-11-14T02:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-09T22:50+00:00",
+     "line": 10.0,
+     "bets_a": 60,
+     "bets_b": 40,
+     "money_a": 54,
+     "money_b": 46
+    }
+   ]
+  },
+  "Wake Forest@SMU": {
+   "kickoff_utc": "2026-11-14T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-09T22:50+00:00",
+     "line": -1.5,
+     "bets_a": 54,
+     "bets_b": 46,
+     "money_a": 76,
+     "money_b": 24
+    }
+   ]
+  },
+  "USC@Indiana": {
+   "kickoff_utc": "2026-11-14T20:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-09T22:50+00:00",
+     "line": 7.5,
+     "bets_a": 75,
+     "bets_b": 25,
+     "money_a": 64,
+     "money_b": 36
     }
    ]
   }
