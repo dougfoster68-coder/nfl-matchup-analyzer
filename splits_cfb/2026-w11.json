@@ -1,0 +1,20 @@
+{
+ "season": 2026,
+ "week": 11,
+ "source": "https://www.scoresandodds.com/ncaaf/consensus-picks",
+ "games": {
+  "Western Michigan@Akron": {
+   "kickoff_utc": "2026-11-11T00:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-09T12:54+00:00",
+     "line": -14.0,
+     "bets_a": 46,
+     "bets_b": 54,
+     "money_a": 60,
+     "money_b": 40
+    }
+   ]
+  }
+ }
+}
