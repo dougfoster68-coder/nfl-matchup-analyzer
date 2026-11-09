@@ -15551,6 +15551,81 @@
       "season": 2026,
       "week": 9,
       "odds": 1228
+    },
+    {
+      "kind": "straight",
+      "stake": 30,
+      "legs": [
+        {
+          "player": "Dawson Knox",
+          "player_id": "00-0035689",
+          "team": "BUF",
+          "opp": "MIN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 8.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 12.4
+        }
+      ],
+      "game": "BUF@MIN",
+      "id": "2026-w9-1794264613-1",
+      "placed_at": "2026-11-09T17:50:13.891936-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Jordan Mason",
+          "player_id": "00-0037525",
+          "team": "MIN",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 0.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 10.3
+        }
+      ],
+      "game": "BUF@MIN",
+      "id": "2026-w9-1794264613-2",
+      "placed_at": "2026-11-09T17:50:13.891936-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Josh Allen",
+          "player_id": "00-0034857",
+          "team": "BUF",
+          "opp": "MIN",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 31.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.9
+        }
+      ],
+      "game": "BUF@MIN",
+      "id": "2026-w9-1794264613-3",
+      "placed_at": "2026-11-09T17:50:13.891936-05:00",
+      "season": 2026,
+      "week": 9,
+      "odds": -110,
+      "note": "Claude weekly pick"
     }
   ],
   "superseded": [
