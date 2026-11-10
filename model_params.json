@@ -8,7 +8,7 @@
  "garbage_time_cut": 0.1,
  "games": 18,
  "season": 2026,
- "tuned_through_week": 8,
+ "tuned_through_week": 9,
  "history": [
   {
    "through_week": 7,
@@ -85,6 +85,52 @@
    },
    "ytd_hindsight": 862.04,
    "ytd_walkforward": 497.53
+  },
+  {
+   "through_week": 9,
+   "updated": "2026-11-10T16:15-05:00",
+   "params": {
+    "proj_scale": {
+     "passing_yards": 0.95,
+     "rushing_yards": 0.85,
+     "receiving_yards": 0.85
+    },
+    "hit_rate_bonus": 0.3,
+    "garbage_time_cut": 0.1,
+    "games": 18
+   },
+   "switched": false,
+   "candidate": {
+    "proj_scale": {
+     "passing_yards": 0.95,
+     "rushing_yards": 0.8,
+     "receiving_yards": 0.85
+    },
+    "hit_rate_bonus": 0.3,
+    "garbage_time_cut": 0.2,
+    "games": 5
+   },
+   "holdout_weeks": [
+    7,
+    8,
+    9
+   ],
+   "holdout_current": {
+    "2": 0.4235294117647059,
+    "3": 0.4330708661417323,
+    "5": 0.4976303317535545,
+    "10": 0.5119617224880383,
+    "avg": 0.4665480830370077
+   },
+   "holdout_candidate": {
+    "2": 0.38095238095238093,
+    "3": 0.4330708661417323,
+    "5": 0.47641509433962265,
+    "10": 0.5059952038369304,
+    "avg": 0.4491083863176666
+   },
+   "ytd_hindsight": 398.27,
+   "ytd_walkforward": 377.5
   }
  ]
 }
