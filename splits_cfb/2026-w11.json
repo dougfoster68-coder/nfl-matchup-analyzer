@@ -21,6 +21,14 @@
      "bets_b": 46,
      "money_a": 47,
      "money_b": 53
+    },
+    {
+     "at": "2026-11-10T04:28+00:00",
+     "line": -14.0,
+     "bets_a": 54,
+     "bets_b": 46,
+     "money_a": 28,
+     "money_b": 72
     }
    ]
   },
@@ -125,6 +133,32 @@
      "bets_b": 25,
      "money_a": 64,
      "money_b": 36
+    }
+   ]
+  },
+  "Northwestern@Ohio State": {
+   "kickoff_utc": "2026-11-14T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-10T04:28+00:00",
+     "line": 12.5,
+     "bets_a": 74,
+     "bets_b": 26,
+     "money_a": 66,
+     "money_b": 34
+    }
+   ]
+  },
+  "Ole Miss@Oklahoma": {
+   "kickoff_utc": "2026-11-14T21:15:00Z",
+   "spread": [
+    {
+     "at": "2026-11-10T04:28+00:00",
+     "line": -1.5,
+     "bets_a": 78,
+     "bets_b": 22,
+     "money_a": 90,
+     "money_b": 10
     }
    ]
   }
