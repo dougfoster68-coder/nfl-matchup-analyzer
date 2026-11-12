@@ -15626,6 +15626,448 @@
       "week": 9,
       "odds": -110,
       "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 30,
+      "legs": [
+        {
+          "player": "Rachaad White",
+          "player_id": "00-0037256",
+          "team": "WAS",
+          "opp": "NYG",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 38.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 10.3
+        }
+      ],
+      "game": "WAS@NYG",
+      "id": "2026-w10-1794527275-1",
+      "placed_at": "2026-11-12T18:47:55.428276-05:00",
+      "season": 2026,
+      "week": 10,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Olamide Zaccheaus",
+          "player_id": "00-0035208",
+          "team": "ATL",
+          "opp": "KC",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 12.5
+        },
+        {
+          "player": "Rachaad White",
+          "player_id": "00-0037256",
+          "team": "WAS",
+          "opp": "NYG",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 38.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 10.3
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w10-1794527275-2",
+      "placed_at": "2026-11-12T18:47:55.428276-05:00",
+      "season": 2026,
+      "week": 10,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "DAL",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.9
+        },
+        {
+          "player": "Konata Mumpfield",
+          "player_id": "00-0040590",
+          "team": "LA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 28.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.5
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w10-1794527275-3",
+      "placed_at": "2026-11-12T18:47:55.428276-05:00",
+      "season": 2026,
+      "week": 10,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Germie Bernard",
+          "player_id": "00-0041489",
+          "team": "PIT",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 50.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.8
+        },
+        {
+          "player": "Devaughn Vele",
+          "player_id": "00-0039424",
+          "team": "NO",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w10-1794527275-4",
+      "placed_at": "2026-11-12T18:47:55.428276-05:00",
+      "season": 2026,
+      "week": 10,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Brock Bowers",
+          "player_id": "00-0039338",
+          "team": "LV",
+          "opp": "SEA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 59.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Drake Maye",
+          "player_id": "00-0039851",
+          "team": "NE",
+          "opp": "DET",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.4
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w10-1794527275-5",
+      "placed_at": "2026-11-12T18:47:55.428276-05:00",
+      "season": 2026,
+      "week": 10,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Olamide Zaccheaus",
+          "player_id": "00-0035208",
+          "team": "ATL",
+          "opp": "KC",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 12.5
+        },
+        {
+          "player": "Konata Mumpfield",
+          "player_id": "00-0040590",
+          "team": "LA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 28.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.5
+        },
+        {
+          "player": "Brock Bowers",
+          "player_id": "00-0039338",
+          "team": "LV",
+          "opp": "SEA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 59.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w10-1794527275-6",
+      "placed_at": "2026-11-12T18:47:55.428276-05:00",
+      "season": 2026,
+      "week": 10,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Rachaad White",
+          "player_id": "00-0037256",
+          "team": "WAS",
+          "opp": "NYG",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 38.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 10.3
+        },
+        {
+          "player": "Germie Bernard",
+          "player_id": "00-0041489",
+          "team": "PIT",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 50.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.8
+        },
+        {
+          "player": "Drake Maye",
+          "player_id": "00-0039851",
+          "team": "NE",
+          "opp": "DET",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.4
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w10-1794527275-7",
+      "placed_at": "2026-11-12T18:47:55.428276-05:00",
+      "season": 2026,
+      "week": 10,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "DAL",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.9
+        },
+        {
+          "player": "Devaughn Vele",
+          "player_id": "00-0039424",
+          "team": "NO",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Olamide Zaccheaus",
+          "player_id": "00-0035208",
+          "team": "ATL",
+          "opp": "KC",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 12.5
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w10-1794527275-8",
+      "placed_at": "2026-11-12T18:47:55.428276-05:00",
+      "season": 2026,
+      "week": 10,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Olamide Zaccheaus",
+          "player_id": "00-0035208",
+          "team": "ATL",
+          "opp": "KC",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 12.5
+        },
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "DAL",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.9
+        },
+        {
+          "player": "Germie Bernard",
+          "player_id": "00-0041489",
+          "team": "PIT",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 50.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.8
+        },
+        {
+          "player": "Brock Bowers",
+          "player_id": "00-0039338",
+          "team": "LV",
+          "opp": "SEA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 59.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w10-1794527275-9",
+      "placed_at": "2026-11-12T18:47:55.428276-05:00",
+      "season": 2026,
+      "week": 10,
+      "odds": 1228,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Rachaad White",
+          "player_id": "00-0037256",
+          "team": "WAS",
+          "opp": "NYG",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 38.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 10.3
+        },
+        {
+          "player": "Konata Mumpfield",
+          "player_id": "00-0040590",
+          "team": "LA",
+          "opp": "ARI",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 28.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.5
+        },
+        {
+          "player": "Devaughn Vele",
+          "player_id": "00-0039424",
+          "team": "NO",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Drake Maye",
+          "player_id": "00-0039851",
+          "team": "NE",
+          "opp": "DET",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.4
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w10-1794527275-10",
+      "placed_at": "2026-11-12T18:47:55.428276-05:00",
+      "season": 2026,
+      "week": 10,
+      "odds": 1228,
+      "note": "Claude weekly pick"
     }
   ],
   "superseded": [
@@ -19745,7 +20187,8 @@
     "6": 834.85,
     "7": 449.47,
     "8": 1253.11,
-    "9": 991.71
+    "9": 991.71,
+    "10": 614.13
   },
   "note": "Bankroll starts in week 1: weeks 1-3 are simulated backtests (flagged backtest); week-4 stakes were rescaled x1.76902 to the week-4 starting bankroll (originals in stake_original).",
   "changes": [
