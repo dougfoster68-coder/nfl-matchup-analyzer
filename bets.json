@@ -15817,116 +15817,6 @@
       "stake": 5,
       "legs": [
         {
-          "player": "Brock Purdy",
-          "player_id": "00-0037834",
-          "team": "SF",
-          "opp": "DAL",
-          "stat": "rushing_yards",
-          "side": "over",
-          "line": 19.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 9.9
-        },
-        {
-          "player": "Devaughn Vele",
-          "player_id": "00-0039424",
-          "team": "NO",
-          "opp": "CAR",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 27.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 8.7
-        },
-        {
-          "player": "Olamide Zaccheaus",
-          "player_id": "00-0035208",
-          "team": "ATL",
-          "opp": "KC",
-          "stat": "receiving_yards",
-          "side": "under",
-          "line": 7.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 12.5
-        }
-      ],
-      "game": "multi",
-      "id": "2026-w10-1794527275-8",
-      "placed_at": "2026-11-12T18:47:55.428276-05:00",
-      "season": 2026,
-      "week": 10,
-      "odds": 596,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "parlay",
-      "stake": 5,
-      "legs": [
-        {
-          "player": "Olamide Zaccheaus",
-          "player_id": "00-0035208",
-          "team": "ATL",
-          "opp": "KC",
-          "stat": "receiving_yards",
-          "side": "under",
-          "line": 7.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 12.5
-        },
-        {
-          "player": "Brock Purdy",
-          "player_id": "00-0037834",
-          "team": "SF",
-          "opp": "DAL",
-          "stat": "rushing_yards",
-          "side": "over",
-          "line": 19.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 9.9
-        },
-        {
-          "player": "Germie Bernard",
-          "player_id": "00-0041489",
-          "team": "PIT",
-          "opp": "CIN",
-          "stat": "receiving_yards",
-          "side": "under",
-          "line": 50.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 8.8
-        },
-        {
-          "player": "Brock Bowers",
-          "player_id": "00-0039338",
-          "team": "LV",
-          "opp": "SEA",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 59.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 8.7
-        }
-      ],
-      "game": "multi",
-      "id": "2026-w10-1794527275-9",
-      "placed_at": "2026-11-12T18:47:55.428276-05:00",
-      "season": 2026,
-      "week": 10,
-      "odds": 1228,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "parlay",
-      "stake": 5,
-      "legs": [
-        {
           "player": "Rachaad White",
           "player_id": "00-0037256",
           "team": "WAS",
@@ -15982,6 +15872,116 @@
       "week": 10,
       "odds": 1228,
       "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "DAL",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.9
+        },
+        {
+          "player": "Devaughn Vele",
+          "player_id": "00-0039424",
+          "team": "NO",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Khalil Herbert",
+          "player_id": "00-0036906",
+          "team": "ATL",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 9.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.5
+        }
+      ],
+      "game": "multi",
+      "note": "LATE CHANGE Sat 09:23 AM ET: Olamide Zaccheaus UNDER 7.5 \u2192 Khalil Herbert UNDER 9.5 (now trap-flagged: Line 8.5 vs 3 L8 avg \u2014 gap this big usually means the book knows about an injury or role change)",
+      "id": "2026-w10-1794666225-1",
+      "placed_at": "2026-11-14T09:23:45.556696-05:00",
+      "season": 2026,
+      "week": 10,
+      "odds": 596
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Khalil Herbert",
+          "player_id": "00-0036906",
+          "team": "ATL",
+          "opp": "KC",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 9.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.5
+        },
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "DAL",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.9
+        },
+        {
+          "player": "Germie Bernard",
+          "player_id": "00-0041489",
+          "team": "PIT",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 50.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.8
+        },
+        {
+          "player": "Brock Bowers",
+          "player_id": "00-0039338",
+          "team": "LV",
+          "opp": "SEA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 59.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        }
+      ],
+      "game": "multi",
+      "note": "LATE CHANGE Sat 09:23 AM ET: Olamide Zaccheaus UNDER 7.5 \u2192 Khalil Herbert UNDER 9.5 (now trap-flagged: Line 8.5 vs 3 L8 avg \u2014 gap this big usually means the book knows about an injury or role change)",
+      "id": "2026-w10-1794666225-2",
+      "placed_at": "2026-11-14T09:23:45.556696-05:00",
+      "season": 2026,
+      "week": 10,
+      "odds": 1228
     }
   ],
   "superseded": [
@@ -20183,6 +20183,120 @@
       "note": "Claude weekly pick",
       "superseded_at": "2026-11-13T07:38:45.292939-05:00",
       "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "DAL",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.9
+        },
+        {
+          "player": "Devaughn Vele",
+          "player_id": "00-0039424",
+          "team": "NO",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Olamide Zaccheaus",
+          "player_id": "00-0035208",
+          "team": "ATL",
+          "opp": "KC",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 12.5
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w10-1794527275-8",
+      "placed_at": "2026-11-12T18:47:55.428276-05:00",
+      "season": 2026,
+      "week": 10,
+      "odds": 596,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-11-14T09:23:45.556696-05:00",
+      "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Olamide Zaccheaus",
+          "player_id": "00-0035208",
+          "team": "ATL",
+          "opp": "KC",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 12.5
+        },
+        {
+          "player": "Brock Purdy",
+          "player_id": "00-0037834",
+          "team": "SF",
+          "opp": "DAL",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.9
+        },
+        {
+          "player": "Germie Bernard",
+          "player_id": "00-0041489",
+          "team": "PIT",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 50.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.8
+        },
+        {
+          "player": "Brock Bowers",
+          "player_id": "00-0039338",
+          "team": "LV",
+          "opp": "SEA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 59.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w10-1794527275-9",
+      "placed_at": "2026-11-12T18:47:55.428276-05:00",
+      "season": 2026,
+      "week": 10,
+      "odds": 1228,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-11-14T09:23:45.556696-05:00",
+      "superseded_reason": "late change before kickoff"
     }
   ],
   "week_budgets": {
@@ -20785,6 +20899,26 @@
       "from": "Konata Mumpfield UNDER 28.5",
       "to": "parlay cancelled",
       "reason": "now trap-flagged: Line 29.5 vs 20 L8 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    },
+    {
+      "at": "2026-11-14T09:23-05:00",
+      "week": 10,
+      "game": "parlay leg",
+      "kind": "parlay",
+      "stake": 5,
+      "from": "Olamide Zaccheaus UNDER 7.5",
+      "to": "Khalil Herbert UNDER 9.5",
+      "reason": "now trap-flagged: Line 8.5 vs 3 L8 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    },
+    {
+      "at": "2026-11-14T09:23-05:00",
+      "week": 10,
+      "game": "parlay leg",
+      "kind": "parlay",
+      "stake": 5,
+      "from": "Olamide Zaccheaus UNDER 7.5",
+      "to": "Khalil Herbert UNDER 9.5",
+      "reason": "now trap-flagged: Line 8.5 vs 3 L8 avg \u2014 gap this big usually means the book knows about an injury or role change"
     }
   ]
 }
