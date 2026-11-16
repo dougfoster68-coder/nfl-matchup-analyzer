@@ -1,0 +1,20 @@
+{
+ "season": 2026,
+ "week": 12,
+ "source": "https://www.scoresandodds.com/ncaaf/consensus-picks",
+ "games": {
+  "UCLA@Michigan": {
+   "kickoff_utc": "2026-11-21T20:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-16T18:37+00:00",
+     "line": -4.0,
+     "bets_a": 89,
+     "bets_b": 11,
+     "money_a": 82,
+     "money_b": 18
+    }
+   ]
+  }
+ }
+}
