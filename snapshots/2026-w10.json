@@ -634,15 +634,15 @@
    "player_id": "00-0023459",
    "pos": "QB",
    "stat": "passing_yards",
-   "line": 239.5,
-   "pick": "UNDER 239.5",
-   "score": 4.2,
-   "grade": "D",
-   "p_over": 0.45,
-   "proj": 228.6,
+   "line": 244.5,
+   "pick": "UNDER 244.5",
+   "score": 4.6,
+   "grade": "C",
+   "p_over": 0.42,
+   "proj": 228.1,
    "line_hits": "3/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0036139|rushing_yards": {
    "game": "PIT@CIN",
@@ -653,15 +653,15 @@
    "player_id": "00-0036139",
    "pos": "RB",
    "stat": "rushing_yards",
-   "line": 30.5,
-   "pick": "UNDER 30.5",
-   "score": 1.2,
+   "line": 29.5,
+   "pick": "OVER 29.5",
+   "score": 3.5,
    "grade": "D",
-   "p_over": 0.48,
-   "proj": 29.9,
+   "p_over": 0.51,
+   "proj": 30.0,
    "line_hits": "3/5",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0036139|receiving_yards": {
    "game": "PIT@CIN",
@@ -677,10 +677,10 @@
    "score": 1.8,
    "grade": "D",
    "p_over": 0.51,
-   "proj": 14.1,
+   "proj": 13.7,
    "line_hits": "2/5",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0037228|rushing_yards": {
    "game": "PIT@CIN",
@@ -691,15 +691,15 @@
    "player_id": "00-0037228",
    "pos": "RB",
    "stat": "rushing_yards",
-   "line": 64.5,
-   "pick": "OVER 64.5",
-   "score": 5.2,
+   "line": 67.5,
+   "pick": "OVER 67.5",
+   "score": 4.8,
    "grade": "C",
-   "p_over": 0.62,
-   "proj": 75.4,
+   "p_over": 0.59,
+   "proj": 75.6,
    "line_hits": "5/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0037228|receiving_yards": {
    "game": "PIT@CIN",
@@ -710,15 +710,15 @@
    "player_id": "00-0037228",
    "pos": "RB",
    "stat": "receiving_yards",
-   "line": 23.5,
-   "pick": "OVER 23.5",
-   "score": 7.6,
-   "grade": "A",
-   "p_over": 0.62,
-   "proj": 30.8,
+   "line": 24.5,
+   "pick": "OVER 24.5",
+   "score": 7.1,
+   "grade": "B",
+   "p_over": 0.59,
+   "proj": 30.0,
    "line_hits": "7/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0035640|receiving_yards": {
    "game": "PIT@CIN",
@@ -753,10 +753,10 @@
    "score": 8.6,
    "grade": "A",
    "p_over": 0.28,
-   "proj": 33.3,
+   "proj": 33.1,
    "line_hits": "2/7",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0038558|receiving_yards": {
    "game": "PIT@CIN",
@@ -767,15 +767,15 @@
    "player_id": "00-0038558",
    "pos": "TE",
    "stat": "receiving_yards",
-   "line": 30.5,
-   "pick": "OVER 30.5",
-   "score": 2.5,
+   "line": 31.5,
+   "pick": "OVER 31.5",
+   "score": 2.4,
    "grade": "D",
-   "p_over": 0.57,
-   "proj": 35.9,
+   "p_over": 0.56,
+   "proj": 36.5,
    "line_hits": "2/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0036442|passing_yards": {
    "game": "PIT@CIN",
@@ -786,15 +786,15 @@
    "player_id": "00-0036442",
    "pos": "QB",
    "stat": "passing_yards",
-   "line": 293.5,
-   "pick": "OVER 293.5",
+   "line": 294.5,
+   "pick": "OVER 294.5",
    "score": 1.7,
    "grade": "D",
    "p_over": 0.51,
-   "proj": 296.7,
+   "proj": 296.2,
    "line_hits": "2/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0033526|rushing_yards": {
    "game": "PIT@CIN",
@@ -805,15 +805,15 @@
    "player_id": "00-0033526",
    "pos": "RB",
    "stat": "rushing_yards",
-   "line": 18.5,
-   "pick": "UNDER 18.5",
-   "score": 4.1,
-   "grade": "D",
-   "p_over": 0.45,
+   "line": 20.5,
+   "pick": "UNDER 20.5",
+   "score": 6.5,
+   "grade": "B",
+   "p_over": 0.41,
    "proj": 16.0,
-   "line_hits": "3/8",
+   "line_hits": "2/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0038597|rushing_yards": {
    "game": "PIT@CIN",
@@ -829,10 +829,10 @@
    "score": 5.0,
    "grade": "C",
    "p_over": 0.27,
-   "proj": 33.8,
+   "proj": 33.9,
    "line_hits": "5/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0038597|receiving_yards": {
    "game": "PIT@CIN",
@@ -845,13 +845,13 @@
    "stat": "receiving_yards",
    "line": 24.5,
    "pick": "OVER 24.5",
-   "score": 3.0,
+   "score": 2.9,
    "grade": "D",
-   "p_over": 0.61,
-   "proj": 30.3,
+   "p_over": 0.6,
+   "proj": 29.5,
    "line_hits": "2/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0036410|receiving_yards": {
    "game": "PIT@CIN",
@@ -862,15 +862,15 @@
    "player_id": "00-0036410",
    "pos": "WR",
    "stat": "receiving_yards",
-   "line": 76.5,
-   "pick": "OVER 76.5",
-   "score": 3.6,
+   "line": 78.5,
+   "pick": "UNDER 78.5",
+   "score": 2.1,
    "grade": "D",
-   "p_over": 0.51,
-   "proj": 77.9,
+   "p_over": 0.49,
+   "proj": 77.6,
    "line_hits": "5/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0036900|receiving_yards": {
    "game": "PIT@CIN",
@@ -881,15 +881,15 @@
    "player_id": "00-0036900",
    "pos": "WR",
    "stat": "receiving_yards",
-   "line": 87.5,
-   "pick": "UNDER 87.5",
-   "score": 4.7,
+   "line": 90.5,
+   "pick": "UNDER 90.5",
+   "score": 4.9,
    "grade": "C",
-   "p_over": 0.35,
-   "proj": 69.7,
+   "p_over": 0.33,
+   "proj": 69.4,
    "line_hits": "3/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0040785|receiving_yards": {
    "game": "PIT@CIN",
@@ -900,15 +900,15 @@
    "player_id": "00-0040785",
    "pos": "WR",
    "stat": "receiving_yards",
-   "line": 20.5,
-   "pick": "OVER 20.5",
-   "score": 3.7,
+   "line": 19.5,
+   "pick": "OVER 19.5",
+   "score": 3.9,
    "grade": "D",
-   "p_over": 0.54,
-   "proj": 23.3,
+   "p_over": 0.56,
+   "proj": 23.2,
    "line_hits": "4/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0034829|receiving_yards": {
    "game": "PIT@CIN",
@@ -919,15 +919,15 @@
    "player_id": "00-0034829",
    "pos": "TE",
    "stat": "receiving_yards",
-   "line": 25.5,
-   "pick": "OVER 25.5",
-   "score": 3.6,
+   "line": 26.5,
+   "pick": "OVER 26.5",
+   "score": 3.5,
    "grade": "D",
-   "p_over": 0.58,
-   "proj": 31.2,
+   "p_over": 0.57,
+   "proj": 31.7,
    "line_hits": "4/7",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0033293|rushing_yards": {
    "game": "MIN@GB",
@@ -3039,7 +3039,7 @@
    "proj": 4.1,
    "line_hits": "4/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0036442|rushing_yards": {
    "game": "PIT@CIN",
@@ -3052,13 +3052,13 @@
    "stat": "rushing_yards",
    "line": 7.5,
    "pick": "UNDER 7.5",
-   "score": 2.2,
+   "score": 2.4,
    "grade": "D",
-   "p_over": 0.48,
+   "p_over": 0.47,
    "proj": 7.2,
    "line_hits": "5/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0040583|rushing_yards": {
    "game": "HOU@CLE",
@@ -3816,13 +3816,13 @@
    "stat": "passing_yards",
    "line": 200.5,
    "pick": "UNDER 200.5",
-   "score": 2.8,
+   "score": 3.0,
    "grade": "D",
-   "p_over": 0.47,
-   "proj": 194.8,
+   "p_over": 0.46,
+   "proj": 194.5,
    "line_hits": "4/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0036355|rushing_yards": {
    "game": "LAC@BAL",
@@ -3838,10 +3838,10 @@
    "score": 3.4,
    "grade": "D",
    "p_over": 0.48,
-   "proj": 20.8,
+   "proj": 20.6,
    "line_hits": "4/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0038454|rushing_yards": {
    "game": "LAC@BAL",
@@ -3862,7 +3862,7 @@
    "traps": [
     "Line 10.5 vs 22 L8 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0038454|receiving_yards": {
    "game": "LAC@BAL",
@@ -3875,13 +3875,13 @@
    "stat": "receiving_yards",
    "line": 12.5,
    "pick": "UNDER 12.5",
-   "score": 3.6,
+   "score": 3.7,
    "grade": "D",
-   "p_over": 0.37,
-   "proj": 8.1,
+   "p_over": 0.36,
+   "proj": 8.0,
    "line_hits": "5/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0039391|rushing_yards": {
    "game": "LAC@BAL",
@@ -3897,12 +3897,12 @@
    "score": 2.2,
    "grade": "D",
    "p_over": 0.43,
-   "proj": 18.6,
+   "proj": 18.7,
    "line_hits": "4/7",
    "traps": [
     "Model likes the under on old usage, but carries rose to 7.3/game"
    ],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0039391|receiving_yards": {
    "game": "LAC@BAL",
@@ -3915,13 +3915,13 @@
    "stat": "receiving_yards",
    "line": 9.5,
    "pick": "UNDER 9.5",
-   "score": 6.7,
+   "score": 6.9,
    "grade": "B",
-   "p_over": 0.24,
-   "proj": 4.8,
+   "p_over": 0.23,
+   "proj": 4.7,
    "line_hits": "3/7",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0040666|rushing_yards": {
    "game": "LAC@BAL",
@@ -3937,10 +3937,10 @@
    "score": 5.2,
    "grade": "C",
    "p_over": 0.56,
-   "proj": 35.0,
+   "proj": 35.1,
    "line_hits": "6/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0040666|receiving_yards": {
    "game": "LAC@BAL",
@@ -3951,15 +3951,15 @@
    "player_id": "00-0040666",
    "pos": "RB",
    "stat": "receiving_yards",
-   "line": 5.5,
-   "pick": "UNDER 5.5",
-   "score": 2.5,
+   "line": 6.5,
+   "pick": "UNDER 6.5",
+   "score": 3.7,
    "grade": "D",
-   "p_over": 0.46,
+   "p_over": 0.4,
    "proj": 4.6,
-   "line_hits": "5/8",
+   "line_hits": "4/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0032764|rushing_yards": {
    "game": "LAC@BAL",
@@ -3975,10 +3975,10 @@
    "score": 8.6,
    "grade": "A",
    "p_over": 0.33,
-   "proj": 68.4,
+   "proj": 68.6,
    "line_hits": "3/9",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0032764|receiving_yards": {
    "game": "LAC@BAL",
@@ -3991,13 +3991,13 @@
    "stat": "receiving_yards",
    "line": 5.5,
    "pick": "UNDER 5.5",
-   "score": 3.2,
+   "score": 3.4,
    "grade": "D",
-   "p_over": 0.48,
-   "proj": 5.1,
+   "p_over": 0.47,
+   "proj": 5.0,
    "line_hits": "5/9",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0034975|rushing_yards": {
    "game": "LAC@BAL",
@@ -4013,12 +4013,12 @@
    "score": 2.4,
    "grade": "D",
    "p_over": 0.66,
-   "proj": 26.0,
+   "proj": 26.1,
    "line_hits": "5/9",
    "traps": [
     "Line 13.5 vs 28 L9 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0034975|receiving_yards": {
    "game": "LAC@BAL",
@@ -4031,13 +4031,13 @@
    "stat": "receiving_yards",
    "line": 11.5,
    "pick": "UNDER 11.5",
-   "score": 4.5,
+   "score": 4.7,
    "grade": "C",
-   "p_over": 0.35,
-   "proj": 8.3,
+   "p_over": 0.34,
+   "proj": 8.1,
    "line_hits": "4/9",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0036550|receiving_yards": {
    "game": "LAC@BAL",
@@ -4069,13 +4069,13 @@
    "stat": "receiving_yards",
    "line": 71.5,
    "pick": "UNDER 71.5",
-   "score": 3.7,
+   "score": 3.9,
    "grade": "D",
-   "p_over": 0.46,
-   "proj": 65.6,
+   "p_over": 0.45,
+   "proj": 65.3,
    "line_hits": "4/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0040870|receiving_yards": {
    "game": "LAC@BAL",
@@ -4091,10 +4091,10 @@
    "score": 4.2,
    "grade": "D",
    "p_over": 0.36,
-   "proj": 15.7,
+   "proj": 15.6,
    "line_hits": "2/5",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0034753|receiving_yards": {
    "game": "LAC@BAL",
@@ -4107,13 +4107,13 @@
    "stat": "receiving_yards",
    "line": 21.5,
    "pick": "UNDER 21.5",
-   "score": 3.3,
+   "score": 3.2,
    "grade": "D",
-   "p_over": 0.45,
-   "proj": 19.9,
+   "p_over": 0.46,
+   "proj": 20.2,
    "line_hits": "6/9",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0040887|receiving_yards": {
    "game": "LAC@BAL",
@@ -4129,12 +4129,12 @@
    "score": 3.7,
    "grade": "D",
    "p_over": 0.69,
-   "proj": 15.2,
+   "proj": 15.5,
    "line_hits": "5/7",
    "traps": [
     "Line 7.5 vs 19 L7 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0033090|receiving_yards": {
    "game": "NE@DET",
@@ -4502,13 +4502,13 @@
    "stat": "receiving_yards",
    "line": 26.5,
    "pick": "OVER 26.5",
-   "score": 4.8,
+   "score": 5.1,
    "grade": "C",
-   "p_over": 0.66,
-   "proj": 31.4,
+   "p_over": 0.68,
+   "proj": 32.0,
    "line_hits": "5/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0033526|receiving_yards": {
    "game": "PIT@CIN",
@@ -4519,15 +4519,15 @@
    "player_id": "00-0033526",
    "pos": "RB",
    "stat": "receiving_yards",
-   "line": 4.5,
-   "pick": "OVER 4.5",
-   "score": 5.2,
+   "line": 3.5,
+   "pick": "OVER 3.5",
+   "score": 5.6,
    "grade": "C",
-   "p_over": 0.69,
-   "proj": 9.1,
+   "p_over": 0.72,
+   "proj": 8.9,
    "line_hits": "5/8",
    "traps": [],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0036906|receiving_yards": {
    "game": "KC@ATL",
@@ -5238,18 +5238,18 @@
    "player_id": "00-0035631",
    "pos": "TE",
    "stat": "receiving_yards",
-   "line": 5.5,
-   "pick": "OVER 5.5",
-   "score": 1.1,
+   "line": 4.5,
+   "pick": "OVER 4.5",
+   "score": 2.0,
    "grade": "D",
-   "p_over": 0.71,
-   "proj": 10.9,
-   "line_hits": "2/4",
+   "p_over": 0.75,
+   "proj": 11.0,
+   "line_hits": "3/4",
    "traps": [
-    "Line 5.5 vs 12 L4 avg \u2014 gap this big usually means the book knows about an injury or role change",
+    "Line 4.5 vs 12 L4 avg \u2014 gap this big usually means the book knows about an injury or role change",
     "Missed the team's last game \u2014 line may assume limited snaps"
    ],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0040879|receiving_yards": {
    "game": "LAC@BAL",
@@ -5260,17 +5260,17 @@
    "player_id": "00-0040879",
    "pos": "TE",
    "stat": "receiving_yards",
-   "line": 6.5,
-   "pick": "OVER 6.5",
-   "score": 1.2,
+   "line": 5.5,
+   "pick": "OVER 5.5",
+   "score": 1.5,
    "grade": "D",
-   "p_over": 0.59,
-   "proj": 9.5,
+   "p_over": 0.63,
+   "proj": 9.6,
    "line_hits": "3/6",
    "traps": [
-    "Line 6.5 vs 12 L6 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    "Line 5.5 vs 12 L6 avg \u2014 gap this big usually means the book knows about an injury or role change"
    ],
-   "captured_at": "2026-11-15T16:26-05:00"
+   "captured_at": "2026-11-15T20:16-05:00"
   },
   "00-0036973|rushing_yards": {
    "game": "CAR@NO",
@@ -5528,6 +5528,44 @@
     "Missed the team's last game \u2014 line may assume limited snaps"
    ],
    "captured_at": "2026-11-15T11:45-05:00"
+  },
+  "00-0038544|receiving_yards": {
+   "game": "LAC@BAL",
+   "kickoff": "2026-11-16 20:15",
+   "team": "LAC",
+   "opp": "BAL",
+   "player": "Quentin Johnston",
+   "player_id": "00-0038544",
+   "pos": "WR",
+   "stat": "receiving_yards",
+   "line": 35.5,
+   "pick": "OVER 35.5",
+   "score": 6.3,
+   "grade": "B",
+   "p_over": 0.52,
+   "proj": 36.5,
+   "line_hits": "5/7",
+   "traps": [],
+   "captured_at": "2026-11-15T20:16-05:00"
+  },
+  "00-0040727|receiving_yards": {
+   "game": "LAC@BAL",
+   "kickoff": "2026-11-16 20:15",
+   "team": "LAC",
+   "opp": "BAL",
+   "player": "Tre Harris",
+   "player_id": "00-0040727",
+   "pos": "WR",
+   "stat": "receiving_yards",
+   "line": 37.5,
+   "pick": "UNDER 37.5",
+   "score": 4.7,
+   "grade": "C",
+   "p_over": 0.45,
+   "proj": 34.4,
+   "line_hits": "3/7",
+   "traps": [],
+   "captured_at": "2026-11-15T20:16-05:00"
   }
  },
  "dogs": {
