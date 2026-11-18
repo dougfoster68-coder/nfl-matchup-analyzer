@@ -192,6 +192,14 @@
      "bets_b": 52,
      "money_a": 46,
      "money_b": 54
+    },
+    {
+     "at": "2026-11-18T09:14+00:00",
+     "line": 3.0,
+     "bets_a": 41,
+     "bets_b": 59,
+     "money_a": 31,
+     "money_b": 69
     }
    ]
   },
@@ -294,6 +302,45 @@
      "bets_b": 28,
      "money_a": 87,
      "money_b": 13
+    }
+   ]
+  },
+  "Vanderbilt@Florida": {
+   "kickoff_utc": "2026-11-21T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-18T09:14+00:00",
+     "line": 13.5,
+     "bets_a": 39,
+     "bets_b": 61,
+     "money_a": 28,
+     "money_b": 72
+    }
+   ]
+  },
+  "LSU@Tennessee": {
+   "kickoff_utc": "2026-11-21T20:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-18T09:14+00:00",
+     "line": -1.5,
+     "bets_a": 44,
+     "bets_b": 56,
+     "money_a": 51,
+     "money_b": 49
+    }
+   ]
+  },
+  "Arkansas@Texas": {
+   "kickoff_utc": "2026-11-21T20:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-18T09:14+00:00",
+     "line": 20.5,
+     "bets_a": 45,
+     "bets_b": 55,
+     "money_a": 23,
+     "money_b": 77
     }
    ]
   }
