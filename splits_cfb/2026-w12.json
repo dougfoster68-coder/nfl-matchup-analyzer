@@ -213,6 +213,14 @@
      "bets_b": 50,
      "money_a": 56,
      "money_b": 44
+    },
+    {
+     "at": "2026-11-18T01:45+00:00",
+     "line": 13.5,
+     "bets_a": 49,
+     "bets_b": 51,
+     "money_a": 53,
+     "money_b": 47
     }
    ]
   },
@@ -226,6 +234,14 @@
      "bets_b": 37,
      "money_a": 66,
      "money_b": 34
+    },
+    {
+     "at": "2026-11-18T01:45+00:00",
+     "line": -16.5,
+     "bets_a": 66,
+     "bets_b": 34,
+     "money_a": 69,
+     "money_b": 31
     }
    ]
   },
@@ -252,6 +268,32 @@
      "bets_b": 30,
      "money_a": 28,
      "money_b": 72
+    }
+   ]
+  },
+  "New Mexico@Wyoming": {
+   "kickoff_utc": "2026-11-21T02:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-18T01:45+00:00",
+     "line": -7.5,
+     "bets_a": 44,
+     "bets_b": 56,
+     "money_a": 35,
+     "money_b": 65
+    }
+   ]
+  },
+  "Wake Forest@Georgia Tech": {
+   "kickoff_utc": "2026-11-21T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-18T01:45+00:00",
+     "line": -20.5,
+     "bets_a": 72,
+     "bets_b": 28,
+     "money_a": 87,
+     "money_b": 13
     }
    ]
   }
