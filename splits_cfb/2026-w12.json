@@ -29,6 +29,14 @@
      "bets_b": 11,
      "money_a": 87,
      "money_b": 13
+    },
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": -3.5,
+     "bets_a": 89,
+     "bets_b": 11,
+     "money_a": 86,
+     "money_b": 14
     }
    ]
   },
@@ -108,6 +116,14 @@
      "bets_b": 52,
      "money_a": 24,
      "money_b": 76
+    },
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": 2.5,
+     "bets_a": 34,
+     "bets_b": 66,
+     "money_a": 15,
+     "money_b": 85
     }
    ]
   },
@@ -129,6 +145,14 @@
      "bets_b": 19,
      "money_a": 83,
      "money_b": 17
+    },
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": -3.0,
+     "bets_a": 83,
+     "bets_b": 17,
+     "money_a": 86,
+     "money_b": 14
     }
    ]
   },
@@ -150,6 +174,14 @@
      "bets_b": 71,
      "money_a": 23,
      "money_b": 77
+    },
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": 20.5,
+     "bets_a": 36,
+     "bets_b": 64,
+     "money_a": 36,
+     "money_b": 64
     }
    ]
   },
@@ -200,6 +232,14 @@
      "bets_b": 59,
      "money_a": 31,
      "money_b": 69
+    },
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": 3.5,
+     "bets_a": 34,
+     "bets_b": 66,
+     "money_a": 19,
+     "money_b": 81
     }
    ]
   },
@@ -229,6 +269,14 @@
      "bets_b": 51,
      "money_a": 53,
      "money_b": 47
+    },
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": 13.5,
+     "bets_a": 50,
+     "bets_b": 50,
+     "money_a": 61,
+     "money_b": 39
     }
    ]
   },
@@ -250,6 +298,14 @@
      "bets_b": 34,
      "money_a": 69,
      "money_b": 31
+    },
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": -16.5,
+     "bets_a": 63,
+     "bets_b": 37,
+     "money_a": 60,
+     "money_b": 40
     }
    ]
   },
@@ -263,6 +319,14 @@
      "bets_b": 36,
      "money_a": 47,
      "money_b": 53
+    },
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": 2.5,
+     "bets_a": 62,
+     "bets_b": 38,
+     "money_a": 45,
+     "money_b": 55
     }
    ]
   },
@@ -276,6 +340,14 @@
      "bets_b": 30,
      "money_a": 28,
      "money_b": 72
+    },
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": -16.5,
+     "bets_a": 69,
+     "bets_b": 31,
+     "money_a": 38,
+     "money_b": 62
     }
    ]
   },
@@ -289,6 +361,14 @@
      "bets_b": 56,
      "money_a": 35,
      "money_b": 65
+    },
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": -7.5,
+     "bets_a": 43,
+     "bets_b": 57,
+     "money_a": 33,
+     "money_b": 67
     }
    ]
   },
@@ -302,6 +382,14 @@
      "bets_b": 28,
      "money_a": 87,
      "money_b": 13
+    },
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": -21.0,
+     "bets_a": 69,
+     "bets_b": 31,
+     "money_a": 77,
+     "money_b": 23
     }
    ]
   },
@@ -315,6 +403,14 @@
      "bets_b": 61,
      "money_a": 28,
      "money_b": 72
+    },
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": 13.5,
+     "bets_a": 37,
+     "bets_b": 63,
+     "money_a": 32,
+     "money_b": 68
     }
    ]
   },
@@ -328,6 +424,14 @@
      "bets_b": 56,
      "money_a": 51,
      "money_b": 49
+    },
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": -1.5,
+     "bets_a": 42,
+     "bets_b": 58,
+     "money_a": 48,
+     "money_b": 52
     }
    ]
   },
@@ -341,6 +445,183 @@
      "bets_b": 55,
      "money_a": 23,
      "money_b": 77
+    },
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": 20.5,
+     "bets_a": 46,
+     "bets_b": 54,
+     "money_a": 26,
+     "money_b": 74
+    }
+   ]
+  },
+  "Rice@Temple": {
+   "kickoff_utc": "2026-11-20T00:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": 3.0,
+     "bets_a": 40,
+     "bets_b": 60,
+     "money_a": 62,
+     "money_b": 38
+    }
+   ]
+  },
+  "Bowling Green@Toledo": {
+   "kickoff_utc": "2026-11-21T00:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": 16.5,
+     "bets_a": 38,
+     "bets_b": 62,
+     "money_a": 26,
+     "money_b": 74
+    }
+   ]
+  },
+  "UTEP@Air Force": {
+   "kickoff_utc": "2026-11-21T01:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": 23.5,
+     "bets_a": 40,
+     "bets_b": 60,
+     "money_a": 52,
+     "money_b": 48
+    }
+   ]
+  },
+  "Syracuse@Boston College": {
+   "kickoff_utc": "2026-11-21T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": -2.5,
+     "bets_a": 66,
+     "bets_b": 34,
+     "money_a": 72,
+     "money_b": 28
+    }
+   ]
+  },
+  "Wisconsin@Purdue": {
+   "kickoff_utc": "2026-11-21T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": -6.0,
+     "bets_a": 58,
+     "bets_b": 42,
+     "money_a": 77,
+     "money_b": 23
+    }
+   ]
+  },
+  "Colorado@Cincinnati": {
+   "kickoff_utc": "2026-11-21T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": 3.0,
+     "bets_a": 45,
+     "bets_b": 55,
+     "money_a": 44,
+     "money_b": 56
+    }
+   ]
+  },
+  "Memphis@Navy": {
+   "kickoff_utc": "2026-11-21T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": -3.5,
+     "bets_a": 71,
+     "bets_b": 29,
+     "money_a": 60,
+     "money_b": 40
+    }
+   ]
+  },
+  "Northwestern@Minnesota": {
+   "kickoff_utc": "2026-11-21T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": -3.0,
+     "bets_a": 65,
+     "bets_b": 35,
+     "money_a": 80,
+     "money_b": 20
+    }
+   ]
+  },
+  "North Texas@Tulane": {
+   "kickoff_utc": "2026-11-21T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": -6.5,
+     "bets_a": 60,
+     "bets_b": 40,
+     "money_a": 21,
+     "money_b": 79
+    }
+   ]
+  },
+  "Houston@West Virginia": {
+   "kickoff_utc": "2026-11-21T18:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": -8.5,
+     "bets_a": 55,
+     "bets_b": 45,
+     "money_a": 33,
+     "money_b": 67
+    }
+   ]
+  },
+  "Iowa@Illinois": {
+   "kickoff_utc": "2026-11-21T19:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": -8.5,
+     "bets_a": 63,
+     "bets_b": 37,
+     "money_a": 63,
+     "money_b": 37
+    }
+   ]
+  },
+  "Indiana@Washington": {
+   "kickoff_utc": "2026-11-21T20:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": -7.5,
+     "bets_a": 81,
+     "bets_b": 19,
+     "money_a": 79,
+     "money_b": 21
+    }
+   ]
+  },
+  "Virginia Tech@Miami": {
+   "kickoff_utc": "2026-11-22T00:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-18T18:07+00:00",
+     "line": 20.5,
+     "bets_a": 65,
+     "bets_b": 35,
+     "money_a": 86,
+     "money_b": 14
     }
    ]
   }
