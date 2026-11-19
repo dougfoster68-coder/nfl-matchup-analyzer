@@ -16716,6 +16716,448 @@
       "stake": 0,
       "legs": [],
       "note": "No top plays in this game this week \u2014 passed."
+    },
+    {
+      "kind": "straight",
+      "stake": 35,
+      "legs": [
+        {
+          "player": "Laquon Treadwell",
+          "player_id": "00-0032951",
+          "team": "IND",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        }
+      ],
+      "game": "IND@HOU",
+      "id": "2026-w11-1795130576-1",
+      "placed_at": "2026-11-19T18:22:56.708968-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Joe Burrow",
+          "player_id": "00-0036442",
+          "team": "CIN",
+          "opp": "WAS",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 6.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 10.6
+        },
+        {
+          "player": "Dallas Goedert",
+          "player_id": "00-0034351",
+          "team": "PHI",
+          "opp": "PIT",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.2
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w11-1795130576-2",
+      "placed_at": "2026-11-19T18:22:56.708968-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Cam Ward",
+          "player_id": "00-0040676",
+          "team": "TEN",
+          "opp": "DAL",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 232.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        },
+        {
+          "player": "Laquon Treadwell",
+          "player_id": "00-0032951",
+          "team": "IND",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w11-1795130576-3",
+      "placed_at": "2026-11-19T18:22:56.708968-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 30.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.0
+        },
+        {
+          "player": "Bucky Irving",
+          "player_id": "00-0039361",
+          "team": "TB",
+          "opp": "DET",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 14.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w11-1795130576-4",
+      "placed_at": "2026-11-19T18:22:56.708968-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Mark Andrews",
+          "player_id": "00-0034753",
+          "team": "BAL",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 33.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        },
+        {
+          "player": "Trey McBride",
+          "player_id": "00-0037744",
+          "team": "ARI",
+          "opp": "KC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 46.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.6
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w11-1795130576-5",
+      "placed_at": "2026-11-19T18:22:56.708968-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Joe Burrow",
+          "player_id": "00-0036442",
+          "team": "CIN",
+          "opp": "WAS",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 6.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 10.6
+        },
+        {
+          "player": "Laquon Treadwell",
+          "player_id": "00-0032951",
+          "team": "IND",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        },
+        {
+          "player": "Mark Andrews",
+          "player_id": "00-0034753",
+          "team": "BAL",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 33.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w11-1795130576-6",
+      "placed_at": "2026-11-19T18:22:56.708968-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Dallas Goedert",
+          "player_id": "00-0034351",
+          "team": "PHI",
+          "opp": "PIT",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.2
+        },
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 30.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.0
+        },
+        {
+          "player": "Trey McBride",
+          "player_id": "00-0037744",
+          "team": "ARI",
+          "opp": "KC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 46.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.6
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w11-1795130576-7",
+      "placed_at": "2026-11-19T18:22:56.708968-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Cam Ward",
+          "player_id": "00-0040676",
+          "team": "TEN",
+          "opp": "DAL",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 232.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        },
+        {
+          "player": "Bucky Irving",
+          "player_id": "00-0039361",
+          "team": "TB",
+          "opp": "DET",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 14.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        },
+        {
+          "player": "Joe Burrow",
+          "player_id": "00-0036442",
+          "team": "CIN",
+          "opp": "WAS",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 6.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 10.6
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w11-1795130576-8",
+      "placed_at": "2026-11-19T18:22:56.708968-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Joe Burrow",
+          "player_id": "00-0036442",
+          "team": "CIN",
+          "opp": "WAS",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 6.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 10.6
+        },
+        {
+          "player": "Cam Ward",
+          "player_id": "00-0040676",
+          "team": "TEN",
+          "opp": "DAL",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 232.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.0
+        },
+        {
+          "player": "Ashton Jeanty",
+          "player_id": "00-0040122",
+          "team": "LV",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 30.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.0
+        },
+        {
+          "player": "Mark Andrews",
+          "player_id": "00-0034753",
+          "team": "BAL",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 33.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w11-1795130576-9",
+      "placed_at": "2026-11-19T18:22:56.708968-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": 1228,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Dallas Goedert",
+          "player_id": "00-0034351",
+          "team": "PHI",
+          "opp": "PIT",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.2
+        },
+        {
+          "player": "Laquon Treadwell",
+          "player_id": "00-0032951",
+          "team": "IND",
+          "opp": "HOU",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        },
+        {
+          "player": "Bucky Irving",
+          "player_id": "00-0039361",
+          "team": "TB",
+          "opp": "DET",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 14.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        },
+        {
+          "player": "Trey McBride",
+          "player_id": "00-0037744",
+          "team": "ARI",
+          "opp": "KC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 46.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.6
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w11-1795130576-10",
+      "placed_at": "2026-11-19T18:22:56.708968-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": 1228,
+      "note": "Claude weekly pick"
     }
   ],
   "superseded": [
@@ -21040,7 +21482,8 @@
     "7": 449.47,
     "8": 1253.11,
     "9": 991.71,
-    "10": 614.13
+    "10": 614.13,
+    "11": 611.28
   },
   "note": "Bankroll starts in week 1: weeks 1-3 are simulated backtests (flagged backtest); week-4 stakes were rescaled x1.76902 to the week-4 starting bankroll (originals in stake_original).",
   "changes": [
