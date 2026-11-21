@@ -366,6 +366,14 @@
      "bets_b": 57,
      "money_a": 49,
      "money_b": 51
+    },
+    {
+     "at": "2026-11-21T22:00+00:00",
+     "line": 20.5,
+     "bets_a": 52,
+     "bets_b": 48,
+     "money_a": 56,
+     "money_b": 44
     }
    ]
   },
@@ -732,6 +740,14 @@
      "bets_b": 29,
      "money_a": 59,
      "money_b": 41
+    },
+    {
+     "at": "2026-11-21T22:00+00:00",
+     "line": -14.5,
+     "bets_a": 69,
+     "bets_b": 31,
+     "money_a": 67,
+     "money_b": 33
     }
    ]
   },
@@ -1942,6 +1958,14 @@
      "bets_b": 42,
      "money_a": 55,
      "money_b": 45
+    },
+    {
+     "at": "2026-11-21T22:00+00:00",
+     "line": 20.5,
+     "bets_a": 57,
+     "bets_b": 43,
+     "money_a": 50,
+     "money_b": 50
     }
    ]
   },
@@ -2032,6 +2056,14 @@
      "bets_b": 38,
      "money_a": 56,
      "money_b": 44
+    },
+    {
+     "at": "2026-11-21T22:00+00:00",
+     "line": 4.5,
+     "bets_a": 67,
+     "bets_b": 33,
+     "money_a": 53,
+     "money_b": 47
     }
    ]
   },
@@ -2069,6 +2101,14 @@
      "bets_b": 30,
      "money_a": 83,
      "money_b": 17
+    },
+    {
+     "at": "2026-11-21T22:00+00:00",
+     "line": -10.0,
+     "bets_a": 74,
+     "bets_b": 26,
+     "money_a": 81,
+     "money_b": 19
     }
    ]
   },
@@ -2270,6 +2310,14 @@
      "bets_b": 32,
      "money_a": 60,
      "money_b": 40
+    },
+    {
+     "at": "2026-11-21T22:00+00:00",
+     "line": -8.5,
+     "bets_a": 45,
+     "bets_b": 55,
+     "money_a": 39,
+     "money_b": 61
     }
    ]
   },
@@ -2344,6 +2392,14 @@
      "bets_b": 60,
      "money_a": 59,
      "money_b": 41
+    },
+    {
+     "at": "2026-11-21T22:00+00:00",
+     "line": 17.5,
+     "bets_a": 40,
+     "bets_b": 60,
+     "money_a": 34,
+     "money_b": 66
     }
    ]
   },
@@ -2444,6 +2500,40 @@
      "bets_b": 25,
      "money_a": 90,
      "money_b": 10
+    },
+    {
+     "at": "2026-11-21T22:00+00:00",
+     "line": 11.5,
+     "bets_a": 65,
+     "bets_b": 35,
+     "money_a": 73,
+     "money_b": 27
+    }
+   ]
+  },
+  "Chattanooga@Alabama": {
+   "kickoff_utc": "2026-11-21T19:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": 46.5,
+     "bets_a": 42,
+     "bets_b": 58,
+     "money_a": 42,
+     "money_b": 58
+    }
+   ]
+  },
+  "Wofford@Ole Miss": {
+   "kickoff_utc": "2026-11-21T17:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": 49.5,
+     "bets_a": 30,
+     "bets_b": 70,
+     "money_a": 47,
+     "money_b": 53
     }
    ]
   }
