@@ -2627,6 +2627,97 @@
      "money_b": 20
     }
    ]
+  },
+  "Washington State@Texas State": {
+   "kickoff_utc": "2026-11-21T23:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": 14.0,
+     "bets_a": 31,
+     "bets_b": 69,
+     "money_a": 27,
+     "money_b": 73
+    }
+   ]
+  },
+  "UNLV@San Jose State": {
+   "kickoff_utc": "2026-11-22T00:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": -6.5,
+     "bets_a": 39,
+     "bets_b": 61,
+     "money_a": 43,
+     "money_b": 57
+    }
+   ]
+  },
+  "Colorado State@Fresno State": {
+   "kickoff_utc": "2026-11-22T00:30:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": 21.0,
+     "bets_a": 49,
+     "bets_b": 51,
+     "money_a": 52,
+     "money_b": 48
+    }
+   ]
+  },
+  "UTSA@UAB": {
+   "kickoff_utc": "2026-11-22T01:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": -4.0,
+     "bets_a": 48,
+     "bets_b": 52,
+     "money_a": 50,
+     "money_b": 50
+    }
+   ]
+  },
+  "Oklahoma State@Arizona State": {
+   "kickoff_utc": "2026-11-22T03:15:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": -3.5,
+     "bets_a": 67,
+     "bets_b": 33,
+     "money_a": 71,
+     "money_b": 29
+    }
+   ]
+  },
+  "Utah State@Oregon State": {
+   "kickoff_utc": "2026-11-22T03:30:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": 6.5,
+     "bets_a": 21,
+     "bets_b": 79,
+     "money_a": 21,
+     "money_b": 79
+    }
+   ]
+  },
+  "Hawai'i@Nevada": {
+   "kickoff_utc": "2026-11-22T03:30:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": 7.0,
+     "bets_a": 51,
+     "bets_b": 49,
+     "money_a": 52,
+     "money_b": 48
+    }
+   ]
   }
  }
 }
