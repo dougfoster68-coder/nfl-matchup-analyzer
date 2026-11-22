@@ -2536,6 +2536,97 @@
      "money_b": 53
     }
    ]
+  },
+  "San Diego State@Boise State": {
+   "kickoff_utc": "2026-11-22T02:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-22T02:00+00:00",
+     "line": 20.5,
+     "bets_a": 46,
+     "bets_b": 54,
+     "money_a": 60,
+     "money_b": 40
+    }
+   ]
+  },
+  "Missouri State@Jacksonville State": {
+   "kickoff_utc": "2026-11-21T19:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": 12.5,
+     "bets_a": 32,
+     "bets_b": 68,
+     "money_a": 30,
+     "money_b": 70
+    }
+   ]
+  },
+  "Middle Tennessee@Sam Houston": {
+   "kickoff_utc": "2026-11-21T19:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": -6.0,
+     "bets_a": 67,
+     "bets_b": 33,
+     "money_a": 81,
+     "money_b": 19
+    }
+   ]
+  },
+  "South Florida@Florida Atlantic": {
+   "kickoff_utc": "2026-11-21T19:30:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": -2.5,
+     "bets_a": 73,
+     "bets_b": 27,
+     "money_a": 76,
+     "money_b": 24
+    }
+   ]
+  },
+  "Delaware@New Mexico State": {
+   "kickoff_utc": "2026-11-21T20:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": -2.5,
+     "bets_a": 71,
+     "bets_b": 29,
+     "money_a": 79,
+     "money_b": 21
+    }
+   ]
+  },
+  "Florida International@Kennesaw State": {
+   "kickoff_utc": "2026-11-21T20:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": 1.5,
+     "bets_a": 54,
+     "bets_b": 46,
+     "money_a": 51,
+     "money_b": 49
+    }
+   ]
+  },
+  "NC State@Florida State": {
+   "kickoff_utc": "2026-11-21T20:30:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": 10.5,
+     "bets_a": 64,
+     "bets_b": 36,
+     "money_a": 80,
+     "money_b": 20
+    }
+   ]
   }
  }
 }
