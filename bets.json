@@ -17011,6 +17011,432 @@
       "season": 2026,
       "week": 11,
       "odds": 264
+    },
+    {
+      "kind": "straight",
+      "stake": 30,
+      "legs": [
+        {
+          "player": "Cam Ward",
+          "player_id": "00-0040676",
+          "team": "TEN",
+          "opp": "DAL",
+          "stat": "passing_yards",
+          "side": "under",
+          "line": 244.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 10.0
+        }
+      ],
+      "game": "TEN@DAL",
+      "id": "2026-w11-1795368216-1",
+      "placed_at": "2026-11-22T12:23:36.372399-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 30,
+      "legs": [
+        {
+          "player": "Trevor Etienne",
+          "player_id": "00-0040644",
+          "team": "CAR",
+          "opp": "BAL",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 7.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 9.7
+        }
+      ],
+      "game": "BAL@CAR",
+      "id": "2026-w11-1795368216-2",
+      "placed_at": "2026-11-22T12:23:36.372399-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Bucky Irving",
+          "player_id": "00-0039361",
+          "team": "TB",
+          "opp": "DET",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 15.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.1
+        }
+      ],
+      "game": "TB@DET",
+      "id": "2026-w11-1795368216-3",
+      "placed_at": "2026-11-22T12:23:36.372399-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Caleb Williams",
+          "player_id": "00-0039918",
+          "team": "CHI",
+          "opp": "NO",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 240.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.8
+        }
+      ],
+      "game": "NO@CHI",
+      "id": "2026-w11-1795368216-4",
+      "placed_at": "2026-11-22T12:23:36.372399-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Caleb Williams",
+          "player_id": "00-0039918",
+          "team": "CHI",
+          "opp": "NO",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 209.5,
+          "odds": -205,
+          "grade": "A",
+          "score": 7.8,
+          "alt": "210+"
+        }
+      ],
+      "game": "NO@CHI",
+      "id": "2026-w11-1795368216-5",
+      "placed_at": "2026-11-22T12:23:36.372399-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -205,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Caleb Williams",
+          "player_id": "00-0039918",
+          "team": "CHI",
+          "opp": "NO",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 279.5,
+          "odds": 195,
+          "grade": "A",
+          "score": 7.8,
+          "alt": "280+"
+        }
+      ],
+      "game": "NO@CHI",
+      "id": "2026-w11-1795368216-6",
+      "placed_at": "2026-11-22T12:23:36.372399-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": 195,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Mark Andrews",
+          "player_id": "00-0034753",
+          "team": "BAL",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 32.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.5
+        }
+      ],
+      "game": "BAL@CAR",
+      "id": "2026-w11-1795368216-7",
+      "placed_at": "2026-11-22T12:23:36.372399-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Chris Godwin Jr.",
+          "player_id": "00-0033921",
+          "team": "TB",
+          "opp": "DET",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 33.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.5
+        }
+      ],
+      "game": "TB@DET",
+      "id": "2026-w11-1795368216-8",
+      "placed_at": "2026-11-22T12:23:36.372399-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Daniel Bellinger",
+          "player_id": "00-0038115",
+          "team": "TEN",
+          "opp": "DAL",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1
+        }
+      ],
+      "game": "TEN@DAL",
+      "id": "2026-w11-1795368216-9",
+      "placed_at": "2026-11-22T12:23:36.372399-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Ja'Kobi Lane",
+          "player_id": "00-0040870",
+          "team": "BAL",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 36.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        }
+      ],
+      "game": "BAL@CAR",
+      "id": "2026-w11-1795368216-10",
+      "placed_at": "2026-11-22T12:23:36.372399-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Chimere Dike",
+          "player_id": "00-0040705",
+          "team": "TEN",
+          "opp": "DAL",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 21.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.0
+        }
+      ],
+      "game": "TEN@DAL",
+      "id": "2026-w11-1795368216-11",
+      "placed_at": "2026-11-22T12:23:36.372399-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Gunnar Helm",
+          "player_id": "00-0040584",
+          "team": "TEN",
+          "opp": "DAL",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 25.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.7
+        }
+      ],
+      "game": "TEN@DAL",
+      "id": "2026-w11-1795368216-12",
+      "placed_at": "2026-11-22T12:23:36.372399-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Emeka Egbuka",
+          "player_id": "00-0040129",
+          "team": "TB",
+          "opp": "DET",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 46.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.7
+        }
+      ],
+      "game": "TB@DET",
+      "id": "2026-w11-1795368216-13",
+      "placed_at": "2026-11-22T12:23:36.372399-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Trey McBride",
+          "player_id": "00-0037744",
+          "team": "ARI",
+          "opp": "KC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 50.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.7
+        }
+      ],
+      "game": "ARI@KC",
+      "id": "2026-w11-1795368216-14",
+      "placed_at": "2026-11-22T12:23:36.372399-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Trey McBride",
+          "player_id": "00-0037744",
+          "team": "ARI",
+          "opp": "KC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": -240,
+          "grade": "B",
+          "score": 6.7,
+          "alt": "40+"
+        }
+      ],
+      "game": "ARI@KC",
+      "id": "2026-w11-1795368216-15",
+      "placed_at": "2026-11-22T12:23:36.372399-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -240,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Trey McBride",
+          "player_id": "00-0037744",
+          "team": "ARI",
+          "opp": "KC",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 59.5,
+          "odds": 170,
+          "grade": "B",
+          "score": 6.7,
+          "alt": "60+"
+        }
+      ],
+      "game": "ARI@KC",
+      "id": "2026-w11-1795368216-16",
+      "placed_at": "2026-11-22T12:23:36.372399-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": 170,
+      "note": "Claude weekly pick"
+    },
+    {
+      "id": "2026-w11-MIA@BUF-nobet",
+      "placed_at": "2026-11-22T12:23:36.372399-05:00",
+      "season": 2026,
+      "week": 11,
+      "game": "MIA@BUF",
+      "kind": "none",
+      "stake": 0,
+      "legs": [],
+      "note": "No top plays in this game this week \u2014 passed."
+    },
+    {
+      "id": "2026-w11-JAX@NYG-nobet",
+      "placed_at": "2026-11-22T12:23:36.372399-05:00",
+      "season": 2026,
+      "week": 11,
+      "game": "JAX@NYG",
+      "kind": "none",
+      "stake": 0,
+      "legs": [],
+      "note": "No top plays in this game this week \u2014 passed."
     }
   ],
   "superseded": [
