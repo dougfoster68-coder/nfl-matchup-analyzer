@@ -3246,6 +3246,14 @@
      "bets_b": 22,
      "money_a": 46,
      "money_b": 54
+    },
+    {
+     "at": "2026-11-22T22:40+00:00",
+     "line": 3.5,
+     "bets_a": 77,
+     "bets_b": 23,
+     "money_a": 51,
+     "money_b": 49
     }
    ],
    "total": [
@@ -3434,6 +3442,14 @@
      "bets_b": 81,
      "money_a": 32,
      "money_b": 68
+    },
+    {
+     "at": "2026-11-22T22:40+00:00",
+     "line": null,
+     "bets_a": 19,
+     "bets_b": 81,
+     "money_a": 31,
+     "money_b": 69
     }
    ]
   },
@@ -3583,6 +3599,14 @@
      "bets_b": 18,
      "money_a": 74,
      "money_b": 26
+    },
+    {
+     "at": "2026-11-22T22:40+00:00",
+     "line": -6.0,
+     "bets_a": 85,
+     "bets_b": 15,
+     "money_a": 75,
+     "money_b": 25
     }
    ],
    "total": [
