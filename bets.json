@@ -17437,6 +17437,243 @@
       "stake": 0,
       "legs": [],
       "note": "No top plays in this game this week \u2014 passed."
+    },
+    {
+      "kind": "straight",
+      "stake": 80,
+      "legs": [
+        {
+          "player": "Jordan Mason",
+          "player_id": "00-0037525",
+          "team": "MIN",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 4.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        }
+      ],
+      "game": "MIN@SF",
+      "id": "2026-w11-1795387195-1",
+      "placed_at": "2026-11-22T17:39:55.141886-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 40,
+      "legs": [
+        {
+          "player": "Keenan Allen",
+          "player_id": "00-0030279",
+          "team": "SF",
+          "opp": "MIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 26.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.2
+        }
+      ],
+      "game": "MIN@SF",
+      "id": "2026-w11-1795387195-2",
+      "placed_at": "2026-11-22T17:39:55.141886-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Keenan Allen",
+          "player_id": "00-0030279",
+          "team": "SF",
+          "opp": "MIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -190,
+          "grade": "A",
+          "score": 8.2,
+          "alt": "20+"
+        }
+      ],
+      "game": "MIN@SF",
+      "id": "2026-w11-1795387195-3",
+      "placed_at": "2026-11-22T17:39:55.141886-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -190,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Keenan Allen",
+          "player_id": "00-0030279",
+          "team": "SF",
+          "opp": "MIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": 245,
+          "grade": "A",
+          "score": 8.2,
+          "alt": "40+"
+        }
+      ],
+      "game": "MIN@SF",
+      "id": "2026-w11-1795387195-4",
+      "placed_at": "2026-11-22T17:39:55.141886-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": 245,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 20,
+      "legs": [
+        {
+          "player": "Kaelon Black",
+          "player_id": "00-0041052",
+          "team": "SF",
+          "opp": "MIN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 29.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.7
+        }
+      ],
+      "game": "MIN@SF",
+      "id": "2026-w11-1795387195-5",
+      "placed_at": "2026-11-22T17:39:55.141886-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "special": "primetime",
+      "stake": 9.17,
+      "legs": [
+        {
+          "player": "Jordan Mason",
+          "player_id": "00-0037525",
+          "team": "MIN",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 4.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9,
+          "why": "A-rated \u00b7 proj 1.4 \u00b7 EV +30%",
+          "ev": 0.298
+        },
+        {
+          "player": "Keenan Allen",
+          "player_id": "00-0030279",
+          "team": "SF",
+          "opp": "MIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 26.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.2,
+          "why": "A-rated \u00b7 proj 36.1 \u00b7 EV +12%",
+          "ev": 0.117
+        },
+        {
+          "player": "Samaje Perine",
+          "player_id": "00-0033526",
+          "team": "CIN",
+          "opp": "WAS",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.4,
+          "why": "B-rated \u00b7 proj 17 \u00b7 EV +2%",
+          "ev": 0.021
+        }
+      ],
+      "game": "multi",
+      "note": "PRIMETIME SPECIAL",
+      "id": "2026-w11-1795387195-6",
+      "placed_at": "2026-11-22T17:39:55.141886-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": 596
+    },
+    {
+      "kind": "parlay",
+      "special": "primetime-longshot",
+      "stake": 9.17,
+      "legs": [
+        {
+          "player": "Jordan Mason",
+          "player_id": "00-0037525",
+          "team": "MIN",
+          "opp": "SF",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 4.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9,
+          "why": "A-rated \u00b7 proj 1.4"
+        },
+        {
+          "player": "Keenan Allen",
+          "player_id": "00-0030279",
+          "team": "SF",
+          "opp": "MIN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": 245,
+          "grade": "A",
+          "score": 8.2,
+          "alt": "40+",
+          "why": "A-rated \u00b7 proj 36.1 \u00b7 boosted to 40+"
+        },
+        {
+          "player": "Samaje Perine",
+          "player_id": "00-0033526",
+          "team": "CIN",
+          "opp": "WAS",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.4,
+          "why": "B-rated \u00b7 proj 17"
+        }
+      ],
+      "game": "multi",
+      "note": "PRIMETIME ALT LINE SPECIAL",
+      "id": "2026-w11-1795387195-7",
+      "placed_at": "2026-11-22T17:39:55.141886-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": 1157
     }
   ],
   "superseded": [
