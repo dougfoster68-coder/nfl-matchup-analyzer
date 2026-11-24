@@ -17674,6 +17674,183 @@
       "season": 2026,
       "week": 11,
       "odds": 1157
+    },
+    {
+      "kind": "straight",
+      "stake": 25,
+      "legs": [
+        {
+          "player": "Stefon Diggs",
+          "player_id": "00-0031588",
+          "team": "WAS",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 55.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 11.5
+        }
+      ],
+      "game": "CIN@WAS",
+      "id": "2026-w11-1795479359-1",
+      "placed_at": "2026-11-23T19:15:59.763347-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Rachaad White",
+          "player_id": "00-0037256",
+          "team": "WAS",
+          "opp": "CIN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 11.3
+        }
+      ],
+      "game": "CIN@WAS",
+      "id": "2026-w11-1795479359-2",
+      "placed_at": "2026-11-23T19:15:59.763347-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Rachaad White",
+          "player_id": "00-0037256",
+          "team": "WAS",
+          "opp": "CIN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 14.5,
+          "odds": -225,
+          "grade": "A",
+          "score": 11.3,
+          "alt": "15+"
+        }
+      ],
+      "game": "CIN@WAS",
+      "id": "2026-w11-1795479359-3",
+      "placed_at": "2026-11-23T19:15:59.763347-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -225,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Rachaad White",
+          "player_id": "00-0037256",
+          "team": "WAS",
+          "opp": "CIN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 24.5,
+          "odds": 180,
+          "grade": "A",
+          "score": 11.3,
+          "alt": "25+"
+        }
+      ],
+      "game": "CIN@WAS",
+      "id": "2026-w11-1795479359-4",
+      "placed_at": "2026-11-23T19:15:59.763347-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": 180,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Samaje Perine",
+          "player_id": "00-0033526",
+          "team": "CIN",
+          "opp": "WAS",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.4
+        }
+      ],
+      "game": "CIN@WAS",
+      "id": "2026-w11-1795479359-5",
+      "placed_at": "2026-11-23T19:15:59.763347-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Antonio Williams",
+          "player_id": "00-0041040",
+          "team": "WAS",
+          "opp": "CIN",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 39.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.0
+        }
+      ],
+      "game": "CIN@WAS",
+      "id": "2026-w11-1795479359-6",
+      "placed_at": "2026-11-23T19:15:59.763347-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Austin Ekeler",
+          "player_id": "00-0033699",
+          "team": "WAS",
+          "opp": "CIN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 11.5,
+          "odds": -110,
+          "grade": "C",
+          "score": 5.8
+        }
+      ],
+      "game": "CIN@WAS",
+      "id": "2026-w11-1795479359-7",
+      "placed_at": "2026-11-23T19:15:59.763347-05:00",
+      "season": 2026,
+      "week": 11,
+      "odds": -110,
+      "note": "Claude weekly pick"
     }
   ],
   "superseded": [
