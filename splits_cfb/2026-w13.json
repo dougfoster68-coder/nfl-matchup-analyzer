@@ -13,6 +13,53 @@
      "bets_b": 69,
      "money_a": 33,
      "money_b": 67
+    },
+    {
+     "at": "2026-11-24T10:13+00:00",
+     "line": 6.5,
+     "bets_a": 45,
+     "bets_b": 55,
+     "money_a": 50,
+     "money_b": 50
+    }
+   ]
+  },
+  "Buffalo@Akron": {
+   "kickoff_utc": "2026-11-27T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-24T10:13+00:00",
+     "line": -7.5,
+     "bets_a": 53,
+     "bets_b": 47,
+     "money_a": 45,
+     "money_b": 55
+    }
+   ]
+  },
+  "Nebraska@Iowa": {
+   "kickoff_utc": "2026-11-27T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-24T10:13+00:00",
+     "line": 4.5,
+     "bets_a": 40,
+     "bets_b": 60,
+     "money_a": 66,
+     "money_b": 34
+    }
+   ]
+  },
+  "Michigan@Ohio State": {
+   "kickoff_utc": "2026-11-28T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-24T10:13+00:00",
+     "line": 10.5,
+     "bets_a": 85,
+     "bets_b": 15,
+     "money_a": 79,
+     "money_b": 21
     }
    ]
   }
