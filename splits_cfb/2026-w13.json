@@ -50,6 +50,14 @@
      "bets_b": 43,
      "money_a": 52,
      "money_b": 48
+    },
+    {
+     "at": "2026-11-25T03:45+00:00",
+     "line": -7.5,
+     "bets_a": 59,
+     "bets_b": 41,
+     "money_a": 53,
+     "money_b": 47
     }
    ]
   },
@@ -84,6 +92,45 @@
      "bets_b": 15,
      "money_a": 79,
      "money_b": 21
+    }
+   ]
+  },
+  "Mississippi State@Ole Miss": {
+   "kickoff_utc": "2026-11-27T17:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-25T03:45+00:00",
+     "line": 19.5,
+     "bets_a": 54,
+     "bets_b": 46,
+     "money_a": 50,
+     "money_b": 50
+    }
+   ]
+  },
+  "Texas@Texas A&M": {
+   "kickoff_utc": "2026-11-28T00:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-25T03:45+00:00",
+     "line": -11.5,
+     "bets_a": 67,
+     "bets_b": 33,
+     "money_a": 79,
+     "money_b": 21
+    }
+   ]
+  },
+  "Kent State@Eastern Michigan": {
+   "kickoff_utc": "2026-11-25T00:00:00Z",
+   "spread": [
+    {
+     "at": "backfill",
+     "line": 7.0,
+     "bets_a": 51,
+     "bets_b": 49,
+     "money_a": 60,
+     "money_b": 40
     }
    ]
   }
