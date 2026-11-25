@@ -17851,6 +17851,434 @@
       "week": 11,
       "odds": -110,
       "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Pat Freiermuth",
+          "player_id": "00-0036894",
+          "team": "PIT",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 21.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Tyler Shough",
+          "player_id": "00-0040743",
+          "team": "NO",
+          "opp": "CIN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w12-1795646793-1",
+      "placed_at": "2026-11-25T17:46:33.702045-05:00",
+      "season": 2026,
+      "week": 12,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Cade Otton",
+          "player_id": "00-0038129",
+          "team": "TB",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.5
+        },
+        {
+          "player": "Patrick Mahomes",
+          "player_id": "00-0033873",
+          "team": "KC",
+          "opp": "BUF",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 13.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w12-1795646793-2",
+      "placed_at": "2026-11-25T17:46:33.702045-05:00",
+      "season": 2026,
+      "week": 12,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Jordan Mason",
+          "player_id": "00-0037525",
+          "team": "MIN",
+          "opp": "ATL",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 57.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1
+        },
+        {
+          "player": "Christian McCaffrey",
+          "player_id": "00-0033280",
+          "team": "SF",
+          "opp": "SEA",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 53.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w12-1795646793-3",
+      "placed_at": "2026-11-25T17:46:33.702045-05:00",
+      "season": 2026,
+      "week": 12,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Breece Hall",
+          "player_id": "00-0038120",
+          "team": "NYJ",
+          "opp": "MIA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.2
+        },
+        {
+          "player": "Ryan Flournoy",
+          "player_id": "00-0039410",
+          "team": "DAL",
+          "opp": "PHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 30.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.1
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w12-1795646793-4",
+      "placed_at": "2026-11-25T17:46:33.702045-05:00",
+      "season": 2026,
+      "week": 12,
+      "odds": 264,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Pat Freiermuth",
+          "player_id": "00-0036894",
+          "team": "PIT",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 21.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Patrick Mahomes",
+          "player_id": "00-0033873",
+          "team": "KC",
+          "opp": "BUF",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 13.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        },
+        {
+          "player": "Breece Hall",
+          "player_id": "00-0038120",
+          "team": "NYJ",
+          "opp": "MIA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.2
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w12-1795646793-5",
+      "placed_at": "2026-11-25T17:46:33.702045-05:00",
+      "season": 2026,
+      "week": 12,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Tyler Shough",
+          "player_id": "00-0040743",
+          "team": "NO",
+          "opp": "CIN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        },
+        {
+          "player": "Jordan Mason",
+          "player_id": "00-0037525",
+          "team": "MIN",
+          "opp": "ATL",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 57.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1
+        },
+        {
+          "player": "Ryan Flournoy",
+          "player_id": "00-0039410",
+          "team": "DAL",
+          "opp": "PHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 30.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.1
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w12-1795646793-6",
+      "placed_at": "2026-11-25T17:46:33.702045-05:00",
+      "season": 2026,
+      "week": 12,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Cade Otton",
+          "player_id": "00-0038129",
+          "team": "TB",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.5
+        },
+        {
+          "player": "Christian McCaffrey",
+          "player_id": "00-0033280",
+          "team": "SF",
+          "opp": "SEA",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 53.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        },
+        {
+          "player": "Pat Freiermuth",
+          "player_id": "00-0036894",
+          "team": "PIT",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 21.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w12-1795646793-7",
+      "placed_at": "2026-11-25T17:46:33.702045-05:00",
+      "season": 2026,
+      "week": 12,
+      "odds": 596,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Pat Freiermuth",
+          "player_id": "00-0036894",
+          "team": "PIT",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 21.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Cade Otton",
+          "player_id": "00-0038129",
+          "team": "TB",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.5
+        },
+        {
+          "player": "Jordan Mason",
+          "player_id": "00-0037525",
+          "team": "MIN",
+          "opp": "ATL",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 57.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1
+        },
+        {
+          "player": "Breece Hall",
+          "player_id": "00-0038120",
+          "team": "NYJ",
+          "opp": "MIA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.2
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w12-1795646793-8",
+      "placed_at": "2026-11-25T17:46:33.702045-05:00",
+      "season": 2026,
+      "week": 12,
+      "odds": 1228,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Tyler Shough",
+          "player_id": "00-0040743",
+          "team": "NO",
+          "opp": "CIN",
+          "stat": "rushing_yards",
+          "side": "over",
+          "line": 20.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.7
+        },
+        {
+          "player": "Patrick Mahomes",
+          "player_id": "00-0033873",
+          "team": "KC",
+          "opp": "BUF",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 13.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.3
+        },
+        {
+          "player": "Christian McCaffrey",
+          "player_id": "00-0033280",
+          "team": "SF",
+          "opp": "SEA",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 53.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.6
+        },
+        {
+          "player": "Ryan Flournoy",
+          "player_id": "00-0039410",
+          "team": "DAL",
+          "opp": "PHI",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 30.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.1
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w12-1795646793-9",
+      "placed_at": "2026-11-25T17:46:33.702045-05:00",
+      "season": 2026,
+      "week": 12,
+      "odds": 1228,
+      "note": "Claude weekly pick"
+    },
+    {
+      "id": "2026-w12-GB@LA-nobet",
+      "placed_at": "2026-11-25T17:46:33.702045-05:00",
+      "season": 2026,
+      "week": 12,
+      "game": "GB@LA",
+      "kind": "none",
+      "stake": 0,
+      "legs": [],
+      "note": "No top plays in this game this week \u2014 passed."
     }
   ],
   "superseded": [
@@ -22368,7 +22796,8 @@
     "8": 1253.11,
     "9": 991.71,
     "10": 614.13,
-    "11": 611.28
+    "11": 611.28,
+    "12": 689.44
   },
   "note": "Bankroll starts in week 1: weeks 1-3 are simulated backtests (flagged backtest); week-4 stakes were rescaled x1.76902 to the week-4 starting bankroll (originals in stake_original).",
   "changes": [
