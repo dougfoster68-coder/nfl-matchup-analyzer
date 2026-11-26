@@ -18279,6 +18279,160 @@
       "stake": 0,
       "legs": [],
       "note": "No top plays in this game this week \u2014 passed."
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Patrick Mahomes",
+          "player_id": "00-0033873",
+          "team": "KC",
+          "opp": "BUF",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 227.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.4
+        }
+      ],
+      "game": "KC@BUF",
+      "id": "2026-w12-1795734727-1",
+      "placed_at": "2026-11-26T18:12:07.239282-05:00",
+      "season": 2026,
+      "week": 12,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Patrick Mahomes",
+          "player_id": "00-0033873",
+          "team": "KC",
+          "opp": "BUF",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 199.5,
+          "odds": -200,
+          "grade": "B",
+          "score": 7.4,
+          "alt": "200+"
+        }
+      ],
+      "game": "KC@BUF",
+      "id": "2026-w12-1795734727-2",
+      "placed_at": "2026-11-26T18:12:07.239282-05:00",
+      "season": 2026,
+      "week": 12,
+      "odds": -200,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Patrick Mahomes",
+          "player_id": "00-0033873",
+          "team": "KC",
+          "opp": "BUF",
+          "stat": "passing_yards",
+          "side": "over",
+          "line": 269.5,
+          "odds": 220,
+          "grade": "B",
+          "score": 7.4,
+          "alt": "270+"
+        }
+      ],
+      "game": "KC@BUF",
+      "id": "2026-w12-1795734727-3",
+      "placed_at": "2026-11-26T18:12:07.239282-05:00",
+      "season": 2026,
+      "week": 12,
+      "odds": 220,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 15,
+      "legs": [
+        {
+          "player": "Rashee Rice",
+          "player_id": "00-0039067",
+          "team": "KC",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 44.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.4
+        }
+      ],
+      "game": "KC@BUF",
+      "id": "2026-w12-1795734727-4",
+      "placed_at": "2026-11-26T18:12:07.239282-05:00",
+      "season": 2026,
+      "week": 12,
+      "odds": -110,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Rashee Rice",
+          "player_id": "00-0039067",
+          "team": "KC",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 39.5,
+          "odds": -160,
+          "grade": "B",
+          "score": 6.4,
+          "alt": "40+"
+        }
+      ],
+      "game": "KC@BUF",
+      "id": "2026-w12-1795734727-5",
+      "placed_at": "2026-11-26T18:12:07.239282-05:00",
+      "season": 2026,
+      "week": 12,
+      "odds": -160,
+      "note": "Claude weekly pick"
+    },
+    {
+      "kind": "straight",
+      "stake": 5,
+      "legs": [
+        {
+          "player": "Rashee Rice",
+          "player_id": "00-0039067",
+          "team": "KC",
+          "opp": "BUF",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 59.5,
+          "odds": 285,
+          "grade": "B",
+          "score": 6.4,
+          "alt": "60+"
+        }
+      ],
+      "game": "KC@BUF",
+      "id": "2026-w12-1795734727-6",
+      "placed_at": "2026-11-26T18:12:07.239282-05:00",
+      "season": 2026,
+      "week": 12,
+      "odds": 285,
+      "note": "Claude weekly pick"
     }
   ],
   "superseded": [
