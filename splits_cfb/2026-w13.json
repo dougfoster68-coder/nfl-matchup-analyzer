@@ -82,6 +82,14 @@
      "bets_b": 41,
      "money_a": 40,
      "money_b": 60
+    },
+    {
+     "at": "2026-11-26T14:28+00:00",
+     "line": -7.5,
+     "bets_a": 61,
+     "bets_b": 39,
+     "money_a": 34,
+     "money_b": 66
     }
    ]
   },
@@ -127,6 +135,14 @@
      "bets_b": 63,
      "money_a": 32,
      "money_b": 68
+    },
+    {
+     "at": "2026-11-26T14:28+00:00",
+     "line": 4.5,
+     "bets_a": 35,
+     "bets_b": 65,
+     "money_a": 36,
+     "money_b": 64
     }
    ]
   },
@@ -148,6 +164,14 @@
      "bets_b": 25,
      "money_a": 67,
      "money_b": 33
+    },
+    {
+     "at": "2026-11-26T14:28+00:00",
+     "line": 10.5,
+     "bets_a": 77,
+     "bets_b": 23,
+     "money_a": 70,
+     "money_b": 30
     }
    ]
   },
@@ -177,6 +201,14 @@
      "bets_b": 50,
      "money_a": 44,
      "money_b": 56
+    },
+    {
+     "at": "2026-11-26T14:28+00:00",
+     "line": 18.5,
+     "bets_a": 49,
+     "bets_b": 51,
+     "money_a": 43,
+     "money_b": 57
     }
    ]
   },
@@ -248,6 +280,14 @@
      "bets_b": 54,
      "money_a": 48,
      "money_b": 52
+    },
+    {
+     "at": "2026-11-26T14:28+00:00",
+     "line": 15.5,
+     "bets_a": 44,
+     "bets_b": 56,
+     "money_a": 54,
+     "money_b": 46
     }
    ]
   },
@@ -277,6 +317,14 @@
      "bets_b": 38,
      "money_a": 80,
      "money_b": 20
+    },
+    {
+     "at": "2026-11-26T14:28+00:00",
+     "line": -6.5,
+     "bets_a": 62,
+     "bets_b": 38,
+     "money_a": 79,
+     "money_b": 21
     }
    ]
   },
@@ -298,6 +346,14 @@
      "bets_b": 67,
      "money_a": 21,
      "money_b": 79
+    },
+    {
+     "at": "2026-11-26T14:28+00:00",
+     "line": 8.5,
+     "bets_a": 40,
+     "bets_b": 60,
+     "money_a": 31,
+     "money_b": 69
     }
    ]
   },
@@ -327,6 +383,14 @@
      "bets_b": 42,
      "money_a": 49,
      "money_b": 51
+    },
+    {
+     "at": "2026-11-26T14:28+00:00",
+     "line": 26.5,
+     "bets_a": 57,
+     "bets_b": 43,
+     "money_a": 55,
+     "money_b": 45
     }
    ]
   },
@@ -356,6 +420,14 @@
      "bets_b": 63,
      "money_a": 65,
      "money_b": 35
+    },
+    {
+     "at": "2026-11-26T14:28+00:00",
+     "line": -3.0,
+     "bets_a": 41,
+     "bets_b": 59,
+     "money_a": 65,
+     "money_b": 35
     }
    ]
   },
@@ -369,6 +441,14 @@
      "bets_b": 57,
      "money_a": 26,
      "money_b": 74
+    },
+    {
+     "at": "2026-11-26T14:28+00:00",
+     "line": 18.5,
+     "bets_a": 41,
+     "bets_b": 59,
+     "money_a": 25,
+     "money_b": 75
     }
    ]
   },
@@ -382,6 +462,14 @@
      "bets_b": 45,
      "money_a": 64,
      "money_b": 36
+    },
+    {
+     "at": "2026-11-26T14:28+00:00",
+     "line": -7.5,
+     "bets_a": 54,
+     "bets_b": 46,
+     "money_a": 66,
+     "money_b": 34
     }
    ]
   },
@@ -395,6 +483,40 @@
      "bets_b": 22,
      "money_a": 87,
      "money_b": 13
+    },
+    {
+     "at": "2026-11-26T14:28+00:00",
+     "line": 15.5,
+     "bets_a": 78,
+     "bets_b": 22,
+     "money_a": 81,
+     "money_b": 19
+    }
+   ]
+  },
+  "South Carolina@Clemson": {
+   "kickoff_utc": "2026-11-28T20:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-26T14:28+00:00",
+     "line": -6.0,
+     "bets_a": 61,
+     "bets_b": 39,
+     "money_a": 76,
+     "money_b": 24
+    }
+   ]
+  },
+  "Tennessee@Vanderbilt": {
+   "kickoff_utc": "2026-11-29T00:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-26T14:28+00:00",
+     "line": -13.5,
+     "bets_a": 51,
+     "bets_b": 49,
+     "money_a": 48,
+     "money_b": 52
     }
    ]
   }
