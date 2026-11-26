@@ -74,6 +74,14 @@
      "bets_b": 42,
      "money_a": 37,
      "money_b": 63
+    },
+    {
+     "at": "2026-11-26T04:39+00:00",
+     "line": -7.5,
+     "bets_a": 59,
+     "bets_b": 41,
+     "money_a": 40,
+     "money_b": 60
     }
    ]
   },
@@ -111,6 +119,14 @@
      "bets_b": 63,
      "money_a": 36,
      "money_b": 64
+    },
+    {
+     "at": "2026-11-26T04:39+00:00",
+     "line": 4.5,
+     "bets_a": 37,
+     "bets_b": 63,
+     "money_a": 32,
+     "money_b": 68
     }
    ]
   },
@@ -124,6 +140,14 @@
      "bets_b": 15,
      "money_a": 79,
      "money_b": 21
+    },
+    {
+     "at": "2026-11-26T04:39+00:00",
+     "line": 10.5,
+     "bets_a": 75,
+     "bets_b": 25,
+     "money_a": 67,
+     "money_b": 33
     }
    ]
   },
@@ -182,6 +206,14 @@
      "bets_b": 37,
      "money_a": 66,
      "money_b": 34
+    },
+    {
+     "at": "2026-11-26T04:39+00:00",
+     "line": -10.5,
+     "bets_a": 65,
+     "bets_b": 35,
+     "money_a": 71,
+     "money_b": 29
     }
    ]
   },
@@ -237,6 +269,14 @@
      "bets_b": 40,
      "money_a": 78,
      "money_b": 22
+    },
+    {
+     "at": "2026-11-26T04:39+00:00",
+     "line": -6.5,
+     "bets_a": 62,
+     "bets_b": 38,
+     "money_a": 80,
+     "money_b": 20
     }
    ]
   },
@@ -246,6 +286,14 @@
     {
      "at": "2026-11-25T13:34+00:00",
      "line": 7.5,
+     "bets_a": 33,
+     "bets_b": 67,
+     "money_a": 21,
+     "money_b": 79
+    },
+    {
+     "at": "2026-11-26T04:39+00:00",
+     "line": 8.5,
      "bets_a": 33,
      "bets_b": 67,
      "money_a": 21,
@@ -271,6 +319,14 @@
      "bets_b": 44,
      "money_a": 38,
      "money_b": 62
+    },
+    {
+     "at": "2026-11-26T04:39+00:00",
+     "line": 26.5,
+     "bets_a": 58,
+     "bets_b": 42,
+     "money_a": 49,
+     "money_b": 51
     }
    ]
   },
@@ -292,6 +348,53 @@
      "bets_b": 60,
      "money_a": 65,
      "money_b": 35
+    },
+    {
+     "at": "2026-11-26T04:39+00:00",
+     "line": -3.0,
+     "bets_a": 37,
+     "bets_b": 63,
+     "money_a": 65,
+     "money_b": 35
+    }
+   ]
+  },
+  "Temple@Memphis": {
+   "kickoff_utc": "2026-11-27T20:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-26T04:39+00:00",
+     "line": 18.5,
+     "bets_a": 43,
+     "bets_b": 57,
+     "money_a": 26,
+     "money_b": 74
+    }
+   ]
+  },
+  "North Dakota State@San Jose State": {
+   "kickoff_utc": "2026-11-27T20:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-26T04:39+00:00",
+     "line": -7.5,
+     "bets_a": 55,
+     "bets_b": 45,
+     "money_a": 64,
+     "money_b": 36
+    }
+   ]
+  },
+  "Auburn@Alabama": {
+   "kickoff_utc": "2026-11-29T00:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-26T04:39+00:00",
+     "line": 15.5,
+     "bets_a": 78,
+     "bets_b": 22,
+     "money_a": 87,
+     "money_b": 13
     }
    ]
   }
