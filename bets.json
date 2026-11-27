@@ -18152,67 +18152,6 @@
       "stake": 10,
       "legs": [
         {
-          "player": "Pat Freiermuth",
-          "player_id": "00-0036894",
-          "team": "PIT",
-          "opp": "DEN",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 21.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 8.7
-        },
-        {
-          "player": "Cade Otton",
-          "player_id": "00-0038129",
-          "team": "TB",
-          "opp": "CAR",
-          "stat": "receiving_yards",
-          "side": "under",
-          "line": 27.5,
-          "odds": -110,
-          "grade": "A",
-          "score": 7.5
-        },
-        {
-          "player": "Jordan Mason",
-          "player_id": "00-0037525",
-          "team": "MIN",
-          "opp": "ATL",
-          "stat": "rushing_yards",
-          "side": "under",
-          "line": 57.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 7.1
-        },
-        {
-          "player": "Breece Hall",
-          "player_id": "00-0038120",
-          "team": "NYJ",
-          "opp": "MIA",
-          "stat": "receiving_yards",
-          "side": "over",
-          "line": 19.5,
-          "odds": -110,
-          "grade": "B",
-          "score": 6.2
-        }
-      ],
-      "game": "multi",
-      "id": "2026-w12-1795646793-8",
-      "placed_at": "2026-11-25T17:46:33.702045-05:00",
-      "season": 2026,
-      "week": 12,
-      "odds": 1228,
-      "note": "Claude weekly pick"
-    },
-    {
-      "kind": "parlay",
-      "stake": 10,
-      "legs": [
-        {
           "player": "Tyler Shough",
           "player_id": "00-0040743",
           "team": "NO",
@@ -18433,6 +18372,67 @@
       "week": 12,
       "odds": 285,
       "note": "Claude weekly pick"
+    },
+    {
+      "kind": "parlay",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Pat Freiermuth",
+          "player_id": "00-0036894",
+          "team": "PIT",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 21.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Cade Otton",
+          "player_id": "00-0038129",
+          "team": "TB",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.5
+        },
+        {
+          "player": "Jordan Mason",
+          "player_id": "00-0037525",
+          "team": "MIN",
+          "opp": "ATL",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 57.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1
+        },
+        {
+          "player": "Jaylen Wright",
+          "player_id": "00-0039874",
+          "team": "MIA",
+          "opp": "NYJ",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 10.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.9
+        }
+      ],
+      "game": "multi",
+      "note": "LATE CHANGE Fri 12:03 AM ET: Breece Hall OVER 19.5 \u2192 Jaylen Wright UNDER 10.5 (plan now focuses on A/B picks (this one is a C))",
+      "id": "2026-w12-1795755807-1",
+      "placed_at": "2026-11-27T00:03:27.669661-05:00",
+      "season": 2026,
+      "week": 12,
+      "odds": 1228
     }
   ],
   "superseded": [
@@ -22940,6 +22940,69 @@
       "note": "Claude weekly pick",
       "superseded_at": "2026-11-21T16:59:36.711975-05:00",
       "superseded_reason": "late change before kickoff"
+    },
+    {
+      "kind": "parlay",
+      "stake": 10,
+      "legs": [
+        {
+          "player": "Pat Freiermuth",
+          "player_id": "00-0036894",
+          "team": "PIT",
+          "opp": "DEN",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 21.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 8.7
+        },
+        {
+          "player": "Cade Otton",
+          "player_id": "00-0038129",
+          "team": "TB",
+          "opp": "CAR",
+          "stat": "receiving_yards",
+          "side": "under",
+          "line": 27.5,
+          "odds": -110,
+          "grade": "A",
+          "score": 7.5
+        },
+        {
+          "player": "Jordan Mason",
+          "player_id": "00-0037525",
+          "team": "MIN",
+          "opp": "ATL",
+          "stat": "rushing_yards",
+          "side": "under",
+          "line": 57.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 7.1
+        },
+        {
+          "player": "Breece Hall",
+          "player_id": "00-0038120",
+          "team": "NYJ",
+          "opp": "MIA",
+          "stat": "receiving_yards",
+          "side": "over",
+          "line": 19.5,
+          "odds": -110,
+          "grade": "B",
+          "score": 6.2
+        }
+      ],
+      "game": "multi",
+      "id": "2026-w12-1795646793-8",
+      "placed_at": "2026-11-25T17:46:33.702045-05:00",
+      "season": 2026,
+      "week": 12,
+      "odds": 1228,
+      "note": "Claude weekly pick",
+      "superseded_at": "2026-11-27T00:03:27.669661-05:00",
+      "superseded_reason": "late change before kickoff"
     }
   ],
   "week_budgets": {
@@ -23604,6 +23667,16 @@
       "from": "Bucky Irving UNDER 14.5",
       "to": "Chris Godwin Jr. UNDER 33.5",
       "reason": "now trap-flagged: Line 16.5 vs 11 L9 avg \u2014 gap this big usually means the book knows about an injury or role change"
+    },
+    {
+      "at": "2026-11-27T00:03-05:00",
+      "week": 12,
+      "game": "parlay leg",
+      "kind": "parlay",
+      "stake": 10,
+      "from": "Breece Hall OVER 19.5",
+      "to": "Jaylen Wright UNDER 10.5",
+      "reason": "plan now focuses on A/B picks (this one is a C)"
     }
   ]
 }
