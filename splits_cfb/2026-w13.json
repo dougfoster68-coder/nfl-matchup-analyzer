@@ -236,6 +236,14 @@
      "bets_b": 26,
      "money_a": 69,
      "money_b": 31
+    },
+    {
+     "at": "2026-11-28T04:52+00:00",
+     "line": 10.5,
+     "bets_a": 65,
+     "bets_b": 35,
+     "money_a": 68,
+     "money_b": 32
     }
    ]
   },
@@ -628,6 +636,14 @@
      "bets_b": 57,
      "money_a": 69,
      "money_b": 31
+    },
+    {
+     "at": "2026-11-28T04:52+00:00",
+     "line": -3.0,
+     "bets_a": 42,
+     "bets_b": 58,
+     "money_a": 53,
+     "money_b": 47
     }
    ]
   },
@@ -739,6 +755,14 @@
      "bets_b": 25,
      "money_a": 75,
      "money_b": 25
+    },
+    {
+     "at": "2026-11-28T04:52+00:00",
+     "line": 14.5,
+     "bets_a": 74,
+     "bets_b": 26,
+     "money_a": 74,
+     "money_b": 26
     }
    ]
   },
@@ -899,6 +923,14 @@
      "bets_b": 66,
      "money_a": 21,
      "money_b": 79
+    },
+    {
+     "at": "2026-11-28T04:52+00:00",
+     "line": 3.5,
+     "bets_a": 31,
+     "bets_b": 69,
+     "money_a": 18,
+     "money_b": 82
     }
    ]
   },
@@ -912,6 +944,14 @@
      "bets_b": 56,
      "money_a": 56,
      "money_b": 44
+    },
+    {
+     "at": "2026-11-28T04:52+00:00",
+     "line": 24.5,
+     "bets_a": 41,
+     "bets_b": 59,
+     "money_a": 46,
+     "money_b": 54
     }
    ]
   },
@@ -925,6 +965,14 @@
      "bets_b": 29,
      "money_a": 35,
      "money_b": 65
+    },
+    {
+     "at": "2026-11-28T04:52+00:00",
+     "line": 2.5,
+     "bets_a": 69,
+     "bets_b": 31,
+     "money_a": 40,
+     "money_b": 60
     }
    ]
   },
@@ -938,6 +986,92 @@
      "bets_b": 71,
      "money_a": 27,
      "money_b": 73
+    },
+    {
+     "at": "2026-11-28T04:52+00:00",
+     "line": 9.0,
+     "bets_a": 29,
+     "bets_b": 71,
+     "money_a": 32,
+     "money_b": 68
+    }
+   ]
+  },
+  "Kansas State@Iowa State": {
+   "kickoff_utc": "2026-11-28T19:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-28T04:52+00:00",
+     "line": 4.0,
+     "bets_a": 18,
+     "bets_b": 82,
+     "money_a": 13,
+     "money_b": 87
+    }
+   ]
+  },
+  "Georgia Tech@Georgia": {
+   "kickoff_utc": "2026-11-28T20:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-28T04:52+00:00",
+     "line": 35.5,
+     "bets_a": 45,
+     "bets_b": 55,
+     "money_a": 35,
+     "money_b": 65
+    }
+   ]
+  },
+  "Boise State@Colorado State": {
+   "kickoff_utc": "2026-11-28T23:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-28T04:52+00:00",
+     "line": -21.0,
+     "bets_a": 34,
+     "bets_b": 66,
+     "money_a": 14,
+     "money_b": 86
+    }
+   ]
+  },
+  "Kansas@Oklahoma State": {
+   "kickoff_utc": "2026-11-28T23:15:00Z",
+   "spread": [
+    {
+     "at": "2026-11-28T04:52+00:00",
+     "line": 6.0,
+     "bets_a": 31,
+     "bets_b": 69,
+     "money_a": 14,
+     "money_b": 86
+    }
+   ]
+  },
+  "Purdue@Indiana": {
+   "kickoff_utc": "2026-11-29T00:00:00Z",
+   "spread": [
+    {
+     "at": "2026-11-28T04:52+00:00",
+     "line": 23.5,
+     "bets_a": 38,
+     "bets_b": 62,
+     "money_a": 23,
+     "money_b": 77
+    }
+   ]
+  },
+  "Baylor@Houston": {
+   "kickoff_utc": "2026-11-29T02:30:00Z",
+   "spread": [
+    {
+     "at": "2026-11-28T04:52+00:00",
+     "line": 3.5,
+     "bets_a": 12,
+     "bets_b": 88,
+     "money_a": 13,
+     "money_b": 87
     }
    ]
   }
